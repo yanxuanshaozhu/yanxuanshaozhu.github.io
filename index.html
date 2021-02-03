@@ -259,6 +259,216 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/03/CS61A-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/03/CS61A-Notes/" itemprop="url">CS61A Notes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T23:20:35+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h1><p>This is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course.</p>
+<h1 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h1><p>The Zen of Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>Different ways for reading files:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = open(<span class="string">'myFile'</span>, <span class="string">'r'</span>)</span><br><span class="line">words = file.read().split()</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'myFile'</span>, <span class="string">'br'</span>)</span><br><span class="line">words = file.read().decode().split()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h1><p>The intrinsic name and the bound name of a function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">g = f</span><br><span class="line">&gt;&gt;&gt;f.__name__</span><br><span class="line"><span class="string">'f'</span></span><br><span class="line">&gt;&gt;&gt;g.__name__</span><br><span class="line"><span class="string">'f'</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>Function name should always be in lowercases.</p>
+<br>
+
+<p>Don’t use tabs, use spaces.</p>
+<br>
+
+<p>help(fun_name): enter q to quit help.</p>
+<br>
+
+<p>Docstring Syntax:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="string">""" A one-line description of this function.</span></span><br><span class="line"><span class="string">    General behavior of this function.</span></span><br><span class="line"><span class="string">    Description of args. e.g. x -- temperature in centigrades.</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; myfunc(m)</span></span><br><span class="line"><span class="string">    n</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; myfunc(n)</span></span><br><span class="line"><span class="string">    t</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lab-00"><a href="#Lab-00" class="headerlink" title="Lab 00"></a>Lab 00</h1><p>Test labs and homework using ok in your own computer:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python ok -q question_function_name --local <span class="comment"># test for a specific question.</span></span><br><span class="line">python ok --local <span class="comment"># test for the whole Python file.</span></span><br><span class="line">python ok -q question_name -u <span class="comment"># unlock the question, if you add --local, it will fail. In this situation, I use the 2020 fall homework instead</span></span><br></pre></td></tr></table></figure>
+
+<p>Notice: only the latest version(currently the ok for Spring 2020 fall class and Spring 2021 class) of ok can be working without the <code>--local</code> parameter. If you use an older version of ok python without <code>--local</code>, it will display <code>checking for software updates</code> and stuck at there.  </p>
+<h1 id="HW-1"><a href="#HW-1" class="headerlink" title="HW 1"></a>HW 1</h1><p>Answer for the Quine question:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quline = <span class="string">'print("quline = " + repr(quline) + ";eval(quline)")'</span>;eval(quline)</span><br></pre></td></tr></table></figure>
+
+<p>The built-in <code>eval</code> function, which evaluates a string as a Python expression.</p>
+<p>The built-in <code>repr</code> function, which returns an expression that evaluates to its argument.</p>
+<h1 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture 3"></a>Lecture 3</h1><p>If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
+<br>
+
+<p>Some examples for  including  <code>1/0(ZeroDivisionError)</code>in the Boolean expressions:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span> <span class="keyword">and</span> <span class="number">1</span>/<span class="number">0</span>  <span class="comment"># No short-circuiting, so the result is ZeroDivisionError</span></span><br><span class="line"><span class="literal">True</span> <span class="keyword">or</span> <span class="number">1</span>/<span class="number">0</span>  <span class="comment"># The right expression is short-circuited, so the result is True</span></span><br><span class="line"><span class="literal">False</span> <span class="keyword">and</span> <span class="number">1</span>/<span class="number">0</span> <span class="comment"># The right expression is short-circuited, so the result is False</span></span><br><span class="line"><span class="literal">False</span> <span class="keyword">or</span> <span class="number">1</span>/<span class="number">0</span> <span class="comment"># No short-circuiting, so the result is ZeroDivisionError</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>/<span class="number">0</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="literal">True</span>/<span class="literal">False</span>  <span class="comment"># The left expression will cause an error, so the result is ZeroDivisionError</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p> Debugging Methods:</p>
+<p>1) Running doctests for codes in a file:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m doctest &lt;filename.py&gt; <span class="comment"># simply run the test in docstrings</span></span><br><span class="line">python -m doctest &lt;filename.py&gt; -v <span class="comment"># run the test in docstrings and display the result on the screen</span></span><br></pre></td></tr></table></figure>
+
+<p>2) Running doctests for codes in the interactive session:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> doctest <span class="keyword">import</span> testmod</span><br><span class="line">testmode()   <span class="comment"># test for all tests in all docstrings in the session</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> doctest <span class="keyword">import</span> run_docstring_examples</span><br><span class="line">run_docstring_examples(function_name, globals(), <span class="literal">True</span>) <span class="comment"># test for tests in the docstring of a specific function</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lab-01"><a href="#Lab-01" class="headerlink" title="Lab 01"></a>Lab 01</h1><p>Assertion statement should be included in a release version of your codes, but debugging print statement should not.</p>
+<br>
+
+<p>Traceback Message: <code>File &lt;file_name&gt; line &lt;line_number&gt; in &lt;function&gt;</code></p>
+<p>Error Message: <code>&lt;error type&gt; : &lt;error message&gt;</code></p>
+<br>
+
+<p>Common Error Types: SyntaxError, IndentationError, TypeError, ZeroDivisionError, NameError, IndexError</p>
+<br>
+
+<p>Common Bugs: spelling, missing parentheses, missing close quotes, == v.s. =, infinite loops, off-by-one errors(boundary condition error)</p>
+<h1 id="Lecture-4"><a href="#Lecture-4" class="headerlink" title="Lecture 4"></a>Lecture 4</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="keyword">lambda</span> f,g: <span class="keyword">lambda</span> x: f(g(x)))(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, <span class="keyword">lambda</span> y: y + <span class="number">1</span>)(<span class="number">12</span>)</span><br><span class="line"><span class="number">169</span></span><br><span class="line"><span class="comment">#The above code is equal to the following ones:</span></span><br><span class="line">&gt;&gt;&gt;<span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(f,g)</span>:</span></span><br><span class="line">    	<span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> f(g(x))</span><br><span class="line">        <span class="keyword">return</span> func2</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x ** <span class="number">2</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x + <span class="number">1</span></span><br><span class="line">    myfunc = func1(f, g)</span><br><span class="line">    myfunc(<span class="number">12</span>)</span><br><span class="line"><span class="number">169</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/21/%E4%B9%B0%E6%88%BF%E7%AF%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1487,7 +1697,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1509,7 +1719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
