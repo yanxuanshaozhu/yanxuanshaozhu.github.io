@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-07 20:38:02" itemprop="dateModified" datetime="2021-02-07T20:38:02+08:00">2021-02-07</time>
+                <time title="Modified: 2021-02-09 23:52:06" itemprop="dateModified" datetime="2021-02-09T23:52:06+08:00">2021-02-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,7 +215,7 @@
 
       
           <h1 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h1><p>This is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course.</p>
-<h1 id="ecture-1"><a href="#ecture-1" class="headerlink" title="ecture 1"></a>ecture 1</h1><p>The Zen of Python:</p>
+<h1 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h1><p>The Zen of Python:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -247,7 +247,7 @@
 <h1 id="Lab-00"><a href="#Lab-00" class="headerlink" title="Lab 00"></a>Lab 00</h1><p>Test labs and homework using ok in your own computer:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python ok -q question_function_name --local <span class="comment"># test for a specific question.</span></span><br><span class="line">python ok --local <span class="comment"># test for the whole Python file.</span></span><br><span class="line">python ok -q question_name -u <span class="comment"># unlock the question, if you add --local, it will fail. In this situation, I use the 2020 fall homework instead</span></span><br></pre></td></tr></table></figure>
 
-<p>Notice: only the latest version(currently the ok for Spring 2020 fall class and Spring 2021 class) of ok can be working without the <code>--local</code> parameter. If you use an older version of ok python without <code>--local</code>, it will display <code>checking for software updates</code> and stuck at there.  </p>
+<p>Notice: only the latest version(currently the ok for 2020 Fall class and 2021 Spring class) of ok can be working without the <code>--local</code> parameter. If you use an older version of ok python without <code>--local</code>, it will display <code>checking for software updates</code> and stuck at there.  </p>
 <h1 id="HW-1"><a href="#HW-1" class="headerlink" title="HW 1"></a>HW 1</h1><p>Answer for the Quine question:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quline = <span class="string">&#x27;print(&quot;quline = &quot; + repr(quline) + &quot;;eval(quline)&quot;)&#x27;</span>;<span class="built_in">eval</span>(quline)</span><br></pre></td></tr></table></figure>
 
@@ -312,16 +312,31 @@
 
 
 <h1 id="Lecture-5"><a href="#Lecture-5" class="headerlink" title="Lecture 5"></a>Lecture 5</h1><p>How to draw an environment diagram:</p>
-<p>1) when defining an function:</p>
+<p>1) when defines an function:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn: &lt;fun_name&gt;   --------------------&gt; func &lt;fun_name&gt;(&lt;formal_parameters&gt;)[parent = &lt;parent&gt;]                       </span><br></pre></td></tr></table></figure>
 
-<p>2) when calling a function:</p>
+<p>2) when calls a function:</p>
 <ol>
     <li>create a local frame titled with the function being called</li>
     <li>copy the parent of the function to the local frame: [parent = &lt parent &gt]</li>
     <li>bind &lt formal-parameters &gt to arguments in the local frame</li>
     <li>execute the body of the function in the environment that starts with the local frame</li>
 </ol>
+
+
+
+<h1 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title="Lecture 6"></a>Lecture 6</h1><p>Self-reference: a function that refers to itself in the function body is called self-reference</p>
+<h1 id="Lecture-7"><a href="#Lecture-7" class="headerlink" title="Lecture 7"></a>Lecture 7</h1><p>Recursive function: can be divided into a base case and recursive function calls</p>
+<br>
+
+<p>Mutual recursion:  if a recursive procedure can be divided into two functions that call each other, then the two functions are mutual recursive.</p>
+<p>The mutual recursive functions can be rewritten into a single recursive function. Say if you use two functions to represent the even and odd cases respectively, you can then replace them using one function that uses a step of two.</p>
+<br>
+
+<p>Tree recursion: a function calls itself multiple times in the function body</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># An example: let par(n, m) be the function that calculates the number of differentt partitions of an integer n, requiring each fraction no greater than m</span></span><br><span class="line"><span class="comment"># In such a case we must have par(n, m) = par(n - m, m) + par(n, m - 1). par(n - m, m) represents the partitions that use m as a fraction while par(n, m - 1) represents the remaining partitions</span></span><br></pre></td></tr></table></figure>
+
+
 
 
       
