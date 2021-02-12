@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-11 16:34:22" itemprop="dateModified" datetime="2021-02-11T16:34:22+08:00">2021-02-11</time>
+                <time title="Modified: 2021-02-12 21:31:49" itemprop="dateModified" datetime="2021-02-12T21:31:49+08:00">2021-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,7 +215,7 @@
 
       
           <h1 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h1><p>This is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course.</p>
-<h1 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h1><p>The Zen of Python:</p>
+<h1 id="Lecture-01"><a href="#Lecture-01" class="headerlink" title="Lecture 01"></a>Lecture 01</h1><p>The Zen of Python:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -225,7 +225,7 @@
 
 
 
-<h1 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h1><p>The intrinsic name and the bound name of a function:</p>
+<h1 id="Lecture-02"><a href="#Lecture-02" class="headerlink" title="Lecture 02"></a>Lecture 02</h1><p>The intrinsic name and the bound name of a function:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span>(<span class="params">args</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">g = f</span><br><span class="line">&gt;&gt;&gt;f.__name__</span><br><span class="line"><span class="string">&#x27;f&#x27;</span></span><br><span class="line">&gt;&gt;&gt;g.__name__</span><br><span class="line"><span class="string">&#x27;f&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
@@ -248,12 +248,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python ok -q question_function_name --local <span class="comment"># test for a specific question.</span></span><br><span class="line">python ok --local <span class="comment"># test for the whole Python file.</span></span><br><span class="line">python ok -q question_name -u <span class="comment"># unlock the question, if you add --local, it will fail. In this situation, I use the 2020 fall homework instead</span></span><br></pre></td></tr></table></figure>
 
 <p>Notice: only the latest version(currently the ok for 2020 Fall class and 2021 Spring class) of ok can be working without the <code>--local</code> parameter. If you use an older version of ok python without <code>--local</code>, it will display <code>checking for software updates</code> and stuck at there.  </p>
-<h1 id="HW-1"><a href="#HW-1" class="headerlink" title="HW 1"></a>HW 1</h1><p>Answer for the Quine question:</p>
+<h1 id="HW-01"><a href="#HW-01" class="headerlink" title="HW 01"></a>HW 01</h1><p>Answer for the Quine question:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quline = <span class="string">&#x27;print(&quot;quline = &quot; + repr(quline) + &quot;;eval(quline)&quot;)&#x27;</span>;<span class="built_in">eval</span>(quline)</span><br></pre></td></tr></table></figure>
 
 <p>The built-in <code>eval</code> function, which evaluates a string as a Python expression.</p>
 <p>The built-in <code>repr</code> function, which returns an expression that evaluates to its argument.</p>
-<h1 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture 3"></a>Lecture 3</h1><p>If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
+<h1 id="Lecture-03"><a href="#Lecture-03" class="headerlink" title="Lecture 03"></a>Lecture 03</h1><p>If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
 <br>
 
 <p>Some examples for  including  <code>1/0(ZeroDivisionError)</code>in the Boolean expressions:</p>
@@ -281,7 +281,7 @@
 <br>
 
 <p>Common Bugs: spelling, missing parentheses, missing close quotes, == v.s. =, infinite loops, off-by-one errors(boundary condition error)</p>
-<h1 id="Lecture-4"><a href="#Lecture-4" class="headerlink" title="Lecture 4"></a>Lecture 4</h1><p>Notice the following tuple assignment:</p>
+<h1 id="Lecture-04"><a href="#Lecture-04" class="headerlink" title="Lecture 04"></a>Lecture 04</h1><p>Notice the following tuple assignment:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">n,term</span>):</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>Currying(so-called 柯里化 in Chinese): use high-order function to convert functions with multiple arguments into a chin of functions(in some languages like Haskell a function can have at most one argument ):</p>
@@ -302,7 +302,7 @@
 
 
 
-<h1 id="Project-Hog"><a href="#Project-Hog" class="headerlink" title="Project Hog"></a>Project Hog</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">randint(a,b) <span class="comment"># a &lt;= x &lt;= b</span></span><br></pre></td></tr></table></figure>
+<h1 id="Project-01-Hog"><a href="#Project-01-Hog" class="headerlink" title="Project 01 Hog"></a>Project 01 Hog</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">randint(a,b) <span class="comment"># a &lt;= x &lt;= b</span></span><br></pre></td></tr></table></figure>
 
 <p>Nonlocal variable: a variable declared in the outer function but can be modified in the inner function </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    x = <span class="number">5</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span> x</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">    f2()</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">print(f1())    <span class="comment"># 6</span></span><br></pre></td></tr></table></figure>
@@ -311,7 +311,7 @@
 
 
 
-<h1 id="Lecture-5"><a href="#Lecture-5" class="headerlink" title="Lecture 5"></a>Lecture 5</h1><p>How to draw an environment diagram:</p>
+<h1 id="Lecture-05"><a href="#Lecture-05" class="headerlink" title="Lecture 05"></a>Lecture 05</h1><p>How to draw an environment diagram:</p>
 <p>1) when defines an function:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn: &lt;fun_name&gt;   --------------------&gt; func &lt;fun_name&gt;(&lt;formal_parameters&gt;)[parent = &lt;parent&gt;]                       </span><br></pre></td></tr></table></figure>
 
@@ -325,8 +325,8 @@
 
 
 
-<h1 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title="Lecture 6"></a>Lecture 6</h1><p>Self-reference: a function that refers to itself in the function body is called self-reference</p>
-<h1 id="Lecture-7"><a href="#Lecture-7" class="headerlink" title="Lecture 7"></a>Lecture 7</h1><p>Recursive function: can be divided into a base case and recursive function calls</p>
+<h1 id="Lecture-06"><a href="#Lecture-06" class="headerlink" title="Lecture 06"></a>Lecture 06</h1><p>Self-reference: a function that refers to itself in the function body is called self-reference</p>
+<h1 id="Lecture-07"><a href="#Lecture-07" class="headerlink" title="Lecture 07"></a>Lecture 07</h1><p>Recursive function: can be divided into a base case and recursive function calls</p>
 <br>
 
 <p>Mutual recursion:  if a recursive procedure can be divided into two functions that call each other, then the two functions are mutual recursive.</p>
@@ -350,7 +350,7 @@
 </ol>
 <p>For the above example, the sum_results = 1 * 2 + 7 + 7( 8 * 2 =&gt; 7) + 9 + 3 * 2 + 7 + 2 * 2 + 9 + 9( 9 * 2 =&gt; 9) + 7 = 67. Then check_digit =  (10 - 67 % 10) % 10 = 3. So the full credit card number is “7992739871X”.</p>
 <p>A simple way to verify whether the check_digit is correct:  if <code>(sum_results + check_digit) % 10 == 0</code>, then the check_digit is correct.</p>
-<h1 id="Lecture-8"><a href="#Lecture-8" class="headerlink" title="Lecture 8"></a>Lecture 8</h1><p>Functional abstractions: concrete implementations do not matter in this situation.</p>
+<h1 id="Lecture-08"><a href="#Lecture-08" class="headerlink" title="Lecture 08"></a>Lecture 08</h1><p>Functional abstractions: concrete implementations do not matter in this situation.</p>
 <br>
 
 <p>Choosing names:</p>
@@ -369,11 +369,11 @@
     <li> Write test for functions before you actually implementing the function itself</li>
     <li> Develop incrementally and test each piece before moving on</li>
     <li> Run your code interactively</li>    
+</ul>
 
 
 
-
-<h1 id="Lecture-9"><a href="#Lecture-9" class="headerlink" title="Lecture 9"></a>Lecture 9</h1><p>Different ways to implementations recursive functions:</p>
+<h1 id="Lecture-09"><a href="#Lecture-09" class="headerlink" title="Lecture 09"></a>Lecture 09</h1><p>Different ways to implementations recursive functions:</p>
 <ul>
     <li> If multiple implementations of a function are equally clear, then you should choose the shorter one </li>
     <li> If the longer one is more clear, then you should use it</li>
@@ -384,7 +384,19 @@
 <br>
 
 <p>If you store every intermediate value during the recursion process, then it is pretty slow compared with Iteration.</p>
-</ul>
+<h1 id="HW-02"><a href="#HW-02" class="headerlink" title="HW 02"></a>HW 02</h1><p>This one is quite hard for me, I spent a long time converting iteration to recursion for the ping pong question and the count coins question. At first there were duplicate results in my recursion formula and I checked for a while, also I turned to the hint videos on the website for inspiration.  I learnt several lessons from these two problems:</p>
+<ol>
+    <li>If you want to preserve several variables through the recursion process, define a helper function with all needed variables as arguments inside the target function.</li>
+    <li>If counting from the largest number doesn't work, then try starting from the smallest one.</li>
+    <li>A forluma: term(n, m) = term(n - m, m) + term(n, fun(m))</li>
+</ol>
+
+<br>
+
+<p>The recursive lambda:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args)             <span class="comment"># This is a general form for recursive lambda, the func is a two-argument recursive function</span></span><br><span class="line">(<span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args))(<span class="keyword">lambda</span> f, x: x * f(f, x - <span class="number">1</span>))(n) <span class="comment"># This calculate the factorial(n)</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -861,7 +873,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-10 17:02:30" itemprop="dateModified" datetime="2021-02-10T17:02:30+08:00">2021-02-10</time>
+                <time title="Modified: 2021-02-12 21:58:15" itemprop="dateModified" datetime="2021-02-12T21:58:15+08:00">2021-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -884,36 +896,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>说明：我看到可能有用的会不定期更新这个文章</p>
+          <p><strong style="font-size:40px">Notice: I update this article as long as I find new useful information. </strong></p>
 <br>
 
 <br>
 
-<h2 id="1-Modify-your-resume-skillset-according-to-JD"><a href="#1-Modify-your-resume-skillset-according-to-JD" class="headerlink" title="1 Modify your resume skillset according to JD"></a>1 Modify your resume skillset according to JD</h2><p>根据JD的关键字对应修改技能树顺序，因为筛选简历的人不懂具体技能(可以使用一个很长的备份简历，每次看到JD关键字都复制进去，然后每次修改)</p>
+<h1 id="1-Modify-your-resume-skillset-according-to-JD"><a href="#1-Modify-your-resume-skillset-according-to-JD" class="headerlink" title="1 Modify your resume skillset according to JD"></a>1 Modify your resume skillset according to JD</h1><p>根据JD的关键字对应修改技能树顺序，因为筛选简历的人不懂具体技能(可以使用一个很长的备份简历，每次看到JD关键字都复制进去，然后每次修改)</p>
 <p>来源:<a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-701512-1-1.html">https://www.1point3acres.com/bbs/thread-701512-1-1.html</a></p>
 <br>
 
-<h2 id="2-Bullet-points-should-be-concrete-do-not-use-general-description"><a href="#2-Bullet-points-should-be-concrete-do-not-use-general-description" class="headerlink" title="2 Bullet points should be concrete, do not use general description"></a>2 Bullet points should be concrete, do not use general description</h2><p>bullet points写细节，比如Designed and implemented xxx using xxx， which xxx（功能），不要写general description</p>
+<h1 id="2-Bullet-points-should-be-concrete-do-not-use-general-description"><a href="#2-Bullet-points-should-be-concrete-do-not-use-general-description" class="headerlink" title="2 Bullet points should be concrete, do not use general description"></a>2 Bullet points should be concrete, do not use general description</h1><p>bullet points写细节，比如Designed and implemented xxx using xxx， which xxx（功能），不要写general description</p>
 <p>量化指标比如 QPS(queries per second), DAU(daily active user)</p>
 <p>来源:同上</p>
 <br>
 
-<h2 id="3-Timeline-for-finding-internship"><a href="#3-Timeline-for-finding-internship" class="headerlink" title="3 Timeline for finding internship"></a>3 Timeline for finding internship</h2><p>实习的Timeline：大约感觉找暑期的话开学前就得准备好简历和刷题，以后看到更多的TL再扔过来</p>
+<h1 id="3-Timeline-for-finding-internship"><a href="#3-Timeline-for-finding-internship" class="headerlink" title="3 Timeline for finding internship"></a>3 Timeline for finding internship</h1><p>实习的Timeline：大约感觉找暑期的话开学前就得准备好简历和刷题，以后看到更多的TL再扔过来</p>
 <p>你来了美国是8-9月但inern基本10月份就开始投简历像facebook基本12月之前intern就已经满了</p>
 <p>来源:<a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-699010-1-1.html">https://www.1point3acres.com/bbs/thread-699010-1-1.html</a></p>
 <br>
 
-<h2 id="4-Amazon-behavior-questions-guideline"><a href="#4-Amazon-behavior-questions-guideline" class="headerlink" title="4 Amazon behavior questions guideline"></a>4 Amazon behavior questions guideline</h2><p>可以类推到其他公司，没细看，但是很详细，有空一定要看看</p>
+<h1 id="4-Amazon-behavior-questions-guideline"><a href="#4-Amazon-behavior-questions-guideline" class="headerlink" title="4 Amazon behavior questions guideline"></a>4 Amazon behavior questions guideline</h1><p>可以类推到其他公司，没细看，但是很详细，有空一定要看看</p>
 <p>来源:<a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=573198&amp;extra=page%3D1%26filter%3Dsortid%26sortid%3D192%26sortid%3D192">https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=573198&amp;extra=page%3D1%26filter%3Dsortid%26sortid%3D192%26sortid%3D192</a></p>
 <br>
 
-<h2 id="5-Relocate-Information"><a href="#5-Relocate-Information" class="headerlink" title="5 Relocate Information"></a>5 Relocate Information</h2><p>补救措施：找一个cpt学校，一年1.5w美元左右</p>
+<h1 id="5-Relocate-Information"><a href="#5-Relocate-Information" class="headerlink" title="5 Relocate Information"></a>5 Relocate Information</h1><p>补救措施：找一个cpt学校，一年1.5w美元左右</p>
 <p>来源:<a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-705144-1-1.html">https://www.1point3acres.com/bbs/thread-705144-1-1.html</a></p>
 <p>1) Bloomberg，去London(engineering抽不到的话)/Tokyo</p>
 <p>来源:同上</p>
 <br>
 
-<h2 id="6-A-list-of-tech-company-growth-measured-by-total-amount-of-employees-in-the-last-two-years-found-from-LinkedIn-premium-company-insights"><a href="#6-A-list-of-tech-company-growth-measured-by-total-amount-of-employees-in-the-last-two-years-found-from-LinkedIn-premium-company-insights" class="headerlink" title="6 A list of tech company growth (measured by total amount of employees) in the last two years, found from LinkedIn premium company insights."></a>6 A list of tech company growth (measured by total amount of employees) in the last two years, found from LinkedIn premium company insights.</h2><table>
+<h1 id="6-A-list-of-tech-company-growth-measured-by-total-amount-of-employees-in-the-last-two-years-found-from-LinkedIn-premium-company-insights"><a href="#6-A-list-of-tech-company-growth-measured-by-total-amount-of-employees-in-the-last-two-years-found-from-LinkedIn-premium-company-insights" class="headerlink" title="6 A list of tech company growth (measured by total amount of employees) in the last two years, found from LinkedIn premium company insights."></a>6 A list of tech company growth (measured by total amount of employees) in the last two years, found from LinkedIn premium company insights.</h1><table>
 <thead>
 <tr>
 <th align="center">Employer</th>
@@ -1200,14 +1212,14 @@
 <p>Source: <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-707104-1-1.html">https://www.1point3acres.com/bbs/thread-707104-1-1.html</a></p>
 <br>
 
-<h2 id="7-Possible-wage-level-of-tech-companies"><a href="#7-Possible-wage-level-of-tech-companies" class="headerlink" title="7 Possible wage level of tech companies"></a>7 Possible wage level of tech companies</h2><p>1) Common Wage for non- FAANG companies in NJ: ~85K</p>
+<h1 id="7-Possible-wage-level-of-tech-companies"><a href="#7-Possible-wage-level-of-tech-companies" class="headerlink" title="7 Possible wage level of tech companies"></a>7 Possible wage level of tech companies</h1><p>1) Common Wage for non- FAANG companies in NJ: ~85K</p>
 <p>2) Common Wage for non- FAANG companies in Bay Area: ~80k - 120k</p>
 <p>3) Common Wage for FANNG companies: NG150K-200K，total package includes base，sign on，bonus，stock，relocation fee</p>
 <p>4) A dp from Amazon: 125K -&gt; 165K -&gt; 228K -&gt; ~ 276K(estimated for this year)</p>
 <p>Source: <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-710180-1-1.html">https://www.1point3acres.com/bbs/thread-710180-1-1.html</a></p>
 <br>
 
-<h2 id="8-Compare-benefits-among-FAANG-and-other-companies"><a href="#8-Compare-benefits-among-FAANG-and-other-companies" class="headerlink" title="8 Compare benefits among FAANG and other companies:"></a>8 Compare benefits among FAANG and other companies:</h2><p>1) You can compare company benefits from levels.fy :</p>
+<h1 id="8-Compare-benefits-among-FAANG-and-other-companies"><a href="#8-Compare-benefits-among-FAANG-and-other-companies" class="headerlink" title="8 Compare benefits among FAANG and other companies:"></a>8 Compare benefits among FAANG and other companies:</h1><p>1) You can compare company benefits from levels.fy :</p>
 <img src="/2021/01/03/%E6%89%BE%E5%B7%A5%E7%AF%87/benefits_2.png" class>
 
 <img src="/2021/01/03/%E6%89%BE%E5%B7%A5%E7%AF%87/benefits_3.png" class> 
@@ -1271,7 +1283,7 @@
 </li>
 </ul>
 <p>Source:  <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-711900-1-1.html">https://www.1point3acres.com/bbs/thread-711900-1-1.html</a><br><br></p>
-<h2 id="9-GHC-Database"><a href="#9-GHC-Database" class="headerlink" title="9 GHC Database"></a>9 GHC Database</h2><p>Students can submit their resumes into the GHC database.</p>
+<h1 id="9-GHC-Database"><a href="#9-GHC-Database" class="headerlink" title="9 GHC Database"></a>9 GHC Database</h1><p>Students can submit their resumes into the GHC database.</p>
 <p>Here are the useful links related to GHC:</p>
 <p>GHC： <a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbHF3THViQXdLWUZGUm1OTTJSUTBuLWE0bkhWQXxBQ3Jtc0tud2JKOHpKNExvZFZUaFNiUGJMajB3OHBZeWNCS1ktVS1fVGRPSHJPYS1sVDk5a05tU0lBdFNPZUV3SVBXSHNOT1BCaFp0eFk0VExCNzJUSGZOdUo0SE5IY3oyOGVJcGo3MlhjMFdkWDFJdnI1X0g1NA&q=https%3A%2F%2Fghc.anitab.org%2F">https://ghc.anitab.org/</a> </p>
 <p>GHC Membership： <a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbTlMNUNwVnNmbTRMVGVJUnN0eGltOUx3eHV4UXxBQ3Jtc0trZ3VCRmJ2ZHhaMmJmMGg2V3RVanVfZzZPamJlSWlfVDNscUFKa3JPQV9UUnZZdHhEVVpjZFFxVmZYYzlFdHRsTmV6eU5pNGF5YzFMUnlBbVhpSThKV2pRbEgtUlRzam9JVTBZRU1qS3ZwSDBidE40UQ&q=https%3A%2F%2Fmembership.anitab.org%2F">https://membership.anitab.org/</a> </p>
@@ -1279,7 +1291,13 @@
 <p>Source: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=37L2Ce5XdmU">https://www.youtube.com/watch?v=37L2Ce5XdmU</a></p>
 <br>
 
-
+<h1 id="10-Companies-in-Different-Area"><a href="#10-Companies-in-Different-Area" class="headerlink" title="10 Companies in Different Area"></a>10 Companies in Different Area</h1><p>1) Boston Area:</p>
+<p>Recommend: Google, Facebook, Oracle, HubSpot, Salesforce, MathWorks, Akamai, Bose</p>
+<p>Don’t recommend:  Wayfair</p>
+<p>Source: <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-715857-1-1.html">https://www.1point3acres.com/bbs/thread-715857-1-1.html</a></p>
+<p>2) Seattle Area:</p>
+<p>Some Unicorns in Seattle: Auth0, Convoy, Icertis, OfferUp, Outreach, Qumulo, Remitly, San Biotechnology, Tanium, Zenoti</p>
+<p>Source: <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-715857-1-1.html">https://www.1point3acres.com/bbs/thread-715857-1-1.html</a></p>
 
       
     </div>
