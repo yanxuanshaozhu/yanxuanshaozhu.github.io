@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-13 13:59:04" itemprop="dateModified" datetime="2021-02-13T13:59:04+08:00">2021-02-13</time>
+                <time title="Modified: 2021-02-14 23:53:37" itemprop="dateModified" datetime="2021-02-14T23:53:37+08:00">2021-02-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -396,6 +396,67 @@
 <p>The recursive lambda:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args)             <span class="comment"># This is a general form for recursive lambda, the func is a two-argument recursive function</span></span><br><span class="line">(<span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args))(<span class="keyword">lambda</span> f, x: x * f(f, x - <span class="number">1</span>))(n) <span class="comment"># This calculate the factorial(n)</span></span><br></pre></td></tr></table></figure>
 
+
+
+<h1 id="Lecture-10"><a href="#Lecture-10" class="headerlink" title="Lecture 10"></a>Lecture 10</h1><p>Each value in Python has a class that determines the type of the value, values share class and behavior.</p>
+<br>
+
+<p>Native data types:</p>
+<ul>
+<li>Properties:<ul>
+<li>literals: expressions that evaluate to values of native data types</li>
+<li>functions and operations to manipulate values of native data types</li>
+</ul>
+</li>
+<li>Categories:<ul>
+<li>numeric types: int (integers), float (real numbers), complex (complex numbers)</li>
+<li>no-numeric types: bool (True / False), the majority of no-numeric data types cannot be described in native data types</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<p>Data abstraction: separate segments of programs that deal with how data are represented from segments of programs that deal with how data are manipulated</p>
+<p>Function abstraction: separate how function is implemented and how function is used</p>
+<br>
+
+<p>Abstraction barrier: lower-layer functions are invisible to function users, they only access higher-layer functions, the higher-layer functions can interact with the lower-layer functions. In such a way, how data is actually implemented, how lower-layer function is defined (like selector/ constructor  e.g., get/set, constructor in Java) don’t affect the behavior of the data types/ functions.</p>
+<h1 id="Lecture-11"><a href="#Lecture-11" class="headerlink" title="Lecture 11"></a>Lecture 11</h1><p>Sequence: an ordered collection of values, there are different types of sequences, but they share common behaviors.</p>
+<ul>
+<li>Properties: finite length, an empty sequence has 0 length</li>
+<li>Indexing: starting from 0</li>
+<li>list is a type of sequence, string is a type of sequence, range is a type of sequence</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)  <span class="comment"># use underscore instead of index like i</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_list</span>(<span class="params">func, ls</span>):</span></span><br><span class="line">    <span class="keyword">return</span> [func(ele) <span class="keyword">for</span> ele <span class="keyword">in</span> ls]</span><br><span class="line"></span><br><span class="line">map_list = <span class="keyword">lambda</span> func,ls: <span class="built_in">list</span>(<span class="built_in">map</span>(func, ls))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subset_list</span>(<span class="params">func, ls</span>):</span></span><br><span class="line">    <span class="keyword">return</span> [ele <span class="keyword">for</span> ele <span class="keyword">in</span> ls <span class="keyword">if</span> func(ele)]</span><br><span class="line"></span><br><span class="line">subset_list = <span class="keyword">lambda</span> func, ls: <span class="built_in">list</span>(<span class="built_in">filter</span>(func, ls))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reduce_list</span>(<span class="params">func, ls, initial</span>):</span></span><br><span class="line">    reduced = initial</span><br><span class="line">    <span class="keyword">for</span> ele <span class="keyword">in</span> ls:</span><br><span class="line">        reduced  = func(reduced, ele)</span><br><span class="line">    <span class="keyword">return</span> reduced</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line">reduce_list = reduce(func, ls)  <span class="comment"># The initial value for reduce function can be omitted</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lab-04"><a href="#Lab-04" class="headerlink" title="Lab 04"></a>Lab 04</h1><p>I stuck at question 5 for some time, so I put the question here:</p>
+<p>A subsequence of a number is a series of (not necessarily contiguous) digits of the number. For example, 12345 has subsequences that include 123, 234, 124, 245, etc. Your task is to get the maximum subsequence below a certain length.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subseq</span>(<span class="params">n, t</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Return the maximum subsequence of length at most t that can be found in the given number n.</span></span><br><span class="line"><span class="string">    For example, for n = 20125 and t = 3, we have that the subsequences are</span></span><br><span class="line"><span class="string">        2</span></span><br><span class="line"><span class="string">        0</span></span><br><span class="line"><span class="string">        1</span></span><br><span class="line"><span class="string">        2</span></span><br><span class="line"><span class="string">        5</span></span><br><span class="line"><span class="string">        20</span></span><br><span class="line"><span class="string">        21</span></span><br><span class="line"><span class="string">        22</span></span><br><span class="line"><span class="string">        25</span></span><br><span class="line"><span class="string">        01</span></span><br><span class="line"><span class="string">        02</span></span><br><span class="line"><span class="string">        05</span></span><br><span class="line"><span class="string">        12</span></span><br><span class="line"><span class="string">        15</span></span><br><span class="line"><span class="string">        25</span></span><br><span class="line"><span class="string">        201</span></span><br><span class="line"><span class="string">        202</span></span><br><span class="line"><span class="string">        205</span></span><br><span class="line"><span class="string">        212</span></span><br><span class="line"><span class="string">        215</span></span><br><span class="line"><span class="string">        225</span></span><br><span class="line"><span class="string">        012</span></span><br><span class="line"><span class="string">        015</span></span><br><span class="line"><span class="string">        025</span></span><br><span class="line"><span class="string">        125</span></span><br><span class="line"><span class="string">    and of these, the maxumum number is 225, so our answer is 225.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 3)</span></span><br><span class="line"><span class="string">    225</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 5)</span></span><br><span class="line"><span class="string">    20125</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 6) # note that 20125 == 020125</span></span><br><span class="line"><span class="string">    20125</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 3)</span></span><br><span class="line"><span class="string">    345</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 0) # 0 is of length 0</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 1)</span></span><br><span class="line"><span class="string">    5</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">if</span> t == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> t &gt;= <span class="built_in">len</span>(<span class="built_in">str</span>(n)):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">10</span> * max_subseq(n // <span class="number">10</span>, t - <span class="number">1</span>) + n % <span class="number">10</span>, max_subseq(n // <span class="number">10</span>, t))</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lecture-12"><a href="#Lecture-12" class="headerlink" title="Lecture 12"></a>Lecture 12</h1><p>Box- and-pointer notation: a way to represent lists in the environment diagrams</p>
+<p>It’s a series of adjacent boxes with two parts in each box, the first part is an index, the second is a value for this box or a pointer pointing to another box or pointing to a function.</p>
+<br>
+
+<p>Processing container values:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sum(iterable [, initial_value]) -&gt; value</span><br><span class="line">max(iteratble, key = func) -&gt; value # max([func(ele) for ele in iterable])</span><br><span class="line">all(iterable) -&gt; bool # True if the iterable is empty or bool(x) is true for each x in the iterable, False otherwise</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>Trees abstraction:</p>
+<ul>
+<li>Recursive definition: a root label and a list of branches, each branch is a tree; a tree with no branch is called a leaf</li>
+<li>Relative definition: each location in a tree is a node, each node has a label that can be any value; one node can be parent/child of another</li>
+</ul>
+<br>
+
+<p>Sum of nested list: return a list, the element of which is the sum of the elements of the original list at that place</p>
+<br>
+
+<p>Functions that take trees as inputs/outputs are often tree-recursive themselves</p>
 
       
     </div>
