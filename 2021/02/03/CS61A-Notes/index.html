@@ -28,7 +28,7 @@
 <meta property="og:description" content="NoticeThis is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course. For other resources like">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-03T15:20:35.000Z">
-<meta property="article:modified_time" content="2021-02-14T15:53:37.227Z">
+<meta property="article:modified_time" content="2021-02-20T15:31:04.512Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-14 23:53:37" itemprop="dateModified" datetime="2021-02-14T23:53:37+08:00">2021-02-14</time>
+                <time title="Modified: 2021-02-20 23:31:04" itemprop="dateModified" datetime="2021-02-20T23:31:04+08:00">2021-02-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,7 +220,7 @@
 
       
         <h1 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h1><p>This is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course. For other resources like lab/hw solutions, disc sessions, you can find them on my GitHub.</p>
-<h1 id="Lecture-01"><a href="#Lecture-01" class="headerlink" title="Lecture 01"></a>Lecture 01</h1><p>The Zen of Python:</p>
+<h1 id="Lecture-01-2018-08-22"><a href="#Lecture-01-2018-08-22" class="headerlink" title="Lecture 01 2018/08/22"></a>Lecture 01 2018/08/22</h1><p>The Zen of Python:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -230,7 +230,7 @@
 
 
 
-<h1 id="Lecture-02"><a href="#Lecture-02" class="headerlink" title="Lecture 02"></a>Lecture 02</h1><p>The intrinsic name and the bound name of a function:</p>
+<h1 id="Lecture-02-2018-08-24"><a href="#Lecture-02-2018-08-24" class="headerlink" title="Lecture 02 2018/08/24"></a>Lecture 02 2018/08/24</h1><p>The intrinsic name and the bound name of a function:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span>(<span class="params">args</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">g = f</span><br><span class="line">&gt;&gt;&gt;f.__name__</span><br><span class="line"><span class="string">&#x27;f&#x27;</span></span><br><span class="line">&gt;&gt;&gt;g.__name__</span><br><span class="line"><span class="string">&#x27;f&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
@@ -258,7 +258,7 @@
 
 <p>The built-in <code>eval</code> function, which evaluates a string as a Python expression.</p>
 <p>The built-in <code>repr</code> function, which returns an expression that evaluates to its argument.</p>
-<h1 id="Lecture-03"><a href="#Lecture-03" class="headerlink" title="Lecture 03"></a>Lecture 03</h1><p>If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
+<h1 id="Lecture-03-2018-08-27"><a href="#Lecture-03-2018-08-27" class="headerlink" title="Lecture 03 2018/08/27"></a>Lecture 03 2018/08/27</h1><p>If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
 <br>
 
 <p>Some examples for  including  <code>1/0(ZeroDivisionError)</code>in the Boolean expressions:</p>
@@ -286,7 +286,7 @@
 <br>
 
 <p>Common Bugs: spelling, missing parentheses, missing close quotes, == v.s. =, infinite loops, off-by-one errors(boundary condition error)</p>
-<h1 id="Lecture-04"><a href="#Lecture-04" class="headerlink" title="Lecture 04"></a>Lecture 04</h1><p>Notice the following tuple assignment:</p>
+<h1 id="Lecture-04-2018-08-29"><a href="#Lecture-04-2018-08-29" class="headerlink" title="Lecture 04 2018/08/29"></a>Lecture 04 2018/08/29</h1><p>Notice the following tuple assignment:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">n,term</span>):</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>Currying(so-called 柯里化 in Chinese): use high-order function to convert functions with multiple arguments into a chin of functions(in some languages like Haskell a function can have at most one argument ):</p>
@@ -316,7 +316,7 @@
 
 
 
-<h1 id="Lecture-05"><a href="#Lecture-05" class="headerlink" title="Lecture 05"></a>Lecture 05</h1><p>How to draw an environment diagram:</p>
+<h1 id="Lecture-05-2018-08-31"><a href="#Lecture-05-2018-08-31" class="headerlink" title="Lecture 05 2018/08/31"></a>Lecture 05 2018/08/31</h1><p>How to draw an environment diagram:</p>
 <p>1) when defines an function:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn: &lt;fun_name&gt;   --------------------&gt; func &lt;fun_name&gt;(&lt;formal_parameters&gt;)[parent = &lt;parent&gt;]                       </span><br></pre></td></tr></table></figure>
 
@@ -330,8 +330,8 @@
 
 
 
-<h1 id="Lecture-06"><a href="#Lecture-06" class="headerlink" title="Lecture 06"></a>Lecture 06</h1><p>Self-reference: a function that refers to itself in the function body is called self-reference</p>
-<h1 id="Lecture-07"><a href="#Lecture-07" class="headerlink" title="Lecture 07"></a>Lecture 07</h1><p>Recursive function: can be divided into a base case and recursive function calls</p>
+<h1 id="Lecture-06-2018-09-03"><a href="#Lecture-06-2018-09-03" class="headerlink" title="Lecture 06 2018/09/03"></a>Lecture 06 2018/09/03</h1><p>Self-reference: a function that refers to itself in the function body is called self-reference</p>
+<h1 id="Lecture-07-2018-09-05"><a href="#Lecture-07-2018-09-05" class="headerlink" title="Lecture 07 2018/09/05"></a>Lecture 07 2018/09/05</h1><p>Recursive function: can be divided into a base case and recursive function calls</p>
 <br>
 
 <p>Mutual recursion:  if a recursive procedure can be divided into two functions that call each other, then the two functions are mutual recursive.</p>
@@ -355,7 +355,7 @@
 </ol>
 <p>For the above example, the sum_results = 1 * 2 + 7 + 7( 8 * 2 =&gt; 7) + 9 + 3 * 2 + 7 + 2 * 2 + 9 + 9( 9 * 2 =&gt; 9) + 7 = 67. Then check_digit =  (10 - 67 % 10) % 10 = 3. So the full credit card number is “7992739871X”.</p>
 <p>A simple way to verify whether the check_digit is correct:  if <code>(sum_results + check_digit) % 10 == 0</code>, then the check_digit is correct.</p>
-<h1 id="Lecture-08"><a href="#Lecture-08" class="headerlink" title="Lecture 08"></a>Lecture 08</h1><p>Functional abstractions: concrete implementations do not matter in this situation.</p>
+<h1 id="Lecture-08-2018-09-07"><a href="#Lecture-08-2018-09-07" class="headerlink" title="Lecture 08 2018/09/07"></a>Lecture 08 2018/09/07</h1><p>Functional abstractions: concrete implementations do not matter in this situation.</p>
 <br>
 
 <p>Choosing names:</p>
@@ -378,7 +378,7 @@
 
 
 
-<h1 id="Lecture-09"><a href="#Lecture-09" class="headerlink" title="Lecture 09"></a>Lecture 09</h1><p>Different ways to implementations recursive functions:</p>
+<h1 id="Lecture-09-2018-09-12"><a href="#Lecture-09-2018-09-12" class="headerlink" title="Lecture 09 2018/09/12"></a>Lecture 09 2018/09/12</h1><p>Different ways to implementations recursive functions:</p>
 <ul>
     <li> If multiple implementations of a function are equally clear, then you should choose the shorter one </li>
     <li> If the longer one is more clear, then you should use it</li>
@@ -396,6 +396,7 @@
     <li>A forluma: term(n, m) = term(n - m, m) + term(n, fun(m))</li>
 </ol>
 
+
 <br>
 
 <p>The recursive lambda:</p>
@@ -403,7 +404,7 @@
 
 
 
-<h1 id="Lecture-10"><a href="#Lecture-10" class="headerlink" title="Lecture 10"></a>Lecture 10</h1><p>Each value in Python has a class that determines the type of the value, values share class and behavior.</p>
+<h1 id="Lecture-10-2018-09-14"><a href="#Lecture-10-2018-09-14" class="headerlink" title="Lecture 10 2018/09/14"></a>Lecture 10 2018/09/14</h1><p>Each value in Python has a class that determines the type of the value, values share class and behavior.</p>
 <br>
 
 <p>Native data types:</p>
@@ -426,7 +427,7 @@
 <br>
 
 <p>Abstraction barrier: lower-layer functions are invisible to function users, they only access higher-layer functions, the higher-layer functions can interact with the lower-layer functions. In such a way, how data is actually implemented, how lower-layer function is defined (like selector/ constructor  e.g., get/set, constructor in Java) don’t affect the behavior of the data types/ functions.</p>
-<h1 id="Lecture-11"><a href="#Lecture-11" class="headerlink" title="Lecture 11"></a>Lecture 11</h1><p>Sequence: an ordered collection of values, there are different types of sequences, but they share common behaviors.</p>
+<h1 id="Lecture-11-2018-09-17"><a href="#Lecture-11-2018-09-17" class="headerlink" title="Lecture 11 2018/09/17"></a>Lecture 11 2018/09/17</h1><p>Sequence: an ordered collection of values, there are different types of sequences, but they share common behaviors.</p>
 <ul>
 <li>Properties: finite length, an empty sequence has 0 length</li>
 <li>Indexing: starting from 0</li>
@@ -442,7 +443,7 @@
 
 
 
-<h1 id="Lecture-12"><a href="#Lecture-12" class="headerlink" title="Lecture 12"></a>Lecture 12</h1><p>Box- and-pointer notation: a way to represent lists in the environment diagrams</p>
+<h1 id="Lecture-12-2018-09-19"><a href="#Lecture-12-2018-09-19" class="headerlink" title="Lecture 12 2018/09/19"></a>Lecture 12 2018/09/19</h1><p>Box- and-pointer notation: a way to represent lists in the environment diagrams</p>
 <p>It’s a series of adjacent boxes with two parts in each box, the first part is an index, the second is a value for this box or a pointer pointing to another box or pointing to a function.</p>
 <br>
 
@@ -462,6 +463,22 @@
 <br>
 
 <p>Functions that take trees as inputs/outputs are often tree-recursive themselves</p>
+<h1 id="Lecture-13-2018-09-21"><a href="#Lecture-13-2018-09-21" class="headerlink" title="Lecture 13 2018/09/21"></a>Lecture 13 2018/09/21</h1><p>Objects combine data and behavior, objects represent information, but also behave like the things they represent.</p>
+<br>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line">mydate = date(<span class="number">22021</span>,<span class="number">2</span>,<span class="number">20</span>)</span><br><span class="line">mydate.strftime(<span class="string">&#x27;%a, %b %d&#x27;</span>)  <span class="comment"># &#x27;Sat Feb 20&#x27;  %a means week, %b means month, %d means day</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.swapcase()  <span class="comment"># swap lowercases and uppercases in a string</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>Identity operator and equality operator:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">is</span> b <span class="comment"># True is a and b points to the same object</span></span><br><span class="line">a == b <span class="comment"># True if the pointed objects have the same value</span></span><br><span class="line"><span class="comment"># If a is b equals to true then a == b must be true, but no otherwise</span></span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
@@ -542,7 +559,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-08-22"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-08-24"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-08-27"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-08-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-08-31"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-09-03"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07-2018-09-05"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08-2018-09-07"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09-2018-09-12"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10-2018-09-14"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11-2018-09-17"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12-2018-09-19"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-13-2018-09-21"><span class="nav-number">20.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
