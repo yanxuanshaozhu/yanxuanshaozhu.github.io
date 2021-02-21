@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-20 23:31:04" itemprop="dateModified" datetime="2021-02-20T23:31:04+08:00">2021-02-20</time>
+                <time title="Modified: 2021-02-21 22:11:34" itemprop="dateModified" datetime="2021-02-21T22:11:34+08:00">2021-02-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -473,6 +473,85 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">is</span> b <span class="comment"># True is a and b points to the same object</span></span><br><span class="line">a == b <span class="comment"># True if the pointed objects have the same value</span></span><br><span class="line"><span class="comment"># If a is b equals to true then a == b must be true, but no otherwise</span></span><br></pre></td></tr></table></figure>
 
 
+
+<h1 id="Lecture-14-2018-09-24"><a href="#Lecture-14-2018-09-24" class="headerlink" title="Lecture 14 2018/09/24"></a>Lecture 14 2018/09/24</h1><p>Motivation: Sometimes we want to maintain some state within a function. For example, if we define a function called <code>withdraw(amount)</code> to withdraw  a certain amount of money from the bank,  the function returns the remaining balance in your account. We then want to maintain the balance within the function, which means if we call the function multiple times with the same amount parameter, we should have different returning values. </p>
+<p>There are two different ways to tackle this problem:</p>
+<ul>
+<li>We can use the nonlocal statement:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">withdraw_account</span>(<span class="params">balance</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">amount</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> balance</span><br><span class="line">        <span class="keyword">if</span> amount &gt; balance:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;Insufficient funds&#x27;</span></span><br><span class="line">        balance -= amount</span><br><span class="line">        <span class="keyword">return</span> balance</span><br><span class="line">    <span class="keyword">return</span> withdraw</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>We can use the mutable objects:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">withdraw_account</span>(<span class="params">balance</span>):</span></span><br><span class="line">    b = [balance]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">amount</span>):</span></span><br><span class="line">        <span class="keyword">if</span> amount &gt; b[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;Insufficient funds&#x27;</span></span><br><span class="line">        b[<span class="number">0</span>] -= amount</span><br><span class="line">        <span class="keyword">return</span> b[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> withdraw</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>If you use nonlocal statement for a variable, then it must be bound in the first non-local parent frame of the current frame.</p>
+<br>
+
+<p>Python pre-computes which frame contains which names before executing the function body. Within a function body, all instances of a name must refer to the same frame.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">withdraw_account</span>(<span class="params">balance</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">amount</span>):</span></span><br><span class="line">        <span class="comment">#nonlocal balance</span></span><br><span class="line">        <span class="keyword">if</span> amount &gt; balance:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;Insufficient funds&#x27;</span></span><br><span class="line">        balance -= amount</span><br><span class="line">        <span class="keyword">return</span> balance</span><br><span class="line">    <span class="keyword">return</span> withdraw</span><br></pre></td></tr></table></figure>
+
+<p>In the above example, if we omit the nonlocal statement, it will cause a UnboundLocalError, because within the body of function withdraw, the local variable <code>balance</code> is referenced before assignment.</p>
+<br>
+
+<p>Referential transparency: if an expression can be replaced by its value without changing the meaning of a program, then the expression is called referential transparent.</p>
+<br>
+
+<p>An example of nonlocal statement:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    x = <span class="number">4</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span>(<span class="params">y</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">h</span>(<span class="params">z</span>):</span></span><br><span class="line">            <span class="keyword">nonlocal</span> x</span><br><span class="line">            x += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> x + y + z</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    <span class="keyword">return</span> g</span><br><span class="line">a = f(<span class="number">1</span>)</span><br><span class="line">b = a(<span class="number">2</span>)</span><br><span class="line">total = b(<span class="number">3</span>) + b(<span class="number">4</span>) <span class="comment"># 22, b(3) == 10, b(4) == 12</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lecture-15-2018-09-26"><a href="#Lecture-15-2018-09-26" class="headerlink" title="Lecture 15 2018/09/26"></a>Lecture 15 2018/09/26</h1><p>Iterators:</p>
+<ol>
+<li><p>An container can provide and iterator that provides access to its elements in some order</p>
+</li>
+<li><p>Some related functions:<br> 2.1. iter(iterable): returns an iterator</p>
+<p>2.2. next(iterator): returns the next element in the iterator</p>
+<p>2.3. list(iterator): list the unvisited elements in the iterator. If listed, then an iterator cannot be used again, otherwise an StopIterationError will be caused</p>
+</li>
+<li><p>Iterators are mutable objects</p>
+</li>
+</ol>
+<br>
+
+<p>Dictionary iteration:</p>
+<ol>
+<li>The values, keys and items of a dictionary are all iterable. For Python version 3.6 and higher, the iteration order is the order by which items are added into the dictionary, for Python version 3.5 or lower, the iteration order is arbitrary.</li>
+<li>If the size of the dictionary is changed during iteration(you add something into the dictionary or you pop something during iteration), an RuntimeError will be caused. For lists,  you can do whatever you want to the list during iteration.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If you want to remove keys of which the values are empty,the following way is wrong and causes an RuntimeError</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d[key]:</span><br><span class="line">        d.pop(key)                               </span><br><span class="line"><span class="comment"># You should do like this</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d.copy():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d[key]:</span><br><span class="line">        d.pop(key)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>For iteration over iterables and iterators:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> iterable:                 <span class="comment"># Iteration on iterables can be executed multiple times</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> iterator:                 <span class="comment"># Iteration on iterators can be executed only once, otherwise StopIterationErro is caused</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>Built-in iterator functions:</p>
+<ol>
+<li><p>Many operations on sequences return iterators that compute results lazily, lazy computation means result is only computed when needed</p>
+</li>
+<li><p>Example functions:</p>
+<p> 2.1 map(func, iterable)</p>
+<p> 2.2 filter(func, iterable)</p>
+<p> 2.3 zip(first_iter, second_iter)</p>
+<p> 2.4 reserved(seq)</p>
+</li>
+</ol>
+<br>
+
+<p>Generators:</p>
+<ol>
+<li>Generators are special iterators that they are results of generator functions</li>
+<li>A generator function uses yield statements to replace the return statement, all yield statements can be executed and related values can be returned</li>
+<li>Yield from statement: returns al values in an iterable or an iterator,the following two ways are equal:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="keyword">yield</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">from</span> iterable</span><br></pre></td></tr></table></figure>
 
 
       
