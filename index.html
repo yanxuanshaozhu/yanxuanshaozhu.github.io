@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-21 22:11:34" itemprop="dateModified" datetime="2021-02-21T22:11:34+08:00">2021-02-21</time>
+                <time title="Modified: 2021-02-22 21:43:06" itemprop="dateModified" datetime="2021-02-22T21:43:06+08:00">2021-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -552,6 +552,21 @@
 <li>Yield from statement: returns al values in an iterable or an iterator,the following two ways are equal:</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="keyword">yield</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">from</span> iterable</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Lab-05"><a href="#Lab-05" class="headerlink" title="Lab 05"></a>Lab 05</h1><p> Q9: Riffle Shuffle</p>
+<p>The familiar <a target="_blank" rel="noopener" href="https://fredhohman.com/card-shuffling/static/images/riffle.gif">riffle shuffle</a> of a deck of cards (or in our case, of a sequence of things) results in a new configuration of cards in which the top card is followed by the middle card, then by the second card, then the card after the middle, and so forth. Assuming the deck (sequence) contains an even number of cards, write a list comprehension that produces the shuffled sequence.</p>
+<p><em>Hint:</em> To write this as a single comprehension, you may find the expression <code>k%2</code>, which evaluates to 0 on even numbers and 1 on odd numbers, to be useful. Consider how you can use the 0 or 1 returned by <code>k%2</code> to alternatively access the beginning and the middle of the list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">riffle</span>(<span class="params">deck</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Produces a single, perfect riffle shuffle of DECK, consisting of</span></span><br><span class="line"><span class="string">    DECK[0], DECK[M], DECK[1], DECK[M+1], ... where M is position of the</span></span><br><span class="line"><span class="string">    second half of the deck.  Assume that len(DECK) is even.</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; riffle([3, 4, 5, 6])</span></span><br><span class="line"><span class="string">    [3, 5, 4, 6]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; riffle(range(20))</span></span><br><span class="line"><span class="string">    [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _______</span><br></pre></td></tr></table></figure>
+
+<p>My intuition: we first make a list of nested lists, each element in the out-layer list is a two-element list, then we reduce the out-layer list to one dimension,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [item <span class="keyword">for</span> sublits <span class="keyword">in</span> [[deck[k], deck[k + <span class="built_in">len</span>(deck) // <span class="number">2</span>] <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(deck) // <span class="number">2</span>)] <span class="keyword">for</span> item <span class="keyword">in</span> sublist] </span><br></pre></td></tr></table></figure>
+
+
+
+<p>Another solution following the hint: for odd position, the index needs to plus <code>len(deck) // 2</code>, for even position, the index is just <code>k</code>, so we simply use <code>k % 2</code> to separate the indices,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [deck[k + (k % <span class="number">2</span>) * (<span class="built_in">len</span>(deck) // <span class="number">2</span>)] <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(deck))] </span><br></pre></td></tr></table></figure>
 
 
       
