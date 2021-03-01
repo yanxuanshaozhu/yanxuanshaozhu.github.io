@@ -28,7 +28,7 @@
 <meta property="og:description" content="NoticeThis is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course. For other resources like">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-03T15:20:35.000Z">
-<meta property="article:modified_time" content="2021-02-28T13:13:39.688Z">
+<meta property="article:modified_time" content="2021-03-01T12:00:11.516Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-28 21:13:39" itemprop="dateModified" datetime="2021-02-28T21:13:39+08:00">2021-02-28</time>
+                <time title="Modified: 2021-03-01 20:00:11" itemprop="dateModified" datetime="2021-03-01T20:00:11+08:00">2021-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>24k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>22 mins.</span>
+              <span>25 mins.</span>
             </span>
 
         </div>
@@ -685,6 +685,101 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> ls.copy():</span><br><span class="line">    <span class="keyword">if</span> item == <span class="number">0</span>:</span><br><span class="line">        ls.remove(item)</span><br><span class="line"><span class="comment">#Another way to denote copy</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> ls[:]:</span><br><span class="line">    <span class="keyword">if</span> i tme == <span class="number">0</span>:</span><br><span class="line">        ls.remove(item)</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
 
 
+
+<h1 id="Lecture-18-2018-10-03"><a href="#Lecture-18-2018-10-03" class="headerlink" title="Lecture 18 2018/10/03"></a>Lecture 18 2018/10/03</h1><p>1 Generic functions:</p>
+<ol>
+<li>Can accept values of multiple types</li>
+<li>Three implementing techniques: shared interfaces, type dispatching and type coercion</li>
+</ol>
+<br>
+
+<p>2 String conversion:</p>
+<ol>
+<li>Python has two ways of string representation:<ol>
+<li>Human-interpretable text: <code>str(x)</code></li>
+<li>Python-interpretable expression: <code>repr(x)</code></li>
+</ol>
+</li>
+<li><code>repr(object)</code>: returns the canonical string representation of the object<ol>
+<li>For most cases we have: <code>eval(repr(object)) == object</code></li>
+<li>For some cases like built-in functions the above relationship doesn’t hold</li>
+</ol>
+</li>
+<li>Use string representations in user-defined classes:<ol>
+<li>The <code>str(object)</code> invokes <code>object.__str__()</code> , it is used in the <code>print(object)</code></li>
+<li>The <code>repr(object)</code> invokes <code>object.__repr__()</code>, it is used in the interactive session</li>
+<li>If we explicitly overwrite the <code>__str__()</code> and the <code>__repr__()</code> in our class, then instances of our class have string representation </li>
+</ol>
+</li>
+</ol>
+<br>
+
+<p>3 Special Methods:</p>
+<ol>
+<li><p><code>__init__()</code>: construct objects                                               </p>
+</li>
+<li><p><code>__str__()</code>: print objects</p>
+</li>
+<li><p><code>__repr__()</code>: display objects in the interactive session</p>
+</li>
+<li><p><code>__bool__()</code>: return bool values of objects,</p>
+<ol>
+<li><p>For instances of user-defined classes, the default <code>object.__bool__()</code> returns <code>True</code></p>
+</li>
+<li><p>We can overwrite the function to manipulate its behavior:</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__bool__ = <span class="keyword">lambda</span> self: self.__len__() == <span class="number">0</span>           <span class="comment"># If the length of an object equals to zero, returns True</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><code>__call__()</code>: allows objects to behave like higher-order function</p>
+</li>
+</ol>
+<br>
+
+<p>4 Three ways to implement generic function:</p>
+<ol>
+<li><p>Shared Interfaces: use a collection of shared attributes and behaviors, interface is additive</p>
+</li>
+<li><p>Type Dispatching: check instance types, do different things for instances of different types, the <code>isinstance(object, type)</code> function is used here</p>
+</li>
+<li><p>Type Coercion: we can deem subclass objects as superclass objects, or we can explicitly define a conversion function to transfer objects of one type into objects of another type</p>
+</li>
+</ol>
+<h1 id="Lecture-19-2018-10-05"><a href="#Lecture-19-2018-10-05" class="headerlink" title="Lecture 19 2018/10/05"></a>Lecture 19 2018/10/05</h1><p>1 Efficiency:</p>
+<ol>
+<li><p>Definition: the computational resources used by a representation or processes</p>
+</li>
+<li><p>Measurement: time and space</p>
+</li>
+<li><p>Space requirements: how memory is used, preserved and reclaimed</p>
+<ol>
+<li>All active environments with referenced values and frames are preserved by the interpreter</li>
+</ol>
+</li>
+<li><p>Efficiency can be greatly improved by memorization:</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">memo</span>(<span class="params">f</span>):</span></span><br><span class="line">        cache = &#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">memoized</span>(<span class="params">n</span>):</span></span><br><span class="line">            <span class="keyword">if</span> n <span class="keyword">not</span> <span class="keyword">in</span> cache:</span><br><span class="line">                cache[n] = f(n)</span><br><span class="line">            <span class="keyword">return</span> cache[n]</span><br><span class="line">        <span class="keyword">return</span> memoized</span><br><span class="line">fib = memo(fib)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Notice we can use dp to solve this:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        p, q, r = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            p, q = q, r</span><br><span class="line">            r = p + q</span><br><span class="line">        <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>2 Order of growth:</p>
+<ol>
+<li>Definition:  let input scale be $n$, let resource requirement b $R(n)$, We say that $R(n)$ as order of growth $\Theta(f(n))$, written $R(n) = \Theta(f(n))$, if there are positive constants $k_1$,  $k_2$ such that $k_1 * f(n) \leq R(n) \leq k_2 * f(n)$</li>
+<li>Tips:<ol>
+<li>Constants do not affect order of growth</li>
+<li>Base of logarithms does not affect order of growth</li>
+<li>When an inner computational process is repeated for each step in an outer process, then the order of growth of the entire process is a product of the number of steps in the outer and inner processes</li>
+</ol>
+</li>
+<li>Common categories:<ol>
+<li>$\Theta(1)$: constant</li>
+<li>$\Theta(logn)$: logarithm</li>
+<li>$\Theta(n)$: linear</li>
+<li>$\Theta(n^2)$: quadratic</li>
+<li>$\Theta(b ^n)$: exponential</li>
+</ol>
+</li>
+</ol>
+
     </div>
 
     
@@ -767,7 +862,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-08-22"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-08-24"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-08-27"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-08-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-08-31"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-09-03"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07-2018-09-05"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08-2018-09-07"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09-2018-09-12"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10-2018-09-14"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11-2018-09-17"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12-2018-09-19"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-13-2018-09-21"><span class="nav-number">20.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-14-2018-09-24"><span class="nav-number">21.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-15-2018-09-26"><span class="nav-number">22.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-05"><span class="nav-number">23.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-06"><span class="nav-number">24.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-16-2018-09-28"><span class="nav-number">25.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-17-2018-10-01"><span class="nav-number">26.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-07"><span class="nav-number">27.</span> <span class="nav-text">Lab 07</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-08-22"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-08-24"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-08-27"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-08-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-08-31"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-09-03"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07-2018-09-05"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08-2018-09-07"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09-2018-09-12"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10-2018-09-14"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11-2018-09-17"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12-2018-09-19"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-13-2018-09-21"><span class="nav-number">20.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-14-2018-09-24"><span class="nav-number">21.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-15-2018-09-26"><span class="nav-number">22.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-05"><span class="nav-number">23.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-06"><span class="nav-number">24.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-16-2018-09-28"><span class="nav-number">25.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-17-2018-10-01"><span class="nav-number">26.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-07"><span class="nav-number">27.</span> <span class="nav-text">Lab 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-18-2018-10-03"><span class="nav-number">28.</span> <span class="nav-text">Lecture 18 2018&#x2F;10&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-19-2018-10-05"><span class="nav-number">29.</span> <span class="nav-text">Lecture 19 2018&#x2F;10&#x2F;05</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -840,12 +935,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">44k</span>
+    <span title="Symbols count total">49k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">40 mins.</span>
+    <span title="Reading time total">44 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
