@@ -28,7 +28,7 @@
 <meta property="og:description" content="NoticeThis is a brief note about materials I find important when learning the open course UCB CS61A. I took down the notes from the 2018 fall course and the 2020 fall course. For other resources like">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-03T15:20:35.000Z">
-<meta property="article:modified_time" content="2021-03-10T06:19:08.108Z">
+<meta property="article:modified_time" content="2021-03-12T15:59:52.713Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-10 14:19:08" itemprop="dateModified" datetime="2021-03-10T14:19:08+08:00">2021-03-10</time>
+                <time title="Modified: 2021-03-12 23:59:52" itemprop="dateModified" datetime="2021-03-12T23:59:52+08:00">2021-03-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>33k</span>
+              <span>36k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>30 mins.</span>
+              <span>32 mins.</span>
             </span>
 
         </div>
@@ -839,7 +839,7 @@
 </ol>
 <h1 id="Lecture-23-2018-10-15-amp-Lecture-24-2018-10-19"><a href="#Lecture-23-2018-10-15-amp-Lecture-24-2018-10-19" class="headerlink" title="Lecture 23 2018/10/15  &amp; Lecture 24 2018/10/19"></a>Lecture 23 2018/10/15  &amp; Lecture 24 2018/10/19</h1><p>Lecture 23 is a review session, nothing interesting.</p>
 <p>Lecture 24 is Alan Kay’s presentation on the history of programming language and user interface design.</p>
-<h1 id="Lecture-24-2018-10-22"><a href="#Lecture-24-2018-10-22" class="headerlink" title="Lecture 24 2018/10/22"></a>Lecture 24 2018/10/22</h1><p>1 Interpreter: a program that carries out evaluation and execution procedures</p>
+<h1 id="Lecture-25-2018-10-22"><a href="#Lecture-25-2018-10-22" class="headerlink" title="Lecture 25 2018/10/22"></a>Lecture 25 2018/10/22</h1><p>1 Interpreter: a program that carries out evaluation and execution procedures</p>
 <br>
 
 <p>2 Programming Language:</p>
@@ -922,7 +922,7 @@
 
 
 
-<h1 id="Lecture-25-2018-10-24"><a href="#Lecture-25-2018-10-24" class="headerlink" title="Lecture 25 2018/10/24"></a>Lecture 25 2018/10/24</h1><p>1 Python interpreter handles errors by terminating immediately and printing an error message.<br></p>
+<h1 id="Lecture-26-2018-10-24"><a href="#Lecture-26-2018-10-24" class="headerlink" title="Lecture 26 2018/10/24"></a>Lecture 26 2018/10/24</h1><p>1 Python interpreter handles errors by terminating immediately and printing an error message.<br></p>
 <p>2 Raise an expression is a technique for interrupting the normal flow of execution in a program, signaling that some exceptional circumstance has arisen, and returning directly to an enclosing part of a program that was designated to react to this circumstance.<br></p>
 <p>3 You can raise an exception with the <code>raise</code> statement or the <code>assert</code> statement</p>
 <ol>
@@ -944,7 +944,7 @@
 <li>Exception objects can have attributes</li>
 <li>You can build a class that inherits the Exception class and customize instance behaviors<br></li>
 </ol>
-<h1 id="Lecture-26-2018-10-26"><a href="#Lecture-26-2018-10-26" class="headerlink" title="Lecture 26 2018/10/26"></a>Lecture 26 2018/10/26</h1><p>1 The Scheme-Syntax Calculator(aka Calculator)</p>
+<h1 id="Lecture-27-2018-10-26"><a href="#Lecture-27-2018-10-26" class="headerlink" title="Lecture 27 2018/10/26"></a>Lecture 27 2018/10/26</h1><p>1 The Scheme-Syntax Calculator(aka Calculator)</p>
 <ol>
 <li>It has two legal expressions: numbers that are self-evaluating and call expressions that are Pair instances representing Scheme lists</li>
 <li>It has an interpreter that takes in text inputs and outputs Calculator expressions<br></li>
@@ -971,7 +971,118 @@
 </ol>
 </li>
 </ol>
+<h1 id="Lecture-28-2018-10-29"><a href="#Lecture-28-2018-10-29" class="headerlink" title="Lecture 28 2018/10/29"></a>Lecture 28 2018/10/29</h1><p>1 Scheme interpreter structure:</p>
+<ol>
+<li>parsing </li>
+<li>evaluation</li>
+<li>procedure application</li>
+<li>eval/apply recursion</li>
+</ol>
+<br>
 
+<p>2 Logical special forms: only evaluate some sub-expressions</p>
+<ol>
+<li><code>If</code> expression</li>
+<li><code>And</code> or <code>or</code></li>
+<li><code>Cond</code> expression</li>
+</ol>
+<br>
+
+<p>3 Quotation:</p>
+<ol>
+<li>Definition: the <code>quote</code> special form evaluates to the quoted expression, which is not evaluated</li>
+<li>Syntax: <code>(quote &lt;expression&gt;)</code></li>
+<li><code>&#39;&lt;expression&gt;</code> is shorthand for <code>(quote &lt;expression&gt;)</code><br> 2. <br>
+
+</li>
+</ol>
+<p>4 Lambda expression:</p>
+<ol>
+<li>Lambda expressions evaluate to user-defined procedures</li>
+<li>Syntax <code>(lambda (&lt;formal-parameters&gt;) &lt;body&gt;)</code></li>
+</ol>
+<p>5 Frames and environments:</p>
+<ol>
+<li>A frame represents an environment by having a parent frame</li>
+<li>Frames are Python instances with methods <code>lookup</code> and <code>define</code></li>
+</ol>
+<p>6 Define expressions:</p>
+<ol>
+<li>Define binds a symbol to a value in the first frame of the current environment</li>
+<li>Procedure definition is shorthand of define with a lambda expression</li>
+<li>To apply a user-defined procedure, create a new frame in which formal parameters are bound to argument values, whose parent is the <code>env</code> of the procedure</li>
+</ol>
+<h1 id="Lecture-29-2018-10-31"><a href="#Lecture-29-2018-10-31" class="headerlink" title="Lecture 29 2018/10/31"></a>Lecture 29 2018/10/31</h1><p>1 Dynamic scope:</p>
+<ol>
+<li><p>The way names are looked up in Python and Scheme is called lexical scope(static scope)</p>
+<ul>
+<li>Lexical scope: the parent of a frame is the environment in which a procedure is defined</li>
+<li>Dynamic scope: the parent of a frame is the environment in which a procedure is called</li>
+</ul>
+</li>
+</ol>
+<br>
+
+<p>2 Tail recursion:</p>
+<ol>
+<li><p>Functional programming</p>
+<ol>
+<li><p>Properties:</p>
+<ul>
+<li>All functions are pure functions</li>
+<li>No reassignment and no mutable data types</li>
+<li>Name-value bindings are permanent</li>
+</ul>
+</li>
+<li><p>Advantage: </p>
+<ul>
+<li>Value of expression is independent of order of sub-expression evaluation, sub-expression can be evaluated in parallel or in demand(lazily)</li>
+<li>Referential transparency: expression value does not change if sub-expression is replaced by its value</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Iteration: Implementation of Scheme are required to be properly tail-recursive, this allows the execution of an iterative computation in constant space ($\Theta(1)$), even if the iterative computation is described by a syntactically recursive procedure</p>
+</li>
+<li><p>Tail calls:</p>
+<ol>
+<li>A procedure call that has not returned is active, some procedure calls are tail calls. A scheme interpreter should have an unbounded number of tail calls using only a constant amount of space</li>
+<li>A tail call is a call expression in a tail context, for example:<ul>
+<li>The last body sub-expression in a lambda expression</li>
+<li>Sub-expression 2 &amp; sub-expression in a tail context <code>if</code> expression, namely, the consequent expression and the alternative expression</li>
+<li>All non-predicate sub-expresions in a tail context <code>cond</code> expression</li>
+<li>The last sub-expression in a tail context <code>and</code> or <code>or</code></li>
+<li>The last sub-expression in a tail context <code>begin</code></li>
+</ul>
+</li>
+<li>The return value of the tail call should be the return value of the current procedure call, in this way, tail calls don’t increase environment size</li>
+</ol>
+</li>
+</ol>
+<h1 id="Lecture-30-2018-11-02"><a href="#Lecture-30-2018-11-02" class="headerlink" title="Lecture 30 2018/11/02"></a>Lecture 30 2018/11/02</h1><p>1 A scheme expression is a scheme list:</p>
+<ol>
+<li>A scheme expression is a scheme list<ul>
+<li>Expression: primitive expression and combination</li>
+<li>Eval a scheme list of expressions return the value of the expression</li>
+</ul>
+</li>
+</ol>
+<br>
+
+<p>2 Macros:</p>
+<ol>
+<li>A macro is an operation performed on source code before evaluation that allows you to define special forms</li>
+<li>Scheme has a define-macro special form that defines a source code transformation</li>
+<li>Evaluation procedure of a macro call expression:<ol>
+<li>Evaluate the operator sub-expression, which evaluates to a macro</li>
+<li>Call the macro procedure on the operand expressions withouth evaluating them first</li>
+</ol>
+</li>
+</ol>
+<br>
+
+<p>3 Quasi-quotation</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;quotation</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> b <span class="number">2</span>)</span><br><span class="line">&#x27;(a b c)<span class="comment">; The result is (a b c)</span></span><br><span class="line"><span class="comment">;quasi-quotation</span></span><br><span class="line">`(a b c)<span class="comment">; The result is (a b c)</span></span><br><span class="line">`(a ,b c)<span class="comment">; The result is (a 2 c)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -1054,7 +1165,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-08-22"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-08-24"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-08-27"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-08-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-08-31"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-09-03"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07-2018-09-05"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08-2018-09-07"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09-2018-09-12"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10-2018-09-14"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11-2018-09-17"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12-2018-09-19"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-13-2018-09-21"><span class="nav-number">20.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-14-2018-09-24"><span class="nav-number">21.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-15-2018-09-26"><span class="nav-number">22.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-05"><span class="nav-number">23.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-06"><span class="nav-number">24.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-16-2018-09-28"><span class="nav-number">25.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-17-2018-10-01"><span class="nav-number">26.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-07"><span class="nav-number">27.</span> <span class="nav-text">Lab 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-18-2018-10-03"><span class="nav-number">28.</span> <span class="nav-text">Lecture 18 2018&#x2F;10&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-19-2018-10-05"><span class="nav-number">29.</span> <span class="nav-text">Lecture 19 2018&#x2F;10&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-21-2018-10-10"><span class="nav-number">30.</span> <span class="nav-text">Lecture 21 2018&#x2F;10&#x2F;10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-22-2018-10-12"><span class="nav-number">31.</span> <span class="nav-text">Lecture 22 2018&#x2F;10&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-23-2018-10-15-amp-Lecture-24-2018-10-19"><span class="nav-number">32.</span> <span class="nav-text">Lecture 23 2018&#x2F;10&#x2F;15  &amp; Lecture 24 2018&#x2F;10&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-24-2018-10-22"><span class="nav-number">33.</span> <span class="nav-text">Lecture 24 2018&#x2F;10&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-10"><span class="nav-number">34.</span> <span class="nav-text">Lab 10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-25-2018-10-24"><span class="nav-number">35.</span> <span class="nav-text">Lecture 25 2018&#x2F;10&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-26-2018-10-26"><span class="nav-number">36.</span> <span class="nav-text">Lecture 26 2018&#x2F;10&#x2F;26</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notice"><span class="nav-number">1.</span> <span class="nav-text">Notice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-08-22"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-08-24"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-00"><span class="nav-number">4.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-01"><span class="nav-number">5.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-08-27"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">7.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-08-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01-Hog"><span class="nav-number">9.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-08-31"><span class="nav-number">10.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-09-03"><span class="nav-number">11.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-07-2018-09-05"><span class="nav-number">12.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-08-2018-09-07"><span class="nav-number">13.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-09-2018-09-12"><span class="nav-number">14.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-02"><span class="nav-number">15.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-10-2018-09-14"><span class="nav-number">16.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-11-2018-09-17"><span class="nav-number">17.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-04"><span class="nav-number">18.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-12-2018-09-19"><span class="nav-number">19.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-13-2018-09-21"><span class="nav-number">20.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-14-2018-09-24"><span class="nav-number">21.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-15-2018-09-26"><span class="nav-number">22.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-05"><span class="nav-number">23.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-06"><span class="nav-number">24.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-16-2018-09-28"><span class="nav-number">25.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-17-2018-10-01"><span class="nav-number">26.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-07"><span class="nav-number">27.</span> <span class="nav-text">Lab 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-18-2018-10-03"><span class="nav-number">28.</span> <span class="nav-text">Lecture 18 2018&#x2F;10&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-19-2018-10-05"><span class="nav-number">29.</span> <span class="nav-text">Lecture 19 2018&#x2F;10&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-21-2018-10-10"><span class="nav-number">30.</span> <span class="nav-text">Lecture 21 2018&#x2F;10&#x2F;10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-22-2018-10-12"><span class="nav-number">31.</span> <span class="nav-text">Lecture 22 2018&#x2F;10&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-23-2018-10-15-amp-Lecture-24-2018-10-19"><span class="nav-number">32.</span> <span class="nav-text">Lecture 23 2018&#x2F;10&#x2F;15  &amp; Lecture 24 2018&#x2F;10&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-25-2018-10-22"><span class="nav-number">33.</span> <span class="nav-text">Lecture 25 2018&#x2F;10&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-10"><span class="nav-number">34.</span> <span class="nav-text">Lab 10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-26-2018-10-24"><span class="nav-number">35.</span> <span class="nav-text">Lecture 26 2018&#x2F;10&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-27-2018-10-26"><span class="nav-number">36.</span> <span class="nav-text">Lecture 27 2018&#x2F;10&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-28-2018-10-29"><span class="nav-number">37.</span> <span class="nav-text">Lecture 28 2018&#x2F;10&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-29-2018-10-31"><span class="nav-number">38.</span> <span class="nav-text">Lecture 29 2018&#x2F;10&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-30-2018-11-02"><span class="nav-number">39.</span> <span class="nav-text">Lecture 30 2018&#x2F;11&#x2F;02</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1127,12 +1238,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">59k</span>
+    <span title="Symbols count total">62k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">54 mins.</span>
+    <span title="Reading time total">57 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
