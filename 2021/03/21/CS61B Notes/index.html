@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 1 2018&#x2F;01&#x2F;171 Hello World  All code lives inside of classes, each file should have a public class that is has the same name with the file itself">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-21T12:15:47.000Z">
-<meta property="article:modified_time" content="2021-03-23T15:33:04.050Z">
+<meta property="article:modified_time" content="2021-03-24T15:14:39.592Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-23 23:33:04" itemprop="dateModified" datetime="2021-03-23T23:33:04+08:00">2021-03-23</time>
+                <time title="Modified: 2021-03-24 23:14:39" itemprop="dateModified" datetime="2021-03-24T23:14:39+08:00">2021-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>7.8k</span>
+              <span>10k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>7 mins.</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -479,6 +479,58 @@
 <ol>
 <li>It will save you bunch of time and energy</li>
 </ol>
+<h1 id="Lecture-03-2018-01-22"><a href="#Lecture-03-2018-01-22" class="headerlink" title="Lecture 03 2018/01/22"></a>Lecture 03 2018/01/22</h1><p>1 Bits:</p>
+<ol>
+<li>Information in memory are 1s and 0s.</li>
+<li>8 primitive types: <code>byte</code>, <code>short</code>, <code>char</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>(<code>true</code>, <code>false</code>)</li>
+</ol>
+<p>2 Declare a Variable in Primitive Type:</p>
+<ol>
+<li>Syntax: <code>type name;</code>, e.g. <code>int x;</code></li>
+<li>Procedure:<ul>
+<li>Computer sets aside enough bits to hold a thing of that type</li>
+<li>Java creates an internal table to map a variable to a location</li>
+<li>Java does not write anything in the reserved boxes if there is no assignment</li>
+</ul>
+</li>
+</ol>
+<p>3 The Golden Rule of Equals(GRoE):</p>
+<ol>
+<li><code>y = x</code> simply copies the bits of x into the box of y</li>
+<li>The rule applies to both primitive values and reference type objects</li>
+</ol>
+<p>4 Reference Type:</p>
+<ol>
+<li>Object instantiation with <code>new</code>:<ul>
+<li>Java allocates a box of bits for each instance variable of the class and fills them with a default value for the variable type(0, false, null)</li>
+<li>The constructor fills each box with formal parameters if there exists any</li>
+<li>You can think that <code>new</code> returns the location in memory where the instance is put</li>
+</ul>
+</li>
+<li>Declaration of reference type:<ul>
+<li>Java allocates a box of 64 bits, no matter what exactly the reference type object is</li>
+<li>The bits set to null(all 0s) or the 64-bit address returned by the <code>new</code> statement</li>
+<li>If you reassign a variable to the another object, then the original objet is no longer being referred, if there is no other references, it will be garbage collected</li>
+</ul>
+</li>
+</ol>
+<p>5 Parameter Passing:</p>
+<ol>
+<li>GRoE applies in parameter passing, so the parameter passing is called the pass by value</li>
+<li>An example:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PassByValueFigure</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           Walrus walrus = <span class="keyword">new</span> Walrus(<span class="number">3500</span>, <span class="number">10.5</span>);</span><br><span class="line">           <span class="keyword">int</span> x = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">           doStuff(walrus, x);                                  </span><br><span class="line">           <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Pass by value, so the parameter W is the 64-bit address of walrus, and x is the bits of int 9,</span></span><br><span class="line"><span class="comment">           in the local scope, when W.weight is changed, it also changes the referred object walrus,</span></span><br><span class="line"><span class="comment">           but when the bits of int 9 is changed, is has no influence on the x in the outer scope. </span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">           System.out.println(walrus.weight);                   <span class="comment">// 3400</span></span><br><span class="line">           System.out.println(x);                               <span class="comment">// 9</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doStuff</span><span class="params">(Walrus W, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">           W.weight = W.weight - <span class="number">100</span>;</span><br><span class="line">           x = x - <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>6 The IntList class:</p>
+<ol>
+<li>A comparison </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.rest == <span class="keyword">null</span>) &#123;                     <span class="comment">// Here you cannot write like if(this == null )&#123; return 0;&#125;, because it is an instance method,</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                                <span class="comment">//  it&#x27;s invoked by lst.size(), if lst == null, then this call will result in NullPointer error</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="keyword">this</span>.rest.size();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(IntList lst)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lst == <span class="keyword">null</span>) &#123;                           <span class="comment">// For the static method, you can use however, the lst == null statement, because in this situation, </span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;                               <span class="comment">// it&#x27;s invoked by IntList.size(lst)</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + size(lst.rest)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>If you use something like <code>this = this.rest</code> in your code, it’s better to declare ahead <code>IntList cur = this</code> and use <code>cur</code> instead</li>
+<li>Other functions: <code>size</code>, <code>iterativeSize</code>, <code>get</code></li>
+</ol>
 
     </div>
 
@@ -559,7 +611,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-1-2018-01-17"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-2-2018-01-19"><span class="nav-number">4.</span> <span class="nav-text">Lecture 2 2018&#x2F;01&#x2F;19</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-1-2018-01-17"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-2-2018-01-19"><span class="nav-number">4.</span> <span class="nav-text">Lecture 2 2018&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-01-22"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;01&#x2F;22</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -632,12 +684,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">93k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
