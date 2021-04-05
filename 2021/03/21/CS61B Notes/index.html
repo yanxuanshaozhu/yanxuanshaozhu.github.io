@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Lecture 01 2018&#x2F;01&#x2F;171 Hello World">
+  <meta name="description" content="Lecture 01 2018&#x2F;01&#x2F;17 1 Hello World">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS61B Notes">
 <meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/03/21/CS61B%20Notes/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="Lecture 01 2018&#x2F;01&#x2F;171 Hello World">
+<meta property="og:description" content="Lecture 01 2018&#x2F;01&#x2F;17 1 Hello World">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-21T12:15:47.000Z">
-<meta property="article:modified_time" content="2021-04-01T15:23:50.293Z">
+<meta property="article:modified_time" content="2021-04-05T11:58:27.819Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-01 23:23:50" itemprop="dateModified" datetime="2021-04-01T23:23:50+08:00">2021-04-01</time>
+                <time title="Modified: 2021-04-05 19:58:27" itemprop="dateModified" datetime="2021-04-05T19:58:27+08:00">2021-04-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,144 +233,121 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Lecture-01-2018-01-17"><a href="#Lecture-01-2018-01-17" class="headerlink" title="Lecture 01 2018/01/17"></a>Lecture 01 2018/01/17</h1><p>1 Hello World</p>
+        <h1 id="lecture-01-20180117">Lecture 01 2018/01/17</h1>
+<p>1 Hello World</p>
 <a id="more"></a>
-
-<ol>
-<li><p>All code lives inside of classes, each file should have a public class that is has the same name with the file itself</p>
-</li>
+<ol type="1">
+<li><p>All code lives inside of classes, each file should have a public class that is has the same name with the file itself</p></li>
 <li><p>Main function</p>
 <ul>
-<li><p>Syntax: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">ClassName</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Function body here;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>The main function can be regarded as the entrance to the program</p>
-</li>
+<li>Syntax:</li>
 </ul>
-</li>
-<li><p>Use curly braces to denote the beginning and ending of the code</p>
-</li>
-<li><p>Statements should end with semi-colons</p>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">ClassName</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Function body here;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>The main function can be regarded as the entrance to the program</li>
+</ul></li>
+<li><p>Use curly braces to denote the beginning and ending of the code</p></li>
+<li><p>Statements should end with semi-colons</p></li>
 </ol>
 <p>2 Running a Java Program</p>
-<ol>
+<ol type="1">
 <li>Java complier: <code>javac</code>, Java interpreter: <code>java</code></li>
 <li>Syntax: <code>javac xxx.java</code>, <code>java xxx</code></li>
 <li>Procedure:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// source file: xxx.java =&gt; javac xxx.java =&gt; binary file: xxx.class =&gt; java xxx =&gt; execution results</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
+<ol start="4" type="1">
 <li>Notice: the source file name should be the same as the name of the public class contained inside it</li>
-<li>Why binary file is needed:<ul>
-<li>It’s type checked, to it’s safer</li>
-<li>It’s simpler for machine to execute the binary file, so it’s faster</li>
-<li>Protect intellectual property, you don’t need to give the original source file</li>
-</ul>
-</li>
+<li>Why binary file is needed:
+<ul>
+<li>It's type checked, to it's safer</li>
+<li>It's simpler for machine to execute the binary file, so it's faster</li>
+<li>Protect intellectual property, you don't need to give the original source file</li>
+</ul></li>
 </ol>
 <p>3 Variables and Loops</p>
-<ol>
-<li>A variable should be declared with its type before it’s used</li>
+<ol type="1">
+<li>A variable should be declared with its type before it's used</li>
 <li>You can use while loop, for loop, for each loop or other loops</li>
 </ol>
 <p>4 Gradscope course code: MNXYKX</p>
 <p>5 Static Typing</p>
-<ol>
+<ol type="1">
 <li>All variables and expressions have a static-type, the type cannot be changed</li>
 <li>Java complier performs a static type check, if there is an error in the source code, then the program is rejected before it even runs. While Python is a dynamically typed language, it runs until an error occurs</li>
 </ol>
 <p>6 Defining Functions</p>
-<ol>
-<li><p>Functions should be defined inside classes, we can call them methods</p>
-</li>
+<ol type="1">
+<li><p>Functions should be defined inside classes, we can call them methods</p></li>
 <li><p>Here we only use static function</p>
 <ul>
-<li><p>Syntax:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;<span class="keyword">return</span> type&gt; &lt;function name&gt; (&lt;formal parameters&gt;) &#123;</span><br><span class="line">        <span class="comment">//function body;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>Syntax:</li>
 </ul>
-</li>
-<li><p>Functions in Java can have at most one return values, but functions in Python can return multiple values</p>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;<span class="keyword">return</span> type&gt; &lt;function name&gt; (&lt;formal parameters&gt;) &#123;</span><br><span class="line">        <span class="comment">//function body;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Functions in Java can have at most one return values, but functions in Python can return multiple values</p></li>
 </ol>
 <p>7 Code Style, Comments, Javadoc</p>
-<ol>
+<ol type="1">
 <li><p>Good coding style:</p>
 <ul>
-<li><p>Consistent styles(spacing, variable naming, brace style, etc)</p>
-</li>
-<li><p>Size(lines are not two wide, source files are not too large)</p>
-</li>
-<li><p>Description naming(variables, functions, classes)</p>
-</li>
+<li><p>Consistent styles(spacing, variable naming, brace style, etc)</p></li>
+<li><p>Size(lines are not two wide, source files are not too large)</p></li>
+<li><p>Description naming(variables, functions, classes)</p></li>
 <li><p>Comments where appropriate</p>
 <ul>
-<li><p>Line comment <code>// Comments</code></p>
-</li>
-<li><p>Multi-line comments: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Comments</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Javadoc:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Comments</span></span><br><span class="line"><span class="comment"> * /</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>Line comment <code>// Comments</code></li>
+<li>Multi-line comments:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Comments</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Javadoc:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Comments</span></span><br><span class="line"><span class="comment"> * /</span></span><br></pre></td></tr></table></figure></p></li>
+</ul></li>
 <li><p>Comments:</p>
 <ul>
-<li><p>Methods, classes and variables should be described using Javadoc format</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Class comments:</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> First Name Last Name &lt;address@example.com&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> Version number</span></span><br><span class="line"><span class="comment"> * @ since  First compatible version number</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * One line description</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * Detailed description</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Parameter Name   Description of parameter</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Describe the return value</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         <span class="comment">/**  Description of variable x */</span></span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// Function body;</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-</li>
+<li>Methods, classes and variables should be described using Javadoc format</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Class comments:</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> First Name Last Name &lt;address@example.com&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> Version number</span></span><br><span class="line"><span class="comment"> * @ since  First compatible version number</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * One line description</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * Detailed description</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Parameter Name   Description of parameter</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Describe the return value</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         <span class="comment">/**  Description of variable x */</span></span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// Function body;</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h1 id="Lab-01"><a href="#Lab-01" class="headerlink" title="Lab 01"></a>Lab 01</h1><p>1 Version Control Systems(VCSs):</p>
-<ol>
+<h1 id="lab-01">Lab 01</h1>
+<p>1 Version Control Systems(VCSs):</p>
+<ol type="1">
 <li>Version control systems are tools to keep track of changes to files over time</li>
-<li>Categories:<ol>
+<li>Categories:
+<ol type="1">
 <li>Local VCS(LVCS): copy files into another directory</li>
-<li>Centralized VCS(CVCS): <ul>
+<li>Centralized VCS(CVCS):
+<ul>
 <li>One server with all versioned files</li>
 <li>All clients checkout files from the central server</li>
 <li>May be affected by single point of failure</li>
 <li>Examples: CVS, Subversion, Perforce</li>
-</ul>
-</li>
-<li>Distributed VCS(DVCS):<ul>
+</ul></li>
+<li>Distributed VCS(DVCS):
+<ul>
 <li>One server, multiple clients, all have versioned files</li>
 <li>If the server dies, it can copy files from an arbitrary client to restore</li>
 <li>Examples: Git, Mercurial, Bazaar, Darcs</li>
-</ul>
-</li>
-</ol>
-</li>
+</ul></li>
+</ol></li>
 </ol>
 <p>2 Git Local Repository:</p>
-<ol>
+<ol type="1">
 <li><code>git init</code>: initiate a repository</li>
 <li><code>git add &lt;file/directory&gt;</code>: add a file/directory to list of files to track, the terminology is called to stage a file</li>
-<li><code>git commit -m &quot;Message&quot; &lt;file/directory&gt;</code>: store a snapshot to the added files into the repository</li>
+<li><code>git commit -m "Message" &lt;file/directory&gt;</code>: store a snapshot to the added files into the repository</li>
 <li><code>git log</code>: show git commit logs</li>
 <li><code>git show &lt;object&gt;</code>: for commits, show the commit messages and textual diff</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// untracked files  =&gt; git add =&gt; tracked files: unmodified/modified/staged</span></span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><code>git reset &lt;file/directory&gt;</code>: unstage a file/directory </li>
+<ol start="6" type="1">
+<li><code>git reset &lt;file/directory&gt;</code>: unstage a file/directory</li>
 <li><code>git commit --amend</code>: change commit messages or add forgotten files</li>
 <li><code>git checkout --&lt;file/directory&gt;</code>: revert a file to its most recently committed version</li>
 </ol>
 <p>3 Git Remote Repository:</p>
-<ol>
+<ol type="1">
 <li><code>git push &lt;remote repo name&gt; &lt;remote repo branch&gt;</code>: push local repository to remote repository, for example, <code>git push origin master</code></li>
 <li><code>git clone &lt;remote repo url&gt;</code>: copy remote repository to local repository</li>
 <li><code>git remote add &lt;remote repo name&gt; &lt;remote repo url&gt;</code>: add a remote for the repository</li>
@@ -380,106 +357,95 @@
 <li><code>git remote rm &lt;short name&gt;</code>: remove a remote</li>
 <li><code>git clone &lt;remote url&gt;</code>: clone a remote repository to local repository</li>
 <li><code>git clone &lt;remote url&gt; &lt;directory name&gt;</code>: clone a remote repository to a specific directory</li>
-<li><code>fetch</code>: download but not merge, <code>pull</code> = <code>fetch</code> + <code>merge</code> </li>
+<li><code>fetch</code>: download but not merge, <code>pull</code> = <code>fetch</code> + <code>merge</code></li>
 </ol>
 <p>4 Git Branching:</p>
-<ol>
-<li>Reasons:<ul>
+<ol type="1">
+<li>Reasons:
+<ul>
 <li>Be prepared for dramatic changes(called refactoring)</li>
 <li>Separate works from others</li>
 <li>Leave space for possible incompatible program features</li>
-</ul>
-</li>
-<li>Commands:<ul>
+</ul></li>
+<li>Commands:
+<ul>
 <li><code>git branch &lt;branch name&gt;</code>: create a new branch</li>
 <li><code>git checkout &lt;branch name&gt;</code>: switch to a specific branch</li>
 <li><code>git checkout -b &lt;branch name&gt;</code>:create a new branch and switch to it</li>
 <li><code>git branch -d &lt;branch name&gt;</code>: delete a branch</li>
 <li><code>git branch -v</code>: show current branch name</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h1 id="HW-00"><a href="#HW-00" class="headerlink" title="HW 00"></a>HW 00</h1><p>1 Condition:</p>
-<ol>
+<h1 id="hw-00">HW 00</h1>
+<p>1 Condition:</p>
+<ol type="1">
 <li><p>If Statement:</p>
 <ul>
-<li><p>Syntax:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>If no curly braces are used, then only the first statement after the boolean condition is regarded as inside the if statement</p>
-</li>
-<li><p>Curly braces:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allman style/BSD style(in honor of Eric Allman)</span></span><br><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//k&amp;R style(in honor of Kernighan &amp; Ritchie)</span></span><br><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>Syntax:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>If no curly braces are used, then only the first statement after the boolean condition is regarded as inside the if statement</li>
+<li>Curly braces:</li>
+</ul>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allman style/BSD style(in honor of Eric Allman)</span></span><br><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//k&amp;R style(in honor of Kernighan &amp; Ritchie)</span></span><br><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <p>2 Else Statement:</p>
-<ol>
+<ol type="1">
 <li>Syntax:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>3 While Loop:</p>
-<ol>
+<ol type="1">
 <li>Syntax:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> counter = &lt;start value&gt;;</span><br><span class="line"><span class="keyword">while</span>(&lt;<span class="keyword">boolean</span> condition&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">    <span class="comment">//Change the counter;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>4 Data Type in Java:</p>
-<ol>
+<ol type="1">
 <li>Data type in Java: <code>byte</code>, <code>short</code>, <code>char</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>(<code>true</code>, <code>false</code>), <code>Object</code></li>
 <li>There are typecasts among different types, and transformation from a more general type to a smaller type will lose precision</li>
 </ol>
 <p>5 Array:</p>
-<ol>
+<ol type="1">
 <li>Initialize an array: <code>&lt;type&gt;[] &lt;name&gt; = new &lt;type&gt;[length];</code>, For example, <code>int[] values = new int[10];</code>. There is also another way: <code>int[] values = &#123;1, 2, 3&#125;;</code></li>
 <li>Upon initialization using the first way, an array will be filled with default values. For an numeric array, it will be filled with <code>0</code>, for a boolean array, it will be filled with <code>false</code>, for an object array, it will be filled with <code>null</code></li>
 <li>Length of an array: <code>&lt;name&gt;.length</code></li>
 <li>Sort an array in place:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line">Arrays.sort(&lt;array name&gt;); <span class="comment">//This method sort returns nothing(void)</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>Higher-dimension array:<ul>
+<ol start="5" type="1">
+<li>Higher-dimension array:
+<ul>
 <li>Initialize an higher-dimension array example: <code>int[][] values = new int[3][4];</code></li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>6 For Loop:</p>
-<ol>
+<ol type="1">
 <li>Syntax:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(&lt;initialization&gt;; &lt;termination&gt;; increment)&#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>7 Break and Continue:</p>
-<ol>
+<ol type="1">
 <li><code>break;</code>: terminate the innermost loop</li>
 <li><code>continue;</code>: skip the current iteration of the loop and jump to the increment</li>
 </ol>
 <p>8 The Enhanced For Loop:</p>
-<ol>
+<ol type="1">
 <li>Syntax:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(&lt;type&gt; ele: &lt;collections&gt;) &#123;</span><br><span class="line">    <span class="comment">// Do something here;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Lecture-02-2018-01-19"><a href="#Lecture-02-2018-01-19" class="headerlink" title="Lecture 02 2018/01/19"></a>Lecture 02 2018/01/19</h1><p>1 Static v.s. Non-Static Methods:</p>
-<ol>
+<h1 id="lecture-02-20180119">Lecture 02 2018/01/19</h1>
+<p>1 Static v.s. Non-Static Methods:</p>
+<ol type="1">
 <li><p>Static methods:</p>
 <ul>
 <li>If class uses methods in class B, then class A is a client class of class B.</li>
-<li>Two ways to run methods in a class:<ul>
+<li>Two ways to run methods in a class:
+<ul>
 <li>Run methods in <code>main</code> function in its own class</li>
 <li>Run methods in <code>main</code> function of a client class</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><p>Instance variables and object instantiation</p>
 <ul>
 <li><code>Object</code> is an instance of every class</li>
@@ -487,282 +453,248 @@
 <li>Instance methods, a.k.a. non-static methods, are ones associated with instances</li>
 <li><code>new</code> is used for instantiation</li>
 <li>Class methods, a.k.a. static methods, are accessed using dot notation</li>
-</ul>
-</li>
+</ul></li>
 <li><p>Constructor in Java:</p>
 <ul>
-<li><p>No return type, the name should be the same as the class name</p>
-</li>
-<li><p>Syntax:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">ClassName</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// Constructor</span></span><br><span class="line">    <span class="keyword">public</span> &lt;ClassName&gt; (&lt;formal parameters&gt;) &#123;</span><br><span class="line">        <span class="keyword">this</span>.&lt;instance field&gt; = parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>No return type, the name should be the same as the class name</li>
+<li>Syntax:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">ClassName</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// Constructor</span></span><br><span class="line">    <span class="keyword">public</span> &lt;ClassName&gt; (&lt;formal parameters&gt;) &#123;</span><br><span class="line">        <span class="keyword">this</span>.&lt;instance field&gt; = parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Array Instantiation, Arrays of Objects:</p>
 <ul>
-<li><p>Syntax:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ClassName&gt;[] &lt;array name&gt; = <span class="keyword">new</span> &lt;ClassName&gt;[length];</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>Syntax:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ClassName&gt;[] &lt;array name&gt; = <span class="keyword">new</span> &lt;ClassName&gt;[length];</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <p>2 Class Methods v.s. Instance Methods:</p>
-<ol>
+<ol type="1">
 <li>Class methods, a.k.a. static methods, are actions taken by class itself. They are invoked by the class name: <code>&lt;class name&gt;.&lt;static method name&gt;</code></li>
 <li>Instance methods, a.k.a. non-static methods, are actions taken a specific instance of a class. They are invoked by a class instance: <code>&lt;instance name&gt;.&lt;non-static method name&gt;</code></li>
 <li>Static variables: properties inherent to the class itself, usage: <code>&lt;class name&gt;.&lt;static variable name&gt;</code></li>
 </ol>
 <p>3 <code>public static void main(string[] args)</code>:</p>
-<ol>
+<ol type="1">
 <li>The <code>main</code> function is called by the Java interpreter</li>
 <li>The <code>args</code> are usually refereed to the command line arguments</li>
 </ol>
 <p>4 Using Libraries:</p>
-<ol>
+<ol type="1">
 <li>It will save you bunch of time and energy</li>
 </ol>
-<h1 id="Lecture-03-2018-01-22"><a href="#Lecture-03-2018-01-22" class="headerlink" title="Lecture 03 2018/01/22"></a>Lecture 03 2018/01/22</h1><p>1 Bits:</p>
-<ol>
+<h1 id="lecture-03-20180122">Lecture 03 2018/01/22</h1>
+<p>1 Bits:</p>
+<ol type="1">
 <li>Information in memory are 1s and 0s.</li>
 <li>8 primitive types: <code>byte</code>, <code>short</code>, <code>char</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>(<code>true</code>, <code>false</code>)</li>
 </ol>
 <p>2 Declare a Variable in Primitive Type:</p>
-<ol>
+<ol type="1">
 <li>Syntax: <code>type name;</code>, e.g. <code>int x;</code></li>
-<li>Procedure:<ul>
+<li>Procedure:
+<ul>
 <li>Computer sets aside enough bits to hold a thing of that type</li>
 <li>Java creates an internal table to map a variable to a location</li>
 <li>Java does not write anything in the reserved boxes if there is no assignment</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>3 The Golden Rule of Equals(GRoE):</p>
-<ol>
+<ol type="1">
 <li><code>y = x</code> simply copies the bits of x into the box of y</li>
 <li>The rule applies to both primitive values and reference type objects</li>
 </ol>
 <p>4 Reference Type:</p>
-<ol>
-<li>Object instantiation with <code>new</code>:<ul>
+<ol type="1">
+<li>Object instantiation with <code>new</code>:
+<ul>
 <li>Java allocates a box of bits for each instance variable of the class and fills them with a default value for the variable type(0, false, null)</li>
 <li>The constructor fills each box with formal parameters if there exists any</li>
 <li>You can think that <code>new</code> returns the location in memory where the instance is put</li>
-</ul>
-</li>
-<li>Declaration of reference type:<ul>
+</ul></li>
+<li>Declaration of reference type:
+<ul>
 <li>Java allocates a box of 64 bits, no matter what exactly the reference type object is</li>
 <li>The bits set to null(all 0s) or the 64-bit address returned by the <code>new</code> statement</li>
 <li>If you reassign a variable to the another object, then the original objet is no longer being referred, if there is no other references, it will be garbage collected</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>5 Parameter Passing:</p>
-<ol>
+<ol type="1">
 <li>GRoE applies in parameter passing, so the parameter passing is called the pass by value</li>
 <li>An example:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PassByValueFigure</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           Walrus walrus = <span class="keyword">new</span> Walrus(<span class="number">3500</span>, <span class="number">10.5</span>);</span><br><span class="line">           <span class="keyword">int</span> x = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">           doStuff(walrus, x);                                  </span><br><span class="line">           <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Pass by value, so the parameter W is the 64-bit address of walrus, and x is the bits of int 9,</span></span><br><span class="line"><span class="comment">           in the local scope, when W.weight is changed, it also changes the referred object walrus,</span></span><br><span class="line"><span class="comment">           but when the bits of int 9 is changed, is has no influence on the x in the outer scope. </span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">           System.out.println(walrus.weight);                   <span class="comment">// 3400</span></span><br><span class="line">           System.out.println(x);                               <span class="comment">// 9</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doStuff</span><span class="params">(Walrus W, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">           W.weight = W.weight - <span class="number">100</span>;</span><br><span class="line">           x = x - <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>6 The IntList class:</p>
-<ol>
-<li>A comparison </li>
+<ol type="1">
+<li>A comparison</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.rest == <span class="keyword">null</span>) &#123;                     <span class="comment">// Here you cannot write like if(this == null )&#123; return 0;&#125;, because it is an instance method,</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                                <span class="comment">//  it&#x27;s invoked by lst.size(), if lst == null, then this call will result in NullPointer error</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="keyword">this</span>.rest.size();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(IntList lst)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lst == <span class="keyword">null</span>) &#123;                           <span class="comment">// For the static method, you can use however, the lst == null statement, because in this situation, </span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;                               <span class="comment">// it&#x27;s invoked by IntList.size(lst)</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + size(lst.rest)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>If you use something like <code>this = this.rest</code> in your code, it’s better to declare ahead <code>IntList cur = this</code> and use <code>cur</code> instead</li>
+<ol start="2" type="1">
+<li>If you use something like <code>this = this.rest</code> in your code, it's better to declare ahead <code>IntList cur = this</code> and use <code>cur</code> instead</li>
 <li>Other functions: <code>size</code>, <code>iterativeSize</code>, <code>get</code></li>
 </ol>
-<h1 id="Lecture-04-2018-01-24"><a href="#Lecture-04-2018-01-24" class="headerlink" title="Lecture 04 2018/01/24"></a>Lecture 04 2018/01/24</h1><p>1 Improvements of the <code>IntList</code> into the <code>SLList</code>:</p>
-<ol>
-<li><p>Re-branding: rename to <code>IntList</code> class to the <code>IntNode</code> class</p>
-</li>
-<li><p>Bureaucracy: </p>
+<h1 id="lecture-04-20180124">Lecture 04 2018/01/24</h1>
+<p>1 Improvements of the <code>IntList</code> into the <code>SLList</code>:</p>
+<ol type="1">
+<li><p>Re-branding: rename to <code>IntList</code> class to the <code>IntNode</code> class</p></li>
+<li><p>Bureaucracy:</p>
 <ul>
 <li>Put <code>IntNode</code> class inside the <code>SLList</code> class, hide the naked recursive structure in the <code>IntNode</code> class</li>
 <li>add method: <code>addFirst</code>, <code>getFirst</code>, <code>addLast</code>, <code>size</code></li>
-</ul>
-</li>
+</ul></li>
 <li><p>Private v.s. Public:</p>
 <ul>
 <li>Private variables/methods cannot be accessed from somewhere outside the java file where they are defined</li>
 <li>in real world, private codes should be ignored by users, whereas public codes could be accessed and used from all users from anywhere</li>
-</ul>
-</li>
+</ul></li>
 <li><p>Nested classes:</p>
 <ul>
-<li><p>Classes in different files can be put together into nested classes into a single file</p>
-</li>
-<li><p>If the nested class doesn’t need access to other instance variables and methods, it could be declared as <code>static</code></p>
-</li>
-<li><p>Use a helper function when inner class is recursive structure, but the outer one is not</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sizeHelper</span><span class="params">(IntNode cur)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + sizeHelper(cur.next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;      </span><br><span class="line"><span class="comment">/* This function is wrong, since there is no such function called size() in the inner InterNode class.</span></span><br><span class="line"><span class="comment">public int size() &#123;</span></span><br><span class="line"><span class="comment">        if(cur.next == null) &#123;</span></span><br><span class="line"><span class="comment">            return 1;</span></span><br><span class="line"><span class="comment">        &#125; else &#123;</span></span><br><span class="line"><span class="comment">            return 1 + node.next.size();  =&gt; this call is wrong</span></span><br><span class="line"><span class="comment">        &#125;   </span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sizeHelper(node);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Functions with same name but different signatures are called overloaded functions</p>
-</li>
+<li>Classes in different files can be put together into nested classes into a single file</li>
+<li>If the nested class doesn't need access to other instance variables and methods, it could be declared as <code>static</code></li>
+<li>Use a helper function when inner class is recursive structure, but the outer one is not</li>
 </ul>
-</li>
-<li><p>Caching:</p>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sizeHelper</span><span class="params">(IntNode cur)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + sizeHelper(cur.next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;      </span><br><span class="line"><span class="comment">/* This function is wrong, since there is no such function called size() in the inner InterNode class.</span></span><br><span class="line"><span class="comment">public int size() &#123;</span></span><br><span class="line"><span class="comment">        if(cur.next == null) &#123;</span></span><br><span class="line"><span class="comment">            return 1;</span></span><br><span class="line"><span class="comment">        &#125; else &#123;</span></span><br><span class="line"><span class="comment">            return 1 + node.next.size();  =&gt; this call is wrong</span></span><br><span class="line"><span class="comment">        &#125;   </span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sizeHelper(node);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Functions with same name but different signatures are called overloaded functions</li>
+</ul></li>
+<li><p>Caching:</p></li>
 </ol>
 <ul>
 <li>Use a variable to cache the list size will result in quicker size function, but lower in addFirst function, addLast function and heavier memory usage</li>
 </ul>
-<ol start="6">
-<li><p>The empty lists:</p>
+<ol start="6" type="1">
+<li>The empty lists:
 <ul>
 <li>The first way: use a new constructor for the empty list, in this way you need to take care of the null boundary condition</li>
 <li>Use sentinel node as a instance variable to calculate store the first dummy node, the first actual node is <code>sentinel.next</code>, this way is preferred for simpler boundary conditions</li>
-</ul>
-</li>
-<li><p>Invariants:</p>
+</ul></li>
+<li>Invariants:
 <ul>
 <li>An invariant is a condition that is guaranteed to be true during code execution</li>
-<li>Invariants for the <code>SLList</code> class:<ul>
+<li>Invariants for the <code>SLList</code> class:
+<ul>
 <li>The first item is the <code>sentinel.next.first</code></li>
 <li>The size is the actual amount of items</li>
 <li>Sentinel references refer to a sentinel node</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 </ol>
-<h1 id="Lecture-05-2018-01-26"><a href="#Lecture-05-2018-01-26" class="headerlink" title="Lecture 05 2018/01/26"></a>Lecture 05 2018/01/26</h1><p>1 Improvements of the <code>SLList</code> into the <code>DLList</code>:</p>
-<ol>
+<h1 id="lecture-05-20180126">Lecture 05 2018/01/26</h1>
+<p>1 Improvements of the <code>SLList</code> into the <code>DLList</code>:</p>
+<ol type="1">
 <li><p>Looking back:</p>
 <ul>
 <li>The addLast function is slow for the SLList, you can add a <code>public IntNode prev</code> to convert the SLList(single-linked list) into the DLList(double-linked list)</li>
 <li>Add a last node <code>private IntNode prev</code></li>
-</ul>
-</li>
+</ul></li>
 <li><p>Sentinel Update:</p>
 <ul>
 <li>Deal with the problem that last node can point to both a sentinel node or a real node</li>
 <li>The first way: use two sentinel nodes, one at the beginning of the list, one at the end of the list</li>
 <li>The second way: use one sentinel node, but let the list become circular, which means the last real node points to the sentinel node at the beginning</li>
-</ul>
-</li>
+</ul></li>
 <li><p>Generic lists:</p>
 <ul>
-<li><p>Deal with the problem that the current DLList can only holds int values</p>
-</li>
-<li><p>Syntax:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLList</span>&lt;<span class="title">T</span>&gt; </span>&#123;                      <span class="comment">// This means the DLList can hold type T values</span></span><br><span class="line">    <span class="keyword">private</span> IntNode sentinel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> IntNode prev;</span><br><span class="line">        <span class="keyword">public</span> IntNode next;</span><br><span class="line">        <span class="keyword">public</span> T first;                      <span class="comment">// The first item in the IntNode is type T</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Other codes</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//The type in the new statement can be omitted, although it&#x27;s definitely right to add it in the statement </span></span><br><span class="line">DLList&lt;String&gt; lst = <span class="keyword">new</span> DLList&lt;&gt;(<span class="string">&quot;String values&quot;</span>);                     </span><br></pre></td></tr></table></figure>
-
-
-</li>
+<li>Deal with the problem that the current DLList can only holds int values</li>
+<li>Syntax:</li>
 </ul>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLList</span>&lt;<span class="title">T</span>&gt; </span>&#123;                      <span class="comment">// This means the DLList can hold type T values</span></span><br><span class="line">    <span class="keyword">private</span> IntNode sentinel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> IntNode prev;</span><br><span class="line">        <span class="keyword">public</span> IntNode next;</span><br><span class="line">        <span class="keyword">public</span> T first;                      <span class="comment">// The first item in the IntNode is type T</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Other codes</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//The type in the new statement can be omitted, although it&#x27;s definitely right to add it in the statement </span></span><br><span class="line">DLList&lt;String&gt; lst = <span class="keyword">new</span> DLList&lt;&gt;(<span class="string">&quot;String values&quot;</span>);                     </span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <p>2 Array Basics:</p>
-<ol>
-<li><p>An array is a special type of object ths consists of a numbered sequence of memory boxes</p>
-</li>
-<li><p>Fixed integer length $N$, then $N$ boxes with indices starting from $0$ to $N - 1$, get length of an array: <code>myArray.length</code></p>
-</li>
+<ol type="1">
+<li><p>An array is a special type of object ths consists of a numbered sequence of memory boxes</p></li>
+<li><p>Fixed integer length <span class="math inline">\(N\)</span>, then <span class="math inline">\(N\)</span> boxes with indices starting from <span class="math inline">\(0\)</span> to <span class="math inline">\(N - 1\)</span>, get length of an array: <code>myArray.length</code></p></li>
 <li><p>Creation:</p>
 <ul>
 <li><code>int[] x = new int[3];</code></li>
 <li><code>int[] x = new int[] &#123;1, 2, 3&#125;;</code></li>
 <li><code>int[] x = &#123;1, 2, 3&#125;;</code></li>
-</ul>
-</li>
+</ul></li>
 <li><p>Access and Modification:</p>
 <ul>
 <li><code>myArray.length;</code></li>
 <li>Same object <code>array1 = array2;</code></li>
 <li>Create a new object: <code>System.arraycopy(old_array, start_old_index, new_array, start_new_index, copy_length);</code></li>
-</ul>
-</li>
+</ul></li>
 <li><p>2D Arrays in Java:</p>
 <ul>
 <li>Example: <code>int[][] x = new int[4][];</code></li>
-</ul>
-</li>
+</ul></li>
 <li><p>Arrays v.s. Classes:</p>
 <ul>
 <li>Both can be used to organize a bunch of memory boxes</li>
 <li>Array boxes are numbered and accessed by <code>[]</code>, class boxes are named(fields) and accessed by <code>.</code></li>
 <li>Array boxes should be in the same type, class boxes can be in different types</li>
 <li>One can specify array indices at runtime, and can only use reflection to specify class fields</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h1 id="Lecture-06-2018-01-29"><a href="#Lecture-06-2018-01-29" class="headerlink" title="Lecture 06 2018/01/29"></a>Lecture 06 2018/01/29</h1><p>1 DLList: fast in add/remove/get methods, ignore special cases, but get is slow for long lists, because you need to travel through every item on the way, which is slower than arrays in this sense, so we can use AList to tackle this problem</p>
+<h1 id="lecture-06-20180129">Lecture 06 2018/01/29</h1>
+<p>1 DLList: fast in add/remove/get methods, ignore special cases, but get is slow for long lists, because you need to travel through every item on the way, which is slower than arrays in this sense, so we can use AList to tackle this problem</p>
 <p>2 Resize AList when full, i.e., when <code>size == items.length</code>:</p>
 <ul>
 <li><p>The most trivial way:</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Part of the addLast function with resizing taken into consideration</span></span><br><span class="line"><span class="keyword">if</span> (size == items.length) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] newItems = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</span><br><span class="line">    System.arraycopy(items, <span class="number">0</span>, newItems, <span class="number">0</span>, size);</span><br><span class="line">    newItems[size] = value;</span><br><span class="line">    size += <span class="number">1</span>;</span><br><span class="line">    items = newItems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>The above way is quite slow when one adds a large quantity of items into the array, because there is so many resizing during the process</p>
-</li>
-<li><p>A faster way is called the multiplicative resizing: <code>items.length * multiplicative factor</code></p>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Part of the addLast function with resizing taken into consideration</span></span><br><span class="line"><span class="keyword">if</span> (size == items.length) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] newItems = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</span><br><span class="line">    System.arraycopy(items, <span class="number">0</span>, newItems, <span class="number">0</span>, size);</span><br><span class="line">    newItems[size] = value;</span><br><span class="line">    size += <span class="number">1</span>;</span><br><span class="line">    items = newItems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>The above way is quite slow when one adds a large quantity of items into the array, because there is so many resizing during the process</p></li>
+<li><p>A faster way is called the multiplicative resizing: <code>items.length * multiplicative factor</code></p></li>
 </ul>
 <p>3 Load factor/usage ratio</p>
 <ul>
 <li>Definition: <code>LF = size / items.length</code></li>
-<li>If $LF &lt; 0.25$, then there is so much space unused in the array, so we resize downwards the array by <code>items.length =&gt; items.length / 2</code></li>
+<li>If <span class="math inline">\(LF &lt; 0.25\)</span>, then there is so much space unused in the array, so we resize downwards the array by <code>items.length =&gt; items.length / 2</code></li>
 </ul>
 <p>4 Genetic arrays:</p>
 <ul>
 <li>Add a type generic to the AList so it can hold items other than integers</li>
-<li>Syntax: </li>
+<li>Syntax:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  This is correct</span></span><br><span class="line">Type[] items = (Type[]) <span class="keyword">new</span> Object[capacity];</span><br><span class="line"></span><br><span class="line"><span class="comment">//  This is wrong</span></span><br><span class="line">Type[] items = <span class="keyword">new</span> Type[capacity];</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>One is not allowed to create generic type arrays in Java, one needs to use the typecast, otherwise a generic array creation error is caused</li>
 </ul>
-<h1 id="Lab-03"><a href="#Lab-03" class="headerlink" title="Lab 03"></a>Lab 03</h1><p>1 Unit Testing:</p>
-<ol>
+<h1 id="lab-03">Lab 03</h1>
+<p>1 Unit Testing:</p>
+<ol type="1">
 <li>Test each method in your code, and ultimately ensure that you have a working program</li>
 <li>Unit: break down the program into smallest part to enforce good code structure, each method should do only one thing</li>
 <li>JUnit: a unit testing framework for Java</li>
 </ol>
 <p>2 Add JUnit to your program:</p>
-<ol>
+<ol type="1">
 <li>Java program: <code>import org.junit.Test</code>, <code>import static org.junit.Assert.*</code></li>
 <li>Maven program:</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span>     <span class="comment">&lt;!-- Enter a compatible junit version number here --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>For compatible versions, search <a target="_blank" rel="noopener" href="https://search.maven.org/">search.maven.org</a></p>
 <p>3 JUnit Syntax:</p>
-<ol>
+<ol type="1">
 <li>Syntax:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassTest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> methodTest &#123;</span><br><span class="line">        assertEquals(ExpectedValue, MethodCalculation);</span><br><span class="line">        assertNull(MethodCalculation);   <span class="comment">// This one equals to assertEquals(null, MethodCalculation);</span></span><br><span class="line">        assertTrue(MethodCalculation);</span><br><span class="line">        assertFalse(MethodCalculation);</span><br><span class="line">        assertNotEquals(ExpectedValue, MethodCalculation);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>Use annotation <code>@Test</code> and non-static method only</li>
 </ol>
 <p>4 Reverse a linked list:</p>
-<ol>
+<ol type="1">
 <li>Recursion:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(LinkedNode first)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (first == <span class="keyword">null</span> || first.next == <span class="keyword">null</span>) &#123;                 <span class="comment">// Situation where the list is an empty linked list or there is only one item in the list</span></span><br><span class="line">            <span class="keyword">return</span> first;                                </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            LinkedNode re = Test.reverse(first.next);              <span class="comment">// re is the reversed linked list,</span></span><br><span class="line">            first.next.next = first;                               <span class="comment">// Let the second item in the linked list points to first</span></span><br><span class="line">            first.next = <span class="keyword">null</span>;                                     <span class="comment">// Let first points to null</span></span><br><span class="line">            <span class="keyword">return</span> re;                                             <span class="comment">// Return the whole reversed linked list</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* An example</span></span><br><span class="line"><span class="comment">LinkedList(1,2,3,4) =&gt;  1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null</span></span><br><span class="line"><span class="comment">first = 1, re = LinkedList(4,3,2) =&gt; 4 -&gt; 3 -&gt; 2 -&gt; null</span></span><br><span class="line"><span class="comment">first.next = 2, so the first.next.next = first turns re into 4 -&gt; 3 -&gt; 2 -&gt; 1</span></span><br><span class="line"><span class="comment">first.next = null turns re into 4 -&gt; 3 -&gt; 2 -&gt; 1 -&gt; null, then done</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>Iteration:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(LinkedNode first)</span> </span>&#123;</span><br><span class="line">        LinkedNode re = <span class="keyword">null</span>;                                      <span class="comment">// This is the reversed linked list</span></span><br><span class="line">        LinkedNode cur = first;                                    <span class="comment">// This is the first node in the unreversed part of the original list</span></span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">            LinkedNode temp = cur.next;                            <span class="comment">// Save the next node of the current node</span></span><br><span class="line">            cur.next = re;                                         <span class="comment">// current node points to first node in the reversed linked list</span></span><br><span class="line">            re = cur;                                              <span class="comment">// Modify the linked list to the current node is the first node in it</span></span><br><span class="line">            cur = temp;                                            <span class="comment">// Next node in the unreversed part of the original list</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> re;                                                 <span class="comment">// Return the whole reversed linked list</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>5 int and Integer:</p>
-<ol>
+<ol type="1">
 <li>If two <code>int</code> variables have the same value, then they are equal</li>
 <li>If two <code>Integer</code> variables have the same value, then they may be not equal:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = val;</span><br><span class="line">Integer val1 = Integer.valueOf(a);</span><br><span class="line">Integer val2 = Integer.valueOf(a);</span><br><span class="line"></span><br><span class="line">val1 == val2; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>If $0 \leq val \leq 127$, then <code>true</code>, else if $128 \leq val$, then <code>false</code>.  This is related to wrapper class and java constant pool.</p>
-<h1 id="Project-01A"><a href="#Project-01A" class="headerlink" title="Project 01A"></a>Project 01A</h1><p>1 Dequeue: double ended queue, one can insert and delete from both sides</p>
+<p>If <span class="math inline">\(0 \leq val \leq 127\)</span>, then <code>true</code>, else if <span class="math inline">\(128 \leq val\)</span>, then <code>false</code>. This is related to wrapper class and java constant pool.</p>
+<h1 id="project-01a">Project 01A</h1>
+<p>1 Dequeue: double ended queue, one can insert and delete from both sides</p>
 <p>2 LinkedList implementation:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedListDeque</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TNode sentinel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinkedListDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sentinel = <span class="keyword">new</span> TNode((T) Integer.valueOf(<span class="number">1</span>), <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">        sentinel.next = sentinel;</span><br><span class="line">        sentinel.prev = sentinel;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        TNode temp = sentinel.next;</span><br><span class="line">        TNode newNode = <span class="keyword">new</span> TNode(item, temp, sentinel);</span><br><span class="line">        sentinel.next = newNode;</span><br><span class="line">        temp.prev = newNode;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        TNode temp = sentinel.prev;</span><br><span class="line">        TNode newNode = <span class="keyword">new</span> TNode(item, sentinel, temp);</span><br><span class="line">        sentinel.prev = newNode;</span><br><span class="line">        temp.next = newNode;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TNode cur = sentinel;</span><br><span class="line">        <span class="keyword">while</span> (cur.next != sentinel) &#123;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            System.out.print(cur.item + <span class="string">&quot; &quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TNode temp = sentinel.next;</span><br><span class="line">        sentinel.next = temp.next;</span><br><span class="line">        temp.next.prev = sentinel;</span><br><span class="line">        size -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> temp.item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TNode temp = sentinel.prev;</span><br><span class="line">        sentinel.prev = temp.prev;</span><br><span class="line">        temp.prev.next = sentinel;</span><br><span class="line">        size -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> temp.item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        TNode cur = sentinel;</span><br><span class="line">        <span class="keyword">while</span> (cur.next != sentinel) &#123;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            <span class="keyword">if</span> (count == index) &#123;</span><br><span class="line">                <span class="keyword">return</span> cur.item;</span><br><span class="line">            &#125;</span><br><span class="line">            count += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> T <span class="title">getHelper</span><span class="params">(<span class="keyword">int</span> index, TNode cur, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == count) &#123;</span><br><span class="line">            <span class="keyword">return</span> cur.item;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getHelper(index, cur.next, count + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getRecursive</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getHelper(index, sentinel.next, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">TNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> T item;</span><br><span class="line">        <span class="keyword">public</span> TNode next;</span><br><span class="line">        <span class="keyword">public</span> TNode prev;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TNode</span><span class="params">(T item, TNode next, TNode prev)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.item = item;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">            <span class="keyword">this</span>.prev = prev;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>3 Array implementation:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayDeque</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T[] items;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> initialCapacity = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> usageFactor = <span class="number">0.25</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> front;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> rear;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        items = (T[]) <span class="keyword">new</span> Object[initialCapacity];</span><br><span class="line">        front = -<span class="number">1</span>;</span><br><span class="line">        rear = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        Two conditions to calculate the dequeue size:</span></span><br><span class="line"><span class="comment">        If front &lt; rear: then size = rear - front + 1</span></span><br><span class="line"><span class="comment">        If front &gt; rear: then size = rear - front + 1 + n</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">if</span> (front &lt; <span class="number">0</span> || rear &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (rear + <span class="number">1</span> - front + items.length) % items.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        Two conditions for a dequeue implemented in circular array to be full:</span></span><br><span class="line"><span class="comment">        If front &lt; rear: then front == 0 &amp;&amp; rear == items.length -1</span></span><br><span class="line"><span class="comment">        If front &gt; rear: then front - rear == 1</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">return</span> (rear + <span class="number">1</span>) % items.length == front;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> front == -<span class="number">1</span> &amp;&amp; rear == -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">expandLength</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = items.length;</span><br><span class="line">        T[] newItems = (T[]) <span class="keyword">new</span> Object[items.length * <span class="number">2</span>];</span><br><span class="line">        System.arraycopy(items, <span class="number">0</span>, newItems, <span class="number">0</span>, items.length);</span><br><span class="line">        items = newItems;</span><br><span class="line">        front = <span class="number">0</span>;</span><br><span class="line">        rear = temp - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reduceLength</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        T[] newItems = (T[]) <span class="keyword">new</span> Object[items.length / <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> temp = size();</span><br><span class="line">        <span class="keyword">if</span> (front &lt; rear) &#123;</span><br><span class="line">            System.arraycopy(items, front, newItems, <span class="number">0</span>, size());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (front &gt; rear) &#123;</span><br><span class="line">            System.arraycopy(items, front, newItems, <span class="number">0</span>, items.length - front);</span><br><span class="line">            System.arraycopy(items, <span class="number">0</span>, newItems, items.length - front, rear + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        items = newItems;</span><br><span class="line">        front = <span class="number">0</span>;</span><br><span class="line">        rear = temp - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            expandLength();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (front &lt; <span class="number">0</span>) &#123;                               <span class="comment">// Empty dequeue</span></span><br><span class="line">            front = <span class="number">0</span>;</span><br><span class="line">            rear = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (front == <span class="number">0</span>) &#123;                       <span class="comment">// Front is at index 0</span></span><br><span class="line">            front = items.length - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                                       <span class="comment">// Other situations</span></span><br><span class="line">            front -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        items[front] = item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            expandLength();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rear &lt; <span class="number">0</span>) &#123;                               <span class="comment">// Empty dequeue</span></span><br><span class="line">            front = <span class="number">0</span>;</span><br><span class="line">            rear = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rear == items.length - <span class="number">1</span>) &#123;        <span class="comment">// Rear is at index items.length - 1</span></span><br><span class="line">            rear = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                                      <span class="comment">// Other situations</span></span><br><span class="line">            rear += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        items[rear] = item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (items.length &gt;= <span class="number">16</span> &amp;&amp; size() * <span class="number">1.0</span> / items.length &lt; usageFactor) &#123;</span><br><span class="line">            reduceLength();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (front &lt; <span class="number">0</span>) &#123;                              <span class="comment">// Empty dequeue</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (front == rear) &#123;                   <span class="comment">// Only one item in the dequeue</span></span><br><span class="line">            T temp = items[front];</span><br><span class="line">            items[front] = <span class="keyword">null</span>;</span><br><span class="line">            front = -<span class="number">1</span>;</span><br><span class="line">            rear = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (front == items.length - <span class="number">1</span>) &#123;       <span class="comment">// Front is at index items.length - 1</span></span><br><span class="line">            T temp = items[front];</span><br><span class="line">            items[front] = <span class="keyword">null</span>;</span><br><span class="line">            front = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                                     <span class="comment">// Other situations</span></span><br><span class="line">            T temp = items[front];</span><br><span class="line">            items[front] = <span class="keyword">null</span>;</span><br><span class="line">            front += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (items.length &gt;= <span class="number">16</span> &amp;&amp; size() * <span class="number">1.0</span> / items.length &lt; usageFactor) &#123;</span><br><span class="line">            reduceLength();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rear &lt; <span class="number">0</span>) &#123;                              <span class="comment">// Empty list</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rear == front) &#123;                  <span class="comment">// Only one item in the dequeue</span></span><br><span class="line">            T temp = items[rear];</span><br><span class="line">            items[rear] = <span class="keyword">null</span>;</span><br><span class="line">            rear = -<span class="number">1</span>;</span><br><span class="line">            front = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rear == <span class="number">0</span>) &#123;                     <span class="comment">// Rear at index 0</span></span><br><span class="line">            T temp = items[rear];</span><br><span class="line">            items[rear] = <span class="keyword">null</span>;</span><br><span class="line">            rear = items.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                                    <span class="comment">// Other situations</span></span><br><span class="line">            T temp = items[rear];</span><br><span class="line">            items[rear] = <span class="keyword">null</span>;</span><br><span class="line">            rear -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (front &lt; rear) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = front; i &lt; rear + <span class="number">1</span>; i++) &#123;</span><br><span class="line">                System.out.print(items[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (front &gt; rear) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = front; i &lt; items.length; i++) &#123;</span><br><span class="line">                System.out.print(items[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rear; i++) &#123;</span><br><span class="line">                System.out.print(items[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.print(items[front] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty() || index &lt; <span class="number">0</span> || index &gt; size() - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        Two conditions for the index:</span></span><br><span class="line"><span class="comment">        If front &lt; rear: then front = 0 and index starts from 0, the index can be used directly</span></span><br><span class="line"><span class="comment">        If front &gt; rear: then we want index 0 to be items[front], let index = (front + index) % items.length</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        index = (front + index) % items.length;</span><br><span class="line">        <span class="keyword">return</span> items[index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -862,7 +794,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-01-2018-01-17"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HW-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-02-2018-01-19"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2018&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-03-2018-01-22"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;01&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-04-2018-01-24"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2018&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-05-2018-01-26"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2018&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-06-2018-01-29"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2018&#x2F;01&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-03"><span class="nav-number">9.</span> <span class="nav-text">Lab 03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-01A"><span class="nav-number">10.</span> <span class="nav-text">Project 01A</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-20180117"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-20180119"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2018&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-20180122"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;01&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-04-20180124"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2018&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-05-20180126"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2018&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-06-20180129"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2018&#x2F;01&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-03"><span class="nav-number">9.</span> <span class="nav-text">Lab 03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-01a"><span class="nav-number">10.</span> <span class="nav-text">Project 01A</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -938,12 +870,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">113k</span>
+    <span title="Symbols count total">115k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:43</span>
+    <span title="Reading time total">1:45</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
@@ -996,6 +928,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
