@@ -38,8 +38,11 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/RAMUnit.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/ProgramCounter.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Project3.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Comp.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Dest.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Jump.png">
 <meta property="article:published_time" content="2021-04-03T08:29:32.000Z">
-<meta property="article:modified_time" content="2021-04-06T14:34:59.720Z">
+<meta property="article:modified_time" content="2021-04-07T15:54:26.270Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Build a Modern Computer from First Principles Part One">
 <meta name="twitter:card" content="summary">
@@ -208,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-06 22:34:59" itemprop="dateModified" datetime="2021-04-06T22:34:59+08:00">2021-04-06</time>
+                <time title="Modified: 2021-04-07 23:54:26" itemprop="dateModified" datetime="2021-04-07T23:54:26+08:00">2021-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>9.7k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>9 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -604,6 +607,78 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 </ul></li>
 <li>Project 3 <img src="/images/Nand/Project3.png"></li>
 </ol>
+<h1 id="week-4">Week 4</h1>
+<ol type="1">
+<li>Machine Languages: Overview
+<ul>
+<li>Theoretical universal turing machine: one machine can do many tasks. Actual general computing machine: von Neumann Architecture</li>
+<li>Compilation: high-level language =&gt; Compiler =&gt; machine language =&gt; CPU</li>
+<li>Assembler can translate assembly language into machine language</li>
+</ul></li>
+<li>Machine Languages: Elements
+<ul>
+<li>Machine language specifies the hardware/software interface, it's usually in close correspondence to actual hardware architecture, and as is often the case, the more operations supported by a machine language, the more sophisticated the machine language is</li>
+<li>Machine Operations:
+<ul>
+<li>Arithmetic operations: add, subtract, ...</li>
+<li>Logical operations: and, or, ...</li>
+<li>Flow control: goto, if then goto, ...</li>
+</ul></li>
+<li>Addressing:
+<ul>
+<li>Accessing a memory location is expensive, because it needs to supply a long address and getting the memory contents into the CPU also takes time</li>
+<li>Solution to the above problem is memory hierarchy: register =&gt; cache =&gt; main memory =&gt; disk. The closer to CPU, the smaller in size of the memory.</li>
+<li>Data Registers: Add R1, R2; Address Registers: Store R1, <span class="citation" data-cites="A">@A</span></li>
+<li>Addressing modes: register, direct, indirect, immediate</li>
+</ul></li>
+<li>Input/Output:
+<ul>
+<li>Devices: keyboard, mouse, camera, sensor, printer, screen, ...</li>
+<li>CPU needs protocol to talk to them. Software drivers know the protocols. An general method of interaction uses memory mapping</li>
+</ul></li>
+<li>Flow Control:
+<ul>
+<li>Usually CPU executes machine instructions in sequence, sometimes we need jump to somewhere. There is both unconditional jump and conditional jump.</li>
+</ul></li>
+</ul></li>
+<li>The Hack Computer and Machine Language
+<ul>
+<li>Hack Computer Hardware:
+<ul>
+<li>Data memory(RAM): a sequence of 16-bit registers</li>
+<li>Instruction memory(ROM): a sequence of 16-bit registers</li>
+<li>Central Processing Unit(CPU): performs 16-bit instructions</li>
+<li>Instruction bus/data bus/address buses</li>
+</ul></li>
+<li>Hack Computer Software:
+<ul>
+<li>Hack machine language:16-bit A-instructions, 16-bit C-instructions</li>
+<li>Hack program: sequence of instructions written in the Hack machine language</li>
+</ul></li>
+<li>Control:
+<ul>
+<li>The ROM is loaded with a Hack program</li>
+<li>The reset button is pushed</li>
+<li>The program starts running</li>
+</ul></li>
+<li>Registers:
+<ul>
+<li>D register in CPU: holds a 16-bit value of data</li>
+<li>A register in CPU: holds a 16-bit value of data or address</li>
+<li>M register in RAM: represents the 16-bit RAM register addressed by A</li>
+</ul></li>
+<li>The A-instruction:
+<ul>
+<li>Syntax: <code>@value</code>, a value is a non-negative decimal constant or a symbol referring to such a constant</li>
+<li>Meaning: sets the A register to value, <code>RAM[A]</code> becomes the selected RAM register M</li>
+</ul></li>
+<li>The C-instruction:
+<ul>
+<li><code>dest = comp; jump</code> (both dest and jump are optional) <img src="/images/Nand/Comp.png"> <img src="/images/Nand/Dest.png"> <img src="/images/Nand/Jump.png"></li>
+<li>Meaning: computes the value of <code>comp</code>, stores the result in <code>dest</code>, if the boolean expression <code>(comp jump 0)</code> is true, jumps to execute the instruction stored in <code>ROM[A]</code> <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Set the D <span class="keyword">register</span> <span class="keyword">to</span> -<span class="number">1</span></span><br><span class="line">D = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">//Set RAM[<span class="number">300</span>] <span class="keyword">to</span> the value <span class="keyword">of</span> the D <span class="keyword">register</span> minus <span class="number">1</span></span><br><span class="line">@<span class="number">300</span>            //A = <span class="number">300</span></span><br><span class="line">M = D - <span class="number">1</span>      // R[<span class="number">300</span>] = D - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">// <span class="keyword">If</span> (D - <span class="number">1</span> == <span class="number">0</span>) jump <span class="keyword">to</span> execute the instruction stored <span class="keyword">in</span> ROM[<span class="number">56</span>]</span><br><span class="line">@<span class="number">56</span>             //A = <span class="number">56</span></span><br><span class="line">D - <span class="number">1</span>;JEQ       //<span class="keyword">if</span>(D - <span class="number">1</span> == <span class="number">0</span>) goto <span class="number">56</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -701,7 +776,7 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -777,12 +852,12 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">123k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">1:51</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
