@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/C-InstructionBinary.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/KeyboardMemoryMap.png">
 <meta property="article:published_time" content="2021-04-03T08:29:32.000Z">
-<meta property="article:modified_time" content="2021-04-08T15:40:06.916Z">
+<meta property="article:modified_time" content="2021-04-09T15:48:57.892Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Build a Modern Computer from First Principles Part One">
 <meta name="twitter:card" content="summary">
@@ -213,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-08 23:40:06" itemprop="dateModified" datetime="2021-04-08T23:40:06+08:00">2021-04-08</time>
+                <time title="Modified: 2021-04-09 23:48:57" itemprop="dateModified" datetime="2021-04-09T23:48:57+08:00">2021-04-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>16k</span>
+              <span>17k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>14 mins.</span>
+              <span>16 mins.</span>
             </span>
 
         </div>
@@ -766,8 +766,28 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 <li>Branching
 <ul>
 <li>Definition: evaluate a boolean expression and go to different sections afterwards based on the result. There is only one branching apparatus in machine language called goto.</li>
-<li>Example: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; if R0 &gt; 0</span><br><span class="line">       R1 &#x3D; 1</span><br><span class="line">   else</span><br><span class="line">       R1 &#x3D; 0</span><br><span class="line"></span><br><span class="line">@ R0</span><br><span class="line">D &#x3D; M    &#x2F;&#x2F; D &#x3D; RAM[0]</span><br><span class="line"></span><br><span class="line">@ 17</span><br><span class="line">D; JET   &#x2F;&#x2F; if R0 &gt; 0, goto 17</span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 0    &#x2F;&#x2F; R[1] &#x3D; 0</span><br><span class="line">@ 19</span><br><span class="line">0; JMP   &#x2F;&#x2F; end of program</span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 1   &#x2F;&#x2F; R[1] &#x3D; 1</span><br><span class="line">@ 19</span><br><span class="line">0; JMP  &#x2F;&#x2F; end of program</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Example:
+<ul>
+<li>Original code: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; if R0 &gt; 0</span><br><span class="line">      R1 &#x3D; 1</span><br><span class="line">  else</span><br><span class="line">      R1 &#x3D; 0</span><br><span class="line"></span><br><span class="line">@ R0</span><br><span class="line">D &#x3D; M    &#x2F;&#x2F; D &#x3D; RAM[0]</span><br><span class="line"></span><br><span class="line">@ 17</span><br><span class="line">D; JET   &#x2F;&#x2F; if R0 &gt; 0, goto 17</span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 0    &#x2F;&#x2F; R[1] &#x3D; 0</span><br><span class="line">@ 19</span><br><span class="line">0; JMP   &#x2F;&#x2F; end of program</span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 1   &#x2F;&#x2F; R[1] &#x3D; 1</span><br><span class="line">@ 19</span><br><span class="line">0; JMP  &#x2F;&#x2F; end of program</span><br></pre></td></tr></table></figure></li>
+<li>Labeled code: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; if R0 &gt; 0</span><br><span class="line">      R1 &#x3D; 1</span><br><span class="line">  else</span><br><span class="line">      R1 &#x3D; 0</span><br><span class="line"></span><br><span class="line">@ R0</span><br><span class="line">D &#x3D; M    </span><br><span class="line"></span><br><span class="line">@ POSITIVE          &#x2F;&#x2F; Use a label, it equals to @ n, n is the instruction number following the (label) declaration. Here equals to @ 18</span><br><span class="line">D; JET   </span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 0              &#x2F;&#x2F; R[1] &#x3D; 0</span><br><span class="line">@ END              &#x2F;&#x2F; Use a label, here equals to @ 22</span><br><span class="line">0; JMP   </span><br><span class="line"></span><br><span class="line">(POSITIVE)         &#x2F;&#x2F; Declare a label, label declaration is not translated into machine code, it&#39;s like a placeholder</span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; 1</span><br><span class="line">          </span><br><span class="line">(END)</span><br><span class="line">@ END</span><br><span class="line">0; JMP</span><br><span class="line">       </span><br></pre></td></tr></table></figure></li>
 </ul></li>
+</ul></li>
+<li>Variables
+<ul>
+<li>A variable is a container that has a name and a value. In hack language, there is only one variable type, the 16-bit values.</li>
+<li>Example <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Exchange the values of RAM[0] and RAM[1]</span><br><span class="line">&#x2F;&#x2F; temp &#x3D; R1</span><br><span class="line">&#x2F;&#x2F; R1 &#x3D; R0</span><br><span class="line">&#x2F;&#x2F; R0 &#x3D; temp</span><br><span class="line"></span><br><span class="line">@ R1</span><br><span class="line">D &#x3D; M</span><br><span class="line">@ temp  &#x2F;&#x2F; Find an available memory register(say register n), use it to represent the variable temp. From now on, @ temp equals to @ n.</span><br><span class="line">M &#x3D; D</span><br><span class="line"></span><br><span class="line">@ R0</span><br><span class="line">D &#x3D; M</span><br><span class="line">@ R1</span><br><span class="line">M &#x3D; D</span><br><span class="line"></span><br><span class="line">@ temp</span><br><span class="line">D &#x3D; M</span><br><span class="line">@ R0</span><br><span class="line">M &#x3D; D</span><br><span class="line"></span><br><span class="line">(END)</span><br><span class="line">@ END</span><br><span class="line">0; JMP</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Iteration
+<ul>
+<li>Example: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Computer RAM[1] &#x3D; 1 + 2 + ... + n</span><br><span class="line">    @ R0</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ N </span><br><span class="line">    M &#x3D; D</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; 1</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; 0</span><br><span class="line"></span><br><span class="line">    (LOOP)</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ n</span><br><span class="line">    D &#x3D; D - M</span><br><span class="line">    @STOP</span><br><span class="line">    D; JGT       &#x2F;&#x2F; if i &gt; n goto STOp</span><br><span class="line"></span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; D + M</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; sum &#x3D; sum + i</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; M + 1   &#x2F;&#x2F; i &#x3D; i + 1</span><br><span class="line">    @ LOOP</span><br><span class="line">    0; JMP</span><br><span class="line"></span><br><span class="line">    (STOP)</span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ R1</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; RAM[1] &#x3D; sum</span><br><span class="line"></span><br><span class="line">    (END)</span><br><span class="line">    @ END</span><br><span class="line">    0; JMP</span><br></pre></td></tr></table></figure></li>
+<li>Best practices:
+<ul>
+<li>Design your program using pseudo code</li>
+<li>Write the program in an assembly language</li>
+<li>Test the program using a variable-value trace table</li>
+</ul></li>
+</ul></li>
+<li>Pointers</li>
 </ul></li>
 </ol>
 
@@ -943,12 +963,12 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">126k</span>
+    <span title="Symbols count total">128k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:55</span>
+    <span title="Reading time total">1:56</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
