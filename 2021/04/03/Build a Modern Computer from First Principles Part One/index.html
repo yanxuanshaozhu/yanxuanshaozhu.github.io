@@ -43,8 +43,17 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Jump.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/C-InstructionBinary.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/KeyboardMemoryMap.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Project4.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/FetchExecuteMultiplexer.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HackCPU.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/AInstructionHandling.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/CInstructionHandling.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/ALUOperation.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/Control.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HackComputerImplementation.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HardwareProjects.png">
 <meta property="article:published_time" content="2021-04-03T08:29:32.000Z">
-<meta property="article:modified_time" content="2021-04-09T15:48:57.892Z">
+<meta property="article:modified_time" content="2021-04-11T13:32:12.863Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Build a Modern Computer from First Principles Part One">
 <meta name="twitter:card" content="summary">
@@ -213,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-09 23:48:57" itemprop="dateModified" datetime="2021-04-09T23:48:57+08:00">2021-04-09</time>
+                <time title="Modified: 2021-04-11 21:32:12" itemprop="dateModified" datetime="2021-04-11T21:32:12+08:00">2021-04-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>17k</span>
+              <span>21k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>16 mins.</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -779,7 +788,7 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 </ul></li>
 <li>Iteration
 <ul>
-<li>Example: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Computer RAM[1] &#x3D; 1 + 2 + ... + n</span><br><span class="line">    @ R0</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ N </span><br><span class="line">    M &#x3D; D</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; 1</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; 0</span><br><span class="line"></span><br><span class="line">    (LOOP)</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ n</span><br><span class="line">    D &#x3D; D - M</span><br><span class="line">    @STOP</span><br><span class="line">    D; JGT       &#x2F;&#x2F; if i &gt; n goto STOp</span><br><span class="line"></span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; D + M</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; sum &#x3D; sum + i</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; M + 1   &#x2F;&#x2F; i &#x3D; i + 1</span><br><span class="line">    @ LOOP</span><br><span class="line">    0; JMP</span><br><span class="line"></span><br><span class="line">    (STOP)</span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ R1</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; RAM[1] &#x3D; sum</span><br><span class="line"></span><br><span class="line">    (END)</span><br><span class="line">    @ END</span><br><span class="line">    0; JMP</span><br></pre></td></tr></table></figure></li>
+<li>Example: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Computer RAM[1] &#x3D; 1 + 2 + ... + n</span><br><span class="line">&#x2F;&#x2F; Put a number (n) in RAM[0]</span><br><span class="line">    @ R0</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ n</span><br><span class="line">    M &#x3D; D         &#x2F;&#x2F;n &#x3D; R0</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; 1         &#x2F;&#x2F; i &#x3D; 1</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; 0         &#x2F;&#x2F; sum &#x3D; 0</span><br><span class="line"></span><br><span class="line">    (LOOP)</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ n</span><br><span class="line">    D &#x3D; D - M</span><br><span class="line">    @STOP</span><br><span class="line">    D; JGT       &#x2F;&#x2F; if i &gt; n goto STOP</span><br><span class="line"></span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ i</span><br><span class="line">    D &#x3D; D + M</span><br><span class="line">    @ sum</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; sum &#x3D; sum + i</span><br><span class="line">    @ i</span><br><span class="line">    M &#x3D; M + 1   &#x2F;&#x2F; i &#x3D; i + 1</span><br><span class="line">    @ LOOP</span><br><span class="line">    0; JMP</span><br><span class="line"></span><br><span class="line">    (STOP)</span><br><span class="line">    @ sum</span><br><span class="line">    D &#x3D; M</span><br><span class="line">    @ R1</span><br><span class="line">    M &#x3D; D       &#x2F;&#x2F; RAM[1] &#x3D; sum</span><br><span class="line"></span><br><span class="line">    (END)</span><br><span class="line">    @ END</span><br><span class="line">    0; JMP</span><br></pre></td></tr></table></figure></li>
 <li>Best practices:
 <ul>
 <li>Design your program using pseudo code</li>
@@ -787,7 +796,145 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 <li>Test the program using a variable-value trace table</li>
 </ul></li>
 </ul></li>
-<li>Pointers</li>
+<li>Pointers
+<ul>
+<li>For an array, memory stores its start address and the length</li>
+<li>Variables that store memory addresses are called pointers</li>
+<li>Hack pointer logic: whenever we have to access memory using a pointer, we need an instruction like <code>A = M</code>, which sets the address register to the content of a memory register</li>
+</ul></li>
+<li>Input/Output
+<ul>
+<li>Hack RAM:
+<ul>
+<li>0-16383: 16k data memory</li>
+<li>16384-24575: 8k screen memory map</li>
+<li>26576: keyboard</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Project 4 <img src="/images/Nand/Project4.png"></li>
+</ol>
+<h1 id="week-5">Week 5</h1>
+<ol type="1">
+<li>Von Neumann Architecture
+<ul>
+<li>The architecture:
+<ul>
+<li>CPU: ALU, registers</li>
+<li>Memory: data memory, program memory</li>
+<li>Wire/bus: data wires, address wires, control wires</li>
+</ul></li>
+<li>ALU wires:
+<ul>
+<li>Data wires: get data and output data</li>
+<li>Control wires: get executions and tell other parts what to do</li>
+</ul></li>
+<li>Register wires:
+<ul>
+<li>Data wires: get dat and output data</li>
+<li>Address wires: some registers can specify addresses</li>
+</ul></li>
+<li>Memory wires:
+<ul>
+<li>Address wires: specify memory addresses</li>
+<li>Data wires: input and output data</li>
+<li>Control wires: interact with executions in the program memory</li>
+</ul></li>
+</ul></li>
+<li>The Fetch-Execute Cycle
+<ul>
+<li>Fetch: fetch an instruction from the program memory
+<ul>
+<li>Put the location of the next instruction into the address of the memory using program counter</li>
+<li>Get the instruction code itself by reading the memory contents at the location</li>
+</ul></li>
+<li>Execute: execute the instruction from the fetch part
+<ul>
+<li>Put the instruction bits into control wires and tell other parts what to do</li>
+<li>Executing procedure also involves accessing data memory</li>
+</ul></li>
+<li>A problem: in the fetch process, we need to put into the memory the instruction, but in the execute process, we need to put into the memory the data. If there is only one memory for both data and program, in order to avoid the clash, we need to use a multiplexer. <img src="/images/Nand/FetchExecuteMultiplexer.png"></li>
+<li>Simpler solution: Harvard Architecture
+<ul>
+<li>A variant of Von Neumann Architecture</li>
+<li>Keep program and data in two separate memory modules so complication is avoided</li>
+</ul></li>
+</ul></li>
+<li>Central Processing Unit
+<ul>
+<li>The abstraction: a 16-bit processor, designed to execute the current instruction and figure out which instruction to execute next</li>
+<li>Hack CPU interface:
+<ul>
+<li>Inputs: data value, instruction, reset bit</li>
+<li>Outputs: data value, data value write memory address(where to write), load bit(write to memory, yes or no), pc(address of next instruction)</li>
+</ul></li>
+<li>Hack CPU implementation <img src="/images/Nand/HackCPU.png"></li>
+<li>Instruction handling:
+<ul>
+<li>Handling A instruction: <img src="/images/Nand/AInstructionHandling.png">
+<ul>
+<li>Decodes the instruction into op-code + 15-bit value</li>
+<li>Stores the value in the A register</li>
+<li>Outputs the value</li>
+</ul></li>
+<li>Handling C instruction: <img src="/images/Nand/CInstructionHandling.png">
+<ul>
+<li>Decodes the instruction into Op-code, ALU control bits, Destination load bits and Jump bits</li>
+<li>Use the different fields in later steps</li>
+</ul></li>
+</ul></li>
+<li>ALU operations: <img src="/images/Nand/ALUOperation.png">
+<ul>
+<li>Data inputs: from the D register , from the A register/M register</li>
+<li>Control inputs: control bits from the instruction</li>
+<li>ALU data outputs: result of ALU calculation, fed simultaneously to D register, A register and M register. The three destination bits determine which register actually receive the incoming value.</li>
+</ul></li>
+<li>Control: <img src="/images/Nand/Control.png">
+<ul>
+<li>Reset is used to start a loaded program<br>
+</li>
+<li>PC:
+<ul>
+<li>Emits the address of the next instruction.</li>
+<li>To start/restart the program's execution: <code>PC = 0</code>.</li>
+<li>No jump: <code>PC++</code></li>
+<li>Goto: <code>PC = A</code></li>
+<li>Conditional goto: <code>if true then PC = A else PC++</code></li>
+<li>PC logic: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (reset &#x3D;&#x3D; 1) &#123;</span><br><span class="line">  PC &#x3D; 0;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  &#x2F;&#x2F; current instruction code</span><br><span class="line">  load &#x3D; f(jump bits, ALU control outputs);</span><br><span class="line">  if (load &#x3D;&#x3D; 1) &#123;</span><br><span class="line">    PC &#x3D; A;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    PC ++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The Hack Computer
+<ul>
+<li>Abstraction: it's a computer that is capable of running programs written in the Hack machine language. It's built upon the Hack chip set.</li>
+<li>Hack CPU operation: executes instruction according to the Hack language specification
+<ul>
+<li>If includes D and A then read from/write into D register and A register</li>
+<li>If include @ x, then x is stored into A register and value is emitted by M register</li>
+<li>If RHS includes M, then value is read from M</li>
+<li>If LHS includes M, then ALU output is emitted by M</li>
+</ul></li>
+<li>Data Memory(RAM):
+<ul>
+<li>Address 0 to 16383 is data memory, RAM is implemented using a 16-bit 16K RAM chip</li>
+<li>Address 16384 to 24575 is screen memory map, screen is implemented using a built-in 8K chip featuring a raster display refresh side-effect</li>
+<li>Address 24576 is keyboard memory map, keyboard is implemented using a built-in chip featuring a keyboard capture side-effect</li>
+</ul></li>
+<li>Reset button</li>
+<li>Instruction Memory(ROM)
+<ul>
+<li>Implemented using the ROM32K chip</li>
+<li>Run a program on the Hack computer:
+<ul>
+<li>Load the program into the ROM using plug-and-play ROM chips or using hardware simulation with text-file programs</li>
+<li>Press reset button</li>
+<li>The program starts running <img src="/images/Nand/HackComputerImplementation.png"></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Project 5
+<ul>
+<li>Hardware Projects: <img src="/images/Nand/HardwareProjects.png"></li>
 </ul></li>
 </ol>
 
@@ -887,7 +1034,7 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-5"><span class="nav-number">5.</span> <span class="nav-text">Week 5</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -963,12 +1110,12 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">128k</span>
+    <span title="Symbols count total">131k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:56</span>
+    <span title="Reading time total">2:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
