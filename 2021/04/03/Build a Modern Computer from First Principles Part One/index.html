@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HackComputerImplementation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HardwareProjects.png">
 <meta property="article:published_time" content="2021-04-03T08:29:32.000Z">
-<meta property="article:modified_time" content="2021-04-11T13:32:12.863Z">
+<meta property="article:modified_time" content="2021-04-12T13:17:41.278Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Build a Modern Computer from First Principles Part One">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-11 21:32:12" itemprop="dateModified" datetime="2021-04-11T21:32:12+08:00">2021-04-11</time>
+                <time title="Modified: 2021-04-12 21:17:41" itemprop="dateModified" datetime="2021-04-12T21:17:41+08:00">2021-04-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>21k</span>
+              <span>24k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>19 mins.</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -937,6 +937,117 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 <li>Hardware Projects: <img src="/images/Nand/HardwareProjects.png"></li>
 </ul></li>
 </ol>
+<h1 id="week-6">Week 6</h1>
+<ol type="1">
+<li>Assembly Languages and Assemblers
+<ul>
+<li>Assembly language program =&gt; Assembler =&gt; Machine language program =&gt; Hack computer</li>
+<li>Basic assembler logic:
+<ul>
+<li>Repeat:
+<ul>
+<li>Read the next assembly language command, i.e., read next line ignoring whitespace</li>
+<li>Break it into the different fields of which it is composed</li>
+<li>Lookup the binary code for each field</li>
+<li>Combine theses codes into a single machine language command</li>
+<li>Output this machine language command</li>
+</ul></li>
+<li>Until EOF reached</li>
+<li>Symbols should be replaced with their addresses in the program, so the assembler needs to maintain a symbol-address table.
+<ul>
+<li>For a variable, add it to the table if it is not in the label, otherwise simply look it up in the table</li>
+<li>For a label, it could use forward reference, which means one can refer to a label before it is declared. There are two ways to deal with forward reference, the first is to leave blank until label declaration appears and then fix; the second is run the program for 2 times, add each label into the table for the first pass, and run other parts for the second pass.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The Hack Assembly Language
+<ul>
+<li>Language:
+<ul>
+<li>A-instruction</li>
+<li>C-instruction</li>
+<li>Symbols</li>
+</ul></li>
+<li>Assembler:
+<ul>
+<li>Basic one: translate symbol-less Hack program</li>
+<li>Advanced one: able to handle symbols</li>
+</ul></li>
+</ul></li>
+<li>The Assembly Process-Handling Instructions
+<ul>
+<li>Translating A-instructions <code>@ value</code>
+<ul>
+<li>If the value is a decimal constant, generate the equivalent 15-bit binary constant</li>
+<li>If the value is a symbol, later in the advanced assembler</li>
+</ul></li>
+<li>Translating C-instructions <code>dest = comp; jump</code>
+<ul>
+<li>The binary form is simply <code>1 1 1 a c1 c2 c3 c4 c5 c6 d1 d2 d3 j1 j2 j3</code></li>
+</ul></li>
+<li>The overall assembly logic:
+<ul>
+<li>For each instruction:
+<ul>
+<li>Parse the instruction: break it into its underlying fields</li>
+<li>A-instruction: translate the decimal value into a binary value</li>
+<li>C-instruction: for each field in the instruction, generate the corresponding binary code</li>
+<li>Assemble the translated binary codes into a complete 16-bit machine instruction</li>
+<li>Write the 16-bit instruction to the output file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The Assembly Processing-Handling Symbols
+<ul>
+<li>Symbols:
+<ul>
+<li>Variable symbols: represent memory locations where the programmer wants to maintain values</li>
+<li>Label symbols: represent destinations of goto instructions</li>
+<li>Pre-defined symbols: represent special memory locations</li>
+</ul></li>
+<li>Pre-defined symbols:
+<ul>
+<li>Hack language has 23 pre-defined symbols that are only used in A-instructions</li>
+<li>Simply replace the symbols with is values</li>
+</ul></li>
+<li>Label Symbols:
+<ul>
+<li>Replace the symbols with the address next to is declaration</li>
+</ul></li>
+<li>Variable Symbols:
+<ul>
+<li>A symbol that is not a pre-defined symbol and not a label is called a variable, each variable is assigned with a unique memory address</li>
+<li>If a variable appears for the first time, assign a unique memory address for it. If not, replace it with the assigned memory address</li>
+</ul></li>
+<li>Symbol Table:
+<ul>
+<li>Create an empty symbol table, and add all pre-defined symbols into the table</li>
+<li>Scan the whole program, this procedure is called the first pass. Add all labels into the table during the process</li>
+<li>Scan the whole program again, and add all variable symbols</li>
+<li>To resolve a symbol, look up its value in the symbol table</li>
+</ul></li>
+<li>The Assembly Process:
+<ul>
+<li>Initialization：
+<ul>
+<li>Construct an empty symbol table</li>
+<li>Add the pre-defined symbols to the symbol table</li>
+</ul></li>
+<li>First pass:
+<ul>
+<li>Scan the program</li>
+<li>For each instruction of the form <code>(XXX)</code>, add the pair <code>(xxx, address)</code> to the symbol table, where the address is the number of the instruction following <code>(XXX)</code></li>
+</ul></li>
+<li>Second pass:
+<ul>
+<li>Scan the program</li>
+<li>For A-instruction <code>@ symbol</code>, if the <code>(symbol, value)</code> is found, replace symbol with value. If not, add <code>(symbol, address)</code> to the symbol table, use address in instruction's translation, check next instruction</li>
+<li>For C-instruction, replace it with the translation</li>
+<li>Write the translated instruction into the output file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -1034,7 +1145,7 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-5"><span class="nav-number">5.</span> <span class="nav-text">Week 5</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-5"><span class="nav-number">5.</span> <span class="nav-text">Week 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-6"><span class="nav-number">6.</span> <span class="nav-text">Week 6</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1110,12 +1221,12 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">131k</span>
+    <span title="Symbols count total">135k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:01</span>
+    <span title="Reading time total">2:02</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
