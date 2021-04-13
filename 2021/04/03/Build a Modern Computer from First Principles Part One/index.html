@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HackComputerImplementation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Nand/HardwareProjects.png">
 <meta property="article:published_time" content="2021-04-03T08:29:32.000Z">
-<meta property="article:modified_time" content="2021-04-12T13:17:41.278Z">
+<meta property="article:modified_time" content="2021-04-13T07:14:19.568Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Build a Modern Computer from First Principles Part One">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-12 21:17:41" itemprop="dateModified" datetime="2021-04-12T21:17:41+08:00">2021-04-12</time>
+                <time title="Modified: 2021-04-13 15:14:19" itemprop="dateModified" datetime="2021-04-13T15:14:19+08:00">2021-04-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>24k</span>
+              <span>25k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>22 mins.</span>
+              <span>23 mins.</span>
             </span>
 
         </div>
@@ -1047,6 +1047,74 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
 </ul></li>
 </ul></li>
 </ul></li>
+<li>Developing a Hack Assembler
+<ul>
+<li>Sub-tasks that need to be done:
+<ul>
+<li>Reading and parsing commands</li>
+<li>Converting mnemonics to code</li>
+<li>Handling symbols using the symbol table</li>
+</ul></li>
+<li>Reading and parsing commands
+<ul>
+<li>Start reading a file with given name
+<ul>
+<li>Constructor for a Parser object that accepts a string specifying a file name</li>
+<li>Need to know how to read text files</li>
+</ul></li>
+<li>Move to the next command in the file
+<ul>
+<li>Detect if there are more instructions</li>
+<li>Get the next command</li>
+<li>Need to read one line at a time</li>
+<li>Need to skip whitespace including comments</li>
+</ul></li>
+<li>Get the fields of the current command
+<ul>
+<li>Know the type of the current command</li>
+<li>Easy access to the fields</li>
+</ul></li>
+</ul></li>
+<li>Translating Mnemonic to code
+<ul>
+<li>The way to translate A-instruction, C-instruction and symbols into binary code has already been discussed earlier</li>
+</ul></li>
+<li>The symbol table
+<ul>
+<li>The symbol translating has already been discussed earlier</li>
+</ul></li>
+</ul></li>
+<li>Project 6
+<ul>
+<li>The Hack Assembler
+<ul>
+<li>Contract:
+<ul>
+<li>HackAssembler: translates Hack assembly program into executable Hack binary code</li>
+<li>Source program is in a text file named <code>xxx.asm</code></li>
+<li>Generated code is written into a text file named <code>xxx.hack</code></li>
+<li>Assumption: <code>xxx.asm</code> is error-free</li>
+</ul></li>
+<li>Usage:
+<ul>
+<li><code>java HackAssembler xxx.asm</code></li>
+<li>The above command should create <code>xxx.hack</code> file</li>
+</ul></li>
+<li>Software architecture
+<ul>
+<li>Parser: unpacks each instruction into its underlying fields</li>
+<li>Code: translates each field into its corresponding binary value</li>
+<li>SymbolTable: manages the symbol table</li>
+<li>Main: initializes the I/O files and drives the process</li>
+</ul></li>
+<li>Staged development
+<ul>
+<li>Develop a basic assembler that translates assembly programs without symbols</li>
+<li>Develop an ability to handle symbols</li>
+<li>Morph the basic assembler into an assembler that can translate any assembly program</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -1221,12 +1289,12 @@ Since `AND` and `NOT` can be represented by `NAND`, according to the previous th
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">135k</span>
+    <span title="Symbols count total">136k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:02</span>
+    <span title="Reading time total">2:04</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
