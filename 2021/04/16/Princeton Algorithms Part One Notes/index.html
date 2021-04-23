@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Percolation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/ThresholdPercolation.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-04-23T13:28:29.589Z">
+<meta property="article:modified_time" content="2021-04-23T15:49:01.915Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-23 21:28:29" itemprop="dateModified" datetime="2021-04-23T21:28:29+08:00">2021-04-23</time>
+                <time title="Modified: 2021-04-23 23:49:01" itemprop="dateModified" datetime="2021-04-23T23:49:01+08:00">2021-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,14 +222,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>18k</span>
+              <span>21k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>16 mins.</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -575,14 +575,77 @@ Books: Algorithms(4th edition)
 </ul></li>
 <li>Selection Sort
 <ul>
-<li>Idea: get an ascending array
+<li>Idea to get an ascending array
 <ul>
 <li>In iteration i, find index <code>min</code> of smallest remaining entry</li>
 <li>Swap <code>array[i]</code> and <code>array[min]</code></li>
-<li>The part on the left side of i is an invariant, that is, they are sorted</li>
+<li>The part on the left side of i is an invariant, that is, the entries are sorted</li>
 </ul></li>
-<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = items.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> min = i;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (items[j] &lt; items[min]&gt;) &#123;</span><br><span class="line">          min = j;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      Comparable item = items[min];</span><br><span class="line">      items[min] = items[i];</span><br><span class="line">      items[i] = item;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Selection sort has quadratic compares and linear exchanges, so it's quadratic time</li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = items.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> min = i;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (items[j].compareTo(items[min]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          min = j;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      Comparable item = items[min];</span><br><span class="line">      items[min] = items[i];</span><br><span class="line">      items[i] = item;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>For an array with size <span class="math inline">\(N\)</span>, selection sort takes about <span class="math inline">\(\frac{N^2}{2}\)</span> comparisons and about <span class="math inline">\(N\)</span> exchanges. No matter whether the input is sorted or totally unsorted, the complexity of selection sort is always quadratic</li>
+</ul></li>
+<li>Insertion Sort
+<ul>
+<li>Idea to get an ascending array
+<ul>
+<li>In iteration i, swap <code>array[i]</code> with each larger entry to its left</li>
+<li>The part on the left side of i is an invariant, that is, the entries are sorted</li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = items.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (items[j].compareTo(items[i]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          Comparable item = items[j];</span><br><span class="line">          items[j] = items[i];</span><br><span class="line">          items[i] = item;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>For a randomly-ordered array with <span class="math inline">\(N\)</span> distinct keys, insertion sort uses about <span class="math inline">\(\frac{N^2}{4}\)</span> comparisons and about <span class="math inline">\(\frac{N^2}{4}\)</span> exchanges on average.</li>
+<li>For an ordered array, insertion sort makes <span class="math inline">\(N - 1\)</span> comparisons and <span class="math inline">\(0\)</span> exchanges</li>
+<li>For an reversely-ordered array, insertion sort makes about <span class="math inline">\(\frac{N^2}{2}\)</span> comparisons and about <span class="math inline">\(\frac{N^2}{4}\)</span> exchanges</li>
+</ul></li>
+<li>Shell Sort
+<ul>
+<li>Idea to get an ascending array
+<ul>
+<li>Move entries more than one position at a time by h-sorting the array</li>
+<li>Use insertion sort in h-sorting: for large h, the subarray is small, so sorting can be fast, for small h, the array is nearly sorted, to insertion sort is fast</li>
+<li>A m-sorted array is still m-sorted after being n-sorted</li>
+<li>The general chosen h is <span class="math inline">\(h = 3 * h + 1\)</span></li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShellSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = items.length;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (h &lt; N /<span class="number">3</span>) &#123;</span><br><span class="line">      h = <span class="number">3</span> * h + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (h &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = h; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= h &amp;&amp; items[j].compareTo(items[j - h]) &lt; <span class="number">0</span>; j -= h) &#123;</span><br><span class="line">          Comparable item = items[j];</span><br><span class="line">          items[j] = items[j - h];</span><br><span class="line">          items[j - h] = item;</span><br><span class="line">        &#125;</span><br><span class="line">        h = h / <span class="number">3</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The worst-case number of comparisons used by shell sort with <span class="math inline">\(3 * h + 1\)</span> increments is <span class="math inline">\(O(N^{\frac{3}{2}})\)</span></li>
+<li>Shell sort is faster than selection sort and insertion sort, the larger the array is, the better the performance is</li>
+</ul></li>
+<li>Shuffling Sort
+<ul>
+<li>Initial idea to get a randomized shuffle of an array
+<ul>
+<li>Generate a random real number for each array entry</li>
+<li>Sort the array</li>
+</ul></li>
+<li>Shuffle sort produces a uniformly random permutation of the input array, provided no duplicate values</li>
+<li>Knuth shuffle in linear time
+<ul>
+<li>In iteration i, pick integer r between 0 and i uniformly at random</li>
+<li>Swap <code>array[r]</code> and <code>array[i]</code></li>
+<li>The part on the left side of i is an invariant, that is, the entries are uniformly randomized</li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShuffleSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = items.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = StdRandom.uniform(i + <span class="number">1</span>); <span class="comment">// Uniform random number in [0, i]</span></span><br><span class="line">      Comparable item = items[r];</span><br><span class="line">      items[r] = items[i];</span><br><span class="line">      items[i] = item;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Convex Hull
+<ul>
+<li>Some equivalent definitions of a convex hull
+<ul>
+<li>The smallest perimeter fence enclosing a set of points</li>
+<li>The smallest convex set containing all the points</li>
+<li>The smallest area convex polygon enclosing the points</li>
+<li>The convex polygon enclosing the points, whose vertices are points in set</li>
+</ul></li>
+<li>Output: sequence of vertices in counterclockwise order</li>
+<li>Fact
+<ul>
+<li>Can traverse the convex hull by making only counterclockwise turns</li>
+<li>The vertices of convex hull appear in increasing order of polar angle with respect to point p with lowest y-coordinate</li>
+</ul></li>
+<li>Graham Scan
+<ul>
+<li>Choose point p with smallest y-coordinate</li>
+<li>Sort points by polar angle with p</li>
+<li>Consider points in order, discard unless it creates a counterclockwise turn</li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ol>
@@ -762,12 +825,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">155k</span>
+    <span title="Symbols count total">158k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:21</span>
+    <span title="Reading time total">2:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
