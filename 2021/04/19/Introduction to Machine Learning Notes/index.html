@@ -28,8 +28,13 @@
 <meta property="og:description" content="Course Name: Introduction to Machine Learning   Course Website: Coursera  Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kevin Liang">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/SigmoidFunction.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/LogisticRegression.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/MultilayerPerceptron.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/DeepLearning.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/MultilayerPerceptronInterception.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/CNNLayers.png">
 <meta property="article:published_time" content="2021-04-18T16:37:07.000Z">
-<meta property="article:modified_time" content="2021-04-19T11:44:47.331Z">
+<meta property="article:modified_time" content="2021-04-26T15:15:41.407Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -190,10 +195,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-04-19 00:37:07 / Modified: 19:44:47" itemprop="dateCreated datePublished" datetime="2021-04-19T00:37:07+08:00">2021-04-19</time>
+              <time title="Created: 2021-04-19 00:37:07" itemprop="dateCreated datePublished" datetime="2021-04-19T00:37:07+08:00">2021-04-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-26 23:15:41" itemprop="dateModified" datetime="2021-04-26T23:15:41+08:00">2021-04-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -210,14 +221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.2k</span>
+              <span>6.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -264,6 +275,161 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 <li>Interpretation of Logistic Regression
 <ul>
 <li>Digit recognition problem on the MNIST Data Set: decompose the handwritten number figures into pixels and convert the color into a number for each pixel, then regard the training set as the set of numbers for each figure, run a logistic regression on the training set and use the result to distinguish which number is written</li>
+</ul></li>
+<li>Motivation for Multilayer Perceptron
+<ul>
+<li>Linear classifiers can only represent limited relationships, we often want to use a classifier thant can handle non-linearities</li>
+</ul></li>
+</ul></li>
+<li>Multilayer Perceptron
+<ul>
+<li><p>Concepts</p>
+<ul>
+<li>Logistic regression: M features of data =&gt; a single filter =&gt; probability of a particular outcome <img src="/images/IntroML/LogisticRegression.png"></li>
+<li>Multilayer perceptron: M features of data =&gt; K filters =&gt; probability of K latent processes/features =&gt; probability of a particular outcome <img src="/images/IntroML/MultilayerPerceptron.png"></li>
+<li>The multilayer perceptron can be viewed as logistic regression on K latent features, rather than directly on the M components of raw data</li>
+</ul></li>
+<li><p>Math Model</p>
+<p><span class="math inline">\(z_{i1} = b_{01} + b_{11} x_{i1} + b_{21} x_{i2} + ... + b_{M1} x_{iM}\)</span>, <span class="math inline">\(\; p(y_i = 1|x_i, b_1) = \sigma(z_{i1})\)</span></p>
+<p><span class="math inline">\(z_{i2} = b_{02} + b_{12} x_{i1} + b_{22} x_{i2} + ... + b_{M2} x_{iM}\)</span>, <span class="math inline">\(\; p(y_i = 1|x_i, b_2) = \sigma(z_{i2})\)</span></p>
+<p><span class="math inline">\(\qquad \qquad \qquad \qquad \qquad \vdots\)</span></p>
+<p><span class="math inline">\(z_{iK} = b_{0K} + b_{1K} x_{i1} + b_{2K} x_{i2} + ... + b_{MK} x_{iM}\)</span>, <span class="math inline">\(\; p(y_i = 1|x_i, b_K) = \sigma(z_{iK})\)</span></p>
+<p><span class="math inline">\(\zeta_is = c_0 + c_1 \sigma(z_{i1}) + c_2 \sigma(z_{i2}) + ... + c_K \sigma(z_{iK})\)</span></p></li>
+<li><p>Deep Learning <img src="/images/IntroML/DeepLearning.png"></p>
+<ul>
+<li>Deep learning is a form of machine learning where a model has multiple layers of latent processes</li>
+</ul></li>
+<li><p>Multilayer Perceptron: Neural Network <img src="/images/IntroML/MultilayerPerceptronInterception.png"></p></li>
+<li><p>Transfer Learning</p>
+<ul>
+<li>Considering multiple likes and dislikes
+<ul>
+<li>The first-two layers look for topics and meta-topics, and thus can be used in models of multiple people, parameters "transferred" across all data, documents, and people</li>
+<li>The top layer characterizes specific people, parameters are different for each people</li>
+</ul></li>
+</ul></li>
+<li><p>Model Selection</p>
+<ul>
+<li>Bias-Variance trade-off
+<ul>
+<li>Variance: the more complex the model is, the bigger variance it has. The variation of outputs for different inputs of a model is the variance of the model</li>
+<li>Bias: the simpler the model is, the more biased it is</li>
+<li>Logistic regression: bigger bias, smaller variance</li>
+<li>Multilayer perceptron: smaller bias, bigger variance</li>
+</ul></li>
+<li>Logistic regression results in a linear classifier, while multilayer perceptron results in a non-linear classifier</li>
+</ul></li>
+<li><p>History of Neural Networks</p>
+<ul>
+<li>Seasons of Neural Networks:
+<ul>
+<li>1960 Multilayer Perceptron(MLP) 多层感知机</li>
+<li>1986 Back Propagation 反向传播(BP算法)</li>
+<li>1989 Convolutional Neural Network(CNN) 卷积神经网络</li>
+<li>1990 - 1994 Neural Nets in the Wild: insufficient training data</li>
+<li>1995 Long Short-Term Memory(LSTM) 长短期记忆网络</li>
+<li>1998 - 2005 More Neural Nets in the Wild: not good performance</li>
+<li>2005 - 2010 Banishment: no neural network at all because of bad performance</li>
+<li>2010 Rename: Deep Learning</li>
+<li>2013 CNN + GPU(parallel computation) + ImageNet(image dataset)</li>
+<li>2015 AlphaGo: based on CNN and Reinforcement Learning</li>
+</ul></li>
+<li>Occam's razor: all things being equal, the simplest solution tends to be the best one</li>
+</ul></li>
+</ul></li>
+<li>Convolutional Neural Networks
+<ul>
+<li><p>Hierarchical Structure of Images</p>
+<ul>
+<li>Picture(most complex) =&gt; high-level motifs =&gt; repeated sub-structures called sub-motifs =&gt; atomic elements(simplest) <img src="/images/IntroML/CNNLayers.png"></li>
+<li>Structures: edges, corners, textures, shapes, ...</li>
+</ul></li>
+<li><p>Convolution Filters</p>
+<ul>
+<li>Layer 1 Convolution: shift an atomic element to every possible location in an image, check the correlation between the atomic element and the local region, the process is the called the convolution, the correlations make a feature map. We do so for each atomic element to construct multiple feature maps</li>
+<li>Layer 2 Convolution: shift combination of atomic elements to every possible location in the feature maps. Construct layer 2 feature maps in such a way.</li>
+<li>Layer 3 Convolution: shift sub-motifs with layer 2 feature maps to construct layer 3 feature maps</li>
+</ul></li>
+<li><p>Convolutional Neural Network</p>
+<ul>
+<li>CNN classifier is based on layer 3 feature maps</li>
+</ul></li>
+<li><p>CNN Math Model</p></li>
+</ul></li>
+</ol>
+<ul>
+<li><p>Layer 1:</p>
+<p><span class="math inline">\(\quad M_n = f(I_n;\phi_1, ..., \phi_K)\)</span> where <span class="math inline">\(I_n\)</span> represents the ith image, and <span class="math inline">\(\phi_1,..., \phi_K\)</span> represents layer 1 filters</p></li>
+<li><p>Layer 2:</p></li>
+</ul>
+<p><span class="math inline">\(\quad L_n = f(M_n;\Psi_1, ..., \Psi_K)\)</span> where <span class="math inline">\(M_n\)</span> represents the ith layer 1 feature map, and <span class="math inline">\(\Psi_1,..., \Psi_K\)</span> represents layer 2 filters</p>
+<ul>
+<li>Layer 3:</li>
+</ul>
+<p><span class="math inline">\(\quad G_n = f(L_n;\omega_1, ..., \omega_K)\)</span> where <span class="math inline">\(L_n\)</span> represents the ith layer 2 feature map, and <span class="math inline">\(\omega_1,..., \omega_K\)</span> represents layer 3 filters</p>
+<ul>
+<li><p>Classifier:</p>
+<p><span class="math inline">\(\quad l_n = l(G_n;W)\)</span>s</p></li>
+<li><p>How the Model Learns</p>
+<ul>
+<li>We have labeled data <span class="math inline">\(\{I_n,\; y_n\}\)</span>, where <span class="math inline">\(y_n \in \{+1,\; -1\}\)</span></li>
+<li>Risk function of model parameters <span class="math inline">\(E(\Phi,\; \Psi,\; \Omega,\; W) = 1/N \sum {loss(y_n,\;l_n)}\)</span></li>
+<li>Find model parameters <span class="math inline">\(\hat{\Phi},\;\hat{\Psi},\;\hat{\Omega},\;\hat{W}\)</span> that minimize <span class="math inline">\(E(\Phi,\;\Psi,\;\Omega,\;W)\)</span></li>
+</ul></li>
+<li><p>Advantages of Hierarchical Model</p>
+<ul>
+<li>Top level motifs would be learned independently if we do not use hierarchy</li>
+<li>Sharing similarities allows more effective data use</li>
+<li>Facts
+<ul>
+<li>Learning is manifested by taking large quantities of labeled data</li>
+<li>Learning is the concept of estimating the model parameters so the predictions are consistent with true labels</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Applications in the Real World
+<ul>
+<li>CNN on Real Images</li>
+<li>Application in Use and Practice
+<ul>
+<li>Image Processing</li>
+<li>DL in Games</li>
+<li>Digit Recognition</li>
+</ul></li>
+<li>Deep Learning and Transfer Learning
+<ul>
+<li>Image analysis in radiology, ophthalmology, dermatology in medicine industry</li>
+<li>DL can access massive quantities of labeled data, but this not possible or way too expensive in medicine industry, so we need transfer learning here</li>
+<li>And we can sometimes even transfer parameters from models implemented in vast different areas</li>
+</ul></li>
+</ul></li>
+<li>PyTorch Basics
+<ul>
+<li>Conda commands
+<ul>
+<li><code>conda clean</code></li>
+<li><code>conda config</code></li>
+<li><code>conda create</code></li>
+<li><code>conda info</code></li>
+<li><code>conda install</code></li>
+<li><code>conda list</code></li>
+<li><code>conda remove</code></li>
+<li><code>conda update</code></li>
+<li><code>conda search</code></li>
+</ul></li>
+<li>For users from mainland China, you can add tsinghua channel to speed up</li>
+<li>Installation
+<ul>
+<li>Install some supporting dependencies: <code>conda install h5py imageio jupyter matplotlib numpy tqdm</code></li>
+<li>Install PyTorch: <code>conda install pytorch torchvision cpuonly -c pytorch</code></li>
+</ul></li>
+<li>Advantages of using PyTorch
+<ul>
+<li>Library functions</li>
+<li>Computational efficiency + GPU support</li>
+<li>Auto-differentiation</li>
+<li>Online community</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -440,12 +606,12 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">164k</span>
+    <span title="Symbols count total">173k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:29</span>
+    <span title="Reading time total">2:37</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
