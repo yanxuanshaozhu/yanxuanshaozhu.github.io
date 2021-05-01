@@ -35,8 +35,9 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Percolation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/ThresholdPercolation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Stability.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-04-26T15:51:54.245Z">
+<meta property="article:modified_time" content="2021-05-01T15:40:46.292Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -205,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-26 23:51:54" itemprop="dateModified" datetime="2021-04-26T23:51:54+08:00">2021-04-26</time>
+                <time title="Modified: 2021-05-01 23:40:46" itemprop="dateModified" datetime="2021-05-01T23:40:46+08:00">2021-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>30k</span>
+              <span>35k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>27 mins.</span>
+              <span>31 mins.</span>
             </span>
 
         </div>
@@ -755,6 +756,115 @@ Books: Algorithms(4th edition)
 <li>An inversion in an array <code>a[]</code> is a pair of entries <code>a[i]</code> and <code>a[j]</code> such that <code>i &lt; j</code> but <code>a[i] &gt; a[j]</code>. Given an array, design a linearithmic algorithm to count the number of inversions. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Obviously there is an O(n^2) solution, for i in range(len(a)), if a[j] &gt; a[i] for j in range(i + 1, len(a)), then count ++</span></span><br><span class="line"><span class="comment">// The following one is from https://www.youtube.com/watch?v=Vj5IOD7A6f8</span></span><br><span class="line"><span class="comment">//Idea inversion in a = recursive count (left half) + recursive count (right half) + merge count(left + right)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">    aux[k] = a[k];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> i = lo, j = mid + <span class="number">1</span>, count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt; mid)</span><br><span class="line">          a[k] = aux[j++];</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi)</span><br><span class="line">          a[k] = aux[i++];</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (aux[i].compareTo(aux[j]) &gt; <span class="number">0</span>) &#123; </span><br><span class="line">          a[k] = aux[j++];</span><br><span class="line">          count += mid - i + <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">          a[k] = aux[i++];</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">sort</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = lo + (hi - lo)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> count1 = sort(a, aux, lo, mid);</span><br><span class="line">    <span class="keyword">int</span> count2 = sort(a, aux, mid + <span class="number">1</span>, hi);</span><br><span class="line">    <span class="keyword">int</span> count3 = merge(a, aux, lo, mid, hi);</span><br><span class="line">    <span class="keyword">return</span> count1 + count2 + count3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inverseionCount</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">    Comparable[] aux = <span class="keyword">new</span> Comparable[a.length];</span><br><span class="line">    <span class="keyword">return</span> sort(a, aux, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
+<li>Quick Sort
+<ul>
+<li>Introduction
+<ul>
+<li>Ieda
+<ul>
+<li>Randomly shuffle the array</li>
+<li>Partition the array, so that for some j, <code>array[i]</code> is in place, no larger entry to the left of j, no smaller entry to the right of j</li>
+<li>Sort each piece recursively</li>
+</ul></li>
+<li>Partition
+<ul>
+<li>Phase I: repeat until i and j pointers cross
+<ul>
+<li>Scan i from left to right so long as <code>array[i] &lt; array[lo]</code></li>
+<li>Scan j from right to left so long as <code>array[j] &gt; array[lo]</code></li>
+<li>Exchange <code>array[i]</code> with <code>array[j]</code></li>
+</ul></li>
+<li>Phase II: when pointers cross.
+<ul>
+<li>Exchange <code>array[j]</code> with <code>array[lo]</code></li>
+</ul></li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(Comparable[] items, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> i = lo, j = hi + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (items[++i].compareTo(items[lo]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (i == hi) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (items[--j].compareTo(items[lo]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (j == lo) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      Comparable item = items[j];</span><br><span class="line">        items[j] = items[lo];</span><br><span class="line">        items[lo] = item;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (hi &lt;= lo) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> j = partition(items, lo, hi);</span><br><span class="line">      sort(items, lo, j - <span class="number">1</span>);</span><br><span class="line">      sort(items, j + <span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items)</span> </span>&#123;</span><br><span class="line">      StdRandom.shuffle(items);</span><br><span class="line">      sort(items, <span class="number">0</span>, items.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Implementation Comments
+<ul>
+<li>The partition in quick sort is in-place, compared with merge sort, quick sort does not take any extra space</li>
+<li>Testing whether the pointers cross is a bit trickier than it might seem, especially when there are duplicate keys</li>
+<li>Testing <code>j ==lo</code> is redundant, but testing <code>i == hi</code> is not</li>
+<li>Random shuffling is needed for performance guarantee</li>
+<li>When duplicates are present, it is better to stop on keys equal to the partitioning item's key</li>
+</ul></li>
+<li>Performance analysis
+<ul>
+<li>On average, quick sort makes <span class="math inline">\(\sim 2NlogN\)</span> comparisons and <span class="math inline">\(\sim \frac{1}{3}NlogN\)</span> exchanges</li>
+<li>In best cases, quick sort makes <span class="math inline">\(\sim NlogN\)</span> comparisons</li>
+<li>In worst cases, quick sort makes <span class="math inline">\(\sim \frac{1}{2} N^{2}\)</span> comparisons, randomly shuffling can avoid these situations</li>
+</ul></li>
+<li>Properties
+<ul>
+<li>Quick sort is an in-place sorting algorithm</li>
+<li>Quick sort is not stable</li>
+</ul></li>
+</ul></li>
+<li>Selection
+<ul>
+<li>Goal: given an array of <span class="math inline">\(N\)</span> items, find the <span class="math inline">\(k^{th}\)</span> largest</li>
+<li>Applications: order statistics, find the top k</li>
+<li>Quick-select
+<ul>
+<li>Partition array so that:
+<ul>
+<li>Entry <code>array[j]</code> is in place</li>
+<li>No larger entry to the left of j</li>
+<li>No larger entry to the right of j</li>
+</ul></li>
+<li>Repeat in one subarray, depending on j; finished when <code>j == k</code></li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Comparable <span class="title">select</span><span class="params">(Comparable[] items, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">  StdRandom.shuffle(items);</span><br><span class="line">  <span class="keyword">int</span> lo = <span class="number">0</span>, hi = items.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (hi &gt; lo) &#123;</span><br><span class="line">    <span class="keyword">int</span> j = partition(items, lo, hi);</span><br><span class="line">    <span class="keyword">if</span> (j &lt; k) &#123;</span><br><span class="line">      lo = j + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; k) &#123;</span><br><span class="line">      hi = j - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> items[k]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> items[k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Quick-select takes linear time on average</li>
+</ul></li>
+<li>Duplicate Keys
+<ul>
+<li>Merge sort with duplicate keys: always between <span class="math inline">\(\frac{1}{2}NlogN\)</span> and <span class="math inline">\(NlogN\)</span> comparisons</li>
+<li>Quick sort with duplicate keys: algorithm goes quadratic unless partitioning stops on equal keys</li>
+<li>Dijkstra three-way partitioning quick sort
+<ul>
+<li>Let v be partitioning item <code>items[lo]</code></li>
+<li>Scan i from left to right:
+<ul>
+<li>If <code>items[i] &lt; v</code>: exchange <code>items[lt]</code> with <code>items[i]</code>, increase both lt and i</li>
+<li>If <code>items[i] &gt; v</code>: exchange <code>items[gt]</code> with <code>items[i]</code>, decrease gt</li>
+<li>If <code>items[i] == v</code>: increase i</li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quick3Way</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] items, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (hi &lt;= lo) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> lt = lo, i = lo + <span class="number">1</span>, gt = hi;</span><br><span class="line">    Comparable v = items[lo];</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= gt) &#123;</span><br><span class="line">      <span class="keyword">int</span> cmpt = items[i].compareTo(v);</span><br><span class="line">      <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        Comparable item = items[i];</span><br><span class="line">        items[i] = items[lt];</span><br><span class="line">        items[lt] = item;</span><br><span class="line">        lt++;</span><br><span class="line">        i++;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        Comparable item = items[i];</span><br><span class="line">        items[i] = items[gt];</span><br><span class="line">        items[gt] = item;</span><br><span class="line">        gt--;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        i++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(items, lo, lt - <span class="number">1</span>);</span><br><span class="line">    sort(items, gt + <span class="number">1</span>, hi);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Quick sort with 3-way partitioning is entropy-optimal</li>
+<li>Randomized quick sort with 3-way partitioning reduces running time from linearithmic to linear in board class of applications</li>
+</ul></li>
+</ul></li>
+<li>System Sorts
+<ul>
+<li><code>Arrays.sort()</code>
+<ul>
+<li>Uses tuned quick sort for primitive types; uses tuned merge sort for objects. For objects, merge sort is stable and guarantees <span class="math inline">\(NlogN\)</span> performance, for primitive types, quick sort uses less memory and is faster in generals. If you deliberately create primitive inputs without proper shuffling, the <code>Arrays.sort()</code> with quick sort can fail.</li>
+<li>Has different method for each primitive type</li>
+<li>Has a method for data types that implements Comparable</li>
+<li>Has a method that uses a Comparator</li>
+</ul></li>
+<li>Which sort to choose
+<ul>
+<li>Internal sort:
+<ul>
+<li>Insertion sort, selection sort, bubble sort, shaker sort</li>
+<li>Quick sort, merge sort, heap sort, sample sort, shell sort</li>
+<li>Solitaire sort, red-black sort, splay sort, Yaroslavskiy sort, psort</li>
+</ul></li>
+<li>External sort: Poly-phase merge sort, cascade-merge, oscillating sort</li>
+<li>String/radix sorts: distribution, MSD, LSD, 3-way string quick sort</li>
+<li>Parallel sort:
+<ul>
+<li>Bitonic sort, Batcher even-odd sort</li>
+<li>Smooth sort, cube sort, column sort</li>
+<li>GPU sort</li>
+</ul></li>
+</ul></li>
+<li>Application attributes to consider: stable, parallel, deterministic, keys all distinct, multiple key types, linked list or arrays, large or small items, large or small items, is your array randomly ordered, need guarantee performance</li>
+<li>Sort summary <img src="/images/Algorithm/SortSummary.png"></li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -932,12 +1042,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">173k</span>
+    <span title="Symbols count total">177k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:37</span>
+    <span title="Reading time total">2:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
