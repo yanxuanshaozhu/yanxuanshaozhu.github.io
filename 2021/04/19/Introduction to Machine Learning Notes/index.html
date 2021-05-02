@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/MultilayerPerceptronInterception.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/CNNLayers.png">
 <meta property="article:published_time" content="2021-04-18T16:37:07.000Z">
-<meta property="article:modified_time" content="2021-04-26T15:15:41.407Z">
+<meta property="article:modified_time" content="2021-05-02T15:57:38.970Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-26 23:15:41" itemprop="dateModified" datetime="2021-04-26T23:15:41+08:00">2021-04-26</time>
+                <time title="Modified: 2021-05-02 23:57:38" itemprop="dateModified" datetime="2021-05-02T23:57:38+08:00">2021-05-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,14 +221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.1k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -433,6 +433,99 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 </ul></li>
 </ul></li>
 </ol>
+<h1 id="week-2">Week 2</h1>
+<ol type="1">
+<li>Logistic Regression as Running Example
+<ul>
+<li>How Do We Define Learning?
+<ul>
+<li>Define what is performance. Given data, find the best parameters that give us the best performance with least resources used</li>
+<li>Empirical risk minimization
+<ul>
+<li><p>A loss function defines a penalty for poor predictions</p></li>
+<li><p>Want to minimize average loss: <span class="math inline">\(b^{*} = \underset{b}{\operatorname{argmin}} \frac{1}{N}\sum\limits_{i = 1}^{N} l(y_{i},\sigma(z_{i}))\)</span></p>
+<p>where <span class="math inline">\(b^{*}\)</span> is the optimal parameters, <span class="math inline">\(\sigma(z_{i})\)</span> is the predicted probability, <span class="math inline">\(y_i\)</span> is the true label, we can use the negative log-likelihood function as the loss function, <span class="math inline">\(l(y_i, \sigma(z_i)) = -log(p(y_i|\sigma(z_i)))\)</span>.</p>
+<p>In binary classification problem, we have</p>
+<p><span class="math display">\[l(y,\sigma(z)) = -ylog(\sigma(z)) - (1 - y)log(1 - \sigma(z))\]</span></p></li>
+</ul></li>
+</ul></li>
+<li>How Do We Evaluate Our Networks?
+<ul>
+<li>We can use DL to calculate complex relationships, but models need to be validated</li>
+<li>Overfitting: when the learned model increases complexity to fit the observed training data too well but not predicts well in real world
+<ul>
+<li>Increase parameters, increase error rate</li>
+<li>The learned relationship is too complex for reality, so models and analyses are not generalized</li>
+</ul></li>
+<li>Validating process
+<ul>
+<li>Ideal way: collecting new real-world data is useful, but it costs way too much</li>
+<li>We can split existing data into separate groups, training data set, validation data set and testing data set.
+<ul>
+<li>Test set: never used to learn or fit parameter, can evaluate performance ot network, is should be used only once, reusing a test set will lead to bias</li>
+<li>Validation set: used to compare which approach is best, not used to learn parameters, use repeatedly to estimate the performance, can be used to pick the best performance model</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Learning via Gradient Descent
+<ul>
+<li>How Do We Learn Our Network?
+<ul>
+<li>Minimize <span class="math inline">\(b^* = agrmin f(b)\)</span> using gradient descent
+<ul>
+<li>Start with initial value <span class="math inline">\(b^0\)</span></li>
+<li>Run series of updates to move from <span class="math inline">\(b^k\)</span> to <span class="math inline">\(b^{k + 1}\)</span>, <span class="math inline">\(b^{k + 1} = b^{k} - a^{k} \nabla f(b^{k})\)</span>, where <span class="math inline">\(a^{k}\)</span> is the step size</li>
+<li>Repeat step 2 and step 3 until solution is good enough</li>
+</ul></li>
+</ul></li>
+<li>How Do We Handle Big Data?
+<ul>
+<li><p>Calculate the gradient requires looking at every single data point, which is unbearable</p>
+<p><span class="math display">\[\nabla\frac{1}{N}\sum\limits_{i = 1}^{N} l(y_{i},\sigma(z_{i})) = \frac{1}{N}\sum\limits_{i = 1}^{N} \nabla l(y_{i},\sigma(z_{i}))\]</span></p></li>
+<li><p>We use approximations to improve calculation speed vastly <span class="math display">\[\nabla l(y_{j},\sigma(z_{j})) \approx \frac{1}{N}\sum\limits_{i = 1}^{N} \nabla l(y_{i},\sigma(z_{i}))\]</span></p>
+<p>where j is a randomly picked point, this is called stochastic gradient descent. This can work because there is often redundant data</p></li>
+<li><p>Minimize <span class="math inline">\(b^* = agrmin f(b)\)</span> using stochastic gradient descent</p>
+<ul>
+<li>Start with initial value <span class="math inline">\(b^0\)</span></li>
+<li>Choose a random data entry j</li>
+<li>Estimate gradient <span class="math inline">\(\widehat{\nabla f}(b^{k})\)</span> by data point j</li>
+<li>Iteratively update: <span class="math inline">\(b^{k + 1} = b^{k} - a^{k} \widehat{\nabla f}(b^{k})\)</span></li>
+<li>Repeat step 2 to step 4 until solution is good enough</li>
+</ul></li>
+<li><p>In practice, we're often going to use a mini-batch. Which means that instead of using a single data example, we're going to run a few data examples to estimate the gradient and this will reduce variance.</p></li>
+</ul></li>
+<li>Early Stopping
+<ul>
+<li>Maximizing generalization of network is mismatched with our optimization goal, because the goal of optimization is to do as well as possible on our training set. Taken overfitting into account, it may be better to stop earlier.</li>
+<li>Early stopping:
+<ul>
+<li>Can check validation loss as we go</li>
+<li>Instead of optimizing to convergence, optimize until validation loss stops improving(during the optimization loop, check the validation loss, stop when loss stops improving)</li>
+<li>Helps save computational cost</li>
+<li>Will perform better in the real world</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Model Learning with PyTorch
+<ul>
+<li>Logistic Regression
+<ul>
+<li>MNIST Dataset
+<ul>
+<li>Prepare the data using <code>torchvision</code> package <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets, transforms</span><br><span class="line"></span><br><span class="line">mnist_train = datasets.MNIST(root=<span class="string">&quot;./datasets&quot;</span>, train=<span class="literal">True</span>, transform=transforms.ToTensor(), download=<span class="literal">True</span>)</span><br><span class="line">mnist_test = datasets.MNIST(root=<span class="string">&quot;./datasets&quot;</span>, train=<span class="literal">False</span>, transform=transforms.ToTensor(), download=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></li>
+<li>Use a DataLoader to take care of shuffling and batching instead of working directly with the dataset <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_loader = torch.utils.data.DataLoader(mnist_train, batch_size=<span class="number">100</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line">test_loader = torch.utils.data.DataLoader(mnist_test, batch_size=<span class="number">100</span>, shuffle=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Logistic Regression Model
+<ul>
+<li>The model <span class="math inline">\(Y = XW + b\)</span>, where <span class="math inline">\(Y \in \boldsymbol{R}^{m*c}\)</span>, <span class="math inline">\(X \in \boldsymbol{R}^{m*d}\)</span>, <span class="math inline">\(W \in \boldsymbol{R}^{d*c}\)</span>, <span class="math inline">\(b \in \boldsymbol{R}^{c}\)</span></li>
+<li>Initialization <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Randomly initialize weights W</span></span><br><span class="line">W = torch.randn(<span class="number">784</span>, <span class="number">10</span>)/np.sqrt(<span class="number">784</span>)</span><br><span class="line">W.requires_grad_()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize bias b as 0s</span></span><br><span class="line">b = torch.zeros(<span class="number">10</span>, requires_grad=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></li>
+<li>Calculate probabilities <span class="math inline">\(p(y_{i}) = \frac{exp(y_{i})}{\sum_{j} exp(y_{j})}\)</span> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Option 1: Softmax to probabilities from equation</span></span><br><span class="line">py_eq = torch.exp(y) / torch.<span class="built_in">sum</span>(torch.exp(y), dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: Softmax to probabilities with torch.nn.functional</span></span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line">py = F.softmax(y, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
+<li>Cross-Entropy Loss: <span class="math inline">\(H_{y^{&#39;}}(y) = \sum_{i}y^{&#39;}_{i}log(y_{i})\)</span>, where <span class="math inline">\(y_{i}\)</span> is the model predicted value, and <span class="math inline">\(y^{&#39;}_{i}\)</span> is the true label <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cross-entropy loss from equation</span></span><br><span class="line">cross_entropy_eq = torch.mean(-torch.log(py_eq)[<span class="built_in">range</span>(labels.shape[<span class="number">0</span>]),labels])</span><br><span class="line">print(<span class="string">&quot;cross entropy from equation: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(cross_entropy_eq))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: cross-entropy loss with torch.nn.functional</span></span><br><span class="line">cross_entropy = F.cross_entropy(y, labels)</span><br><span class="line">print(<span class="string">&quot;cross entropy with torch.nn.functional.cross_entropy: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(cross_entropy))</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -530,7 +623,7 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -606,12 +699,12 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">177k</span>
+    <span title="Symbols count total">183k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:41</span>
+    <span title="Reading time total">2:46</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
