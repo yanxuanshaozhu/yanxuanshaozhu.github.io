@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/MultilayerPerceptronInterception.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/CNNLayers.png">
 <meta property="article:published_time" content="2021-04-18T16:37:07.000Z">
-<meta property="article:modified_time" content="2021-05-02T15:57:38.970Z">
+<meta property="article:modified_time" content="2021-05-03T07:37:59.328Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -132,17 +132,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">15</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">16</span></a>
 
   </li>
   </ul>
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-02 23:57:38" itemprop="dateModified" datetime="2021-05-02T23:57:38+08:00">2021-05-02</time>
+                <time title="Modified: 2021-05-03 15:37:59" itemprop="dateModified" datetime="2021-05-03T15:37:59+08:00">2021-05-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,14 +221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -354,22 +354,17 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 <ul>
 <li>CNN classifier is based on layer 3 feature maps</li>
 </ul></li>
-<li><p>CNN Math Model</p></li>
-</ul></li>
-</ol>
+<li><p>CNN Math Model</p>
 <ul>
 <li><p>Layer 1:</p>
 <p><span class="math inline">\(\quad M_n = f(I_n;\phi_1, ..., \phi_K)\)</span> where <span class="math inline">\(I_n\)</span> represents the ith image, and <span class="math inline">\(\phi_1,..., \phi_K\)</span> represents layer 1 filters</p></li>
-<li><p>Layer 2:</p></li>
-</ul>
-<p><span class="math inline">\(\quad L_n = f(M_n;\Psi_1, ..., \Psi_K)\)</span> where <span class="math inline">\(M_n\)</span> represents the ith layer 1 feature map, and <span class="math inline">\(\Psi_1,..., \Psi_K\)</span> represents layer 2 filters</p>
-<ul>
-<li>Layer 3:</li>
-</ul>
-<p><span class="math inline">\(\quad G_n = f(L_n;\omega_1, ..., \omega_K)\)</span> where <span class="math inline">\(L_n\)</span> represents the ith layer 2 feature map, and <span class="math inline">\(\omega_1,..., \omega_K\)</span> represents layer 3 filters</p>
-<ul>
+<li><p>Layer 2:</p>
+<p><span class="math inline">\(\quad L_n = f(M_n;\Psi_1, ..., \Psi_K)\)</span> where <span class="math inline">\(M_n\)</span> represents the ith layer 1 feature map, and <span class="math inline">\(\Psi_1,..., \Psi_K\)</span> represents layer 2 filters</p></li>
+<li><p>Layer 3:</p>
+<p><span class="math inline">\(\quad G_n = f(L_n;\omega_1, ..., \omega_K)\)</span> where <span class="math inline">\(L_n\)</span> represents the ith layer 2 feature map, and <span class="math inline">\(\omega_1,..., \omega_K\)</span> represents layer 3 filters</p></li>
 <li><p>Classifier:</p>
-<p><span class="math inline">\(\quad l_n = l(G_n;W)\)</span>s</p></li>
+<p><span class="math inline">\(\quad l_n = l(G_n;W)\)</span></p></li>
+</ul></li>
 <li><p>How the Model Learns</p>
 <ul>
 <li>We have labeled data <span class="math inline">\(\{I_n,\; y_n\}\)</span>, where <span class="math inline">\(y_n \in \{+1,\; -1\}\)</span></li>
@@ -386,8 +381,7 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 <li>Learning is the concept of estimating the model parameters so the predictions are consistent with true labels</li>
 </ul></li>
 </ul></li>
-</ul>
-<ol start="4" type="1">
+</ul></li>
 <li>Applications in the Real World
 <ul>
 <li>CNN on Real Images</li>
@@ -518,10 +512,22 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 </ul></li>
 <li>Logistic Regression Model
 <ul>
-<li>The model <span class="math inline">\(Y = XW + b\)</span>, where <span class="math inline">\(Y \in \boldsymbol{R}^{m*c}\)</span>, <span class="math inline">\(X \in \boldsymbol{R}^{m*d}\)</span>, <span class="math inline">\(W \in \boldsymbol{R}^{d*c}\)</span>, <span class="math inline">\(b \in \boldsymbol{R}^{c}\)</span></li>
-<li>Initialization <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Randomly initialize weights W</span></span><br><span class="line">W = torch.randn(<span class="number">784</span>, <span class="number">10</span>)/np.sqrt(<span class="number">784</span>)</span><br><span class="line">W.requires_grad_()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize bias b as 0s</span></span><br><span class="line">b = torch.zeros(<span class="number">10</span>, requires_grad=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></li>
-<li>Calculate probabilities <span class="math inline">\(p(y_{i}) = \frac{exp(y_{i})}{\sum_{j} exp(y_{j})}\)</span> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Option 1: Softmax to probabilities from equation</span></span><br><span class="line">py_eq = torch.exp(y) / torch.<span class="built_in">sum</span>(torch.exp(y), dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: Softmax to probabilities with torch.nn.functional</span></span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line">py = F.softmax(y, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
-<li>Cross-Entropy Loss: <span class="math inline">\(H_{y^{&#39;}}(y) = \sum_{i}y^{&#39;}_{i}log(y_{i})\)</span>, where <span class="math inline">\(y_{i}\)</span> is the model predicted value, and <span class="math inline">\(y^{&#39;}_{i}\)</span> is the true label <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cross-entropy loss from equation</span></span><br><span class="line">cross_entropy_eq = torch.mean(-torch.log(py_eq)[<span class="built_in">range</span>(labels.shape[<span class="number">0</span>]),labels])</span><br><span class="line">print(<span class="string">&quot;cross entropy from equation: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(cross_entropy_eq))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: cross-entropy loss with torch.nn.functional</span></span><br><span class="line">cross_entropy = F.cross_entropy(y, labels)</span><br><span class="line">print(<span class="string">&quot;cross entropy with torch.nn.functional.cross_entropy: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(cross_entropy))</span><br></pre></td></tr></table></figure></li>
+<li><p>The model <span class="math inline">\(Y = XW + b\)</span>, where <span class="math inline">\(Y \in \boldsymbol{R}^{m*c}\)</span>, <span class="math inline">\(X \in \boldsymbol{R}^{m*d}\)</span>, <span class="math inline">\(W \in \boldsymbol{R}^{d*c}\)</span>, <span class="math inline">\(b \in \boldsymbol{R}^{c}\)</span></p></li>
+<li><p>Initialization <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = images.view(-<span class="number">1</span>, <span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Randomly initialize weights W</span></span><br><span class="line">W = torch.randn(<span class="number">784</span>, <span class="number">10</span>)/np.sqrt(<span class="number">784</span>)</span><br><span class="line">W.requires_grad_()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize bias b as 0s</span></span><br><span class="line">b = torch.zeros(<span class="number">10</span>, requires_grad=<span class="literal">True</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># Linear transformation with W and b</span></span><br><span class="line">y = torch.matmul(x, W) + b</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Calculate probabilities <span class="math inline">\(p(y_{i}) = \frac{exp(y_{i})}{\sum_{j} exp(y_{j})}\)</span> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Option 1: Softmax to probabilities from equation</span></span><br><span class="line">py_eq = torch.exp(y) / torch.<span class="built_in">sum</span>(torch.exp(y), dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: Softmax to probabilities with torch.nn.functional</span></span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line">py = F.softmax(y, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Cross-Entropy Loss: <span class="math inline">\(H_{y^{&#39;}}(y) = \sum_{i}y^{&#39;}_{i}log(y_{i})\)</span>, where <span class="math inline">\(y_{i}\)</span> is the model predicted value, and <span class="math inline">\(y^{&#39;}_{i}\)</span> is the true label <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Option 1: Cross-entropy loss from equation</span></span><br><span class="line">cross_entropy_eq = torch.mean(-torch.log(py_eq)[<span class="built_in">range</span>(labels.shape[<span class="number">0</span>]),labels])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Option 2: cross-entropy loss with torch.nn.functional</span></span><br><span class="line">cross_entropy = F.cross_entropy(y, labels)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>The Backward Pass: update the model by changing the parameters in order to minimize the loss function</p>
+<p><span class="math display">\[\theta_{t + 1} = \theta_{t} - \alpha \nabla_{\theta}   \mathcal{L} \]</span></p>
+<p>where <span class="math inline">\(\theta\)</span> is the parameter(here is W and b), <span class="math inline">\(\alpha\)</span> is the learning rate(step size), and <span class="math inline">\(\nabla_{\theta}\mathcal{L}\)</span> is the gradient of our loss with respect to <span class="math inline">\(\theta\)</span> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Optimizer</span></span><br><span class="line">optimizer = torch.optim.SGD([W,b], lr=<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Model Training</p>
+<p>To train the model, we just need repeat what we just did for more minibatches from the training set. As a recap, the steps were:</p>
+<ol type="1">
+<li>Draw a minibatch</li>
+<li>Zero the gradients in the buffers for W and b</li>
+<li>Perform the forward pass (compute prediction, calculate loss)</li>
+<li>Perform the backward pass (compute gradients, perform SGD step) <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Iterate through train set minibatchs </span></span><br><span class="line"><span class="keyword">for</span> images, labels <span class="keyword">in</span> tqdm(train_loader):</span><br><span class="line">    <span class="comment"># Zero out the gradients</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Forward pass</span></span><br><span class="line">    x = images.view(-<span class="number">1</span>, <span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line">    y = torch.matmul(x, W) + b</span><br><span class="line">    cross_entropy = F.cross_entropy(y, labels)</span><br><span class="line">    <span class="comment"># Backward pass</span></span><br><span class="line">    cross_entropy.backward()</span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure></li>
+</ol></li>
+<li><p>Testing <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Testing</span></span><br><span class="line">correct = <span class="number">0</span></span><br><span class="line">total = <span class="built_in">len</span>(mnist_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="comment"># Iterate through test set minibatchs </span></span><br><span class="line">    <span class="keyword">for</span> images, labels <span class="keyword">in</span> tqdm(test_loader):</span><br><span class="line">        <span class="comment"># Forward pass</span></span><br><span class="line">        x = images.view(-<span class="number">1</span>, <span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line">        y = torch.matmul(x, W) + b</span><br><span class="line">        </span><br><span class="line">        predictions = torch.argmax(y, dim=<span class="number">1</span>)</span><br><span class="line">        correct += torch.<span class="built_in">sum</span>((predictions == labels).<span class="built_in">float</span>())</span><br><span class="line">    </span><br><span class="line">print(<span class="string">&#x27;Test accuracy: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(correct/total))</span><br></pre></td></tr></table></figure></p></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -564,7 +570,10 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
     <a href="/2021/04/16/Princeton%20Algorithms%20Part%20One%20Notes/" rel="prev" title="Princeton Algorithms Part One Notes">
       <i class="fa fa-chevron-left"></i> Princeton Algorithms Part One Notes
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/03/Some-LaTex/" rel="next" title="Some LaTex">
+      Some LaTex <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -639,20 +648,20 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -699,12 +708,12 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">183k</span>
+    <span title="Symbols count total">184k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:48</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
