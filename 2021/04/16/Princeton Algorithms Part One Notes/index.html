@@ -35,9 +35,10 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Percolation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/ThresholdPercolation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Stability.png">
-<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary1.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary2.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-03T17:46:50.200Z">
+<meta property="article:modified_time" content="2021-05-04T06:05:21.186Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -206,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-04 01:46:50" itemprop="dateModified" datetime="2021-05-04T01:46:50+08:00">2021-05-04</time>
+                <time title="Modified: 2021-05-04 14:05:21" itemprop="dateModified" datetime="2021-05-04T14:05:21+08:00">2021-05-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +225,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>39k</span>
+              <span>44k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>36 mins.</span>
+              <span>40 mins.</span>
             </span>
 
         </div>
@@ -862,7 +863,7 @@ Books: Algorithms(4th edition)
 </ul></li>
 </ul></li>
 <li>Application attributes to consider: stable, parallel, deterministic, keys all distinct, multiple key types, linked list or arrays, large or small items, large or small items, is your array randomly ordered, need guarantee performance</li>
-<li>Sort summary <img src="/images/Algorithm/SortSummary.png"></li>
+<li>Sort summary <img src="/images/Algorithm/SortSummary1.png"></li>
 </ul></li>
 <li>Problems
 <ul>
@@ -916,9 +917,9 @@ Books: Algorithms(4th edition)
 </tr>
 <tr class="odd">
 <td style="text-align: center;">goal</td>
-<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 </tr>
 </tbody>
 </table></li>
@@ -966,7 +967,7 @@ Books: Algorithms(4th edition)
 <li>Delete the maximum in a heap
 <ul>
 <li>Exchange root with node at the end(the smallest one), and then sink it down</li>
-<li>At most <span class="math inline">\(2logN\)</span> comparisons <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">delMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Key max = pq[<span class="number">1</span>];</span><br><span class="line">  pq[<span class="number">1</span>] = pq[N];</span><br><span class="line">  pq[N--] = item;</span><br><span class="line">  sink(<span class="number">1</span>);</span><br><span class="line">  pq[N + <span class="number">1</span>] = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>At most <span class="math inline">\(2logN\)</span> comparisons, for each level, 2 comparisons are needed, one to find the bigger child, one to determine whether a demotion is needed <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">delMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Key max = pq[<span class="number">1</span>];</span><br><span class="line">  pq[<span class="number">1</span>] = pq[N];</span><br><span class="line">  pq[N--] = item;</span><br><span class="line">  sink(<span class="number">1</span>);</span><br><span class="line">  pq[N + <span class="number">1</span>] = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
 <li><p>Binary Heal Java Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxPQ</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Keyp[] pq;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MaxPQ</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    pq = (Key[]) <span class="keyword">new</span> Comparable[capacity + <span class="number">1</span>];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> N == <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">while</span> (k &gt; <span class="number">1</span> &amp;&amp; pq[k /<span class="number">2</span>].compareTo(pq[k]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        Key item = pq[k / <span class="number">2</span>];</span><br><span class="line">        pq[k / <span class="number">2</span>] = pq[k];</span><br><span class="line">        pq[k] = item;</span><br><span class="line">        k = k / <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    pq[N++] = key;</span><br><span class="line">    swim(N);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= N) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span> * k;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; N &amp;&amp; pq[j].compareTo(pq[j + <span class="number">1</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (pq[k].compareTo(pq[j]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Key item = pq[k];</span><br><span class="line">        pq[k] = pq[j];</span><br><span class="line">        pq[j] = item;</span><br><span class="line">        k = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Key <span class="title">delMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Key max = pq[<span class="number">1</span>];</span><br><span class="line">    pq[<span class="number">1</span>] = pq[N];</span><br><span class="line">    pq[N--] = max;</span><br><span class="line">    sink(<span class="number">1</span>);</span><br><span class="line">    pq[N + <span class="number">1</span>] = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
@@ -1031,6 +1032,67 @@ Books: Algorithms(4th edition)
 </tr>
 </tbody>
 </table></li>
+</ul></li>
+<li>Heap Sort
+<ul>
+<li>Idea
+<ul>
+<li>Create max-heap with all N keys using bottom-up method, entries are indexed 1 to N</li>
+<li>Repeatedly remove the maximum key</li>
+</ul></li>
+<li>First pass: build heap using bottom-up method <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sink</span><span class="params">(Comparable[] items, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= n) &#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">2</span> * k;</span><br><span class="line">    <span class="keyword">if</span> (j &lt; n &amp;&amp; pq[j].compareTo(pq[j + <span class="number">1</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      j++;</span><br><span class="line">    &#125;</span><br><span class="line">    Comparable item = pq[k];</span><br><span class="line">    pq[k] = pq[j];</span><br><span class="line">    pq[j] = item;</span><br><span class="line">    k = j;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// heapify phase, we omit leaves, only consider root of sub-heap</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> k = n /<span class="number">2</span>; k &gt;= <span class="number">1</span>; k--) &#123;</span><br><span class="line">  sink(pq, k, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Second pass: remove the maximum, once at a time, leave it in array instead of nulling out <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (N &gt; <span class="number">1</span>) &#123;</span><br><span class="line">  Comparable item = pq[<span class="number">1</span>];</span><br><span class="line">  pq[<span class="number">1</span>] = pq[N];</span><br><span class="line">  pq[N] = item;</span><br><span class="line">  sink(pq, <span class="number">1</span>, --N);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Heap Sort Java Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] pq)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = pq.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = N / <span class="number">2</span>; k &gt;= <span class="number">1</span>; k--) &#123;</span><br><span class="line">      sink(pq, k, N);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (N &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      Comparable item = pq[<span class="number">1</span>];</span><br><span class="line">      pq[<span class="number">1</span>] = pq[N];</span><br><span class="line">      pq[N] = item;</span><br><span class="line">      sink(pq, <span class="number">1</span>, --N);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sink</span><span class="params">(Comparable[] items, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= n) &#123;</span><br><span class="line">      <span class="keyword">int</span> j = <span class="number">2</span> * k;</span><br><span class="line">      <span class="keyword">if</span> (j &lt; n &amp;&amp; pq[j].compareTo(pq[j + <span class="number">1</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        j++;</span><br><span class="line">      &#125;</span><br><span class="line">      Comparable item = pq[k];</span><br><span class="line">      pq[k] = pq[j];</span><br><span class="line">      pq[j] = item;</span><br><span class="line">      k = j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Proposition
+<ul>
+<li>Heap construction uses <span class="math inline">\(\leq 2N\)</span> comparisons and <span class="math inline">\(\leq N\)</span> exchanges</li>
+<li>Heap sort uses <span class="math inline">\(\leq 2 N log N + 2 N\)</span> comparisons and <span class="math inline">\(\leq N log N + N\)</span> exchanges</li>
+<li>Heap sort is the a in-place sorting algorithm with <span class="math inline">\(N log N\)</span> worst case(given a heap already), merge sort uses linear extra space, quick sort uses quadratic time in worst case</li>
+<li>Heap sort is optimal for both time and space, but inner loop is longer than quick sort, it makes poor use of cache memory and it's not stable</li>
+</ul></li>
+<li>Sort Summary <img src="/images/Algorithm/SortSummary2.png"></li>
+</ul></li>
+<li>Event-Driven Simulation
+<ul>
+<li>Goal: simulate the motion of <span class="math inline">\(N\)</span> moving particles that behave according to the laws of elastic collision</li>
+<li>Hard sphere model(billiard ball model)
+<ul>
+<li>N particles in motion, confined in the unit box.</li>
+<li>Particle i has known position <span class="math inline">\((rx_i, ry_i)\)</span>, velocity <span class="math inline">\((vx_i, vy_i)\)</span>, mass <span class="math inline">\(m_i\)</span>, and radius <span class="math inline">\(\sigma_i\)</span>.</li>
+<li>Particles interact via elastic collisions with each other and with the reflecting boundary.</li>
+<li>No other forces are exerted. Thus, particles travel in straight lines at constant speed between collisions.</li>
+</ul></li>
+<li>Simulation
+<ul>
+<li>Time-driven simulation: Discretize time into quanta of size <span class="math inline">\(\Delta t\)</span>. Update the position of each particle after every dt units of time and check for overlaps. If there is an overlap, roll back the clock to the time of the collision, update the velocities of the colliding particles, and continue the simulation. For <span class="math inline">\(N\)</span> particles during <span class="math inline">\(\Delta t\)</span> time, the time needed for simulation is proportional to <span class="math inline">\(\frac{N^{2}}{\Delta t}\)</span></li>
+<li>Event-driven simulation: We focus only on those times at which interesting events occur, that is to determine the ordered sequence of particle collisions. We maintain a priority queue of future events, ordered by time. At any given time, the priority queue contains all future collisions that would occur, assuming each particle moves in a straight line trajectory forever. As particles collide and change direction, we use lay strategy to remove the invalid events. The simulation process is:
+<ul>
+<li>Delete the impending event, i.e., the one with the minimum priority t.</li>
+<li>If the event corresponds to an invalidated collision, discard it. The event is invalid if one of the particles has participated in a collision since the time the event was inserted onto the priority queue.</li>
+<li>If the event corresponds to a physical collision between particles i and j:
+<ul>
+<li>Advance all particles to time t along a straight line trajectory.</li>
+<li>Update the velocities of the two colliding particles i and j according to the laws of elastic collision.</li>
+<li>Determine all future collisions that would occur involving either i or j, assuming all particles move in straight line trajectories from time t onwards. Insert these events onto the priority queue.</li>
+</ul></li>
+<li>If the event corresponds to a physical collision between particles i and a wall, do the analogous thing for particle i.</li>
+</ul></li>
+</ul></li>
+<li>Collision prediction
+<ul>
+<li><p>Between particle and wall. If a particle with velocity <span class="math inline">\((vx, vy)\)</span> collides with a wall perpendicular to x-axis, then the new velocity is <span class="math inline">\((-vx, vy)\)</span>; if it collides with a wall perpendicular to the y-axis, then the new velocity is <span class="math inline">\((vx, -vy)\)</span></p></li>
+<li><p>Between two particles.</p>
+<p>At <span class="math inline">\(t\)</span>, we have <span class="math inline">\((rx_i, ry_i)\)</span>, <span class="math inline">\((vx_i, vy_i)\)</span>, <span class="math inline">\(\sigma_i\)</span>, <span class="math inline">\(m_i\)</span>, <span class="math inline">\((rx_j, ry_j)\)</span>, <span class="math inline">\((vx_j, vy_j)\)</span>, <span class="math inline">\(\sigma_j\)</span>, <span class="math inline">\(m_j\)</span>. At <span class="math inline">\(t + \Delta t\)</span>, we have <span class="math inline">\((rx_{i}^{&#39;}, ry_{i}^{&#39;})\)</span>, <span class="math inline">\((vx_{i}^{&#39;}, vy_{i}^{&#39;})\)</span>, <span class="math inline">\(\sigma_{i}\)</span>, <span class="math inline">\(m_i\)</span>, <span class="math inline">\((rx_{j}^{&#39;}, ry_{j}^{&#39;})\)</span>, <span class="math inline">\((vx_{j}^{&#39;}, vy_{j}^{&#39;})\)</span>, <span class="math inline">\(\sigma_j\)</span>, <span class="math inline">\(m_j\)</span></p>
+<p><span class="math display">\[rx_{i}^{&#39;} = rx_{i} + \Delta t vx_{i}, \; ry_{i}^{&#39;} = ry_{i} + \Delta t vy_{i} \]</span> <span class="math display">\[rx_{j}^{&#39;} = rx_{j} + \Delta t vx_{j}, \; ry_{j}^{&#39;} = ry_{j} + \Delta t vy_{j} \]</span> <span class="math display">\[vx_{i}^{&#39;} = vx_{i} + \frac{J_{x}}{m_{i}}, \; vy_{i}^{&#39;} = vy_{i} + \frac{J_{y}}{m_{i}} \]</span> <span class="math display">\[vx_{j}^{&#39;} = vx_{j} + \frac{J_{x}}{m_{j}}, \; vy_{j}^{&#39;} = vy_{j} + \frac{J_{y}}{m_{j}} \]</span></p></li>
+</ul>
+where <span class="math inline">\(J = \frac{2m_{i}m_{j}(\Delta v \cdot \Delta r)}{\sigma (m_{i} + m_{j})}\)</span>, <span class="math inline">\(J_{x} = \frac{J\Delta rx}{\sigma}\)</span>, <span class="math inline">\(J_{y} = \frac{J \Delta ry}{\sigma}\)</span>, <span class="math inline">\(\Delta v = (\Delta vx, \Delta vy)\)</span>, <span class="math inline">\(\Delta r = (\Delta rx, \Delta ry)\)</span>, <span class="math inline">\(\sigma = \sigma_{i} + \sigma_{y}\)</span></li>
+<li>Java Implementation: I don't put the code here because they are too long, you can find them in the book or on the webpage for the book
+<ul>
+<li>Particle Class</li>
+<li>Event class</li>
+<li>CollisionSystem</li>
+</ul></li>
+<li>Proposition: for <span class="math inline">\(N\)</span> particles, it uses at most <span class="math inline">\(N^{2}\)</span> priority queue operations at initialization, it uses at most <span class="math inline">\(N\)</span> priority queue operations during collision</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1210,12 +1272,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">189k</span>
+    <span title="Symbols count total">194k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:52</span>
+    <span title="Reading time total">2:56</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
