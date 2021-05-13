@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary1.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary2.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-12T10:12:14.714Z">
+<meta property="article:modified_time" content="2021-05-13T05:15:31.552Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-12 18:12:14" itemprop="dateModified" datetime="2021-05-12T18:12:14+08:00">2021-05-12</time>
+                <time title="Modified: 2021-05-13 13:15:31" itemprop="dateModified" datetime="2021-05-13T13:15:31+08:00">2021-05-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1289,13 +1289,20 @@ Books: Algorithms(4th edition)
 <li>Initialize the root as the current node <code>curr</code></li>
 <li>While <code>curr</code> is not null, check if <code>curr</code> has a left child</li>
 <li>If <code>curr</code> does not have a left child, print <code>curr</code> and update it to <code>curr.right</code></li>
-<li>Else, make <code>curr</code> the right child of th rightmost node in <code>curr</code>'s left subtree(the rightmost node in <code>curr</code>'s left subtree is the inorder predecessor, we give it a link to <code>curr</code> if there is no link, and we remove the link if there has already been one)</li>
+<li>Else, make <code>curr</code> the right child of the rightmost node in <code>curr</code>'s left subtree(the rightmost node in <code>curr</code>'s left subtree is the inorder predecessor, we give it a link to <code>curr</code> if there is no link, and we remove the link if there has already been one)</li>
 <li>Update <code>curr</code> to his left node</li>
 </ul></li>
 <li>Video: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wGXB9OWhPTg">https://www.youtube.com/watch?v=wGXB9OWhPTg</a> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(Node root)</span> </span>&#123; </span><br><span class="line">  Node curr, prev; </span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (root == <span class="keyword">null</span>) </span><br><span class="line">    <span class="keyword">return</span>; </span><br><span class="line"></span><br><span class="line">  curr = root; </span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (curr != <span class="keyword">null</span>) &#123; </span><br><span class="line">    <span class="keyword">if</span> (curr.left == <span class="keyword">null</span>) &#123; </span><br><span class="line">      System.out.print(curr.key); </span><br><span class="line">      curr = curr.right; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123; </span><br><span class="line">      <span class="comment">// find the prev of curr </span></span><br><span class="line">      prev = curr.left; </span><br><span class="line">      <span class="comment">// for the first time, prev.right !=null is termination, for the second time, prev.right != current is termination</span></span><br><span class="line">      <span class="keyword">while</span> (prev.right != <span class="keyword">null</span> &amp;&amp; prev.right != curr) </span><br><span class="line">        prev = prev.right; </span><br><span class="line"></span><br><span class="line">      <span class="comment">// first time, link prev to current</span></span><br><span class="line">      <span class="keyword">if</span> (prev.right == <span class="keyword">null</span>) &#123; </span><br><span class="line">        prev.right = curr; </span><br><span class="line">        curr = curr.left; </span><br><span class="line">      &#125; </span><br><span class="line">      <span class="comment">// second time, remove the link</span></span><br><span class="line">      <span class="keyword">else</span> &#123; </span><br><span class="line">        prev.right = <span class="keyword">null</span>; </span><br><span class="line">        System.out.print(curr.key); </span><br><span class="line">        curr = curr.right; </span><br><span class="line">      &#125; </span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
 </ul></li>
+</ul></li>
+</ol>
+<h1 id="week-5">Week 5</h1>
+<ol type="1">
+<li>Balanced Search Trees
+<ul>
+<li>2-3 Search Trees</li>
 </ul></li>
 </ol>
 
@@ -1398,7 +1405,7 @@ Books: Algorithms(4th edition)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-5"><span class="nav-number">5.</span> <span class="nav-text">Week 5</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
