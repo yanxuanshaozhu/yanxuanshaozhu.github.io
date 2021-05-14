@@ -37,8 +37,9 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/Stability.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary1.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary2.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/RBT3Node.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-13T05:15:31.552Z">
+<meta property="article:modified_time" content="2021-05-14T15:40:06.072Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -207,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-13 13:15:31" itemprop="dateModified" datetime="2021-05-13T13:15:31+08:00">2021-05-13</time>
+                <time title="Modified: 2021-05-14 23:40:06" itemprop="dateModified" datetime="2021-05-14T23:40:06+08:00">2021-05-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,14 +226,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>57k</span>
+              <span>60k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>52 mins.</span>
+              <span>55 mins.</span>
             </span>
 
         </div>
@@ -1302,7 +1303,82 @@ Books: Algorithms(4th edition)
 <ol type="1">
 <li>Balanced Search Trees
 <ul>
-<li>2-3 Search Trees</li>
+<li>2-3 Search Trees
+<ul>
+<li>Allow 1 or 2 keys per node:
+<ul>
+<li>2-node: one key <code>key0</code>, two children, key(keys) on the left child should be smaller than <code>key0</code>, key(keys) on the right child should be larger than <code>key0</code></li>
+<li>3-node: two keys <code>key0</code> and <code>key1</code> (<code>key0 &lt; key1</code>), three children, key(keys) on the left child should be smaller than <code>key0</code>, key(keys) on the middle child should be between <code>key0</code>and <code>key1</code>, key(keys) on the right child should be larger than <code>key1</code></li>
+</ul></li>
+<li>Perfect balance: every path from root to null link has the same length</li>
+<li>Symmetric order: inorder traversal yields keys in ascending order</li>
+<li>Search
+<ul>
+<li>Compare search key against keys in node</li>
+<li>Find interval containing search key</li>
+<li>Follow associated link recursively</li>
+</ul></li>
+<li>Insert into a 2-node at bottom
+<ul>
+<li>Search for key as usual</li>
+<li>Replace 2-node with 3-node</li>
+</ul></li>
+<li>Insert into a 3-node at bottom
+<ul>
+<li>Add new key to 3-node to create temporary 4-node</li>
+<li>Move middle key in 4-node into parent, the temporary 4-node split into three 2-node</li>
+<li>Repeat up the tree, as necessary(if parent is already a 3-node)</li>
+<li>If you reach the root and it's a 4-node, split in into three 2-nodes, the middle one becomes the new root, the left and right one become the first two children</li>
+</ul></li>
+<li>Splitting a 4-node is a local transformation, it involves only constant number of operations</li>
+<li>Global properties in a 2-3 tree: 2-3 tree maintains symmetric order and perfect balance</li>
+<li>Performance: every path from root to null link has the same length</li>
+<li>Tree height:
+<ul>
+<li>Worst case all 2-nodes: <span class="math inline">\(log_{2} N\)</span></li>
+<li>Best case all 3-nodes: <span class="math inline">\(log_{3} N \approx 0.631 log_{2}N\)</span></li>
+<li>Between 12 and 20 for a million nodes</li>
+<li>Between 18 to 30 for a billion nodes</li>
+<li>Guaranteed logarithmic performance for search and insert</li>
+</ul></li>
+<li>Direct implementation could be complicated</li>
+</ul></li>
+<li>Red-Black BSTs
+<ul>
+<li>Paper: Guibas-Sedgewick 1979 and Sedgewick 2007</li>
+<li>Easy implementation of 2-3 tree:
+<ul>
+<li>Represent 2-3 tree as a BST</li>
+<li>Use internal left-leaning link as glue for 3-nodes <img src="/images/Algorithm/RBT3Node.png"></li>
+<li>Black links connect 2-nodes and 3-nodes, red links glue nodes within a 3-node</li>
+<li>Definition: a BST such that
+<ul>
+<li>No node has two read links connected to it</li>
+<li>Perfect black balance: every path from root to null link has the same number of black links</li>
+<li>Red links lean left</li>
+</ul></li>
+</ul></li>
+<li>Key property: 1-1 correspondence between 2-3 and LLRB(Left-Leaning Red-Black Tree)
+<ul>
+<li>Make each red links in LLRB horizontal and replace melt the associated 2-nodes into 3-nodes, the result is a 2-3 tree</li>
+</ul></li>
+<li>Search implementation: search is the same as for elementary BST(ignore color)<br>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Val <span class="title">get</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">  Node x = root;</span><br><span class="line">  <span class="keyword">while</span> (x != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      x = x.left;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      x = x.right;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> x.val;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>RBT representation
+<ul>
+<li>Since each node is pointed to by precisely one link from its parent, we can encode color of links in nodes <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> RED = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> BLACK = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Key key;</span><br><span class="line">  <span class="keyword">private</span> Value val;</span><br><span class="line">  <span class="keyword">private</span> Node left, right;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> color;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Key key, Value val, <span class="keyword">boolean</span> color, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.key = key;</span><br><span class="line">    <span class="keyword">this</span>.val = val;</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">    <span class="keyword">this</span>.size = size;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isRed</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x.color == RED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Left rotation: orient a temporarily right-leaning red link to lean left
+<ul>
+<li>Idea: oldRoot =&gt; newRoot.left, oldRoot.right =&gt; newRoot <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">rotateLeft</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">  Node temp = x.right;</span><br><span class="line">  x.right = temp.left;</span><br><span class="line">  temp.left = x;</span><br><span class="line">  temp.color = x.color;</span><br><span class="line">  x.color = RED;</span><br><span class="line">  temp.size = x.size;</span><br><span class="line">  x.size = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Invariants: maintains symmetric order and perfect black balance</li>
+</ul></li>
+<li>Right rotation: orient a left-leaning read link to temporarily lean right
+<ul>
+<li>Idea: oldRoot =&gt; newRoot.right, oldRoot.left =&gt; newRoot <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">rotateLeft</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">  Node temp = x.left;</span><br><span class="line">  x.left = temp.right;</span><br><span class="line">  temp.right = x;</span><br><span class="line">  temp.color = x.color;</span><br><span class="line">  x.color = RED;</span><br><span class="line">  temp.size = x.size;</span><br><span class="line">  x.size = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Invariants: maintains symmetric order and perfect black balance</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -1481,12 +1557,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">212k</span>
+    <span title="Symbols count total">215k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:13</span>
+    <span title="Reading time total">3:16</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
