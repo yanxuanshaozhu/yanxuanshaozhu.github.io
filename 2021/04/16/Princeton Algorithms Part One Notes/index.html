@@ -38,8 +38,11 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary1.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SortSummary2.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/RBT3Node.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BST1NodeInsertion.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BST2NodeInsertion.pngs">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BSTPerformance.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-14T15:40:06.072Z">
+<meta property="article:modified_time" content="2021-05-17T12:02:46.251Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -208,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-14 23:40:06" itemprop="dateModified" datetime="2021-05-14T23:40:06+08:00">2021-05-14</time>
+                <time title="Modified: 2021-05-17 20:02:46" itemprop="dateModified" datetime="2021-05-17T20:02:46+08:00">2021-05-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>60k</span>
+              <span>68k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>55 mins.</span>
+              <span>1:02</span>
             </span>
 
         </div>
@@ -1378,6 +1381,338 @@ Books: Algorithms(4th edition)
 <li>Idea: oldRoot =&gt; newRoot.right, oldRoot.left =&gt; newRoot <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">rotateLeft</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">  Node temp = x.left;</span><br><span class="line">  x.left = temp.right;</span><br><span class="line">  temp.right = x;</span><br><span class="line">  temp.color = x.color;</span><br><span class="line">  x.color = RED;</span><br><span class="line">  temp.size = x.size;</span><br><span class="line">  x.size = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Invariants: maintains symmetric order and perfect black balance</li>
 </ul></li>
+<li>Color flip: recolor to split a temporary 4-node
+<ul>
+<li>Idea: middleNode.color: black =&gt; red, leftNode.color: red =&gt; black, rightNode.color: red =&gt; black <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">flipColors</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">assert</span> !isRed(x);</span><br><span class="line">  <span class="function"><span class="keyword">assert</span> <span class="title">isRed</span><span class="params">(x.left)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">assert</span> <span class="title">isRed</span><span class="params">(x.right)</span></span>;</span><br><span class="line">  x.color = RED;</span><br><span class="line">  x.left.color = BLACK;</span><br><span class="line">  x.right.color = BLACK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Invariants: maintains symmetric order and perfect black balance</li>
+</ul></li>
+<li>Insertion in a LLRB tree：
+<ul>
+<li>Basic strategy: maintain 1-1 correspondence with 2-3 trees by applying elementary red-black BST operations</li>
+<li>Every time you insert a new node, it creates a red link with its parent</li>
+<li>Case 1: insert into a 2-node at the bottom
+<ul>
+<li>Prerequisite: insert into a tree with exactly 1 node <img src="/images/Algorithm/BST1NodeInsertion.png"></li>
+<li>Steps of insertion:
+<ul>
+<li>Do standard BST insert, color new link red</li>
+<li>If new red link is a right link, do left rotation</li>
+</ul></li>
+</ul></li>
+<li>Case 2: insert into a 3-node at the bottom
+<ul>
+<li>Prerequisite: insert into a tree with exactly 2 nodes <img src="/images/Algorithm/BST2NodeInsertion.pngs"></li>
+<li>Steps of insertion:
+<ul>
+<li>Do standard BST insertion, color new link red</li>
+<li>Rotate to balance the 4-node if needed</li>
+<li>Flip colors to pass red link up one level</li>
+<li>Rotate to make lean left if needed</li>
+<li>Repeat case 1 or 2 up the tree if needed</li>
+</ul></li>
+</ul></li>
+<li>Java implementation
+<ul>
+<li>Handle all cases:
+<ul>
+<li>Right child red, left child black: left rotation</li>
+<li>Left child, left-left grandchild red: right rotation</li>
+<li>Both children red: flip colors</li>
+</ul></li>
+<li>Java code <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">put</span><span class="params">(Node node, Key key, Value val)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (node == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Node(key, val, RED);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> cmp = key.compareTo(node.key);</span><br><span class="line">  <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    node.left = put(node.left, key, val);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    node.right = put(node.right, key, val);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">    node.val = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isRed(node.right) &amp;&amp; !isRed(node.left)) &#123;</span><br><span class="line">    node = rotateLeft(node);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isRed(node.left) &amp;&amp; isRed(node.left.left)) &#123;</span><br><span class="line">    node = rotateRight(node);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isRed(node.left) &amp;&amp; isRed(node.right)) &#123;</span><br><span class="line">    flipColors(node);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Preposition: height or LLRB trees is <span class="math inline">\(\leq 2logN\)</span> in the worst case</li>
+<li>Performance analysis:<br>
+<img src="/images/Algorithm/BSTPerformance.png"></li>
+</ul></li>
+<li>B-Trees
+<ul>
+<li>Definition: generalize 2-3 trees by allowing up to <span class="math inline">\(M - 1\)</span> key-link pairs per node
+<ul>
+<li>At least 2 key-link pairs at root</li>
+<li>At least <span class="math inline">\(M / 2\)</span> key-link pairs in other nodes</li>
+<li>External nodes contain client keys</li>
+<li>Internal nodes contain copies of keys to guide search</li>
+</ul></li>
+<li>Searching in a B-tree
+<ul>
+<li>Start at root</li>
+<li>Find interval for search key and take corresponding link</li>
+<li>Search terminates in external node</li>
+</ul></li>
+<li>Insertion in a B-tree
+<ul>
+<li>Search for new key</li>
+<li>Insert at bottom</li>
+<li>Split nodes with M key-link pairs on the way up the tree</li>
+</ul></li>
+<li>Balance in B-tree
+<ul>
+<li>Preposition: a search or an insertion in a B-tree of order <span class="math inline">\(M\)</span> with <span class="math inline">\(N\)</span> keys requires between <span class="math inline">\(log_{2} {M - 1}\)</span> and <span class="math inline">\(log_{M / 2} {N}\)</span> probs</li>
+<li>In practice, number of probs is at most 4(M = 1024, N = 62 billion, <span class="math inline">\(log_{M/2} {N} \leq 4\)</span>)</li>
+<li>Optimization: always keep root page in memory</li>
+</ul></li>
+<li>Balanced trees in the wild
+<ul>
+<li>Red-black trees are widely used as system symbol tables
+<ul>
+<li>Java: <code>java.util.TreeMap</code>, <code>java.util.TreeSet</code></li>
+<li>C++ STL: map, multimap, multiset</li>
+<li>Linux kernel: completely fair schedule, linux/rbtree.h</li>
+<li>Emacs: conservative stack scanning</li>
+</ul></li>
+<li>B-tree variants: B+ tree, B* tree, B# tree</li>
+<li>B-trees and variants are widely used for file systems and databases
+<ul>
+<li>Windows: NTFS</li>
+<li>Mac: HFS, HFS+</li>
+<li>Linux: ReiserFS, XFS, Ext3FS, JFS</li>
+<li>Databases: ORACLE, DB2, INGRES, SQL, PostgreSQL</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Geometric Applications of BSTs
+<ul>
+<li>1d Range Search
+<ul>
+<li><p>Extension of ordered symbol table</p>
+<ul>
+<li>Insert key-value pair</li>
+<li>Search for key <span class="math inline">\(k\)</span></li>
+<li>Delete key <span class="math inline">\(k\)</span></li>
+<li>Range search: find all keys between <span class="math inline">\(K_1\)</span> and <span class="math inline">\(k_2\)</span></li>
+<li>Range count: number of keys between <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span></li>
+</ul></li>
+<li><p>Application: database queries</p></li>
+<li><p>Geometric interpretation</p>
+<ul>
+<li>Keys are point on a line</li>
+<li>Find/count points in a given 1d interval</li>
+</ul></li>
+<li><p>Implementation:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">data structure</th>
+<th style="text-align: center;">insert</th>
+<th style="text-align: center;">range count</th>
+<th style="text-align: center;">range search</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">unordered array</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ordered array</td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R + logN\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">goal</td>
+<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(logN\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R + logN\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>N = number of keys, R = number of keys that match</p></li>
+<li><p>1d range search: BST implementation</p>
+<ul>
+<li>Find all keys between <code>lo</code> and <code>hi</code>
+<ul>
+<li>Recursively find all keys in left subtree if any could fall in range</li>
+<li>Check key in current node</li>
+<li>Recursively find all keys in right subtree if any could fall in range</li>
+</ul></li>
+<li>Preposition: running time proportional to <span class="math inline">\(R + log N\)</span><br>
+</li>
+</ul></li>
+</ul></li>
+<li>Linear Segment Insertion
+<ul>
+<li>Orthogonal line segment insertion search: given <span class="math inline">\(N\)</span> horizontal and vertical line segments, find all intersections. Non-degeneracy assumption: all x- and y- coordinates are distinct
+<ul>
+<li>Quadratic algorithm: check all pairs of line segments for intersection</li>
+<li>Sweep-line algorithm: sweep vertical line from left to right
+<ul>
+<li>x-coordinate define events</li>
+<li>horizontal-segment(left endpoint): insert y-coordinate into BST</li>
+<li>horizontal-segment(right endpoint): remove y-coordinate from BST</li>
+<li>vertical-segment: range search for interval of y-endpoints</li>
+</ul></li>
+<li>Preposition: the sweep-line algorithm takes time proportional to <span class="math inline">\(N log N + R\)</span> to find all <span class="math inline">\(R\)</span> intersections among <span class="math inline">\(N\)</span> orthogonal line segments</li>
+</ul></li>
+</ul></li>
+<li>Kd-Trees
+<ul>
+<li>2d orthogonal range search
+<ul>
+<li>Extension of ordered symbol-table to 2d keys
+<ul>
+<li>Insert a 2d key</li>
+<li>Delete a 2d key</li>
+<li>Search for a 2d key</li>
+<li>Range search: find all keys that lie in a 2d range</li>
+<li>Range count: number of keys that lie in a 2d range</li>
+</ul></li>
+<li>Geometric interpretation
+<ul>
+<li>Keys are point in the plane</li>
+<li>Find/count points in a given h-v rectangle</li>
+</ul></li>
+<li>Applications: networking, circuit design, databases</li>
+<li>2d orthogonal range search: grid implementation
+<ul>
+<li>Divide space into M-by-M grid of squares</li>
+<li>Create list of points contained in each square</li>
+<li>Use 2d array to directly index relevant square</li>
+<li>Insert: <code>add(x,y)</code> to list for corresponding square</li>
+<li>Range search: examine only squares that intersect 2d range query</li>
+</ul></li>
+<li>Grid implementation is a fast and simple solution for evenly-distributed points, but it does not perform well for when clustering appears</li>
+</ul></li>
+<li>Space-partitioning trees
+<ul>
+<li>Use a tree to represent a recursive subdivision of 2d space</li>
+<li>Grid: divide space uniformly into squares</li>
+<li>2d tree: recursively divide space into two half-planes</li>
+<li>Quadtree: recursively divide space into four quadrants</li>
+<li>BSP tree: recursively divide space into two regions</li>
+<li>Applications: Ray tracing, 2d range search, nearest neighbor search, collision detections, adaptive mesh generation</li>
+</ul></li>
+<li>2d tree
+<ul>
+<li>Data structure: BST, but alternate using x- and y-coordinates as key
+<ul>
+<li>Search gives rectangle containing point</li>
+<li>Insert further subdivides the plane</li>
+</ul></li>
+<li>Construction
+<ul>
+<li>First level vertical node and then horizontal nodes and then vertical nodes,...</li>
+<li>On the left of previous node =&gt; left subtree, on the right of previous node =&gt; right subtree</li>
+</ul></li>
+<li>Range search in a 2d tree: find all points in a query axis-aligned rectangle
+<ul>
+<li>Check if point in node lies in given rectangle</li>
+<li>Recursively search left/bottom if any could fall in rectangle</li>
+<li>Recursively search right/top if any could fall in rectangle</li>
+</ul></li>
+<li>Range search performance in a 2d tree
+<ul>
+<li>Typical case: <span class="math inline">\(R + log N\)</span></li>
+<li>Worst case: <span class="math inline">\(R + \sqrt{N}\)</span></li>
+</ul></li>
+<li>Nearest neighbor search in a 2d tree: find closest point to the query point
+<ul>
+<li>Algorithm
+<ul>
+<li>Check distance from point in node to the query point</li>
+<li>Recursively search left/bottom if it could contain a closer point</li>
+<li>Recursively search right/top if it could contain a closer point</li>
+<li>Organize method so that it starts from root</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Flocking boids [Craig Reynolds, 1986]
+<ul>
+<li>Boids, three simple rules lead to complex emergent flocking behavior
+<ul>
+<li>Collision avoidance: point away from k nearest boids</li>
+<li>Flock centering: point towards the center of mass of k nearest boids</li>
+<li>Velocity matching: update velocity to the average of k nearest boids</li>
+</ul></li>
+<li>Kd tree: recursively partition k-dimensional space into 2 half-spaces
+<ul>
+<li>Implementation: BST, but cycle through dimensions ala 2d trees</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Interval Search Trees
+<ul>
+<li>1d interval search: data structure to hold set of overlapping intervals
+<ul>
+<li>Insert an interval <code>(lo, hi)</code></li>
+<li>Search for an interval <code>(lo, hi)</code></li>
+<li>Delete an interval <code>(lo, hi)</code></li>
+<li>Interval intersection query: given an interval <code>(lo, hi)</code>, find all intervals in data structure that intersects <code>(lo, hi)</code></li>
+</ul></li>
+<li>1d interval search API <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntervalST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line">  IntervalST();                                 <span class="comment">// create interval search tree</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(Key lo, Key hi, Value val)</span></span>;          <span class="comment">// put interval-value pair into ST </span></span><br><span class="line">  <span class="function">Value <span class="title">get</span><span class="params">(Key lo, Key hi)</span></span>;                    <span class="comment">// value paired with given interval</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key lo, Key hi)</span></span>;                  <span class="comment">// delete the given interval</span></span><br><span class="line">  <span class="function">Iterable&lt;Value&gt; <span class="title">intersects</span><span class="params">(Key lo, Key hi)</span></span>;   <span class="comment">// all intervals that intersect the given interval</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Construction
+<ul>
+<li>BST each nodes contains an interval <code>(lo, hi)</code>, use left endpoint as BST key</li>
+<li>Store max endpoint in subtree rooted at node</li>
+</ul></li>
+<li>Insert an interval <code>(lo, hi)</code>
+<ul>
+<li>Insert into BST, using <code>lo</code> as the key</li>
+<li>Update max in each node on search path</li>
+</ul></li>
+<li>Find interval that intersects query interval <code>(lo, hi)</code>
+<ul>
+<li>If interval in node intersects query interval, return it</li>
+<li>Else if left subtree is null, go right</li>
+<li>Else is max endpoint in left subtree is less than <code>lo</code>, go right</li>
+<li>Else go left</li>
+</ul></li>
+</ul></li>
+<li>Interval search tree performance analysis</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">operation</th>
+<th style="text-align: center;">brute</th>
+<th style="text-align: center;">interval search tree</th>
+<th style="text-align: center;">best in memory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">insert interval</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">find interval</td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">delete interval</td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">find any one interval <br>that intersects <code>(lo, hi)</code></td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(log N\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">find all intervals <br>that intersects <code>(lo, hi)</code></td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R log N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R + log N\)</span></td>
+</tr>
+</tbody>
+</table></li>
+<li>Rectangle Intersection
+<ul>
+<li>Orthogonal rectangle intersection search: find all intersections among a set of <span class="math inline">\(N\)</span> orthogonal rectangles, assume all x- and y-coordinates are distinct</li>
+<li>Use sweep-line algorithm to reduce the problem to 1d interval search</li>
+<li>Proposition: sweep-line algorithm takes time proportional to <span class="math inline">\(N log N + R log N\)</span> to find <span class="math inline">\(R\)</span> intersections among a set of <span class="math inline">\(N\)</span> rectangles</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1557,12 +1892,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">215k</span>
+    <span title="Symbols count total">224k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:16</span>
+    <span title="Reading time total">3:23</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
