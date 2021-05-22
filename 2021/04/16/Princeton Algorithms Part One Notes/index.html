@@ -41,8 +41,10 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BST1NodeInsertion.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BST2NodeInsertion.pngs">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/BSTPerformance.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SeparateChaining.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/LinearProbing.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-22T07:28:46.722Z">
+<meta property="article:modified_time" content="2021-05-22T15:44:11.742Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -211,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-22 15:28:46" itemprop="dateModified" datetime="2021-05-22T15:28:46+08:00">2021-05-22</time>
+                <time title="Modified: 2021-05-22 23:44:11" itemprop="dateModified" datetime="2021-05-22T23:44:11+08:00">2021-05-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>68k</span>
+              <span>71k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:02</span>
+              <span>1:05</span>
             </span>
 
         </div>
@@ -1720,7 +1722,85 @@ Books: Algorithms(4th edition)
 <ol type="1">
 <li>Hash Tables
 <ul>
-<li></li>
+<li>Hash Tables
+<ul>
+<li>Hashing: save items in a key-indexed table
+<ul>
+<li>Hash function: method for computing array index from key</li>
+<li>Issues:
+<ul>
+<li>Computing the hash function</li>
+<li>Equality test: method for checking whether two keys are equal</li>
+<li>Collision resolution: algorithm and data structure to handle two keys that hash to the same array index</li>
+</ul></li>
+<li>Computing the hash function
+<ul>
+<li>Idealistic goal: scramble the keys uniformly to produce a table index
+<ul>
+<li>Efficiently computable</li>
+<li>Each table index equally likely for each key</li>
+</ul></li>
+<li>Java <code>hashCode()</code> function:
+<ul>
+<li>Requirement: if <code>x.equals(y)</code>, then <code>x.hashCode() == y.hashCode()</code></li>
+<li>Highly desirable: if <code>!x.equals(y)</code>, then <code>x.hashCode() != y.hashCode()</code></li>
+<li>Default implementation: memory address of x</li>
+<li>Customized implementations: Integer, Double, String, File, URL, Date, ...</li>
+<li>String: <span class="math inline">\(hash = s[0] * 31^{L - 1} + ... + s[L - 1] * 31 ^{0}\)</span></li>
+<li>User-defined types: users are on their own, a sample hash: <span class="math inline">\(hash = initialHash + \sum\limits_i {field_i.hashCode()}\)</span></li>
+</ul></li>
+<li>Modular hashing
+<ul>
+<li>Hash Code: an int between <span class="math inline">\(- 2^{31}\)</span> and <span class="math inline">\(2^{31} - 1\)</span></li>
+<li>Hash function: an int between <span class="math inline">\(0\)</span> and <span class="math inline">\(M - 1\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong, may be negative</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> key.hashCode() % M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Wrong, Math.abs() cannot convert - 2 ^31 to 2^31, because Integer.MAX_VALUE is 2 ^31 - 1</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Math.abs(key.hashCode()) % M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Right choice, use 0x7fffffff to remove sign</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (key.hashCode() &amp; <span class="number">0x7fffffff</span>) % M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Uniform hashing function: each key is equally likely to hash to an integer between <span class="math inline">\(0\)</span> and <span class="math inline">\(M - 1\)</span>
+<ul>
+<li>Bins and balls: throw balls uniformly at random into M bins
+<ul>
+<li>Birthday problem: expect two balls in the same bin after <span class="math inline">\(\sim \; \sqrt{\pi M / 2}\)</span> tosses</li>
+<li>Coupon collector: expect every bin has <span class="math inline">\(\geq 1\)</span> ball after <span class="math inline">\(\sim \; M ln M\)</span> tosses</li>
+<li>Load balancing: After M tosses, expect most loaded bin has <span class="math inline">\(\Theta(logM / log log M)\)</span> balls</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Separate Chaining
+<ul>
+<li>Collisions: two distinct keys hashing to same index
+<ul>
+<li>Birthday problem: cannot avoid collisions unless you have a ridiculous amount of memory</li>
+<li>Coupon collector + load balancing: collisions will be evenly distributed</li>
+</ul></li>
+<li>Separate chaining symbol table: use an array of <span class="math inline">\(M &lt; N\)</span> linked lists [H. P. Luhn, IBM 1953]
+<ul>
+<li>Hash: map key to integer i between <span class="math inline">\(0\)</span> and <span class="math inline">\(M - 1\)</span></li>
+<li>Insert: put at front of <span class="math inline">\(i^{th}\)</span> chain if not already here</li>
+<li>Search: need to search only <span class="math inline">\(i^{th}\)</span> chain</li>
+</ul></li>
+<li>Proposition: under uniform hashing assumption, prob that the number of keys in a list is within a constant factor of <span class="math inline">\(N/M\)</span> is extremely close to 1</li>
+<li>ST implementation: summary <img src="/images/Algorithm/SeparateChaining.png"></li>
+</ul></li>
+<li>Linear Probing
+<ul>
+<li>Collision resolution: open addressing [Amdahl-Boehme-Rocherster-Samuel, IBM 1953]
+<ul>
+<li>When a new key collides, find next empty slot, and put it there. Put at table index <code>i</code> if free, if not try <code>i + 1</code>, <code>i + 2</code>, etc.</li>
+<li>The size M must be greater than number of key-value pairs N, in practice, <span class="math inline">\(M \geq N * 2\)</span></li>
+</ul></li>
+<li>Clustering
+<ul>
+<li>A cluster is a contiguous block of items</li>
+<li>New keys likely to hash into middle of big clusters</li>
+</ul></li>
+<li>Proposition: under uniform hashing assumption, the average # of probes in a linear probing hash table of size <span class="math inline">\(M\)</span> that contains <span class="math inline">\(N = \alpha M\)</span> keys is: <span class="math inline">\(\sim \frac{1}{2}(1 + \frac{1}{1-\alpha})\)</span> for search hit, and <span class="math inline">\(\sim \frac{1}{2}(1 + \frac{1}{(1- \alpha)^{2}})\)</span> for search miss or insert. And the typical choice is that <span class="math inline">\(\alpha = M / N \approx \frac{1}{2}\)</span></li>
+<li>ST implementation: summary <img src="/images/Algorithm/LinearProbing.png"></li>
+</ul></li>
+<li>Hash Table Context
+<ul>
+<li>Java 1.1 use skip hashCode in String type, it's unsafe to do so</li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -1899,12 +1979,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">224k</span>
+    <span title="Symbols count total">227k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:23</span>
+    <span title="Reading time total">3:26</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
