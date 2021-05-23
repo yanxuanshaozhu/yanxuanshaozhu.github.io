@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/SeparateChaining.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Algorithm/LinearProbing.png">
 <meta property="article:published_time" content="2021-04-16T13:12:53.000Z">
-<meta property="article:modified_time" content="2021-05-22T15:44:11.742Z">
+<meta property="article:modified_time" content="2021-05-23T09:21:34.781Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part One">
 <meta name="twitter:card" content="summary">
@@ -213,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-22 23:44:11" itemprop="dateModified" datetime="2021-05-22T23:44:11+08:00">2021-05-22</time>
+                <time title="Modified: 2021-05-23 17:21:34" itemprop="dateModified" datetime="2021-05-23T17:21:34+08:00">2021-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>71k</span>
+              <span>73k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:05</span>
+              <span>1:06</span>
             </span>
 
         </div>
@@ -1800,6 +1800,59 @@ Books: Algorithms(4th edition)
 <li>Hash Table Context
 <ul>
 <li>Java 1.1 use skip hashCode in String type, it's unsafe to do so</li>
+<li>Algorithm complexity attacks
+<ul>
+<li>Uniform hashing assumption is important: aircraft control, nuclear reactor, pacemaker</li>
+<li>Denial-of-service attacks</li>
+<li>Diversion: one-way hash functions
+<ul>
+<li>Hard to find a key that will hash to a desired value</li>
+<li>Applications: digital fingerprint, message digest, storing passwords</li>
+</ul></li>
+<li>Hashing variations:
+<ul>
+<li>Two-probe hashing</li>
+<li>Double hashing</li>
+<li>Cuckoo hashing</li>
+</ul></li>
+<li>BST v.s. Hash tables
+<ul>
+<li>Hash tables
+<ul>
+<li>Simpler to code</li>
+<li>No effective alternative for unordered keys</li>
+<li>Faster for simple keys</li>
+<li>Better system support in Java for strings</li>
+</ul></li>
+<li>BST
+<ul>
+<li>Stronger performance guarantee</li>
+<li>Support for ordered ST operations</li>
+<li>Easier to implement <code>compareTo()</code> correctly than <code>equals()</code> and <code>hashCode()</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Symbol Table Applications
+<ul>
+<li>Sets: a collection of distinct keys
+<ul>
+<li>API <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SET</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;&gt; </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// create empty set</span></span><br><span class="line">  SET();</span><br><span class="line">  <span class="comment">// add the key to the set</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Key key)</span></span>;</span><br><span class="line">  <span class="comment">//is the key in the set?</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Key key)</span></span>;</span><br><span class="line">  <span class="comment">// remove the key from the set</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(Key key)</span></span>;</span><br><span class="line">  <span class="comment">// return the number of keys in the set</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// iterator through keys in the set</span></span><br><span class="line">  <span class="function">Iterator&lt;Key&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Dictionary Clients
+<ul>
+<li>Build a client to map key to its associated value</li>
+</ul></li>
+<li>Indexing Clients
+<ul>
+<li>Given a list of files specified, create an index so that you can efficiently find all files containing a given query string</li>
+</ul></li>
+<li>Sparse Vectors
+<ul>
+<li>For matrix vector multiplication, you can use <span class="math inline">\(O(N^{2})\)</span> for loop.</li>
+<li>Sparse vector: use symbol table representation(key = index, value = entry) rather than an array can be efficient(array representation space is proportional to N, ST representation is proportional to # of non-zeroes)</li>
+<li>Sparse matrix: each row is a sparse vector rather than an array, space is then proportional to number of non-zeroes plus N rather than <span class="math inline">\(N^{2}\)</span></li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1979,12 +2032,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">227k</span>
+    <span title="Symbols count total">230k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:26</span>
+    <span title="Reading time total">3:29</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

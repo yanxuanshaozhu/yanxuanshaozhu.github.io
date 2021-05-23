@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/MultilayerPerceptronInterception.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/IntroML/CNNLayers.png">
 <meta property="article:published_time" content="2021-04-18T16:37:07.000Z">
-<meta property="article:modified_time" content="2021-05-03T07:37:59.328Z">
+<meta property="article:modified_time" content="2021-05-23T15:26:44.951Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-03 15:37:59" itemprop="dateModified" datetime="2021-05-03T15:37:59+08:00">2021-05-03</time>
+                <time title="Modified: 2021-05-23 23:26:44" itemprop="dateModified" datetime="2021-05-23T23:26:44+08:00">2021-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,14 +221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>12k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>11 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -532,6 +532,67 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 </ul></li>
 </ul></li>
 </ol>
+<h1 id="week-3">Week 3</h1>
+<ol type="1">
+<li>Convolutional Neural Network Basics
+<ul>
+<li>Motivation: Diabetic Retinopathy
+<ul>
+<li>Diabetic retinopathy classification :
+<ul>
+<li><span class="math inline">\(sensitivity = \frac{number \; of \; true \; positives}{total \; number \; of \; positives \; in \; the \; dataset}\)</span></li>
+<li><span class="math inline">\(specificity = \frac{number \; of \; true \; negatives}{total \; number \; of \; negatives \; in \; the \; dataset}\)</span></li>
+</ul></li>
+<li>DL for image analysis: TSA screening</li>
+</ul></li>
+<li>Breakdown of the Convolution(1D and 2D)
+<ul>
+<li>Definition: <span class="math inline">\((f * g)(t) := \int\limits_{-\infty}^{\infty}{f(\tau)g(t - \tau)d\tau}\)</span></li>
+<li>1D spatial convolution example:
+<ul>
+<li><span class="math inline">\((f * g)[n] = \sum\limits_{m = - \infty}^{\infty} f[m]g[-(n+m)]\)</span></li>
+</ul></li>
+<li>2D spatial convolution is similar</li>
+</ul></li>
+</ul></li>
+<li>Core Components of the Convolutional Layer
+<ul>
+<li>Core elements:
+<ul>
+<li>Convolutional layers</li>
+<li>Activation functions</li>
+<li>Pooling layers</li>
+<li>Fully connected layers</li>
+</ul></li>
+<li>Convolutional layers:
+<ul>
+<li>Filter size: n by n filter</li>
+<li>Filter stride: if filter stride = n, then the filter moves n pixels on the image each time. The filter stride helps reduce the computational load by down-sampling the input</li>
+<li>Filter number: the number of filters determine the number of unique feature detectors that operate on the inputs</li>
+</ul></li>
+<li>Activation functions
+<ul>
+<li>An activation function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a layer of the network.</li>
+<li>Both linear activation function and non-linear activation function can be used. Non-linear activation functions increase the functional capacity of the neural network. Non-linear activations examples: sigmoid function, rectified linear unit(ReLU)</li>
+</ul></li>
+<li>Pooling and Fully Connected Layers
+<ul>
+<li>Functions of the pooling layer
+<ul>
+<li>Reduce computational complexity</li>
+<li>Combat overfitting</li>
+<li>Encourage translational invariance</li>
+</ul></li>
+<li>Fully Connected Layer
+<ul>
+<li>Flatten or vectorize the pooling layer</li>
+<li>Each neuron in the fully connected layer has connections to all of the upstream elements in the pooling layer</li>
+<li>Multiple latent fully connected layer can be built</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>CNN Implementation</li>
+</ol>
 
     </div>
 
@@ -632,7 +693,7 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -708,12 +769,12 @@ Instructor: Professor Lawrence Carin, Professor David Carlson, Timothy Dunn, Kev
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">227k</span>
+    <span title="Symbols count total">230k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:26</span>
+    <span title="Reading time total">3:29</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
