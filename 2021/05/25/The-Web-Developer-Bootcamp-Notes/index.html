@@ -28,7 +28,7 @@
 <meta property="og:description" content="Section 1: Course Orientation">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-24T16:21:21.000Z">
-<meta property="article:modified_time" content="2021-05-25T15:07:41.067Z">
+<meta property="article:modified_time" content="2021-05-26T15:02:28.636Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Development">
 <meta name="twitter:card" content="summary">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-05-25 00:21:21 / Modified: 23:07:41" itemprop="dateCreated datePublished" datetime="2021-05-25T00:21:21+08:00">2021-05-25</time>
+              <time title="Created: 2021-05-25 00:21:21" itemprop="dateCreated datePublished" datetime="2021-05-25T00:21:21+08:00">2021-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-26 23:02:28" itemprop="dateModified" datetime="2021-05-26T23:02:28+08:00">2021-05-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -208,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.2k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -384,7 +390,116 @@
 <li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Content --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
-<li>An Odd Assortment of Elements: HR, BR, Sup, &amp; Sub</li>
+<li>An Odd Assortment of Elements: HR, BR, Sup, &amp; Sub
+<ul>
+<li><code>&lt;hr&gt;</code> element: represents a thematic break between paragraph-level elements(one long separating line, the style of the line can be modified using CSS)
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Content --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Content --&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>&lt;br&gt;</code> element: produces a line break in text(carriage-return)
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Content --&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>&lt;sup&gt;</code> element: specifies inline text which is to be displayed as superscript for solely typographical reasons
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> / <span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>&lt;sub&gt;</code> element: specifies inline text which should be displayed as subscript for solely typographical reasons
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> / <span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Entity Codes
+<ul>
+<li>Entity codes: special codes in html that are used to display reserved characters(ones that normally would be invalid), or used in place of difficult to type characters</li>
+<li>Entity codes start with an ampersand(&amp;) and end with a semicolon(;)</li>
+<li>Some examples: <code>&amp;lt;</code> for <span class="math inline">\(\lt\)</span>, <code>&amp;gt;</code> for <span class="math inline">\(\gt\)</span>, ...</li>
+</ul></li>
+<li>Introduction to Semantic Markup
+<ul>
+<li>Some tags have similar function as that of <code>&lt;div&gt;</code>, but it's better to use them instead of <code>&lt;div&gt;</code>. Using these tags instead of <code>&lt;div&gt;</code> can better indicate the purpose of the codes</li>
+<li>Examples: <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></li>
+</ul></li>
+<li>Playing With Semantic Elements
+<ul>
+<li>Use more specific elements like: <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;nag&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;summary&gt;</code>, <code>&lt;details&gt;</code></li>
+<li><code>&lt;main&gt;</code> elements: represents the dominant content of the body of a document
+<ul>
+<li>A document mustn't have more than one <code>&lt;main&gt;</code> element that doesn't have the hidden attribute specified</li>
+</ul></li>
+<li><code>&lt;nav&gt;</code> element: represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents
+<ul>
+<li>Common examples of navigation sections are menus, tables of contents, and indexes</li>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">&quot;URL&quot;</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">&quot;URL&quot;</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>&lt;section&gt;</code> element: represents a generic standalone section of a document, which doesn't have a more specific semantic element to represent it</li>
+<li><code>&lt;article&gt;</code> element: represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication)</li>
+<li><code>&lt;aside&gt;</code> element: represents a portion of a document whose content is only indirectly related to the document's main content
+<ul>
+<li>Asides are frequently presented as sidebars or call-out boxes</li>
+</ul></li>
+<li><code>&lt;footer&gt;</code> element: represents a footer for its nearest sectioning content or sectioning root element.
+<ul>
+<li>A <code>&lt;footer&gt;</code> typically contains information about the author of the section, copyright data or links to related documents</li>
+</ul></li>
+<li><code>&lt;time&gt;</code> element: represents a specific period in time
+<ul>
+<li>It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders</li>
+<li><code>&lt;time&gt;</code> is an inline element<br>
+</li>
+</ul></li>
+</ul></li>
+</ol>
+<ul>
+<li><code>&lt;figure&gt;</code> element: represents self-contained content, potentially with an optional caption, which is specified using the figcaption element
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/media/cc0-images/elephant-660-480.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Elephant at sunset&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>An elephant at sunset<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<ol start="7" type="1">
+<li>VSCode Tip: Emmet
+<ul>
+<li>Emmet is a plugin for many popular text editors which greatly improves HTML &amp; CSS workflow</li>
+<li>Child &gt;: <code>div&gt;p</code> means a paragraph inside a div tag</li>
+<li>Sibling +: <code>div+p</code> means a div tag then a paragraph tag</li>
+<li>Climb-up ^: <code>div&gt;p^div</code> means two div tags, and a paragraph inside the first div tag</li>
+<li>Multiplication *: <code>ul&gt;li*5</code> means an unordered list with 5 entries</li>
+<li>Item numbering $: <code>ul&gt;li*5&gt;a[href=$]</code> means an unordered list with 5 entries, each entry contains a hyper link with URL indexing of i <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;5&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Text {}: <code>ul&gt;li*5&gt;a[href=$]&#123;Item$&#125;</code> similar to the former one, but with indexed texts <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;1&quot;</span>&gt;</span>Item1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;2&quot;</span>&gt;</span>Item2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;3&quot;</span>&gt;</span>Item3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;4&quot;</span>&gt;</span>Item4<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;5&quot;</span>&gt;</span>Item5<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="section-5-html-forms-and-tables">Section 5: HTML: Forms and Tables</h1>
+<ol type="1">
+<li>Introduction to HTML Tables
+<ul>
+<li>Tables are structured sets of data, made up of rows and columns. They can be a great way of displaying data clearly</li>
+</ul></li>
+<li>Tables: TR, TD and TH Elements
+<ul>
+<li><code>&lt;td&gt;</code> element: defines a cell of a table that contains data</li>
+<li><code>&lt;tr&gt;</code> element: defines a row of cells in a table
+<ul>
+<li>The row's cells can then be established using a mix of <code>&lt;td&gt;</code>(data cell) and <code>&lt;th&gt;</code>(header cell) elements</li>
+</ul></li>
+<li><code>&lt;th&gt;</code> element: defines a cell as header of a group of table cells</li>
+<li>Usage: a table with 2 rows and three columns <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Tables: Thead, Tbody, and Tfoot elements
+<ul>
+<li><code>&lt;thead&gt;</code> element: defines a set of rows defining the head of the columns of the table</li>
+<li><code>&lt;tbody&gt;</code> element: encapsulates a set of table rows, indicating that they comprise the body of the table</li>
+<li><code>&lt;tfoot&gt;</code> element: defines a set of rows summarizing the columns of the table</li>
+</ul></li>
+<li>Tables: Colspan &amp; Rowspan
+<ul>
+<li>N-row headers: <code>&lt;th rowspan="N"&gt;</code></li>
+<li>M-col headers: <code>&lt;th colspan="M"&gt;</code></li>
+</ul></li>
+<li>The Form Element
+<ul>
+<li><code>&lt;form&gt;</code> element: the <code>&lt;form&gt;</code> element itself is a shell or container that doesn't have any visual impact</li>
+<li>We then fill the form with a collection of input, checkboxes, buttons, etc.</li>
+</ul></li>
 </ol>
 
     </div>
@@ -483,7 +598,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -559,12 +674,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">238k</span>
+    <span title="Symbols count total">243k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:36</span>
+    <span title="Reading time total">3:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
@@ -619,6 +734,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
