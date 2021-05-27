@@ -28,7 +28,7 @@
 <meta property="og:description" content="Section 1: Course Orientation">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-24T16:21:21.000Z">
-<meta property="article:modified_time" content="2021-05-26T15:02:28.636Z">
+<meta property="article:modified_time" content="2021-05-27T15:53:14.639Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Development">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-26 23:02:28" itemprop="dateModified" datetime="2021-05-26T23:02:28+08:00">2021-05-26</time>
+                <time title="Modified: 2021-05-27 23:53:14" itemprop="dateModified" datetime="2021-05-27T23:53:14+08:00">2021-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>16k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -497,8 +497,58 @@
 </ul></li>
 <li>The Form Element
 <ul>
-<li><code>&lt;form&gt;</code> element: the <code>&lt;form&gt;</code> element itself is a shell or container that doesn't have any visual impact</li>
+<li><code>&lt;form&gt;</code> element: represents a document section containing interactive controls for submitting information</li>
+<li>The form itself is a shell or container that doesn't have any visual imipact</li>
 <li>We then fill the form with a collection of input, checkboxes, buttons, etc.</li>
+<li>The <code>action</code> attribute specifies where the form data should be sent: <code>&lt;form action="URL"&gt;</code></li>
+<li>The <code>method</code> attribute specifies which HTTP method should be used(when a form is submitted, a HTTP request is sent): <code>&lt;form method="get"&gt;</code>, method can be get, head, post, put, delete, ...</li>
+</ul></li>
+<li>Common Input Types
+<ul>
+<li><code>&lt;input&gt;</code> element: is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent</li>
+<li>The <code>type</code> attribute affects the behavior and appearance of the input</li>
+<li>Usage: <code>&lt;input type="TYPE" placeholder="PLACEHOLDER"&gt;</code></li>
+<li>Types: text, password, color, file, number, ...</li>
+</ul></li>
+<li>The All-Important Label
+<ul>
+<li><code>&lt;label&gt;</code> element: represents a caption for an item in a user interface</li>
+<li>The label text is not only visually associated with its corresponding text input; it is also programmatically associated with it</li>
+<li>To associate the <code>&lt;label&gt;</code> with an <code>&lt;input&gt;</code> element, you need to give the <code>&lt;input&gt;</code> an id attribute. The <code>&lt;label&gt;</code> then needs a for attribute whose value is the same as the input's id. The <code>id</code> attribute should be unique</li>
+<li>Alternatively, you can nest the <code>&lt;input&gt;</code> directly inside the <code>&lt;label&gt;</code>, in which case the for and id attributes are not needed because the association is implicit. This approach is valid but less common</li>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;label1&quot;</span>&gt;</span> Content <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Input&quot;</span> <span class="attr">id</span>=<span class="string">&quot;label1&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Input&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>HTML Buttons
+<ul>
+<li><code>&lt;button&gt;</code> element: represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality</li>
+<li>The default behavior of a button inside a form is to submit the form, the result page is the page that the action attribute in the form points to. If a button is outside the form, it does nothing by default. If you want a button that is inside the form do not submit the form, let its attribution type be button</li>
+<li>You can use inputs with type equals to button or submit to emulate non-submitting buttons or submitting buttons</li>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">&lt;!-- This button is outside the form, it does nothing by default --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;URL&quot;</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- This button is inside the form, we add a type attribute to prohibit it from submitting --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Not-submit button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Use input with type equals to button and value equals to the text on the button to emulate a non-submitting button --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;No-submit button(input)&quot;</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- This button is inside the form, its default behavior is to submit --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Use input with type equals to submit and value equals to the text on the button to emulate a submitting button --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit-button(input)&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Name Attribute
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;TYPE&quot;</span> <span class="attr">method</span>=<span class="string">&quot;METHOD&quot;</span> <span class="attr">name</span>=<span class="string">&quot;NAME&quot;</span> <span class="attr">id</span>=<span class="string">&quot;ID&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Consider the name a required attribute (even though it's not). If an input has no name specified, or name is empty, the input's value is not submitted with the form! (Disabled controls, unchecked radio buttons, unchecked checkboxes, and reset buttons are also not sent)</li>
+<li>Server uses names to find input values</li>
+</ul></li>
+<li>Radio Buttons, Checkboxes, &amp; Selects
+<ul>
+<li><code>checkbox</code> attribute: A check box allowing single values to be selected/deselected.
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">id</span> =<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;checkbox&quot;</span>&gt;</span>Checkbox<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>If you want the checkbox to be checked at the beginning, add a <code>checked</code> attribute to the input</li>
+<li>If the checkbox is checked when the form is submitted, it adds <code>?name=on</code> on the destination URL, if not, it adds nothing to the destination URL</li>
+</ul></li>
+<li><code>radio</code> attribute: A radio button, allowing a single value to be selected out of multiple choices with the same name value
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">id</span>=<span class="string">&quot;radio1&quot;</span> <span class="attr">name</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">value</span>=<span class="string">&quot;radio1&quot;</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;radio1&quot;</span>&gt;</span> Choice 1<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">id</span>=<span class="string">&quot;radio2&quot;</span> <span class="attr">name</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">value</span>=<span class="string">&quot;radio2&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;radio2&quot;</span>&gt;</span> Choice 2<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">id</span>=<span class="string">&quot;radio3&quot;</span> <span class="attr">name</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">value</span>=<span class="string">&quot;radio3&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;radio3&quot;</span>&gt;</span> Choice 3<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Radio inputs should have the same <code>name</code> attribute, so that only one choice can be selected. In order for the server to know which input is selected, we add a <code>value</code> attribute into the input. When the form is submitted, it adds <code>?name=value</code> to the destination URL</li>
+<li>You can add a <code>checked</code> attribute to the choice you want to select at the beginning</li>
+</ul></li>
+<li><code>&lt;select&gt;</code> element: represents a control that provides a menu of options
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;pet-select&quot;</span>&gt;</span>Choose a pet:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;pets&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pet-select&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span>--Please choose an option--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;dog&quot;</span>&gt;</span>Dog<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;cat&quot;</span>&gt;</span>Cat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;hamster&quot;</span>&gt;</span>Hamster<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -674,12 +724,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">243k</span>
+    <span title="Symbols count total">248k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:41</span>
+    <span title="Reading time total">3:46</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
