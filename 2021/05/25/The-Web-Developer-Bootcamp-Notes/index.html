@@ -28,7 +28,7 @@
 <meta property="og:description" content="Section 1: Course Orientation">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-24T16:21:21.000Z">
-<meta property="article:modified_time" content="2021-05-27T15:53:14.639Z">
+<meta property="article:modified_time" content="2021-05-28T12:09:41.310Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Development">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-27 23:53:14" itemprop="dateModified" datetime="2021-05-27T23:53:14+08:00">2021-05-27</time>
+                <time title="Modified: 2021-05-28 20:09:41" itemprop="dateModified" datetime="2021-05-28T20:09:41+08:00">2021-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>16k</span>
+              <span>22k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>14 mins.</span>
+              <span>20 mins.</span>
             </span>
 
         </div>
@@ -548,7 +548,177 @@
 <li><code>&lt;select&gt;</code> element: represents a control that provides a menu of options
 <ul>
 <li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;pet-select&quot;</span>&gt;</span>Choose a pet:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;pets&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pet-select&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span>--Please choose an option--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;dog&quot;</span>&gt;</span>Dog<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;cat&quot;</span>&gt;</span>Cat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;hamster&quot;</span>&gt;</span>Hamster<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>For the placeholder option, the value should be empty</li>
+<li>Once submitted, if you made a choice, it adds <code>?name=value</code> to the destination URL, if not, it adds <code>?name=</code> to the destination URL</li>
 </ul></li>
+</ul></li>
+<li>Range &amp; Text Area
+<ul>
+<li><code>range</code> attribute: A control for entering a number whose exact value is not important
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Audio settings:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">id</span>=<span class="string">&quot;volume&quot;</span> <span class="attr">name</span>=<span class="string">&quot;volume&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span> <span class="attr">max</span>=<span class="string">&quot;11&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;volume&quot;</span>&gt;</span>Volume<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">id</span>=<span class="string">&quot;cowbell&quot;</span> <span class="attr">name</span>=<span class="string">&quot;cowbell&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span> <span class="attr">max</span>=<span class="string">&quot;100&quot;</span> <span class="attr">value</span>=<span class="string">&quot;90&quot;</span> <span class="attr">step</span>=<span class="string">&quot;10&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;cowbell&quot;</span>&gt;</span>Cowbell<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Displays as a range widget defaulting to the middle value</li>
+<li>Use <code>min</code>, <code>max</code> and <code>step</code> attribute to control the range, at the beginning, the default value is halfway between the specified minimum and maximum</li>
+<li>Once submitted, id adds <code>?name=value</code> to the destination URL</li>
+</ul></li>
+<li><code>&lt;textarea&gt;</code> element: represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;area&quot;</span>&gt;</span> Enter some texts<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">&quot;area&quot;</span> <span class="attr">name</span>=<span class="string">&quot;textarea&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;n&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;m&quot;</span>&gt;</span></span><br><span class="line">Some text here...</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Once submitted, it adds <code>name=text</code> to the destination URL, where text is the text you enter in the area</li>
+</ul></li>
+</ul></li>
+<li>HTML5 Form Validations
+<ul>
+<li>Validations: add constraints or validate user input of data</li>
+<li>The client side validation can be done using Javascript in the browser. There is also sever side validation that is sent back from the sever</li>
+<li><code>required</code> attribute: Boolean. A value is required or must be check for the form to be submittable
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;username&quot;</span>&gt;</span> Username <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;username &quot;</span><span class="attr">id</span>=<span class="string">&quot;username&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">required</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;password&quot;</span>&gt;</span> Password <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">minlength</span>=<span class="string">&quot;5&quot;</span> <span class="attr">maxlength</span>=<span class="string">&quot;20&quot;</span> <span class="attr">required</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>If an input field is required, then it cannot be empty and should satisfy the constraints before submitting the form</li>
+</ul></li>
+<li><code>pattern</code> attribute: Pattern the value must match to be valid
+<ul>
+<li>Use your own regular expression to set constraints</li>
+<li>Use built-in input types to set constraints, <code>type="email"</code>, <code>type="URL"</code>, ...</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="section-6-css-the-very-basics">Section 6: CSS: The Very Basics</h1>
+<ol type="1">
+<li>What is CSS
+<ul>
+<li>CSS(cascading style sheet), is a style sheet language used for describing the presentation of a document written in a markup language such as HTML</li>
+<li>CSS Rules: almost everything you do in CSS follows this basic pattern <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* general pattern */</span></span><br><span class="line"><span class="selector-tag">selector</span> &#123;</span><br><span class="line">   <span class="attribute">property</span>: value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* examples */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">   <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;text&quot;</span>]</span><span class="selector-pseudo">:nth-of-type(2n)</span> &#123;</span><br><span class="line">   <span class="attribute">border</span>: <span class="number">2px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>You should always add a semicolon after each property-value pair</li>
+<li>There are huge plenty of CSS properties, you could Google the one you want to use instead of memorizing them all</li>
+</ul></li>
+<li>Including Styles Correctly
+<ul>
+<li>Inline styles: you can write the styles directly inline on each element, but this is not a good idea most of the time
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&quot;color:yellow;&quot;</span>&gt;</span> This is a h1 <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>&lt;style&gt;</code> element: you can write you styles inside of a <code>&lt;style&gt;</code> element. This is easy, but it makes it impossible to share styles between document, so it's not recommended either
+<ul>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">      h1 &#123;</span><br><span class="line">         color: red;</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span> This is a h1 <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>External stylesheet: write you styles in a <code>.css</code> file, an then include the using a <code>&lt;link&gt;</code> in the head of you html document, this approach is recommended
+<ul>
+<li>The <code>.css</code> file should be in the same directory with the html file</li>
+<li>Usage: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Color &amp; Background-Color Properties
+<ul>
+<li>Color
+<ul>
+<li>Named color : <code>color: red;</code></li>
+<li>Hex color: <code>color: #090;</code></li>
+<li>RGB color: <code>color: rgb(34, 12, 64, 0.6);</code></li>
+<li>HSL color: <code>hsl(30, 100%, 50%, 0.6);</code></li>
+<li>Global color: <code>color: inherit;</code></li>
+</ul></li>
+<li>Background-color
+<ul>
+<li>The background color of the element selected by the selector</li>
+<li>Usage: <code>background-color: red;</code>, you could also use the <code>background</code> property to set the color, but it can do a lot more</li>
+</ul></li>
+</ul></li>
+<li>Color Systems: RGB &amp; Names Colors
+<ul>
+<li>Names color: modern browsers support 140 named colors, a typical computer can display about 16,000,000 different colors</li>
+<li>RGB color
+<ul>
+<li>Red, Green, Blue channels</li>
+<li>Each channel ranges from 0 to 255</li>
+</ul></li>
+</ul></li>
+<li>Color Systems: Hexadecimal
+<ul>
+<li>The system:
+<ul>
+<li>RGB channels, each channel ranges from 0 to 255 but stored in two hexadecimal digits</li>
+</ul></li>
+</ul></li>
+<li>Common Text Properties
+<ul>
+<li><code>text-align</code> property: sets the horizontal alignment of the content inside a block element or table-cell box
+<ul>
+<li>Values: left, right, center, justify(justify means both align-left and align-right)</li>
+</ul></li>
+<li><code>font-weight</code> property: sets the weight (or boldness) of the font. The weights available depend on the font-family that is currently set
+<ul>
+<li>Values: normal, bold, lighter, bolder, a number between 1 and 1000(400 is normal, 700 is bold)</li>
+</ul></li>
+<li><code>text-decoration</code> property: sets the appearance of decorative lines on text
+<ul>
+<li>Values:
+<ul>
+<li><code>text-decoration-line</code>: none, underline, overline, line-through, underline overline, underline line-through</li>
+<li><code>text-decoration-style</code>: solid, double, dotted, dashed, wavy</li>
+<li><code>text-decoration-thickness</code>: auto, from-font, 0.1em, 3px, 10%, ...</li>
+<li><code>text-decoration-color</code>: ...</li>
+</ul></li>
+</ul></li>
+<li><code>line-height</code> property: sets the height of a line box
+<ul>
+<li>Values: normal, 2.5, 3em, 150%, 32px, ...</li>
+</ul></li>
+<li><code>letter-spacing</code> property: sets the horizontal spacing behavior between text characters
+<ul>
+<li>Values: normal, .2rem, 1px, -1px, ...</li>
+</ul></li>
+<li><code>text-transform</code>: specifies how to capitalize an element's text
+<ul>
+<li>Values: uppercase, lowercase, capitalize(first character uppercase for each word), none, full-width, full-size-kana</li>
+</ul></li>
+</ul></li>
+<li>Font Size Basics With Pixels
+<ul>
+<li><code>font-size</code> property: sets the size of the font
+<ul>
+<li>Values: 1.2em, x-small, smaller, 12px, 80%</li>
+<li>Relative size: em, rem, vh, vw, %, ...</li>
+<li>Absolute size: px(the most commonly used absolute unit), pt, cm, in, mm</li>
+</ul></li>
+</ul></li>
+<li>The Font Family Property
+<ul>
+<li><code>font-family</code> property: specifies a prioritized list of one or more font family names and/or generic family names for the selected element</li>
+<li>It specifies a list of fonts, from highest priority to lowest, use comma to separate different fonts</li>
+</ul></li>
+</ol>
+<h1 id="section-7-the-world-of-css-selectors">Section 7: The World of CSS Selectors</h1>
+<ol type="1">
+<li>Universal &amp; Element Selectors
+<ul>
+<li>Universal selector: matches elements of any type
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line"> <span class="attribute">color</span>: red;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Type selector: matches elements by node name. In other words, it selects all elements of the given type within a document
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"> <span class="attribute">color</span>: red;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Select multiple elements, use comma to separate them
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span> &#123;</span><br><span class="line"> <span class="attribute">color</span>: red;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>The ID Selector
+<ul>
+<li>ID Selector: matches an element based on the value of the element’s id attribute. In order for the element to be selected, its id attribute must match exactly the value given in the selector</li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#id</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Class Selector
+<ul>
+<li>Class Selector: matches elements based on the contents of their class attribute</li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.class</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Descendent Selector
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* select all &lt;a&gt;&#x27;s that are nested inside an &lt;li&gt;*/</span></span><br><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The inheritance list can be nested, e.g., <code>section li a</code></li>
 </ul></li>
 </ol>
 
@@ -648,7 +818,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6-css-the-very-basics"><span class="nav-number">6.</span> <span class="nav-text">Section 6: CSS: The Very Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7-the-world-of-css-selectors"><span class="nav-number">7.</span> <span class="nav-text">Section 7: The World of CSS Selectors</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -724,12 +894,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">248k</span>
+    <span title="Symbols count total">255k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:46</span>
+    <span title="Reading time total">3:51</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
