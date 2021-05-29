@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="My Blog">
 <meta property="og:description" content="Section 1: Course Orientation">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/WebDeveloper/BoxModel.png">
 <meta property="article:published_time" content="2021-05-24T16:21:21.000Z">
-<meta property="article:modified_time" content="2021-05-28T12:09:41.310Z">
+<meta property="article:modified_time" content="2021-05-29T12:36:14.952Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Development">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yanxuanshaozhu.github.io/images/WebDeveloper/BoxModel.png">
 
 <link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/05/25/The-Web-Developer-Bootcamp-Notes/">
 
@@ -196,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-28 20:09:41" itemprop="dateModified" datetime="2021-05-28T20:09:41+08:00">2021-05-28</time>
+                <time title="Modified: 2021-05-29 20:36:14" itemprop="dateModified" datetime="2021-05-29T20:36:14+08:00">2021-05-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>22k</span>
+              <span>30k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>20 mins.</span>
+              <span>28 mins.</span>
             </span>
 
         </div>
@@ -720,6 +722,166 @@
 <li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* select all &lt;a&gt;&#x27;s that are nested inside an &lt;li&gt;*/</span></span><br><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>The inheritance list can be nested, e.g., <code>section li a</code></li>
 </ul></li>
+<li>The Adjacent &amp; Direct-Descendent Selectors:
+<ul>
+<li>Adjacent sibling selectors: separates two selectors and matches the second element only if it immediately follows the first element, and both are children of the same parent element
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* select the sibling paragraph that is located immediately after the h1*/</span></span><br><span class="line"><span class="selector-tag">h1</span> + <span class="selector-tag">p</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>General sibling selectors: separates two selectors and matches all iterations of the second element, that are following the first element, and are children of the same parent element
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* select all sibling paragraphs that are located after the h1*/</span></span><br><span class="line"><span class="selector-tag">h1</span> ~ <span class="selector-tag">p</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Child selectors: it matches only those elements matched by the second selector that are the direct children of elements matched by the first
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* select all sibling paragraphs that are located after the h1*/</span></span><br><span class="line"><span class="selector-tag">h1</span> &gt; <span class="selector-tag">p</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Child selectors are stricter than descendent selectors, the former only selects direct children, while the latter selects all children</li>
+</ul></li>
+</ul></li>
+<li>The Attribute Selector: matches elements based on the presence or value of a given attribute
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;password&quot;</span>]</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Pseudo Classes
+<ul>
+<li>A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s)</li>
+<li>Usage： <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Any button over which the user&#x27;s pointer is hovering */</span></span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Examples:
+<ul>
+<li>Linguistic pseudo-classes: idr, lang</li>
+<li>Location pseudo-classes: any-link, link, visited, local-link, target, target-within, scope</li>
+<li>User action pseudo-classes: hover, active, focus, focus-visible, focus-within</li>
+<li>Time-dimensional pseudo-classes: current, past, future</li>
+<li>Resource state pseudo-classes: playing, paused</li>
+<li>The input pseudo-classes: autofill, enabled, disabled, read-only, read-write, placeholder-shown, default, checked, indeterminate, blank, valid, invalid, in-range, out-of-range, required, optional, user-invalid</li>
+<li>Tree-structural pseudo-classes: root, empty, nth-child, nth-last-child, first-child, last-child, only-child, nth-of-type,nth-last-of-type, first-of-type, last-of-type, only-of-type</li>
+</ul></li>
+</ul></li>
+<li>Pseudo Elements: a keyword added to a selector that lets you style a specific part of the selected element(s)
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* The first line of every &lt;p&gt; element. */</span></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::first-line</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: blue;</span><br><span class="line"><span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Examples: after, backdrop, before, cue, cue-region, first-letter, first-line, file-selector-button, grammar-error, marker, part(), placeholder, selection, slotted(), spelling-error, target-text</li>
+</ul></li>
+<li>The CSS Cascade
+<ul>
+<li>The order the styles are declared in and linked to matters</li>
+<li>Cascading order
+<ul>
+<li>t first filters all the rules from the different sources to keep only the rules that apply to a given element</li>
+<li>Then it sorts these rules according to their importance, that is, whether or not they are followed by !important, and by their origin. The cascade is in ascending order, which means that !important values from a user-defined style sheet have precedence over normal values originated from a user-agent style sheet</li>
+</ul></li>
+</ul></li>
+<li>Specificity</li>
+</ol>
+<ul>
+<li>When there is a conflict, the more specific selector wins</li>
+<li>Priority: Selector with !important &gt; Inline styles &gt; ID &gt; Class &gt; Type</li>
+<li>If multiple selectors are equally specific, then the last one wins</li>
+</ul>
+<ol start="11" type="1">
+<li>Inheritance
+<ul>
+<li>Some elements will automatically inherit properties from superior elements</li>
+<li>For those don't automatically inherit, you can use inherit to force inheritance <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="section-8-the-css-box-model">Section 8: The CSS Box Model</h1>
+<ol type="1">
+<li>Box Model: Width &amp; Height
+<ul>
+<li>Everything in CSS has a box around it, and understanding these boxes is key to being able to create layouts with CSS, or to align items with other items</li>
+<li>The model <img src="/images/WebDeveloper/BoxModel.png"></li>
+<li><code>width</code> property: sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area</li>
+<li><code>height</code> property: specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area</li>
+</ul></li>
+<li>Box Model: Border &amp; Border-Radius
+<ul>
+<li>Some properties:
+<ul>
+<li><code>border-color</code> property: sets the color of an element's border</li>
+<li><code>border-style</code> property: sets the line style for all four sides of an element's border
+<ul>
+<li>Values: none, dotted, inset, dashed solid, dashed double none, dashed groove none dotted<br>
+</li>
+<li>You can also use <code>border-left-style</code>, <code>border-right-style</code>, <code>border-top-style</code>, <code>border-bottom-style</code></li>
+</ul></li>
+<li><code>border-width</code> property: sets the width of an element's border</li>
+<li><code>border-radius</code> property: rounds the corners of an element's outer border edge.
+<ul>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* One value, all 4 corners */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Two values: 1st-value: top-left-and-bottom-right, 2nd-value: top-right-and-bottom-left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">12px</span>, <span class="number">20%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Three values: 1st-value: top-left-and-bottom-right, 2nd-value: top-right-and-bottom-left, 3rd-value: bottom-right */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">12px</span>, <span class="number">5px</span>, <span class="number">20%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Four values: 1st-value: top-left, 2nd-value: top-right, 3rd-value: bottom-right, 4th-value: bottom-left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">12px</span>, <span class="number">11px</span>, <span class="number">10px</span>, <span class="number">9px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Box Model: Padding
+<ul>
+<li><code>padding</code> property: sets the padding area on all four sides of an element at once</li>
+<li>You can also use <code>padding-bottom</code>, <code>padding-top</code>, <code>padding-left</code>, <code>padding-right</code></li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* One Value: 4 sides */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Two values: 1st-value: top-bottom, 2nd-value: right-left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">padding</span>: <span class="number">10px</span>, <span class="number">9px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Three values: 1st-value: top, 2nd-value: right-left, 3rd-value: bottom */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">padding</span>: <span class="number">10px</span>, <span class="number">9px</span>, <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Four values: 1st-value: top, 2nd-value: right, 3rd-value: bottom, 4th-value: left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">padding</span>: <span class="number">10px</span>, <span class="number">9px</span>, <span class="number">8px</span>, <span class="number">7px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Box Model: Margin
+<ul>
+<li><code>margin</code> property: sets the margin area on all four sides of an element</li>
+<li>You can also use <code>margin-bottom</code>, <code>margin-top</code>, <code>margin-left</code>, <code>margin-right</code></li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* One Value: 4 sides */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Two values: 1st-value: top-bottom, 2nd-value: right-left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">10px</span>, <span class="number">9px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Three values: 1st-value: top, 2nd-value: right-left, 3rd-value: bottom */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">10px</span>, <span class="number">9px</span>, <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Four values: 1st-value: top, 2nd-value: right, 3rd-value: bottom, 4th-value: left */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">10px</span>, <span class="number">9px</span>, <span class="number">8px</span>, <span class="number">7px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Display Property
+<ul>
+<li><code>display</code> property: sets whether an element is treated as a block or inline element and the layout used for its children, such as flow layout, grid or flex</li>
+<li>Values:
+<ul>
+<li><code>inline</code>: generates one or more inline element boxes that do not generate line breaks before or after themselves. In normal flow, the next element will be on the same line if there is space. Width, height, margin and padding are ignored</li>
+<li><code>block</code>: generates a block element box, generating line breaks both before and after the element when in the normal flow. Width, height, margin and padding are respected.</li>
+<li><code>inline-block</code>: similar to inline property, but Width, height, margin and padding are respected</li>
+<li><code>none</code>: the element is hided, it's not deleted</li>
+</ul></li>
+</ul></li>
+<li>CSS Unites Revisited
+<ul>
+<li>Relative Units
+<ul>
+<li>Percentages:
+<ul>
+<li><code>width: 50%</code> - half the width of the parent</li>
+<li><code>line-height: 50%</code> - half the font-size of the element itself</li>
+</ul></li>
+<li><code>em</code> value: relative font-size to parent or the element itself
+<ul>
+<li>With <code>font-size</code>: 1em equals the font-size of the parent, 2em is twice the font-size of the parent</li>
+<li>With other properties, 1em is equal to the computed font-size of the element itself</li>
+</ul></li>
+<li><code>rem</code> value: relative font-size to the root element
+<ul>
+<li><code>font-size:Nrem</code>: equals Nth times the font-size of the root element</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="section-9-other-assorted-useful-css-properties">Section 9: Other Assorted Useful CSS Properties</h1>
+<ol type="1">
+<li>Opacity &amp;The Alpha Channel
+<ul>
+<li>Alpha Channel:
+<ul>
+<li>RGBA: <code>rgba(a, b, c, d)</code>, d <span class="math inline">\(\in [0, 1]\)</span>, d represents transparency, d = 1 means completely not transparent, d = 0 means completely transparent</li>
+</ul></li>
+<li>Opacity:
+<ul>
+<li><code>opacity</code> property: sets the opacity of an element. Opacity is the degree to which content behind an element is hidden, and is the opposite of transparency</li>
+<li>Opacity applies to an element as a whole, so its contents and its children have the same opacity level</li>
+</ul></li>
+</ul></li>
+<li>The Position property
+<ul>
+<li><code>position</code> property: sets how an element is positioned in a document</li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Default position */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">position</span>: static;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Relative its default position */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">position</span>: relative;</span><br><span class="line">   <span class="attribute">top</span>: <span class="number">20px</span>; </span><br><span class="line">   <span class="attribute">left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Current position removes, then relatively positioned to its positional ancestor, </span></span><br><span class="line"><span class="comment">if no positional ancestor exists, it&#x27;s positioned to the initial containing block */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">position</span>: absolute;</span><br><span class="line">   <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">   <span class="attribute">left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>CSS Transitions
+<ul>
+<li><code>transition</code> property: provides a way to control animation speed when changing CSS properties</li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Example: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: red;</span><br><span class="line">   <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">   <span class="attribute">transition</span>: <span class="number">3s</span>;  <span class="comment">/* Take three seconds to transit */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: yellow;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">50</span>;  <span class="comment">/* A circle */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Usage: <code>transition: property Ns Ms</code>, the transition for the property takes N seconds to complete, it starts in M seconds. All other transitions complete immediately</li>
+</ul></li>
 </ol>
 
     </div>
@@ -818,7 +980,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6-css-the-very-basics"><span class="nav-number">6.</span> <span class="nav-text">Section 6: CSS: The Very Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7-the-world-of-css-selectors"><span class="nav-number">7.</span> <span class="nav-text">Section 7: The World of CSS Selectors</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6-css-the-very-basics"><span class="nav-number">6.</span> <span class="nav-text">Section 6: CSS: The Very Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7-the-world-of-css-selectors"><span class="nav-number">7.</span> <span class="nav-text">Section 7: The World of CSS Selectors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-8-the-css-box-model"><span class="nav-number">8.</span> <span class="nav-text">Section 8: The CSS Box Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-9-other-assorted-useful-css-properties"><span class="nav-number">9.</span> <span class="nav-text">Section 9: Other Assorted Useful CSS Properties</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -894,12 +1056,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">255k</span>
+    <span title="Symbols count total">263k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:51</span>
+    <span title="Reading time total">3:59</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
