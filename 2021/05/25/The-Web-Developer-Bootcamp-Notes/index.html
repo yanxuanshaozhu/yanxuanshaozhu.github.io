@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/WebDeveloper/BoxModel.png">
 <meta property="article:published_time" content="2021-05-24T16:21:21.000Z">
-<meta property="article:modified_time" content="2021-05-29T12:36:14.952Z">
+<meta property="article:modified_time" content="2021-05-30T15:32:55.407Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Development">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-29 20:36:14" itemprop="dateModified" datetime="2021-05-29T20:36:14+08:00">2021-05-29</time>
+                <time title="Modified: 2021-05-30 23:32:55" itemprop="dateModified" datetime="2021-05-30T23:32:55+08:00">2021-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>30k</span>
+              <span>36k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>28 mins.</span>
+              <span>33 mins.</span>
             </span>
 
         </div>
@@ -880,7 +880,113 @@
 <li><code>transition</code> property: provides a way to control animation speed when changing CSS properties</li>
 <li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Example: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: red;</span><br><span class="line">   <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">   <span class="attribute">transition</span>: <span class="number">3s</span>;  <span class="comment">/* Take three seconds to transit */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: yellow;</span><br><span class="line">   <span class="attribute">border-radius</span>: <span class="number">50</span>;  <span class="comment">/* A circle */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Usage: <code>transition: property Ns Ms</code>, the transition for the property takes N seconds to complete, it starts in M seconds. All other transitions complete immediately</li>
+<li><code>transition-duration</code>: sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur</li>
+<li><code>transition-delay</code>: specifies the duration to wait before starting a property's transition effect when its value changes</li>
+<li><code>transition-timing-function</code>: sets how intermediate values are calculated for CSS properties being affected by a transition effect</li>
+<li><code>transition-property</code>: sets the CSS properties to which a transition effect should be applied</li>
+</ul></li>
+<li>The Power of CSS Transforms
+<ul>
+<li><code>transform</code> property: lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model</li>
+<li>transform-functions:
+<ul>
+<li><code>transform: rotate(Ndeg)</code>: rotate N degrees, if N &gt; 0, clockwise, if not, counter-clockwise</li>
+<li><code>transform: scale(sx)</code>: scaling uniformly</li>
+<li><code>transform: scale(sx, sy)</code>: sx represents the width, sy represents the height</li>
+<li><code>transform: translate(sx, sy)</code>: parallel move</li>
+<li><code>transform: skew(ax)</code>: distort along x-axis</li>
+<li><code>transform:skew(ax, ay)</code>: distort along both x-axis and y-axis</li>
+<li>...</li>
+</ul></li>
+<li>The transform-functions can be combined together</li>
+</ul></li>
+<li>The Truth About Background
+<ul>
+<li><code>background-image</code> property: sets one or more background images on an elements
+<ul>
+<li>Usage: <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image: url(&#x27;URL&#x27;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>background-size</code> property: sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space</li>
+<li><code>background-position</code> property: sets the initial position for each background image</li>
+</ul></li>
+<li>Google Fonts
+<ul>
+<li>URL: fonts.google.com</li>
+<li>Steps:
+<ul>
+<li>Add a link in the html head</li>
+<li>Use font-body in the CSS file</li>
+</ul></li>
+<li>Example: <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;preconnect&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://fonts.gstatic.com&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">   <span class="attribute">font-family</span>: <span class="string">&#x27;Roboto&#x27;</span>, sans-serif;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Photo Site
+<ul>
+<li>Position: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">30%</span>;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="built_in">calc</span>(<span class="number">10%</span>/<span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Although elements like img or link are inline, there is still white space between them if you put them separately. In order for the above figures and margins to be placed correctly, you should leave no space between the img elements.</li>
+</ul></li>
+</ol>
+<h1 id="section-10-responsive-css-flexbox">Section 10: Responsive CSS &amp; Flexbox</h1>
+<ol type="1">
+<li>What is Flexbox
+<ul>
+<li>Flex is a one-dimensional layout model, and as a method that could offer space distribution between items in an interface and powerful alignment capabilities</li>
+<li>It's about distributing space within some container</li>
+</ul></li>
+<li>Flex-Direction
+<ul>
+<li>A flexbox has two axes- the main axis and the cross axis. By default, the main axis is horizontal, the cross axis is always perpendicular to the main axis. You can use <code>flex-direction</code> property to change the direction of main direction.</li>
+<li>Change direction of axes: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">display</span>: flex;</span><br><span class="line">   <span class="comment">/* Default setting, horizontal main axis indexing from left to right */</span></span><br><span class="line">   <span class="attribute">flex-direction</span>: row;</span><br><span class="line">   <span class="comment">/* Horizontal main axis indexing from right to left */</span></span><br><span class="line">   <span class="attribute">flex-direction</span>: row-reverse;</span><br><span class="line">   <span class="comment">/* Vertical main axis indexing from top to bottom */</span></span><br><span class="line">   <span class="attribute">flex-direction</span>: column;</span><br><span class="line">   <span class="comment">/* Vertical main axis indexing from bottom to top */</span></span><br><span class="line">   <span class="attribute">flex-direction</span>: column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>If you set <code>display: flex</code>, the the specific property setting to inner element like width or height may not come into effect. For example, if container width is 500px and there are 5 inner div elements with width of 200px each, then the actual width would be 500 / 5 = 100px. If the container width is larger than 1000px(200 * 5 = 1000px), then there would be extra row space leaving unused</li>
+</ul></li>
+<li>Justify-Content
+<ul>
+<li><code>justify-content</code> property: defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid</li>
+<li>Usage: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#container</span> &#123;</span><br><span class="line">   <span class="attribute">display</span>: flex;</span><br><span class="line">   <span class="comment">/* The content is displayed on the start of the main axis */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: flex-start;</span><br><span class="line">   <span class="comment">/* The content is displayed on the end of the main axis */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: flex-end;</span><br><span class="line">   <span class="comment">/* The content is displayed at the center of the main axis */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: center;</span><br><span class="line">   <span class="comment">/* The content is displayed so that there is space between them but no space between the content and the container */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">   <span class="comment">/* The content is displayed so that there is space between them, space between the content and the container is half-size */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: space-around;</span><br><span class="line">   <span class="comment">/* The content is displayed so that there is equally distributed space between contents and  between the content and the container */</span></span><br><span class="line">   <span class="attribute">justify-content</span>: space-evenly;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Flex-Wrap
+<ul>
+<li><code>flex-wrap</code> property: sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked</li>
+<li><code>flex-wrap: wrap</code>: if not enough space, the it makes multiple lines parallel to the main axis to locate the elements</li>
+<li><code>flex-wrap: nowarp</code>: do not use wrap</li>
+<li><code>flex-wrap: wrap-reverse</code>: use wrap, but starts from the end side of the main axis</li>
+<li>The direction: main axis, then the cross axis</li>
+</ul></li>
+<li>Align-Items
+<ul>
+<li><code>align-items</code> property: sets the align-self value on all direct children as a group. In Flexbox, it controls the alignment of items on the Cross Axis. In Grid Layout, it controls the alignment of items on the Block Axis within their grid area</li>
+<li><code>align-items: center</code>: cross axis center</li>
+<li><code>align-items: start</code>: cross axis start</li>
+<li><code>align-items: end</code>: cross axis end 6.Align-Content &amp; Align-Self</li>
+<li><code>align-content</code> property: sets the distribution of space between and around content items along a flexbox's cross-axis or a grid's block axis
+<ul>
+<li>If the main axis is horizontal, it controls the space between rows, if the main axis is vertical, it controls the space between columns</li>
+<li>This property has no effect on single line flex containers (i.e. ones with flex-wrap: nowrap)</li>
+<li>Usage: <code>align-content: center</code>, <code>align-content:start</code>, <code>align-content: space-between</code>, <code>align-content: space-around</code></li>
+</ul></li>
+<li><code>align-self</code> property: overrides a grid or flex item's align-items value. In Grid, it aligns the item inside the grid area. In Flexbox, it aligns the item on the cross axis
+<ul>
+<li>It picks one element in the container and behaves the same as align-items</li>
+</ul></li>
+</ul></li>
+<li>Flex-Basics, Grow, &amp; Shrink
+<ul>
+<li>The <code>flex-basics</code>, <code>flex-grow</code>, <code>flex-shrink</code> property deals with a flex item in the flexbox</li>
+<li><code>flex-basics</code> property: sets the initial main size(the main size is the length in the direction of the main axis) of a flex item. It sets the size of the content box unless otherwise set with box-sizing</li>
+<li><code>flex-grow</code> property: sets the flex grow factor of a flex item's main size</li>
+<li><code>flex-shrink</code> property: sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, items shrink to fit according to flex-shrink
+<ul>
+<li>The relationship:
+<ul>
+<li><p>If <span class="math inline">\(\sum flex-basics &lt; container-size\)</span>:</p>
+<p><span class="math inline">\(container\; size = \sum flex\;basics + remaining\;size\)</span></p>
+<p><span class="math inline">\(remaining\;size = \sum grow\;size = \sum \frac{flex-grow}{\sum flex-grow} remaining\;size\)</span></p>
+<p><span class="math inline">\(flex\; element\; actual\; size = flex-basics + grow\; size = flex-basics + \frac{flex-grow}{\sum flex-grow} remaining\;size\)</span></p></li>
+<li><p>If <span class="math inline">\(\sum flex-basics &gt; container-size\)</span></p>
+<p><span class="math inline">\(container\; size = \sum flex\;basics - extra\;size\)</span></p>
+<p><span class="math inline">\(extra\;size = \sum shrink\;size = \sum \frac{flex-shrink}{\sum flex-shrink} extra\;size\)</span></p>
+<p><span class="math inline">\(flex\; element\; actual\; size = flex-basics - shrink\; size = flex-basics - \frac{flex-shrink}{\sum flex-shrink} extra\;size\)</span></p></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -980,7 +1086,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6-css-the-very-basics"><span class="nav-number">6.</span> <span class="nav-text">Section 6: CSS: The Very Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7-the-world-of-css-selectors"><span class="nav-number">7.</span> <span class="nav-text">Section 7: The World of CSS Selectors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-8-the-css-box-model"><span class="nav-number">8.</span> <span class="nav-text">Section 8: The CSS Box Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-9-other-assorted-useful-css-properties"><span class="nav-number">9.</span> <span class="nav-text">Section 9: Other Assorted Useful CSS Properties</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1-course-orientation"><span class="nav-number">1.</span> <span class="nav-text">Section 1: Course Orientation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2-an-introduction-to-web-development"><span class="nav-number">2.</span> <span class="nav-text">Section 2: An Introduction to Web Development</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3-html-the-essentials"><span class="nav-number">3.</span> <span class="nav-text">Section 3: HTML: The Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4-html-next-steps-semantics"><span class="nav-number">4.</span> <span class="nav-text">Section 4: HTML: Next Steps &amp; Semantics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5-html-forms-and-tables"><span class="nav-number">5.</span> <span class="nav-text">Section 5: HTML: Forms and Tables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6-css-the-very-basics"><span class="nav-number">6.</span> <span class="nav-text">Section 6: CSS: The Very Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7-the-world-of-css-selectors"><span class="nav-number">7.</span> <span class="nav-text">Section 7: The World of CSS Selectors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-8-the-css-box-model"><span class="nav-number">8.</span> <span class="nav-text">Section 8: The CSS Box Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-9-other-assorted-useful-css-properties"><span class="nav-number">9.</span> <span class="nav-text">Section 9: Other Assorted Useful CSS Properties</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-10-responsive-css-flexbox"><span class="nav-number">10.</span> <span class="nav-text">Section 10: Responsive CSS &amp; Flexbox</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1056,12 +1162,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">263k</span>
+    <span title="Symbols count total">269k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:59</span>
+    <span title="Reading time total">4:04</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
