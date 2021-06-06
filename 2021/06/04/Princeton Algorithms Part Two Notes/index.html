@@ -28,7 +28,7 @@
 <meta property="og:description" content="Course Name: Algorithms, Part II   Course Website: Coursera  Instructor: Professor Kevin Wayne, Professor Robert Sedgewick   Books: Algorithms(4th edition)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-04T11:47:06.000Z">
-<meta property="article:modified_time" content="2021-06-04T15:44:05.678Z">
+<meta property="article:modified_time" content="2021-06-06T15:46:53.958Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part Two">
 <meta name="twitter:card" content="summary">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-04 19:47:06 / Modified: 23:44:05" itemprop="dateCreated datePublished" datetime="2021-06-04T19:47:06+08:00">2021-06-04</time>
+              <time title="Created: 2021-06-04 19:47:06" itemprop="dateCreated datePublished" datetime="2021-06-04T19:47:06+08:00">2021-06-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-06 23:46:53" itemprop="dateModified" datetime="2021-06-06T23:46:53+08:00">2021-06-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -208,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.6k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -292,11 +298,11 @@ Books: Algorithms(4th edition)
 <li><p>Performance analysis</p>
 <table>
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 23%">
+<col style="width: 41%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -335,7 +341,159 @@ Books: Algorithms(4th edition)
 </ul></li>
 <li>Depth-First Search
 <ul>
-<li></li>
+<li>Example: Tremaux maze exploration</li>
+<li>DFS idea: recursively travel through all vertices, when visiting vertex v
+<ul>
+<li>Mark v as visited</li>
+<li>Recursively visit all unmarked vertices w adjacent to v</li>
+</ul></li>
+<li>Applications
+<ul>
+<li>Connectivity: if two vertices are connected, if there is a connected subgraph</li>
+<li>Single-point path: given a graph G and a start vertex s, if there is a path from s to a specific vertex v, find the path if there is one</li>
+</ul></li>
+<li>Design pattern for graph processing: decouple graph data type from graph processing
+<ul>
+<li>Steps:
+<ul>
+<li>Create a graph object</li>
+<li>Pass the graph to a graph-processing routine</li>
+<li>Query the graph-processing routine for information</li>
+</ul></li>
+</ul></li>
+<li>Search
+<ul>
+<li>Search API: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Search</span> </span>&#123;</span><br><span class="line">  <span class="comment">// find vertices connected to a source vertex s</span></span><br><span class="line">  Search(Graph G, <span class="keyword">int</span> s);</span><br><span class="line">  <span class="comment">// is v connected to s</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">marked</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">  <span class="comment">// how many vertices are connected to s</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DFS search implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthFirstSearch</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DepthFirstSearch</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    dfs(G, s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    count ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs(G, w);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">marked</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> marked[v];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Paths
+<ul>
+<li>Path API: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Paths</span> </span>&#123;</span><br><span class="line">  <span class="comment">// find paths in G from source s</span></span><br><span class="line">  Paths(Graph G, <span class="keyword">int</span> s);</span><br><span class="line">  <span class="comment">// is there a path from s to v</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">  <span class="comment">// path from s to v; null if no such path</span></span><br><span class="line">  <span class="function">Iterable&lt;Integer&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DFS paths implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthFirstPaths</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="comment">// is v-w is the last edge on a path from s to w, then edgeTo[w] = v, </span></span><br><span class="line">  <span class="comment">// alternatively speaking, if w in G.adj(v) and w is unvisited, then edgeTo[w] = v</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> s;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DepthFirstPaths</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    edgeTo = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">    <span class="keyword">this</span>.s = s;</span><br><span class="line">    dfs(G, s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        edgeTo[w] = v;</span><br><span class="line">        dfs(G, w);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> marked[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">      is (!hasPathTo(v)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      Stack&lt;Integer&gt; path = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> x = v; x != s; x = edgeTo(x)) &#123;</span><br><span class="line">        path.push(x);</span><br><span class="line">      &#125;</span><br><span class="line">      path.push(s);</span><br><span class="line">      <span class="keyword">return</span> path;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Performance analysis:
+<ul>
+<li>DFS marks all vertices connected to <span class="math inline">\(s\)</span> in time proportional to the sum of their degrees</li>
+<li>After DFS, can find vertices connected to <span class="math inline">\(s\)</span> in constant time and can find a path to <span class="math inline">\(s\)</span> (if one exists) in time proportional to its length</li>
+</ul></li>
+</ul></li>
+<li>Breadth-First-Search
+<ul>
+<li>BFS: use an auxiliary queue to do BFS
+<ul>
+<li>add start vertex to the queue and mark it</li>
+<li>remove a vertex from the queue, add all adjacent unmarked vertices to the queue and mark them</li>
+<li>repeat the process until the queue is empty</li>
+</ul></li>
+<li>Applications
+<ul>
+<li>Single-point shortest path: given a graph G and a start vertex s, if there are paths from s to a specific vertex v, if there are some paths, find the shortest one</li>
+</ul></li>
+<li>Compare DFS and BFS
+<ul>
+<li>DFS: put unvisited vertices on a stack</li>
+<li>BFS: put unvisited vertices on a queue</li>
+</ul></li>
+<li>BFS java implementation: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BreadthFirstSearch</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> s;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BreadthFirstSearch</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    edgeTo = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">    <span class="keyword">this</span>.s = s;</span><br><span class="line">    bfs(G, s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">    marked[s] = <span class="keyword">true</span>;</span><br><span class="line">    queue.enqueue(s);</span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = queue.dequeue();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">          edgeTo[w] = v;</span><br><span class="line">          marked[w] = <span class="keyword">true</span>;</span><br><span class="line">          queue.enqueue(w);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> marked[v];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!hasPathTo(v)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Stack&lt;Integer&gt; path = <span class="keyword">new</span> Stack&lt;Integer&gt;(); </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = v; x != s; x = edgeTo[x]) &#123;</span><br><span class="line">      path.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    path.push(s);</span><br><span class="line">    <span class="keyword">return</span> path;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Performance analysis:
+<ul>
+<li>For any vertex v reachable from s, BFS computes a shortest path from s to v (no path from s to v has fewer edges). BFS takes time proportional to V + E in the worst case</li>
+</ul></li>
+</ul></li>
+<li>Connected Components
+<ul>
+<li><p>Connectivity queries</p>
+<ul>
+<li>Definition: vertices v and w are connected if there is a path between them</li>
+<li>Goal: process graph to answer queries of the form is v connected to w in constant time</li>
+</ul></li>
+<li><p>Connected Components API <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CC</span></span>&#123;</span><br><span class="line">  <span class="comment">// find connected components in G</span></span><br><span class="line">  CC(Graph G);</span><br><span class="line">  <span class="comment">// are v and w connected</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">connected</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>;</span><br><span class="line">  <span class="comment">// number of connected components</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// component identifier for v, vertices in the one CC have a same identifier</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">id</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>The relation "is connected to" is an equivalence relation: reflexive, symmetric, transitive</p></li>
+<li><p>Connected components:</p>
+<ul>
+<li>Definition: a CC is a maximal set of connected vertices</li>
+<li>Goal: partition vertices into CC</li>
+<li>Steps:
+<ul>
+<li>Initialize all vertices v as unmarked</li>
+<li>For each unmarked vertex v, run DFS to identify all vertices discovered as part of the same component, mark points in the same CC with a same id</li>
+</ul></li>
+<li>Java implementation: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CC</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CC</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">    id = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[v]) &#123;</span><br><span class="line">        dfs(G, v);</span><br><span class="line">        count++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    id[v] = count;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs(G, w);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id[v];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Preposition: DFS uses preprocessing time and space proportional to V + E to support constant-time connectivity queries in a graph</li>
+</ul></li>
+</ul></li>
+<li>Graph Challenges
+<ul>
+<li>Problem 1: Is a graph bipartite(二分图)
+<ul>
+<li>Bipartite graph: a bipartite graph (or bigraph) is a graph whose vertices can be divided into two disjoint and independent sets U and V such that every edge connects a vertex in U to one in V</li>
+<li>Java DFS implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoColor</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] color;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> twoColorable = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">TwoColor</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    color = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[v]) &#123;</span><br><span class="line">        dfs(G, v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs (G, w);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (color[w] == color[v]) &#123;</span><br><span class="line">        twoColorable = <span class="keyword">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBipartite</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> twoColorable;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Problem 2: Does a graph have a cycle
+<ul>
+<li>Java DFS implementation: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cycle</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> hasCycle;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Cycle</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[v]) &#123;</span><br><span class="line">        dfs(G, v, v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v, <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs(G, w, v);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (w != u) &#123; <span class="comment">// in this situation, w is connected to v and has been visited by inner loop of DFS</span></span><br><span class="line">        hasCycle = <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hasCycle;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Problem 3: Bridges of K<span class="math inline">\(\ddot{o}\)</span>nigsberg
+<ul>
+<li>The seven bridges of K<span class="math inline">\(\ddot{o}\)</span>nigsberg [Leonhard Euler 1736]</li>
+<li>Euler tour: is there a general cycle that uses each edge exactly once</li>
+<li>A connected graph is Eulerian iff all vertices have even degree</li>
+</ul></li>
+<li>Problem 4: Find a general cycle that uses every edge exactly once</li>
+<li>Problem 5: Find a general cycle that uses every vertex exactly once(travelling salesperson problem)
+<ul>
+<li>This travel is called Hamiltonian travel</li>
+<li>The problem is intractable, it's NP-complete problem</li>
+</ul></li>
+<li>Problem 6: Are two graphs identical except for vertex names
+<ul>
+<li>This graph isomorphism problem a open problem</li>
+</ul></li>
+<li>Problem 7: Lay out a graph in the plane without crossing edges
+<ul>
+<li>There is a linear-time DFS-based planarity algorithm discovered by Tarjan in 1970</li>
+</ul></li>
+</ul></li>
+<li>Interview Questions:
+<ul>
+<li>Problem 1: Implement depth-first search in an undirected graph without using recursion
+<ul>
+<li>Difference with BFS:
+<ul>
+<li>It uses a stack instead of a queue</li>
+<li>It should mark elements only after popping the vertex, not before pushing it</li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IterativeDFS</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> s;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">IterativeDFS</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    <span class="keyword">this</span>.s = s;</span><br><span class="line">    dfs(G, s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    stack.push(v);</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = stack.pop();</span><br><span class="line">      marked[v] = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">          stack.push(w);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Directed Graph
+<ul>
+<li>Introduction to Digraphs
+<ul>
+<li>Directed graphs
+<ul>
+<li>Definition: set of vertices connected pairwise by directed edges</li>
+<li>For edge <span class="math inline">\(v \rightarrow w\)</span>, v is head, w is tail, we say v points to w</li>
+<li>Reachable: w is reachable from v if there is a directed path from v to w</li>
+<li>Indegree: the number of edges pointing to a vertex</li>
+<li>Outdegree: the number of edges pointing from a vertex</li>
+<li>Strongly connected: two vertices are strongly connected if they are mutually reachable</li>
+<li>Directed acyclic graph: a DAG is a digraph with no directed cycles</li>
+</ul></li>
+<li>Some digraph problems
+<ul>
+<li>Path: is there a directed path from s to t</li>
+<li>Shortest path: what is the shortest directed path from s to t</li>
+<li>Topological sort: can you draw a digraph so that all edges point upwards</li>
+<li>Strong connectivity: is there a directed path between all pairs of vertices</li>
+<li>Transitive closure: for which vertices v and w is there a path from v to w</li>
+<li>PageRank: what is the importance of a web page</li>
+</ul></li>
+</ul></li>
+<li>Digraph API
+<ul>
+<li>Digraph API： <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">  <span class="comment">// create an empty digraph with V vertices</span></span><br><span class="line">  Digraph(<span class="keyword">int</span> V);</span><br><span class="line">  <span class="comment">// create a digraph from input stream</span></span><br><span class="line">  Digraph(In in);</span><br><span class="line">  <span class="comment">// add a directed edge v -&gt; w</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>;</span><br><span class="line">  <span class="comment">// vertices pointing from v</span></span><br><span class="line">  <span class="function">Iterable&lt;Integer&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">  <span class="comment">// number of vertices</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">V</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// number of edges</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">E</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// reverse of the digraph</span></span><br><span class="line">  <span class="function">Digraph <span class="title">reverse</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// string representation</span></span><br><span class="line">  <span class="function">String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
 </ol>
@@ -512,12 +670,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">278k</span>
+    <span title="Symbols count total">287k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:13</span>
+    <span title="Reading time total">4:21</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
