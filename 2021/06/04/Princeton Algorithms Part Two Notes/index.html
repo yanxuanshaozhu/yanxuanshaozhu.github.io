@@ -28,7 +28,7 @@
 <meta property="og:description" content="Course Name: Algorithms, Part II   Course Website: Coursera  Instructor: Professor Kevin Wayne, Professor Robert Sedgewick   Books: Algorithms(4th edition)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-04T11:47:06.000Z">
-<meta property="article:modified_time" content="2021-06-06T15:46:53.958Z">
+<meta property="article:modified_time" content="2021-06-07T11:14:26.822Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part Two">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-06 23:46:53" itemprop="dateModified" datetime="2021-06-06T23:46:53+08:00">2021-06-06</time>
+                <time title="Modified: 2021-06-07 19:14:26" itemprop="dateModified" datetime="2021-06-07T19:14:26+08:00">2021-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>13k</span>
+              <span>17k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>11 mins.</span>
+              <span>15 mins.</span>
             </span>
 
         </div>
@@ -494,6 +494,142 @@ Books: Algorithms(4th edition)
 <li>Digraph API
 <ul>
 <li>Digraph API： <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">  <span class="comment">// create an empty digraph with V vertices</span></span><br><span class="line">  Digraph(<span class="keyword">int</span> V);</span><br><span class="line">  <span class="comment">// create a digraph from input stream</span></span><br><span class="line">  Digraph(In in);</span><br><span class="line">  <span class="comment">// add a directed edge v -&gt; w</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>;</span><br><span class="line">  <span class="comment">// vertices pointing from v</span></span><br><span class="line">  <span class="function">Iterable&lt;Integer&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">  <span class="comment">// number of vertices</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">V</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// number of edges</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">E</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// reverse of the digraph</span></span><br><span class="line">  <span class="function">Digraph <span class="title">reverse</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// string representation</span></span><br><span class="line">  <span class="function">String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Adjacent-lists digraph representation: maintain vertex-indexed array of lists
+<ul>
+<li><p>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> V;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Bag&lt;Integer&gt;[] adj;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Digraph</span><span class="params">(<span class="keyword">int</span> V)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.V = V;</span><br><span class="line">    adj = (Bag&lt;Integer&gt;[]) <span class="keyword">new</span> Bag[V];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; V; v++) &#123;</span><br><span class="line">      adj[v] = <span class="keyword">new</span> Bag&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    adj[v].add(w);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> adj[v];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Performance analysis</p>
+<table>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 23%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">representation</th>
+<th style="text-align: center;">space</th>
+<th style="text-align: center;">add edge</th>
+<th style="text-align: center;">edge between v and w</th>
+<th style="text-align: center;">iterate over vertices adjacent to v</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">list of edges</td>
+<td style="text-align: center;"><span class="math inline">\(E\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(E\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(E\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">adjacency matrix</td>
+<td style="text-align: center;"><span class="math inline">\(V^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(V\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">adjacency lists</td>
+<td style="text-align: center;"><span class="math inline">\(E+V\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(doutegree(v)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(outdegree(v)\)</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+<li>Digraph Search
+<ul>
+<li>DFS in digraphs: same as the one in DFS for undirected graph
+<ul>
+<li>Algorithm:
+<ul>
+<li>To visit a vertex v:
+<ul>
+<li>Mark v as visited</li>
+<li>Recursively visit all unmarked vertices w pointing from v</li>
+</ul></li>
+</ul></li>
+<li>Applications:
+<ul>
+<li>program control-flow analysis</li>
+<li>mark-sweep garbage collector</li>
+</ul></li>
+</ul></li>
+<li>BFS in digraphs: same as the one in BFS for undirected graph
+<ul>
+<li>Algorithm:
+<ul>
+<li>BFS from source vertex s:
+<ul>
+<li>Put s onto a FIFO queue, and mark s as visited</li>
+<li>Repeat until the queue is empty:
+<ul>
+<li>Remove the least recently added vertex v</li>
+<li>For each unmarked vertex pointing from v, add to queue and mark as visited it</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Applications:
+<ul>
+<li>Web crawler</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Topological sort
+<ul>
+<li>Precedence scheduling
+<ul>
+<li>Goal: given a set of tasks to be completed with precedence constraints, in which order should we schedule the tasks</li>
+<li>Digraph model: vertex = task; edge = precedence constraints</li>
+</ul></li>
+<li>Topological sort:
+<ul>
+<li>DAG: directed acyclic graph</li>
+<li>Topological sort: redraw the DAG so all edges point upwards</li>
+<li>Preposition: reverse DFS postorder of a DAG is a topological order</li>
+<li>Preposition: a digraph has a topological order iff no directed cycle</li>
+</ul></li>
+<li>Solution:
+<ul>
+<li>Run DFS</li>
+<li>Return vertices in reverse postorder</li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthFirstOrder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> Stack&lt;Integer&gt; reversePost;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DepthFirstOrder</span><span class="params">(Digraph G)</span> </span>&#123;</span><br><span class="line">    reversePost = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt;G.V(); v++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[v]) &#123;</span><br><span class="line">        dfs(G, v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Digraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs(G, w);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    reversePost.push(v);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">reversePost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> reversePost;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Strong Components
+<ul>
+<li>Definition: vertices v and w are strongly connected if there is a directed path from v to w and a directed path from w to v</li>
+<li>Strong connectivity is an equivalence relation</li>
+<li>A strong component can contain only 1 vertex, thus a DAG with V vertices has V strong components</li>
+<li>Strong components algorithm brief history
+<ul>
+<li>1960s: Core OR problem</li>
+<li>1972: linear-time DFS algorithm(Tarjan)</li>
+<li>1980s: easy two-pass linear-time algorithm(Kosaraju-Sharir)</li>
+<li>1990s: more easy linear-time algorithms</li>
+</ul></li>
+<li>Kosaraju-Sharir algorithm
+<ul>
+<li>Reverse graph: Strong components in G are same as in <span class="math inline">\(G^{R}\)</span></li>
+<li>Kernel DAG: contract each strong component into a single vertex</li>
+<li>Idea:
+<ul>
+<li>Compute topological order(reverse postorder) in <span class="math inline">\(G^{R}\)</span></li>
+<li>Run DFS in G, visiting unmarked vertices in reverse postorder of <span class="math inline">\(G^{R}\)</span>, categorize them in different groups</li>
+</ul></li>
+<li>Preposition: Kosaraju-Sharir algorithm computes the strong components of a digraph in time proportional to <span class="math inline">\(E + V\)</span></li>
+<li>Java implementation: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KosarajuSharirSCC</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">KosarajuSharirSCC</span><span class="params">(Digraph G)</span> </span>&#123;</span><br><span class="line">    marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">    id = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">    <span class="comment">//  topological order on G.reverse</span></span><br><span class="line">    DepthFirstOrder dfs = <span class="keyword">new</span> DepthFirstOrder(G.reverse());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v: dfs.reversePost()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[v]) &#123;</span><br><span class="line">        dfs(G, v);</span><br><span class="line">        count ++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Digraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    marked[v] = <span class="keyword">true</span>;</span><br><span class="line">    id[v] = count;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!marked[w]) &#123;</span><br><span class="line">        dfs(G, w);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">stronglyConnected</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id[v] == id[w];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Notice: the first step for finding topological order should be using DFS, the second step can be either DFS or BFS, any algorithm that marks the set of vertices reachable from a given vertex will do</li>
+</ul></li>
+</ul></li>
+<li>Interview Questions:
+<ul>
+<li>Hamiltonian path in a DAG: topological sort, if the sorted result is consecutive, then there is a hamiltonian path, if not, no hamiltonian path exists</li>
+<li>Reachable vertex from all other vertices in a DAG: the vertex with 0 outdegrees is the solution</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -670,12 +806,12 @@ Books: Algorithms(4th edition)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">287k</span>
+    <span title="Symbols count total">291k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:21</span>
+    <span title="Reading time total">4:25</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
