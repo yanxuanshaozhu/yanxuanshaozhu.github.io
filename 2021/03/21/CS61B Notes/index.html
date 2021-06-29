@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/CS61B/Collection.png">
 <meta property="article:published_time" content="2021-03-21T12:15:47.000Z">
-<meta property="article:modified_time" content="2021-06-24T08:50:12.155Z">
+<meta property="article:modified_time" content="2021-06-27T08:15:55.601Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-24 16:50:12" itemprop="dateModified" datetime="2021-06-24T16:50:12+08:00">2021-06-24</time>
+                <time title="Modified: 2021-06-27 16:15:55" itemprop="dateModified" datetime="2021-06-27T16:15:55+08:00">2021-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>39k</span>
+              <span>41k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>36 mins.</span>
+              <span>37 mins.</span>
             </span>
 
         </div>
@@ -941,22 +941,163 @@
 </ul></li>
 </ol>
 <h1 id="lecture-12-20180214">Lecture 12 2018/02/14</h1>
-<p>1 Automatic Conversions 1. The syntax lectures * Syntax 1: Autoboxing, promotion, immutability, generics * Syntax 2: Exceptions, access control * Syntax 3: Iterables/iterators, equals, other loose ends * Syntax 4: Wildcards, type upper bounds, covariance 2. Generics * Generic classes require use to provide one or more actual type arguments * Generic classes only accecpt reference types, no primitive types are allowed * Conversion: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer val = <span class="keyword">new</span> Integer(intVal);</span><br><span class="line"><span class="keyword">int</span> intVal = val.valueOf();</span><br></pre></td></tr></table></figure> * Autoboxing/autounboxing: in Java 1.5, conversions between primitive types and associated wrapper types are introduced * Autoboxing/autounboxing does not apply for arrays * Wrapper types use much more memory, and there is some performance loss * Convert from String to primitive type <code>int val = Integer.parseInt(string)</code> 3. Primitive Widening * If a program expects a primitive of type T2 and is given a variable of type T1, and type T2 can take on a wider range of values than T1, the the variable will be implicitly cast to type T2. 4. Immutability * An immutable data type is one for which an instance cannot change in any observable way after instantiation * Example: ArrayDeque is mutable. Integer, String are immutable * The final keyword will help the complier ensuer immutability: * The final variable means you will assign a value once * Not necessary to have final to be immutable(e.g. the private variables in a class cannot be changed from outside unless reflection is used) * Advantage: less to think about, avoid bugs and makes debugging easier * Disadvantage: must create a new objecct anytime anything changes * Warning: declaring a reference as final does not make object immutable <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ArrayDeque&lt;String&gt; d = <span class="keyword">new</span> ArrayDeque&lt;String&gt;();</span><br><span class="line"><span class="comment">// this means d cannot point to another ArrayDeque, but the created ArrayDeque object can change</span></span><br></pre></td></tr></table></figure></p>
+<p>1 Automatic Conversions</p>
+<ol type="1">
+<li>The syntax lectures
+<ul>
+<li>Syntax 1: Autoboxing, promotion, immutability, generics</li>
+<li>Syntax 2: Exceptions, access control</li>
+<li>Syntax 3: Iterables/iterators, equals, other loose ends</li>
+<li>Syntax 4: Wildcards, type upper bounds, covariance</li>
+</ul></li>
+<li>Generics
+<ul>
+<li>Generic classes require use to provide one or more actual type arguments</li>
+<li>Generic classes only accecpt reference types, no primitive types are allowed</li>
+<li>Conversion: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer val = <span class="keyword">new</span> Integer(intVal);</span><br><span class="line"><span class="keyword">int</span> intVal = val.valueOf();</span><br></pre></td></tr></table></figure></li>
+<li>Autoboxing/autounboxing: in Java 1.5, conversions between primitive types and associated wrapper types are introduced</li>
+<li>Autoboxing/autounboxing does not apply for arrays</li>
+<li>Wrapper types use much more memory, and there is some performance loss</li>
+<li>Convert from String to primitive type <code>int val = Integer.parseInt(string)</code></li>
+</ul></li>
+<li>Primitive Widening
+<ul>
+<li>If a program expects a primitive of type T2 and is given a variable of type T1, and type T2 can take on a wider range of values than T1, the the variable will be implicitly cast to type T2.</li>
+</ul></li>
+<li>Immutability
+<ul>
+<li>An immutable data type is one for which an instance cannot change in any observable way after instantiation</li>
+<li>Example: ArrayDeque is mutable. Integer, String are immutable</li>
+<li>The final keyword will help the complier ensuer immutability:
+<ul>
+<li>The final variable means you will assign a value once</li>
+<li>Not necessary to have final to be immutable(e.g. the private variables in a class cannot be changed from outside unless reflection is used)</li>
+</ul></li>
+<li>Advantage: less to think about, avoid bugs and makes debugging easier</li>
+<li>Disadvantage: must create a new objecct anytime anything changes</li>
+<li>Warning: declaring a reference as final does not make object immutable <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ArrayDeque&lt;String&gt; d = <span class="keyword">new</span> ArrayDeque&lt;String&gt;();</span><br><span class="line"><span class="comment">// this means d cannot point to another ArrayDeque, but the created ArrayDeque object can change</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
 <h1 id="lecture-13-20180216">Lecture 13 2018/02/16</h1>
 <p>1 Lists, Sets</p>
 <ol type="1">
-<li><p>Lists <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="number">5</span>);</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls = []</span><br><span class="line">ls.append(<span class="number">5</span>)</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Sets <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">set.add(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="built_in">set</span>()</span><br><span class="line">s.add(<span class="string">&#x27;a&#x27;</span>)</span><br></pre></td></tr></table></figure> 2 Exceptions</p></li>
-<li><p>Throw Exceptions</p>
+<li>Lists <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="number">5</span>);</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls = []</span><br><span class="line">ls.append(<span class="number">5</span>)</span><br></pre></td></tr></table></figure></li>
+<li>Sets <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">set.add(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="built_in">set</span>()</span><br><span class="line">s.add(<span class="string">&#x27;a&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>2 Exceptions</p>
+<ol type="1">
+<li>Throw Exceptions
 <ul>
 <li>Exceptions cause normal flow of control to stop. We can in fact choose to throw our own exceptions</li>
 <li>Java demo <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myFun</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arg == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Null input!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(arg + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Python demo <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myFun</span>(<span class="params">arg: <span class="built_in">int</span></span>) -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(arg + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        print(<span class="string">&quot;Null input!&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure> 3 Iteration</li>
+<li>Python demo <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myFun</span>(<span class="params">arg: <span class="built_in">int</span></span>) -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(arg + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        print(<span class="string">&quot;Null input!&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li><p>Enhanced for loop</p>
+</ol>
+<p>3 Iteration</p>
+<ol type="1">
+<li>Enhanced for loop
 <ul>
 <li>Demo <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure></li>
 <li>In order to support for-each loop, a class should implement iterable interface and have an iterator method <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Iterable</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;T&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Iterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">// do sth;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">// do sth;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="lecture-14-20180221">Lecture 14 2018/02/21</h1>
+<p>1 Packages and Jar Files</p>
+<ol type="1">
+<li>Package Introduction:
+<ul>
+<li>A package is a namespace that organizes classes and interfaces</li>
+<li>Naming convertion: Package name starts with website address</li>
+<li>If used from outside, use the entire canonical name, if used from another class in the same package, you can just use the simple name</li>
+</ul></li>
+<li>Create a Package:
+<ul>
+<li>Two steps:
+<ul>
+<li>At the top of every file in the package, put the package name</li>
+<li>Make sure that the file is stored in a folder with the appropriate folder name</li>
+</ul></li>
+<li>Example: the <code>Dog.java</code> in folder <code>ug/joshh/animal</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ug.joshh.animal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="comment">// do sth;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Use Packages:
+<ul>
+<li>Use canonical name: to use a class from package A in a class from package B, you can use the canonical name <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ug.joshh.animal.Dog dog = <span class="keyword">new</span> us.joshh.animal.Dog();</span><br></pre></td></tr></table></figure></li>
+<li>Use import statement <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> us.joshh.animal.Dog;</span><br><span class="line">Dog dog = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The Default Package
+<ul>
+<li>Any java class without a package name at the top are part of the "default" package</li>
+<li>Generally, you should not use the default package except for tiny small programs</li>
+<li>You cannot import code from the default package</li>
+</ul></li>
+<li>JAR files
+<ul>
+<li>.jar file contains all of the .class files needed for your program</li>
+<li>Create a .jar file use IntelliJ:
+<ul>
+<li>Go to File -&gt; Project Structure -&gt; Artifacts -&gt; JAR -&gt; From modules with dependencies</li>
+<li>Click OK a couple of times</li>
+<li>Click Build -&gt; Build Artifacts(this will create a JAR file in a folder called "Artifacts")</li>
+<li>Distribute the JAR file to other programmers, who can now import it into IntelliJ</li>
+</ul></li>
+<li>JAR files are just zip files, they are easy to unzip and transform back into .java files</li>
+</ul></li>
+</ol>
+<p>2 Access Control</p>
+<ol type="1">
+<li><p>Access Control with Inheritance and Packages</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Modifier</th>
+<th style="text-align: center;">Class</th>
+<th style="text-align: center;">Package</th>
+<th style="text-align: center;">Subclass</th>
+<th style="text-align: center;">World</th>
+<th style="text-align: center;">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">public</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">accessible everywhere</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">protected</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">protected from outside world</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">default/No modifier</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">package-private</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">private</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">private from everything else</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>The default package example</p>
+<p>For the default package, because no modifier is provided on package information, everything is package-private, thus code in the default package cannot be accessed from user-defined package</p></li>
+<li><p>Some Notes</p>
+<ul>
+<li>For interface, even if a method is unmodified, it is still public rather than package-private</li>
+<li>Access is based only on static types</li>
 </ul></li>
 </ol>
 
@@ -1059,7 +1200,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-20180117"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-20180119"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2018&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-20180122"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;01&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-04-20180124"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2018&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-05-20180126"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2018&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-06-20180129"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2018&#x2F;01&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-03"><span class="nav-number">9.</span> <span class="nav-text">Lab 03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-01a"><span class="nav-number">10.</span> <span class="nav-text">Project 01A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture07-20180131"><span class="nav-number">11.</span> <span class="nav-text">Lecture07 2018&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture08-20180202"><span class="nav-number">12.</span> <span class="nav-text">Lecture08 2018&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture09-20180205"><span class="nav-number">13.</span> <span class="nav-text">Lecture09 2018&#x2F;02&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture10-20180207"><span class="nav-number">14.</span> <span class="nav-text">Lecture10 2018&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11-20180209"><span class="nav-number">15.</span> <span class="nav-text">Lecture 11 2018&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12-20180214"><span class="nav-number">16.</span> <span class="nav-text">Lecture 12 2018&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13-20180216"><span class="nav-number">17.</span> <span class="nav-text">Lecture 13 2018&#x2F;02&#x2F;16</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-20180117"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;01&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-01"><span class="nav-number">2.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-00"><span class="nav-number">3.</span> <span class="nav-text">HW 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-20180119"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2018&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-20180122"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;01&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-04-20180124"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2018&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-05-20180126"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2018&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-06-20180129"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2018&#x2F;01&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-03"><span class="nav-number">9.</span> <span class="nav-text">Lab 03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-01a"><span class="nav-number">10.</span> <span class="nav-text">Project 01A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture07-20180131"><span class="nav-number">11.</span> <span class="nav-text">Lecture07 2018&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture08-20180202"><span class="nav-number">12.</span> <span class="nav-text">Lecture08 2018&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture09-20180205"><span class="nav-number">13.</span> <span class="nav-text">Lecture09 2018&#x2F;02&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture10-20180207"><span class="nav-number">14.</span> <span class="nav-text">Lecture10 2018&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11-20180209"><span class="nav-number">15.</span> <span class="nav-text">Lecture 11 2018&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12-20180214"><span class="nav-number">16.</span> <span class="nav-text">Lecture 12 2018&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13-20180216"><span class="nav-number">17.</span> <span class="nav-text">Lecture 13 2018&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14-20180221"><span class="nav-number">18.</span> <span class="nav-text">Lecture 14 2018&#x2F;02&#x2F;21</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1135,12 +1276,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">307k</span>
+    <span title="Symbols count total">309k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:39</span>
+    <span title="Reading time total">4:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
