@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1 开发环境配置">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-05T09:59:20.000Z">
-<meta property="article:modified_time" content="2021-07-10T12:42:56.563Z">
+<meta property="article:modified_time" content="2021-07-10T15:19:05.850Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Scraper">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-10 20:42:56" itemprop="dateModified" datetime="2021-07-10T20:42:56+08:00">2021-07-10</time>
+                <time title="Modified: 2021-07-10 23:19:05" itemprop="dateModified" datetime="2021-07-10T23:19:05+08:00">2021-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>8.4k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>8 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -629,9 +629,10 @@
 <li><code>urlopen()</code>
 <ul>
 <li>可以用来模拟浏览器请求发起过程，并且可以处理授权验证(authentication)，重定向(redirection)，浏览器Cookies等内容</li>
-<li>基本用法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">response = urlopen(<span class="string">&#x27;https://www.python.org&#x27;</span>) <span class="comment"># 返回一个http.client.HTTPResponse对象，它是字节流，需要解码</span></span><br><span class="line">charset = response.headers.get_content_charset()  <span class="comment"># 这个字符集是响应头的Content-Type中的</span></span><br><span class="line">resource = responser.read().decode(charset)</span><br><span class="line"></span><br><span class="line">print(response.status)</span><br><span class="line">print(response.getheaders()) <span class="comment"># return tuples (header, value)</span></span><br><span class="line">print(response.getheader(<span class="string">&#x27;Server&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+<li>返回一个<code>http.client.HTTPResponse</code>对象，它是一个字节流，需要解码，其charset是响应头Content-Type规定的</li>
+<li>基本用法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line">response = urlopen(<span class="string">&#x27;https://www.python.org&#x27;</span>) </span><br><span class="line">charset = response.headers.get_content_charset()  </span><br><span class="line">resource = responser.read().decode(charset)</span><br><span class="line"></span><br><span class="line">print(response.status)</span><br><span class="line">print(response.getheaders()) <span class="comment"># return tuples (header, value)</span></span><br><span class="line">print(response.getheader(<span class="string">&#x27;Server&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
 <li>传递参数<code>data</code>变为POST模式 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line">data = byptes(urlencode(&#123;<span class="string">&#x27;word&#x27;</span>: <span class="string">&#x27;hello&#x27;</span>&#125;), encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="comment"># 传入参数 key = word, value = hello，使用urlencode把字典变成字符串，然后再用bytes变成字节流</span></span><br><span class="line">response = urlopen(url=<span class="string">&#x27;https://httpbin.org/post&#x27;</span>, data=data)</span><br></pre></td></tr></table></figure></li>
-<li>传递参数<code>timeout</code>设置超时时间，单位秒,如果超时会抛出<code>URLError</code>异常 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urlopen(url=<span class="string">&#x27;https://www.google.com&#x27;</span>,timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(e.reason, socket.timeout):</span><br><span class="line">        print(<span class="string">&#x27;Time Out!&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>传递参数<code>timeout</code>设置超时时间，单位秒,如果超时会抛出<code>URLError</code>异常 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> urllib.error</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urlopen(url=<span class="string">&#x27;https://www.google.com&#x27;</span>,timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(e.reason, socket.timeout):</span><br><span class="line">        print(<span class="string">&#x27;Time Out!&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li><code>Request()</code>
 <ul>
@@ -647,7 +648,67 @@
 </ol></li>
 <li>处理异常
 <ol type="1">
-<li></li>
+<li>前言
+<ul>
+<li><code>urllib.error</code>模块定义了由request模块产生的异常。如果出现了问题，request模块就会抛出error模块中定义的异常</li>
+</ul></li>
+<li><code>URLError</code>
+<ul>
+<li>URLError继承了OSError类，是error异常模块的基类，所有由request模块产生的异常都可以由它来处理</li>
+<li>它有1个<code>reason</code>属性，返回错误的原因 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> URLError</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urlopen(url=<span class="string">&#x27;https://www.google.com&#x27;</span>, timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">except</span> URLError <span class="keyword">as</span> e:</span><br><span class="line">    print(e.reason)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>HTTPError</code>
+<ul>
+<li>HTTPError是URLError的子类，专门处理HTTP请求错误</li>
+<li>它有3个属性:
+<ul>
+<li><code>code</code>: 返回HTTP响应状态码</li>
+<li><code>reason</code>: 返回错误的原因</li>
+<li><code>headers</code>: 返回请求头</li>
+</ul></li>
+<li>应该先捕获子类HTTPError，再捕获父类URLError <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urlopen(url=<span class="string">&#x27;https://test.github.io/about_me.html&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> HTTPError <span class="keyword">as</span> e:</span><br><span class="line">    print(e.code, e.reason, e.headers, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> URLError <span class="keyword">as</span> e:</span><br><span class="line">    print(e.reason)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;Connected successfully!&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>有时候reason不一定是字符串，可能是一个对象 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> URLError</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urlopen(url=<span class="string">&#x27;https://test.github.io/index.html&#x27;</span>,timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">except</span> URLError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(e.reason, socket.timeout):</span><br><span class="line">        print(<span class="string">&#x27;Time Out!&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+<li>解析连接
+<ol type="1">
+<li>前言
+<ul>
+<li><code>urllib.parse</code>模块定义了处理URL的标准接口</li>
+</ul></li>
+<li><code>urlparse()</code>
+<ul>
+<li>实现了URL的识别和分段</li>
+<li>返回一个<code>urllib.parse.ParseResult</code>对象，它是一个长度为6的元组，可以用index或者名字调用item</li>
+<li>URL标准格式: <code>scheme://netloc/path[;params][?query]#comment</code>
+<ul>
+<li><code>scheme</code>:协议，<code>://</code>之前的</li>
+<li><code>netloc</code>：域名，第一个<code>/</code>之前的</li>
+<li><code>path</code>: 访问路径，第一个<code>/</code>之后的</li>
+<li><code>params</code>: 参数， 用<code>;</code>之后的</li>
+<li><code>query</code>: 查询条件，<code>?</code>之后的</li>
+<li><code>comment</code>: 锚点，页面内部的某个节点, <code>#</code>之后的 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlparse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.google.com;user?id=5#comment&#x27;</span></span><br><span class="line">result = urlparse(url=url)  </span><br><span class="line">print(result)</span><br><span class="line">print(result[<span class="number">0</span>]) <span class="comment"># print(result.scheme)</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>参数
+<ul>
+<li><code>url</code>: URLString</li>
+<li><code>scheme</code>: 在URL未指定scheme的时候需要这个参数</li>
+<li><code>allow_fragments</code>: 如果是False，则fragment会和前面一项(params和query是可选的，因此前一项可能直接就是path)连在一起，并且结果的fragment为空 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlparse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;www.google.com;user?id=5#comment&#x27;</span></span><br><span class="line">result = urlparse(url=url,scheme=<span class="string">&#x27;https&#x27;</span>,allow_fragments=<span class="literal">False</span>)  </span><br><span class="line">print(result)</span><br><span class="line">print(result[<span class="number">0</span>]) <span class="comment"># https</span></span><br><span class="line">print(result.query) <span class="comment"># id=5#comment</span></span><br><span class="line">print(result.fragment) <span class="comment"># None</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><code>urlunparse()</code>
+<ul>
+<li>把一个长度为6的iterable object整合成一个URL，就是urlparse()反过来</li>
+</ul></li>
+<li><code>urlsplit()</code>
+<ul>
+<li>和urlparse()的区别在于不会解析params部分，如果有这一部分的话，直接放在path里面</li>
+<li>返回<code>urllib.parse.SplitResult</code>对象，它是一个长度为5的元组，可以用index或者名字调用item</li>
+</ul></li>
+<li><code>urlunsplit()</code>
+<ul>
+<li>把一个长度为5的iterable object整合成一个URL，就是urlsplit()反过来</li>
+</ul></li>
 </ol></li>
 </ol>
 
@@ -823,12 +884,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">320k</span>
+    <span title="Symbols count total">323k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:51</span>
+    <span title="Reading time total">4:53</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
