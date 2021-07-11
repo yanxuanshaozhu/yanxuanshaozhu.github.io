@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1 开发环境配置">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-05T09:59:20.000Z">
-<meta property="article:modified_time" content="2021-07-10T15:19:05.850Z">
+<meta property="article:modified_time" content="2021-07-11T14:20:05.434Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Scraper">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-10 23:19:05" itemprop="dateModified" datetime="2021-07-10T23:19:05+08:00">2021-07-10</time>
+                <time title="Modified: 2021-07-11 22:20:05" itemprop="dateModified" datetime="2021-07-11T22:20:05+08:00">2021-07-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>13 mins.</span>
             </span>
 
         </div>
@@ -709,6 +709,94 @@
 <ul>
 <li>把一个长度为5的iterable object整合成一个URL，就是urlsplit()反过来</li>
 </ul></li>
+<li><code>urljoin()</code>
+<ul>
+<li>根据base_url的scheme, netloc, path对目标URL缺失部分(目标url已有但和base_url不同的以目标URL为准)进行补全，base_url的params, query, fragment对目标url没有影响</li>
+<li>返回一个string</li>
+</ul></li>
+<li><code>urlencode()</code>
+<ul>
+<li>在构造GET请求参数的时候十分方便，可以把字典转化成query_string <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;america&#x27;</span></span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="string">&#x27;200&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">url = <span class="string">&#x27;https://www.google.com&#x27;</span> + urlencode(params)</span><br><span class="line">print(url)       <span class="comment"># https://www.google.com?name=america&amp;age=200</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>parse_qs()</code>
+<ul>
+<li>把GET请求query_string转成字典 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> parse_qs</span><br><span class="line"></span><br><span class="line">query = <span class="string">&#x27;name=america&amp;age=200&#x27;</span></span><br><span class="line">print(parse_qs(query))       <span class="comment"># &#123;&#x27;name&#x27; : &#x27;america&#x27;, &#x27;age&#x27;: 200&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>parse_qsl()</code>
+<ul>
+<li>把GET请求query_string转成列表，列表中每一项是(key,value)形式的元组 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> parse_qsl</span><br><span class="line"></span><br><span class="line">query = <span class="string">&#x27;name=america&amp;age=200&#x27;</span></span><br><span class="line">print(parse_qsl(query))       <span class="comment"># [(&#x27;name&#x27;, &#x27;america&#x27;), (&#x27;age&#x27;, 200)]</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>quote()</code>
+<ul>
+<li>把任意编码内容转换成URL编码的格式，可以用来解决中文乱码的问题 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"></span><br><span class="line">word = <span class="string">&#x27;乱码&#x27;</span></span><br><span class="line">url = <span class="string">&#x27;https://wwww.google.com?wd=&#x27;</span> + quote(word)  <span class="comment"># https://www.google.com?wd=%E4%B9%B1%E7%A0%81</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>unquote()</code>
+<ul>
+<li>quote的反面，它可以进行URL编码 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> unquote</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.google.com?wd=%E4%B9%B1%E7%A0%81&#x27;</span></span><br><span class="line">print(unquote(url))  <span class="comment"># https://www.google.com?wd=乱码</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+<li>Robots协议
+<ol type="1">
+<li>前言
+<ul>
+<li>Robots协议(Robots Exclusion Protocol)，用来告诉爬虫和搜索引擎哪些页面可以爬取，哪些不可以爬取。它通常是一个<code>robots.txt</code>的文本文件，一般放在网站的根目录下面</li>
+</ul></li>
+<li>例子
+<ul>
+<li>禁止所有爬虫 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: * </span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure></li>
+<li>允许所有爬虫 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: * </span><br><span class="line">Disallow: </span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>爬虫名称
+<ul>
+<li>BaiduSpider</li>
+<li>Googlebot</li>
+<li>bingbot</li>
+<li>Slurp(Yahoo)</li>
+<li>msnbot</li>
+</ul></li>
+<li><code>robotparser</code>
+<ul>
+<li>可以使用<code>urllib.robotparser.RobotFileParser()</code>来判断是否有权限爬取某个网页 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.robotparser <span class="keyword">import</span> RobotFileParser</span><br><span class="line">rp = RobotFileParser(url=<span class="string">&#x27;https://www.google.com/robots.txt&#x27;</span>)</span><br><span class="line"><span class="comment"># 开始解析，必须有rp.read()这一行，否则下面判断都是False</span></span><br><span class="line">rp.read()</span><br><span class="line">print(rp.can_fetch(useragent=<span class="string">&#x27;*&#x27;</span>, url=<span class="string">&#x27;https:www.google.com&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+</ol>
+<h2 id="使用requests">2 使用<code>requests</code></h2>
+<ol type="1">
+<li>基本用法
+<ol type="1">
+<li>使用urllib的时候，登陆验证，Cookies，设置代理都需要Opener和Handler，但是使用requests可以简单的搞定这些问题</li>
+<li>GET请求
+<ul>
+<li>urllib中的urlopen()方法实际上是GET方是请求网页，而requests中的get()也可以实现同样的功能</li>
+<li>get()返回<code>requests.models.Response</code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">rp = requests.get(url=<span class="string">&#x27;https://www.google.com&#x27;</span>)</span><br><span class="line">print(rp.status_code)  <span class="comment"># 响应状态码</span></span><br><span class="line">print(rp.text)    <span class="comment"># 响应体内容</span></span><br><span class="line">print(rp.cookies)  <span class="comment"># Cookies</span></span><br><span class="line">print(rp.headers)  <span class="comment"># 响应头</span></span><br><span class="line">print(rp.url)  <span class="comment"># URL</span></span><br><span class="line">print(rp.history)  <span class="comment"># 请求历史</span></span><br></pre></td></tr></table></figure></li>
+<li>使用data参数引入query_string，使用headers引入headers <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">query = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;america&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">200</span>&#125;</span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0&#x27;</span>&#125;</span><br><span class="line">rp = requests.get(url=<span class="string">&#x27;https://www.google.com&#x27;</span>, params=query, headers=headers)</span><br></pre></td></tr></table></figure></li>
+<li>抓取图片，视频，音频等二进制数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> get</span><br><span class="line"></span><br><span class="line">rp = get(url=<span class="string">&#x27;https://www.github.com/facivon.ico&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;favion.ico&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(rp.content)</span><br></pre></td></tr></table></figure></li>
+<li>类似的有<code>post()</code>, <code>put()</code>, <code>delete()</code>等方法来实现POST，PUT，DELETE等请求</li>
+</ul></li>
+<li>POST请求
+<ul>
+<li>和urllib中Request()类似，requests中post()可以实现POST请求 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;germey&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="string">&#x27;22&#x27;</span>&#125;</span><br><span class="line">r = requests.post(<span class="string">&quot;http://httpbin.org/post&quot;</span>, data=data)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>响应
+<ul>
+<li>requests.codes有内置状态码，可以用来和response.status_code比较判断状态</li>
+<li>举例
+<ul>
+<li>200: <code>requests.codes.ok</code></li>
+<li>403: <code>requests.codes.forbidden</code></li>
+<li>404: <code>requests.codes.not_found</code></li>
+<li>500: <code>requests.codes.internal_server_error</code></li>
+</ul></li>
+</ul></li>
+</ol></li>
+<li>高级用法
+<ol type="1">
+<li>文件上传 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">&#x27;file&#x27;</span>: <span class="built_in">open</span>(<span class="string">&#x27;favicon.ico&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span><br><span class="line">r = requests.post(<span class="string">&#x27;http://httpbin.org/post&#x27;</span>, files=files)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></li>
+<li>Cookies
+<ul>
+<li>获取Cookies <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> request <span class="keyword">import</span> get</span><br><span class="line"></span><br><span class="line">rp = get(url=<span class="string">&#x27;https:www.google.com&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> rp.cookies.items():</span><br><span class="line">    print(key, <span class="string">&#x27;===&gt;&#x27;</span>, value)</span><br></pre></td></tr></table></figure></li>
+<li>把cookies复制到headers中维持登录</li>
+</ul></li>
 </ol></li>
 </ol>
 
@@ -808,7 +896,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">1.1.</span> <span class="nav-text">1 安装Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">2 安装请求库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%A7%A3%E6%9E%90%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">3 安装解析库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">4 安装数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">5 安装存储库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85web%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">6 安装Web库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85app%E7%88%AC%E5%8F%96%E5%BA%93"><span class="nav-number">1.7.</span> <span class="nav-text">7 安装APP爬取库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6"><span class="nav-number">1.8.</span> <span class="nav-text">8 安装爬虫框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-number">1.9.</span> <span class="nav-text">9 安装部署相关库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 爬虫基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">1 HTTP基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">2 网页基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3 爬虫基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">5 代理基本原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-%E5%9F%BA%E6%9C%AC%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8urllib"><span class="nav-number">3.1.</span> <span class="nav-text">1 使用urllib</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">1.1.</span> <span class="nav-text">1 安装Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">2 安装请求库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%A7%A3%E6%9E%90%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">3 安装解析库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">4 安装数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">5 安装存储库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85web%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">6 安装Web库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85app%E7%88%AC%E5%8F%96%E5%BA%93"><span class="nav-number">1.7.</span> <span class="nav-text">7 安装APP爬取库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6"><span class="nav-number">1.8.</span> <span class="nav-text">8 安装爬虫框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-number">1.9.</span> <span class="nav-text">9 安装部署相关库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 爬虫基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">1 HTTP基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">2 网页基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3 爬虫基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">5 代理基本原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-%E5%9F%BA%E6%9C%AC%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8urllib"><span class="nav-number">3.1.</span> <span class="nav-text">1 使用urllib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8requests"><span class="nav-number">3.2.</span> <span class="nav-text">2 使用requests</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -884,12 +972,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">323k</span>
+    <span title="Symbols count total">326k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:53</span>
+    <span title="Reading time total">4:56</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
