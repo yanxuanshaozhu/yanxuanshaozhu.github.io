@@ -22,13 +22,13 @@
 
   <meta name="description" content="Chapter 1 开发环境配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learn Python Web Scraper">
+<meta property="og:title" content="Learn Python Web Scraper(Notes in Chinese)">
 <meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/07/05/Learn%20Python%20Web%20Scraper/index.html">
 <meta property="og:site_name" content="My Blog">
 <meta property="og:description" content="Chapter 1 开发环境配置">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-05T09:59:20.000Z">
-<meta property="article:modified_time" content="2021-07-12T14:20:59.662Z">
+<meta property="article:modified_time" content="2021-07-16T16:27:34.393Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Web Scraper">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Learn Python Web Scraper | My Blog</title>
+  <title>Learn Python Web Scraper(Notes in Chinese) | My Blog</title>
   
 
 
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Learn Python Web Scraper
+          Learn Python Web Scraper(Notes in Chinese)
         </h1>
 
         <div class="post-meta">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-12 22:20:59" itemprop="dateModified" datetime="2021-07-12T22:20:59+08:00">2021-07-12</time>
+                <time title="Modified: 2021-07-17 00:27:34" itemprop="dateModified" datetime="2021-07-17T00:27:34+08:00">2021-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>20k</span>
+              <span>36k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>18 mins.</span>
+              <span>33 mins.</span>
             </span>
 
         </div>
@@ -235,9 +235,9 @@
       
         <h1 id="chapter-1-开发环境配置">Chapter 1 开发环境配置</h1>
 <a id="more"></a>
-<h2 id="安装python">1 安装Python</h2>
+<h2 id="安装python">安装Python</h2>
 <p>​ 略</p>
-<h2 id="安装请求库">2 安装请求库</h2>
+<h2 id="安装请求库">安装请求库</h2>
 <ol type="1">
 <li>爬虫简单分成三步：抓取页面，分析页面，存储数据</li>
 <li>抓取页面的时候，需要模拟浏览器向服务器发出请求，需要用到一些Python库来实现HTTP请求的操作</li>
@@ -262,7 +262,7 @@
 <li>requests库是阻塞式HTTP请求库，aiohttp是一个提供了异步Web服务的库</li>
 </ol></li>
 </ol>
-<h2 id="安装解析库">3 安装解析库</h2>
+<h2 id="安装解析库">安装解析库</h2>
 <ol type="1">
 <li><code>lxml</code>库
 <ol type="1">
@@ -284,19 +284,19 @@
 <li>tesserocr是Python的一个OCR识别库，可以用来解决验证码问题</li>
 </ol></li>
 </ol>
-<h2 id="安装数据库">4 安装数据库</h2>
+<h2 id="安装数据库">安装数据库</h2>
 <ol type="1">
 <li>关系型：MySQL</li>
 <li>非关系型：MongoDB(存储类似JSON对象)，Redis</li>
 </ol>
-<h2 id="安装存储库">5 安装存储库</h2>
+<h2 id="安装存储库">安装存储库</h2>
 <ol type="1">
 <li>Python利用存储库来进行和数据库的交互</li>
 <li>Python：PyMySQL</li>
 <li>MongoDB：PyMongo</li>
 <li>Redis:：redis-py</li>
 </ol>
-<h2 id="安装web库">6 安装Web库</h2>
+<h2 id="安装web库">安装Web库</h2>
 <ol type="1">
 <li>通过Web服务提供一个API接口，比如可以把代理放在Redis中，向Web服务的代理池API请求获取代理</li>
 <li><code>Flask</code>
@@ -309,7 +309,7 @@
 <li>支持异步的I/O框架</li>
 </ol></li>
 </ol>
-<h2 id="安装app爬取库">7 安装APP爬取库</h2>
+<h2 id="安装app爬取库">安装APP爬取库</h2>
 <ol type="1">
 <li>APP中页面加载出来需要通过请求服务器接口获取数据。在爬虫的时候，一般通过抓包技术来获取数据</li>
 <li>APP爬虫时，简单接口可以使用Charles或者mitmproxy，复杂接口需要使用mitmdump对抓到的请求和响应进行实时保存和处理，规模化采集自动化工具是Appium(类似Selenium)</li>
@@ -329,7 +329,7 @@
 <li>直接通过GitHub安装即可</li>
 </ol></li>
 </ol>
-<h2 id="安装爬虫框架">8 安装爬虫框架</h2>
+<h2 id="安装爬虫框架">安装爬虫框架</h2>
 <ol type="1">
 <li>规模化爬虫框架可以让使用者不用关心功能实现，只用你关心爬虫逻辑</li>
 <li><code>pyspider</code>
@@ -345,7 +345,7 @@
 <li><code>Scrapy-Redis</code>是分布式扩展模块，可以方便的搭建分布式爬虫</li>
 </ol></li>
 </ol>
-<h2 id="安装部署相关库">9 安装部署相关库</h2>
+<h2 id="安装部署相关库">安装部署相关库</h2>
 <ol type="1">
 <li><code>Docker</code>
 <ol type="1">
@@ -381,7 +381,7 @@
 </ol></li>
 </ol>
 <h1 id="chapter-2-爬虫基础">Chapter 2 爬虫基础</h1>
-<h2 id="http基本原理">1 HTTP基本原理</h2>
+<h2 id="http基本原理">HTTP基本原理</h2>
 <ol type="1">
 <li>URI和URL
 <ol type="1">
@@ -459,7 +459,7 @@
 </ul></li>
 </ol></li>
 </ol>
-<h2 id="网页基础">2 网页基础</h2>
+<h2 id="网页基础">网页基础</h2>
 <ol type="1">
 <li>网页的组成
 <ol type="1">
@@ -512,7 +512,7 @@
 <li>...</li>
 </ol></li>
 </ol>
-<h2 id="爬虫基本原理">3 爬虫基本原理</h2>
+<h2 id="爬虫基本原理">爬虫基本原理</h2>
 <ol type="1">
 <li>爬虫概述
 <ol type="1">
@@ -580,7 +580,7 @@
 </ul></li>
 </ol></li>
 </ol>
-<h2 id="代理基本原理">5 代理基本原理</h2>
+<h2 id="代理基本原理">代理基本原理</h2>
 <ol type="1">
 <li>前言
 <ul>
@@ -612,7 +612,7 @@
 </ol></li>
 </ol>
 <h1 id="chapter-3-基本库的使用">Chapter 3 基本库的使用</h1>
-<h2 id="使用urllib">1 使用<code>urllib</code></h2>
+<h2 id="使用urllib">使用<code>urllib</code></h2>
 <ol type="1">
 <li>前言
 <ol type="1">
@@ -761,7 +761,7 @@
 </ul></li>
 </ol></li>
 </ol>
-<h2 id="使用requests">2 使用<code>requests</code></h2>
+<h2 id="使用requests">使用<code>requests</code></h2>
 <ol type="1">
 <li>基本用法
 <ol type="1">
@@ -820,9 +820,12 @@
 </ul></li>
 <li>Prepared Request
 <ul>
-<li>和urllib中的Request类似，requests中的Prepare Request可以接受参数 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> Request, Session</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;germey&#x27;</span>&#125;</span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">s = Session()</span><br><span class="line">req = Request(<span class="string">&#x27;POST&#x27;</span>, url, data=data, headers=headers)</span><br><span class="line">prepped = s.prepare_request(req)</span><br><span class="line">r = s.send(prepped)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure> ## 3 正则表达式</li>
+<li>和urllib中的Request类似，requests中的Prepare Request可以接受参数 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> Request, Session</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;germey&#x27;</span>&#125;</span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">s = Session()</span><br><span class="line">req = Request(<span class="string">&#x27;POST&#x27;</span>, url, data=data, headers=headers)</span><br><span class="line">prepped = s.prepare_request(req)</span><br><span class="line">r = s.send(prepped)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol></li>
+</ol>
+<h2 id="正则表达式">正则表达式</h2>
+<ol type="1">
 <li>可以使用regular expression 进行模式匹配
 <ul>
 <li>比如匹配URL: <code>[a-zA-Z]+://[^\s]*</code></li>
@@ -882,7 +885,7 @@
 </ol></li>
 </ol>
 <h1 id="chapter-4-解析库的使用">Chapter 4 解析库的使用</h1>
-<h2 id="使用xpath">1 使用<code>XPath</code></h2>
+<h2 id="使用xpath">使用<code>XPath</code></h2>
 <ol type="1">
 <li>前言
 <ul>
@@ -977,9 +980,290 @@
 <li>xpath会得到一个列表，其中每个元素都是满足要求的节点，每一个节点是<code>lxml.etree._Element</code>对象</li>
 <li>所有节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line"><span class="comment"># 这里改成 results = html.xpath(&#x27;//li&#x27;)就是获取所有li节点</span></span><br><span class="line">results = html.xpath(<span class="string">&#x27;//*&#x27;</span>)  </span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure></li>
 <li>子节点和子孙节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">results = html.xpath(<span class="string">&#x27;//li/a&#x27;</span>) <span class="comment"># 获取所有li节点的a子节点</span></span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    print(result)</span><br><span class="line"></span><br><span class="line">results_another = html.xpath(<span class="string">&#x27;//ul//a&#x27;</span>) <span class="comment"># 获取所有ul节点的a子孙节点，效果和上面一样</span></span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure></li>
+<li>父节点: 两种写法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line"><span class="comment"># 使用/../查找父节点</span></span><br><span class="line">result1 = html.xpath(<span class="string">&#x27;a[href=&quot;link4.html&quot;]/../@class&#x27;</span>)    <span class="comment"># [&#x27;item-1&#x27;]</span></span><br><span class="line"><span class="comment"># 使用/parent::*/查找父节点，parent::表示父节点，*表示所有满足的结果</span></span><br><span class="line">result2 = html.xpath(<span class="string">&#x27;a[href=&quot;link4.html&quot;]/parent::*/@class&#x27;</span>)  <span class="comment"># [&#x27;item-1&#x27;] </span></span><br></pre></td></tr></table></figure></li>
+<li>属性匹配 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">result = html.xpath(<span class="string">&#x27;//li[@class=&quot;item-0&quot;]&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>文本获取 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">result1 = html.xpath(<span class="string">&#x27;//li[@class=&#x27;</span>item-<span class="number">0</span><span class="string">&#x27;]//text()&#x27;</span>) <span class="comment"># [&#x27;first-item&#x27;, &#x27;second-item&#x27;, &#x27;\n&#x27;], 因为在lxml对html文件进行自动修正补完后加入了换行符</span></span><br><span class="line">result2 = html.xpath(<span class="string">&#x27;//li[@class=&#x27;</span>item-<span class="number">0</span><span class="string">&#x27;]/a/text()&#x27;</span>) <span class="comment"># [&#x27;first-item&#x27;, &#x27;second-item&#x27;], 这个要手动多写一层，但是更加简洁</span></span><br></pre></td></tr></table></figure></li>
+<li>属性获取: 两种写法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">result1 = html.xpath(<span class="string">&#x27;//li/a/@href&#x27;</span>)</span><br><span class="line">result2 = html.xpath(<span class="string">&#x27;//li/a/attribute::href&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>属性多值匹配 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree  </span><br><span class="line"></span><br><span class="line">text = <span class="string">&#x27;&#x27;&#x27;  </span></span><br><span class="line"><span class="string">&lt;li class=&quot;li li-first&quot;&gt;&lt;a href=&quot;link.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt; </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>  </span><br><span class="line">html = etree.HTML(text)  </span><br><span class="line"><span class="comment"># result = html.xpath(&#x27;//li[@class=&quot;li&quot;]/a/text()&#x27;)  这个不行，因为属性有两个值，这样拿不到对应的节点</span></span><br><span class="line">result = html.xpath(<span class="string">&#x27;//li[contains(@class, &quot;li&quot;)]&#x27;</span>/a/text()) <span class="comment"># Syntax: contains(@attribute, value)</span></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure></li>
+<li>多属性共同定位
+<ul>
+<li>使用运算符搞定: <code>and</code>, <code>or</code>, <code>mod(% int Python)</code>, <code>|(两个节点集合)</code>, <code>+</code>, <code>-</code>, <code>*</code>, <code>div(/ in Python)</code>, <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree  </span><br><span class="line"></span><br><span class="line">text = <span class="string">&#x27;&#x27;&#x27;  </span></span><br><span class="line"><span class="string">&lt;li class=&quot;li li-first&quot; name=&quot;item&quot;&gt;&lt;a href=&quot;link.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>  </span><br><span class="line">html = etree.HTML(text)  </span><br><span class="line">result = html.xpath(<span class="string">&#x27;//li[contains(@class, &quot;li&quot;) and @name=&quot;item&quot;]/a/text()&#x27;</span>)  </span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>按照位置选择节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">first = etree.xpath(<span class="string">&#x27;//li[1]/a/text()&#x27;</span>)</span><br><span class="line">last = etree.xpath(<span class="string">&#x27;//li[last()]/a/text()&#x27;</span>)</span><br><span class="line">first_two = etree.xpath(<span class="string">&#x27;//li[position()&lt;3]/a/text()&#x27;</span>)</span><br><span class="line">third_last = etree.xpath(<span class="string">&#x27;//li[last()-2]/a/text()&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>节点轴选择
+<ul>
+<li>祖先节点: <code>ancestor::</code></li>
+<li>子孙节点: <code>descendant::</code></li>
+<li>父节点: <code>parent::</code></li>
+<li>子节点: <code>child::</code></li>
+<li>当前节点之后的节点： <code>following::</code></li>
+<li>当前节点之后的同级节点: <code>following-sibling::</code></li>
+</ul></li>
 </ul></li>
 </ol></li>
 </ol>
+<h2 id="使用beautiful-soup">使用<code>Beautiful Soup</code></h2>
+<ol type="1">
+<li>简介
+<ul>
+<li>Beautiful Soup是一个工具箱，通过解析文档为用户提供需要抓取的数据</li>
+<li>Beautiful Soup自动将输入文档转换为Unicode编码，输入文档为UTF-8编码</li>
+</ul></li>
+<li>解析器
+<ul>
+<li>分类</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">解析器</th>
+<th style="text-align: center;">使用方法</th>
+<th style="text-align: center;">优势</th>
+<th style="text-align: center;">劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Python标准库</td>
+<td style="text-align: center;"><code>BeautifulSoup(html, 'html.parser')</code></td>
+<td style="text-align: center;">内置库，速度适中，文档容错率强</td>
+<td style="text-align: center;">低版本Python库难用</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lxml HTML解析器</td>
+<td style="text-align: center;"><code>BeautifulSoup(html, 'lxml')</code></td>
+<td style="text-align: center;">速度快，文档容错率强</td>
+<td style="text-align: center;">需要C库</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lxml XML解析器</td>
+<td style="text-align: center;"><code>BeautifulSoup(html, 'xml')</code></td>
+<td style="text-align: center;">速度快，唯一支持XML</td>
+<td style="text-align: center;">需要C库</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">html5lib</td>
+<td style="text-align: center;"><code>BeautifulSoup(html, 'html5lib')</code></td>
+<td style="text-align: center;">文档容错率最高，生成HTML5格式的文档</td>
+<td style="text-align: center;">速度慢</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入html_string</span></span><br><span class="line">html = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;,</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="comment"># 从文件输入</span></span><br><span class="line">soup = BeautifulSoup(<span class="built_in">open</span>(<span class="string">&#x27;./test.html&#x27;</span>), <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="comment"># prettify()可以把要解析的字符串以标准的缩进格式输出</span></span><br><span class="line">print(soup.prettify())</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>节点选择器
+<ul>
+<li>选择元素得到<code>bs4.element.Tag</code>对象 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span> <span class="comment"># 同上，omitted</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.title.string)      <span class="comment">#soup.节点</span></span><br><span class="line">print(<span class="built_in">type</span>(soup.title))       <span class="comment"># bs4.element.Tag</span></span><br></pre></td></tr></table></figure></li>
+<li>提取信息
+<ul>
+<li>获取名称<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span>  BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.title.name) <span class="comment"># title</span></span><br></pre></td></tr></table></figure></li>
+<li>获取属性 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.p.attrs)  <span class="comment"># p节点的属性列表</span></span><br><span class="line">print(soup.p.attrs[<span class="string">&#x27;name&#x27;</span>]) <span class="comment"># p节点的name属性</span></span><br><span class="line"><span class="comment"># 这个写法更简略，效果和上面的一致</span></span><br><span class="line">print(soup.p[<span class="string">&#x27;name&#x27;</span>]) <span class="comment"># p节点的name属性</span></span><br></pre></td></tr></table></figure></li>
+<li>获取内容 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.p.string)  </span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>嵌套选择 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.head.string)</span><br><span class="line">print(soup.head.title.string)  <span class="comment"># 这个就是嵌套  </span></span><br></pre></td></tr></table></figure></li>
+<li>关联选择
+<ul>
+<li>子节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(<span class="built_in">type</span>(soup.p.contents))  <span class="comment"># list</span></span><br><span class="line">print(soup.p.contents)</span><br><span class="line">print(<span class="built_in">type</span>(soup.p.children)) <span class="comment"># list_iterator</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.p.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure></li>
+<li>子孙节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(<span class="built_in">type</span>(soup.p.descendants))</span><br><span class="line"><span class="keyword">for</span> descendant <span class="keyword">in</span> soup.p.descendants:</span><br><span class="line">    print(descendant)</span><br></pre></td></tr></table></figure></li>
+<li>父节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(<span class="built_in">type</span>(soup.a.parent)) <span class="comment"># bs4.element.Tag</span></span><br><span class="line">print(soup.a.parent)</span><br></pre></td></tr></table></figure></li>
+<li>祖先节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(<span class="built_in">type</span>(soup.a.parents)) <span class="comment"># list_iterator</span></span><br><span class="line"><span class="keyword">for</span> parent <span class="keyword">in</span> soup.a.parents:</span><br><span class="line">    print(parent)</span><br></pre></td></tr></table></figure></li>
+<li>兄弟节点<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.p.next_sibling)</span><br><span class="line">print(soup.p.prev_sibling)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>方法选择器
+<ul>
+<li><code>find_all()</code>
+<ul>
+<li><code>find_all(name=, attrs=, recursive=, text=, **kwargs)</code>, 查询所有符合条件的元素</li>
+<li><code>name</code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.find_all(name=<span class="string">&#x27;ul&#x27;</span>)) <span class="comment"># 返回的结果是list</span></span><br><span class="line">print(soup.find_all(name=<span class="string">&#x27;ul&#x27;</span>)[<span class="number">0</span>])</span><br></pre></td></tr></table></figure></li>
+<li><code>attrs</code><br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">attrs = &#123;<span class="string">&#x27;id&#x27;</span>:<span class="string">&#x27;list-1&#x27;</span>&#125;</span><br><span class="line">print(soup.find_all(attrs=attrs)) <span class="comment"># 返回结果是list</span></span><br><span class="line"><span class="comment"># 对于id和class有简略写法</span></span><br><span class="line">print(soup.find_all(<span class="built_in">id</span>=<span class="string">&#x27;list-1&#x27;</span>))</span><br><span class="line">print(soup.find_all(class_=<span class="string">&#x27;element&#x27;</span>)) <span class="comment"># Python中class是关键字，这里需要使用class_</span></span><br></pre></td></tr></table></figure></li>
+<li><code>text</code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">text = re.<span class="built_in">compile</span>(<span class="string">&#x27;regular_expression&#x27;</span>)</span><br><span class="line">print(soup.find_all(text=text)) <span class="comment"># 返回一个list</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>find()</code>
+<ul>
+<li>返回第一个匹配到的节点</li>
+</ul></li>
+<li><code>find_parents()</code>, <code>find_parent()</code></li>
+<li><code>find_next_siblings()</code>, <code>find_next_sibling()</code></li>
+<li><code>find_previous_siblings()</code>, <code>find_previous_sibling()</code></li>
+<li><code>find_all_next()</code>, <code>find_next()</code></li>
+<li><code>find_all_previsou()</code>, <code>find_previous()</code></li>
+</ul></li>
+<li>CSS选择器
+<ul>
+<li>基本用法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">print(soup.select(<span class="string">&#x27;ul li&#x27;</span>))</span><br><span class="line">print(soup.select(<span class="comment">#list-2 .element))</span></span><br></pre></td></tr></table></figure></li>
+<li>嵌套选择 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> ul <span class="keyword">in</span> soup.sleect(<span class="string">&#x27;ul&#x27;</span>):</span><br><span class="line">    print(ul.select(<span class="string">&#x27;li&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+<li>获取属性 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> ul <span class="keyword">in</span> soup.select(<span class="string">&#x27;ul&#x27;</span>):</span><br><span class="line">    print(ul[<span class="string">&#x27;id&#x27;</span>])</span><br><span class="line">    print(ul.attrs[<span class="string">&#x27;id&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
+<li>获取文本 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> ul <span class="keyword">in</span> soup.select(<span class="string">&#x27;ul&#x27;</span>):</span><br><span class="line">    print(ul.string)</span><br><span class="line">    print(ul.get_text())</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>BeautifulSoup总结
+<ul>
+<li>推荐使用lxml解析器，必要时使用lxml.HTMLParser</li>
+<li>节点选择器筛选功能比较弱，但是速度快</li>
+<li>建议使用find()或者find_all()查询匹配单个结果或者多个结果</li>
+<li>如果对CSS选择器熟悉的话，可以使用select()方法选择</li>
+</ul></li>
+</ol>
+<h2 id="使用pyquery">使用<code>pyquery</code></h2>
+<ol type="1">
+<li>初始化
+<ul>
+<li>得到的文件是<code>pyquery.pyquery.PyQuery</code>对象，其中的每一个节点也是<code>pyquery.pyquery.PyQuery</code>对象</li>
+<li>使用字符串初始化 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;div&gt;</span></span><br><span class="line"><span class="string">    &lt;ul&gt;</span></span><br><span class="line"><span class="string">        &lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li class=&quot;item-1 active&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;/ul&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">print(<span class="built_in">type</span>(doc))</span><br></pre></td></tr></table></figure></li>
+<li>使用URL初始化 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.google.com&#x27;</span></span><br><span class="line">doc = pq(url=url)</span><br></pre></td></tr></table></figure></li>
+<li>使用文件初始化 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">file = <span class="string">&#x27;./test.html&#x27;</span></span><br><span class="line">doc = pq(filename=file)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>基本CSS选择器 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">print(doc(<span class="string">&#x27;ul li&#x27;</span>))  <span class="comment"># 按照选择器规则用括号表示</span></span><br></pre></td></tr></table></figure></li>
+<li>查找节点
+<ul>
+<li>子节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">item = doc(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line">lis = item.children()</span><br><span class="line">lis_active = item.children(<span class="string">&#x27;.active&#x27;</span>)</span><br><span class="line">print(lis)</span><br><span class="line">print(lis_active)</span><br></pre></td></tr></table></figure></li>
+<li>子孙节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">item = doc(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line">descendants = item.find(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line">print(descendants)</span><br></pre></td></tr></table></figure></li>
+<li>父节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">item = doc(<span class="string">&#x27;.list&#x27;</span>)</span><br><span class="line">container = item.parent()</span><br><span class="line">print(container)</span><br></pre></td></tr></table></figure></li>
+<li>祖先节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">item = doc(<span class="string">&#x27;.list&#x27;</span>)</span><br><span class="line">ancestors = item.parents()</span><br><span class="line">ancestor = item.parents(<span class="string">&#x27;.wrap&#x27;</span>)</span><br><span class="line">print(ancestors)</span><br><span class="line">print(ancestor)</span><br></pre></td></tr></table></figure></li>
+<li>兄弟节点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doc(<span class="string">&#x27;.list .item-0 .active&#x27;</span>)</span><br><span class="line">print(li.siblings())</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>遍历
+<ul>
+<li>对于多个结果的，使用<code>items()</code>得到生成器，然后进行遍历 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html =<span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">lis = doc(<span class="string">&#x27;li&#x27;</span>).items()</span><br><span class="line">print(<span class="built_in">type</span>(lis)) <span class="comment"># generator</span></span><br><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">    print(li)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>获取信息
+<ul>
+<li>获取属性使用<code>attr()</code>
+<ul>
+<li>单个结果直接使用 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">a = doc(<span class="string">&#x27;.item-0.active a&#x27;</span>)</span><br><span class="line">print(a.attr(<span class="string">&#x27;href&#x27;</span>))</span><br><span class="line">print(a.attr.href)</span><br></pre></td></tr></table></figure></li>
+<li>多个结果需要遍历，否则attr函数只能拿到第一个结果节点的对应属性</li>
+</ul></li>
+<li>获取文本使用<code>text()</code>和<code>html()</code>
+<ul>
+<li>获取纯文本 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">a = doc(<span class="string">&#x27;.item-0.active a&#x27;</span>)</span><br><span class="line">print(a.text())</span><br></pre></td></tr></table></figure></li>
+<li>获取HTML文本 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">a = doc(<span class="string">&#x27;.item-0.active a&#x27;</span>)</span><br><span class="line">print(a.html())</span><br></pre></td></tr></table></figure></li>
+<li>如果有多个结果节点，text函数会返回以空格分隔的字符串。html函数需要遍历，否则只会返回第一个结果节点的HTML文本</li>
+</ul></li>
+</ul></li>
+<li>节点操作
+<ul>
+<li>改变class属性 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doc(<span class="string">&#x27;.item-0.active&#x27;</span>)</span><br><span class="line">li.removeClass(<span class="string">&#x27;active&#x27;</span>)</span><br><span class="line">li.addClass(<span class="string">&#x27;active&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>改变属性 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doc(<span class="string">&#x27;.item-0.active&#x27;</span>)</span><br><span class="line">li.attr(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;link&#x27;</span>) <span class="comment"># item.attr(key, value) 把item的key属性设置为value值</span></span><br></pre></td></tr></table></figure></li>
+<li>改变文本 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">html = <span class="string">&quot;&quot;</span></span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doct(<span class="string">&#x27;.item-0.active&#x27;</span>)</span><br><span class="line">li.text(<span class="string">&#x27;123&#x27;</span>)   <span class="comment"># item.text(&#x27;text_string&#x27;) 把item的text换成text_string</span></span><br><span class="line">li.html(<span class="string">&#x27;&lt;span&gt; new_text_string&lt;/div&gt;&#x27;</span>) <span class="comment">#item.html(&#x27;html_string&#x27;)把item的HTML文本换成html_string</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>伪类选择器(pseudo-class selector)
+<ul>
+<li><code>:first-child</code>: 第一个匹配的节点</li>
+<li><code>:last-child</code>: 最后一个匹配的节点</li>
+<li><code>:nth-child(a * n + b)</code>: 第a * n + b个匹配的节点, n从0开始</li>
+<li><code>:gt(n)</code>: 第n+1个和之后的匹配节点</li>
+<li><code>:contains('text_string')</code>: 文本中包含text_string的节点</li>
+</ul></li>
+</ol>
+<h1 id="chapter-5-数据存储">Chapter 5 数据存储</h1>
+<h2 id="文件存储">文件存储</h2>
+<ol type="1">
+<li>TXT文本存储
+<ol type="1">
+<li>特点: 操作简单，兼容众多平台，但是不利于检索</li>
+<li>写法
+<ul>
+<li>打开方式
+<ul>
+<li><code>r</code>: 只读，默认模式</li>
+<li><code>rb</code>: 二进制只读</li>
+<li><code>r+</code>: 读写方式</li>
+<li><code>rb+</code>: 二进制读写</li>
+<li><code>w</code>: 覆盖写入</li>
+<li><code>wb</code>:二进制覆盖写入</li>
+<li><code>w+</code>: 覆盖读写</li>
+<li><code>a</code>: 追加</li>
+<li><code>ab</code>: 二进制追加</li>
+<li><code>a+</code>: 读写追加</li>
+<li><code>ab+</code>: 二进制读写追加</li>
+</ul></li>
+<li>基本写法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;file_name.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;content_string&#x27;</span>)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure></li>
+<li>简化写法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file_name.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;content_string&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+<li>JSON文件存储
+<ol type="1">
+<li>JSON(JavaScript Object Notation)，JavaScript对象标记，通过对对象和数组的组合来表示数据，构造简洁但是结构化程度高，是一种轻量级数据交换格式</li>
+<li>对象和数组
+<ul>
+<li>JavaScript语言中，所有内容都是对象，因此任何支持的类型都可以使用JSON来表示</li>
+<li>对象 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>:<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>数组 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;, &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;]</span><br></pre></td></tr></table></figure></li>
+<li>JSON对象由上面的Javascript对象和数组嵌套而成</li>
+</ul></li>
+<li>读取JSON: JSON字符串转成JSON对象
+<ul>
+<li>读取JSON字符串 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># JSON字符串中key和value需要使用双引号，否则会报错 json.decoder.JSONDecodeError</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[&#123;</span></span><br><span class="line"><span class="string">    &quot;name&quot;: &quot;Bob&quot;,                            </span></span><br><span class="line"><span class="string">    &quot;gender&quot;: &quot;male&quot;,</span></span><br><span class="line"><span class="string">    &quot;birthday&quot;: &quot;1992-10-18&quot;</span></span><br><span class="line"><span class="string">&#125;, &#123;</span></span><br><span class="line"><span class="string">    &quot;name&quot;: &quot;Selina&quot;,</span></span><br><span class="line"><span class="string">    &quot;gender&quot;: &quot;female&quot;,</span></span><br><span class="line"><span class="string">    &quot;birthday&quot;: &quot;1995-10-18&quot;</span></span><br><span class="line"><span class="string">&#125;]</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">print(<span class="built_in">type</span>(<span class="built_in">str</span>))  <span class="comment"># str</span></span><br><span class="line">data = json.loads(<span class="built_in">str</span>)</span><br><span class="line">print(data)   </span><br><span class="line">print(<span class="built_in">type</span>(data))   <span class="comment"># list</span></span><br><span class="line"><span class="comment"># 索引内容方法一</span></span><br><span class="line">print(data[<span class="number">0</span>][<span class="string">&#x27;name&#x27;</span>])  <span class="comment"># 如果key不在对象中会报错</span></span><br><span class="line"><span class="comment"># 索引内容方法二: 推荐</span></span><br><span class="line">print(data[<span class="number">0</span>].get(<span class="string">&#x27;name&#x27;</span>))  <span class="comment"># 如果key不在对象中会返回None</span></span><br><span class="line">print(data[<span class="number">0</span>].get(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;Nobody&#x27;</span>)) <span class="comment"># 给出default value，如果key不在对象中返回default value</span></span><br></pre></td></tr></table></figure></li>
+<li>读取JSON文件内容 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json_string = file.read()</span><br><span class="line">    data = json.loads(json_string)</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>输出JSON: JSON对象转成JSON字符串
+<ul>
+<li>基本写法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">data = [&#123;</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bob&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;gender&#x27;</span>: <span class="string">&#x27;male&#x27;</span></span><br><span class="line">    <span class="string">&#x27;birthday&#x27;</span>: <span class="string">&#x27;1992-10-18&#x27;</span></span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;result.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(json.dumps(data))</span><br></pre></td></tr></table></figure></li>
+<li>输出中包含中文的JSON <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">data = [&#123;</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;东方洪&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;gender&#x27;</span>: <span class="string">&#x27;蝻&#x27;</span></span><br><span class="line">    <span class="string">&#x27;birthday&#x27;</span>: <span class="string">&#x27;1776-7-4&#x27;</span></span><br><span class="line">&#125;]</span><br><span class="line"><span class="comment"># 写上编码，并在dumps函数中加入参数</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;funny.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>， encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(json.dumps(data, ensure_ascii=<span class="literal">False</span>))</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+<li>CSV文件存储
+<ol type="1">
+<li>特点: 文件以纯文本形式存储数据，整个文件是一个字符序列。记录间用换行符分隔，字段间用逗号或制表符分隔。CSV文件和XLS文件相比不包含文本，数值，公式和格式等内容，适合存储数据</li>
+<li>写入
+<ul>
+<li>基本使用 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    writer = csv.writer(csvfile)</span><br><span class="line">    writer.writerow([<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>])</span><br><span class="line">    writer.writerow([<span class="string">&#x27;01&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="number">20</span>])</span><br><span class="line">    writer.writerow([<span class="string">&#x27;02&#x27;</span>, <span class="string">&#x27;Vivienne&#x27;</span>, <span class="number">24</span>])</span><br></pre></td></tr></table></figure></li>
+<li>User-defined分隔符 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    writer = csv.writer(csvfile, delimiter=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">    <span class="comment"># ......</span></span><br></pre></td></tr></table></figure></li>
+<li>一次写入多行 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    writer = csv.writer(csvfile)</span><br><span class="line">    writer.writerows([<span class="string">&#x27;row_0_content&#x27;</span>], [<span class="string">&#x27;row_1_content&#x27;</span>], [<span class="string">&#x27;row_2_content&#x27;</span>]) <span class="comment"># 写入多行内容</span></span><br></pre></td></tr></table></figure></li>
+<li>写入字典结构化数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    <span class="comment"># 定义列名,列名就是字典key的名字</span></span><br><span class="line">    fieldnames = [<span class="string">&#x27;name0&#x27;</span>, <span class="string">&#x27;name1&#x27;</span>, <span class="string">&#x27;name2&#x27;</span>]</span><br><span class="line">    <span class="comment"># 表明使用字典写入</span></span><br><span class="line">    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)</span><br><span class="line">    <span class="comment"># 写入列名</span></span><br><span class="line">    writer.writeheader()</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;name0&#x27;</span>: <span class="string">&#x27;value0&#x27;</span>, <span class="string">&#x27;name1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;name2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>读取
+<ul>
+<li>基本用法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    reader = csv.reader(csvfile)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br></pre></td></tr></table></figure></li>
+<li>使用pandas <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol></li>
+</ol>
+<h2 id="关系型数据库存储">关系型数据库存储</h2>
+<ol type="1">
+<li>前言
+<ul>
+<li>关系型数据库基于关系模型的数据库，关系模型通过二维表来保存。表中列是字段，行是观测。表之间可以通过主键外键关联，多个表组成一个数据库。</li>
+<li>关系型数据库举例: SQLite, MySQL, Oracle, SQL Server, DB2</li>
+</ul></li>
+<li>MySQL的存储
+<ul>
+<li>连接数据库 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line">cursor.execute(<span class="string">&#x27;select version()&#x27;</span>)</span><br><span class="line">data = cursor.fetchone()</span><br><span class="line">print(data)</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure></li>
+<li>创建表 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql </span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line">create_db = <span class="string">&#x27;create database spiders default character set utf8&#x27;</span></span><br><span class="line">cursor.execute(cureate_db)</span><br><span class="line">cursor.execute(<span class="string">&#x27;use spiders&#x27;</span>)</span><br><span class="line">create_table = <span class="string">&#x27;create table if not exists students (id varchar(255) not null, name varchar(255) not null, age int not null, primary key(id))&#x27;</span></span><br><span class="line">cursor.execute(create_table)</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure></li>
+<li>插入数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="built_in">id</span> = <span class="string">&#x27;01&#x27;</span></span><br><span class="line">user = <span class="string">&#x27;Bob&#x27;</span></span><br><span class="line">age = <span class="number">20</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;spiders&#x27;</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line">cursor = db.cursor()</span><br><span class="line">insert_sql = <span class="string">&#x27;INSERT INTO students(id, name, age) values(% s, % s, % s)&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(insert_sql, (<span class="built_in">id</span>, user, age))</span><br><span class="line">    db.commit()                <span class="comment"># 增删改查加上这一项才是真正的对数据库产生影响</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    db.rollback()              <span class="comment"># 如果失败就回滚</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure></li>
+<li>更新数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql </span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;spiders&#x27;</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line">update_sql = <span class="string">&#x27;UPDATE students SET age = % s WHERE name = % s&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(update_sql, (<span class="number">25</span>, <span class="string">&#x27;Bob&#x27;</span>))</span><br><span class="line">    db.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    db.rollback()</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure></li>
+<li>删除数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql </span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;spiders&#x27;</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line">table = <span class="string">&#x27;students&#x27;</span></span><br><span class="line">condition = <span class="string">&#x27;age &gt; 20&#x27;</span></span><br><span class="line">delete_sql = <span class="string">&#x27;DELETE FROM  &#123;table&#125; WHERE &#123;condition&#125;&#x27;</span>.<span class="built_in">format</span>(table=table, condition=condition)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(delete_sql)</span><br><span class="line">    db.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    db.rollback()</span><br><span class="line"></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure></li>
+<li>查询数据 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql </span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;spiders&#x27;</span>)</span><br><span class="line">cursor = db.curser()</span><br><span class="line"></span><br><span class="line">query_sql = <span class="string">&#x27;SELECT * FROM students WHERE age &gt;= 20&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(query_sql)</span><br><span class="line">    print(<span class="string">&#x27;Count:&#x27;</span>, cursor.rowcount)</span><br><span class="line">    row = cursor.fetchone()</span><br><span class="line">    <span class="keyword">while</span> row:</span><br><span class="line">        print(<span class="string">&#x27;Row:&#x27;</span>, row)</span><br><span class="line">        row = cursor.fetchone()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">&#x27;Error&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="非关系型数据库存储">非关系型数据库存储</h2>
+<ol type="1">
+<li>前言
+<ul>
+<li>NoSQL(Not Only SQL)，基于键值对的，不需要经过SQL层的解析，数据之间没有耦合性，新能非常高</li>
+<li>细分
+<ul>
+<li>键值存储数据库: Redis, Oracle BDB</li>
+<li>列存储数据库: HBase, Cassandra</li>
+<li>文档型数据库: MongoDB</li>
+<li>图形数据库: NEO4J</li>
+</ul></li>
+</ul></li>
+<li>MongoDB
+<ul>
+<li>略，没装</li>
+</ul></li>
+<li>Redis
+<ul>
+<li>略，没装</li>
+</ul></li>
+</ol>
+<h1 id="chapter-6-ajax数据爬取">Chapter 6 Ajax数据爬取</h1>
+<h2 id="什么是ajax">什么是Ajax</h2>
 
     </div>
 
@@ -995,7 +1279,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://yanxuanshaozhu.github.io/2021/07/05/Learn%20Python%20Web%20Scraper/" title="Learn Python Web Scraper">https://yanxuanshaozhu.github.io/2021/07/05/Learn Python Web Scraper/</a>
+    <a href="https://yanxuanshaozhu.github.io/2021/07/05/Learn%20Python%20Web%20Scraper/" title="Learn Python Web Scraper(Notes in Chinese)">https://yanxuanshaozhu.github.io/2021/07/05/Learn Python Web Scraper/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -1077,7 +1361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">1.1.</span> <span class="nav-text">1 安装Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">2 安装请求库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%A7%A3%E6%9E%90%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">3 安装解析库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">4 安装数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">5 安装存储库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85web%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">6 安装Web库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85app%E7%88%AC%E5%8F%96%E5%BA%93"><span class="nav-number">1.7.</span> <span class="nav-text">7 安装APP爬取库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6"><span class="nav-number">1.8.</span> <span class="nav-text">8 安装爬虫框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-number">1.9.</span> <span class="nav-text">9 安装部署相关库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 爬虫基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">1 HTTP基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">2 网页基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3 爬虫基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">5 代理基本原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-%E5%9F%BA%E6%9C%AC%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8urllib"><span class="nav-number">3.1.</span> <span class="nav-text">1 使用urllib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8requests"><span class="nav-number">3.2.</span> <span class="nav-text">2 使用requests</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-4-%E8%A7%A3%E6%9E%90%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4 解析库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8xpath"><span class="nav-number">4.1.</span> <span class="nav-text">1 使用XPath</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">1.1.</span> <span class="nav-text">安装Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">安装请求库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%A7%A3%E6%9E%90%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">安装解析库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">安装数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">安装存储库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85web%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">安装Web库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85app%E7%88%AC%E5%8F%96%E5%BA%93"><span class="nav-number">1.7.</span> <span class="nav-text">安装APP爬取库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6"><span class="nav-number">1.8.</span> <span class="nav-text">安装爬虫框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-number">1.9.</span> <span class="nav-text">安装部署相关库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 爬虫基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">网页基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">爬虫基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">代理基本原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-%E5%9F%BA%E6%9C%AC%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8urllib"><span class="nav-number">3.1.</span> <span class="nav-text">使用urllib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8requests"><span class="nav-number">3.2.</span> <span class="nav-text">使用requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-4-%E8%A7%A3%E6%9E%90%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4 解析库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8xpath"><span class="nav-number">4.1.</span> <span class="nav-text">使用XPath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8beautiful-soup"><span class="nav-number">4.2.</span> <span class="nav-text">使用Beautiful Soup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pyquery"><span class="nav-number">4.3.</span> <span class="nav-text">使用pyquery</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-5-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><span class="nav-number">5.</span> <span class="nav-text">Chapter 5 数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">5.1.</span> <span class="nav-text">文件存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8"><span class="nav-number">5.2.</span> <span class="nav-text">关系型数据库存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8"><span class="nav-number">5.3.</span> <span class="nav-text">非关系型数据库存储</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-6-ajax%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96"><span class="nav-number">6.</span> <span class="nav-text">Chapter 6 Ajax数据爬取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFajax"><span class="nav-number">6.1.</span> <span class="nav-text">什么是Ajax</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1153,12 +1437,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">332k</span>
+    <span title="Symbols count total">348k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">5:02</span>
+    <span title="Reading time total">5:17</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
