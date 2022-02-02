@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDIA Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/08/08/DDIA%20Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-08T13:44:49.000Z">
+<meta property="article:modified_time" content="2021-08-13T02:23:55.091Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="DDIA">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA%20Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>DDIA Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">32</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA%20Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DDIA Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-08 09:44:49" itemprop="dateCreated datePublished" datetime="2021-08-08T09:44:49-04:00">2021-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-12 22:23:55" itemprop="dateModified" datetime="2021-08-12T22:23:55-04:00">2021-08-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="chapter-1-可靠可扩展与可维护的应用系统">Chapter 1 可靠，可扩展与可维护的应用系统</h1>
+<a id="more"></a>
+<h2 id="前言">前言</h2>
+<ol type="1">
+<li>系统分类
+<ul>
+<li>数据密集型(data-intensive): 数据量，数据的复杂程度何数据的快速多变性是限制</li>
+<li>计算密集型(compute-intensive): CPU处理能力是限制</li>
+</ul></li>
+<li>常见系统构成:
+<ul>
+<li>数据库: 存储数据</li>
+<li>高速缓存: 缓存复杂或者代价昂贵的操作，加速访问</li>
+<li>索引: 关键字搜索和过滤</li>
+<li>流式处理: 持续发送消息到另一个进程，异步处理</li>
+<li>批处理: 定期处理大量数据</li>
+</ul></li>
+</ol>
+<h2 id="认识数据库系统">认识数据库系统</h2>
+<ol type="1">
+<li>可以把数据库，队列，高速缓存等系统归为一大类数据系统(data systems)得原因:
+<ul>
+<li>随着技术的发展，一些针对不同应用场景进行优化得工具出现了，他们不能被归为传统类型</li>
+<li>系统需求变得更加广泛，单个组件往往无法完成所有数据处理和存储得需求。需要将任务分解，每个组件负责高效得完成其中一部分，多个组件依靠应用层代码驱动有机衔接起来</li>
+</ul></li>
+<li>系统设计需要注意的问题
+<ul>
+<li>Reliability: 在出现意外得时候，系统应该可以正常运转，虽然性能可能有所降低</li>
+<li>Scalability: 随着规模得增长，系统应该以合理得方式来匹配这种增长</li>
+<li>Maintainability: 随着时间推移，在对现有场景或者新场景进行适配的时候，系统应该高速运转</li>
+</ul></li>
+</ol>
+<h2 id="可靠性">可靠性</h2>
+<ol type="1">
+<li>系统的期望
+<ul>
+<li>应用可以执行用户希望的功能</li>
+<li>应用可以容忍用户操作错误或者不正确的使用方法</li>
+<li>系统可以应对典型场景，合理负载压力和数据量</li>
+<li>系统可以防止未经授权的访问和滥用</li>
+</ul></li>
+<li>可容错(fault-tolerant/resilient)系统: 即使发生了错误，系统应该可以继续正常工作</li>
+<li>Fault != Failure:
+<ul>
+<li>Fault: 组件偏离正常规格</li>
+<li>Failure: 整个系统停止</li>
+<li>不太可能组件故障概率为0，我们应该设计容错机制避免故障引起失效</li>
+<li>一般来说倾向于容忍故障而不是预防故障，但是对于安全故障来说应该提前预防</li>
+</ul></li>
+<li>硬件故障
+<ul>
+<li>磁盘平均无故障时间: 10~50年</li>
+<li>一般应对硬件故障采用硬件冗余: 磁盘配置RAID, 服务器配备双电源, 热拔插CPU, 数据中心备用电源, 发电机</li>
+<li>随着数据量和计算需求增加，一些云平台可能在硬件没问题的情况下软件崩溃，这时应该注重整体灵活性和弹性而非单机可靠性，因而需要软件容错</li>
+</ul></li>
+<li>软件错误
+<ul>
+<li>一般来说硬件故障是独立的，但是软件错误可能跨节点导致系统故障</li>
+<li>一般软件错误需要进行测试，进程隔离，允许进程崩溃重启，监控生产环境的行为表现等操作才能解决</li>
+</ul></li>
+<li>人为失误
+<ul>
+<li>防止人为失误的多种方法:
+<ul>
+<li>以最小出错的方式来设计系统: 更多更详细的规定v.s.人们可能存在的逆反</li>
+<li>想办法分离最容易出错的地方，容易发生故障的接口: 提供一个尽可能完备的砂箱环境来模拟生产环境</li>
+<li>充分的测试: 单元测试，全系统集成测试，手动测试，自动化测试注意边界条件</li>
+<li>出现人为失误时提供快速恢复机制: 快速回滚，滚动发布代码，数据校验工具等</li>
+<li>设置详细而清晰的监控子系统，包括性能指标和错误率</li>
+<li>推行管理流程并且加以培训</li>
+</ul></li>
+</ul></li>
+<li>可靠性的重要性
+<ul>
+<li>无论是强制指标还是非强制指标，都应该对可靠性有着高要求</li>
+<li>有时为了成本考虑，可以适度降低非关键系统的可靠性要求</li>
+</ul></li>
+</ol>
+<h2 id="可扩展性">可扩展性</h2>
+<ol type="1">
+<li>随着负载增加，可靠系统有可能变成不可靠的</li>
+<li>描述负载
+<ul>
+<li>负载可以用称为负载参数的若干数字来描述</li>
+<li>具体负载参数取决于系统的体系结构: 比如Web服务器的每秒请求处理次数，数据库中写入的比例，聊天室的活动用户书量，缓存命中率等</li>
+<li>有时候平均值很重要，有时候系统瓶颈来自于少数的峰值</li>
+</ul></li>
+<li>描述性能
+<ul>
+<li>批处理系统如Hadoop中可以用吞吐量(thoughput)，线性系统可以用服务响应时间(response time)</li>
+<li>延迟(latency): 花费在处理请求上的时间</li>
+<li>响应时间(response time): 客户端看到的，除了处理请求时间，还包括来回网络延迟和各种排队延迟。响应时间不应该被视作一个常数，而应该视为一种分布</li>
+<li>随机因素影响: 上下文切换， 进程调度， 网络数据包丢失和TCP重传，垃圾回收暂停，缺页中断和瓷盘I/O</li>
+<li>描述响应时间:
+<ul>
+<li>平均给响应时间</li>
+<li>中位数响应时间(p50)</li>
+<li>阈值响应时间(p95, p99, p999)</li>
+<li>要考虑长尾效应(tail latencies): 响应比较慢可能是因为数据量大，比如购物价值多</li>
+<li>要注意成本效益分析: 优化分位数响应阈值的成本是否小于优化带来的收益</li>
+</ul></li>
+</ul></li>
+<li>应对负载增加的方法
+<ul>
+<li>针对负载增加而设计的构架一般不太可能应对超出设计目标10倍的实际负载</li>
+<li>垂直扩展(升级更强大的机器)，水平扩展(将负载分布到集群中)</li>
+<li>有一些弹性特征的系统可以自动检测负载增加，然后自动添加更多计算资源。一些手动扩展的系统需要人工分析性能表现和添加资源。如果负载度不可测，自动弹性系统会更高效，手动方式可以减少执行期间的意外情况</li>
+<li>无状态服务进行分布式扩展比有状态服务更容易</li>
+<li>超大规模的系统往往针对特定应用而高度定制，很难有一种通用的结构</li>
+<li>一般来说，可扩展架构通常是从通用模块逐步构建而来，往往有规可循</li>
+</ul></li>
+</ol>
+<h2 id="可维护性">可维护性</h2>
+<ol type="1">
+<li>软件系统总体成本里开发成本只占一小部分，绝大部分成本是整个生命周期内持续的投入</li>
+<li>软件系统的三个设计原则:
+<ul>
+<li>可运维性，方便运营团队保持系统平稳运行:
+<ul>
+<li>监视系统健康，出现问题及时恢复服务，追踪问题原因</li>
+<li>保持软件和平台更新</li>
+<li>预测和防范未来的问题</li>
+<li>制定流程规范和规范的工具包</li>
+</ul></li>
+<li>简单性，使得工程师能够轻松理解系统:
+<ul>
+<li>复杂性的表现: 状态空间膨胀，模块紧耦合，相互依赖关系，命名和术语不一致</li>
+<li>简化系统设计并不是减少系统功能，主要是消除意外方面的复杂性(坏的软件实现带来的问题)</li>
+<li>一个主要手段: 抽象，从而隐藏细节，提供干净易懂的对外接口。好的抽象设计是很有挑战的</li>
+</ul></li>
+<li>可演化性，后续工程师可以轻松改进
+<ul>
+<li>可以使用敏捷开发模式: TDD(Test driven design)和重构</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="chapter-2-数据模型和查询语言">Chapter 2 数据模型和查询语言</h1>
+<h2 id="前言-1">前言</h2>
+<ol type="1">
+<li>大多数应用程序可以表示为数据模型的一层层叠加，下面是一个例子(可能还有更多的中间层，但是每层都通过一个简介的数据模型隐藏下一层的复杂性):
+<ol type="1">
+<li>观测现实世界，抽象出对象或者数据结构，以及操作对象/数据结构的API来进行建模</li>
+<li>在需要对对象/数据结构进行存储的时候，可以采用通过数据模型(JSON/XML文档/表/图)来表示</li>
+<li>用何种内存/磁盘/网络的字节格式来表示上述存储的对象/数据结构，数据表示需要支持CURD</li>
+<li>底层上考虑用电流/脉冲波/磁场等表示字节</li>
+</ol></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA%20Notes/" title="DDIA Notes">https://yanxuanshaozhu.github.io/2021/08/08/DDIA Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DDIA/" rel="tag"># DDIA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/05/Python%20Web%20Spider/" rel="prev" title="Python Web Spider(Notes are in Chinese)">
+      <i class="fa fa-chevron-left"></i> Python Web Spider(Notes are in Chinese)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/26/COSI%2029A%20Discrete%20Structure/" rel="next" title="COSI 29A Discrete Structure">
+      COSI 29A Discrete Structure <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%8F%AF%E9%9D%A0%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 可靠，可扩展与可维护的应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">认识数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 数据模型和查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">682k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">10:20</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

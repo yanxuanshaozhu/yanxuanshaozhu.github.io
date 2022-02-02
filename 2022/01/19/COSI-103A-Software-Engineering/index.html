@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="The Linux Command Line">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 103A Software Engineering">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="The Linux Command Line">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T02:31:12.000Z">
+<meta property="article:modified_time" content="2022-01-31T18:05:14.729Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Software Engineering">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 103A Software Engineering | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">32</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 103A Software Engineering
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-19 21:31:12" itemprop="dateCreated datePublished" datetime="2022-01-19T21:31:12-05:00">2022-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-31 13:05:14" itemprop="dateModified" datetime="2022-01-31T13:05:14-05:00">2022-01-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>22k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>20 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="the-linux-command-line">The Linux Command Line</h2>
+<a id="more"></a>
+<ol type="1">
+<li>Chapter 1: What is the shell
+<ul>
+<li>The shell is a program that takes keyboard commands and passes them
+to the operating system to carry out</li>
+<li>bash is a shell program from the GNU project, is an acronym for
+Bourne Again Shell</li>
+<li>We need another program called a terminal emulator to interact with
+the shell</li>
+<li>Some simple commands
+<ul>
+<li><code>date</code>: display the current time and date</li>
+<li><code>cal</code>: display a calendar of the current month</li>
+<li><code>df</code>: display the current amount of free space on the
+disk</li>
+<li><code>free</code>: display the amount of free memory</li>
+<li><code>exit</code>: exit a terminal session, you can also use
+<code>Ctrl + d</code></li>
+</ul></li>
+</ul></li>
+<li>Chapter 2: Navigation
+<ul>
+<li>Some commands:
+<ul>
+<li><code>pwd</code>: print name of current working directory</li>
+<li><code>ls</code>: list directory contents</li>
+<li><code>cd</code>: change directory</li>
+</ul></li>
+<li>A Unix-like OS organizes files a hierarchical directory structure.
+The first directory is the root directory.</li>
+<li>Windows has a separate file system tree for each storage device,
+Unix-like systems always have a single file system tree</li>
+<li>Absolute pathnames start with <code>/</code>, relative pathnames
+start from the working directory, <code>./</code> represents the current
+directory, <code>../</code> represents the parent directory of the
+current directory</li>
+<li>Filename:
+<ul>
+<li>File names with period character is hidden, you need to use
+<code>ls -a</code> to display the hidden files or directories</li>
+<li>File names are case sensitive</li>
+<li>Linux files do not have file extensions</li>
+<li>Do not use space in the file name</li>
+</ul></li>
+</ul></li>
+<li>Chapter 3: Exploring the System
+<ul>
+<li>Some commands:
+<ul>
+<li><code>ls</code>: list directory contents</li>
+<li><code>file</code>: determine file type</li>
+<li><code>less</code>: view file contents</li>
+</ul></li>
+<li><code>ls</code>
+<ul>
+<li><code>ls -a</code>: display all files</li>
+<li><code>ls -A</code>: display almost all files, do not list
+<code>.</code> and <code>..</code></li>
+<li><code>ls -i</code>: display the inode of the files</li>
+<li><code>ls -l</code>: display in long listing format</li>
+<li><code>ls -r</code>: reverse the order of the listing</li>
+<li><code>ls -t</code>: sort contents by modification time, newest
+first</li>
+<li><code>ls -S</code>: sort contents by file size, largest first</li>
+<li><code>ls -R</code>: recursive listing</li>
+<li><code>ls -d</code>: list the directory itself, not its contents</li>
+</ul></li>
+<li>Permissons
+<ul>
+<li><code>-rwxr--r--</code>:the first character is <code>-</code>, it
+indicates this is a file, if this is a directory, the first character
+would be <code>d</code>, if this is a link, the first character would be
+<code>l</code>; the next three character are the permissions for the
+owner, the next three characters are the permission for the group, the
+last three characters are the permission for everyone else;
+<code>r</code>: open and read, <code>w</code>: write or truncate, the
+file itself cannot be renamed or deleted, <code>x</code>: treat as a
+program and execute</li>
+</ul></li>
+<li>Some directories in Linux system
+<ul>
+<li><code>/</code>: root directory</li>
+<li><code>/bin</code>: contain programs that must present for the system
+to boot and run</li>
+<li><code>/boot</code>: contain the Linux kernel and the boot
+loader</li>
+<li><code>/dev</code>: contain a list of devices</li>
+<li><code>/etc</code>: contain all of the system-wide configuration
+files</li>
+<li><code>/home</code>: in general, each user is given a directory in
+<code>/home</code></li>
+<li><code>/lib</code>: contain shared library files used by the core
+system programs</li>
+<li><code>/mnt</code>: contain mount points for removable devices</li>
+<li><code>/opt</code>: used to install optional software</li>
+<li><code>/tmp</code>: intended for the storage of temporary, transient
+files</li>
+<li><code>/usr</code>: contain all programs and support files by
+users</li>
+</ul></li>
+<li>Links
+<ul>
+<li>Soft links/symlink/ symbolic link: a file contains a reference to
+another file or directory in the form of pathname</li>
+<li>Hard link: saves a copy of a file or directory</li>
+</ul></li>
+</ul></li>
+<li>Chapter 4 Manipulating Files and Directories
+<ul>
+<li>Some commands:
+<ul>
+<li><code>cp</code>: copy files and directories</li>
+<li><code>mv</code>: move/rename files and directories</li>
+<li><code>mkdir</code>: create directories</li>
+<li><code>rm</code>: remove fils and directories</li>
+<li><code>ln</code>: create hard and symbolic links</li>
+</ul></li>
+<li>Wildcards
+<ul>
+<li><code>*</code>: match any characters</li>
+<li><code>?</code>: match any single character</li>
+<li><code>[characters]</code>: match any character that is a member of
+the set characters</li>
+<li><code>[!characters]</code>: match any character that is not a member
+of the set characters</li>
+<li><code>[[:class:]]</code>: match any character that is a member of
+the specified class</li>
+<li><code>[:alnum:]</code>: match any alphanumeric character</li>
+<li><code>[:alpha:]</code>: match any alphabetic character</li>
+<li><code>[:digit:]</code>: match any numeral</li>
+<li><code>[:lower:]</code>: match any lowercase letter</li>
+<li><code>[:upper:]</code>: match any uppercase letter</li>
+</ul></li>
+<li><code>mkdir dir1 ... dirn</code>: make n directories</li>
+<li><code>cp item1 ... itemn dir</code>: copy item1 to itemn to dir
+<ul>
+<li><code>cp -a</code>: copy the files and directories and all of their
+attributes</li>
+<li><code>cp -i</code>: before overwriting an existing file, prompt the
+user for confirmation</li>
+<li><code>cp -r</code>: recursively copy directories and their
+contents</li>
+<li><code>cp -u</code>: only copy files that either don't exist or are
+newer than the existing corresponding files in the destination
+directory</li>
+<li><code>cp x y</code>:
+<ul>
+<li>If both x and y are files, overwrite y with x, if y does not exist,
+create y with x</li>
+<li>If x is a file and y is a directory, copy x into y</li>
+<li>If x and y are both directory, you should use
+<code>copy -r x y</code>, otherwise there will be an error</li>
+</ul></li>
+</ul></li>
+<li><code>mv item 1 item2</code>: move/ rename item 1 to item2,
+<code>mv item0 ... itemn directory</code>: move item0 to itemn into
+directory
+<ul>
+<li><code>mv -i</code>: prompt the user for confirmation before
+overwriting an existing file</li>
+<li><code>mv -u</code>: only move files that either don't exist or are
+newer than the existing corresponding files in the destination
+directory</li>
+<li><code>mv -v</code>: display informative message as the move is
+performed</li>
+<li><code>mv x y</code>
+<ul>
+<li>If both x and y are files, overwrite y with x, if y does not exist,
+it is created with x</li>
+<li>If x is a file and y is a directory, move x into y, y must
+exist</li>
+<li>If x and y are both directories, if y does not exist, create y and
+move contents of x into y, then delete the empty x; if y does exist,
+move x and its contents into y</li>
+</ul></li>
+</ul></li>
+<li><code>rm item1 ... itemn</code>
+<ul>
+<li><code>rm -i</code>: prompt the user for confirmation before removing
+an existing file, otherwise the file will be deleted silently</li>
+<li><code>rm -r</code>: recursively delete directories and their
+contents, no matter whether the directory, this parameter should always
+be provided</li>
+<li><code>rm -f</code>: delete the targets and ignore nonexistent files
+and do not prompt</li>
+<li><code>rm -v</code>: display informative message as the deletion is
+performed</li>
+</ul></li>
+<li><code>ln file link</code>: create a hard link to a file,
+<code>ln -s item link</code>: create a symbolic link to a file or
+directory
+<ul>
+<li>Hard links
+<ul>
+<li>A hard cannot reference a file outside its own file system, this
+means a link cannot reference a file that is not on the same disk
+partition as the link itself</li>
+<li>A hard link may not reference a directory</li>
+<li>A hard link and the original file share the same inode, deleting the
+hard link does not affect the original file, the hard link still works
+if you delete the original file</li>
+</ul></li>
+<li>Symbolic link
+<ul>
+<li>Symbolic links are created to overcome the limitations of hard
+links</li>
+<li>It works by creating a special type of file that contains a text
+pointer to the referenced file or directory (similar to the shortcut in
+Windows)</li>
+<li>A symbolic link and the original file have different inode, the soft
+link will not work in the shellTilde expansion: <code>echo ~</code>:
+display the home directoryArithmetic expansion:
+<code>echo $((expression))</code>: display the result of the arithmetic
+expressionNotice the division here is integer divisionExpressions can be
+nested, but you need the $(()) for each arithmetic expression if the
+original file is moved or deleted, but deleting the soft link does not
+affect the original file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 5 Working with Commands
+<ul>
+<li>Some commands:
+<ul>
+<li><code>type</code>: indicate how a command name is interpreted</li>
+<li><code>which</code>: display which executable program will be
+executed</li>
+<li><code>help</code>: get help from shell built-ins</li>
+<li><code>man</code>: display a commands' manual page</li>
+<li><code>apropos</code>: display a list of appropriate commands</li>
+<li><code>info</code>: display a command's info entry</li>
+<li><code>whatis</code>: display one-line manual page descriptions</li>
+<li><code>alias</code>: create an alias for a command</li>
+</ul></li>
+<li>Command types
+<ul>
+<li>An executable program: programs compiled into binaries</li>
+<li>A command built into the shell itself: shell builtins</li>
+<li>A shell function: shell scripts incorporated into the
+environment</li>
+<li>An alias: user-defined commands, built from other commands</li>
+</ul></li>
+<li><code>type command</code>: display the type of commands</li>
+<li><code>which command</code>: only works for executable programs, not
+builtins nor aliases</li>
+<li><code>help command</code>: help is available for each of the shell
+builtins, it shows the documentation of a command</li>
+<li><code>command --help</code>: display usage information</li>
+<li><code>man command</code>: display manual page</li>
+<li><code>apropos command</code>: display appropriate commands</li>
+<li><code>whatis command</code>: display one-line manual page
+descriptions</li>
+<li><code>info command</code>: display a program's info entry</li>
+<li><code>alias command</code>:
+<ul>
+<li>Use ; to separate commands in one line</li>
+<li>Example: <code>alias foo='cd /mnt; ls -lrt;'</code></li>
+<li>Unalias a commdn: <code>unalias foo</code></li>
+<li>Show all aliases defined in the environment: <code>alias</code></li>
+</ul></li>
+</ul></li>
+<li>Chapter 6 Redirection
+<ul>
+<li>Some commands:
+<ul>
+<li><code>cat</code>: concatenate files</li>
+<li><code>sort</code>: sort lines of text</li>
+<li><code>uniq</code>: report or omit repeated lines</li>
+<li><code>grep</code>: print lines matching a pattern</li>
+<li><code>wc</code>: print newline, word and byte counts for each
+file</li>
+<li><code>head</code>: output the first part of a file</li>
+<li><code>tail</code>: output the last part of a file</li>
+<li><code>tee</code>: read from standard input and write to standard
+output and files</li>
+</ul></li>
+<li>Standard input(<code>stdin</code>, file descriptor 0), standard
+output(<code>stdout</code>, file descriptor 1), standard
+error(<code>stderr</code>, file descriptor 2), by default, stdout and
+stderr are linked to the screen and the stdin is attached to the
+keyboard
+<ul>
+<li>Redirection output
+<ul>
+<li>Truncate/ create a new file: <code>ls -l &gt; file.txt</code></li>
+<li>Append to an existing file:
+<code>ls -l &gt;&gt; file.text</code></li>
+<li>Discard both standard error and standard output:
+<ul>
+<li>Older version: <code>command &gt;/dev/null 2 &gt;&amp;1</code></li>
+<li>Newer version <code>command &amp;&gt; /dev/null</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>cat [..file]</code>: read one or more files and copy them to
+the standard output
+<ul>
+<li>In most cases, cat command can be thought of as analogous to the
+type command</li>
+<li>If cat is provided with no arguments, it will read input from the
+standard input, which is usually the keyboard, type
+<code>Ctrl + D</code> to indicate EOF</li>
+<li>Read input from the keyboard and save to input to a file:
+<code>cat &gt; file.txt</code>, use <code>Ctrl + D</code> to indicate
+input EOF</li>
+<li>Read input from a file: <code>cat &lt; file.txt</code></li>
+</ul></li>
+<li><code>|</code> pipelines
+<ul>
+<li>Pipeline feature of shell: with the pipe operator | (vertical bar),
+the standard output of one command can be piped into the standard input
+of another</li>
+<li>Syntax: <code>command 1 | command 2</code></li>
+<li>Filters:
+<ul>
+<li>Pipelines are often used to perform complex operation on data,
+frequently, the commands used this way are referred to as filters</li>
+<li>Filters take input, change it somehow, and then output it</li>
+<li><code>sort</code>: write sorted concatenation of all files to
+standard output
+<ul>
+<li><code>sort -f</code>: ignore case, <code>sort -r</code>: reverse
+order, <code>sort -R</code>: random sort, <code>sort -u</code>: only
+output unique results</li>
+</ul></li>
+<li><code>uniq</code>: accepts a sorted list of data and removes any
+duplicates from the list
+<ul>
+<li>uniq is often used with sort</li>
+<li><code>uniq -d</code>: only print duplicate lines, one for each
+group, <code>uniq -c</code>: prefix lines by the number of
+occurrences</li>
+<li><code>sort -u xxx</code>, <code>sort xxx | uniq</code></li>
+</ul></li>
+<li><code>wc</code>: display the number of lines, words, and bytes
+contained in files
+<ul>
+<li><code>wc -l</code>: display the number of lines, <code>wc -w</code>:
+display the number of words, <code>wc -c</code>: display the number of
+bytes, <code>wc -m</code>: display the number of characters</li>
+</ul></li>
+<li><code>grep pattern [file...]</code>: used to find text patterns
+<ul>
+<li>When grep encounters a pattern in the file, it prints out the lines
+containing it</li>
+<li>Regular expressions are allowed in grep</li>
+<li><code>grep -i</code>: ignore case during search,
+<code>grep -v</code>: print only those lines that do not match the
+pattern</li>
+</ul></li>
+<li><code>head</code>/ <code>tail</code>
+<ul>
+<li>By default, print 10 lines</li>
+<li><code>head -n m</code>: print first m lines, <code>tail -n m</code>:
+print last m lines</li>
+<li>Monitor file changes: <code>tail -f file.txt</code></li>
+</ul></li>
+<li><code>tee</code>: read standard input and copies it to both standard
+output and to one or more files
+<ul>
+<li>This is often used as an intermediate step in a pipeline: it saves
+the output file to a file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 7 Seeing the World as the Shell Sees it
+<ul>
+<li>Some commands:
+<ul>
+<li><code>echo</code>: display a line of text</li>
+</ul></li>
+<li>Path expansion
+<ul>
+<li>It is the mechanism by which wildcards work in the shell</li>
+<li>Tilde expansion: <code>echo ~</code>: display the home
+directory</li>
+<li>Arithmetic expansion: <code>echo $((expression))</code>: display the
+result of the arithmetic expression
+<ul>
+<li>Notice the division here is integer division</li>
+<li>Expressions can be nested, but you need the $(()) for each
+arithmetic expression</li>
+</ul></li>
+<li>Brace expansion
+<ul>
+<li><code>echo &#123;a, b&#125;-&#123;1,2&#125;</code>: display a-1 a-2 b-1 b-2</li>
+<li><code>echo &#123;a..c&#125;</code>: display a b c</li>
+<li><code>echo &#123;001..6&#125;</code>: display 001 002 003 004 005 006</li>
+<li><code>echo &#123;&#123;a,b&#125;,&#123;1,2&#125;&#125;</code>: display a b 1 2</li>
+</ul></li>
+<li>Parameter expansion:
+<ul>
+<li><code>x=1; echo $x</code>: display 1</li>
+</ul></li>
+<li>Quoting
+<ul>
+<li><code>ls -l "hello world"</code></li>
+<li><code>echo this is \$100.0</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 9 Permissions
+<ul>
+<li>Some commands:
+<ul>
+<li><code>id</code>: display user identity</li>
+<li><code>chmod</code>: change a file's mode</li>
+<li><code>umask</code>: set the default file permissions</li>
+<li><code>su</code>: run a shell as another user</li>
+<li><code>sudo</code>: execute a command as another user</li>
+<li><code>chown</code>: change a file's owner</li>
+<li><code>chgrp</code>: change a file's group ownership</li>
+<li><code>passwd</code>: change a user's password</li>
+</ul></li>
+<li><code>id</code>
+<ul>
+<li>In the Unix security model, a user has a user id <code>uid</code>, a
+group id <code>gid</code>, and may belong to additional groups
+<code>groups</code></li>
+<li>User accounts are defined in the <code>/etc/passwd</code> file and
+groups are defined in the <code>/etc/group</code> file,
+<code>/etc/shadow</code> contains information about the user's
+password</li>
+</ul></li>
+<li>File attributes
+<ul>
+<li><p>File types:</p>
+<ul>
+<li><code>-</code>: a regular file</li>
+<li><code>d</code>: a directory</li>
+<li><code>l</code>: a symbolic link, for a symbolic link, the remaining
+attributes are always <code>rwxrwwxrwx</code>, but they are only dummy
+values, the real file attributes are those of the file the symbolic link
+points to</li>
+<li><code>c</code>: a character special file, this file type refers to a
+device that handles data as a stream of bytes</li>
+<li><code>b</code>: a block special file, this file type refers to a
+device that handles data in blocks</li>
+</ul></li>
+<li><p>Permission attributes</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Attribute</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Directories</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>r</code></td>
+<td style="text-align: center;">Allows a file to be opened and read</td>
+<td style="text-align: center;">Allows a directory's contents to be
+listed if the execute attribute is also set</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>w</code></td>
+<td style="text-align: center;">Allows a file to be written or
+truncated, but does not allow files to be renamed or deleted</td>
+<td style="text-align: center;">Allows files within a directory to be
+created, deleted, and renamed if the execute attribute is also set</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>x</code></td>
+<td style="text-align: center;">Allows a file to be created as a program
+and executed</td>
+<td style="text-align: center;">Allows a directory to be entered</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><code>chmod</code>
+<ul>
+<li><p>Only the file's owner or superuser can change the mode of a file
+or directory</p></li>
+<li><p>The mode can use two representation: the octal representation and
+teh symbolic representation</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Octal Representation</th>
+<th style="text-align: center;">Binary</th>
+<th style="text-align: center;">Symbolic Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">011</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">110</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">111</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Syntax</p>
+<ul>
+<li><code>chmod 664 file</code>: set file attribute to
+<code>-rw-rw-r--</code></li>
+<li><code>chmod u=rw,go=rw,o=r file</code>: the same as the above
+command</li>
+</ul></li>
+</ul></li>
+<li><code>umask</code>
+<ul>
+<li><p>View current mask setting: <code>umask</code></p></li>
+<li><p>Set mask value: <code>umask 0022</code></p></li>
+<li><p>Mask value interpretation: <code>0xyz</code>, 0 is a preset
+value, x is for user, y is for group, z is for other</p></li>
+<li><p>Octal mask value and permission</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">rwx</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">rw-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">r-w</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">r--</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-wx</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-w-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">--x</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">---</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Common values:</p>
+<ul>
+<li><code>0022</code>: 755 for directories, 644 for files</li>
+<li><code>0002</code>: 775 for directories, 664 for files</li>
+</ul></li>
+</ul></li>
+<li>Change identities
+<ul>
+<li>Methods
+<ul>
+<li>Log out and log back in as the alternate user</li>
+<li>Use the <code>su</code> command</li>
+<li>Use the <code>sudo</code> command</li>
+</ul></li>
+<li><code>su</code>: run a shell with substitute user and group ids
+<ul>
+<li><code>su -l user</code>: abbreviation <code>su - user</code>, if
+user is not provided, the substitute user is the superuser(root)</li>
+<li>Use <code>exit</code> to return to the original shell</li>
+<li>Execute a command as another user: <code>su -c command</code></li>
+</ul></li>
+<li><code>sudo</code>: execute a command as another user
+<ul>
+<li>Allows an ordinary user to execute commands as a different user
+(usually the superuser) in a controlled way<br>
+</li>
+<li>This does not require the password of the superuser</li>
+<li>List the allowed commands for the invoking user on the current
+host</li>
+</ul></li>
+</ul></li>
+<li><code>chown</code>
+<ul>
+<li><code>chown user:group file</code>: if you want to change the owner
+and the group, use <code>user:group</code>, if you want to change the
+user, use <code>user:</code>, if you wan to change the group, use
+<code>:group</code></li>
+<li>Superuser privilege is required for this command, so use
+<code>sudo chown user:group file</code></li>
+</ul></li>
+<li><code>chgrp</code>
+<ul>
+<li>In order version of Unix, chown cannot change group ownership, and
+chgrp is used instead when you want to do so</li>
+</ul></li>
+<li><code>passwd [user]</code>
+<ul>
+<li>Enter <code>passwd</code> to change the password of the current
+user</li>
+</ul></li>
+</ul></li>
+<li>Chapter 10 Processes
+<ul>
+<li>Some commands
+<ul>
+<li><code>ps</code>: report a snapshot of current processes</li>
+<li><code>top</code>: display tasks</li>
+<li><code>jobs</code>: list active jobs</li>
+<li><code>bg</code>: place a job in the background</li>
+<li><code>fg</code>: place a job in the foreground</li>
+<li><code>kill</code>: send a signal to a process</li>
+<li><code>killall</code>: kill processes by name</li>
+<li><code>shutdown</code>: shutdown or reboot the system</li>
+</ul></li>
+<li>How processes work
+<ul>
+<li>When a system starts, the kernel launches a program called init,
+init then runs a series shell scripts called init scripts, which start
+all the system services. Many services are implemented as daemon
+programs, so they run in background</li>
+<li>The program that can launch other programs is expressed in the
+process scheme as a parent process producing a child process</li>
+<li>The kernel maintains information about each process to help keep
+things organized， which includes the process ID (PID), the memory
+assigned to each process, the processes's readiness to resume
+execution</li>
+</ul></li>
+<li>View Processes: <code>px</code>
+<ul>
+<li>Shows PID, TTY(teletype, refers to the controlling terminal for the
+process), TIME ( the amount of CPU time consumed by the process), CMD
+(the command executed by the process)</li>
+<li>OPtions:
+<ul>
+<li><code>ps x</code>: show all processes regardless of what terminal
+they are controlled by</li>
+<li>STAT (state, reveals the current status of the process)
+<ul>
+<li><code>R</code>: running or ready to run</li>
+<li><code>S</code>: sleeping, it is waiting for an event, such as
+keystroke or network packet</li>
+<li><code>D</code>: uninterruptible sleep, it is waiting for I/O such as
+a disk drive</li>
+<li><code>T</code>: stopped</li>
+<li><code>Z</code>: zombie, a child process that has terminated by not
+cleaned up by its parent</li>
+<li><code>&lt;</code>: a high-priority process</li>
+<li><code>N</code>: a low-priority process</li>
+</ul></li>
+</ul></li>
+<li><code>px aux</code>: gives mor information
+<ul>
+<li>Information: <code>USER</code>, <code>%CPU</code>,
+<code>%MEM</code>, <code>VSZ</code> (virtual memory size),
+<code>RSS</code> (resident set size), <code>START</code></li>
+</ul></li>
+</ul></li>
+<li>View Processes Dynamically with <code>top</code>
+<ul>
+<li>The result is continuously updating (by default, every 3
+seconds)</li>
+</ul></li>
+<li>Control Processes
+<ul>
+<li>Interrupt a process: <code>Ctrl+C</code></li>
+<li>Put a process in the background: <code>command &amp;</code></li>
+<li>Return a process to the foreground:
+<ul>
+<li>Find the PID of the process: <code>jobs</code>, say, the result PID
+is <code>n</code></li>
+<li>Bring the process to the foreground: <code>fg %n</code></li>
+</ul></li>
+<li>Stop a process: <code>Ctrl+Z</code>
+<ul>
+<li>Ctrl+Z is used for suspending/stopping a process, it cannot be
+interrupted by the process. Ctrl+C is used to kill a process and can be
+interrupted by a program so it can clean itself up before exiting, or
+not exit at all</li>
+<li>For a stopped process, you can bring it to foreground or send it to
+background</li>
+</ul></li>
+<li>Signals
+<ul>
+<li>For Ctrl+C, a signal called TNT is sent</li>
+<li>For Ctrl+Z, a signal called TSTP is sent</li>
+<li>Kill a process: <code>kill -number PID</code></li>
+<li>Common signals
+<ul>
+<li><code>kill -1</code>: HUP signal, send the process a hangup
+signal</li>
+<li><code>kill -2</code>: INT signal, send the process an interrupt
+signal</li>
+<li><code>kill -9</code>: KILL signal, send the process a kill
+signal</li>
+<li><code>kill -15</code>: TERM signal, send the process a terminate
+signal</li>
+<li><code>kill -18</code>: CONT signal, send the process a continue
+signal</li>
+<li><code>kill -19</code>: STOP signal, send the process a stop
+signal</li>
+<li><code>kill -20</code>: TSTP signal, send the process a terminal stop
+signal</li>
+<li><code>kill -3</code>: QUIT signal, send the process a quit
+signal</li>
+<li><code>kill -11</code>: SEGV signal, send the process a segmentation
+violation signal</li>
+<li><code>kill -28</code>: WINCH signal, send the process a window
+change signal</li>
+</ul></li>
+</ul></li>
+<li>Shut down the system
+<ul>
+<li>Function: orderly terminate all the processes on the system, then
+power off the system</li>
+<li>Commands <code>halt</code>, <code>poweroff</code>,
+<code>reboot</code>, <code>shutdown</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 11 The Environment
+<ul>
+<li>Some commands:
+<ul>
+<li><code>printenv</code>: print part of all of the environment</li>
+<li><code>set</code>: set shell options</li>
+<li><code>export</code>: export environment to subsequently executed
+programs</li>
+<li><code>alias</code>: create an alias for a command</li>
+</ul></li>
+<li>What is stored in the environment
+<ul>
+<li>Two types of variables:
+<ul>
+<li>Shell variables: bits of data set by bash</li>
+<li>Environment variables: other variables</li>
+</ul></li>
+<li>Programmatic data: aliases and shell functions</li>
+</ul></li>
+<li>Examine the environment
+<ul>
+<li><code>printenv</code>: the result is in key=value format</li>
+<li><code>printenv key</code>: print the value of the key</li>
+<li><code>echo $key</code>: print the value of the key</li>
+</ul></li>
+<li>How is the environment established
+<ul>
+<li>Bash program starts, and reads a series of configuration scripts
+called startup files, which define the default environment shared by all
+users, then followed by startup files related to personal
+environment</li>
+<li>A login shell session reads
+<ul>
+<li><code>/etc/profile</code>: global configuration</li>
+<li><code>~/.bash_profile</code>: user startup file</li>
+<li><code>~/.bash_login</code>: if the above one is not found</li>
+<li><code>~/.profile</code>: if the above two are not found</li>
+</ul></li>
+<li>An non-login shell session reads
+<ul>
+<li><code>/etc/bash/bashrc</code>: global configuration</li>
+<li><code>~/.bashrc</code>: user startup file</li>
+</ul></li>
+</ul></li>
+<li>Modify the environment
+<ul>
+<li>Which file to modify
+<ul>
+<li>To add directories to your PATH variable, put those in the
+<code>.bash_profile</code>/<code>.profile</code> file</li>
+<li>For everything else, put the changes into <code>.bashrc</code>
+file5,</li>
+</ul></li>
+<li>To edit other files, we use a text editor
+<ul>
+<li>Graphical editors:
+<ul>
+<li><code>gedit</code> from GNOME</li>
+<li><code>kedit</code>, <code>kwrite</code>, <code>kate</code> from
+KDE</li>
+</ul></li>
+<li>Text-based editors: <code>nano</code>, <code>vi</code> (in most
+linux system this is replaced by vim, which is short for "vim
+improved"), <code>emacs</code><br>
+</li>
+<li>Some vim commands
+<ul>
+<li><code>:set number</code>: display line numbers</li>
+<li><code>:wq</code>, <code>:x</code>, <code>ZZ</code>: write save and
+quit</li>
+<li><code>:q!</code>: quit without saving</li>
+<li><code>gg</code>: go to the first line</li>
+<li><code>G</code>: go to the last line</li>
+<li><code>ngg</code>, <code>nG</code>: go tho the nth line</li>
+<li><code>0</code>: jump to the start of the line</li>
+<li><code>$</code>: jump to the end of the lin</li>
+<li><code>^</code>: jump to the first non-blank character in the
+line</li>
+<li><code>g_</code>: jimp to the last non-blank character in the
+line</li>
+<li><code>i</code>: insert before the cursor</li>
+<li><code>a</code>: insert after the cursor</li>
+<li><code>I</code>: insert at the beginning of the line</li>
+<li><code>A</code>: insert at the end of the line</li>
+<li><code>o</code>: append a new line below the current line</li>
+<li><code>O</code>: append a new line above the current line</li>
+<li><code>r</code>: replace the current character</li>
+<li><code>R</code>: replace characters until <code>ESC</code> is
+clicked</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 14 Package Management
+<ul>
+<li>Introduction
+<ul>
+<li>The most important determinant of linux distribution quality is the
+packaging system and the vitality of the distributions's support
+community</li>
+<li>Package management is a method of installing and maintaining
+software on the system
+<ul>
+<li>Nowadays we can install packages from the linux distributor</li>
+<li>Back to early days, people need to download and compile source code
+to install software</li>
+</ul></li>
+</ul></li>
+<li>Packaging Systems
+<ul>
+<li>Different distributions use different packaging systems, and
+generally a packaging system designed for one distribution are not
+compatible with another distribution</li>
+<li>Two main packaging technologies
+<ul>
+<li><code>.deb</code> camp from Debian: Debian, Ubuntu, Linux Mint,
+Raspbian</li>
+<li><code>.rpm</code> camp from Red Hat: Fedora, CentOS, Red Hat
+Enterprise Linux, OpenSUSE</li>
+</ul></li>
+<li>How a Package Systems Works
+<ul>
+<li>Virtually all software for a Linux system will be found on the
+Internet, most will be provided by the distribution vendor in the form
+of package files, and the rest will be available in source code form
+that can be installed manually</li>
+</ul></li>
+<li>Package files
+<ul>
+<li>A package file is a compressed collection of files that comprise the
+software package</li>
+<li>A package may contain programs and data files, metadata files, pre-
+and post-installation scripts that perform configuration tasks</li>
+<li>Package files are created by the package maintainer</li>
+</ul></li>
+<li>Repositories: packages are often hosted in a central repository</li>
+<li>Dependencies: dependencies are shared libraries that are
+indispensible for a software to run properly</li>
+<li>Package management systems tools
+<ul>
+<li><p>Low-level tools: install and remove package files</p></li>
+<li><p>High-level tools: search metadata and resolve dependencies</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Distributions</th>
+<th style="text-align: center;">Low-Level Tools</th>
+<th style="text-align: center;">High-Level Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Debian style</td>
+<td style="text-align: center;"><code>dpkg</code></td>
+<td style="text-align: center;"><code>apt</code>, <code>apt-get</code>,
+<code>aptitude</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Fedora, Red Hat Enterprise Linux</td>
+<td style="text-align: center;"><code>rpm</code></td>
+<td style="text-align: center;"><code>yum</code>, <code>dnf</code></td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+<li>Common Package Management Tasks
+<ul>
+<li>Find a package in a repository
+<ul>
+<li>Debian style:
+<code>apt-get update; apt-cache search search_string</code></li>
+<li>Red Hat style: <code>yum search search_string</code></li>
+</ul></li>
+<li>Install a package from a package file
+<ul>
+<li>Debian style: <code>dpkg -i package_file</code></li>
+<li>Red Hat style: <code>rmp -i package_file</code></li>
+</ul></li>
+<li>List installed packages
+<ul>
+<li>Debian style: <code>dpkg -l</code></li>
+<li>Red Hat style: <code>rpm -qa</code></li>
+</ul></li>
+<li>Determine whether a package is installed
+<ul>
+<li>Debian style: <code>dpkg -s package_name</code></li>
+<li>Red Hat style: <code>rpm -q package_name</code></li>
+</ul></li>
+<li>Display information about a package
+<ul>
+<li>Debian style: <code>apt-cache show package_name</code></li>
+<li>Red Hat style: <code>yum info package_name</code></li>
+</ul></li>
+<li>Find which package installed a file
+<ul>
+<li>Debian style: <code>dpkg -S file_name</code></li>
+<li>Red Hat style: <code>rpm -qf file_name</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 16 Networking
+<ul>
+<li>Some commands
+<ul>
+<li><code>ping</code>: send an ICMP ECHO_REQUEST to network hosts</li>
+<li><code>traceroute</code>: print the route packets trace to a network
+host</li>
+<li><code>ip</code>: show/manipulate routing, devices, policy routing
+and tunnels</li>
+<li><code>netstat</code>: print network connections, routing tables,
+interface statistics, masquerade connections, and multicast
+memberships</li>
+<li><code>ftp</code>: internet file transfer program</li>
+<li><code>wget</code>: non-interactive network downloader</li>
+<li><code>ssh</code>: OpenSSH SSH client (remote login program)</li>
+</ul></li>
+<li>Examine and monitor a network
+<ul>
+<li><code>ping</code>
+<ul>
+<li>Sends a special network packet to a specified host, most devices
+receiving this packet will reply to it, allowing the network connection
+to be verified</li>
+<li>Once start, ping continues to send packets at a specified interval
+(default is 1 second) until it is interrupted (say,
+<code>Ctrl+C</code>)</li>
+<li>After interrupted, ping prints performance statistics</li>
+</ul></li>
+<li><code>traceroute</code>
+<ul>
+<li>The traceroute lists all the routers network traffic takes to get
+from the local system to a specified host</li>
+</ul></li>
+<li><code>ip</code>
+<ul>
+<li><code>ip a</code>: list all information</li>
+</ul></li>
+<li><code>netstat</code>
+<ul>
+<li><code>netstat -i</code>: display a table of all network
+interfaces</li>
+<li><code>netstat -e</code>: display additional information</li>
+<li><code>netstat -r</code>: display the kernel routing tables</li>
+<li><code>netstat -n</code>: show numerical addresses instead of trying
+to determine symbolic host, port or user names</li>
+</ul></li>
+</ul></li>
+<li>Transport files over a network
+<ul>
+<li><code>ftp</code>
+<ul>
+<li>File Transfer Protocol (FTP) was once the most widely used method of
+downloading files over the Internet</li>
+<li><code>ftp</code> is used to communicate with FTP servers, machines
+that contain files that can be uploaded and downloaded over a
+network</li>
+<li>FTP is not secure because it sends account names and passwords in
+cleartext, almost all FTP done over the Internet is done by anonymous
+FTP servers</li>
+<li><code>ftp servername</code>: login to a FTP server</li>
+</ul></li>
+<li><code>lftp</code>
+<ul>
+<li>It works much like the traditional ftp program but has many
+additional convenience features including multiple-protocol support,
+automatic retry on failed downloads, background processes, tab
+completion of path names, and many more</li>
+</ul></li>
+<li><code>wget</code>
+<ul>
+<li>It is useful for downloading content from both web and FTP
+sites</li>
+<li>Single files, multiple files, and even entire sites can be
+downloaded</li>
+<li>wget allows recursive download, download files in the background,
+and complete the download of a partially downloaded file</li>
+</ul></li>
+</ul></li>
+<li>Secure communication with remote hosts
+<ul>
+<li>Before <code>ssh</code>, there are commands like <code>rlogin</code>
+and <code>telnet</code>, but they transmit all the communication through
+clear-text, which is inappropriate for the use in the Internet age</li>
+<li>Advantages:
+<ul>
+<li>It authenticates that the remote host is who it says it is, thus
+preventing so-called man-in-the-middle attacks</li>
+<li>It encrypts all of the communications between the local and remote
+hosts</li>
+</ul></li>
+<li>SSH consists of two parts
+<ul>
+<li>A SSH server runs on the remote host, listening for incoming
+connections, by default, on port 22</li>
+<li>An SSH client is used on the local system to communicate with the
+rmote server</li>
+</ul></li>
+<li>Most Linux distributions has an implementation of SSH called OpenSSH
+from the OpenBSD project</li>
+<li>Syntax: <code>ssh user@hostname</code></li>
+<li>Use SSH-encrypted tunnel to copy files across the network
+<ul>
+<li><code>scp</code> (secure copy), <code>scp from to</code></li>
+<li><code>sftp</code> (secure file transfer),
+<code>sftp hostname</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 19 Regular Expressions
+<ul>
+<li>Introduction
+<ul>
+<li>Regular expressions are symbolic notations used to identify patterns
+in text</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-6-20220131">Lecture 6 2022/01/31</h2>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/" title="COSI 103A Software Engineering">https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Software-Engineering/" rel="tag"># Software Engineering</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/01/CMU-15-213-Notes/" rel="prev" title="CMU 15-213 Notes">
+      <i class="fa fa-chevron-left"></i> CMU 15-213 Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/21/COSI-127B-Database-Management-Systems/" rel="next" title="COSI 127B Database Management Systems">
+      COSI 127B Database Management Systems <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-20220131"><span class="nav-number">2.</span> <span class="nav-text">Lecture 6 2022&#x2F;01&#x2F;31</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">682k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">10:20</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
