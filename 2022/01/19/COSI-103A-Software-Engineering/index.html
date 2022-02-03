@@ -28,7 +28,7 @@
 <meta property="og:description" content="The Linux Command Line">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T02:31:12.000Z">
-<meta property="article:modified_time" content="2022-01-31T18:05:14.729Z">
+<meta property="article:modified_time" content="2022-02-03T20:12:31.610Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Software Engineering">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-31 13:05:14" itemprop="dateModified" datetime="2022-01-31T13:05:14-05:00">2022-01-31</time>
+                <time title="Modified: 2022-02-03 15:12:31" itemprop="dateModified" datetime="2022-02-03T15:12:31-05:00">2022-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>22k</span>
+              <span>25k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>20 mins.</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -1310,10 +1310,143 @@ from the OpenBSD project</li>
 <ul>
 <li>Regular expressions are symbolic notations used to identify patterns
 in text</li>
+<li>We only consider regular expressions described in the POSIX
+standard</li>
+</ul></li>
+<li><code>grep</code>
+<ul>
+<li>Actually grep is short for "global regular expression print", it
+essentially searches test files for the occurrence text matching a
+specified regular expression and outputs any line containing a match to
+standard output</li>
+<li>Syntax: <code>grep [options] regex [file...]</code></li>
+<li>grep options
+<ul>
+<li><code>grep -t</code>: ignore case</li>
+<li><code>grep -v</code>: invert match, prints lines that do not
+match</li>
+<li><code>grep -c</code>: print the number of matches instead the lines
+themselves</li>
+<li><code>grep -l</code>: print the name of each file that contains a
+match instead of the lines themselves</li>
+<li><code>grep -L</code>: print the name of each file that does not
+contain any matched lines</li>
+<li><code>grep -n</code>: prefix each matching line with the line
+number</li>
+<li><code>grep -h</code>: for multi-file searches, suppress the output
+of filenames</li>
+</ul></li>
+</ul></li>
+<li>Metacharacters and literals
+<ul>
+<li>We can use literals in regular expressions</li>
+<li>We can also use metacharacters in regular expressions
+<ul>
+<li>Metacharacters: <code>^</code>, <code>$</code>, <code>[]</code>,
+<code>&#123;&#125;</code>, <code>-</code>, <code>?</code>, <code>*</code>,
+<code>+</code>, <code>()</code>, <code>|</code>, <code>\</code></li>
+</ul></li>
+</ul></li>
+<li>The any character
+<ul>
+<li><code>.</code> matches any character in a character position</li>
+</ul></li>
+<li>Anchors
+<ul>
+<li>The caret <code>^</code> and the dollar sign <code>$</code> are
+treated as anchors in regular expressions</li>
+<li><code>^</code> matches the beginning of a line</li>
+<li><code>$</code> matches the end of the line</li>
+</ul></li>
+<li>Bracket expressions and character classes
+<ul>
+<li>Bracket expression matches a single character from a specified set
+of characters</li>
+<li>Metacharacters does not work inside bracket expresions, except
+<code>^</code> and <code>-</code>
+<ul>
+<li><code>^</code>: if it appears at the beginning inside a bracket
+expression, then the following set of characters must not be present at
+the given character position</li>
+<li><code>A-Z</code>: matches all uppercase letters</li>
+</ul></li>
+<li>POSIX character classes
+<ul>
+<li><code>[:alnum:]</code>: <code>[A-Za-z0-9]</code></li>
+<li><code>[:word:]</code>: <code>[A-Za-z0-9_]</code></li>
+<li><code>[:alpha:]</code>: <code>[A-Za-z]</code></li>
+<li><code>[:blank:]</code>: Space and tab</li>
+<li><code>[:cntrl:]</code>: ASCII control codes, include ASCII
+characters 0 through 31 and 127</li>
+<li><code>[:digit:]</code>: <code>[0-9]</code></li>
+<li><code>[:graph:]</code>: The visible characters, include ASCII
+characters 33 through 126</li>
+<li><code>[:lower:]</code>: <code>[a-z]</code></li>
+<li><code>[:upper:]</code>: <code>[A-Z]</code></li>
+<li><code>[:punct:]</code>: The punctuation characters, in ASCII,
+equivalent to
+<code>[-!"#$%&amp;'()*+,./:;&lt;=&gt;?@[\\\]_&#123;|&#125;~]</code></li>
+<li><code>[:print:]</code>: The printable characters, all characters in
+<code>[:graph:]</code> plus the space character</li>
+<li><code>[:space:]</code>: The whitespace characters, in ASCII,
+equivalent to <code>[ \t\r\n\v\f]</code></li>
+<li><code>[:xdigit:]</code>: Hexadecimal numbers, in ASCII, equivalent
+to <code>[0-9A-Fa-f]</code></li>
+</ul></li>
+<li>POSIX basic v.s. extended regular expressions
+<ul>
+<li>BRE (basic regular expressions)</li>
+<li>ERE (extended regular expressions)</li>
+</ul></li>
+<li>Alternation
+<ul>
+<li><code>grep -E 'AAA|CCC|BBB' file</code>: matches either AAA, or BBB,
+or CCC in the file</li>
+<li>Combine alternation with other regular expression, use parentheses
+on alternation:
+<ul>
+<li><code>grep -E '^(aa|bb|cc) file'</code>: matches either aa, or bb,
+or cc at the beginning of a line in the file</li>
+</ul></li>
+</ul></li>
+<li>Quantifiers
+<ul>
+<li><code>?</code>: matches an element zero or one time</li>
+<li><code>*</code>: matches an element zero or more times</li>
+<li><code>+</code>: matches an element one or more times</li>
+<li><code>&#123;n&#125;</code>: matches an element exactly n times</li>
+<li><code>&#123;n, m&#125;</code>: matches an element at least n times, and no
+more thant m times</li>
+<li><code>&#123;n,&#125;</code>: matches an element at least n times</li>
+<li><code>&#123;,m&#125;</code>: matches an element no more than m times</li>
+</ul></li>
+<li>Some applications
+<ul>
+<li><code>find</code>: search files in a directory
+<ul>
+<li>grep tests whether a line contains a pattern, find tests whether a
+line exactly matches a pattern</li>
+</ul></li>
+<li><code>locate</code>: find files by name
+<ul>
+<li><code>locate --regexp pattern</code>: use BRE</li>
+<li><code>locate --regex patern</code>: use ERE</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-6-20220131">Lecture 6 2022/01/31</h2>
+<h2 id="lecture-01-20220119">Lecture 01 2022/01/19</h2>
+<p>Introduction, based on the TLCL book</p>
+<h2 id="lecture-02-20220120">Lecture 02 2022/01/20</h2>
+<p>Navigation and Redirection, based on the TLCL book</p>
+<h2 id="lecture-03-20220124">Lecture 03 2022/01/24</h2>
+<p>Argument Expansion, based on the TLCL book</p>
+<h2 id="lecture-04-20220126">Lecture 04 2022/01/26</h2>
+<p>Permissions and Processes, based on the TLCL book</p>
+<h2 id="lecture-05-20220127">Lecture 05 2022/01/27</h2>
+<p>Grep and Regular Expressions, based on the TLCL books</p>
+<h2 id="lecture-02-20220131">Lecture 02 2022/01/31</h2>
 
     </div>
 
@@ -1414,7 +1547,7 @@ in text</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-20220131"><span class="nav-number">2.</span> <span class="nav-text">Lecture 6 2022&#x2F;01&#x2F;31</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">2.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">3.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">4.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">5.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">6.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220131"><span class="nav-number">7.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;31</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1490,12 +1623,12 @@ in text</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">682k</span>
+    <span title="Symbols count total">686k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:20</span>
+    <span title="Reading time total">10:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

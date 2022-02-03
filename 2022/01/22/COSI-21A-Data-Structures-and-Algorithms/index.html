@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 1 2022&#x2F;01&#x2F;19">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-01-31T16:49:11.813Z">
+<meta property="article:modified_time" content="2022-02-02T15:20:54.683Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-31 11:49:11" itemprop="dateModified" datetime="2022-01-31T11:49:11-05:00">2022-01-31</time>
+                <time title="Modified: 2022-02-02 10:20:54" itemprop="dateModified" datetime="2022-02-02T10:20:54-05:00">2022-02-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.3k</span>
+              <span>6.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>4 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -380,6 +380,71 @@ cycles in the graph</li>
 <li>Running time = <span class="math inline">\(f(n)\)</span></li>
 <li>Consider <span class="math inline">\(\lim\limits_{n\rightarrow
 \infty} \frac{f(n)}{g(n)}\)</span></li>
+<li>Exact running time/ exact complexity: a concrete form of <span class="math inline">\(f(n)\)</span></li>
+<li>Notation
+<ul>
+<li><span class="math inline">\(O(n)\)</span>: <span class="math inline">\(\exists c &gt; 0, n_0 &gt; 1: \forall n \ge n_0,
+f(n) \le c * g(n)\)</span></li>
+<li><span class="math inline">\(\Omega(n)\)</span>: <span class="math inline">\(\exists c &gt; 0, n_0 &gt; 1: \forall n \ge n_0,
+f(n) \ge c * g(n)\)</span></li>
+<li><span class="math inline">\(\Theta(n)\)</span>: <span class="math inline">\(\exists c_1 &gt; 0, c_2 &gt; 0, n_0 &gt; 1:
+\forall n \ge n_0, c_1 * g(n) \le f(n) \le c_2 * g(n)\)</span></li>
+</ul></li>
+<li>Common orders of magnitude
+<ul>
+<li><span class="math inline">\(O(1)\)</span>: constant running
+time</li>
+<li><span class="math inline">\(O(logn)\)</span>: logarithmic running
+time</li>
+<li><span class="math inline">\(O(n)\)</span>: linear running time</li>
+<li><span class="math inline">\(O(nlogn)\)</span>: linearithmic running
+time</li>
+<li><span class="math inline">\(O(n^2)\)</span>:quadratic running
+time</li>
+<li><span class="math inline">\(O(n^3)\)</span>: cubic running time</li>
+<li><span class="math inline">\(O(n^k)\)</span>: polynomial running
+time</li>
+<li><span class="math inline">\(O(2^n)\)</span>: exponential running
+time</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-5-20210127">Lecture 5 2021/01/27</h2>
+<ol type="1">
+<li>Asymptotic analysis
+<ul>
+<li>Properties
+<ul>
+<li>Transitivity:
+<ul>
+<li>If <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(g(n))\)</span>, and <span class="math inline">\(g(n)\)</span> is <span class="math inline">\(O(h(n))\)</span>, then <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(h(n))\)</span></li>
+<li>If <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Omega(g(n))\)</span>, and <span class="math inline">\(g(n)\)</span> is <span class="math inline">\(\Omega(h(n))\)</span>, then <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Omega(h(n))\)</span></li>
+<li>If <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Theta(g(n))\)</span>, and <span class="math inline">\(g(n)\)</span> is <span class="math inline">\(\Theta(h(n))\)</span>, then <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Theta(h(n))\)</span></li>
+</ul></li>
+<li>Reflexivity:
+<ul>
+<li><span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(f(n))\)</span></li>
+<li><span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Omega(f(n))\)</span></li>
+<li><span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Theta(f(n))\)</span></li>
+</ul></li>
+<li>Symmetry:
+<ul>
+<li><span class="math inline">\(f(n)\)</span> is <span class="math inline">\(\Theta(g(n)) \iff g(n)\)</span> is <span class="math inline">\(\Theta(f(n))\)</span></li>
+</ul></li>
+<li>Complementary:
+<ul>
+<li><span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(g(n)) \iff g(n)\)</span> is <span class="math inline">\(\Omega(f(n))\)</span></li>
+</ul></li>
+</ul></li>
+<li>Useful Rules
+<ul>
+<li>If <span class="math inline">\(d(n)\)</span> is <span class="math inline">\(O(f(n))\)</span>, then <span class="math inline">\(a*d(n)\)</span> is <span class="math inline">\(O(f(n))\)</span>, for any constant a &gt; 0</li>
+<li>If <span class="math inline">\(d(n)\)</span> is <span class="math inline">\(O(f(n))\)</span>, and <span class="math inline">\(e(n)\)</span> is <span class="math inline">\(O(g(n))\)</span>, then <span class="math inline">\(d(n) + e(n)\)</span> is <span class="math inline">\(O(f(n) + g(n))\)</span></li>
+<li>If <span class="math inline">\(d(n)\)</span> is <span class="math inline">\(O(f(n))\)</span>, and <span class="math inline">\(e(n)\)</span> is <span class="math inline">\(O(g(n))\)</span>, then <span class="math inline">\(d(n) * e(n)\)</span> is <span class="math inline">\(O(f(n) * g(n))\)</span></li>
+<li>If <span class="math inline">\(d(n)\)</span> is <span class="math inline">\(O(f(n))\)</span> and <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(g(n))\)</span>, then <span class="math inline">\(d(n)\)</span> is <span class="math inline">\(O(g(n))\)</span></li>
+<li>If <span class="math inline">\(f(n)\)</span> is a polynomial of
+degree d, then <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(n^d)\)</span></li>
+</ul></li>
 </ul></li>
 </ol>
 <h2 id="lecture-6-20210131">Lecture 6 2021/01/31</h2>
@@ -393,12 +458,15 @@ out) principle</li>
 <li>Stack can be implemented using array and linkedlist</li>
 <li>Operations
 <ul>
-<li><code>push(ele)</code>: insert an element</li>
-<li><code>pop()</code>: remove and return the last inserted element</li>
+<li><code>push(ele)</code>: insert an element <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">push (S, x):</span><br><span class="line">  <span class="keyword">if</span> S.top_index &gt;= n <span class="keyword">then</span>:</span><br><span class="line">    <span class="literal">error</span>: stack overflow</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    S.top_index &lt;- S.top_index + <span class="number">1</span></span><br><span class="line">    S[top_index] &lt;- x</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><code>pop()</code>: remove and return the last inserted element
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pop(S):</span><br><span class="line">  <span class="keyword">if</span> stack-Empty(S) <span class="keyword">then</span>:</span><br><span class="line">    <span class="literal">error</span>: stack underflow</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    S.top_index &lt;- S.top_index - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> S[S.top_index + <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
 <li><code>top()</code>: return the last inserted element without
-removing it</li>
-<li><code>size()</code>: return the number of element stored</li>
-<li><code>isEmpty()</code>: indicate whether no elements are stored</li>
+removing it <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">top(S)</span><br><span class="line">  <span class="keyword">if</span> stack-Empty(S) <span class="keyword">then</span></span><br><span class="line">    <span class="literal">error</span>: stack empty</span><br><span class="line">  <span class="keyword">return</span> S[S.top_index]</span><br></pre></td></tr></table></figure></li>
+<li><code>size()</code>: return the number of element stored
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">size(S)</span><br><span class="line">  <span class="keyword">return</span> S.top_index</span><br></pre></td></tr></table></figure></li>
+<li><code>isEmpty()</code>: indicate whether no elements are stored
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stack-Empty(S)</span><br><span class="line">  <span class="keyword">if</span> S.top_index == <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Performance
 <ul>
@@ -416,8 +484,8 @@ the queue</li>
 <li>Queue can be implemented using array and linkedlists</li>
 <li>Operations
 <ul>
-<li><code>enqueue(ele)</code>: insert an element at the end of the
-queue</li>
+<li><code>enqueue(ele)</code>: insert an element at the end of the queue
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enqueue(Q, x)</span><br></pre></td></tr></table></figure></li>
 <li><code>dequeue()</code>: remove and return the element at the front
 of the queue</li>
 <li><code>size()</code>: return the number of element stored</li>
@@ -527,7 +595,7 @@ queue</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 2 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 3 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-4-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 4 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-20210131"><span class="nav-number">5.</span> <span class="nav-text">Lecture 6 2021&#x2F;01&#x2F;31</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 2 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 3 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-4-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 4 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-5-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 5 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 6 2021&#x2F;01&#x2F;31</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -603,12 +671,12 @@ queue</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">682k</span>
+    <span title="Symbols count total">686k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:20</span>
+    <span title="Reading time total">10:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
