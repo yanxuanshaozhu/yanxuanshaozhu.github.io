@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Lecture 1 2022&#x2F;01&#x2F;18 Lecture 2 2022&#x2F;01&#x2F;20">
+  <meta name="description" content="Lecture 01 2022&#x2F;01&#x2F;18">
 <meta property="og:type" content="article">
 <meta property="og:title" content="COSI 131A Operating System">
 <meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/01/22/COSI-131A-Operating-System/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="Lecture 1 2022&#x2F;01&#x2F;18 Lecture 2 2022&#x2F;01&#x2F;20">
+<meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;18">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-01-23T18:27:35.890Z">
+<meta property="article:modified_time" content="2022-02-07T04:06:15.279Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-23 13:27:35" itemprop="dateModified" datetime="2022-01-23T13:27:35-05:00">2022-01-23</time>
+                <time title="Modified: 2022-02-06 23:06:15" itemprop="dateModified" datetime="2022-02-06T23:06:15-05:00">2022-02-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>36</span>
+              <span>6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -233,8 +233,328 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="lecture-1-20220118">Lecture 1 2022/01/18</h2>
-<h2 id="lecture-2-20220120">Lecture 2 2022/01/20</h2>
+        <h2 id="lecture-01-20220118">Lecture 01 2022/01/18</h2>
+<a id="more"></a>
+<ol type="1">
+<li>Why study OS
+<ul>
+<li>To learn the language of systems: abstraction</li>
+<li>To understand issues of system design</li>
+<li>To under stand how computers work</li>
+</ul></li>
+<li>What is OS
+<ul>
+<li>An OS is a program that acts as an intermediary between a user and
+the computer hardware</li>
+<li>Goals
+<ul>
+<li>Execute user programs and maker solving user problems easier</li>
+<li>Make the computer system convenient to user</li>
+<li>Use the computer hardware in an efficient manner</li>
+</ul></li>
+<li>Computer system components
+<ul>
+<li>Hardware: CPU, memory, I/O devices</li>
+<li>OS</li>
+<li>Application programs</li>
+<li>Users: people, machines, other computers</li>
+</ul></li>
+<li>What the OS does
+<ul>
+<li>OS is a resource allocator: manage all resources</li>
+<li>OS is a control program: control execution of programs</li>
+</ul></li>
+<li>Resource Management
+<ul>
+<li>Resource abstraction (top-down view)
+<ul>
+<li>Abstract from functionality of hardware, to achieve ease of use and
+device independence</li>
+</ul></li>
+<li>Resource sharing (bottom-up view)
+<ul>
+<li>manage contention for resources</li>
+</ul></li>
+<li>The one program running at all times on a computer is the kernel,
+everything else is either a system program or an application
+program</li>
+</ul></li>
+</ul></li>
+<li>Key OS concepts
+<ul>
+<li>Processes = programs + state
+<ul>
+<li>Program in execution, also include some state information</li>
+<li>Context switch: change control from one process to another</li>
+</ul></li>
+<li>Concurrency
+<ul>
+<li>Used for performance</li>
+<li>Programs do not corrupt, programs can achieve goals (fairness,
+performance,...), do not deadlock</li>
+</ul></li>
+<li>Memory management
+<ul>
+<li>Each process has access to entire machine</li>
+<li>Abstraction + sharing</li>
+</ul></li>
+<li>Device management
+<ul>
+<li>Each process has access to all devices</li>
+<li>Abstraction + sharing</li>
+</ul></li>
+</ul></li>
+<li>Overview of machine organization
+<ul>
+<li>CPU: a processor for interpreting and executing programs</li>
+<li>Memory: for storing data and programs</li>
+<li>Controller: mechanism for transferring data from/to outside world,
+there is a controller for each device</li>
+<li>Buss: set of wires, move data and instructions within units of the
+machine
+<ul>
+<li>Buss should contains both data and address</li>
+<li>Primary movement on buss
+<ul>
+<li>CPU <span class="math inline">\(\rightleftarrows\)</span>
+memory</li>
+<li>CPU <span class="math inline">\(\rightleftarrows\)</span> device
+controllers</li>
+<li>Memory <span class="math inline">\(\rightleftarrows\)</span> device
+controllers (sometimes)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-02-20220120">Lecture 02 2022/01/20</h2>
+<ol type="1">
+<li>CPU
+<ul>
+<li>CPU = ALU + Control Unit</li>
+<li>ALU (arithmetic logic unit): performs computations</li>
+<li>Control unit: interprets program instructions</li>
+<li>CPU fetches, decodes and executes instructions on the correct data
+<ul>
+<li>Control unit makes sure the correct data is where is needs to
+be</li>
+<li>ALU: stores and performs operations on data</li>
+</ul></li>
+<li>CPU understands only assembly language</li>
+</ul></li>
+<li>ALU
+<ul>
+<li>ALU = Registers + Function unit</li>
+<li>Registers: storage units for data (addresses, PC, operands, ...)
+<ul>
+<li>Registers are fast and expensive</li>
+<li>Cetegories:
+<ul>
+<li>GPR (general purpose registers): set directly by the software,
+stores data</li>
+<li>SR (status register): set as a side-effect of software</li>
+</ul></li>
+<li>The amount of registers is the power to 2, typically 32-64</li>
+<li>Each register holds a word, the size of a word is the amount that
+could be stored in a register, it's also the amount of data that could
+be transferred by one bus at a time</li>
+</ul></li>
+<li>Function unit: evaluate arithmetic and logic units
+<ul>
+<li>Operations in FU can affect bits in the SR</li>
+<li>FU is controlled by signals from the CU, so it knows which operation
+to perform</li>
+</ul></li>
+<li>Registers and units are connected through the CPU bus, timing of the
+movement of data is controlled by CPU clock</li>
+</ul></li>
+<li>Generate assembly language
+<ul>
+<li>Higher level languages are converted to assembly language using a
+compiler</li>
+<li>Movement of data
+<ul>
+<li>Memory <span class="math inline">\(\rightarrow\)</span> Register:
+<code>LOAD</code></li>
+<li>Register <span class="math inline">\(\rightarrow\)</span> Memory:
+<code>STORE</code></li>
+<li>Memory <span class="math inline">\(\rightarrow\)</span> Disk:
+<code>READ</code></li>
+<li>Disk <span class="math inline">\(\rightarrow\)</span> Memory:
+<code>WRITE</code></li>
+</ul></li>
+<li>System call: request to OS to perform service, change from user mode
+to kernel mode</li>
+<li>Source code <span class="math inline">\(\xrightarrow{compiler}\)</span> assembly code
+<span class="math inline">\(\xrightarrow{assembler}\)</span> machine
+language on hardware (executable) <span class="math inline">\(\xrightarrow{loader}\)</span> instructions on
+memory</li>
+</ul></li>
+<li>Control unit
+<ul>
+<li>PC (program counter): a register for the CPU, stores the address
+where the program is stored in memory</li>
+<li>IR (instruction register): a register for the CPU, holds instruction
+currently being executed or decoded</li>
+<li>CU performs the "Fetch-Decode-Execute" cycle after instructions are
+loaded into memory by the loader
+<ul>
+<li>Get the instruction whose address is at PC, store the instruction in
+IR</li>
+<li>Decode instruction in IR to identify operation type and inputs</li>
+<li>Execute instructions with ALU</li>
+<li>Increment PC (by 4 in the 32-bit configuration)and go back to fetch
+another instruction</li>
+<li>This cycle is controlled by the haltflag. THe haltflag is the first
+bit in the SR, when it is set to CLEAR, the bit is set to 0, and the
+program runs. When the last line of the program is executed, IR has the
+halt instruction, and the haltflag is set to 1, then the program stops
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PC &#x3D; &lt;start address&gt;</span><br><span class="line">IR &#x3D; M[PC]</span><br><span class="line">haltflag &#x3D; CLEAR   </span><br><span class="line">while (haltflag is CLEAR)</span><br><span class="line">  Execute (IR)</span><br><span class="line">  Increment (PC)</span><br><span class="line">  IR &#x3D; M[PC]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Booting
+<ul>
+<li>OS is not in ROM, but on the disk
+<ul>
+<li>OS is large</li>
+<li>OS needs to be changed when needed (update)</li>
+</ul></li>
+<li>BIOS (non-volatile firmware on flash memory of motherboards): part
+of hardware, initializes hardware and runs the bootstrap loader</li>
+<li>Bootstrap loader: part of software, resides in ROM, it loads OS into
+memory</li>
+<li>BL algorithm <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R3 :&#x3D; 0       &#x2F;&#x2F; Size of transferred data</span><br><span class="line">R2 :&#x3D; SIZE_OR_TARGET  &#x2F;&#x2F; Size of OS</span><br><span class="line">while R3 &lt; R2 do</span><br><span class="line">  R1 :&#x3D; disk[FIXED_DISK_ADD + R3]</span><br><span class="line">  M[FIXED_MEM_ADD +R3] :&#x3D; R1</span><br><span class="line">  R3 : R3 + 4</span><br><span class="line">goto FIXED_MEM_ADD</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-03-20220125">Lecture 03 2022/01/25</h2>
+<ol type="1">
+<li>Assumption and notation
+<ul>
+<li>Assumptions
+<ul>
+<li>16 GPR (R1, ..., R16)</li>
+<li>16 SR (S1, ..., S16)</li>
+<li>Instruction size: 4 bytes</li>
+</ul></li>
+<li>Notation
+<ul>
+<li><code>M[x]</code>: contents of memory at address x</li>
+<li><code>D[x]</code>: contents of disk at address x</li>
+<li><code>Ri</code>: contents of GPR Ri</li>
+<li>PC: program counter</li>
+<li><code>&lt;-</code>: assignment</li>
+</ul></li>
+</ul></li>
+<li>Load: transfer data from memory to cpu
+<ul>
+<li>Direct addressing
+<ul>
+<li>Syntax: <code>LOAD Ri, Addr</code></li>
+<li>Meaning: <code>Ri &lt;- M[Addr]</code></li>
+<li>Example: <code>LOAD R1, 3000</code></li>
+</ul></li>
+<li>Immediate operand
+<ul>
+<li>Syntax: <code>LOAD Ri, =Num</code></li>
+<li>Meaning: <code>Ri &lt;- Num</code></li>
+<li>Example: <code>Load R2, =100</code></li>
+</ul></li>
+<li>Index addressing
+<ul>
+<li>Syntax: <code>LOAD Ri, [Addr, Rj]</code></li>
+<li>Meaning: <code>Ri &lt;- M[Addr + Rj]</code></li>
+<li>Example: <code>Load R3, [3000, R4]</code></li>
+</ul></li>
+<li>Indirect addressing
+<ul>
+<li>Syntax: <code>LOAD Ri, @ Addr</code></li>
+<li>Meaning: <code>Ri &lt;- M[M[Addr]]</code></li>
+<li>Example: <code>Load R5, @ 3000</code></li>
+</ul></li>
+<li>Relative Addressing
+<ul>
+<li>Syntax: <code>LOAD Ri, $Num</code></li>
+<li>Meaning: <code>Ri &lt;- M[PC + Num]</code></li>
+<li>Example: <code>LOAD R6, $100</code>, <code>LOAD R7 $R8</code></li>
+</ul></li>
+</ul></li>
+<li>Store: transfer data from cpu to memory
+<ul>
+<li>Direct addressing
+<ul>
+<li>Syntax: <code>STORE Ri, Addr</code></li>
+<li>Meaning: <code>M[Addr] &lt;- Ri</code></li>
+<li>Example: <code>STORE R1, 3000</code></li>
+</ul></li>
+<li>Index addressing
+<ul>
+<li>Syntax: <code>STORE Ri, [Addr, Rj]</code></li>
+<li>Meaning: <code>M[Addr + Rj] &lt;- Ri</code></li>
+<li>Example: <code>STORE R2, [3000, R3]</code></li>
+</ul></li>
+<li>Relative addressing
+<ul>
+<li>Syntax: <code>STORE Ri, $Num,</code></li>
+<li>Meaning: <code>M[PC + Num] &lt;- Ri</code></li>
+<li>Example: <code>STORE R4, $100</code>,
+<code>STORE R5, $R6</code></li>
+</ul></li>
+</ul></li>
+<li>Arithmetic operations
+<ul>
+<li>ADD
+<ul>
+<li>Syntax: <code>Add Ri, Rj</code></li>
+<li>Meaning: <code>Ri &lt;-Ri + Rj</code></li>
+</ul></li>
+<li>SUB
+<ul>
+<li>Syntax: <code>SUB Ri, Rj</code></li>
+<li>Meaning: <code>Ri &lt;- Ri - Rj</code></li>
+</ul></li>
+<li>MUL
+<ul>
+<li>Syntax: <code>MUL Ri, Rj</code></li>
+<li>Meaning: <code>Ri &lt;- Ri * Rj</code></li>
+</ul></li>
+<li>DIV
+<ul>
+<li>Syntax: <code>DIV Ri, Rj</code></li>
+<li>Meaning: <code>Ri &lt;- Ri / Rj</code> (integer division),
+<code>Rj &lt;- Ri % Rj</code></li>
+<li>Example <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOAD R1, &#x3D; 11</span><br><span class="line">LOAD R2, &#x3D; 4</span><br><span class="line">DIV R1, R2   &#x2F;&#x2F; R1 &#x3D; 2, R2 &#x3D; 3</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>INC
+<ul>
+<li>Syntax: <code>INC Ri</code></li>
+<li>Meaning: <code>Ri &lt;- Ri + 1</code></li>
+</ul></li>
+</ul></li>
+<li>Labels
+<ul>
+<li>Syntax: <code>LOOP: instruction</code></li>
+<li>This is the same meaning as the instruction alone, but it is used
+with branch instructions to construct a loop</li>
+<li>If the "LOOP" label appears at memory address 3000, then throughout
+the code, "LOOP" is equivalent to 3000</li>
+</ul></li>
+<li>SKIP
+<ul>
+<li>Syntax: <code>SKIP</code></li>
+<li>Meaning: time delay, cpu pauses for about 300 cpu cycles</li>
+</ul></li>
+<li>Branch
+<ul>
+<li>BR
+<ul>
+<li>Syntax: <code>BR label</code></li>
+<li>Meaning: branch to label</li>
+</ul></li>
+<li>BLT/BGT/BLEQ/BGEQ
+<ul>
+<li>Syntax: <code>BLT Ri, Rj, label</code> ## Lecture 04 2022/01/27</li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -335,7 +655,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 2 2022&#x2F;01&#x2F;20</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -411,12 +731,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">686k</span>
+    <span title="Symbols count total">692k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:24</span>
+    <span title="Reading time total">10:30</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
