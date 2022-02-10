@@ -28,7 +28,7 @@
 <meta property="og:description" content="The Linux Command Line">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T02:31:12.000Z">
-<meta property="article:modified_time" content="2022-02-07T18:34:19.426Z">
+<meta property="article:modified_time" content="2022-02-10T20:30:34.026Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Software Engineering">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-07 13:34:19" itemprop="dateModified" datetime="2022-02-07T13:34:19-05:00">2022-02-07</time>
+                <time title="Modified: 2022-02-10 15:30:34" itemprop="dateModified" datetime="2022-02-10T15:30:34-05:00">2022-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,7 +214,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>25k</span>
+              <span>26k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -1450,7 +1450,18 @@ time so that you can recall specific version later</li>
 </ul></li>
 <li>Git
 <ul>
-<li>Most other CVS</li>
+<li>Most other CVS stores information as a list of file-based
+changes</li>
+<li>Git thinks of its data like a series of snapshots of a miniature
+filesystem</li>
+</ul></li>
+<li>Three states of files in git
+<ul>
+<li>Modified: the file is changed but not committed to the database
+yet</li>
+<li>Staged: the file is marked as modified and it will go into the next
+commit snapshot</li>
+<li>Committed: the files has already been committed to the database</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1468,6 +1479,21 @@ time so that you can recall specific version later</li>
 <h2 id="lecture-07-20220202">Lecture 07 2022/02/02</h2>
 <h2 id="lecture-08-20220203">Lecture 08 2022/02/03</h2>
 <h2 id="lecture-09-20220207">Lecture 09 2022/02/07</h2>
+<h2 id="lecture-10-20220208">Lecture 10 2022/02/08</h2>
+<ol type="1">
+<li>Change the default browser by which jupyter notebook is opened
+<ul>
+<li>Run <code>jupyter notebook --generate-config</code> in command line
+prompt, this command generates a configure file at
+<code>~/.jupyter/jupyter_notebook_config.py</code></li>
+<li>Set this property in the above configure file
+<code>c.NotebookApp.browser = u'C:/Home/AppData/Local/Google/Chrome/Application/chrome.exe %s'</code>.
+If you use windows, you should use path separator <code>\\</code>, and
+also quote the path of your browser inside "", and then inside '', so
+you configuration should be something like this:
+<code>c.NotebookApp.browser = '"C:\\Home\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe" %s'</code></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -1568,7 +1594,7 @@ time so that you can recall specific version later</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pro-git"><span class="nav-number">2.</span> <span class="nav-text">Pro Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">3.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220131"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2022&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">9.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">10.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">11.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pro-git"><span class="nav-number">2.</span> <span class="nav-text">Pro Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">3.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">4.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">6.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">7.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220131"><span class="nav-number">8.</span> <span class="nav-text">Lecture 06 2022&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">9.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">10.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">11.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220208"><span class="nav-number">12.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;08</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1644,12 +1670,12 @@ time so that you can recall specific version later</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">697k</span>
+    <span title="Symbols count total">704k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:33</span>
+    <span title="Reading time total">10:40</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

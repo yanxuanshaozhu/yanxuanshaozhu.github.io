@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/hardware_hierarchy.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-02-08T07:25:53.442Z">
+<meta property="article:modified_time" content="2022-02-10T21:43:50.472Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-08 02:25:53" itemprop="dateModified" datetime="2022-02-08T02:25:53-05:00">2022-02-08</time>
+                <time title="Modified: 2022-02-10 16:43:50" itemprop="dateModified" datetime="2022-02-10T16:43:50-05:00">2022-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>9.9k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>9 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -676,6 +676,10 @@ bit combination to represent that there is no interrupt at all</li>
 </ul></li>
 </ul></li>
 <li>Fetch-decode-execute with interrupt involved <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PC &#x3D; &lt;start address&gt;</span><br><span class="line">IR &#x3D; M[PC]</span><br><span class="line">haltflag &#x3D; CLEAR   </span><br><span class="line">while (haltflag is CLEAR)</span><br><span class="line">  Execute (IR)</span><br><span class="line">  Increment (PC)</span><br><span class="line">  if (interrupt request)</span><br><span class="line">    M[0] &lt;- PC               &#x2F;&#x2F; reserved to store PC</span><br><span class="line">    PC &lt;- M[1]&#x2F; PC &lt;- M[i]   &#x2F;&#x2F; if IR flag is used, use M[1] is the interrupt handler, if interrupt vector is used, use M[i] as the interrupt handler for ith device</span><br><span class="line">  IR &#x3D; M[PC]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-05-20220201">Lecture 05 2022/02/01</h2>
+<ol type="1">
 <li>Respond to interrupt
 <ul>
 <li>Procedures
@@ -686,11 +690,156 @@ device handler</li>
 <li>Device handler performs data transfer from device controller
 registers to cpu</li>
 </ul></li>
-<li>Interrupt during interrupt ## Lecture 05 2022/02/01</li>
+<li>Interrupt during interrupt
+<ul>
+<li>Problem 1: the later interrupt overwrites M[0]
+<ul>
+<li>PC = 108 =&gt; 1st interrupt =&gt; M[0] &lt;- 108, PC &lt;-
+M[1]</li>
+<li>2nd interrupt =&gt; M[0] &lt;- M[1], PC &lt;- M[2]</li>
+<li>When the 2nd interrupt id done, PC &lt;- M[1], but we lost the first
+PC &lt;- 108</li>
 </ul></li>
+<li>Solution: reserve additional memory for PC values, so different
+interrupt store their respective PC at different memory addresses</li>
+<li>Problem 2: wrong timing leads to unhandled interrupts
+<ul>
+<li>Two interrupt arrives almost at the same time, then M[0] is set to
+the PC for the 2nd interrupt, then the 1st interrupt is unhandled</li>
+<li>Solution: set an interrupt disable other interrupts until cpu
+recognizes which devices are interrupting</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Kernel vs User mode
+<ul>
+<li>OS and users share the hardware and software resources of a computer
+system</li>
+<li>OS should be able to protect the integrity of the computer, so OS
+needs to distinguish between kernel mode and user mode</li>
+<li>Switch between 2 modes of operation: a mode bit on one register:
+<ul>
+<li>Uer mode: execution in user role, limited instructions, no
+privileged instructions</li>
+<li>Kernel mode: execution in OS role, privileged instructions are
+allowed, (interrupt, trap, fault are handled in this mode)</li>
+</ul></li>
+<li>All I/O instructions are privileged, so there is switch between user
+mode and kernel mode</li>
+<li>To prevent infinite loop/ process hogging resources, there is also
+transition from user to kernel mode, a timer is involved</li>
+<li>When the program logic is focused, the user does not need to care
+about which call triggers the switch between modes, but if efficiency is
+an issue, calls without switch between modes are preferred</li>
+</ul></li>
+<li>Processes
+<ul>
+<li>Processes are abstraction of the CPU and the main memory</li>
+<li>Process is an abstraction of the cpu
+<ul>
+<li>It gives an illusion of a uni-programming environment, every process
+acts as if it has exclusive access to cpu and memory (in reality, cpu is
+time-sliced, memory is space-sliced)</li>
+<li>Multiple processes increase cpu utilization</li>
+<li>Multiple processes reduce latency</li>
+</ul></li>
+<li>A thread is a lightweight process, it's an abstraction of the cpu,
+but not the abstraction of the main memory</li>
+<li>Threads are mostly cooperative, processes are mostly
+independent</li>
+<li>A process is more thant the program code, it consists of code
+section, data section, stack, registers(include the PC)</li>
 </ul></li>
 </ol>
-<h2 id="lecture-06-20220202">Lecture 06 2022/02/02</h2>
+<h2 id="lecture-06-20220204">Lecture 06 2022/02/04</h2>
+<h2 id="lecture-07-20220207">Lecture 07 2022/02/07</h2>
+<ol type="1">
+<li>Processes
+<ul>
+<li>The process id for child is larger thant that of the parent process,
+but may not be consecutive</li>
+<li>They have separate copies of data and separate PC</li>
+<li>Global variables are the same after copy, but if one processes
+changes it, other processes cannot notice the change</li>
+<li>Process termination
+<ul>
+<li>Exit: When a process executes last statement and asks OS to kill
+it</li>
+<li>Abort: parent process terminates execution of child process</li>
+</ul></li>
+</ul></li>
+<li>Threads
+<ul>
+<li>Every thread has its own registers, PC and stack, code and data can
+be shared</li>
+<li>Motivation for threads
+<ul>
+<li>Multi-processing is expensive, processes have separate memory, so
+each time all state information needs to be copied</li>
+<li>Multi-threading is cheaper, only stack, PC, registers need to be
+copied</li>
+</ul></li>
+<li>Benefits or threads
+<ul>
+<li>Responsiveness</li>
+<li>Resource sharing</li>
+<li>Economy</li>
+<li>Utilization of multiprocessors, better parallelism and
+scalability</li>
+</ul></li>
+<li>Thread Control Blocks (TCB)
+<ul>
+<li>Break the PCB into two pieces:
+<ul>
+<li>Thread-specific stuff: thread data</li>
+<li>Process-specific stuff: OS related stuff</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>User threads v.s. kernel threads
+<ul>
+<li>Kernel thread: managed by OS with multi-threading architecture, it's
+the unit of execution that is scheduled by the kernel on the cpu</li>
+<li>User thread: implemented with treads library</li>
+<li>The mapping between user thread and kernel thread can be
+many-to-one, one-to-one and many-to-many</li>
+</ul></li>
+</ol>
+<h2 id="lecture-08-20220210">Lecture 08 2022/02/10</h2>
+<ol type="1">
+<li>Status of a thread
+<ul>
+<li>init, run, blocked, dead</li>
+</ul></li>
+<li>Interaction between parent and child thread
+<ul>
+<li>Execute concurrently: call <code>child.start()</code> in the parent
+thread</li>
+<li>Parent suspend until child is done: call <code>child.join()</code>
+in the parent thread, notice <code>join</code> method can throw
+<code>Interruptedexception</code>, so you should use a try-catch clause.
+Notice <code>child.start()</code> should be called before
+<code>child.join()</code> is called</li>
+</ul></li>
+<li>Cancel threads
+<ul>
+<li>Call <code>child.interrupt()</code> to interrupt the child thread,
+it sets the interrupt flag in the child thread</li>
+<li><code>Thread.currentThread().isinterrupted()</code> method in the
+child thread: returns boolean value</li>
+<li><code>interrupted()</code> method in the child thread: returns
+boolean value, and clears the interrupt flag</li>
+</ul></li>
+<li>Inter-process communication
+<ul>
+<li>Most modern Os does not support inter-process communication</li>
+<li>INdependent processes are not affected by execution of other
+processes</li>
+<li>Producer-consumer problem</li>
+<li>Reader/writer problem</li>
+<li>Mutual exclusion problem</li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -791,7 +940,7 @@ registers to cpu</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220202"><span class="nav-number">4.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;02</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -867,12 +1016,12 @@ registers to cpu</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">697k</span>
+    <span title="Symbols count total">704k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:33</span>
+    <span title="Reading time total">10:40</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
