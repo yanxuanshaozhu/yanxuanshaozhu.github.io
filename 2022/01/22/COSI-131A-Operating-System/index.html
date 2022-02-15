@@ -28,8 +28,10 @@
 <meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;18">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/hardware_hierarchy.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-02-10T21:43:50.472Z">
+<meta property="article:modified_time" content="2022-02-15T20:38:38.551Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -198,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-10 16:43:50" itemprop="dateModified" datetime="2022-02-10T16:43:50-05:00">2022-02-10</time>
+                <time title="Modified: 2022-02-15 15:38:38" itemprop="dateModified" datetime="2022-02-15T15:38:38-05:00">2022-02-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +218,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>14k</span>
+              <span>16k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>12 mins.</span>
+              <span>15 mins.</span>
             </span>
 
         </div>
@@ -744,14 +746,126 @@ time-sliced, memory is space-sliced)</li>
 <li>Multiple processes reduce latency</li>
 </ul></li>
 <li>A thread is a lightweight process, it's an abstraction of the cpu,
-but not the abstraction of the main memory</li>
+but not of the main memory</li>
 <li>Threads are mostly cooperative, processes are mostly
 independent</li>
-<li>A process is more thant the program code, it consists of code
+<li>A process is more than the program code, it consists of code
 section, data section, stack, registers(include the PC)</li>
 </ul></li>
 </ol>
 <h2 id="lecture-06-20220204">Lecture 06 2022/02/04</h2>
+<ol type="1">
+<li>Process state
+<ul>
+<li>Processes are not always running, they have different states</li>
+<li>State:
+<ul>
+<li>New: process is being created</li>
+<li>Running: instructions are being executed</li>
+<li>Waiting: process is waiting for some event to occur</li>
+<li>Ready: process is waiting to be assigned the cpu</li>
+<li>Terminated: process has finished execution <img src="/images/Course/COSI131A/process_state.png"></li>
+</ul></li>
+</ul></li>
+<li>Process control block
+<ul>
+<li>Each process is represented in the os by a process control block,
+also called a task control block. It contains many information
+associated with a specific process</li>
+<li>Information
+<ul>
+<li>Process state: new, running, etc.</li>
+<li>Process id</li>
+<li>PC</li>
+<li>Registers</li>
+<li>Memory limits</li>
+<li>Other information: list of opened files, etc.</li>
+</ul></li>
+<li>Context switch:
+<ul>
+<li>Process with access to cpu switched out (due to interrupt or system
+call), with state copied to pcb, another ready process switched in, also
+with state copied from pcb</li>
+<li>There is a queue managing processes, if a process is switched out,
+then it's enqueued, then another process is dequeued from the scheduling
+queue based on some criterion and switched in</li>
+<li>Pure overhead: during context switching, no useful work is done in
+cpu</li>
+</ul></li>
+</ul></li>
+<li>Process scheduling
+<ul>
+<li>Multiprogramming goal: maximize cpu utilization and enable users
+interact with their running programs. This is achieved by process
+scheduler, it selects the progress for program execution on the cpu <img src="/images/Course/COSI131A/process_state.png"></li>
+<li>Scheduler
+<ul>
+<li>Long term scheduler (job selector): moves process from disk to main
+memory
+<ul>
+<li>Select which processes should be moved into ready queue</li>
+<li>Control degree of multiprogramming (# of processes in memory)</li>
+<li>Invoked infrequently, can be slow</li>
+<li>Need to make a mix of I/O bound processes (spend more time doing
+I/O)and cpu bound processes (spends more time doing computation)</li>
+</ul></li>
+<li>Short term scheduler: selects one process from memory and allocate
+the cpu to it
+<ul>
+<li>Similar to interrupt handler</li>
+<li>Select processes from ready queue</li>
+<li>Invoked frequently, should be fast</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Process and memory
+<ul>
+<li>Process address space contains text segment, data segment and stack
+segment</li>
+<li>Abstraction
+<ul>
+<li>The process has access to whole memory, in reality memory is
+partitioned amongst processes</li>
+<li>Memory is contiguous, in reality memory consists of non-contiguous
+chunks (if a process is terminated, its memory is free, then there are
+empty chunks)</li>
+</ul></li>
+<li>Abstraction 1: process has exclusive access to all memory that it
+can address
+<ul>
+<li>Exclusivity: each process is assigned a base register and limit
+register defining its address space, so the memory space is [base
+register, base register + limit register]</li>
+<li>Access to entire address space: in reality, the entire memory space
+occupied by processes can be larger than physical memory using the
+virtual memory technique</li>
+</ul></li>
+<li>Abstraction 2: a process's address space is contiguous
+<ul>
+<li>Store process's address space as non-contiguous set of contiguous
+chunks</li>
+</ul></li>
+</ul></li>
+<li>Process creation
+<ul>
+<li>Process creation
+<ul>
+<li>Parent process creates child processes, forming a tree of
+processes</li>
+<li>Child process possibilities
+<ul>
+<li>Resource sharing: child process shares all sources from parent
+process, subset of parents's, none resource with the parent</li>
+<li>Execution: parent executes concurrently with children processes,
+parent process waits until all children processes are terminated</li>
+<li>Address space: child is a duplicate of parent, child has specified
+new program loaded</li>
+</ul></li>
+<li>Process creation in UNIX: <code>fork()</code>,
+<code>execv(path, argv)</code></li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="lecture-07-20220207">Lecture 07 2022/02/07</h2>
 <ol type="1">
 <li>Processes
@@ -839,6 +953,10 @@ processes</li>
 <li>Reader/writer problem</li>
 <li>Mutual exclusion problem</li>
 </ul></li>
+</ol>
+<h2 id="lecture-09-20220215">Lecture 09 2022/02/15</h2>
+<ol type="1">
+<li></li>
 </ol>
 
     </div>
@@ -940,7 +1058,7 @@ processes</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1016,12 +1134,12 @@ processes</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">704k</span>
+    <span title="Symbols count total">710k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:40</span>
+    <span title="Reading time total">10:45</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
