@@ -30,8 +30,11 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/hardware_hierarchy.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/interrupt_driven_io_cycle.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/storage_hierarchy.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/os_services.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-02-15T20:38:38.551Z">
+<meta property="article:modified_time" content="2022-02-23T17:58:06.066Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -200,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-15 15:38:38" itemprop="dateModified" datetime="2022-02-15T15:38:38-05:00">2022-02-15</time>
+                <time title="Modified: 2022-02-23 12:58:06" itemprop="dateModified" datetime="2022-02-23T12:58:06-05:00">2022-02-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,14 +221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>16k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>15 mins.</span>
+              <span>24 mins.</span>
             </span>
 
         </div>
@@ -956,7 +959,391 @@ processes</li>
 </ol>
 <h2 id="lecture-09-20220215">Lecture 09 2022/02/15</h2>
 <ol type="1">
-<li></li>
+<li>Review
+<ul>
+<li>Remember the difference between user-level thread and kernel-level
+thread</li>
+<li>Device controller vs device driver</li>
+</ul></li>
+<li>Scheduling
+<ul>
+<li>Context switch: save state, run scheduler algorithm, put another
+process into the cpu</li>
+<li>SR scheduler is a daemon program</li>
+<li>CPU clock and system clock (on motherboard)</li>
+<li>Two types of scheduling:
+<ul>
+<li>No-preemptive : processes only give up cpu voluntarily</li>
+<li>Preemptive: processes also may be preempted by an interrupt</li>
+</ul></li>
+</ul></li>
+<li>Scheduling policies
+<ul>
+<li>Criteria for effectiveness of scheduling policies
+<ul>
+<li>Throughput: measured in # processes completed/ time unit</li>
+<li>Turnaround time: avg(time of completion - time of creation)</li>
+<li>Waiting time: average time waiting in the ready queue</li>
+<li>Response time: time of 1st response is produced- time of
+creation</li>
+<li>Overhead: time spent related to scheduling</li>
+<li>Fairness: how much variation in waiting time</li>
+</ul></li>
+</ul></li>
+<li>First come first served(FCFS): no-preemptive</li>
+</ol>
+<h2 id="book-contents">Book contents</h2>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>What does os do Ch 1.1
+<ul>
+<li>Computer system: hardware, operating system, application program,
+user</li>
+<li>Programs
+<ul>
+<li>OS: one program running at all time on the computer, it's the
+kernel</li>
+<li>System program: associated with the os, but not necessarily part of
+the kernel</li>
+<li>Application programs: all programs not associated with the os</li>
+</ul></li>
+</ul></li>
+<li>Computer system organization Ch 1.2
+<ul>
+<li>A modern general-purpose computer system consists of one or more
+CPUs and a number of device controllers connected through a common bus
+that provides access between components and shared memory</li>
+<li>OS has a device driver (software) for each device controller
+(hardware)</li>
+<li>CPU and device controller can execute in parallel, competing for
+memory, a memory controller synchronizes access to the memory</li>
+<li>Interrupt
+<ul>
+<li>Interrupts are used throughout modern operating system to handle
+asynchronous events</li>
+<li>I/O operation read:
+<ol type="1">
+<li>Device driver loads appropriate registers into the device
+controller</li>
+<li>Device controller examines the registers and determines what action
+should take</li>
+<li>The controller transfers data from device to the a buffer in
+controller</li>
+<li>When data transfer is done, device controller informs device driver
+via interrupt</li>
+<li>The device driver then gives control to other parts of os <img src="/images/Course/COSI131A/interrupt_driven_io_cycle.png"></li>
+</ol></li>
+<li>Hardware may trigger an interrupt at any time by sending a signal to
+the cpu, usually via system bus</li>
+<li>When interrupted, the cpu immediately switches to the interrupting
+program, when that program is done, the cpu switches back to the
+interrupted program</li>
+<li>Interrupt mechanism are different in different computers, but
+interrupt must transfer control to the appropriate interrupt service
+routine
+<ul>
+<li>One way is to use a generic routine to examine the interrupt
+information, this routine calls the interrupt-specific handler, but this
+approach does not satisfy the speed requirement</li>
+<li>Another way is to use a table of pointers (called interrupt vector)
+stored in low memory to hold the addresses of the interrupt service
+routines for various devices</li>
+</ul></li>
+<li>Implementation via interrupt vector
+<ul>
+<li>CPU hardware has a wire called the interrupt-request line that the
+cpu senses after executing every instruction</li>
+<li>When cpu detects a controller has asserted a signal on the
+interrupt-request line, it jumps to the interrupt-handler routine by
+using the interrupt number as an index into the interrupt vector (device
+controller/hardware faults raises an interrupt, the cpu catches the
+interrupt and dispatches it to the interrupt handler)</li>
+<li>The interrupt handler performs all related work and return the cpu
+to the execution state prior to the interrupt (interrupt handler clears
+the interrupt)</li>
+</ul></li>
+<li>The interrupt mechanism also implements a system of interrupt
+priority level</li>
+</ul></li>
+<li>Storage structure
+<ul>
+<li>Memory
+<ul>
+<li>Main memory (Random access memory, RAM), commonly ram is implemented
+using a semiconductor technology called dynamic random access memory
+(DRAM). RAM is volatile, it loses all its content when power is turned
+off</li>
+<li>Other types of memory: EEPROM (electrically erasable programmable
+read-only memory), ROM. Bootstrap is resides in EEPROM, because EEPROM
+is non-volatile</li>
+<li>All memory provides an array of bytes, each byte has its own
+address, cpu uses <code>laod</code>/<code>store</code> to interact with
+memory</li>
+</ul></li>
+<li>Secondary storage
+<ul>
+<li>Be able to hold large quantities of data permanently</li>
+<li>Common secondary storage devices: hard-disk drives(HDDs),
+nonvolatile memory (NVM) devices</li>
+</ul></li>
+<li>Tertiary storage: magnetic tape, optical disk, blue-ray</li>
+<li>Nonvolatile storage: mechanical or electrical storage <img src="/images/Course/COSI131A/storage_hierarchy.png"></li>
+</ul></li>
+<li>I/O structure
+<ul>
+<li>Interrupt-driven I/O is fine for moving small amounts of data, but
+can produce high overhead when used for bulk data movement</li>
+<li>Direct memory access(DMA) is used to transfer entire block of data
+between device and main memory</li>
+</ul></li>
+</ul></li>
+<li>Computer system architecture Ch 1.3
+<ul>
+<li>Single processor (a processor is a physical chip that contains one
+ore more cpu) system: one CPU with a single processing core. Core is the
+component that executes instructions and registers for storing data
+locally</li>
+<li>There are also special-purpose processors: device-specific
+processors, run a limited instruction set, do not run processes</li>
+<li>Multiprocessor system
+<ul>
+<li>Advantages
+<ul>
+<li>Increased throughput: if N processors, the speed-up ration is less
+than N</li>
+<li>Economy of scale: average cost is reduced, multiprocessor system can
+share power supplies, peripherals, mass storage</li>
+<li>Increased reliability: if properly distributed, then failure of one
+processor will not halt the system</li>
+</ul></li>
+<li>The most common multiprocessor systems use symmetric multiprocessing
+(SMP), each peer cpu processor performs all tasks. Each processor has
+its own cpu, set of registers and local cache, all processors share
+physical memory over the system bus</li>
+<li>Multicore system: multiple computing cores reside on a single chip,
+each core has its own cpu and L1 cache, but L2 cache is shared among
+cores. This is faster than traditional multiprocessor system, because
+on-chip communication is faster than between-chip communication</li>
+</ul></li>
+<li>Clustered system
+<ul>
+<li>A clustered system is composed of two or more individual
+systems</li>
+<li>Clustering is usually used to provide high-availability service,
+high availability provides increased reliability (graceful degradation/
+fault tolerant)</li>
+<li>Asymmetric clustering: one machine is in hot-standby mode, the other
+is running the applications</li>
+<li>Symmetric clustering: two or more hosts are running applications and
+are monitoring each other</li>
+</ul></li>
+</ul></li>
+<li>Operating system operations Ch 1.4
+<ul>
+<li>Bootstrap program is in the computer firmware, it loads the os into
+memory</li>
+<li>Some os services are provided outside the kernel, they are provided
+by system programs that are loaded into the memory at boot time, thee
+system programs become system daemons</li>
+<li>Interrupts signal events
+<ul>
+<li>Introduction
+<ul>
+<li>Hardware device controller can raises interrupts</li>
+<li>Trap(exception) is a software-generated interrupt, trap is either
+caused by an error or by a specific request from a user program that an
+os service be performed by executing a special operation called a system
+call</li>
+</ul></li>
+<li>Multiprogramming and multitasking
+<ul>
+<li>A program in execution is called a process. In multiprogramming,
+there are multiple processes loaded into the memory</li>
+<li>Multitasking is a logical extension of multiprogramming</li>
+<li>CPU scheduling: determines which process is executed next</li>
+<li>Virtual allows the logical memory be separated from the physical
+memory</li>
+</ul></li>
+<li>Dual-mode and multi-mode operation
+<ul>
+<li>We must be able to distinguish between the execution of
+operating-system code and user-defined code</li>
+<li>User mode, kernel mode (supervisor mode, system mode, privileged
+mode). Transition between the two modes is made by system call</li>
+<li>A mode bit is added to the hardware of the computer to indicate the
+current mode: kernel(0) or user(1)</li>
+<li>The concept of modes can be extended beyond two modes</li>
+</ul></li>
+<li>Timer
+<ul>
+<li>Timer is used to ensure that the os maintains the control over the
+cpu, and a user program always returns control to the os (not stuck in
+an infinite loop, or fail to invoke system call)</li>
+<li>A timer can be set to interrupt the computer after a specified
+period, the period can be fixed, or variable (achieved by a fixed-rate
+clock and a counter, when counter decreases to 0, an interrupt
+occurs)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Resource management Ch 1.5
+<ul>
+<li>Process management
+<ul>
+<li>Creating and deleting both user and system processes</li>
+<li>Scheduling processes and threads on the cpus</li>
+<li>Suspending and resuming processes</li>
+<li>Providing mechanisms for process synchronization</li>
+<li>Providing mechanisms for process communication</li>
+</ul></li>
+<li>Memory management
+<ul>
+<li>Keeping track of which parts of memory are being used and which
+process is using them</li>
+<li>Allocating and deallocating memory space as needed</li>
+<li>Deciding which processes and data to move into and out of
+memory</li>
+</ul></li>
+<li>File system management
+<ul>
+<li>Creating and deleting files</li>
+<li>Creating and deleting directories to organize files</li>
+<li>Supporting primitives for manipulating files and directories</li>
+<li>Mapping files onto mass storage</li>
+<li>Backing up files on stable storage media</li>
+</ul></li>
+<li>Mass storage management
+<ul>
+<li>Mounting and unmounting</li>
+<li>Free space management</li>
+<li>Storage allocation</li>
+<li>Disk scheduling</li>
+<li>Partitioning</li>
+<li>Protection</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Operating system structures
+<ul>
+<li>Operating system services <img src="/images/Course/COSI131A/os_services.png">
+<ul>
+<li>User interface (UI): graphical user interface(GUI), touch-screen
+interface, command-line interface(CLI)</li>
+<li>I/O operations: users usually cannot control I/O devices
+directly</li>
+<li>File-system manipulation</li>
+<li>Communication: inter-process communication implemented via shared
+memory or message passing</li>
+<li>Error detection</li>
+<li>Resource allocation: allocate resources among different
+processes</li>
+<li>Logging: record events</li>
+<li>Protection and security</li>
+</ul></li>
+<li>User and os interface
+<ul>
+<li>Command-line interface/ command interpreter (shell)
+<ul>
+<li>Main functionality: get and execute the next user-specified
+command</li>
+<li>Two ways to interpret the commands:
+<ul>
+<li>The command interpreter contains the code to execute the
+command</li>
+<li>The commands are implemented through system programs, the command
+interpreter loads commands into memory and execute them</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>System calls
+<ul>
+<li>System calls provide an interface to the services made available by
+an operating system</li>
+<li>Application programming interface (API)
+<ul>
+<li>API specifies a set of functions that are available to an
+application programmer, including the parameters that are passed to each
+function and the return values the programmer can expect</li>
+<li>Three most common APIs: Windows API for Windows systems, the POSIX
+API for POSIX-based systems (virtually all versions of UNIX, Linux, and
+macOS), Java API for Java virtual machines</li>
+<li>The function that makes up an API typically invoke the actual system
+calls on behalf of the application programmer</li>
+<li>Why use API instead of system calls directly:
+<ul>
+<li>Portability: program can run on any machine that supports the same
+set of API</li>
+<li>Easy to use: APIs are much simpler and easier to use than system
+calls</li>
+</ul></li>
+</ul></li>
+<li>Types of system calls
+<ul>
+<li>Process control
+<ul>
+<li>Operations: create/terminate process, load/execute program, get/set
+process attribute, wait/signal event, allocate/free memory</li>
+<li>Windows/Unix system calls:
+<code>CreateProcess()</code>/<code>fork()</code>,
+<code>ExitProcess()</code>/<code>exit()</code>,
+<code>WaitForSingleObject()</code>/<code>wait()</code></li>
+</ul></li>
+<li>File management
+<ul>
+<li>Operations: create/delete file, open/close file,
+read/write/reposition file, get/set file attribute</li>
+<li>Windows/Unix system calls:
+<code>CreateFile()</code>/<code>open()</code>,
+<code>ReadFile()</code>/<code>read()</code>,
+<code>WriteFile()</code>/<code>write()</code>,
+<code>CloseHandle()</code>/<code>close()</code></li>
+</ul></li>
+<li>Device management
+<ul>
+<li>Operations: request/release device, read/write/reposition device,
+get/set device attribute, logically attach/detach device</li>
+<li>Windows/Unix system calls:
+<code>SetConsoleMode()</code>/<code>ioctl()</code>,
+<code>ReadConsole()</code>/<code>read()</code>,
+<code>WriteConsole()</code>/<code>write()</code><br>
+</li>
+</ul></li>
+<li>Information maintenance
+<ul>
+<li>Operations: get/set time or date, get/set system data, get/set
+process file, set/set process, file or device attributes</li>
+<li>Windows/Unix system calls:
+<code>GetCurrentProcessID()</code>/<code>getpid()</code>,
+<code>SetTimer()</code>/<code>alarm()</code>,
+<code>Sleep()</code>/<code>sleep()</code></li>
+</ul></li>
+<li>Communications
+<ul>
+<li>Message-passing model: server and client communicates through
+established connection(use hostname and process name to establish
+connection)</li>
+<li>Shared-memory model: processes use shared memory (which is not
+allowed by os in common situations) to exchange data, the type and
+format of data is determined by processes themselves, not by the os</li>
+<li>Operations: create/delete communication connection, send/receive
+messages, transfer status information, attach/detach remove devices</li>
+<li>Windows/Unix system calls:
+<code>CreatePipe()</code>/<code>pipe()</code>,
+<code>CreateFileMapping()</code>/<code>shm_open()</code>,
+<code>MapViewOfFile()</code>/<code>mmap()</code></li>
+</ul></li>
+<li>Protection
+<ul>
+<li>Operations: get/set file permissions</li>
+<li>Windows/Unix system calls:
+<code>SetFileSecurity()</code>/<code>chmod()</code>,
+<code>InitializeSecurityDescriptor()</code>/<code>umask()</code>,
+<code>SetSecurityDescriptorGroup()</code>/<code>shown()</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -1058,7 +1445,7 @@ processes</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">9.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1134,12 +1521,12 @@ processes</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">710k</span>
+    <span title="Symbols count total">721k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:45</span>
+    <span title="Reading time total">10:56</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
