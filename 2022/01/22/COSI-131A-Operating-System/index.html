@@ -33,8 +33,11 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/interrupt_driven_io_cycle.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/storage_hierarchy.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/os_services.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state_book.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-02-23T17:58:06.066Z">
+<meta property="article:modified_time" content="2022-02-26T04:03:36.589Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -203,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-23 12:58:06" itemprop="dateModified" datetime="2022-02-23T12:58:06-05:00">2022-02-23</time>
+                <time title="Modified: 2022-02-25 23:03:36" itemprop="dateModified" datetime="2022-02-25T23:03:36-05:00">2022-02-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>27k</span>
+              <span>40k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>24 mins.</span>
+              <span>37 mins.</span>
             </span>
 
         </div>
@@ -1226,7 +1229,7 @@ memory</li>
 </ul></li>
 <li>Operating system structures
 <ul>
-<li>Operating system services <img src="/images/Course/COSI131A/os_services.png">
+<li>Operating system services Ch 2.1 <img src="/images/Course/COSI131A/os_services.png">
 <ul>
 <li>User interface (UI): graphical user interface(GUI), touch-screen
 interface, command-line interface(CLI)</li>
@@ -1241,7 +1244,7 @@ processes</li>
 <li>Logging: record events</li>
 <li>Protection and security</li>
 </ul></li>
-<li>User and os interface
+<li>User and os interface Ch 2.2
 <ul>
 <li>Command-line interface/ command interpreter (shell)
 <ul>
@@ -1256,7 +1259,7 @@ interpreter loads commands into memory and execute them</li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li>System calls
+<li>System calls Ch 2.3
 <ul>
 <li>System calls provide an interface to the services made available by
 an operating system</li>
@@ -1341,6 +1344,501 @@ messages, transfer status information, attach/detach remove devices</li>
 <code>InitializeSecurityDescriptor()</code>/<code>umask()</code>,
 <code>SetSecurityDescriptorGroup()</code>/<code>shown()</code></li>
 </ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Processes
+<ul>
+<li>Process concept Ch 3.1
+<ul>
+<li>Contemporary computer systems allow multiple programs to be loaded
+into memory and executed concurrently, this requires firm control and
+compartmentalization of the various programs, these needs results the
+notation of a process, which is a program in execution.</li>
+<li>A process is the unit of work in modern computer systems</li>
+<li>The status of a process is represented by the value of the program
+counter and the contents of the processor's registers</li>
+<li>The memory layout of a process is divided into:
+<ul>
+<li>Text section: the executable code, fixed size</li>
+<li>Data section: global variables, fixed size</li>
+<li>Heap section: memory that is dynamically allocated during program
+run time, variable size</li>
+<li>Stack section: temporary data storage when invoking functions,
+variable size, contains activation records (when a function is called,
+an activation record containing function parameters, local variables and
+the return address is pushed onto the stack)</li>
+</ul></li>
+<li>Process state
+<ul>
+<li>New: the process is being created</li>
+<li>Running: instructions are being executed</li>
+<li>Waiting: the process is waiting for some event to occur</li>
+<li>Ready: the process is waiting to be assigned to a processor</li>
+<li>Terminated: the process has finished execution <img src="/images/Course/COSI131A/process_state_book.png"></li>
+</ul></li>
+<li>Process control block
+<ul>
+<li>Each process is represented in the os by a process control block
+(PCB, also called task control block)</li>
+<li>Contained information
+<ul>
+<li>Process state</li>
+<li>Process id</li>
+<li>Program counter</li>
+<li>CPU registers</li>
+<li>CPU scheduling information</li>
+<li>Memory management information</li>
+<li>Accounting information</li>
+<li>I/O status information</li>
+</ul></li>
+</ul></li>
+<li>Threads: PCB can be extended to be compatible with multiple
+threads</li>
+</ul></li>
+<li>Process scheduling Ch 3.2
+<ul>
+<li>Goals
+<ul>
+<li>Goal of multiprogramming: maximize cpu utilization</li>
+<li>Goal of time sharing: switch cpu among processes fo that users can
+interact with each program while it is running</li>
+</ul></li>
+<li>Each cpu core can run one process at a time, the process scheduler
+selects an available process for program execution on a core</li>
+<li>Degree of multiprogramming: the number of processes currently in
+memory</li>
+<li>Bounds
+<ul>
+<li>CPU-bound process: a process that spends more of its time doing
+computations than doing I/O</li>
+<li>I/O-bound process: a process that spends more of its time doing I/O
+than doing computations</li>
+</ul></li>
+<li>Scheduling queues
+<ul>
+<li>Ready queue: processes that are ready and waiting to execute on a
+core</li>
+<li>Wait queue: process that are waiting for a certain event to occur,
+there are different kinds of wait queues <img src="/images/Course/COSI131A/process_scheduling_queues.png"></li>
+</ul></li>
+<li>Context switch:
+<ul>
+<li>Switching the cpu core to another process requires saving the
+current state of the cpu core to process PCB and restoring the state of
+a different process from its PCB</li>
+<li>Context switch time is pure overhead, because the system does no
+useful work while switching <img src="/images/Course/COSI131A/context_switch.png"></li>
+</ul></li>
+</ul></li>
+<li>Operations on processes Ch 3.3
+<ul>
+<li>Process creation
+<ul>
+<li>Parent processes create child processes, the result is a tree of
+processes</li>
+<li>Most operating systems identify processes according to a unique
+process identifier (pid)</li>
+<li>When a process creates a child process, that child process will need
+certain resources (cpu time, memory files, I/O devices) to accomplish
+its task</li>
+<li>Execution possibilities:
+<ul>
+<li>The parent continues to execute concurrently with its children</li>
+<li>The parent waits until some or all of its children have
+terminated</li>
+</ul></li>
+<li>Address space possibilities:
+<ul>
+<li>The child process is a duplicate of the parent process</li>
+<li>The child process has a new program loaded into it</li>
+</ul></li>
+</ul></li>
+<li>Process termination
+<ul>
+<li>When a process terminates, it asks the os to delete it by using the
+<code>exit()</code> (exit with a status number:
+<code>exit(exit_status_num)</code>) system call</li>
+<li>The process may return a status value to its waiting parent
+process</li>
+<li>The resources (memory, files, I/O buffers) of the process are
+de-allocated and reclaimed by the os</li>
+<li>A process can cause the termination of another process via an
+appropriate system call. Usually, such a system call cal be invoked only
+by the parent of the process that is to be terminated. Reasons for
+parent to terminate a child process:
+<ul>
+<li>The child has exceeded its usage of some of the resources that it
+has been allocated</li>
+<li>The task assigned to the child is no longer required</li>
+<li>The parent is exiting and the operating system does not allow a
+child to continue if its parent terminates</li>
+</ul></li>
+<li>Cascading termination: the phenomenon that all child processes are
+terminated when the parent process terminates</li>
+<li>A parent process can use the <code>wait()</code> system call to wait
+for the termination of a child process</li>
+<li>When a process is terminated, is resources are de-allocated by its
+entry is still on the process table (the process table is a data
+structure maintained by the os to facilitate context switching and
+scheduling, each entry in the process table is a pointer to a specific
+process control block).</li>
+<li>Zombie process: if a process is terminated by its parent has not yet
+called wait, then the process is called a zombie process. Only when the
+parent process calls <code>wait()</code>, the record of a zombie process
+is removed from the process table</li>
+<li>Orphan process: if a process is running but its parent process has
+terminated, then the process is called an orphan process. Traditional
+Unix system assigns a new parent process to the orphan process</li>
+</ul></li>
+</ul></li>
+<li>Inter-process communication (IPC) Ch 3.4
+<ul>
+<li>If a process doe not share data with any other processes executing
+in the system, then it's independent. Otherwise a process is
+cooperating</li>
+<li>Why we need inter-process communication
+<ul>
+<li>Information sharing</li>
+<li>Computation speedup</li>
+<li>Modularity</li>
+</ul></li>
+<li>IPC models:
+<ul>
+<li>Shared memory: a region of memory is shared by cooperating
+processes, processes can exchange information by reading and writing
+data to the shared region
+<ul>
+<li>Faster: system call only occurs when creating the shared memory
+region</li>
+<li>If two processes write in the same location, there may be
+conflicts</li>
+</ul></li>
+<li>Message passing: communication is achieved by message exchanged
+between the cooperating processes
+<ul>
+<li>Easier to implement in a distributed system</li>
+<li>Useful for exchanging smaller amounts of data, because no conflicts
+need to be avoided</li>
+</ul></li>
+</ul></li>
+<li>IPC in shared memory systems
+<ul>
+<li>Typically, os does not allow one process to access the memory of
+another process, in order to create a shared memory, this restriction
+needs to be removed</li>
+<li>Producer and consumer with shared memory
+<ul>
+<li>Unbounded buffer: the buffer capacity is infinite</li>
+<li>Bounded buffer: the producer must wait when the buffer is full, the
+consumer must wait when the buffer is empty</li>
+</ul></li>
+</ul></li>
+<li>IPC in message passing systems
+<ul>
+<li>Message passing facility allows processes to communicate and to
+synchronize their actions</li>
+<li>Operations
+<ul>
+<li><code>send(message)</code>: message size can be fixed or
+variable</li>
+<li><code>receive(message)</code>: message size can be fixed or
+variable</li>
+</ul></li>
+<li>A link is needed for message passing</li>
+<li>Direct or indirect communication
+<ul>
+<li>Direct communication
+<ul>
+<li><code>send(P, message)</code>: send a message to process P</li>
+<li><code>receive(Q, message)</code>: receive a message from process Q,
+this is symmetry addressing</li>
+<li>A link is automatically created between two processes</li>
+<li><code>receive(id, message)</code>: receive a message from any
+process, the id is the process_id, this is asymmetry addressing</li>
+</ul></li>
+<li>Indirect communication
+<ul>
+<li><code>send(A, message)</code>: send a message to mailbox/port A</li>
+<li><code>receive(A, message)</code>: receive a message from
+mailbox/port A</li>
+<li>A link is established if processes have a shared mailbox/port, then
+the link may be associated with more than two processes</li>
+</ul></li>
+</ul></li>
+<li>Synchronous or asynchronous communication
+<ul>
+<li>Message sending can be blocking/synchronous or
+non-blocking/asynchronous</li>
+<li>Blocking send, non-blocking send, blocking receive, non-blocking
+receive</li>
+</ul></li>
+<li>Automatic or explicit buffering
+<ul>
+<li>The messages exchanged by communicating processes reside in a
+temporary queue</li>
+<li>Queue capacity
+<ul>
+<li>Zero capacity: the sender must block until the recipient receives
+the message</li>
+<li>Bounded capacity: the sender must block when the queue is full</li>
+<li>Unbounded capacity: the sender is never blocked</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Communication in client server system
+<ul>
+<li>Apart from the shared memory and message passing, the client-server
+systems can also use two other strategies for communication: sockets and
+remote procedure calls (RPCs)</li>
+<li>Sockets
+<ul>
+<li>A socket is defined as an endpoint for communication, a pair of
+processes communicating over a network employs a pair of sockets</li>
+<li>A socket is identified by an IP address concatenated with a port
+number</li>
+<li>Generally, sockets use a client-serve architecture: the server waits
+for incoming client requests by listening to a specified port, once a
+request is received, the server accepts a connection from the client
+socket to complete the connection. App ports below 1024 are considered
+well known and are used to implement standard services</li>
+<li>When a client initiates a request for a connection, it's assigned a
+port by its host computer, the port has some arbitrary number greater
+than 1024</li>
+<li>All connections are unique</li>
+<li>Java sockets
+<ul>
+<li>Connection-oriented sockets (TCP) implemented with the
+<code>Socket</code> class</li>
+<li>Connectionless sockets (UDP) use the <code>DatagramSocket</code>
+class</li>
+<li>The <code>MulticastSocket</code> class is a subclass of the
+<code>DatagramSocket</code> class: a multicast socket allows data to be
+set to multiple recipients</li>
+</ul></li>
+</ul></li>
+<li>Remote procedure calls
+<ul>
+<li>RPC paradigm is one of the most common forms of remote service and
+it's usually based upon the IPC mechanism with message-based
+communication scheme</li>
+<li>A port in RPC is simply a number included at the start of a message
+packet. A system normally has one network address, but it can have many
+ports</li>
+<li>RPC allows a client to invoke a procedure on a remote host as it
+would invoke a procedure locally, the RPC system hides the details</li>
+<li>RPCs can fail due to common network errors, so RPC uses the exactly
+once semantics for calls</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Threads &amp; Concurrency
+<ul>
+<li>Overview Ch 4.1
+<ul>
+<li>Benefits of multi-threaded programming
+<ul>
+<li>Responsiveness: a program can continue running even if part of it is
+blocked or is performing a lengthy operation</li>
+<li>Resource sharing: threads share the memory and the resources of the
+process to which they belong by default, sharing resources among
+processes is costly</li>
+<li>Economy: it is more economical to create and context-switch
+threads</li>
+<li>Scalability: for multiprocessor architecture, threads may be running
+in parallel on different processing cores</li>
+</ul></li>
+</ul></li>
+<li>Multi-core programming Ch 4.2
+<ul>
+<li>Concurrency and parallelism
+<ul>
+<li>A concurrent system supports more than one task by allowing all the
+tasks to make progress</li>
+<li>A parallel system can perform more than one task simultaneously. It
+is possible to have concurrency without parallelism</li>
+</ul></li>
+<li>Multi-core programming challenges
+<ul>
+<li>Identifying tasks: tasks are independent</li>
+<li>Balance: tasks perform equal work of equal value</li>
+<li>Data splitting: data should be divided to run on separate cores</li>
+<li>Data dependency: data should be examined for dependencies between
+two or more tasks</li>
+<li>Testing and debugging: testing and debugging concurrent programs is
+more difficult</li>
+</ul></li>
+<li>Types of parallelism
+<ul>
+<li>Data parallelism: distribute subsets of the same data across
+multiple computing cores and performing the same operation on each
+core</li>
+<li>Task parallelism: distribute tasks across multiple computing
+cores</li>
+</ul></li>
+</ul></li>
+<li>Multi-threading models Ch 4.3
+<ul>
+<li>User threads and kernel threads
+<ul>
+<li>User threads are supported above the kernel and managed without
+kernel support</li>
+<li>Kernel threads are supported and managed directly by the os</li>
+</ul></li>
+<li>Multi-threading models measure the relationship between user threads
+and kernel threads</li>
+<li>Many-to-one model
+<ul>
+<li>Maps many user level threads to one kernel level thread</li>
+<li>Efficient: thread management is done by thread library in user
+space</li>
+<li>The entire process will block if a thread makes a blocking system
+call</li>
+<li>Only one thread can access the kernel at a time, multiple threads
+are unable to run in parallel on multi-core systems</li>
+<li>Very few systems continue to use this model now</li>
+</ul></li>
+<li>One-t-one model
+<ul>
+<li>Maps each user thread to a kernel thread</li>
+<li>Threads can run in parallel, one blocked thread does not affect
+other threads</li>
+<li>Each user thread corresponds to a kernel thread, this may burden the
+performance of a system</li>
+<li>Linux and Windows implements one-to-one model</li>
+</ul></li>
+<li>Many-to-many model
+<ul>
+<li>Multiplexes many user level threads to a smaller or equal number of
+kernel threads</li>
+<li>Allows parallelism, the system is efficient</li>
+<li>Difficult to implement in practice</li>
+</ul></li>
+</ul></li>
+<li>Thread library Ch 4.4
+<ul>
+<li>A thread library provides the programmer with an API for creating
+and managing threads</li>
+<li>Implementation approaches
+<ul>
+<li>Provide a library in user space with no kernel support: invoking a
+function in the library results in a local function call in user space
+and not a system call</li>
+<li>Implement a kernel level library supported directly by the os:
+invoking a function in the library results in a system call to the
+kernel</li>
+</ul></li>
+<li>Main thread libraries
+<ul>
+<li>POSIX Pthreads: can be either a user level library or a kernel level
+library</li>
+<li>Windows thread library: kernel level library</li>
+<li>Java thread API: allows threads to be created and managed directly
+in java programs, because in most cases, the JVM is running on top of a
+host os, the Java thread API is generally implemented using a thread
+library available on the host system</li>
+</ul></li>
+<li>Ptrheads
+<ul>
+<li>Pthreads refer to the POSIX standard defining an API for thread
+creation an synchronization</li>
+<li>It is a specification for thread behavior, not an
+implementation</li>
+</ul></li>
+<li>Windows threads
+<ul>
+<li>Similar to the Pthreads</li>
+</ul></li>
+<li>Java threads
+<ul>
+<li>Thread creation in Java
+<ul>
+<li>Extends the <code>Thread</code> class and overwrites the
+<code>run()</code> method</li>
+<li>Implements the <code>Runnable</code> interface and overwrites the
+<code>run()</code> method</li>
+</ul></li>
+<li>Interrupt
+<ul>
+<li>Call the <code>join()</code> method on a child thread to that the
+parent thread waits until the child thread terminates <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  t.start();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    t.join();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Implicit threading Ch 4.5
+<ul>
+<li>Implicit threading: inorder to address the difficulties of handling
+large amounts of threads and better support the design of concurrent and
+parallel applications, the creation and management of threading should
+be transferred from developer to compiler and run-time libraries</li>
+<li>Tread pools
+<ul>
+<li>Idea: create a pool of threads, when there is a request, find one
+idle thread in the pool and let it service the request. If there is no
+idle thread, the task is queued until one thread becomes available. Once
+a thread finishes its task, it returns to the pool and awaits next
+task</li>
+<li>Benefits
+<ul>
+<li>Servicing a request with an existing thread is faster than creating
+a new thread</li>
+<li>A pool can limit the number of threads that exist at any give time,
+this alleviates the burden of os</li>
+<li>Separating the task from the mechanics of creating the task allows
+user to use different strategies for running the task</li>
+</ul></li>
+</ul></li>
+<li>Fork join
+<ul>
+<li>The parent thread creates (forks) one ore more child threads and
+then waits for the children to terminate and join with it, at which
+point it can retrieve and combine their results</li>
+</ul></li>
+<li>OpenMP
+<ul>
+<li>OpenMP is a set of compiler directives as well as an API for
+programs written in C, C++, or FORTRAN that provides support for
+parallel programming in shared memory environments</li>
+<li>OpenMP identifies parallel regions as blocks of code that may run in
+parallel</li>
+<li>OpenMP also allows developer s to choose among several level of
+parallelism</li>
+</ul></li>
+<li>Grand central dispatch (GCD)
+<ul>
+<li>GCD is developed by Apple</li>
+<li>It is a combination of a run time library, an API, and language
+extension that allow developers to identify sections of code to run in
+parallel</li>
+<li>GCD schedules tasks for run time execution by placing them on a
+dispatch queue</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>CPU Scheduling
+<ul>
+<li>Basic concepts
+<ul>
+<li>CPU-I/O burst cycle
+<ul>
+<li>Process execution consists of a cycle of cpu execution and I/O wait,
+processes alternate between these two states</li>
+<li>Process execution begins with a cpu burst, then an I/O burst, then
+..., the final cpu burst ends with a system request to terminate
+execution</li>
+<li>CPU bursts tend to have a large number of short cpu bursts, and a
+small number of long cpu bursts. An I/O bound program tends to have many
+short cpu bursts, a cpu bound program might have a few long cpu
+bursts</li>
+</ul></li>
+<li>CPU scheduler
+<ul>
+<li>When a cpu is idle, the cpu scheduler selects a process from the
+processes in memory that are ready to execute and allocates the cpu to
+that process</li>
+<li>The ready queue is not necessarily a FIFO queue, its structure
+varies depending on the scheduling algorithm</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -1521,12 +2019,12 @@ messages, transfer status information, attach/detach remove devices</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">721k</span>
+    <span title="Symbols count total">735k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10:56</span>
+    <span title="Reading time total">11:08</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
