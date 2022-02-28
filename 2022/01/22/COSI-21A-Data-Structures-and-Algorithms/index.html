@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;19">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-02-14T14:11:55.123Z">
+<meta property="article:modified_time" content="2022-02-28T05:12:51.209Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -125,17 +125,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">32</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">33</span></a>
 
   </li>
   </ul>
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-14 09:11:55" itemprop="dateModified" datetime="2022-02-14T09:11:55-05:00">2022-02-14</time>
+                <time title="Modified: 2022-02-28 00:12:51" itemprop="dateModified" datetime="2022-02-28T00:12:51-05:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>8.8k</span>
+              <span>15k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>8 mins.</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -537,48 +537,132 @@ of the queue <figure class="highlight plain"><table><tr><td class="gutter"><pre>
 </ul></li>
 </ol>
 <h2 id="lecture-08-20220203">Lecture 08 2022/02/03</h2>
-<h2 id="lecture-09-20220207">Lecture 09 2022/02/07</h2>
 <ol type="1">
 <li>Introduction
 <ul>
+<li>Array limitations
+<ul>
+<li>Fixed size</li>
+<li>Physically stored in consecutive memory locations</li>
+<li>To insert or delete items, may need to shift data</li>
+</ul></li>
+<li>A linked data structure consists of items that are linked to other
+items</li>
 <li>Advantages
 <ul>
 <li>Items do not have to be stored in consecutive memory locations</li>
-<li>Inserting and deleting items do not involve shifting items</li>
-<li>Linked list can grow dynamically</li>
+<li>Linked lists can grow dynamically</li>
 </ul></li>
-<li>What is a linked list
+</ul></li>
+<li>Linked list
 <ul>
-<li>A linked list is a linear structure consisting of nodes</li>
-<li>Linear order in a linked list is determined by a link (pointer) to
-the next node</li>
-</ul></li>
-<li>Node
+<li><p>A linked list L (or head) is a linear data structure consisting
+of nodes</p></li>
+<li><p>Linear or der of linked list is determined by a link to the next
+node</p></li>
+<li><p>A node consists of two fields</p>
 <ul>
-<li>The first node in a linked list is called L</li>
-<li>A node consists of two fields
+<li>A data portion (called key or data), it should be generic</li>
+<li>A link (or pointer) to the next node in the structure</li>
+</ul></li>
+<li><p><code>x.next</code> points to the successor of node x</p></li>
+<li><p><code>x.next = NIL</code> indicates that x is the last node in
+the linked list</p></li>
+<li><p>Singly linked list</p>
 <ul>
-<li>A generic data portion</li>
-<li>A link to the next node in the structure, called next</li>
+<li>It has one lik per node, which points to the next node in the
+list</li>
+<li>The list has a link to the first node called L (or head),
+<code>L = NIL</code> indicates the list is empty</li>
+<li>The list may or may not have a tail</li>
 </ul></li>
-<li><code>node.next = NIL</code> indicates node has no successor in the
-linked list</li>
-<li><code>L = NIL</code> indicates the linked list is empty</li>
-<li><code>prev.next = curr</code>, <code>curr.next = succ</code>, then
-node prev is the predecessor or node curr and node succ is the successor
-of node curr</li>
+<li><p>Link hopping: traversing the linked list by moving from one node
+to another via following the link next</p></li>
+<li><p><code>x.next = p</code>: node p is the successor of node
+x</p></li>
+<li><p><code>p.next = x</code>: node p is the predecessor of node
+x</p></li>
+<li><p>The length of a linked list is the number of nodes in the
+list</p></li>
+<li><p>Operations on linked list: isEmpty, insertNode, findNode,
+deleteNode, displayList</p></li>
+<li><p>Search in a linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Linear time complexity</span><br><span class="line">search(L, x)</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur !&#x3D; NIL and cur.key !&#x3D; x do</span><br><span class="line">    cur &lt;- cur.next</span><br><span class="line">  return cur</span><br></pre></td></tr></table></figure></p></li>
 </ul></li>
-</ul></li>
+</ol>
+<h2 id="lecture-09-20220207">Lecture 09 2022/02/07</h2>
+<ol type="1">
 <li>Linked list operations
 <ul>
-<li><code>isEmpey</code></li>
-<li><code>insertNode</code></li>
-<li><code>findNode</code></li>
-<li><code>deleteNode</code></li>
-<li><code>displayList</code></li>
+<li>Insert a node in the linked list
+<ul>
+<li>Insert a node in an empty linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">insertEmpty(L, x)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &#x3D; x</span><br><span class="line">  p.next &#x3D; NIL</span><br><span class="line">  L &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+<li>Insert a node at the beginning of a linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">insertFirst(L, x)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &#x3D; x</span><br><span class="line">  p.next &lt;- L</span><br><span class="line">  L &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+<li>Insert a node at the end of a linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># If we do not have a tail pointer</span><br><span class="line"># Linear time complexity</span><br><span class="line">insertLast(L, x)</span><br><span class="line">  cur &lt;&#x3D; L</span><br><span class="line">  while cur.next !&#x3D; NIL do</span><br><span class="line">    cur &lt;- cur.next</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &#x3D; x</span><br><span class="line">  p.next &lt;- NIL</span><br><span class="line">  cur.next &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br><span class="line"></span><br><span class="line"># If we have a tail pointer</span><br><span class="line"># Constant time complexity</span><br><span class="line">insertLast(L, tail, x)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &lt;- x</span><br><span class="line">  p.next &lt;- NIL</span><br><span class="line">  tail.next &lt;- p</span><br><span class="line">  tail &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+<li>Insert a node after a given node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">insertAfter(L, x, curNode)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &lt;- x</span><br><span class="line">  p.next &lt;- curNode.next</span><br><span class="line">  curNode.next &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Delete a node
+<ul>
+<li>Delete the first node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">deleteFirst(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL then</span><br><span class="line">    Error: Linked list is empty</span><br><span class="line">  L &lt;- L.next</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
+<li>Delete the last node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Linear time complexity</span><br><span class="line">deleteLast(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL then</span><br><span class="line">    Error: Linked list is empty</span><br><span class="line">  if L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    L &lt;- NIL</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur.next !&#x3D; NIL and cur.next.next !&#x3D; NIL do</span><br><span class="line">    cur &lt;- cur.next</span><br><span class="line">  cur.next &#x3D; NIL</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
+<li>Delete a node in the middle <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">deleteMiddle(L, prev, curr)</span><br><span class="line">  prev.next &lt;- curr.next</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Reverse a linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Iterative approach</span><br><span class="line">reverseLink(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL or L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    return L</span><br><span class="line">  prv &lt;- NIL</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur !&#x3D; NIL do</span><br><span class="line">    nxt &lt;- cur.next</span><br><span class="line">    cur.next &lt;- prv</span><br><span class="line">    prv&lt;- cur</span><br><span class="line">    cur &lt;- nxt</span><br><span class="line">  return prv</span><br><span class="line"></span><br><span class="line"># Recursive approach</span><br><span class="line">reverseLink(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL or L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    return L</span><br><span class="line">  # the function reverseLink(p) reverse the linked list starting from</span><br><span class="line">  # node p, and return the new head of the reversed linked list</span><br><span class="line">  p &lt;- reverseLink(L.next)</span><br><span class="line">  # L.next is the tail of the reversed list, so put L as the new tail</span><br><span class="line">  L.next.next &lt;- L</span><br><span class="line">  L.next &lt;- NIL</span><br><span class="line">  return p</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol>
 <h2 id="lecture-10-20220209">Lecture 10 2022/02/09</h2>
+<ol type="1">
+<li>Static v.s. dynamic data structures
+<ul>
+<li>Static data structure such arrays allow
+<ul>
+<li>Fast access to elements</li>
+<li>Expensive to insert/remove elements</li>
+<li>Have fixed, maximum size</li>
+</ul></li>
+<li>Dynamic data structure such ass linked list allow
+<ul>
+<li>Fast insertion/deletion of elements, no need to move other nodes,
+only need to reset some pointers</li>
+<li>Slower access to elements, do not keep track of any index for the
+nodes</li>
+<li>Can easily grow and shrink in size</li>
+</ul></li>
+</ul></li>
+<li>Linked list implemented stack and queue
+<ul>
+<li>Stack: space is <span class="math inline">\(O(n)\)</span>, each
+operation is <span class="math inline">\(O(1)\)</span>
+<ul>
+<li><code>top()</code>, <code>push()</code>, <code>pop()</code></li>
+</ul></li>
+<li>Queue: space is <span class="math inline">\(O(n)\)</span>, each
+operation is <span class="math inline">\(O(1)\)</span>
+<ul>
+<li><code>front()</code>, <code>rear()</code>, <code>enqueue()</code>,
+<code>dequeue()</code></li>
+</ul></li>
+</ul></li>
+<li>Variations of linked list
+<ul>
+<li>Doubly linked list</li>
+<li>Circular linked list</li>
+<li>Sorted linked list</li>
+</ul></li>
+<li>Doubly linked list
+<ul>
+<li>Node
+<ul>
+<li><code>x.data</code>, <code>d.next</code>, <code>x.prev</code></li>
+<li><code>x.prev = NIL</code>, then x is the first element</li>
+<li><code>x.next = NIL</code>, then x is the last element</li>
+<li><code>head</code> points to the first element in the list</li>
+<li><code>head = NIL</code>, then the list is empty</li>
+</ul></li>
+<li>Insert at the front of a doubly linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">insertFirst(L, x)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &lt;- x</span><br><span class="line">  p.prev &lt;- NIL</span><br><span class="line">  p.next &lt;- L</span><br><span class="line">  if L !&#x3D; NIL then </span><br><span class="line">    L.prev &lt;- p</span><br><span class="line">  L &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+<li>Insert after a node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">insertAfter(L, x, cur)</span><br><span class="line">  p &lt;- newNode()</span><br><span class="line">  p.key &lt;- x</span><br><span class="line">  p.prev &lt;- cur</span><br><span class="line">  p.next &lt;- cur.next</span><br><span class="line">  if cur.next !&#x3D; NIL then</span><br><span class="line">    cur.next.prev &lt;- p</span><br><span class="line">  cur.next &lt;- p</span><br><span class="line">  size &lt;- size + 1</span><br></pre></td></tr></table></figure></li>
+<li>Delete a node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">deleteNode(L, cur)</span><br><span class="line">  if L &#x3D; NIL or cur &#x3D; NIL then</span><br><span class="line">    Error: Cannot delete</span><br><span class="line">  if cur.prev &#x3D; NIL then</span><br><span class="line">    L &lt;- cur.next</span><br><span class="line">  else</span><br><span class="line">    cur.prev.next &lt;- cur.next</span><br><span class="line">  if cur.next !&#x3D; NIL then</span><br><span class="line">    cur.next.prev &lt;- cur.prev</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
 <h2 id="lecture-11-20220210">Lecture 11 2022/02/10</h2>
 <ol type="1">
 <li>Introduction
@@ -608,6 +692,108 @@ than adjusting a loop counter, thus high performance applications hardly
 ever use recursion</li>
 </ul></li>
 </ol>
+<h2 id="lecture-12-20220214">Lecture 12 2022/02/14</h2>
+<ol type="1">
+<li>Analysis of recursive algorithm
+<ul>
+<li>Recursive mathematical equations are called recurrence equations/
+recurrence relations, or simply recurrence</li>
+<li>We use recurrence relation to analyze recursive algorithm</li>
+<li>Recurrence relation, <span class="math inline">\(T(n)\)</span>, is
+an equation which is defined in terms of itself <span class="math display">\[T(n) =     \begin{cases}
+c &amp; \text{if n = 0 base case}\\
+a*T(n) + b &amp; \text{if n &gt; 0 recursive case}\\
+\end{cases}\]</span>
+<ul>
+<li>a is the number of sub-problems</li>
+<li>m is the size of the sub-problems</li>
+<li>b is the time to divide into sub-problems and combine the
+solution</li>
+</ul></li>
+<li>Examples
+<ul>
+<li>Example 1 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Foo(n)</span><br><span class="line">  if n &#x3D; 0 then </span><br><span class="line">    return 2</span><br><span class="line">  else</span><br><span class="line">    return Foo(n - 1) + 5</span><br></pre></td></tr></table></figure> <span class="math display">\[T(n) =
+\begin{cases}
+   c &amp; \text{if n = 1} \\
+   T(n - 1) + b &amp; \text{if n &gt; 1}
+\end{cases}\]</span></li>
+<li>Example 2 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Foo(n)</span><br><span class="line">  if n &#x3D; 1 then </span><br><span class="line">    return 1</span><br><span class="line">  else</span><br><span class="line">    return Foo(n &#x2F; 2) + Foo (n &#x2F; 2) + 5</span><br></pre></td></tr></table></figure> <span class="math display">\[T(n) =
+\begin{cases}
+  c &amp; \text{if n = 1}\\
+  2 * T (n / 2) + b &amp; \text{if n &gt; 1}
+   \end{cases}\]</span></li>
+<li>Example 3 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Foo(n)</span><br><span class="line">  if n &#x3D; 1 then</span><br><span class="line">    return 1</span><br><span class="line">  else</span><br><span class="line">    return Foo(n - 1) + Foo(n &#x2F; 2) + 5</span><br></pre></td></tr></table></figure> <span class="math display">\[T(n) =
+\begin{cases}
+c &amp;  \text{if n = 1} \\
+T(n - 1) + T(n/2) + b &amp; \text{if n &gt; 1}
+\end{cases}\]</span></li>
+</ul></li>
+</ul></li>
+<li>Solving recurrence relations
+<ul>
+<li>Example 1 <span class="math display">\[T(n) = \begin{cases} 1 &amp;
+\text{if n = 0}\\ b + T(n-1) &amp; \text{else }\end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = n * b + 1\)</span>, so <span class="math inline">\(T(n)\)</span> is linear complexity</li>
+</ul></li>
+<li>Example 2 <span class="math display">\[T(n) = \begin{cases} 1 &amp;
+\text{if n = 0 or n = 1}\\ T(n - 1) +  T(n-1) &amp; \text{else
+}\end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n)\)</span> is exponential
+complexity</li>
+</ul></li>
+<li>Improved Fibonnacci <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Linear time complexity</span><br><span class="line">improvedFibonnacci(n)</span><br><span class="line">  a &lt;- Array(n + 1)</span><br><span class="line">  a[0] &lt;- 1</span><br><span class="line">  a[1] &lt;- 1</span><br><span class="line">  for i &lt;- 2 to n do</span><br><span class="line">    a[i] &lt;- a[i - 1] + a[i - 2]</span><br><span class="line">  return a[n]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-13-20220216">Lecture 13 2022/02/16</h2>
+<ol type="1">
+<li>Solving recurrence relation
+<ul>
+<li>Example 1 <span class="math display">\[T(n) = \begin{cases} c &amp;
+\text{if n = 1} \\ 2 * T(n/2) + b &amp; \text{if n &gt;
+1}\end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = c + (n - 1) * b\)</span>, so
+<span class="math inline">\(T(n)\)</span> is linear complexity</li>
+</ul></li>
+<li>Example 2 <span class="math display">\[T(n) = \begin{cases} c &amp;
+\text{if n = 1} \\ T(n - 1) + n + b &amp; \text{if n &gt;
+1}\end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = c + n * (n + 1) / 2 - 1 + n * (n
+- 1)\)</span>, so <span class="math inline">\(T(n)\)</span> is quadratic
+complexity</li>
+</ul></li>
+<li>Example 3: Binary search recursively <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Logarithmic time complexity</span><br><span class="line">binarySearch(a, target, low, high)</span><br><span class="line">  if low &gt; high then</span><br><span class="line">    return - 1</span><br><span class="line">  mid &lt;- low + (high - low) &#x2F; 2</span><br><span class="line">  if (a[mid] &#x3D; target) then</span><br><span class="line">    return mid</span><br><span class="line">  else if (a[mid] &gt; target) then</span><br><span class="line">    return binarySearch(a, target, low, mid - 1)</span><br><span class="line">  else</span><br><span class="line">    return binarySearch(a, target, mid + 1, high)</span><br></pre></td></tr></table></figure> <span class="math display">\[T(n) = \begin{cases} 1 &amp; \text{if n = 1}\\
+T(n/2) + b &amp; \text{if n &gt; 1} \end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = 1 + log_2{n}\)</span>, so <span class="math inline">\(T(n)\)</span> is logarithmic complexity</li>
+</ul></li>
+<li>Example 4<br>
+<span class="math display">\[T(n) = \begin{cases} 1 &amp; \text{if n =
+1}\\ 2* T(n - 1) + 1 &amp; \text{if n &gt; 1} \end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = 2^n - 1\)</span>, so <span class="math inline">\(T(n)\)</span> is exponential complexity</li>
+</ul></li>
+<li>Example 5<br>
+<span class="math display">\[T(n) = \begin{cases} 1 &amp; \text{if n =
+1}\\ T(n / 2) + n &amp; \text{if n &gt; 1} \end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = 1 + ... + n/4 + n/2 + n =
+\sum\limits_{i = 0} ^{log_2{n}} n * (1/2) ^{i} = 2 * n - 1\)</span>, so
+<span class="math inline">\(T(n)\)</span> is linear complexity</li>
+</ul></li>
+<li>Example 6 <span class="math display">\[T(n) = \begin{cases} 1 &amp;
+\text{if n = 1}\\ 2 * T(n / 2) + c * n &amp; \text{if n &gt; 1}
+\end{cases}\]</span>
+<ul>
+<li><span class="math inline">\(T(n) = 2^{k} T(n/{2^{k}}) + c* k *n = n
++ c * log_2{n} * n\)</span>, so <span class="math inline">\(T(n)\)</span> is linearithmic complexity</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-14-20220217">Lecture 14 2022/02/17</h2>
 
     </div>
 
@@ -646,7 +832,10 @@ ever use recursion</li>
     <a href="/2022/01/22/COSI-131A-Operating-System/" rel="prev" title="COSI 131A Operating System">
       <i class="fa fa-chevron-left"></i> COSI 131A Operating System
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/26/%E5%B2%A9%E6%B3%A2%E8%AC%9B%E5%BA%A7-%E6%97%A5%E6%9C%AC%E6%AD%B7%E5%8F%B2/" rel="next" title="岩波講座 日本歷史">
+      岩波講座 日本歷史 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -705,7 +894,7 @@ ever use recursion</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -721,20 +910,20 @@ ever use recursion</li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -781,12 +970,12 @@ ever use recursion</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">735k</span>
+    <span title="Symbols count total">747k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:08</span>
+    <span title="Reading time total">11:19</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
