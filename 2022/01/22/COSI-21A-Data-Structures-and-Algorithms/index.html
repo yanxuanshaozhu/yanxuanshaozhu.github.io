@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;19">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-02-28T05:12:51.209Z">
+<meta property="article:modified_time" content="2022-02-28T19:02:13.041Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-28 00:12:51" itemprop="dateModified" datetime="2022-02-28T00:12:51-05:00">2022-02-28</time>
+                <time title="Modified: 2022-02-28 14:02:13" itemprop="dateModified" datetime="2022-02-28T14:02:13-05:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>15k</span>
+              <span>18k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>14 mins.</span>
+              <span>17 mins.</span>
             </span>
 
         </div>
@@ -603,7 +603,7 @@ deleteNode, displayList</p></li>
 <li>Delete a node
 <ul>
 <li>Delete the first node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">deleteFirst(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL then</span><br><span class="line">    Error: Linked list is empty</span><br><span class="line">  L &lt;- L.next</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
-<li>Delete the last node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Linear time complexity</span><br><span class="line">deleteLast(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL then</span><br><span class="line">    Error: Linked list is empty</span><br><span class="line">  if L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    L &lt;- NIL</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur.next !&#x3D; NIL and cur.next.next !&#x3D; NIL do</span><br><span class="line">    cur &lt;- cur.next</span><br><span class="line">  cur.next &#x3D; NIL</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
+<li>Delete the last node <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Linear time complexity</span><br><span class="line">deleteLast(L)</span><br><span class="line">  if L &#x3D; NIL then</span><br><span class="line">    Error: Linked list is empty</span><br><span class="line">  if L.next &#x3D; NIL then</span><br><span class="line">    L &lt;- NIL</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur.next !&#x3D; NIL and cur.next.next !&#x3D; NIL do</span><br><span class="line">    cur &lt;- cur.next</span><br><span class="line">  cur.next &#x3D; NIL</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
 <li>Delete a node in the middle <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Constant time complexity</span><br><span class="line">deleteMiddle(L, prev, curr)</span><br><span class="line">  prev.next &lt;- curr.next</span><br><span class="line">  size &lt;- size - 1</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Reverse a linked list <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Iterative approach</span><br><span class="line">reverseLink(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL or L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    return L</span><br><span class="line">  prv &lt;- NIL</span><br><span class="line">  cur &lt;- L</span><br><span class="line">  while cur !&#x3D; NIL do</span><br><span class="line">    nxt &lt;- cur.next</span><br><span class="line">    cur.next &lt;- prv</span><br><span class="line">    prv&lt;- cur</span><br><span class="line">    cur &lt;- nxt</span><br><span class="line">  return prv</span><br><span class="line"></span><br><span class="line"># Recursive approach</span><br><span class="line">reverseLink(L)</span><br><span class="line">  if L &#x3D;&#x3D; NIL or L.next &#x3D;&#x3D; NIL then</span><br><span class="line">    return L</span><br><span class="line">  # the function reverseLink(p) reverse the linked list starting from</span><br><span class="line">  # node p, and return the new head of the reversed linked list</span><br><span class="line">  p &lt;- reverseLink(L.next)</span><br><span class="line">  # L.next is the tail of the reversed list, so put L as the new tail</span><br><span class="line">  L.next.next &lt;- L</span><br><span class="line">  L.next &lt;- NIL</span><br><span class="line">  return p</span><br></pre></td></tr></table></figure></li>
@@ -794,6 +794,133 @@ T(n/2) + b &amp; \text{if n &gt; 1} \end{cases}\]</span>
 </ul></li>
 </ol>
 <h2 id="lecture-14-20220217">Lecture 14 2022/02/17</h2>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>A tree is a non-linear data structure that follows the shape of a
+tree</li>
+<li>A tree stores elements hierarchically</li>
+<li>Formal definition: a tree T is a set of nodes storing elements, the
+nodes have a parent-child relationship, that satisfies the following
+properties
+<ul>
+<li>If I is nonempty, it has a special node called the root of T, the
+root has no parents</li>
+<li>Every node v of T, different from the root has a unique parent node
+w, every node with parent w is a child of w</li>
+</ul></li>
+<li>Terminology
+<ul>
+<li>Each node (except the root) has exactly one node above it, called
+parent</li>
+<li>The nodes directly below a node are called children</li>
+<li>Root is the topmost node without parent</li>
+<li>Internal node: node with at least one child</li>
+<li>External node (leaf): node without children</li>
+<li>Siblings: nodes that are children of the same parent</li>
+<li>Ancestors: parent, grandparent, grand-grandparent, etc.</li>
+<li>Descendent: child, grandchild, grand-grandchild, etc.</li>
+<li>Subtree: of T rooted at a node v: tree consisting of all the
+descendent of v in T（including v itself）</li>
+<li>Edge: pair of nodes (u, v) such that u is a parent of v, or vice
+versa</li>
+<li>Path: sequence of nodes such that any two consecutive nodes in the
+sequence form an edge</li>
+</ul></li>
+<li>Tree representation: LMCHILD-RSIB representation
+<ul>
+<li>Node
+<ul>
+<li>data, parent pointer, leftmost child pointer, right sibling
+pointer</li>
+</ul></li>
+<li>Tree abstract data type (ADT)
+<ul>
+<li><code>data(v, T)</code>: return the data stored at the node v</li>
+<li><code>root(T)</code>: return the tree's root, an error occur if the
+tree is empty</li>
+<li><code>parent(v, T)</code>: return the parent of v, an error occur if
+v is the root</li>
+<li><code>lmchild(v, T)</code>: return the leftmost child of v</li>
+<li><code>rsib(v, T)</code>: return the right sibling of v</li>
+<li><code>isInternal(v, T)</code>: test whether node v is internal</li>
+<li><code>isExternal(v, T)</code>: test whether node v is external</li>
+<li><code>isRoot(v, T)</code>: test whether node v is the root</li>
+<li><code>size(T)</code>: return the number of nodes in the tree</li>
+<li><code>isEmpty(T)</code>: test whether the tree has any node or
+not</li>
+</ul></li>
+<li>N-ary tree
+<ul>
+<li>If each node can have at most n children appearing in a specific
+order, then we have an N-ary tree</li>
+<li>The simplest type of N-ary tree is a binary tree</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Binary tree
+<ul>
+<li>Definition: a binary tree is an ordered tree with the following
+properties
+<ul>
+<li>Each internal node has at most two children</li>
+<li>Each child node is labeled as being either a left child or a right
+child</li>
+<li>A left child precedes a right child in the ordering of children of a
+node</li>
+</ul></li>
+<li>Recursive definition: a binary tree is either empty or consist of:
+<ul>
+<li>A node r, called root of T</li>
+<li>A binary tree, called the left subtree of T</li>
+<li>A binary tree, called the right subtree of T</li>
+</ul></li>
+<li>Node in a parent tree
+<ul>
+<li>Element (data)</li>
+<li>Parent node</li>
+<li>Left child node</li>
+<li>Right child node</li>
+</ul></li>
+<li>Binary tree ADT
+<ul>
+<li><code>left(v)</code>: return the left child of v, an error occur if
+v has no left child</li>
+<li><code>right(v)</code>: return the right child of v, an error occur
+if v has no right child</li>
+<li><code>parent(v)</code>: return the parent of v, an error occur if v
+is the root</li>
+<li><code>hasLeft(v)</code>, <code>hasRight(v)</code>: test whether v
+has a left child/ a right child</li>
+<li><code>addRoot(e)</code>: create a new node r storing element e and
+make r the root of the T, an error occur if the tree is not empty</li>
+<li><code>insertLeft(v, e)</code>: create a new node w storing element
+e, add w as the left child of v, an error occur if v already has a left
+child</li>
+<li><code>insertRight(v, e)</code>: create a new node z storing element
+e, add z as the right child of v, an error occur if v already has a
+right child</li>
+<li><code>remove(v)</code>: remote node v, replace it with its child, if
+any, and return the element stored at v, an error occur if v has two
+children</li>
+<li><code>attach(v, T1, T2)</code>: attach T1 and T2, respectively, as
+left and right subtree of the external node v, an error occur if v is
+internal</li>
+</ul></li>
+<li>Tree traversal algorithm
+<ul>
+<li>A traversal of a tree T is a systematic way of accessing (or
+visiting) all the nodes of T</li>
+<li>Approaches
+<ul>
+<li>Pre-order: visit the node, then visit the left subtree, and then
+visit the right subtree</li>
+<li>Post-order</li>
+<li>In-order</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -970,12 +1097,12 @@ T(n/2) + b &amp; \text{if n &gt; 1} \end{cases}\]</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">747k</span>
+    <span title="Symbols count total">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:19</span>
+    <span title="Reading time total">11:23</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
