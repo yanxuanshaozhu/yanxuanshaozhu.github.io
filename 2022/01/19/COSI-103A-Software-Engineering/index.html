@@ -28,7 +28,7 @@
 <meta property="og:description" content="The Linux Command Line">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T02:31:12.000Z">
-<meta property="article:modified_time" content="2022-02-28T18:46:39.126Z">
+<meta property="article:modified_time" content="2022-03-02T23:21:55.532Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Software Engineering">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-28 13:46:39" itemprop="dateModified" datetime="2022-02-28T13:46:39-05:00">2022-02-28</time>
+                <time title="Modified: 2022-03-02 18:21:55" itemprop="dateModified" datetime="2022-03-02T18:21:55-05:00">2022-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>26k</span>
+              <span>30k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>24 mins.</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -1465,8 +1465,8 @@ commit snapshot</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="python-for-data-analysis-this-is-not-a-required-book">Python for
-Data Analysis (this is not a required book)</h2>
+<h2 id="python-for-data-analysis-this-is-not-a-required-book-for-this-course">Python
+for Data Analysis (this is not a required book for this course)</h2>
 <ol type="1">
 <li>Chapter 4 NumPy Basics
 <ul>
@@ -1486,6 +1486,67 @@ joining together heterogeneous datasets</li>
 <li>Expressing conditional logic as array expressions instead of loops
 with if branches</li>
 <li>Group-wise data manipulation</li>
+</ul></li>
+</ul></li>
+<li>The NumPy ndarray Ch 4.1
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data = np.random.randn(<span class="number">2</span>,<span class="number">3</span>) <span class="comment"># generate a 2*3 array of random numbers</span></span><br><span class="line">data = data * <span class="number">3</span> <span class="comment"># multiply each element by 3</span></span><br><span class="line">data.shape <span class="comment"># (2,3)</span></span><br><span class="line">data.dtype <span class="comment"># dtype(&#x27;float64&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data = [[<span class="number">1</span>,<span class="number">2</span>], [<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line">arr = np.array(data)</span><br><span class="line">arr.ndim <span class="comment"># 2</span></span><br><span class="line">arr.shape <span class="comment"># (2, 2)</span></span><br><span class="line">arr.dtype <span class="comment"># dtype(&#x27;int64&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+<li>Example 3 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr1 = np.zeros((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># create  a 2*3 array of 0</span></span><br><span class="line">arr2 = np.ones((<span class="number">1</span>,<span class="number">2</span>)) <span class="comment"># create a 1*2 array of 1</span></span><br></pre></td></tr></table></figure></li>
+<li>There are different type of data types <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">     <span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">     a1 = np.zeros((<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">     a1.dtype <span class="comment"># dtype(&#x27;float64&#x27;)</span></span><br><span class="line">     a2 = a1.astype(np.int32)</span><br><span class="line">     a2.dtype <span class="comment"># dtype(&#x27;int32&#x27;)</span></span><br><span class="line">     a3 = np.ones((<span class="number">2</span>,<span class="number">2</span>), dtype=np.int32)</span><br><span class="line">     a3.dtype <span class="comment"># dtype(&#x27;int32&#x27;)</span></span><br><span class="line">   ``` </span><br><span class="line">* Any arithmetic operation between equal size NumPy arrays applies the operation element-wise</span><br><span class="line">* Indexing <span class="keyword">and</span> slicing</span><br><span class="line">   ```python</span><br><span class="line">     <span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">     x = np.ones(<span class="number">5</span>)</span><br><span class="line">     x[<span class="number">2</span>:] = <span class="number">2</span>  <span class="comment"># x is now [1, 1, 2, 2, 2]</span></span><br><span class="line">     y = x[:<span class="number">2</span>]</span><br><span class="line">     y[<span class="number">0</span>] = <span class="number">3</span>  <span class="comment"># y is [3, 1], and x is [3, 1, 2, 2, 2]</span></span><br><span class="line"></span><br><span class="line">     z = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">     z[:, :<span class="number">1</span>]  <span class="comment"># [[1], [3]]</span></span><br></pre></td></tr></table></figure></li>
+<li>Boolean indexing <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index = np.arange(<span class="number">3</span>)</span><br><span class="line">data = np.arange(<span class="number">1</span>, <span class="number">10</span>).reshape((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">data[index == <span class="number">2</span>] <span class="comment"># [7, 8, 9]</span></span><br><span class="line">cond = index != <span class="number">2</span></span><br><span class="line">data[~cond] <span class="comment"># [7, 8, 9]</span></span><br><span class="line">data[:, index == <span class="number">2</span>] <span class="comment"># [3, 6, 9]</span></span><br><span class="line">data[data&lt; <span class="number">5</span>] = <span class="number">5</span> <span class="comment"># data is now [[5, 5, 5], [5, 5, 6], [7, 8, 9]]</span></span><br></pre></td></tr></table></figure></li>
+<li>Transposing index and swapping axes
+<ul>
+<li><code>x.T</code>: transpose of an array</li>
+<li><code>np.dot(x, x.T)</code>: matrix multiplication</li>
+<li>transpose function <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">6</span>).reshape((<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">x.shape <span class="comment"># (2, 3)</span></span><br><span class="line">x = np.transpose(x, (<span class="number">1</span>, <span class="number">0</span>)) <span class="comment"># the second argument should be a tuple of range(n)</span></span><br><span class="line">x.shape <span class="comment"># (3, 2)</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Universal functions
+<ul>
+<li>A universal function, or ufunc, is a function that performs
+element-wise operations on data in ndarrays</li>
+<li>Functions: <code>np.abs(arr)</code>, <code>np.sqrt(arr)</code>,
+<code>np.square(arr)</code>, <code>np.exp(arr)</code>,
+<code>np.log(arr)</code>, <code>np.log2(arr)</code>,
+<code>np.sign(arr)</code>, <code>np.ceil(arr)</code>,
+<code>np.floor(arr)</code>, <code>np.modf(arr)</code> (returns two
+arrays, one is the integral part, the other is the fractional part),
+<code>np.isnan(arr)</code>, <code>np.isfinite(arr)</code>,
+<code>np.isinf(arr)</code>,
+<code>np.add/subtract/multiply/divide(a1, a2)</code>,
+<code>np.power(a1, a2)</code>, <code>np.maximum/minimum(a1, a2)</code>,
+<code>np.mod(a1, a2)</code>,
+<code>np.greater/less/greater_equal/less_equal/equal/not_equal(a1, a2)</code>,
+<code>np.logical_and/logical_or/logical_xor(a1, a2)</code></li>
+</ul></li>
+<li>Array-oriented programming
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">points = np.arange(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">0.01</span>) <span class="comment"># 0.01 is the step size</span></span><br><span class="line">xs, ys = np.meshgrid(points, points)</span><br><span class="line">z = np.sqrt(xs ** <span class="number">2</span> + ys ** <span class="number">2</span>)</span><br><span class="line">plt.imshow(zs, cmap=plt.cm.gray)</span><br><span class="line">plt.colorbar()</span><br></pre></td></tr></table></figure></li>
+<li>Convert conditional logic into array expressions
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">xs = np.arange(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">ys = np.arange(<span class="number">6</span>, <span class="number">11</span>)</span><br><span class="line">rands = np.random.randn(<span class="number">5</span>)</span><br><span class="line">cond = rands &gt; <span class="number">0</span></span><br><span class="line"><span class="comment"># The following are equivalent, but the second one is more efficient</span></span><br><span class="line">res1 = [(x <span class="keyword">if</span> c <span class="keyword">else</span> y) <span class="keyword">for</span> x, y, c <span class="keyword">in</span> <span class="built_in">zip</span>(xs, ys, cond)]</span><br><span class="line">res2 = np.where(cond, xs, ys)</span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ma = np.arange(<span class="number">1</span>, <span class="number">17</span>).reshape((<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line">rands = np.random.randn(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line">cond = rands &gt; <span class="number">0</span></span><br><span class="line">res = np.where(cond, <span class="number">2</span>, ma) <span class="comment"># replace all elements in ma with 2 if cond is True</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Mathematical and statistical operations <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.random.randn(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line">arr.mean() <span class="comment"># mean of all elements, equivalent to np.mean(arr)</span></span><br><span class="line">arr.mean(axis=<span class="number">0</span>) <span class="comment"># mean of each column, equivalent to np.mean(arr, axis=0)</span></span><br><span class="line">arr.mean(axis=<span class="number">1</span>) <span class="comment"># mean of each row, equivalent to np.mean(arr, axis=1)</span></span><br><span class="line">arr.cumsum(axis=<span class="number">0</span>) <span class="comment"># cumulative sum of each column</span></span><br><span class="line">arr.cumprod(axis=<span class="number">1</span>) <span class="comment"># cumulative product of each row</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Other methods: <code>sum</code>, <code>mean</code>,
+<code>std</code>, <code>var</code>, <code>min</code>, <code>max</code>,
+<code>argmin</code>, <code>argmax</code>, <code>cumsum</code>,
+<code>cumprod</code></li>
+<li>Boolean array methods
+<ul>
+<li>Calcualte amount of positive values:
+<code>(arr &gt; 0).sum()</code></li>
+<li>If there exists true value, return true: <code>arr.any()</code></li>
+<li>If all values are ture, return true: <code>arr.all()</code></li>
+</ul></li>
+<li>Sorting
+<ul>
+<li>Ondimensional array sorting: <code>arr.sort()</code></li>
+<li>Sorting by row for a 2darray: <code>arr.sort(1)</code></li>
+<li>Sorting by column for a 2darray: <code>arr.sort(0)</code></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -1620,8 +1681,8 @@ you configuration should be something like this:
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pro-git"><span class="nav-number">2.</span> <span class="nav-text">Pro Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-for-data-analysis-this-is-not-a-required-book"><span class="nav-number">3.</span> <span class="nav-text">Python for
-Data Analysis (this is not a required book)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">4.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">5.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">7.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">8.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220131"><span class="nav-number">9.</span> <span class="nav-text">Lecture 06 2022&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">10.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">11.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">12.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220208"><span class="nav-number">13.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pro-git"><span class="nav-number">2.</span> <span class="nav-text">Pro Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-for-data-analysis-this-is-not-a-required-book-for-this-course"><span class="nav-number">3.</span> <span class="nav-text">Python
+for Data Analysis (this is not a required book for this course)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">4.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">5.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">6.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">7.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">8.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220131"><span class="nav-number">9.</span> <span class="nav-text">Lecture 06 2022&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">10.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">11.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">12.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220208"><span class="nav-number">13.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1697,12 +1758,12 @@ Data Analysis (this is not a required book)</span></a></li><li class="nav-item n
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">752k</span>
+    <span title="Symbols count total">762k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:23</span>
+    <span title="Reading time total">11:33</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

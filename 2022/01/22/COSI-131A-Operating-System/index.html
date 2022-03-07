@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-02-26T22:50:18.268Z">
+<meta property="article:modified_time" content="2022-03-07T03:44:53.255Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-26 17:50:18" itemprop="dateModified" datetime="2022-02-26T17:50:18-05:00">2022-02-26</time>
+                <time title="Modified: 2022-03-06 22:44:53" itemprop="dateModified" datetime="2022-03-06T22:44:53-05:00">2022-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>45k</span>
+              <span>52k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>41 mins.</span>
+              <span>47 mins.</span>
             </span>
 
         </div>
@@ -901,9 +901,13 @@ copied</li>
 </ul></li>
 <li>Benefits or threads
 <ul>
-<li>Responsiveness</li>
-<li>Resource sharing</li>
-<li>Economy</li>
+<li>Responsiveness: interactive program can keep running even if one
+thread blocks</li>
+<li>Resource sharing: code, address space sharing comes for free with
+threads, for processes, code copying required for former, IPC for
+latter</li>
+<li>Economy: slightly cheaper to context switch, much cheaper to
+create</li>
 <li>Utilization of multiprocessors, better parallelism and
 scalability</li>
 </ul></li>
@@ -911,8 +915,11 @@ scalability</li>
 <ul>
 <li>Break the PCB into two pieces:
 <ul>
-<li>Thread-specific stuff: thread data</li>
-<li>Process-specific stuff: OS related stuff</li>
+<li>Information related to process execution in TCB: thread register,
+stack pointer, cpu registers, cpu scheduling information, pending I/O
+information</li>
+<li>Other information associated with process: memory management
+information (heap, global variables), accounting information</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -920,9 +927,63 @@ scalability</li>
 <ul>
 <li>Kernel thread: managed by OS with multi-threading architecture, it's
 the unit of execution that is scheduled by the kernel on the cpu</li>
-<li>User thread: implemented with treads library</li>
+<li>User thread: implemented with treads library, supported above the
+kernel and are managed without kernel support</li>
 <li>The mapping between user thread and kernel thread can be
 many-to-one, one-to-one and many-to-many</li>
+<li>Pros and cons
+<ul>
+<li>User thread
+<ul>
+<li>Pros
+<ul>
+<li>Can be implemented on an os that does not support threads</li>
+<li>Thread switching is faster trapping to the kernel</li>
+<li>Thread scheduling is very fast</li>
+<li>Each process can have its own scheduling algorithm</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Blocking system calls (if one thread sends a system call, the os
+does not know the process has multi-threading, so the whole process is
+blocked)</li>
+<li>Page faults</li>
+<li>Threads need to voluntarily give up the cpu for
+multiprogramming</li>
+</ul></li>
+</ul></li>
+<li>Kernel thread
+<ul>
+<li>Pros
+<ul>
+<li>No run-time system needed in each process</li>
+<li>No thread table in each process</li>
+<li>Blocking system calls are not a problem (kernel knows there is
+multi-threading in the process, so cpu scheduler assigns another thread
+to run)</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>If thread operations are common, much kernel overhead will be
+incurred</li>
+<li>If a signal is sent to a process, should the process handles it or
+assigns a thread to handle it?</li>
+<li>Slower that user-space threads</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Thread library in Java
+<ul>
+<li>Threads in Java are managed by JVM, mapping to kernel threads
+depends on the OS</li>
+<li>Thread creation
+<ul>
+<li>Extends <code>Thread</code> class, override <code>run()</code>
+method <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// code here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Thread thread = <span class="keyword">new</span> MyThread();</span><br><span class="line">    thread.start();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Implements <code>Runnable</code> interface, override
+<code>run()</code> method <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// code here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyThread());</span><br><span class="line">    thread.start();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul></li>
 </ol>
 <h2 id="lecture-08-20220210">Lecture 08 2022/02/10</h2>
@@ -940,12 +1001,13 @@ in the parent thread, notice <code>join</code> method can throw
 <code>Interruptedexception</code>, so you should use a try-catch clause.
 Notice <code>child.start()</code> should be called before
 <code>child.join()</code> is called</li>
+<li>Example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">          System.out.println(<span class="string">&quot;Child is interrupted!&quot;</span>);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyThread());</span><br><span class="line">    thread.start();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      thread.interrupt();</span><br><span class="line">      thread.join();</span><br><span class="line">    &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Parent interrupts child!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">&quot;Parent is done!&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Cancel threads
 <ul>
 <li>Call <code>child.interrupt()</code> to interrupt the child thread,
 it sets the interrupt flag in the child thread</li>
-<li><code>Thread.currentThread().isinterrupted()</code> method in the
+<li><code>Thread.currentThread().isInterrupted()</code> method in the
 child thread: returns boolean value</li>
 <li><code>interrupted()</code> method in the child thread: returns
 boolean value, and clears the interrupt flag</li>
@@ -953,47 +1015,336 @@ boolean value, and clears the interrupt flag</li>
 <li>Inter-process communication
 <ul>
 <li>Most modern Os does not support inter-process communication</li>
-<li>INdependent processes are not affected by execution of other
+<li>Independent processes are not affected by execution of other
 processes</li>
-<li>Producer-consumer problem</li>
+<li>Communication methods
+<ul>
+<li>Message passing: direct/indirect messaging, asynchronous/synchronous
+messaging</li>
+<li>Shared memory</li>
+</ul></li>
+<li>Producer-consumer problem
+<ul>
+<li>Buffer size: unbounded/bounded</li>
+</ul></li>
 <li>Reader/writer problem</li>
 <li>Mutual exclusion problem</li>
 </ul></li>
 </ol>
 <h2 id="lecture-09-20220215">Lecture 09 2022/02/15</h2>
 <ol type="1">
-<li>Review
-<ul>
-<li>Remember the difference between user-level thread and kernel-level
-thread</li>
-<li>Device controller vs device driver</li>
-</ul></li>
 <li>Scheduling
 <ul>
-<li>Context switch: save state, run scheduler algorithm, put another
-process into the cpu</li>
-<li>SR scheduler is a daemon program</li>
-<li>CPU clock and system clock (on motherboard)</li>
+<li>Multiprogramming goal: avoid cpu idle time, some process is using
+the cpu all the time</li>
+<li>Typical process execution flow: cpu burst and I/O burst</li>
+<li>CPU-bound and I/O-bound process</li>
 <li>Two types of scheduling:
 <ul>
 <li>No-preemptive : processes only give up cpu voluntarily</li>
 <li>Preemptive: processes also may be preempted by an interrupt</li>
+</ul></li>
+<li>Clock interrupt
+<ul>
+<li>This is how system keeps track of time, the interrupt happens at
+periodic intervals</li>
+<li>This is a hardware system clock on the motherboard, it's not the
+same as the cpu clock</li>
+<li>The clock interrupt has very high priority</li>
 </ul></li>
 </ul></li>
 <li>Scheduling policies
 <ul>
 <li>Criteria for effectiveness of scheduling policies
 <ul>
-<li>Throughput: measured in # processes completed/ time unit</li>
-<li>Turnaround time: avg(time of completion - time of creation)</li>
-<li>Waiting time: average time waiting in the ready queue</li>
-<li>Response time: time of 1st response is produced- time of
+<li>Throughput
+<ul>
+<li>Measured in amount of processes completed/ time unit</li>
+</ul></li>
+<li>Turnaround time
+<ul>
+<li>Turnaround time = process completion time - process creation
+time(arrival time)</li>
+<li>Turnaround time = waiting time + execution time</li>
+</ul></li>
+<li>Waiting time
+<ul>
+<li>Waiting time = waiting time in the ready queue</li>
+<li>If a process is preempted, then the waiting time is the sum of all
+time waiting time</li>
+<li>Compared with turnaround time, waiting time does not have a penalty
+for processes with long execution time</li>
+</ul></li>
+<li>Response time
+<ul>
+<li>Response time = time of 1st response is produced- time of
 creation</li>
-<li>Overhead: time spent related to scheduling</li>
-<li>Fairness: how much variation in waiting time</li>
+</ul></li>
+<li>Overhead
+<ul>
+<li>Time spent related to scheduling</li>
+</ul></li>
+<li>Fairness
+<ul>
+<li>How much variation in waiting time, want to avoid process
+starvation</li>
+</ul></li>
+<li>Dispatch time
+<ul>
+<li>The time it takes to choose next running process</li>
+<li>Dispatch time = schedule time + context switch time</li>
 </ul></li>
 </ul></li>
-<li>First come first served(FCFS): no-preemptive</li>
+<li>Generally it's not possible to meet all performance criteria for one
+scheduling policy</li>
+<li>Measures
+<ul>
+<li>CPU utilization: the higher, the better</li>
+<li>Throughput: the higher, the better</li>
+<li>Turnaround time: the lower, the better</li>
+<li>Waiting time: the lower, the better</li>
+<li>Response time: the lower, the better</li>
+</ul></li>
+</ul></li>
+<li>First Come First Serve(FCFS)
+<ul>
+<li>Idea: processes are served according their arrival order</li>
+<li>This is a non-preemptive scheduling policy</li>
+<li>Pros:
+<ul>
+<li>Easy to implement</li>
+<li>No starvation, so it's fair</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Convoy effect: order of arrival determines performance. If a long
+process arrives first, then the average turnaround time, average waiting
+time will be long</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-10-20000217">Lecture 10 2000/02/17</h2>
+<ol type="1">
+<li>Shortest Job First
+<ul>
+<li>Idea:
+<ul>
+<li>Non-preemptive version: If processes arrive at the same time, choose
+the one with the minimal cpu burst execute first. If processes arrive at
+different time, whenever a process finishes, select from the arrived
+processes the one that has the minimal cup burst</li>
+<li>Preemptive version: currently running process can be preempted if
+new process arrives with shorter remaining CPU burst</li>
+</ul></li>
+<li>A problem: in reality, we do not know the amount of cpu burst, so we
+need to use prediction
+<ul>
+<li>Equation: <span class="math inline">\(\tau_{n + 1} = \alpha t_{n} +
+(1-\alpha) \tau_{n}\)</span>, where <span class="math inline">\(\tau_{n
++ 1}\)</span> is the next guess, <span class="math inline">\(\tau_{n}\)</span> is previous guess, <span class="math inline">\(t_{n}\)</span> is previous actual burst time,
+<span class="math inline">\(\alpha\)</span> is a weighting factor</li>
+<li>If <span class="math inline">\(\alpha = 0\)</span>, then <span class="math inline">\(\tau_{n + 1} = \tau_{n}\)</span>, which means
+recent history does not count</li>
+<li>If <span class="math inline">\(\alpha = 1\)</span>, then <span class="math inline">\(\tau_{n + 1} = t_{n}\)</span>, which means only
+the recent history counts</li>
+</ul></li>
+<li>Pros
+<ul>
+<li>Optimal(minimal) for average turnaround time and for average waiting
+time</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Starves processes with long cpu bursts</li>
+<li>It's hard to predict cpu burst time</li>
+</ul></li>
+</ul></li>
+<li>Priority-Based
+<ul>
+<li>Idea: the process withe the highest priority is executed first</li>
+<li>SJF can be seen as a special case for priority-based scheduling in
+that processes with shorter cpu burst are assigned higher
+priorities</li>
+<li>Priority-based scheduling can be either non-preemptive or
+preemptive</li>
+<li>Pros
+<ul>
+<li>Reflects relative importance of processes</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Can cause starvation of low priority processes (can use aging to
+tackle this problem)</li>
+</ul></li>
+</ul></li>
+<li>Round-robin
+<ul>
+<li>Each process gets a small unit of cpu time (time quantum), after
+quantum has elapsed, the running process is preempted and added to the
+end of ready queue. If a process finished in one time quantum, the next
+process starts immediately</li>
+<li>This is a preemptive only scheduling policy</li>
+<li>If there are n processes, and time quantum is q, then in one round,
+each process is executed for at most q/n time, each process waits up to
+(n - 1)q/n time</li>
+<li>If the time quantum is too large, then Round-robin becomes FCFS, if
+the time quantum is too small, then there will be too many context
+switch overheads</li>
+<li>Pros
+<ul>
+<li>Fairness</li>
+<li>Lower response time than SJF</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>High context switch overhead</li>
+<li>Higher turnaround time than SJF</li>
+</ul></li>
+</ul></li>
+<li>Multilevel Queue
+<ul>
+<li><p>Idea: ready queue is partitioned into separate queues, each with
+its own scheduling algorithm</p></li>
+<li><p>Inter-queue scheduling</p>
+<ul>
+<li>Fixed priority: each queue has its own priority, high priority
+queues are served before low priority queues, this may lead to
+starvation in low priority queues</li>
+<li>Time-slice: each queue gets a reserved slice of cpu time to schedule
+amongst its processes (e.g. 80% for higher priority queue, 20% for lower
+priority queue, this can be achieved using round-robin inter-queue
+scheduling algorithm, and use randomization with lottery system to
+achieve the respective percentage)</li>
+</ul></li>
+<li><p>In UNIX, there are 32 queues, 0-7 are system queues, 8-31 are
+user queues. User processes can be moved between different user queues
+by changing its priority level</p></li>
+<li><p>Multilevel Feedback Queue (MFQ)</p>
+<ul>
+<li><p>Processes can move between queues</p></li>
+<li><p>Use MFQ to mimic SJF</p>
+<ul>
+<li>Higher priority queue uses RR with low time quantum (short jobs can
+finish here, other jobs are downgraded to lower priority queues after
+short time quantum elapses)</li>
+<li>Lower priority queue uses RR with high time quantum</li>
+<li>Processes downgrade their priorities when they get older</li>
+</ul></li>
+<li><p>Example:<span class="math inline">\(Q_1\)</span> is RR with <span class="math inline">\(q = 75\)</span>, <span class="math inline">\(Q_2\)</span> is RR with <span class="math inline">\(q = 150\)</span>, <span class="math inline">\(Q_3\)</span> is FCFS( <span class="math inline">\(Q_i\)</span> is served if <span class="math inline">\(Q_1\)</span>, ..., <span class="math inline">\(Q_{i-1}\)</span> is empty). Processes are as
+follows</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Process</th>
+<th style="text-align: center;">Burst Time</th>
+<th style="text-align: center;">Arrival Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;">175</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P5</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">250</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P6</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">250</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>The result is</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Process</th>
+<th style="text-align: center;">Arrival Time</th>
+<th style="text-align: center;">Q1</th>
+<th style="text-align: center;">Q2</th>
+<th style="text-align: center;">Q3</th>
+<th style="text-align: center;">Completion Time</th>
+<th style="text-align: center;">Turnaround Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0-75</td>
+<td style="text-align: center;">400-450</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">450</td>
+<td style="text-align: center;">450</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">75-125</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">125</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">125-200</td>
+<td style="text-align: center;">450-600</td>
+<td style="text-align: center;">825-1100</td>
+<td style="text-align: center;">1100</td>
+<td style="text-align: center;">1100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">200-275</td>
+<td style="text-align: center;">600-700</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">700</td>
+<td style="text-align: center;">700</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P5</td>
+<td style="text-align: center;">250</td>
+<td style="text-align: center;">275-350</td>
+<td style="text-align: center;">700-825</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">825</td>
+<td style="text-align: center;">575</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P6</td>
+<td style="text-align: center;">250</td>
+<td style="text-align: center;">350-400</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">150</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
 </ol>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
@@ -2090,7 +2441,7 @@ queues</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">9.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20000217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2000&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">10.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2166,12 +2517,12 @@ queues</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">752k</span>
+    <span title="Symbols count total">762k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:23</span>
+    <span title="Reading time total">11:33</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
