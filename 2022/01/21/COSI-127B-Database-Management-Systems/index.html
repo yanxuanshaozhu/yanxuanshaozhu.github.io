@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI127B/ArchitectureTier.png">
 <meta property="article:published_time" content="2022-01-21T17:21:54.000Z">
-<meta property="article:modified_time" content="2022-02-16T18:30:52.111Z">
+<meta property="article:modified_time" content="2022-03-15T01:46:36.515Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Database Management Systems">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-16 13:30:52" itemprop="dateModified" datetime="2022-02-16T13:30:52-05:00">2022-02-16</time>
+                <time title="Modified: 2022-03-14 21:46:36" itemprop="dateModified" datetime="2022-03-14T21:46:36-04:00">2022-03-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>13k</span>
+              <span>17k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>12 mins.</span>
+              <span>15 mins.</span>
             </span>
 
         </div>
@@ -600,7 +600,137 @@ least n digits</li>
 </ul></li>
 </ul></li>
 </ol>
+<h2 id="lecture-07-20220208">Lecture 07 2022/02/08</h2>
+<ol type="1">
+<li>Common mistakes in E-R model
+<ul>
+<li>Use of the primary key of an entity set as an attribute of another
+entity set, instead of using a relationship (if there is a relationship,
+then remove the foreign key)</li>
+<li>Designate the primary key attributes of the related entity sets as
+attributes of the relationship set (they are already implicit in the
+relationship set)</li>
+<li>Use a relationship with a single-value attribute in a situation that
+requires a multi-valued attribute</li>
+</ul></li>
+</ol>
 <h2 id="lecture-08-20220211">Lecture 08 2022/02/11</h2>
+<ol type="1">
+<li>Good relational designs Ch 7.1
+<ul>
+<li>Good schemas should contain no redundancy and no missing
+information</li>
+<li>To remove the data repetition problem, we can decompose one schema
+into multiple smaller ones</li>
+<li>If information is missing after decomposition, we call it a lossy
+decomposition, otherwise it's a lossless decomposition</li>
+<li>Let R, <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span> the set of attributes, if <span class="math inline">\(R = R_1 \cup R_2\)</span>, then the decomposition
+is lossless. Equivalently, if $ r = <em>{R_1} (r) </em>{R_2}(r)$, then
+the decomposition is lossless, if <span class="math inline">\(r \subset
+\Phi_{R_1} (r) \Join \Phi_{R_2}(r)\)</span>, the decomposition is
+lossy</li>
+<li>Normalization
+<ul>
+<li>The method for designing a relational database is to use a process
+commonly known as normalization</li>
+<li>The goal is to generate a set of relation schemas that store
+information without unnecessary redundancy, yet allows to retrieve
+information easily</li>
+<li>Procedure
+<ul>
+<li>Decide whether a schema is a good one</li>
+<li>If a schema is not in good form, decompose it into smaller ones,
+each of which is in an appropriate normal form. The decomposition should
+be lossless</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Decomposition using functional dependencies Ch 7.2
+<ul>
+<li>Legal instance
+<ul>
+<li>There are some real-world constraints that real-world data should
+follow, since database models real-world data, schemas should also
+follow these constraints</li>
+<li>An instance of a relation that satisfies all such real-world
+constraints is called a legal instance of the relation; a legal instance
+of a database is one where all the relation instances are legal
+instances</li>
+</ul></li>
+<li>Notations: <span class="math inline">\(\alpha\)</span> for
+attribute, r for relation, R for schema, K for superkey</li>
+<li>Functional dependency: denote relational schema r(R), <span class="math inline">\(\alpha \subseteq R\)</span>, and <span class="math inline">\(\beta \subseteq R\)</span>,
+<ul>
+<li>Given an instance of r(R), we say that the instance satisfies the
+functional dependency <span class="math inline">\(\alpha \rightarrow
+\beta\)</span> if for all pairs of tuples <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span> in the instance such that <span class="math inline">\(t_1 [\alpha] = t_2 [\alpha]\)</span>, we also have
+<span class="math inline">\(t_1 [\beta] = t_2 [\beta]\)</span></li>
+<li>We say that the functional dependency <span class="math inline">\(\alpha \rightarrow \beta\)</span> holds on schema
+r(R) if every legal instance of r(R) satisfies the functional
+dependency</li>
+<li>K is a superkey for r(R) is <span class="math inline">\(K
+\rightarrow R\)</span> holds on r(R)</li>
+<li>A functional dependency is trivial if it is satisfied by all
+relations</li>
+<li>Closure: Given a set F set of functional dependencies, there are
+certain other functional dependencies that are logically implied by F.
+The set of all functional dependencies logically implied by F is the
+closure of F, denoted <span class="math inline">\(F^{+}\)</span></li>
+</ul></li>
+<li>If <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> is a lossless decomposition of R,
+then at least on of the following functional dependencies hold: <span class="math inline">\(R_1 \cap R_2 \rightarrow R_1\)</span>, <span class="math inline">\(R_1 \cap R_2 \rightarrow R_2\)</span>, which means
+<span class="math inline">\(R_1 \cap R_2\)</span> is the superkey for
+either <span class="math inline">\(R_1\)</span> or <span class="math inline">\(R_2\)</span></li>
+</ul></li>
+<li>Normal Form Ch 7.3
+<ul>
+<li>Boyce-Codd normal form (BCNF)
+<ul>
+<li>The most desirable normal form, it eliminates all redundancy that
+can be discovered based on functional dependencies</li>
+<li>Definition: a relational schema R is in BCNF with respect to a set F
+of functional dependencies if, for all functional dependencies in <span class="math inline">\(F^{+}\)</span> of the form <span class="math inline">\(\alpha \rightarrow \beta\)</span>, at least one of
+the following holds:
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span> is
+trivial (<span class="math inline">\(\beta \subseteq
+\alpha\)</span>)</li>
+<li><span class="math inline">\(\alpha\)</span> is a superkey for schema
+R</li>
+</ul></li>
+<li>A database design is in BCNF is each member of the set of relation
+schemas that constitutes the design is in BCNF</li>
+<li>Decomposition of non BCNF schema into BCNF schema: suppose for
+schema R, <span class="math inline">\(\alpha -\rightarrow \beta\)</span>
+is not BCNF, then we can decompose R into <span class="math inline">\(\alpha \cup \beta\)</span> and <span class="math inline">\(R - (\beta - \alpha)\)</span></li>
+<li>It's not always possible to achieve both BCNF and dependency
+preserving</li>
+</ul></li>
+<li>Third normal form (3NF)
+<ul>
+<li>Definition: A relation schema R is in third normal form with respect
+to a set F of functional dependencies if, for all functional
+dependencies in <span class="math inline">\(F^{+}\)</span> of the form
+<span class="math inline">\(\alpha \rightarrow \beta\)</span>, at least
+one of the following hold:
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span> is
+trivial (<span class="math inline">\(\beta \subseteq
+\alpha\)</span>)</li>
+<li><span class="math inline">\(\alpha\)</span> is a superkey for schema
+R</li>
+<li>Each attribute A in <span class="math inline">\(\beta -
+\alpha\)</span> is contained in a candidate key for R</li>
+</ul></li>
+<li>Every schema that has 3NF is dependency preserving</li>
+<li>Advantages: it's always possible to obtain a 3NF design without
+sacrificing loss or dependency preservation</li>
+<li>Disadvantages: there is still problem of repetition of information,
+and we have to use null values to represent some of the possible
+meaningful relationships among data items</li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="mysql-crash-course">MySQL Crash Course</h2>
 <ol type="1">
 <li>Understanding SQL
@@ -839,7 +969,7 @@ together with in, between, and exists</li>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118-introduction"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18
 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220121-relational-model"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;21
 Relational Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125-basic-sql"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25 Basic
-SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220211"><span class="nav-number">4.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-crash-course"><span class="nav-number">5.</span> <span class="nav-text">MySQL Crash Course</span></a></li></ol></div>
+SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220208"><span class="nav-number">4.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220211"><span class="nav-number">5.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-crash-course"><span class="nav-number">6.</span> <span class="nav-text">MySQL Crash Course</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -915,12 +1045,12 @@ SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">776k</span>
+    <span title="Symbols count total">785k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:45</span>
+    <span title="Reading time total">11:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
