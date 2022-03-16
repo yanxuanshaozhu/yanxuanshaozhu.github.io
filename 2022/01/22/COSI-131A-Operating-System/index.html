@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-03-15T15:44:08.512Z">
+<meta property="article:modified_time" content="2022-03-15T19:41:09.896Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-15 11:44:08" itemprop="dateModified" datetime="2022-03-15T11:44:08-04:00">2022-03-15</time>
+                <time title="Modified: 2022-03-15 15:41:09" itemprop="dateModified" datetime="2022-03-15T15:41:09-04:00">2022-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>56k</span>
+              <span>60k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>51 mins.</span>
+              <span>55 mins.</span>
             </span>
 
         </div>
@@ -1463,11 +1463,133 @@ is a context switch after the first if to B, and another switch back to
 A after executing the first line of B, then neither of A or B will buy a
 bottle of milk</li>
 </ul></li>
-<li>Solution 3: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person A</span></span><br><span class="line">leave noteA</span><br><span class="line"><span class="keyword">while</span> (noteB) &#123;</span><br><span class="line">  skip;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">  buy milk;</span><br><span class="line">&#125;</span><br><span class="line">remove noteA;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Person B</span></span><br><span class="line">leave noteB</span><br><span class="line"><span class="keyword">while</span> (noteA) &#123;</span><br><span class="line">  skip;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">  buy milk;</span><br><span class="line">&#125;</span><br><span class="line">remove noteB;</span><br></pre></td></tr></table></figure></li>
-<li>This one works</li>
+<li>Solution 3: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person A</span></span><br><span class="line">leave noteA;</span><br><span class="line"><span class="comment">// Denote this line X</span></span><br><span class="line"><span class="keyword">while</span> (noteB) &#123;  </span><br><span class="line">  skip;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">  buy milk;</span><br><span class="line">&#125;</span><br><span class="line">remove noteA;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Person B</span></span><br><span class="line">leave noteB;</span><br><span class="line"><span class="comment">// Denote this line Y</span></span><br><span class="line"><span class="keyword">if</span> (noNoteA) &#123;</span><br><span class="line">  <span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">    buy milk;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">remove noteB;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>This one works
+<ul>
+<li>X and Y are lines that after which critical sections are executed,
+so we think of situations here</li>
+<li>At Y:
+<ul>
+<li>If noNoteA: A has not start, or A has already bought milk, B can buy
+milk if no milk, or does not buy milk if there is milk</li>
+<li>If noteA: A is waiting B to quit, or A is buying milk, so B does buy
+and quit</li>
+</ul></li>
+<li>At X:
+<ul>
+<li>If noNoteB: B has not start, or B has ready bought milk, A can buy
+milk if no milk, or does not buy milk if there is milk</li>
+<li>If noteB: B is waiting A to quit, or B is buying milk, so A waits B
+to remove note, then checks if there is milk to decide whether to buy or
+not</li>
+</ul></li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>This approach is complicated</li>
+<li>This is not a symmetric solution, code needs to be different for
+each process, can not be generalized to multiple processes situations
+easily</li>
+<li>A is busy waiting</li>
+<li>A is favored: if A and B have different goals, A is more favored
+than B</li>
+</ul></li>
+</ul></li>
+<li>Better solutions
+<ul>
+<li>Have hardware provide better primitives than atomic LOAD, STORE</li>
+<li>Build higher-level programming abstraction on above hardware
+instructions, for example: lock with atomic <code>acquire()</code> and
+<code>release()</code></li>
+<li>Milk solution example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">          <span class="comment">// Person A and Person B</span></span><br><span class="line">          lock.acquire();</span><br><span class="line">          <span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">            buy milk;</span><br><span class="line">          &#125;</span><br><span class="line">          lock.release();</span><br><span class="line">        ```  </span><br><span class="line"><span class="number">2.</span> The critical section problem</span><br><span class="line">   * Idea: only one thread is executing the critical section at a time to avoid race condition</span><br><span class="line">   * Examples</span><br><span class="line">     * Milk synchronization: `<span class="keyword">if</span> (noMilk) &#123;buy milk&#125;`</span><br><span class="line">     * Bank transfer synchronization: `acc1 -= amount; acc2 += amount;`</span><br><span class="line">     * Producer consumer problem: `count++`</span><br><span class="line">        ```assembly</span><br><span class="line">          LOAD R1, count</span><br><span class="line">          INC R1</span><br><span class="line">          STORE R1, count</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>For efficiency consideration, it's important to identify the exact
+lines of code that is the critical section</li>
+<li>General form of threads <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  entry code;</span><br><span class="line">  critical section;</span><br><span class="line">  exit code;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>General solution to critical section problems
+<ul>
+<li>Clever algorithms</li>
+<li>Hardware-based solutions</li>
+<li>Hardware-based solutions + software abstractions</li>
+</ul></li>
+<li>Goals of solution
+<ul>
+<li>Mutual exclusion</li>
+<li>Progress: no thread outside of its critical section should block
+other threads</li>
+<li>Bounded waiting: if a thread has already made a request to enter its
+critical section, then the amount of times other threads should only
+enter their critical sections for a bounded amount of times</li>
+</ul></li>
+</ul></li>
+<li>Software solution to critical section problems
+<ul>
+<li>Strict alternation
+<ul>
+<li>Idea: each thread take turns to get into its critical section</li>
+<li>Pseudocode <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">shared <span class="keyword">int</span> turn;</span><br><span class="line"><span class="comment">// Thread A</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="keyword">while</span> (turn != <span class="number">0</span>) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  turn = <span class="number">1</span>;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Thread B</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="keyword">while</span> (turn != <span class="number">1</span>) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  turn = <span class="number">0</span>;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Strict alternation satisfies both mutual exclusion, bounded waiting,
+but does not satisfy progress</li>
+<li>Disadvantage:
+<ul>
+<li>Does not satisfy progress</li>
+<li>Use busy waiting, waste lots of resources</li>
+<li>Faster threads can get blocked by slower ones</li>
+</ul></li>
+</ul></li>
+<li>After you
+<ul>
+<li>Idea: thread specifies interest in entering critical section, and
+can only enter if other thread is not interested</li>
+<li>Pseudocode <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">shared <span class="keyword">boolean</span> flag0, flag1;</span><br><span class="line"><span class="comment">//Thread A</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  flag0 = <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">while</span> (flag1) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  flag0 = <span class="keyword">false</span>;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Thread B</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  flag1 = <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">while</span> (flag0) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  flag1 = <span class="keyword">false</span>;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>After you satisfies mutual exclusion, but does not satisfy progress
+and bounded waiting</li>
+</ul></li>
 </ul></li>
 </ol>
 <h2 id="lecture-13-20220310">Lecture 13 2022/03/10</h2>
+<ol type="1">
+<li>Software solution to critical section problems
+<ul>
+<li>Peterson's algorithm
+<ul>
+<li>Idea: combination of strict alternation and after you, threads take
+turns to get into critical section but a thread skips its turn if it's
+not interested and another thread is</li>
+<li>Pesudocode <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">shared <span class="keyword">int</span> turn;</span><br><span class="line">shared <span class="keyword">boolean</span> flag0, flag1;</span><br><span class="line"><span class="comment">// Thread A</span></span><br><span class="line">flag0 = <span class="keyword">true</span>;</span><br><span class="line">turn = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (turn == <span class="number">1</span> &amp;&amp; flag1) &#123;</span><br><span class="line">  skip;</span><br><span class="line">&#125;</span><br><span class="line">critical section;</span><br><span class="line">flag0 = <span class="keyword">false</span>;</span><br><span class="line">non-critical section;</span><br><span class="line"><span class="comment">// Thread B</span></span><br><span class="line">flag1 = <span class="keyword">true</span>;</span><br><span class="line">turn = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (turn == <span class="number">0</span> &amp;&amp; flag0) &#123;</span><br><span class="line">  skip;</span><br><span class="line">&#125;</span><br><span class="line">critical section;</span><br><span class="line">flag1 = <span class="keyword">false</span>;</span><br><span class="line">non-critical section;</span><br></pre></td></tr></table></figure></li>
+<li>Peterson's algorithm satisfies mutual exclusion, progress and
+bounded waiting</li>
+</ul></li>
+</ul></li>
+<li>Hardware solutions to critical section problems</li>
+</ol>
+<ul>
+<li>Disabling interrupts
+<ul>
+<li>Idea: disable interrupts before entering critical section and enable
+interrupts after exiting critical section</li>
+<li>Pseudocode <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// All threads</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  disable interrupts;</span><br><span class="line">  critical section;</span><br><span class="line">  enable interrupts;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Comments
+<ul>
+<li>Advantages: this solution is easy to implement</li>
+<li>Disadvantages:
+<ul>
+<li>Overkill: disables all interrupts(I/O), disallows concurrency with
+threads in non-critical sections</li>
+<li>Does not work for multi-core systems</li>
+</ul></li>
+</ul></li>
+<li>Test and set</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li>Semaphores: software abstraction of hardware</li>
+</ol>
+<h2 id="lecture-14-20220315">Lecture 14 2022/03/15</h2>
+<ol type="1">
+<li></li>
+</ol>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
 <li>Introduction
@@ -2564,7 +2686,7 @@ queues</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">13.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">14.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2640,12 +2762,12 @@ queues</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">785k</span>
+    <span title="Symbols count total">793k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:54</span>
+    <span title="Reading time total">12:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

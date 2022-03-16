@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;19">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-02-28T19:02:13.041Z">
+<meta property="article:modified_time" content="2022-03-16T05:15:41.787Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-28 14:02:13" itemprop="dateModified" datetime="2022-02-28T14:02:13-05:00">2022-02-28</time>
+                <time title="Modified: 2022-03-16 01:15:41" itemprop="dateModified" datetime="2022-03-16T01:15:41-04:00">2022-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,14 +214,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>18k</span>
+              <span>22k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>17 mins.</span>
+              <span>20 mins.</span>
             </span>
 
         </div>
@@ -907,20 +907,94 @@ children</li>
 left and right subtree of the external node v, an error occur if v is
 internal</li>
 </ul></li>
+</ul></li>
 <li>Tree traversal algorithm
 <ul>
 <li>A traversal of a tree T is a systematic way of accessing (or
 visiting) all the nodes of T</li>
-<li>Approaches
-<ul>
 <li>Pre-order: visit the node, then visit the left subtree, and then
-visit the right subtree</li>
-<li>Post-order</li>
-<li>In-order</li>
-</ul></li>
-</ul></li>
+visit the right subtree <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">preOrder(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  visit(v);</span><br><span class="line">  preOrder(v.left);</span><br><span class="line">  preOrder(v.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>N-ary tree pre-order <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">preOrder(T, v) &#123;</span><br><span class="line">  visit(v);</span><br><span class="line">  <span class="keyword">for</span> (w: v.children) &#123;</span><br><span class="line">    preOrder(T, w);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol>
+<h2 id="lecture-15-20220228">Lecture 15 2022/02/28</h2>
+<ol type="1">
+<li>Tree traversal algorithm
+<ul>
+<li>Post-order： visit the left subtree, then visit the right subtree,
+and then visit the node <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">postOrder(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  postOrder(v.left);</span><br><span class="line">  postOrder(v.right);</span><br><span class="line">  visit(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>N-ary tree post-order <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">postOrder(T, v) &#123;</span><br><span class="line">  <span class="keyword">for</span> (w: v.children) &#123;</span><br><span class="line">    postOrder(T, w);</span><br><span class="line">  &#125;</span><br><span class="line">  visit(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>In-order: visit the left subtree, then visit the node, then visit
+the right subtree <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">inOrder(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  inOrder(v.left);</span><br><span class="line">  visit(v);</span><br><span class="line">  inOrder(v.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Level-order traversal <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">levelOrder(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  Queue q = <span class="keyword">new</span> Queue();</span><br><span class="line">  <span class="keyword">while</span> q.size() != <span class="number">0</span>:</span><br><span class="line">    front = q.dequeue();</span><br><span class="line">    visit(front);</span><br><span class="line">    <span class="keyword">for</span> (w: front.children) &#123;</span><br><span class="line">      q.eneueue(w);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Height of a tree
+<ul>
+<li>Definition: the height of a tree is number of edges on the longest
+path from the root to a leaf</li>
+<li>Height of a node: the number of edges on the longest path from the
+node to a leaf</li>
+</ul></li>
+</ol>
+<h2 id="lecture-16-20220302">Lecture 16 2022/03/02</h2>
+<ol type="1">
+<li>Height of a tree
+<ul>
+<li>Height of a node v: the number of edges on the longest path from the
+node v to a leaf <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">height(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + Math.max(height(v.left), height(v.right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Depth of a node v: the number of edges on the path from the root to
+the node v <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">depth(T, v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == root) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + depth(T, v.parent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Binary search tree (BST)
+<ul>
+<li>Definition: a BST is a binary tree where the data are always stored
+in such a way that they satisfy the binary search tree property</li>
+<li>BST property: for every node v, all keys in its left subtree are
+smaller than or equal to the key of v, and all keys in its right subtree
+are larger than or equal to the key of v</li>
+<li>BST representation
+<ul>
+<li>Node: data, parent, left, child</li>
+<li>Root: <code>parent=NIL</code></li>
+</ul></li>
+<li>Searching <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">search(v, key) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span> || v.data == key) &#123;</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (key &lt; v.data) &#123;</span><br><span class="line">    <span class="keyword">return</span> search(v.left, key);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> search(v.right, key);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Full tree and complete tree
+<ul>
+<li>Full: a binary tree is full if each node has either 0 or 2
+children</li>
+<li>Complete: a binary with n levels is complete if every level is
+completely filled except possibly the last level, which is filled from
+left to right</li>
+</ul></li>
+</ol>
+<h2 id="lecture-17-20220303">Lecture 17 2022/03/03</h2>
+<ol type="1">
+<li>Properties of binary trees
+<ul>
+<li>Suppose a binary tree has n nodes, and its height is h, then
+<ul>
+<li><span class="math inline">\(h + 1 \le n \le 2^{h + 1} -
+1\)</span></li>
+<li><span class="math inline">\(log(n + 1) \le h \le n - 1\)</span></li>
+</ul></li>
+</ul></li>
+<li>BST operations
+<ul>
+<li>Searching: <span class="math inline">\(O(h)\)</span></li>
+<li>Minimum: <span class="math inline">\(O(h)\)</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">minimum(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (v.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">    v = v.left;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Maximum: <span class="math inline">\(O(h)\)</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">maximum(v) &#123;</span><br><span class="line">    <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (v.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">      v = v.right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Successor: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">successor(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> minimum(v.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (v.parent != <span class="keyword">null</span> &amp;&amp; v.parent.right == v) &#123;</span><br><span class="line">    v = v.parent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v.parent;  <span class="comment">// v.parent could be null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Predecessor: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">predecessor(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> maximum(v.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (v.parent != <span class="keyword">null</span> &amp;&amp; v.parent.left == v) &#123;</span><br><span class="line">    v = v.parent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v.parent; <span class="comment">// v.parent could be null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Insertion <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">insert(v, key) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    v = <span class="keyword">new</span> Node(key);</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (key &lt; v.data) &#123;</span><br><span class="line">    v.left = insert(v.left, key);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; v.data) &#123;</span><br><span class="line">    v.right = insert(v.right, key);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Deletion <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delete(T, key) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-18-20220307">Lecture 18 2022/03/07</h2>
+<h2 id="lecture-19-20220309">Lecture 19 2022/03/09</h2>
+<h2 id="lecture-20-20220310">Lecture 20 2022/03/10</h2>
 
     </div>
 
@@ -1021,7 +1095,7 @@ visit the right subtree</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-18-20220307"><span class="nav-number">18.</span> <span class="nav-text">Lecture 18 2022&#x2F;03&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">19.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">20.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1097,12 +1171,12 @@ visit the right subtree</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">785k</span>
+    <span title="Symbols count total">793k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11:54</span>
+    <span title="Reading time total">12:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
