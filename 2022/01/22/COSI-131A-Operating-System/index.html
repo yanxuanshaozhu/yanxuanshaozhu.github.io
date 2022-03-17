@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-03-15T19:41:09.896Z">
+<meta property="article:modified_time" content="2022-03-17T03:04:36.873Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-15 15:41:09" itemprop="dateModified" datetime="2022-03-15T15:41:09-04:00">2022-03-15</time>
+                <time title="Modified: 2022-03-16 23:04:36" itemprop="dateModified" datetime="2022-03-16T23:04:36-04:00">2022-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>60k</span>
+              <span>62k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>55 mins.</span>
+              <span>56 mins.</span>
             </span>
 
         </div>
@@ -1502,7 +1502,24 @@ than B</li>
 <li>Build higher-level programming abstraction on above hardware
 instructions, for example: lock with atomic <code>acquire()</code> and
 <code>release()</code></li>
-<li>Milk solution example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">          <span class="comment">// Person A and Person B</span></span><br><span class="line">          lock.acquire();</span><br><span class="line">          <span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">            buy milk;</span><br><span class="line">          &#125;</span><br><span class="line">          lock.release();</span><br><span class="line">        ```  </span><br><span class="line"><span class="number">2.</span> The critical section problem</span><br><span class="line">   * Idea: only one thread is executing the critical section at a time to avoid race condition</span><br><span class="line">   * Examples</span><br><span class="line">     * Milk synchronization: `<span class="keyword">if</span> (noMilk) &#123;buy milk&#125;`</span><br><span class="line">     * Bank transfer synchronization: `acc1 -= amount; acc2 += amount;`</span><br><span class="line">     * Producer consumer problem: `count++`</span><br><span class="line">        ```assembly</span><br><span class="line">          LOAD R1, count</span><br><span class="line">          INC R1</span><br><span class="line">          STORE R1, count</span><br></pre></td></tr></table></figure></li>
+<li>Milk solution example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person A and Person B</span></span><br><span class="line">lock.acquire();</span><br><span class="line"><span class="keyword">if</span> (noMilk) &#123;</span><br><span class="line">  buy milk;</span><br><span class="line">&#125;</span><br><span class="line">lock.release();</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>The critical section problem
+<ul>
+<li>Idea: only one thread is executing the critical section at a time to
+avoid race condition</li>
+<li>Examples
+<ul>
+<li>Milk synchronization: <code>if (noMilk) &#123;buy milk&#125;</code></li>
+<li>Bank transfer synchronization:
+<code>acc1 -= amount; acc2 += amount;</code></li>
+<li>Producer consumer problem:
+<ul>
+<li>Problems in the producer's method <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Object item)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (count == size) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  count ++;</span><br><span class="line">  <span class="comment">// If context switch happens here, then consumer thinks there is one </span></span><br><span class="line">  <span class="comment">// more items than there actually is</span></span><br><span class="line">  buffer[in] = item;</span><br><span class="line">  in = (in + <span class="number">1</span>) % size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Additional problems: <code>count++</code>/ <code>count--</code>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; There can be context switches between these three instructions</span><br><span class="line">LOAD R1, count</span><br><span class="line">INC R1 &#x2F;&#x2F; DEC R1 for count--</span><br><span class="line">STORE R1, count</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul></li>
 <li>For efficiency consideration, it's important to identify the exact
 lines of code that is the critical section</li>
@@ -1577,14 +1594,53 @@ interrupts after exiting critical section</li>
 <ul>
 <li>Overkill: disables all interrupts(I/O), disallows concurrency with
 threads in non-critical sections</li>
-<li>Does not work for multi-core systems</li>
+<li>Does not work for multi-core systems, because each cor has its own
+interrupts, so threads on different cores can access their critical
+sections at the same time</li>
 </ul></li>
 </ul></li>
-<li>Test and set</li>
+<li>Test and set
+<ul>
+<li>An assembly command called TS(test and set), it's an atomic
+operation</li>
+<li>What does <code>TS(i)</code> do
+<ul>
+<li>Save the value of <code>Mem[i]</code> (Mem[i] stores a boolean value
+of a lock)</li>
+<li>Set <code>Mem[i] = True</code></li>
+<li>Return the original value of <code>Mem[i]</code></li>
+</ul></li>
+<li>If TS(i) returns True, then the lock is locked, so we cannot access
+the critical section</li>
+<li>Solve the critical section problem with TS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shared bool lock &#x3D; false;</span><br><span class="line"></span><br><span class="line">while (true) &#123;</span><br><span class="line">  while (ts(lock)) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  lock &#x3D; false;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Comments
+<ul>
+<li>Advantages: easy to use for critical sections, not easy to use for
+other synchronization problems</li>
+<li>Disadvantages: busy waiting is involved, can be expensive on multi
+cores</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 <ol start="3" type="1">
-<li>Semaphores: software abstraction of hardware</li>
+<li>Semaphores: software abstraction of hardware
+<ul>
+<li>Idea: a semaphore is a data structure consisting of an integer lock
+with a waiting queue, it provides thread safe operations
+<ul>
+<li><code>init(n)</code>: n threads are allowed access to resource at a
+time</li>
+<li><code>acquire()</code>: thread code calls to gain access</li>
+<li><code>release()</code>: thread code calls to relinquish access</li>
+</ul></li>
+<li>Binary semaphore: n = 1, only one thread can hold lock at a
+time</li>
+<li>Counting semaphore: n threads can hold lock at a time</li>
+<li>A semaphore can be either unlocked or locked by a thread with other
+threads waiting in the queue</li>
+<li>Critical section solved with binary semaphore <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shared binary semaphore S = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  acquire(S);</span><br><span class="line">  critical section;</span><br><span class="line">  release(S);</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ol>
 <h2 id="lecture-14-20220315">Lecture 14 2022/03/15</h2>
 <ol type="1">
@@ -2762,12 +2818,12 @@ queues</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">793k</span>
+    <span title="Symbols count total">803k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">12:01</span>
+    <span title="Reading time total">12:10</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
