@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-03-17T03:04:36.873Z">
+<meta property="article:modified_time" content="2022-03-29T17:50:54.624Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-16 23:04:36" itemprop="dateModified" datetime="2022-03-16T23:04:36-04:00">2022-03-16</time>
+                <time title="Modified: 2022-03-29 13:50:54" itemprop="dateModified" datetime="2022-03-29T13:50:54-04:00">2022-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>62k</span>
+              <span>73k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>56 mins.</span>
+              <span>1:06</span>
             </span>
 
         </div>
@@ -1646,6 +1646,72 @@ threads waiting in the queue</li>
 <ol type="1">
 <li></li>
 </ol>
+<h2 id="lecture-15-20220317">Lecture 15 2022/03/17</h2>
+<h2 id="lecture-16-20220322">Lecture 16 2022/03/22</h2>
+<h2 id="lecture-17-20220324">Lecture 17 2022/03/24</h2>
+<ol type="1">
+<li>Deadlock
+<ul>
+<li>Four necessary but not sufficient conditions of deadlock
+<ul>
+<li>Mutual exclusion: only one process can use a resource at a time</li>
+<li>Hold &amp; wait: process holding more than one resources is waiting
+to acquire others hold by other processes</li>
+<li>No preemption: resources only released by processes voluntarily when
+they finish using the resources</li>
+<li>Circular wait: there exists a set of waiting processes, <span class="math inline">\(\{P_0,..., P_n\}\)</span>, s.t. <span class="math inline">\(P_0\)</span> waits for <span class="math inline">\(P_1\)</span>, ..., <span class="math inline">\(P_n\)</span> waits for <span class="math inline">\(P_0\)</span></li>
+</ul></li>
+<li>An deadlock example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Semaphore m1 = <span class="keyword">new</span> Semaphore(<span class="number">1</span>); <span class="comment">// binary semaphore m1</span></span><br><span class="line">Semaphore m2 = <span class="keyword">new</span> Semaphore(<span class="number">1</span>); <span class="comment">// binary semaphore m2</span></span><br><span class="line"><span class="comment">// Thread A</span></span><br><span class="line">m1.acquire();  <span class="comment">// Context switch after this line to Thread B</span></span><br><span class="line">m2.acquire();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Thread B</span></span><br><span class="line">m2.acquire();</span><br><span class="line">m1.acquire();</span><br></pre></td></tr></table></figure></li>
+<li>Starvation is different from deadlock
+<ul>
+<li>For a deadlock: all threads are suspended</li>
+<li>For a starvation: only part of threads are suspended (for example,
+threads with lower priorities in the priority scheduling policy)</li>
+</ul></li>
+<li>Deadlock problem descriptions
+<ul>
+<li>Models
+<ul>
+<li>Resource types: <span class="math inline">\(R_1\)</span>, ..., <span class="math inline">\(R_m\)</span></li>
+<li>Each resource type <span class="math inline">\(R_i\)</span> has
+<span class="math inline">\(W_i\)</span> instances</li>
+<li>Each process requests a resource (wait until the resource is
+granted), use the resource, and release the resource</li>
+<li>System table records if a resource is free or not, process it
+allocated, and queue for processes waiting for each resource</li>
+</ul></li>
+</ul></li>
+<li>Resource allocation graph
+<ul>
+<li>V: set of vertices
+<ul>
+<li>P = <span class="math inline">\(\{P_1, ..., P_n\}\)</span>:
+processes in the system</li>
+<li>R = <span class="math inline">\(\{R_1, ..., R_n\}\)</span>:
+resources in the system</li>
+</ul></li>
+<li>E: set of edges
+<ul>
+<li>Request edge: <span class="math inline">\(P_i \rightarrow
+R_j\)</span></li>
+<li>Assignment edge: <span class="math inline">\(R_j \rightarrow
+P_i\)</span></li>
+</ul></li>
+<li>Some interpretations
+<ul>
+<li>No cycles, then no deadlock</li>
+<li>Cycle and n instances per resource type, then possible deadlock</li>
+<li>Cycle and one instance per resource type, then deadlock</li>
+<li>Processes that are not in a cycle can also be in deadlock</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Dealing with deadlock
+<ul>
+<li>Prevention: breaking one of the three conditions with
+deadlock(mutual exclusion cannot be broken)</li>
+</ul></li>
+</ol>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
 <li>Introduction
@@ -2642,6 +2708,251 @@ queues</li>
 </ul></li>
 </ul></li>
 </ul>
+<ol start="6" type="1">
+<li>Synchronization Tools
+<ul>
+<li>Background Ch 6.1
+<ul>
+<li>Concurrent or parallel execution can contribute to issues involving
+the integrity of data shared by several processes</li>
+<li>Race condition: a situation where several processes access and
+manipulate the same data concurrently and the outcome of the execution
+depends on the particular order in which the access take place is called
+race condition</li>
+<li>We use process synchronization to prevent race condition</li>
+</ul></li>
+<li>The critical section problem Ch 6.2
+<ul>
+<li>Situation: a system consists of n processes <span class="math inline">\(\{P_0, ..., P_n\}\)</span>, each process has a
+critical section part in which process my access and update data that is
+shared with at least one other process</li>
+<li>The critical-section problem is to design a protocol that the
+processes can use to synchronize their activity so as to cooperatively
+share data</li>
+<li>Procedure of each process: entry section -&gt; critical section
+-&gt; remainder section</li>
+<li>Requirements for critical section problems
+<ul>
+<li>Mutual exclusion: if process <span class="math inline">\(P_i\)</span> is executing its critical section,
+then no other process can execute its critical section</li>
+<li>Progress: if no process is executing in its critical section and
+some processes wish to enter their critical section, then only the
+processes that are not int the exit section can decide which will enter
+the critical section next, and this selection cannot be postponed
+indefinitely</li>
+<li>Bounded waiting: if a processes has made a request to enter its
+critical section, the its waiting time should be bounded before the
+request is granted</li>
+</ul></li>
+<li>Two general approaches to handle critical sections in os:
+<ul>
+<li>Preemptive kernels
+<ul>
+<li>Processes in the kernel mode cannot be preempted, they will run
+until it exits the kernel mode, blocks, or voluntarily yields control of
+the cpu</li>
+<li>Free from race conditions</li>
+</ul></li>
+<li>Non-preemptive kernels
+<ul>
+<li>More responsive</li>
+<li>More suitable for real-time programming</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Peterson's Solution Ch 6.3
+<ul>
+<li>Peterson's solution is a software-based solution to the critical
+section problem</li>
+<li>Given the way that modern computer architectures perform
+machine-language instructions (such as <code>LOAD</code>,
+<code>STORE</code>), there is no guarantee that Peterson's solution
+works on such architectures</li>
+<li>Idea: two processes alternate execution between critical sections
+and other sections, if one is ready (wishes) to enter its critical, the
+other process will wait (if one is not ready to, or wishes to enter its
+critical section, it will skips its turn to enter the critical
+section)</li>
+<li>Algorithm
+<ul>
+<li>Shared variables
+<ul>
+<li><code>int turn</code>: if <code>turn == 0</code>, then <span class="math inline">\(P_0\)</span> can enter its critical section, if
+<code>turn == 1</code>, then <span class="math inline">\(P_1\)</span>
+can enter its critical section</li>
+<li><code>boolean flag[2]</code>: if <code>flag[0] == true</code>, then
+<span class="math inline">\(P_0\)</span> is ready (wishes) to enter its
+critical section, if <code>flag[1] == true</code>, then <span class="math inline">\(P_1\)</span> is ready (wishes) to enter its
+critical sections</li>
+</ul></li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Entry section</span></span><br><span class="line">  flag[i] = <span class="keyword">true</span>;</span><br><span class="line">  turn = j; <span class="comment">// turn = 1 - i</span></span><br><span class="line">  <span class="keyword">while</span> (flag[j] &amp;&amp; turn == j) &#123;</span><br><span class="line">    ; <span class="comment">// Wait</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Critical section</span></span><br><span class="line">  flag[i] = <span class="keyword">false</span>;</span><br><span class="line">  <span class="comment">// Remainder section</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Proof of mutual exclusion, progress and bounded waiting
+<ul>
+<li>Mutual exclusion
+<ul>
+<li>If <span class="math inline">\(P_i\)</span> enters critical section:
+<code>flag[i] == true and (turn == i or flag[j] == false)</code></li>
+<li>If <span class="math inline">\(P_j\)</span> enters critical section:
+<code>flag[j] == true and (turn == j or flag[i] == false)</code></li>
+<li>These two conditions cannot happen simultaneously</li>
+</ul></li>
+<li>Progress: <span class="math inline">\(P_i\)</span> is prevented from
+enter critical section if <code>flag[j] == true and turn == j</code>,
+then <span class="math inline">\(P_j\)</span> must be in critical
+section so it cannot be in non-critical section</li>
+<li>Bounded waiting: after <span class="math inline">\(P_j\)</span>
+leaves its critical section, it sets <code>flag[j] = false</code>, so
+<span class="math inline">\(P_i\)</span> waits at most one round</li>
+</ul></li>
+<li>Why Peterson's solution may not work: to improve performance, modern
+computers may reorder read/write instructions for independent variables
+<ul>
+<li>Example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Thread 1</span></span><br><span class="line"><span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (!flag) &#123;</span><br><span class="line">  ;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(x);</span><br><span class="line"><span class="comment">// Thread 2</span></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">100</span>;</span><br><span class="line">flag = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure> We want Thread to print 100, but if computer
+reorders the instructions in Thread 2, then Thread 1 will print 1</li>
+</ul></li>
+</ul></li>
+<li>Hardware support for synchronization Ch 6.4
+<ul>
+<li>Memory Barriers
+<ul>
+<li>Memory model: how a computer determines what memory guarantees it
+will provide to an application program is called the memory mode</li>
+<li>Memory model categories:
+<ul>
+<li>Strongly ordered model: a memory modification on one processor is
+immediately visible to all other processes</li>
+<li>Weakly ordered model: modifications on one processor may not be
+immediately visible to other processes</li>
+</ul></li>
+<li>Memory barriers/ fences: computer instructions that can force any
+changes in memory to be propagated to all other processors, thereby
+ensuring that memory modifications are visible to threads running on
+other processors
+<ul>
+<li>An example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Thread 1</span></span><br><span class="line"><span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (!flag) &#123;</span><br><span class="line">  memory_barrier();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(x);</span><br><span class="line"><span class="comment">// Thread 2</span></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">100</span>;</span><br><span class="line">memory_barrier();</span><br><span class="line">flag = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Hardware instructions
+<ul>
+<li>Modern computer architectures usually provide atomic instructions to
+test and modify the contents of a variable or swap the contents of
+variables</li>
+<li><code>test_and_set()</code> and mutual exclusion
+<ul>
+<li><p><code>test_and_set()</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">testAndSet</span><span class="params">(<span class="keyword">boolean</span> flag)</span> </span>&#123;</span><br><span class="line">  oldVal = flag;</span><br><span class="line">  flag = <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">return</span> oldVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Mutual exclusion with test_and_set <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> lock = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Entry section</span></span><br><span class="line">  testAndSet(lock) &#123;</span><br><span class="line">    ; <span class="comment">// Wait here</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Critical section</span></span><br><span class="line">  lock = <span class="keyword">false</span>;</span><br><span class="line">  <span class="comment">// Remainder section</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul></li>
+<li><code>compare_and_swap()</code> and mutual exclusion
+<ul>
+<li><code>compare_and_swap()</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compareAndSwap</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> exp, <span class="keyword">int</span> newVal)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> tmp = val;</span><br><span class="line">  <span class="keyword">if</span> (val == exp) &#123;</span><br><span class="line">    val = newVal;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Mutual exclusion with compare_and_swap <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lock = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Entry section</span></span><br><span class="line">  <span class="keyword">while</span> (compareAndSwap(val, <span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">    ; <span class="comment">// Wait here</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Critical section</span></span><br><span class="line">  lock = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// Remainder section</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Atomic variables
+<ul>
+<li>Atomic variables: a tool that is based on compare_and_swap and is
+used to solve the critical section problem</li>
+<li>Most systems that support atomic variables provide special atomic
+data structures and functions for accessing and manipulating atomic
+variables
+<ul>
+<li>Example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">increment</span><span class="params">(<span class="keyword">int</span> atomicVar)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> tmp;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    tmp = atomicVar;</span><br><span class="line">  &#125; <span class="keyword">while</span> (tmp != compareAndSwap(v, tmp, tmp + <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Mutex locks Ch 6.5
+<ul>
+<li>Hardware solutions are generally complicated and inaccessible to
+application programmers, so os usually provides higher-level software
+solutions</li>
+<li>The simplest solution is mutex lock (mutex is short for mutual
+exclusion). A process must acquire the lock before entering the critical
+section and releasing the lock after critical section is completed</li>
+<li>Mutex lock
+<ul>
+<li><code>acquire()</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">boolean</span> available)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (!available) &#123;</span><br><span class="line">    ; <span class="comment">// Wait</span></span><br><span class="line">  &#125;</span><br><span class="line">  available = <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>release()</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">(<span class="keyword">boolean</span> available)</span> </span>&#123;</span><br><span class="line">  available = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Mutual exclusion and mutex lock <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">         <span class="keyword">boolean</span> available = <span class="keyword">true</span>;</span><br><span class="line">         <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">           <span class="comment">// Entry section</span></span><br><span class="line">           acquire(available);</span><br><span class="line">           <span class="comment">// Critical section</span></span><br><span class="line">           release(available);</span><br><span class="line">           <span class="comment">// Remainder section</span></span><br><span class="line">         &#125;</span><br><span class="line">       ``` </span><br><span class="line">    * The above lock is called spin-lock, because the process spins <span class="keyword">while</span> waiting <span class="keyword">for</span> the lock to become available</span><br><span class="line">    * Advantages: no context <span class="keyword">switch</span> is required when a process must wait on a lock, context <span class="keyword">switch</span> may take a considerable time</span><br><span class="line">    * Disadvantages: busy waiting, cpu utilization is not optimized</span><br><span class="line">* Semaphores Ch <span class="number">6.6</span></span><br><span class="line">  * Compared with mutex locks, semaphores can provide more sophisticated ways <span class="keyword">for</span> processes to synchronize their activities</span><br><span class="line">  * Semaphore: a semaphore is an integer variable that, apart from initialization, is accessed only by two standard atomic operations, `wait()`, `signal()`</span><br><span class="line">  * `wait()` and `signal()`</span><br><span class="line">     ```java</span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">int</span> semaphore)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">while</span> (semaphore &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">           ; <span class="comment">// Wait</span></span><br><span class="line">         &#125;</span><br><span class="line">         semaphore--;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">signal</span><span class="params">(<span class="keyword">int</span> semaphore)</span> </span>&#123;</span><br><span class="line">  semaphore++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Counting semaphore and binary semaphore
+<ul>
+<li>Counting semaphore: semaphores that can range over an unrestricted
+domain</li>
+<li>Binary semaphores: semaphores that can be either 0 or 1</li>
+</ul></li>
+<li>Semaphore implementation
+<ul>
+<li>The previous <code>wait</code> and <code>signal</code> still use
+busy waiting</li>
+<li>Modified waiting: if wait is called, and the value of semaphore is
+not positive, then instead of busy waiting, we add the process to a
+waiting queue associated with the semaphore, and the state of the
+process is switched from running to waiting, and then the cpu scheduler
+can pick another process to run</li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Semaphore</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> value;</span><br><span class="line">  Queue&lt;Process&gt; waitingQueue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wait(Semaphore s) &#123;</span><br><span class="line">  s.value --;</span><br><span class="line">  <span class="keyword">if</span> (s.value &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    s.waitingQueue(thisProcess);</span><br><span class="line">    <span class="keyword">this</span>.Process.sleep();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">signal(Semaphore s) &#123;</span><br><span class="line">  s.value++;</span><br><span class="line">  <span class="keyword">if</span> (s.value &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    Process p = s.waitingQueue.remove();</span><br><span class="line">    p.wakeUp();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>When the value of semaphore is negative, its magnitude is the number
+of processes waiting in the waiting queue of this semaphore</li>
+<li>Semaphore operations should be atomic</li>
+</ul></li>
+</ul></li>
+<li>Monitors Ch 6.7
+<ul>
+<li>Various errors can happen when programmers misuse semaphores or
+mutex locks to solve critical section problems, one strategy for
+handling these errors is to incorporate simple synchronization tools as
+high-level language constructs, for example, the monitor type.</li>
+<li>A monitor type is an ADT that includes a set of programmer-defined
+operations that are provided with mutual exclusion within the monitor,
+the monitor type also declares the variables whose values define the
+state of an instance of that type, along with the bodies of functions
+that operate on those variables</li>
+<li>Only one process at a time is active within the monitor</li>
+<li>The monitor type itself is not sufficiently powerful for modeling
+some synchronization schemes, so we need to define additional
+synchronization mechanisms provided by the condition type. The only
+operations that can be invoked on a condition variable are
+<code>wait()</code> and <code>signal()</code>
+<ul>
+<li><code>x.wait()</code> with monitor <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// condition x: binary semaphore x_sem and integer x_count, both initialized to 0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">F</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  x_count ++;</span><br><span class="line">  <span class="keyword">if</span> (next_count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    signal(next);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    signal(mutex);</span><br><span class="line">  &#125;</span><br><span class="line">  wait(s_sem);</span><br><span class="line">  x_count --;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>x.signal()</code> with monitor<br>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x_count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  next_count ++;</span><br><span class="line">  signal(x_sem);</span><br><span class="line">  wait(next);</span><br><span class="line">  next_count--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Resume processes with a monitor
+<ul>
+<li>When <code>x.signal()</code> is called on a condition x and there
+are multiple suspended processes, there are different wats for the
+monitor to determine which process to wake up</li>
+<li>The simplest way is to use a FCFS policy, then the process that has
+waited for the longest part should be waken up</li>
+<li>In circumstances that FCFS does not work, the monitor can use
+conditional wait: <code>x.signal(cond)</code>, where cond is an integer
+expression that is evaluated when the wait operation is executed. The
+value of cond, which is called priority number, is stored in the
+suspended process, and the process with the lowest priority number is
+waken up</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Synchronization examples
+<ul>
+<li>Classic problems of synchronization
+<ul>
+<li>The bounded buffer problem
+<ul>
+<li>The producers and consumers share these data: <code>int n</code>,
+<code>Semaphore mutex = 1</code>, <code>Semaphore empty = n</code>,
+<code>Semaphore full = 0</code></li>
+<li>The pool consists of n buffers, each capable of holding one item,
+the mutex binary semaphore provides mutual exclusion for accesses to the
+buffer pool, the empty and full semaphores count the number of empty and
+full buffers</li>
+<li>Producer code <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Produce an item</span></span><br><span class="line">  wait(empty);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  <span class="comment">// Add item to the buffer</span></span><br><span class="line">  signal(mutext);</span><br><span class="line">  signal(full);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Consumer code <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">  wait(full);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  <span class="comment">// Remove an item from buffer</span></span><br><span class="line">  signal(mutex);</span><br><span class="line">  signal(empty);</span><br><span class="line">  <span class="comment">// Consume the item</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -2742,7 +3053,7 @@ queues</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">14.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220317"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220322"><span class="nav-number">15.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220324"><span class="nav-number">16.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">17.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2818,12 +3129,12 @@ queues</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">805k</span>
+    <span title="Symbols count total">817k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">12:12</span>
+    <span title="Reading time total">12:22</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
