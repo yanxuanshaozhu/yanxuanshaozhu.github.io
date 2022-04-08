@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:42:18.280Z">
+<meta property="article:modified_time" content="2022-04-08T17:33:52.792Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -201,7 +201,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-03 21:42:18" itemprop="dateModified" datetime="2022-04-03T21:42:18-04:00">2022-04-03</time>
+                <time title="Modified: 2022-04-08 13:33:52" itemprop="dateModified" datetime="2022-04-08T13:33:52-04:00">2022-04-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,14 +219,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>27k</span>
+              <span>36k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>24 mins.</span>
+              <span>32 mins.</span>
             </span>
 
         </div>
@@ -948,7 +948,7 @@ node to a leaf</li>
 <li>Height of a node v: the number of edges on the longest path from the
 node v to a leaf <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">height(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + Math.max(height(v.left), height(v.right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Depth of a node v: the number of edges on the path from the root to
-the node v <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">depth(T, v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == root) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + depth(T, v.parent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+the node v <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">depth(T, v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == T.root) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + depth(T, v.parent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Binary search tree (BST)
 <ul>
@@ -992,7 +992,7 @@ left to right</li>
 <li><p>Successor <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">successor(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> minimum(v.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (v.parent != <span class="keyword">null</span> &amp;&amp; v.parent.right == v) &#123;</span><br><span class="line">    v = v.parent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v.parent;  <span class="comment">// v.parent could be null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Predecessor <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">predecessor(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> maximum(v.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (v.parent != <span class="keyword">null</span> &amp;&amp; v.parent.left == v) &#123;</span><br><span class="line">    v = v.parent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> v.parent; <span class="comment">// v.parent could be null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Insertion-recursive approach <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">         <span class="comment">// Recursive</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> TreeNode <span class="title">insert</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">               root = node;</span><br><span class="line">               <span class="keyword">return</span> root;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (root.data &gt; node.data) &#123;</span><br><span class="line">               TreeNode left = insert(root.left, node);</span><br><span class="line">               root.left = left;</span><br><span class="line">               left.parent  = root;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.data &lt; node.data) &#123;</span><br><span class="line">               TreeNode right = insert(root.right, node);</span><br><span class="line">               root.right = right;</span><br><span class="line">               right.parent = root;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">   * Insertion-iterative approach</span><br><span class="line">      ```java</span><br><span class="line">         <span class="comment">// Iterative</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> TreeNode <span class="title">insert</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">            TreeNode prev = <span class="keyword">null</span>;   <span class="comment">// prev is the parent of the inserted node</span></span><br><span class="line">            TreeNode cur = root;   <span class="comment">// cur is where node should be inserted</span></span><br><span class="line">            <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">               prev = cur;</span><br><span class="line">               <span class="keyword">if</span> (cur.data &gt; node.data) &#123;</span><br><span class="line">                  cur = cur.left;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  cur = cur.right;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            node.parent = prev;</span><br><span class="line">            <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;  <span class="comment">// root is null, empty tree</span></span><br><span class="line">               root = node;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (prev.data &gt; node.data) &#123;</span><br><span class="line">                  prev.left = node;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  prev.right = node;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">## Lecture 18 2022/03/07</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> BST operations</span><br><span class="line">   * Deletion:</span><br><span class="line">     * Cases</span><br><span class="line">       * No child: <span class="function"><span class="keyword">if</span> the node has no <span class="title">children</span><span class="params">(leaf node)</span>, then remove it and update parent&#x27;s child pointer</span></span><br><span class="line"><span class="function">       * One child: delete the node and update its parent&#x27;s child pointer to the child of the deleted node</span></span><br><span class="line"><span class="function">       * Two child: swap the data of the node with its successor, then delete the successor, the successor should have either one child or no child</span></span><br><span class="line"><span class="function">   * Deletion-recursive approach</span></span><br><span class="line"><span class="function">      ```java</span></span><br><span class="line"><span class="function">         <span class="keyword">public</span> TreeNode <span class="title">delete</span> <span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (root.data &lt; node.data) &#123;</span><br><span class="line">               TreeNode right = delete(root.right, node);</span><br><span class="line">               root.right = right;</span><br><span class="line">               <span class="keyword">if</span> (right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  right.parent = root;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.data &gt; node.data) &#123;</span><br><span class="line">               TreeNode left = delete(root.left, node);</span><br><span class="line">               root.left = left;</span><br><span class="line">               <span class="keyword">if</span> (left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  left.parent = root;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">                  <span class="keyword">return</span> root.right;</span><br><span class="line">               &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                  <span class="keyword">return</span> root.left;</span><br><span class="line">               &#125;</span><br><span class="line">               TreeNode successor = minimum(root.right);</span><br><span class="line">               root.data = successor.data;</span><br><span class="line">               root.right = delete(root.right, successor);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Deletion-iterative approach <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">delete</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   TreeNode replace = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (node.left == <span class="keyword">null</span> ||node.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">      replace = node;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      replace = successor(node); </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// If replace is node, then child is the child of node or null, the following </span></span><br><span class="line">   <span class="comment">// code delete node, connect parent of node and child</span></span><br><span class="line">   <span class="comment">// If replace is not node, then child is the child of successor of node,</span></span><br><span class="line">   <span class="comment">// the following code delete successor, connect its parent and child </span></span><br><span class="line">   TreeNode child = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (replace.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">      child = replace.right;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      child = replace.left;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (child != <span class="keyword">null</span>) &#123;</span><br><span class="line">      child.parent = replace.parent;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (replace.parent == <span class="keyword">null</span>) &#123;</span><br><span class="line">      root = child;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (replace.equals(replace.parent.left)) &#123;</span><br><span class="line">         replace.parent.left = child;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         replace.parent.right = child;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (!replace.equals(node)) &#123;</span><br><span class="line">      node.data = replace.data;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Deletion-iterative approach <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">delete(T, z) &#123;</span><br><span class="line">  <span class="keyword">if</span> (z.left == <span class="keyword">null</span> || z.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">    Node y = z;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Node y = successor(z);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (y.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">    Node x = y.left;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Node x = y.right;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (x != <span class="keyword">null</span>) &#123;</span><br><span class="line">    x.parent = y.parent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (y.parent == <span class="keyword">null</span>) &#123;</span><br><span class="line">    T.root = x;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (y == y.parent.left) &#123;</span><br><span class="line">      y.parent.left = x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      y.parent.right = x;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (y != z) &#123;</span><br><span class="line">    z.data = y.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Performance evaluation</p>
 <table>
 <thead>
@@ -1134,7 +1134,261 @@ property</li>
 </ul></li>
 </ul></li>
 </ul></li>
+<li>AVL tree insertion
+<ul>
+<li>Procedures
+<ul>
+<li>Insert the new key as a new leaf just as in ordinary BST</li>
+<li>Trace the path from the new leaf towards the root</li>
+<li>For each node encountered calculate the balance factor</li>
+<li>If the balance factor is 2 or -2, balance the tree</li>
+</ul></li>
+<li>For insertion, once you perform a rotation at a node v, no need to
+perform any rotation at ancestors of v</li>
+<li>Determine how to rotate after insertion
+<ul>
+<li>If <code>v.bf &lt; -1</code>
+<ul>
+<li>If <code>v.right.bf &gt; 0</code>: right rotate at v.right, then
+left rotate at v</li>
+<li>IF <code>v.right.bf &lt; 0</code>: left rotate at v</li>
+</ul></li>
+<li>If <code>v.bf &gt; 1</code>
+<ul>
+<li>If <code>v.left.bf &lt; 0</code>: left rotate at v.left, then right
+rotate at v</li>
+<li>If <code>v.left.bf &gt; 0</code>: right rotate at v</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>AVL tree deletion
+<ul>
+<li>Perform BST deletion first</li>
+<li>If node v is deleted, trace the path from v.parent to root, check
+and rotate each imbalanced node</li>
+</ul></li>
+<li>AVL tree runtime analysis
+<ul>
+<li>Search, insertion, deletion are all guaranteed to be <span class="math inline">\(O(logN)\)</span></li>
+</ul></li>
+<li>Splay trees
+<ul>
+<li>Splay tree is invented by Daniel Sleator and Robert Tarjan in
+1983</li>
+<li>Splay trees are self-balancing binary search tree with additional
+property that recently accessed elements are quick to access again (the
+idea of locality)</li>
+<li>Splay trees do not store balance factor, they are usually nicely
+balanced, but height can potentially be N - 1</li>
+<li>Basic operations: search, insertion and deletion in amortized <span class="math inline">\(O(logN)\)</span> time. <span class="math inline">\(O(N)\)</span> operations can occur, but splaying
+makes them infrequent</li>
+<li>Splay tree rotations
+<ul>
+<li>If the target node X is the root of a splay tree, then no rotation
+is involved</li>
+<li>If the target X is the child of root, then single rotation is
+needed. A single rotation, either left or right, is called zig</li>
+<li>If the target node X has a parent P, and a grandparent G, then
+double rotation is involved. The double rotation, either RL rotation, or
+LR rotation, is called zig-zag</li>
+</ul></li>
+<li>Splay tree search
+<ul>
+<li>Like BST search</li>
+<li>Let X be the node where the search ends (succeed or not)</li>
+<li>Take node X and splay up to the root of the tree using a sequence of
+rotations</li>
+</ul></li>
+<li>Insert X
+<ul>
+<li>Like BSt insert</li>
+<li>Splay X to the root</li>
+</ul></li>
+<li>Delete X
+<ul>
+<li>First splay X to the root, and remove</li>
+<li>If two subtrees remain, find the largest one from the left subtree
+and let it the be the new root</li>
+<li>If one subtree remain, let the root of the subtree be the root of
+the tree</li>
+<li>If no nodes remain, let the root be null</li>
+</ul></li>
+<li>Find max and min
+<ul>
+<li>Like BSt</li>
+<li>Once find the max/min, splay it to the root</li>
+</ul></li>
+<li>Disadvantage of splay tree
+<ul>
+<li>Amortized <span class="math inline">\(O(logN)\)</span>, it can be
+linear</li>
+<li>For each operation, splay is needed, so there is computational
+overhead in maintaining a splay tree</li>
+</ul></li>
+</ul></li>
 </ol>
+<h2 id="lecture-21-20220316">Lecture 21 2022/03/16</h2>
+<ol type="1">
+<li>Searching
+<ul>
+<li>Organization and retrieval of information is at the heart of most
+computer applications, and searching is the most frequently performed
+task</li>
+<li>If an array is not sorted, then search is <span class="math inline">\(O(N)\)</span>, if an array is sorted, then binary
+search is <span class="math inline">\(O(logN)\)</span></li>
+</ul></li>
+<li>Hash table ideas
+<ul>
+<li>Hashing is a technique used for performing insertion, deletion, and
+search in constant average time</li>
+<li>The data structure used is the hash table</li>
+<li>Hash table operations: <code>insert(T, x)</code>,
+<code>delete(T, x)</code>, <code>search(T, x)</code></li>
+<li>A table is simply another term for an array, it has several fields,
+to find an entry in the table, you only need to know the content of one
+of the fields(key, the key uniquely identifies an entry)</li>
+</ul></li>
+<li>Direct addressing table
+<ul>
+<li>Direct address tables are ordinary arrays</li>
+<li>Elements whose key is k obtained by indexing into the kth position
+of the array (if the maximum element in the table is n, then the length
+of a direct address table is also n)</li>
+<li>Insert, delete, search can be implemented to take <span class="math inline">\(O(1)\)</span> time</li>
+<li>Disadvantages
+<ul>
+<li>The size of direct-address table is large</li>
+<li>There could be a lot of empty space in direct address table</li>
+</ul></li>
+</ul></li>
+<li>Hash table
+<ul>
+<li>The ideal hash table is an array of some fixed size, containing
+items, and the operations are <span class="math inline">\(O(1)\)</span>
+on average</li>
+<li>Hash function: a hash function transforms a key k into a number that
+is used as an index in an array to locate the desired location
+<ul>
+<li>An element with k hashes to slot h(k), where h(k) is the hash value
+of key k</li>
+<li>Hash function should be simple to compute, any two distinct keys
+should get different cells</li>
+</ul></li>
+<li>Division method: <code>h(k) = k % m</code>, where m is the size of
+the table</li>
+<li>Issues with hashing
+<ul>
+<li>Decide what to do when two keys hash to the same value</li>
+<li>Choose a good hash function</li>
+<li>Choose the size of the table</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-22-20220317">Lecture 22 2022/03/17</h2>
+<ol type="1">
+<li>Collision
+<ul>
+<li>Collision: different keys mapped onto the same hash value</li>
+<li>Design a good hash function will minimize the number of collisions
+that occcur, but they will still happen, there are two basic collision
+resolution techniques</li>
+<li>Chaining
+<ul>
+<li>Store all elements that hash to the same slot in a linked list</li>
+<li>Store a pointer to the head of the linked list in the hash table
+slot</li>
+<li>Invented by H.P. Luhn in 1953</li>
+<li>Operations
+<ul>
+<li><code>insert(T, x)</code>: insert x at the head of list
+<code>T[h(x.key)]</code></li>
+<li><code>search(T, x)</code>: search for an element with key k in list
+<code>T[h(k)]</code></li>
+<li><code>delete(T, x)</code>: delete x from the list
+<code>T[h(x.key)]</code></li>
+</ul></li>
+<li>Chaining is used when we cannot predict the number of records in
+advance, thus the choice of the size of the table depends on available
+memory</li>
+<li>Recommendations of table size m:
+<ul>
+<li><code>m ~= 0.1 * n</code></li>
+<li><code>m ~= n</code></li>
+</ul></li>
+</ul></li>
+<li>Open addressing
+<ul>
+<li>All elements stored in hash table itself</li>
+<li>When collision occur, use a systematic procedure to store elements
+in free slots of the table</li>
+<li>Invented by Ershov and Peterson in 1957 independently</li>
+<li>If collision occurs, use this formula to do probing:
+<code>h(k) = (hash(k) + f(i)) % m</code>, where <code>h(k)</code> is the
+index in the table indicating where to insert k, <code>hash(k)</code> is
+the hash function of k, <code>f(i)</code> is the collision resolution
+function with <code>i = 0, 1, ..., m-1</code>, which means we start from
+<code>hash(k)</code> and try each i to find if <code>h(k)</code> is
+available, <code>m</code> is the size of the hash table</li>
+<li>Different collision resolution functions
+<ul>
+<li>Linear probing: <code>f(i) = i</code></li>
+<li>Quadratic probing: <code>f(i) = i^2</code></li>
+<li>Double hashing: <code>f(i) = i * hash2(k)</code></li>
+</ul></li>
+<li>Linear probing
+<ul>
+<li>Insert <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">insert(T, k)</span><br><span class="line">  i &#x3D; 0</span><br><span class="line">  repeat</span><br><span class="line">    j &#x3D; h(k, i)</span><br><span class="line">    if T[j] &#x3D; NIL then</span><br><span class="line">        T[j] &#x3D; k</span><br><span class="line">        return j</span><br><span class="line">    else </span><br><span class="line">      i &#x3D; i + 1</span><br><span class="line">  until i &#x3D; m</span><br><span class="line">  error &#39;hash table overflow&#39;</span><br></pre></td></tr></table></figure></li>
+<li>Search <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">            search(T, k)</span><br><span class="line">              i &#x3D; 0</span><br><span class="line">              repeat</span><br><span class="line">                j &#x3D; h(k, i)</span><br><span class="line">                if T[j] &#x3D; k then</span><br><span class="line">                  return j</span><br><span class="line">                else </span><br><span class="line">                  i &#x3D; i + 1</span><br><span class="line">              until T[j] &#x3D; NIL or i &#x3D; m</span><br><span class="line">              return NIL</span><br><span class="line">          &#96;&#96;&#96; </span><br><span class="line">       * Delete is more difficult</span><br><span class="line">         * If we delete a key from slot h(k), we cannot mark the slot NIL, because there maybe other probing slots based on this slot</span><br><span class="line">         * We need to mark the slot with a special value, modify search so that it keeps on looking when it sees the special value, insert would treat the slot with a special value as empty slot, so a new value can be added</span><br><span class="line"></span><br><span class="line">## Lecture 23 2022&#x2F;03&#x2F;21</span><br><span class="line"></span><br><span class="line">1. Clustering</span><br><span class="line">   * Primary Clustering: many consecutive elements form groups and it takes time to find a free slot or to search for an element</span><br><span class="line">   * Secondary Clustering: two records only have the same collision chain if their initial position is the same</span><br><span class="line">   * Linear probing has primary clustering problem</span><br><span class="line">   * Quadratic probing has secondary probing problem</span><br><span class="line">2. Quadratic probing</span><br><span class="line">   * Hash function: &#96;h(k) &#x3D; (hash(k) + f(i)^2) % m&#96;</span><br><span class="line">   * Problems: if the initial position is the same, then the collision chain will be the same</span><br><span class="line">3. Double hashing:</span><br><span class="line">   * Hash function: &#96;h(k) &#x3D; (hash1(k) + i * hash2(k)) % m&#96;</span><br><span class="line">   * A popular choice of hash2(k): &#96;hash2(k) &#x3D; R - (k % R)&#96;, where R is a primer number that is smaller than the size of the table</span><br><span class="line">3. Cuckoo hashing</span><br><span class="line">   * Invented by Pagh and Rodler in 2001</span><br><span class="line">   * Idea: when we insert k1, if k2 occupies the slot, we kick it out and find k2 a new slot</span><br><span class="line">   * Collision strategy</span><br><span class="line">     * Each hash table has a hash function h1 and h2</span><br><span class="line">     * We prefer h1, but if we must move, we use h2</span><br><span class="line">   * Cuckoo hashing guarantees $O(1)$ search and $O(1))$ insert</span><br><span class="line">4. Load factor</span><br><span class="line">   * Def: given a hash table T with m slots that stores n elements, load factor $\alpha &#x3D; n &#x2F; m$</span><br><span class="line">   * Hash with chaining: load factor can be greater than 1</span><br><span class="line">   * Hash with open addressing: load factor is $0 \leq \alpha \leq 1$</span><br><span class="line">   * If the load factor is high, then it&#39;s likely that there are collisions, if the load factor is low, then there are many empty slots</span><br><span class="line">   * If the load factor exceeds certain criteria value, then we need to do rehashing, which is an $O(N)$ operation</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Lecture 24 2022&#x2F;03&#x2F;23</span><br><span class="line"></span><br><span class="line">1. Hash function</span><br><span class="line">   * A good hash function should</span><br><span class="line">     * Be easy and quick to compute</span><br><span class="line">     * Achieve an even distribution of the key values that actually occur across the index range supported by the table</span><br><span class="line">     * Minimal number of collision</span><br><span class="line">   * Some hash functions</span><br><span class="line">     * Middle of square: middle digits of $k^2$</span><br><span class="line">     * Division: k % m</span><br><span class="line">     * Multiplicative: the first few digits of the fractional part of k * A, where $A &#x3D; (\sqrt(5) - 1) &#x2F; 2$</span><br><span class="line">     * Truncation or folding</span><br><span class="line">     * String hash function: $h(s) &#x3D; s(k-1)p^&#123;k-1&#125; + s(1)p + s(0)$</span><br><span class="line"></span><br><span class="line">2. Sorting</span><br><span class="line">   * Introduction</span><br><span class="line">     * $O(N^2)$ sorting: bubble sort, insertion sort, selection sort</span><br><span class="line">     * $O(NlogN)$ sorting: shell sort, merge sort, heap sort, quick sort</span><br><span class="line">     * $O(N)$ sorting: counting sort, radix sort, bucket sort</span><br><span class="line">3. Bubble sort</span><br><span class="line">   * Oldest and simplest sorting algorithm</span><br><span class="line">   * Idea: large values bubble to the end of the list while smaller values sink towards the beginning of the list</span><br><span class="line">   * Algorithm</span><br><span class="line">     * Compare every pair of adjacent items, swap if necessary</span><br><span class="line">     * Repeat this process until no swap is made in one pass</span><br><span class="line">   * Java implementation</span><br><span class="line">      &#96;&#96;&#96;java</span><br><span class="line">        public void bubbleSort(int[] a) &#123;</span><br><span class="line">          int n &#x3D; a.length;</span><br><span class="line">          for (int i &#x3D; 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; n - i - 1; j++) &#123;</span><br><span class="line">              if (a[j] &gt; a[j + 1]) &#123;</span><br><span class="line">                int tmp &#x3D; a[j + 1];</span><br><span class="line">                a[j + 1] &#x3D; a[j];</span><br><span class="line">                a[j] &#x3D; tmp;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void bubbleSort(int[] a) &#123;</span><br><span class="line">          boolean disSwap &#x3D; true;</span><br><span class="line">          while (disSwap) &#123;</span><br><span class="line">            disSwap &#x3D; false;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; a.length - 1; i++) &#123;</span><br><span class="line">              if (a[i] &gt; a[i + 1]) &#123;</span><br><span class="line">                int tmp &#x3D; a[i + 1];</span><br><span class="line">                a[i + 1] &#x3D; a[i];</span><br><span class="line">                a[i] &#x3D; tmp;</span><br><span class="line">                disSwap &#x3D; true;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Run time:
+<ul>
+<li>Worst case: <span class="math inline">\(O(N^2)\)</span></li>
+<li>Best case: when sorted, <span class="math inline">\(O(N)\)</span></li>
+</ul></li>
+<li>In-place: yes</li>
+<li>Stable: yes, only swap when <code>A[j] &gt; A[j + 1]</code></li>
+</ul></li>
+</ol>
+<h2 id="lecture-25-20220324">Lecture 25 2022/03/24</h2>
+<ol type="1">
+<li>Insertion sort
+<ul>
+<li>Idea: Start with an empty left part, remove one item from the right,
+insert it into the correct position in the left part</li>
+<li>Java implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = a.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> key = a[i];</span><br><span class="line">    <span class="keyword">int</span> j = i;</span><br><span class="line">    <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; a[j] &gt; key) &#123;</span><br><span class="line">      a[j + <span class="number">1</span>] = a[j];</span><br><span class="line">      j = j - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j + <span class="number">1</span>] = key;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Run time
+<ul>
+<li>Worst case: <span class="math inline">\(O(N^2)\)</span></li>
+<li>Best case: <span class="math inline">\(O(N)\)</span></li>
+</ul></li>
+<li>In-place: yes</li>
+<li>Stable: yes, only swap when <code>A[j] &gt; key</code></li>
+</ul></li>
+<li>Selection sort
+<ul>
+<li>Idea: select the smallest unsorted item in the list, swap it with
+the value in the first position, repeat the steps for the remainder of
+the list</li>
+<li>Java implementation
+<code>java    public void selectionSort(int[] a) &#123;      int n = a.length;      for (int i = 0; i &lt; n; i++) &#123;        int min = i;        for (int j = i + 1; j &lt; n; j++) &#123;          if(a[j] &lt; a[min]) &#123;            min = j;          &#125;        &#125;        int tmp = a[i];        a[i] = a[min];        a[min] = tmp;]      &#125;    &#125;</code></li>
+<li>Runtime
+<ul>
+<li>Worst case: <span class="math inline">\(O(N^2)\)</span></li>
+<li>Best case: <span class="math inline">\(O(N^2)\)</span></li>
+</ul></li>
+<li>In-place: yes</li>
+<li>Stable: yes, change min index only when
+<code>a[j] &lt; a[min]</code></li>
+</ul></li>
+<li>Shell sort</li>
+</ol>
+<h2 id="lecture-26-20220328">Lecture 26 2022/03/28</h2>
+<h2 id="lecture-27-20220330">Lecture 27 2022/03/30</h2>
+<h2 id="lecture-28-20220331">Lecture 28 2022/03/31</h2>
+<h2 id="lecture-29-20220404">Lecture 29 2022/04/04</h2>
+<h2 id="lecture-30-20220406">Lecture 30 2022/04/06</h2>
+<h2 id="lecture-31-20220407">Lecture 31 2022/04/07</h2>
 
     </div>
 
@@ -1235,7 +1489,7 @@ property</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1311,12 +1565,12 @@ property</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">829k</span>
+    <span title="Symbols count total">838k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">12:34</span>
+    <span title="Reading time total">12:42</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
