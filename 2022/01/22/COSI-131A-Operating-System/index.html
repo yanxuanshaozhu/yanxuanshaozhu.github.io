@@ -36,8 +36,9 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state_book.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/resource_allocation_graph.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-03-30T01:04:42.907Z">
+<meta property="article:modified_time" content="2022-04-18T13:44:14.835Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -206,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-29 21:04:42" itemprop="dateModified" datetime="2022-03-29T21:04:42-04:00">2022-03-29</time>
+                <time title="Modified: 2022-04-18 09:44:14" itemprop="dateModified" datetime="2022-04-18T09:44:14-04:00">2022-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +225,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>78k</span>
+              <span>89k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:11</span>
+              <span>1:21</span>
             </span>
 
         </div>
@@ -3089,7 +3090,363 @@ lock owner invokes <code>unlock()</code> method</li>
 </ul></li>
 <li>Deadlocks
 <ul>
-<li>System Model</li>
+<li>Introduction
+<ul>
+<li>In a multiprogramming environment, several threads may compete for a
+finite number of resources. A thread request resources, if the resources
+are not available, the thread enters a waiting state</li>
+<li>Sometimes, a waiting thread can never change state, because the
+resources it has requested are held by other waiting threads. This
+situation is called a deadlock</li>
+<li>Definition of deadlock: every process in a set of processes is
+waiting for an even that can be caused only by another process in the
+set</li>
+</ul></li>
+<li>System model Ch 8.1
+<ul>
+<li>A system consists of a finite number of resources (CPU cycles,
+files, I/O devices, etc.) to be distributed among a number of competing
+threads</li>
+<li>A thread may utilize a resource in only the following sequence:
+request, use, release</li>
+</ul></li>
+<li>Deadlock in multithreaded applications Ch 8.2
+<ul>
+<li>An deadlock example <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread A</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  lock1.lock();  </span><br><span class="line">  <span class="comment">// If there is context switch after this line, then deadlock will occur</span></span><br><span class="line">  lock2.lock();</span><br><span class="line">  <span class="comment">// Do some work</span></span><br><span class="line">  lock2.unlock();</span><br><span class="line">  lock1.unlock();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Thread B</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  lock2.lock();</span><br><span class="line">  lock1.lock();</span><br><span class="line">  <span class="comment">// Do some work</span></span><br><span class="line">  lock1.unlock();</span><br><span class="line">  lock2.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Livelock
+<ul>
+<li>Livelock is another kind of liveness failure, similar to
+deadlock</li>
+<li>Deadlock prevents threads from proceeding because when each thread
+in a set is blocked waiting for an event that can be caused only by
+another thread in the set</li>
+<li>Live lock prevents threads from proceeding because when threads
+continuously attempt an action that fails</li>
+</ul></li>
+</ul></li>
+<li>Deadlock characterization Ch 8.3
+<ul>
+<li>Necessary conditions (no sufficient conditions)
+<ul>
+<li>Mutual exclusion: at least one resource must be held in a
+non-sharable node, if another thread requests that resource, the
+requesting thread must be delayed until the resource has been
+released</li>
+<li>Hold and wait: a thread must be holding at least one resource and
+waiting to acquire additional resources that are currently being held by
+other threads</li>
+<li>No preemption: resources cannot be preempted</li>
+<li>Circular wait: a set <span class="math inline">\(\{T_0, T_1, ...,
+T_n \}\)</span> of waiting threads must exist such that <span class="math inline">\(T_0\)</span> is waiting for a resource held by
+<span class="math inline">\(T_1\)</span>, ..., <span class="math inline">\(T_n\)</span> is waiting for a resource held by
+<span class="math inline">\(T_1\)</span></li>
+</ul></li>
+<li>Resource allocation graph
+<ul>
+<li>A system resource allocation graph can describe more precisely
+deadlocks</li>
+<li>Vertices: <span class="math inline">\(T = \{T_1, ..., T_n
+\}\)</span> represent threads, <span class="math inline">\(R = \{R_1,
+..., R_m \}\)</span> represent resource types, each thread can request
+multiple multiple instances from multiple resource types, each resource
+type can have multiple instances, each instance can be requested by
+different threads</li>
+<li>Edges: directed edge <span class="math inline">\(T_i \rightarrow
+R_j\)</span> means <span class="math inline">\(T_i\)</span> requests an
+instance of resource type <span class="math inline">\(R_j\)</span>, this
+is called a request edge, directed edge <span class="math inline">\(R_j
+\rightarrow T_i\)</span> means an instance of resource type <span class="math inline">\(R_j\)</span> is held by <span class="math inline">\(T_i\)</span>, this is called an assignment
+edge</li>
+<li>Example <img src="/images/Course/COSI131A/resource_allocation_graph.png"></li>
+<li>Observations
+<ul>
+<li>If there is no cycle in the resource allocation graph, then there is
+no deadlock</li>
+<li>If there is a cycle, then the system may be in the deadlock
+state</li>
+<li>If there is a cycle (circular waiting), each resource type has one
+instance, then there must be a deadlock</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Methods for handling deadlocks Ch 8.4
+<ul>
+<li>Three ways to deal with the deadlock problem
+<ul>
+<li>Ignore the problem, pretend the deadlocks do not exist
+<ul>
+<li>This is adopted by most OS (including Linux and Windows), then it's
+up to the developers to handle deadlocks, typically using approaches
+outlined in the second solution</li>
+<li>Dealing with deadlocks are costly, and deadlocks generally happen
+infrequently</li>
+</ul></li>
+<li>Use a protocol to prevent or avoid deadlocks, then the system never
+enters a deadlock state
+<ul>
+<li>Deadlock Prevention: provides a set of methods to ensure that at
+least one of the necessary conditions cannot hold, this approach
+constrains how requests for some resources can be made</li>
+<li>Avoidance: require that the os be given additional information in
+advance concerning which resources a thread will request and use during
+its lifetime. With the additional information, the os can decide for
+each request whether or not the thread should wait</li>
+</ul></li>
+<li>Allow the system to enter a deadlock state, detect it, and recover.
+Some databases adopt this approach
+<ul>
+<li>Use deadlock detection algorithm to check if deadlocks occur, use
+recovery algorithm to recover from deadlocks</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Deadlock Prevention Ch 8.5
+<ul>
+<li>Mutual exclusion
+<ul>
+<li>This condition must be hold</li>
+<li>Shareable resources do not require mutually exclusive access and
+cannot be involved in a deadlock</li>
+<li>Shareable resource example: read-only files</li>
+<li>Non-shareable resources: mutex lock</li>
+</ul></li>
+<li>Hold and wait
+<ul>
+<li>To break this condition, we require that whenever a thread requests
+a resource, it does not hold any other resources</li>
+<li>Approach 1: require each thread to request and be allocated all its
+resources before it begins execution</li>
+<li>Approach 2: a thread can request resources only when it has none (it
+must release all the resources that it is currently allocated before it
+can request additional resources)</li>
+<li>Disadvantages of both the approaches
+<ul>
+<li>Resource utilization may be low: resources may be allocated but
+unused for a long period, for example, a long process with a a very
+short critical session requesting a mutex lock</li>
+<li>Starvation is possible, a thread that requests several popular
+resources may have to wait indefinitely</li>
+</ul></li>
+</ul></li>
+<li>No preemption
+<ul>
+<li>Approach 1: if a thread is holding some resources and request
+another resources that cannot be immediately allocated to it, then all
+resources the thread is currently holding are preempted</li>
+<li>Approach 2: if a thread requests some resources, if there is
+available resources, we allocate them to the requesting thread. If there
+is no available resources, but there are some waiting threads holding
+the desired resources, we preempt the waiting threads and allocate the
+desired resources to the requesting thread. If both conditions do not
+hold, we let the thread wait, and all its current resources can be
+preempted</li>
+</ul></li>
+<li>Circular wait
+<ul>
+<li>The above approaches of breaking the deadlock conditions are
+impractical, but there is a practical solution to break the circular
+wait condition</li>
+<li>Approach: impose a total ordering of resource types and require each
+thread requests resources in an increasing order of enumeration</li>
+<li>Implementation of this approach
+<ul>
+<li>Resource set <span class="math inline">\(R = \{R_1, ..., R_m
+\}\)</span>, ordering function <span class="math inline">\(f: R
+\rightarrow N\)</span></li>
+<li>Requirement 1: initially each thread can request an instance of
+resource, <span class="math inline">\(R_i\)</span>, after that, it can
+request an instance of <span class="math inline">\(R_j\)</span> if and
+only if <span class="math inline">\(f(R_j) &gt; f(R_i)\)</span></li>
+<li>Requirement 2: if a thread requests an instance of resource <span class="math inline">\(R_i\)</span>, it must have released all resources
+<span class="math inline">\(R_j\)</span> where <span class="math inline">\(f(R_j) &gt; f(R_i)\)</span></li>
+</ul></li>
+<li>Proof of correctness: suppose there is circular wait: <span class="math inline">\(T_i\)</span> is requesting <span class="math inline">\(R_i\)</span>, and <span class="math inline">\(R_i\)</span> is held by <span class="math inline">\(T_{i + 1}\)</span> (use modularity for indices:
+<span class="math inline">\(T_n\)</span> is requesting <span class="math inline">\(R_0\)</span>, <span class="math inline">\(R_0\)</span> is held by <span class="math inline">\(T_0\)</span>). Since <span class="math inline">\(T_{i + 1}\)</span> holds <span class="math inline">\(R_i\)</span> but requests <span class="math inline">\(R_{i+1}\)</span>, we must have <span class="math inline">\(f(R_i) &lt; f(R_{i+1})\)</span>. Then <span class="math inline">\(f(R_0) &lt; ... &lt; f(R_n) &lt; f(R_0)\)</span>,
+which is not possible. We conclude that there is no circular wait</li>
+<li>Developing an ordering itself does not prevent deadlock, it's up to
+developers to write programs that follow the ordering</li>
+</ul></li>
+</ul></li>
+<li>Deadlock avoidance Ch 8.6
+<ul>
+<li>The simplest and most useful model requires that each thread declare
+the maximum number of resources of each type that it may need</li>
+<li>Resource allocation state: the number of available and allocated
+resources and the maximum demands of the threads. A deadlock avoidance
+algorithm dynamically examines the resource allocation state to ensure
+that a circular wait condition can never exist</li>
+<li>Safe state
+<ul>
+<li>A state is safe if the system can allocate resources to each thread
+in some order (construct a safe sequence) and still avoid a
+deadlock</li>
+<li>In a safe state, there are no deadlocks. In an unsafe state, there
+may be deadlocks</li>
+<li>The avoidance algorithm is constructed so that the system is always
+in the safe state</li>
+</ul></li>
+<li>Resource allocation graph algorithm
+<ul>
+<li>If there is only one instance of each resource type, then we can use
+the resource allocation graph algorithm in deadlock avoidance</li>
+<li>If granting resources to a thread results in a cycle in the resource
+allocation graph, then the resources should no be allocated.</li>
+<li>Checking whether there is a cycle in a graph takes <span class="math inline">\(O(n^2)\)</span> time, where n is the number of
+threads in the system (use DFS to check cycle in a directed graph)</li>
+</ul></li>
+<li>Banker's algorithm
+<ul>
+<li>It can handle resources with multiple instances, although it's less
+efficient than the resource allocation graph algorithm
+<ul>
+<li>Terminology</li>
+<li>Available vector: a vector of length m,
+<code>available[i] = k</code> indicates there are k instances of
+resources available for type i<br>
+</li>
+<li>Max matrix: an n * m matrix defines the maximum demand of each
+thread, <code>max[i][j] = k</code> indicates thread i may request at
+most k instances of resource type j</li>
+<li>Allocation matrix: an n * m matrix defines the number of resources
+of each type currently allocated to each thread,
+<code>allocation[i][j] = k</code> indicates thread i has k instances of
+resource type j</li>
+<li>Need matrix: an n * m matrix indicates the remaining resource need
+of each thread, <code>need[i][j] = k</code> indicates thread i needs
+additional k instances of resource type j. Notice
+<code>need[i][j] = max[i][j] - allocation[i][j]</code></li>
+</ul></li>
+<li>Safety algorithm
+<ol type="1">
+<li>Let <code>work</code> and <code>finish</code> be vectors of length m
+and n. Initialize <code>work = available</code>, and
+<code>finish[i] = false</code> for all i</li>
+<li>Find an index i such that <code>finish[i] = false</code> and
+<code>need[i] &lt;= work</code>. If no such i exists, go to step 4</li>
+<li><code>work = work + alloc[i]</code>, <code>finish[i] = true</code>.
+Go to step 2</li>
+<li>If <code>finish[i] = true</code> for all i, then the system is in a
+safe state</li>
+</ol></li>
+<li>Resource request algorithm
+<ol type="1">
+<li>If <code>request[i] &lt;= need[i]</code>, go to step 2. Otherwise,
+the thread has exceeded its maximum claim, raises an error</li>
+<li>If <code>request[i] &lt;= available</code>, go to step 3. Otherwise,
+<span class="math inline">\(T_i\)</span> must wait</li>
+<li><code>available = available - request[i]</code>,
+<code>alloc[i] = alloc[i] + request[i]</code>,
+<code>need[i] = need[i] = request[i]</code></li>
+</ol></li>
+</ul></li>
+</ul></li>
+<li>Deadlock detection Ch 8.7
+<ul>
+<li>Single instance of each resource type
+<ul>
+<li>Use a wait-for graph, which is a variant of the resource allocation
+graph, to detect deadlocks</li>
+<li>An edge <span class="math inline">\(T_i \rightarrow T_j\)</span>
+exists in the wait-for graph if and only if the corresponding resource
+allocation graph contains two edges: <span class="math inline">\(T_i
+\rightarrow R_q\)</span>, and <span class="math inline">\(R_q
+\rightarrow T_j\)</span> for some <span class="math inline">\(R_q\)</span></li>
+<li>The system needs to maintain the wait-for graph, and periodically
+check whether there is a cycle in the wait-for graph, this is an <span class="math inline">\(O(n^2)\)</span> algorithm</li>
+</ul></li>
+<li>Several instances of a resource type
+<ul>
+<li>The detection algorithm is similar to the banker's algorithm</li>
+<li>Terminology
+<ul>
+<li>Available: a vector of length m indicates the number of available
+resources of each type</li>
+<li>Allocation: an n * m matrix defines the number of resources of each
+type currently allocated to each thread</li>
+<li>Request: an n * m matrix indicates the current request of each
+thread</li>
+</ul></li>
+<li>Detection algorithm
+<ol type="1">
+<li>Let <code>word</code> and <code>finish</code> be vectors of length m
+and n. Initialize <code>work = available</code>, and
+<code>finish[i] = false</code> if <code>allocation[i] != 0</code>,
+otherwise <code>finish[i] = true</code></li>
+<li>Find an index i such that <code>finish[i] = false</code> and
+<code>request[i] &lt;= work</code>. If not such i exists, go to step
+4</li>
+<li><code>work = work + allocation[i]</code>,
+<code>finish[i] = true</code>. Go to step 2</li>
+<li>If <code>finish[i] = false</code> for some i, then the system is in
+a deadlocked state. Moreover, if <code>finish[i] = false</code>, then
+thread <span class="math inline">\(T_i\)</span> is deadlocked</li>
+</ol></li>
+</ul></li>
+<li>Detection algorithm usage
+<ul>
+<li>If deadlock occurs frequently, then the detection algorithm should
+be invoked frequently</li>
+<li>Ideally, we can invoke a deadlock detection algorithm whenever the
+request of a thread cannot be granted immediately, but such detection
+will incur considerable overhead in computation time. A less expensive
+alternative is simply to invoke the algorithm at defined intervals</li>
+</ul></li>
+</ul></li>
+<li>Recovery from deadlock Ch 8.8
+<ul>
+<li>If a deadlock is detected, several alternatives are available:
+<ul>
+<li>Inform the operator that a deadlock has occurred and let the
+operator to deal with the deadlock manually</li>
+<li>Let the system recover from the deadlock automatically
+<ul>
+<li>Abort one or more threads to break the circular wait condition</li>
+<li>Preempt some resources from one or more of the deadlocked
+threads</li>
+</ul></li>
+</ul></li>
+<li>Process and thread termination
+<ul>
+<li>Approach 1: abort all deadlocked processes, the system reclaims all
+resources allocated to the terminated processes
+<ul>
+<li>This method is expensive</li>
+<li>Aborting a process may not be easy (the process may be updating a
+file, the process may be holding a mutex lock and updating a shared
+data, etc.)</li>
+</ul></li>
+<li>Approach 2: abort one process at a time until the deadlock cycle is
+eliminated, resources of the aborted processes are reclaimed by the
+system
+<ul>
+<li>This method incurs considerable overhead, since a deadlock detection
+algorithm should be invoked to determine whether any processes are still
+deadlocked</li>
+<li>We must determine which deadlocked process should be terminated, the
+determination policy should be such that the termination incurs minimal
+cost</li>
+</ul></li>
+</ul></li>
+<li>Resource preemption
+<ul>
+<li>We successively preempt some resources from processes and give these
+resources to other processes until the deadlock cycle is broken</li>
+<li>Issues to be addressed
+<ul>
+<li>Select a victim: select which resources and which processes should
+be preempted, minimal cost should be incurred</li>
+<li>Rollback: if some needed resources are preempted from a process,
+obviously it cannot proceed with its normal execution, we need to
+rollback the process to some safe state and restart it from there. Since
+it is hard to determine what a safe state is, we can simply abort the
+process and restart it</li>
+<li>Starvation: we must ensure the resources will not always be
+preempted from the same process. We must ensure that a process can be
+picked as a victim only a finite number of times to prevent
+starvation</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -3268,12 +3625,12 @@ lock owner invokes <code>unlock()</code> method</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">838k</span>
+    <span title="Symbols count total">857k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">12:42</span>
+    <span title="Reading time total">12:59</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
