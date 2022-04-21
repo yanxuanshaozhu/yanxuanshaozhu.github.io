@@ -37,8 +37,10 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_scheduling_queues.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/context_switch.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/resource_allocation_graph.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/memory_address.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-18T13:44:14.835Z">
+<meta property="article:modified_time" content="2022-04-21T04:08:55.443Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -136,27 +138,27 @@
   </li>
         <li class="menu-item menu-item-memories">
 
-    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>memories</a>
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
 
   </li>
-        <li class="menu-item menu-item-projects">
+        <li class="menu-item menu-item-portfolio">
 
-    <a href="/projects" rel="section"><i class="fa fa-briefcase fa-fw"></i>projects</a>
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
@@ -217,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-18 09:44:14" itemprop="dateModified" datetime="2022-04-18T09:44:14-04:00">2022-04-18</time>
+                <time title="Modified: 2022-04-21 00:08:55" itemprop="dateModified" datetime="2022-04-21T00:08:55-04:00">2022-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>89k</span>
+              <span>101k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:21</span>
+              <span>1:31</span>
             </span>
 
         </div>
@@ -3451,12 +3453,369 @@ rollback the process to some safe state and restart it from there. Since
 it is hard to determine what a safe state is, we can simply abort the
 process and restart it</li>
 <li>Starvation: we must ensure the resources will not always be
-preempted from the same process. We must ensure that a process can be
-picked as a victim only a finite number of times to prevent
-starvation</li>
+preempted from the same process, which means a process can be picked as
+a victim only a finite number of times to prevent starvation</li>
 </ul></li>
 </ul></li>
 </ul></li>
+</ul></li>
+<li>Main memory
+<ul>
+<li>Background Ch 9.1
+<ul>
+<li>Main memory and the registers built into each processing core are
+the only general purpose storage that the CPU can access directly</li>
+<li>Basic hardware
+<ul>
+<li>We need to make sure that each process has a separate memory space.
+Two registers are used to limit the range of the process memory
+<ul>
+<li>The basic register: holds the smallest legal physical memory
+address</li>
+<li>The limit register: holds the size of range</li>
+<li>The process memory range is [basic, basic + limit] (both
+inclusive)</li>
+</ul></li>
+<li>Protection of memory is accomplished by having the CPU hardware
+compare every address generated in user mode with the registers. Any
+attempt by a program executing in user mode to access OS memory or other
+users' memory results in a trap to the OS, which treats the attempt as a
+fatal error</li>
+<li>Only the OS can use privileged instruction to load the basic and
+limit registers</li>
+</ul></li>
+<li>Address binding
+<ul>
+<li>A program needs to be loaded into memory to be executed, the process
+of converting symbolic addresses in the source program into relocatable
+physical addresses is called address binding</li>
+<li>A user program goes through several steps, some of which may be
+optional, before being executed.
+<ul>
+<li>A compiler binds symbolic addresses in the source program to
+relocatable addresses</li>
+<li>The linker or loader binds the relocatable addresses to absolute
+addresses</li>
+</ul></li>
+<li>The binding of instructions and data to memory addresses can be done
+at any step
+<ul>
+<li>Compile time: if you know at compile time where the process will
+reside in memory, then absolute code can be used. If, in later time, the
+address changes, then it will be necessary to recompile the program</li>
+<li>Load time: If it's not know at compile time where the process will
+reside in memory, the the compiler must generate relocatable addresses.
+Final binding is delayed until load time. If the address changes, we
+need only reload the code</li>
+<li>Execution time: if the process can be moved during execution from
+one memory segment to another, then the binding must be delayed until
+run time. Special hardware must be available for this scheme to work.
+Most operating systems use this method</li>
+</ul></li>
+</ul></li>
+<li>Logical and physical address space
+<ul>
+<li>An address generated by the CPU is commonly referred to as a logical
+address, an address seen by the memory unit (the one that is loaded into
+the memory address register of the memory), is commonly referred to as a
+physical address</li>
+<li>Binding at compile time or load time results in identical logical
+and physical addresses. Binding at execution time results in differing
+logical and physical addresses</li>
+<li>Logical address space: the set of logical addresses. Physical
+address space: the set of physical addresses</li>
+<li>The user program can never access the real physical addresses, it
+deals with logical addresses only. The mapping of logical address to
+physical address is done by the memory mapping hardware, this is only
+used in run time binding <img src="/images/Course/COSI131A/memory_address.png"></li>
+</ul></li>
+<li>Dynamic loading
+<ul>
+<li>The entire program does not need to be loaded into the memory</li>
+<li>To achieve better memory-space utilization, we can use dynamic
+loading, a routine is not loaded until it is called. All routines are
+kept on disk in a relocatable load format</li>
+<li>The advantage of dynamic loading is that a routine is loaded only
+when it is needed</li>
+<li>Dynamic loading does not require special support from the OS</li>
+</ul></li>
+<li>Dynamic linking and shared libraries
+<ul>
+<li>Dynamically linked libraries(DLLs, aka shared libraries) are system
+libraries that are linked to user programs when the programs are
+run</li>
+<li>Dynamic linking requires help from the OS</li>
+</ul></li>
+</ul></li>
+<li>Contiguous memory allocation Ch 9.2
+<ul>
+<li>The main memory must accommodate both the operating system and the
+various user processes. Many OSs (including Linux and Windows) place the
+OS in high memory</li>
+<li>In contiguous memory allocation, each process is contained in a
+single section of memory that is contiguous to the section containing
+the next process</li>
+<li>Memory protection
+<ul>
+<li>Use base register (relocation register) and limit register to
+specify the range of a process</li>
+<li>During context switch, the correct values of the relocation register
+and limit register are loaded into the CPU</li>
+</ul></li>
+<li>Memory allocation
+<ul>
+<li>A simple approach
+<ul>
+<li>Assign processes to variably sized partition in memory, each
+partition contains one process, the OS keeps a table indicating which
+parts of memory are available and which are occupied</li>
+<li>If there is no available space, the OS can either provide an error
+message, or put the process into a waiting queue</li>
+</ul></li>
+<li>Dynamic storage allocation problem
+<ul>
+<li>Problems: how to satisfy a request of size n from a list of free
+holes</li>
+<li>First-fit: allocate the first hold that is big enough, search can
+start from either the beginning or the location where previous first-fit
+search ended</li>
+<li>Best-fit: allocate the smallest hold that is big enough, must search
+the entire list</li>
+<li>Worst-fit: allocate the largest hole, must search the entire
+list</li>
+<li>There is no clear advantage in terms of storage utilization, but
+generally first fit is faster</li>
+</ul></li>
+</ul></li>
+<li>Fragmentation
+<ul>
+<li>As processes are loaded and removed from memory, the free memory
+space is broken into little pieces</li>
+<li>External fragmentation
+<ul>
+<li>Definition: there is enough total memory space to satisfy a request
+but the available space are not contiguous</li>
+<li>Solution 1 to external fragmentation: compaction, so all free memory
+is placed together in one large block</li>
+<li>Solution 2 to external fragmentation: allow the logical address
+space to be noncontiguous, thus allowing a process to be allocated
+physical memory wherever such memory is available</li>
+</ul></li>
+<li>50-percent rule: given N allocated blocks, another 0.5N will be lost
+to fragmentation, that is, one-third of memory may be unusable</li>
+<li>Internal fragmentation
+<ul>
+<li>If there is a hole of size n, and a process request a hole of size m
+(m &lt; n), the the cost to track n - m (especially when n - m &lt;&lt;
+n) is very high</li>
+<li>We break the physical memory into fixed-size blocks, and each block
+is assigned to a process</li>
+<li>Internal fragmentation: the difference between the size of the block
+and the size of a process</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Paging Ch 9.3
+<ul>
+<li>Paging is a memory management scheme that permits a process's
+physical address space to be noncontiguous</li>
+<li>Paging avoids external fragmentation and is used in most OS</li>
+<li>Basic method
+<ul>
+<li>Frames and pages
+<ul>
+<li>Frames are fixed-sized blocks in physical memory</li>
+<li>Pages are fixed-sized blocks in logical memory, a page has the same
+size as a frame</li>
+</ul></li>
+<li>During execution, the pages of a process are loaded into available
+memory frames</li>
+<li>Every address generated by the CPU is divided into two parts: a page
+number (p) and a page offset (d) <img src="/images/Course/COSI131A/paging_model.png"></li>
+<li>Each process has a page table, which contains mapping from page
+number to base address of each frame in physical memory</li>
+<li>MMU address translation procedure
+<ul>
+<li>Extract the page number p and use it as an index into the page
+table</li>
+<li>Extract the corresponding frame number f from the page table</li>
+<li>Replace the page number p in the logical address with the frame
+number f</li>
+<li>The offset d does not change, so it is not replaced</li>
+</ul></li>
+<li>With paging, we have no external fragmentation, but we can have
+internal fragmentation</li>
+<li>Size of a page
+<ul>
+<li>If process size is independent of page size, then on average the
+size of internal fragmentation is one-half page size per process (For a
+page of size n, waste can be in [0, n -1] with equal probability, then
+on average is n /2)</li>
+<li>Logically, smaller page size is desirable. But overhead is involved
+in each page table entry, and this overhead is reduced as the size of
+the pages increases. Also, disk I/O is more efficient when the amount of
+data being transferred is larger</li>
+<li>Typical page size is 4KB or 8KB, some OSs support larger pages</li>
+</ul></li>
+<li>Frame table: the OS need to maintain the information about which
+frames are available and which frames are occupied, this information is
+in the frame table. The frame table is a single, system-wide data
+structure</li>
+</ul></li>
+<li>Hardware support
+<ul>
+<li>Each process has its own page table, a pointer to the page table is
+stored in the PCB of each process. During context switch, the page table
+should be loaded into CPU</li>
+<li>Hardware implementation of page table
+<ul>
+<li>Simplest approach: page table is implemented as a set of high-speed
+hardware registers, which makes the page-address translation very
+efficient. This increases the context switch time</li>
+<li>When the page table is large, it is kept in the main memory, and a
+page-table base register(PTBR) points to the page table. Changing page
+tables requires changing only this register during context switch
+time</li>
+<li>TLB
+<ul>
+<li>Storing page table in main memory can yield faster context switch
+time, but it also results in slower memory access time (use p + PTBR to
+find f, then use f + d to find the physical address). So we use TLB to
+speed up</li>
+<li>Translation look-aside buffer(TLB) is a special, small, fast-lookup
+hardware cache. It contains a few page table entries</li>
+<li>Use TLB with page table
+<ul>
+<li>When CPU generate the logical address, MMU searches in the TLB
+first</li>
+<li>If the page number is in the TLB, the frame number is immediately
+available</li>
+<li>If the page number is not in the TLB (called TLB miss), the MMU then
+searches the page table. When search in the page table is done, the
+entry is added to the TLB</li>
+<li>If the TLB is full, an existing entry is replaced with the latest
+one. Replacement policy can use LRU, round-robin, or random</li>
+</ul></li>
+<li>Some TLB stores ASIDs (address-space identifier) in each TLB entry.
+An ASID can uniquely identifies each process and is used to provide
+address-space protection for that process</li>
+<li>Hit ratio: the percentage of times that the page number of interest
+is found in the TLB</li>
+<li>Effective access time = hit ratio * access time in TLB + (1 - hit
+ration) * (access time in page table + access time in main memory)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Protection
+<ul>
+<li>Memory protection in a paged environment is accomplished by
+protection bits associated with each frame. Normally, theses bits are
+kept in the page table</li>
+<li>One additional bit is generally attached to each entry in the page
+table: a valid-invalid bit. This bit is valid if the page is in the
+process's logical address space</li>
+</ul></li>
+<li>Shared pages
+<ul>
+<li>When part of the code of a process is reentrant code, then it can be
+shared</li>
+<li>Shared code has the same physical address then thus the same
+frame</li>
+</ul></li>
+</ul></li>
+<li>Structure of the page table Ch 9.4
+<ul>
+<li>Most common techniques for structuring the page table: hierarchical
+paging, hashed page tables, inverted page tables</li>
+<li>Hierarchical paging
+<ul>
+<li>Page table is paged to become smaller ones</li>
+<li>Two-level paging algorithm
+<ul>
+<li>Logical address = page number for outer page table <span class="math inline">\(p_1\)</span>, page number for inner page table
+(also offset in the outer page table) <span class="math inline">\(p_2\)</span>, and page offset <span class="math inline">\(d\)</span></li>
+<li>Because address translation works from the outer page table inward,
+this scheme is aka a forward-mapped page table</li>
+</ul></li>
+<li>If the paged table is still too large, the table can be further
+paged, so we can have a three-level page table...</li>
+</ul></li>
+<li>Hashed page table
+<ul>
+<li>If the address space is larger than 32 bits, then we can use hashed
+page table.</li>
+<li>Hash with chaining collision resolution is used, key is the hash
+value of logical address, value is a linked list of objects. Each object
+contains the logical page number and value of the mapped page
+frame.</li>
+<li>One variation of hashed page table is clustered page table, where
+each object contains multiple physical page frames</li>
+</ul></li>
+<li>Inverted page tables
+<ul>
+<li>An inverted page table has one entry for each real page of memory.
+Each entry consists of the virtual address of the page stored in that
+real memory location, with information about the process that owns the
+page.</li>
+<li>Only one page table is needed in the system, and it has only one
+entry for each page of physical memory</li>
+<li>This approach decreases the amount of memory needed to store each
+page table, it increases the amount of time needed to search the page
+table when a page reference occurs</li>
+<li>This approach also cannot use shared memory: in the standard page
+table with shared memory, multiple logical addresses map to the same
+physical address, but in the inverted page table, one physical address
+cannot be mapped to multiple logical addresses</li>
+</ul></li>
+</ul></li>
+<li>Swapping Ch 9.5
+<ul>
+<li>Process instructions and the data they operate on must be in memory
+to be executed. However, a process, or a portion of a process, can be
+swapped temporarily out of memory to a backing store and then brought
+back into memory for continued execution</li>
+<li>Swapping makes it possible for the total physical address space of
+all processes to exceed the real physical memory of the system, thus
+increasing the degree of multiprogramming in a system</li>
+<li>Standard swapping
+<ul>
+<li>Move entire processes between main memory and a backing store, the
+backing store is commonly fast secondary storage</li>
+<li>It allows physical memory to be oversubscribed, so that the system
+can accommodate more processes thant there is actual physical memory to
+store them</li>
+</ul></li>
+<li>Swapping with paging
+<ul>
+<li>Standard swapping is generally no longer used in contemporary OSs,
+because the amount of time required to move entire processes is
+prohibitive</li>
+<li>Most OSs use a variation of swapping in which pages of a process can
+be swapped</li>
+<li>Generally, swapping refers to standard swapping, paging refers to
+swapping with paging</li>
+<li>Page out moves a page from memory to the backing store, page in is
+the reverse operation</li>
+</ul></li>
+<li>Swapping on mobile systems
+<ul>
+<li>Mobile systems typically do not support swapping in any form</li>
+<li>Reasons for not support swapping
+<ul>
+<li>Mobile devices generally use flash memory rather than more spacious
+hard disk for nonvolatile storage</li>
+<li>Flash memory limits the number writes it can tolerate before it
+becomes unreliable</li>
+<li>The throughput between main memory and flash memory is also
+limited</li>
+</ul></li>
+<li>When free memory falls below a certain threshold, IOS asks
+applications to voluntarily relinquish allocated memory</li>
+<li>Android may terminate a process if insufficient free memory is
+available</li>
+</ul></li>
+</ul></li>
+<li>Example: Intel 32- and 64-bit architectures</li>
 </ul></li>
 </ol>
 
@@ -3573,21 +3932,18 @@ starvation</li>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+          <a href="/archives">
           <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
         <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -3635,12 +3991,12 @@ starvation</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">857k</span>
+    <span title="Symbols count total">868k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">12:59</span>
+    <span title="Reading time total">13:09</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
