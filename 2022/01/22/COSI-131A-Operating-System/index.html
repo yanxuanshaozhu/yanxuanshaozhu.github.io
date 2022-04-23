@@ -39,8 +39,9 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/resource_allocation_graph.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/memory_address.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/ia_32_translation.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-21T04:08:55.443Z">
+<meta property="article:modified_time" content="2022-04-23T02:43:08.776Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -219,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-21 00:08:55" itemprop="dateModified" datetime="2022-04-21T00:08:55-04:00">2022-04-21</time>
+                <time title="Modified: 2022-04-22 22:43:08" itemprop="dateModified" datetime="2022-04-22T22:43:08-04:00">2022-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +238,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>101k</span>
+              <span>110k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:31</span>
+              <span>1:40</span>
             </span>
 
         </div>
@@ -3815,9 +3816,319 @@ applications to voluntarily relinquish allocated memory</li>
 available</li>
 </ul></li>
 </ul></li>
-<li>Example: Intel 32- and 64-bit architectures</li>
+<li>Example: Intel 32- and 64-bit architecture
+<ul>
+<li>IA-32 architecture
+<ul>
+<li>Memory management in IA-32 systems is divided into two components:
+segmentation and paging <img src="/images/Course/COSI131A/ia_32_translation.png"></li>
+<li>IA-32 segmentation
+<ul>
+<li>IA-32 allows a segment to be as large as 4 GB, and the maximum
+number of segments per process is 16K</li>
+<li>The logical address space of a process is divided into two
+partitions
+<ul>
+<li>The first partition is up to 8K segments that are private to the
+process. Information about the first partition is kept in the local
+descriptor table (LDT)</li>
+<li>The second partition is up to 8K segments that are shared among all
+processes. Information about the second partition is kept in the global
+descriptor table (GDT)</li>
+<li>Each entry in the LDT and GDT contains an 8-byte segment descriptor
+with detailed information about a particular segment, including the base
+location and limit of that segment</li>
 </ul></li>
+<li>The logical address is a pair (selector, offset)
+<ul>
+<li>The selector is a 16-bit number, the first 13 bits designate the
+segment number s, the 14th bit indicates whether the segment is in
+LDT/GDT, and the last 2 bits deal with protection</li>
+<li>The offset is a 32-bit number specifying the offset within the
+segment</li>
+</ul></li>
+<li>The machine has 6 segment registers, allowing 6 segments to be
+addressed at any one time by a process</li>
+<li>The linear address is 32 bits long, it is the just the offset in the
+logical address plus the base address of the segment (acquired from a
+specific entry in LDT/GDT)</li>
+</ul></li>
+<li>IA-32 paging
+<ul>
+<li>The IA-32 allows a page size of either 4KB or 4MB</li>
+<li>For 4KB pages, IA-32 uses a two-level paging scheme: for the 32-bit
+linear address, outer page number uses 10 bits, inner page number uses
+10 bits, offset uses 12 bits</li>
+<li>For 4MB pages: for the 32-bit linear address, page number uses 10
+bits, offset uses 22 bits</li>
+<li>Intel adopted a page address extension (PAE), which allows 32-bit
+processors to access a physical address space larger than 4GB. PAE uses
+a three-level paging scheme instead of a two-level paging scheme</li>
+</ul></li>
+</ul></li>
+<li>X86-64 architecture
+<ul>
+<li>Given the limitation of amount of bits in physical memory, the
+x86-64 architecture currently uses a 48-bit logical address with support
+for page sizes of 4KB, 2MB, or 1GB using four levels of paging
+hierarchy</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Virtual memory</li>
 </ol>
+<ul>
+<li>Background Ch 10.1
+<ul>
+<li>Virtual memory is a technique that allows the execution of processes
+that are not completely in memory</li>
+<li>Advantages
+<ul>
+<li>Programs can be larger than physical memory</li>
+<li>Abstracts main memory into an extremely large, uniform array of
+storage, frees programmers from the concerns of memory-storage
+limitations</li>
+<li>Allows processes to share files and libraries, and to implement
+shared memory</li>
+<li>Provides an efficient mechanism for process creation</li>
+</ul></li>
+<li>Disadvantages
+<ul>
+<li>Hard to implement</li>
+<li>May decrease performance if it is used carelessly</li>
+</ul></li>
+</ul></li>
+<li>Demand paging Ch 10.2
+<ul>
+<li>How an executable program might be loaded from secondary storage
+into memory
+<ul>
+<li>Load the entire program in physical memory at program execution
+time</li>
+<li>Demand paging: load pages only as they are needed. Demand paging is
+commonly used in virtual memory systems</li>
+</ul></li>
+<li>Basic concepts
+<ul>
+<li>Use valid-invalid bit scheme to distinguish between pages in memory
+and pages in secondary storage
+<ul>
+<li>Valid pages: pages that are in memory and inside the range of
+process address space</li>
+<li>Invalid pages: pages that are not in memory, or pages that are not
+inside the range of process address space</li>
+</ul></li>
+<li>Page fault: when a process tries to access a page that is not in
+memory (an invalid page). The paging hardware will notice the invalid
+bit and cause a trap to the OS.</li>
+<li>Procedures to handle page fault
+<ul>
+<li>Check an internal table for the process to determine whether the
+address is valid or not</li>
+<li>If the reference was invalid, terminate the process. If the
+reference was valid but the page was not in memory, we now page it
+in</li>
+<li>Find an available frame, read the secondary storage to load the page
+into the newly allocated frame</li>
+<li>When the read operation is done, modify the internal table to
+indicate the page is not in memory</li>
+<li>Restart the instruction that was interrupted by the page fault
+trap</li>
+</ul></li>
+<li>The hardware to support demand paging is page table and secondary
+memory</li>
+</ul></li>
+<li>Free frame list
+<ul>
+<li>When a page fault occurs, the operating system must bring the
+desired page from secondary storage into main memory. To resolve page
+faults, most operating systems maintain a free-frame list, a pool of
+free frames for satisfying such requests</li>
+<li>OS typically allocate free frames using a technique known as
+zero-fill-on-demand: previous contents of a frame are eliminated before
+being allocated</li>
+</ul></li>
+<li>Performance of demand paging
+<ul>
+<li>Demand paging can significantly affect the performance of a computer
+system</li>
+<li>Effective access time with demand paging: EAT = (1 - page fault
+prob) * memory access time + p * page fault time</li>
+<li>Typically, page fault time = time to service the page fault
+interrupt + time to read the page into memory + time to restart the
+process</li>
+<li>Generally, EAT <span class="math inline">\(\propto\)</span> page
+fault rate</li>
+</ul></li>
+</ul></li>
+<li>Copy on write Ch 10.3
+<ul>
+<li>Process creation with <code>fork()</code> system call can be
+achieved efficiently with copy-on-write</li>
+<li>Traditionally, <code>fork()</code> copies the parent's address space
+for the child, duplicating the page belonging to the parent</li>
+<li>Copy-on-write: allow the parent and child process initially to share
+the same pages, the shared pages are marked as copy-on-write pages, if
+either process writes to a shared page, a copy of the shared page is
+created, modification will be on the copied page</li>
+<li>Several versions of UNIX provide a variation of the
+<code>fork()</code> system call, <code>vfork()</code> (for virtual
+memory fork), that uses copy-on-write</li>
+</ul></li>
+<li>Page replacement Ch 10.4
+<ul>
+<li>If a page fault occurs but there is not available free frame to load
+the page, there are several choices
+<ul>
+<li>Choice 1: terminate the process</li>
+<li>Choice 2: use standard swapping and swap out a process, freeze all
+its frames and reduce the level of multiprogramming</li>
+<li>Choice 3: page replacement</li>
+</ul></li>
+<li>Basic page replacement
+<ul>
+<li>Find a frame that is not currently being used and free it</li>
+<li>How to free a frame
+<ul>
+<li>Write the contents of the frame to secondary storage</li>
+<li>Modify the page table to indicate the page is no longer in
+memory</li>
+</ul></li>
+<li>This approach involves two page transfers: page out one replaced
+page and page in the target page</li>
+<li>Use modify bit (dirty bit) to speed page replacement
+<ul>
+<li>If the page is written into at any time, the modify bit is set to
+true</li>
+<li>When we want to replace a page, we check the modify bit, if it is
+true, we know it's modified since the last time it was read from
+secondary storage, then we need to page it out to secondary storage. If
+the modify bit is false, we do not need to page it out, because it's the
+same as the one in secondary storage</li>
+</ul></li>
+<li>Page replacement is basic to demand paging, it completes the
+separation between logical memory and physical memory</li>
+<li>We must solve two major problems to implement demand paging
+<ul>
+<li>Develop a frame-allocation algorithm: if we have multiple processes
+in memory, we must decide how many frames to allocate to each
+process</li>
+<li>Develop a page-replacement algorithm: when page replacement is
+required, we must select the frames that are to be replaced</li>
+</ul></li>
+<li>In terms of page replacement algorithm, we want the one with the
+lowest page-fault rate</li>
+</ul></li>
+<li>FIFO page replacement
+<ul>
+<li>A FIFO replacement algorithm associates with each page the time when
+that page was brought into memory</li>
+<li>When a page must be replaced, the oldest page is chosen</li>
+<li>We don't have to record the timestamp with each page, we can simply
+use a FIFO queue to hold the pages in memory</li>
+<li>The FIFO page replacement algorithm is easy to understand and
+program. But it's performance is not always good</li>
+<li>Belady's anomaly: for some page replacement algorithms, the page
+fault rate may increase as the number of allocated frames increases</li>
+</ul></li>
+<li>Optimal page replacement
+<ul>
+<li>Optimal page replacement algorithm is the one that has the lowest
+page fault rate of all algorithms and will never suffer from Belaydy's
+anomaly</li>
+<li>The optimal algorithm does exist and has been called OPT or MIN,
+it's simply this: replace the page that will not be used for the longest
+period of time</li>
+<li>The optimal page replacement algorithm is difficult to implement,
+because it requires future knowledge of the reference string. So it is
+used mainly for comparison studies</li>
+</ul></li>
+<li>LRU page replacement
+<ul>
+<li>We can sue the recent past as an approximation of the near future
+then we can replace the page that has not been used for the longest
+period of time. This approach is the least recently used (LRU)
+algorithm</li>
+<li>LRU replacement associates with each page the time of that page's
+last use. We can think of this strategy as the optimal page replacement
+algorithm looking backward in time, rather than forward</li>
+<li>The LRU policy is often used as a page replacement algorithm and is
+considered to be good</li>
+<li>LRU implementation
+<ul>
+<li>Approach 1: each page table entry has a timestamp and there is a
+clock/counter in the CPU. The clock is incremented each time a page is
+referenced. When a page is referenced, the value of the clock is copied
+to the timestamp field of its page table entry. When we want to replace
+a page, we replace the one with the smallest timestamp</li>
+<li>Approach 2: a hash map to contain pages that are in the memory and a
+doubly linked list to keep track of the order of pages (use a doubly
+linked list to mimic a stack, the LRU page is always at the bottom of
+the stack)</li>
+</ul></li>
+<li>LRU page replacement does not suffer from Belady's anomaly, it
+belongs to a class of page replacement algorithms, called stack
+algorithms, that can never exhibit Belady's anomaly</li>
+<li>Both implementations of LRU need hardware assistance</li>
+</ul></li>
+<li>LRU approximation page replacement
+<ul>
+<li>If the hardware does not provide sufficient support, then we cannot
+use LRu page replacement. If there is a reference bit in each page table
+entry, then we can use the LRU approximation page replacement
+algorithm</li>
+<li>Reference bit
+<ul>
+<li>Initially, all bits are set to 0 by the OS</li>
+<li>When a page is referenced (read or write), the bit is set to 1</li>
+<li>We do not know the order ot use</li>
+</ul></li>
+<li>Additional reference bits algorithm
+<ul>
+<li>Gain additional ordering information by recording the reference bits
+at regular intervals</li>
+<li>Keep 8 bits to represent the history of usage of the page</li>
+<li>Each bit corresponds to one time interval, with the leftmost bit
+indicating the most recent time interval and the right most bit
+indicating the earliest time interval</li>
+<li>Shift bits to one right position at the end of each time
+interval</li>
+<li>Clock ticks determine intervals</li>
+<li>Convert the bits into unsigned integer, the page with the lowest
+value is replaced</li>
+</ul></li>
+<li>Second chance algorithm/clock algorithm
+<ul>
+<li>The basic algorithm of second change replacement is a FIFO
+replacement algorithm</li>
+<li>Idea
+<ul>
+<li>Check the reference bit if a page is selected</li>
+<li>If the reference bit is 0, replace this page</li>
+<li>If the reference bit is 1, we give it a second chance: reset the
+reference bit to 0 and move to the next FIFO page (this page will not be
+replaced until all other pages are checked)</li>
+</ul></li>
+<li>Implementation: a circular queue</li>
+</ul></li>
+</ul></li>
+<li>Counting based page replacement
+<ul>
+<li>Least frequently used (LFU) page replacement algorithm: the page
+with the smallest count be replaced</li>
+<li>The most frequently used(MFU) page replacement algorithm</li>
+</ul></li>
+<li>Page buffering algorithms
+<ul>
+<li>Used in addition to specific page replacement algorithm.</li>
+<li>OS maintains a pool of free frames. When a page fault occurs, before
+a page is written out, the desired page is read into a free frame in the
+pool, so the process can restart as soon as possible, without waiting
+for the victim page to be written out. When the victim is later written
+out, its frame is added to the free frame pool</li>
+</ul></li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -3991,12 +4302,12 @@ available</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">868k</span>
+    <span title="Symbols count total">878k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:09</span>
+    <span title="Reading time total">13:18</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
