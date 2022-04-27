@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/ia_32_translation.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-27T04:15:07.664Z">
+<meta property="article:modified_time" content="2022-04-27T21:54:05.169Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-27 00:15:07" itemprop="dateModified" datetime="2022-04-27T00:15:07-04:00">2022-04-27</time>
+                <time title="Modified: 2022-04-27 17:54:05" itemprop="dateModified" datetime="2022-04-27T17:54:05-04:00">2022-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,14 +238,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>119k</span>
+              <span>125k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:48</span>
+              <span>1:53</span>
             </span>
 
         </div>
@@ -1853,6 +1853,9 @@ ready</li>
 <ol type="1">
 <li>Deadlock
 <ul>
+<li>Definition: deadlock occurs in a set of processes when every process
+in the set is blocked and waiting for an even that can only be caused by
+another process in the set</li>
 <li>Four necessary but not sufficient conditions of deadlock
 <ul>
 <li>Mutual exclusion: only one process can use a resource at a time</li>
@@ -1900,9 +1903,10 @@ P_i\)</span></li>
 </ul></li>
 <li>Some interpretations
 <ul>
-<li>No cycles, then no deadlock</li>
+<li>No cycle, then no deadlock</li>
 <li>Cycle and n instances per resource type, then possible deadlock</li>
-<li>Cycle and one instance per resource type, then deadlock</li>
+<li>Cycle and one instance per resource type, then deadlock for
+sure</li>
 <li>Processes that are not in a cycle can also be in deadlock</li>
 </ul></li>
 </ul></li>
@@ -1925,16 +1929,260 @@ increasing order</li>
 </ol>
 <h2 id="lecture-18-20220329">Lecture 18 2022/03/29</h2>
 <ol type="1">
-<li>Dealing with deadlock
+<li>Deadlock Avoidance
 <ul>
-<li>Avoidance: does not prevent the four conditions, but evaluate each
-request for resources, if the request could lead to a deadlock, delay or
-refuse such request
+<li>Does not break the necessary conditions for deadlock, but monitor
+the system, and if a request will lead the system to unsafe state, such
+request is rejected</li>
+<li>System state
 <ul>
-<li>Banker's algorithm: a deadlock avoidance algorithm</li>
+<li>In a safe state, there is no possibility of deadlock, we can find a
+safe sequence to grant the requests in a safe state</li>
+<li>In an unsafe state, there is possibility of deadlock</li>
+<li>Avoidance: never enter an unsafe state</li>
+</ul></li>
+<li>Banker's algorithm: deadlock avoidance
+<ul>
+<li>Terminology
+<ul>
+<li><code>Available</code>: array with length m, available resources for
+each resource type</li>
+<li><code>Max</code>: n * m matrix, process i request max[i][j]
+instances of resource j</li>
+<li><code>Allocation</code>: n * m matrix, process i is allocated
+allocation[i][j] instances of resource j</li>
+<li><code>Need</code>: n * m matrix, need[i][j] = max[i][j] -
+allocation[i][j]</li>
+</ul></li>
+<li>Something to remember
+<ul>
+<li>Available can be calculated from total available resources and
+allocated resources</li>
+<li>If a request is granted, then the allocated resources should be
+added to available resources</li>
+<li>Check if a request should be granted: add the request to allocation,
+if we can find a safe sequence, then the result is a safe state, so the
+request should be granted, but if somewhere in the middle we cannot
+grant any more process for execution, the the system enters an unsafe
+state, so the request should not be granted</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Deadlock detection + recovery
+<ul>
+<li>Idea: allow system to enter deadlocked states, periodically run
+deadlock detection algorithm. If deadlock is detected, then run recovery
+scheme to break the deadlock</li>
+<li>Detection situation 1: each resource type has one instance
+<ul>
+<li>Idea: we just need to check if there is a cycle in the resource
+allocation graph</li>
+<li>Algorithm: use DFS to check if a directed graph has a backward edge,
+then the system is in a deadlocked state, the time complexity is O(V +
+E)</li>
 </ul></li>
 </ul></li>
 </ol>
+<h2 id="lecture-19-20220331">Lecture 19 2022/03/31</h2>
+<ol type="1">
+<li>Deadlock detection + recovery (ctd)
+<ul>
+<li>Detection situation 2: each resource types have multiple instances,
+we use a detection algorithm that is similar to the banker's algorithm
+<ul>
+<li>If some requests can be granted, then they are not deadlocked.</li>
+<li>The requests that cannot be granted are deadlocked</li>
+<li>Time complexity of the deadlock detection algorithm: <span class="math inline">\(O(N^2 * M)\)</span>, where n is the number of
+processes, and m is the number of resource types</li>
+</ul></li>
+<li>The deadlock detection algorithm is expensive, therefore we do not
+run this deadlock detection algorithm after resource allocation. The
+frequency of the detection algorithm depends on how often a deadlock is
+likely to occur and how many processes will need to be rolled back</li>
+<li>Deadlock recovery
+<ul>
+<li>Recovery approach 1: process termination
+<ul>
+<li>Kill all deadlocked processes</li>
+<li>Kill one deadlocked process at a time until the deadlock cycle is
+eliminated (select the process to be killed based on priority,
+completion percentage, resources held, resources requested, etc.)</li>
+</ul></li>
+<li>Recovery approach 2: preempt resources from deadlocked processes
+<ul>
+<li>Preemption cost should be minimal</li>
+<li>If a process is preempted, it should be rolled back to a previous
+safe state and restart from that state</li>
+<li>We need to ensure wo do not always preempt resources from the same
+process, which can avoid starvation of that process</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The Ostrich method
+<ul>
+<li>As the deadlock can be very infrequently and the cost of handling
+can be very high, the OS can just pretend there are no deadlocks</li>
+<li>Most OSs use this method and let the programmers to handle
+deadlocks</li>
+</ul></li>
+<li>Memory Manager
+<ul>
+<li>Memory manager is another resource manager component of the OS</li>
+<li>Responsibilities
+<ul>
+<li>Memory allocation: responsible of allocating memory to
+processes</li>
+<li>Address mapping
+<ul>
+<li>Address mapping allows to run the same code in different physical
+memory in different processes, and to support process address space
+abstraction</li>
+<li>Memory management unit (MMU) is responsible for mapping logical
+addresses generated by CPU instructions to physical addresses seen by
+memory controller</li>
+</ul></li>
+</ul></li>
+<li>MMU is usually on the same chip as the CPU</li>
+</ul></li>
+<li>Address mapping
+<ul>
+<li>Logical addresses
+<ul>
+<li>Generated by CPU instructions, is an abstraction of memory</li>
+<li>Logical addresses start at 0, and are contiguous</li>
+</ul></li>
+<li>Generating logical addresses
+<ul>
+<li>At compile time</li>
+<li>At link/load time</li>
+<li>At execution time</li>
+</ul></li>
+<li>Logical address space is defined by base and limit registers. If the
+address is not in the range, there are traps to the OS</li>
+</ul></li>
+<li>Memory allocation
+<ul>
+<li>Memory allocation goals
+<ul>
+<li>High memory utilization: ensure as much memory is used as
+possible</li>
+<li>High concurrency: support as may processes as possible</li>
+<li>Memory allocation should be fast</li>
+</ul></li>
+<li>Memory allocation strategies
+<ul>
+<li>Contiguous memory allocation
+<ul>
+<li>Fixed partition allocation
+<ul>
+<li>Idea: divide the physical address space into fixed partitions and
+allocate processes into the partitions. One partition can hold at most
+one process</li>
+<li>Implementation: requires the support of relocation (base) and limit
+register</li>
+<li>Issues:
+<ul>
+<li>Internal fragmentation: when a process is allocated to a partition
+and parts of the partition is not used, such part is called the internal
+fragmentation</li>
+<li>We need to know in advance the memory needs of processes</li>
+<li>The memory needs of processes should not change during their
+lifetime</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-20-20220405">Lecture 20 2022/04/05</h2>
+<ol type="1">
+<li>Memory allocation (ctd)
+<ul>
+<li>Memory allocation strategies (ctd)
+<ul>
+<li>Contiguous memory allocation (ctd)
+<ul>
+<li>Variable partition allocation
+<ul>
+<li>Idea: physical memory is not divide into fixed partitions, but has a
+set of holes from which memory can be assigned</li>
+<li>Allocation policies
+<ul>
+<li>Best fit: choose the smallest feasible hole</li>
+<li>Worst fit: choose the largest feasible hole</li>
+<li>First fit: choose the first feasible hole (do not need to search the
+list)</li>
+<li>Next fit: choose the next feasible hole (do not need to search the
+list, do not need to start from the beginning)</li>
+</ul></li>
+<li>Issues:
+<ul>
+<li>External fragmentation: the size of a hole may be larger than the
+needs of a process, the difference is called the external
+fragmentation</li>
+<li>External fragmentation can be periodically eliminated via
+compaction</li>
+</ul></li>
+</ul></li>
+<li>Comments
+<ul>
+<li>Contiguous memory allocation is easy to implement and
+conceptualize</li>
+<li>Contiguous memory allocations is faster than non-contiguous memory
+allocation</li>
+<li>The memory utilization is poor</li>
+<li>Used by some early batch systems</li>
+</ul></li>
+</ul></li>
+<li>Non-contiguous memory allocation
+<ul>
+<li>Idea: logical address space is partitioned, each partition is mapped
+to a contiguous chunk of physical memory</li>
+<li>Approach 1: paging, all chunks are the same size, chunks are
+physically determined</li>
+<li>Approach 2: segmentation, chunks are variably sized, chunks are
+logically determined</li>
+<li>Approach 3: paged segmentation, combination of paging and
+segmentation</li>
+<li>Comments:
+<ul>
+<li>Better memory utilization: by dividing address space into smaller
+chunks, more memory fragments can be used</li>
+<li>More complex implementation</li>
+<li>The standard memory allocation system used by all OS today</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Paging
+<ul>
+<li>Basic idea
+<ul>
+<li>Divide physical memory into fixed-size blocks called frames</li>
+<li>Divide logical memory into same-sized blocks called pages</li>
+<li>Within a page, memory is contiguous, but pages need not to be
+contiguous or in order</li>
+</ul></li>
+<li>Address translation
+<ul>
+<li>Logical address = (p, d), physical address = (f, d)
+<ul>
+<li>p: page number (index into page table which contains base address of
+corresponding frame f)</li>
+<li>d: page offset: added to base address to find location within
+page/frame</li>
+</ul></li>
+<li>Logical and physical addresses are binary, so the translation is
+actually in binary form</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-21-20220407">Lecture 21 2022/04/07</h2>
+<ol type="1">
+<li>Paging (ctd)</li>
+</ol>
+<h2 id="lecture-22-20220414">Lecture 22 2022/04/14</h2>
+<h2 id="lecture-23-20220426">Lecture 23 2022/04/26</h2>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
 <li>Introduction
@@ -4416,7 +4664,7 @@ out, its frame is added to the free frame pool</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220317"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220324"><span class="nav-number">15.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-18-20220329"><span class="nav-number">16.</span> <span class="nav-text">Lecture 18 2022&#x2F;03&#x2F;29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">17.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220317"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220324"><span class="nav-number">15.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-18-20220329"><span class="nav-number">16.</span> <span class="nav-text">Lecture 18 2022&#x2F;03&#x2F;29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220331"><span class="nav-number">17.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220405"><span class="nav-number">18.</span> <span class="nav-text">Lecture 20 2022&#x2F;04&#x2F;05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220407"><span class="nav-number">19.</span> <span class="nav-text">Lecture 21 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220414"><span class="nav-number">20.</span> <span class="nav-text">Lecture 22 2022&#x2F;04&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-23-20220426"><span class="nav-number">21.</span> <span class="nav-text">Lecture 23 2022&#x2F;04&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">22.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -4489,12 +4737,12 @@ out, its frame is added to the free frame pool</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">886k</span>
+    <span title="Symbols count total">892k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:26</span>
+    <span title="Reading time total">13:31</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
