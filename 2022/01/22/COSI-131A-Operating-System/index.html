@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/ia_32_translation.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-23T02:43:08.776Z">
+<meta property="article:modified_time" content="2022-04-27T04:15:07.664Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-22 22:43:08" itemprop="dateModified" datetime="2022-04-22T22:43:08-04:00">2022-04-22</time>
+                <time title="Modified: 2022-04-27 00:15:07" itemprop="dateModified" datetime="2022-04-27T00:15:07-04:00">2022-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,14 +238,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>110k</span>
+              <span>119k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:40</span>
+              <span>1:48</span>
             </span>
 
         </div>
@@ -1626,7 +1626,7 @@ of a lock)</li>
 </ul></li>
 <li>If TS(i) returns True, then the lock is locked, so we cannot access
 the critical section</li>
-<li>Solve the critical section problem with TS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shared bool lock &#x3D; false;</span><br><span class="line"></span><br><span class="line">while (true) &#123;</span><br><span class="line">  while (ts(lock)) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  lock &#x3D; false;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Solve the critical section problem with TS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">shared bool lock &#x3D; false;</span><br><span class="line">while (true) &#123;</span><br><span class="line">  while (ts(lock)) &#123;</span><br><span class="line">    skip;</span><br><span class="line">  &#125;</span><br><span class="line">  critical section;</span><br><span class="line">  lock &#x3D; false;</span><br><span class="line">  non-critical section;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Comments
 <ul>
 <li>Advantages: easy to use for critical sections, not easy to use for
@@ -1658,10 +1658,197 @@ threads waiting in the queue</li>
 </ol>
 <h2 id="lecture-14-20220315">Lecture 14 2022/03/15</h2>
 <ol type="1">
-<li></li>
+<li>Bounded buffer problem
+<ul>
+<li>Shared buffer between producer thread and consumer thread</li>
+<li>Terminology
+<ul>
+<li>buffer: circular queue, shared by all threads</li>
+<li>in: a pointer that points to next spot to insert into buffer, shared
+by all producer threads</li>
+<li>out: a pointer that points to next spot to remove from buffer,
+shared by all consumer threads</li>
+<li>Full buffer: ensure producer does not try to insert into a full
+buffer (wait until not full)</li>
+<li>Empty buffer: ensure consumer does not try to remove from an empty
+buffer (wait until not empty)</li>
+</ul></li>
+<li>Semaphores (buffer size N)
+<ul>
+<li><code>empty</code>: measure the amount of empty spots in the buffer,
+initialized to be N, shared by all producers, locked after N producer
+threads acquire the the semaphore (which means the buffer is full)</li>
+<li><code>full</code>: measure the amount of full spots in the buffer,
+initialized to be 0, shared by all consumers, unlock after 1 producer
+thread release the semaphore (which means the buffer is not empty, so
+the consumer can start consuming)</li>
+<li><code>mutex</code>: binary semaphore, shared by all threads, used to
+ensure atomic update of shared variables</li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Semaphore mutex = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore empty = <span class="keyword">new</span> Semaphore(N);</span><br><span class="line">Semaphore full = <span class="keyword">new</span> Semaphore(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">int</span> in = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> out = <span class="number">0</span>;</span><br><span class="line">T[] buffer = <span class="keyword">new</span> CircularQueue&lt;T&gt;(N);</span><br><span class="line"><span class="comment">//producer thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  empty.acquire();</span><br><span class="line">  <span class="comment">// This line should be after empty.acquire(), because if you acquire mutex first</span></span><br><span class="line">  <span class="comment">// and the buffer is full, then there is no way for consumers to acquire the mutex</span></span><br><span class="line">  <span class="comment">// and increase the empty semaphore</span></span><br><span class="line">  mutex.acquire();    </span><br><span class="line">  buffer[in] = <span class="keyword">new</span> T();</span><br><span class="line">  in = (in + <span class="number">1</span>) % N;</span><br><span class="line">  <span class="comment">// This line can be after the release of the full semaphore, but efficiency is </span></span><br><span class="line">  <span class="comment">// reduced then</span></span><br><span class="line">  mutex.release();</span><br><span class="line">  full.release();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// consumer thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  full.acquire();</span><br><span class="line">  mutex.acquire();</span><br><span class="line">  T item = buffer[out];</span><br><span class="line">  out = (out + <span class="number">1</span>) % N;</span><br><span class="line">  mutex.release();</span><br><span class="line">  empty.release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Bounded buffer with only one binary semaphore and spin lock
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span> <span class="params">(T item)</span> </span>&#123;</span><br><span class="line">  mutex.acquire();</span><br><span class="line">  <span class="keyword">while</span> (count === N) &#123;</span><br><span class="line">    mutex.release();</span><br><span class="line">    <span class="comment">// Context switch can happen here, allowing consumers to remove</span></span><br><span class="line">    mutex.acquire();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Insert goes here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  T item;</span><br><span class="line">  mutex.acquire();</span><br><span class="line">  <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">    mutex.release();</span><br><span class="line">    <span class="comment">// Context switch can happen here, allowing producers to insert</span></span><br><span class="line">    mutex.acquire();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Remove goes here</span></span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The single mutex and spin lock approach does eliminate
+inconsistencies, but it involves busy waiting and waste of CPU
+resources</li>
+</ul></li>
 </ol>
 <h2 id="lecture-15-20220317">Lecture 15 2022/03/17</h2>
-<h2 id="lecture-16-20220322">Lecture 16 2022/03/22</h2>
+<ol type="1">
+<li>Readers-writers problem
+<ul>
+<li>Idea:
+<ul>
+<li>A buffer of updatable data</li>
+<li>Two type of threads: readers and writers</li>
+<li>Synchronization rules: can allow access of either any number of
+readers at a time, or exactly one writer</li>
+</ul></li>
+<li>Database example
+<ul>
+<li>Read is query: queries do not change contents of database, several
+can execute concurrently</li>
+<li>Write is update: if an update is taking place, it cannot allow
+either reads or other writes</li>
+</ul></li>
+<li>Approach 1: a reader-favored solution
+<ul>
+<li>Idea
+<ul>
+<li><code>rcount</code>: the number of readers that is currently reading
+the database</li>
+<li><code>mutex</code>: a binary semaphore that is used to guard the
+modification of rcount among readers</li>
+<li><code>rwlock</code>: a binary semaphore shared among readers and
+writers
+<ul>
+<li>It can be acquired by a writer to ensure that no other writer is
+updating the databsae concurrently</li>
+<li>It can be acquired by the first reader to ensure that no writer is
+updating the database when there are readers reading the database</li>
+<li>It should be released by the last reader to allow writers to update
+the database</li>
+</ul></li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shared variables initialization</span></span><br><span class="line"><span class="keyword">int</span> rcount = <span class="number">0</span>;</span><br><span class="line">Semaphore mutex = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore rwlock = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// Writer thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// If this acquire method does not stuck, it means no other writer is updating </span></span><br><span class="line">  <span class="comment">// the database and no other readers are reading the database</span></span><br><span class="line">  rwlock.acquire();</span><br><span class="line">  <span class="comment">// Update the database</span></span><br><span class="line">  rwlock.release();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reader thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Use mutex to ensure exclusive access to rcount</span></span><br><span class="line">  mutex.acquire();</span><br><span class="line">  rcount ++;</span><br><span class="line">  <span class="comment">// If the reader is the first one, then it should not let writers update the</span></span><br><span class="line">  <span class="comment">// database, so it should acquire the rwlock</span></span><br><span class="line">  <span class="keyword">if</span> (rcount == <span class="number">1</span>) &#123;</span><br><span class="line">    rwlock.acquire();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex.release();</span><br><span class="line">  <span class="comment">// Read database</span></span><br><span class="line">  <span class="comment">// Use mutex to ensure exclusive access to rcount</span></span><br><span class="line">  mutex.acquire();</span><br><span class="line">  rcount --;</span><br><span class="line">  <span class="comment">// If the reader is the last one, then it should release the rwlock to let </span></span><br><span class="line">  <span class="comment">// writers run</span></span><br><span class="line">  <span class="keyword">if</span> (rcount == <span class="number">0</span>) &#123;</span><br><span class="line">    rwlock.release();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex.release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Performance: Give high throughout (there can be many readers active
+at a time), but bounded wait not satisfied (the writers may wait
+indefinitely)</li>
+<li>This is a readers-favored solution: as long as the writer starts
+after the 1st reader, it needs to wait for all readers to finish to
+run</li>
+</ul></li>
+<li>Approach 2: a writers-favored solution:
+<ul>
+<li>Idea
+<ul>
+<li><code>rcount</code>, <code>wcount</code>, <code>mutex1</code> for
+rcount, <code>mutex2</code> for wcount, <code>rlock</code>,
+<code>wlock</code></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shared variables initialization</span></span><br><span class="line"><span class="keyword">int</span> rcount = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> wcount = <span class="number">0</span>;</span><br><span class="line">Semaphore mutex1 = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore mutex2 = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore rlock = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore wlock = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reader thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="comment">// Use wlock to wait writers to finish updating the database</span></span><br><span class="line">  wlock.acquire();</span><br><span class="line">  mutex1.acquire();</span><br><span class="line">  rcount ++;</span><br><span class="line">  <span class="keyword">if</span> (rcount == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// Lock the database so no update can happen during writing</span></span><br><span class="line">    rlock.acquire();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex1.release();</span><br><span class="line">  wlock.release();</span><br><span class="line">  <span class="comment">//Read database</span></span><br><span class="line">  mutex1.acquire();</span><br><span class="line">  rcount --;</span><br><span class="line">  <span class="keyword">if</span> (rcount == <span class="number">0</span>) &#123;</span><br><span class="line">    rlock.release();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex1.release();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Writer thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  mutex2.acquire();</span><br><span class="line">  wcount ++;</span><br><span class="line">  <span class="keyword">if</span> (wcount == <span class="number">1</span>) &#123;</span><br><span class="line">    wlock.acquire();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex2.release();</span><br><span class="line">  <span class="comment">// If there are readers reading the database, then wait; if not, block all </span></span><br><span class="line">  <span class="comment">// subsequent readers</span></span><br><span class="line">  rlock.acquire();</span><br><span class="line">  <span class="comment">// Update database</span></span><br><span class="line">  rlock.release();</span><br><span class="line">  mutex2.acquire();</span><br><span class="line">  wcount --;</span><br><span class="line">  <span class="keyword">if</span> (wcount == <span class="number">0</span>) &#123;</span><br><span class="line">    wlock.release();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex2.release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Performance: the writers can run ASAP, but readers can wait
+indefinitely</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Dining Philosopher
+<ul>
+<li>Idea
+<ul>
+<li>N philosophers sit a table with N chopsticks, each philosopher
+shares 2 chopsticks with her left and right neighbor</li>
+<li>Each philosopher thinks for a while, gets hungry then tries to grab
+both chopsticks next to him, and eats then releases chopsticks</li>
+<li>The question is how to serve dishes for the philosophers</li>
+</ul></li>
+<li>Solution 1: ensure only one philosopher grabs a given chopstick
+<ul>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shared variables initialization</span></span><br><span class="line"><span class="comment">// An array of N binary semaphores</span></span><br><span class="line">Semaphore[] chopsticks = <span class="keyword">new</span> Semaphore[N];</span><br><span class="line"><span class="comment">// For philosopher i thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  chopsticks[i].acquire();</span><br><span class="line">  chopsticks[(i + <span class="number">1</span>) % N].acquire();</span><br><span class="line">  <span class="comment">// Eat</span></span><br><span class="line">  chopsticks[i].release();</span><br><span class="line">  chopsticks[(i + <span class="number">1</span>) % N].release();</span><br><span class="line">  <span class="comment">// Think</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Performance: this may result in a deadlock</li>
+</ul></li>
+<li>Solution 2: ensure only one philosopher grabs both her chopsticks at
+a time
+<ul>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shared variables initialization</span></span><br><span class="line">Semaphore mutex = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">Semaphore[] chopsticks = <span class="keyword">new</span> Semaphore[N];</span><br><span class="line"><span class="comment">// For philosopher i thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  mutex.acquire();</span><br><span class="line">  chopsticks[i].acquire();</span><br><span class="line">  chopsticks[(i + <span class="number">1</span>) % N].acquire();</span><br><span class="line">  mutex.release();</span><br><span class="line">  <span class="comment">// Eat</span></span><br><span class="line">  chopsticks[i].release();</span><br><span class="line">  chopsticks[(i + <span class="number">1</span>) % N].release();</span><br><span class="line">  <span class="comment">// Think</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Performance: this does not result in a deadlock, but philosophers
+that are not eating (not in the critical section) can block following
+philosophers (when she acquires the mutex, but is blocked by acquiring
+chopsticks)</li>
+</ul></li>
+<li>Solution 3: synchronize philosophers states (hungry, eating,
+thinking) rather than synchronizing chopsticks
+<ul>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shared variables initialization</span></span><br><span class="line"><span class="comment">// states[i] can be hungry, eating and thinking</span></span><br><span class="line">State[] states = <span class="keyword">new</span> State[N];</span><br><span class="line"><span class="comment">// if phils[i] is locked, she cannot eat, if phils[i] is unlocked, she can eat</span></span><br><span class="line">Semaphore[] phils = <span class="keyword">new</span> Semaphore[N];</span><br><span class="line"><span class="comment">// Use mutex to avoid race condition in states</span></span><br><span class="line">Semaphore mutex = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">seekToEat</span><span class="params">(i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (states[i] == hungry &amp;&amp; states[(i - <span class="number">1</span>) % N] != eating &amp;&amp; states[(i + <span class="number">1</span>) % N] != eating) &#123;</span><br><span class="line">    states[i] = eating;</span><br><span class="line">    phils[i].release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// For philosopher i thread</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">  mutex.acquire();</span><br><span class="line">  states[i] = hungry;</span><br><span class="line">  seekToEat(i);</span><br><span class="line">  mutex.release();</span><br><span class="line">  phils[i].acquire();</span><br><span class="line">  <span class="comment">// Eat</span></span><br><span class="line">  mutex.acquire();</span><br><span class="line">  states[i] = thinking;</span><br><span class="line">  seekToEat((i + <span class="number">1</span>) % N);</span><br><span class="line">  seekToEat((i - <span class="number">1</span>) % N);</span><br><span class="line">  mutext.release();</span><br><span class="line">  <span class="comment">// Think</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## Lecture 16 2022/03/22</li>
+</ul></li>
+</ul></li>
+<li>Alternatives to Semaphores: Monitors
+<ul>
+<li>Performance of semaphores
+<ul>
+<li>Semaphores accomplishes two tasks:
+<ul>
+<li>Mutual exclusion of shared memory (mutex)</li>
+<li>Scheduling constraints: down and up(counting semaphore)</li>
+</ul></li>
+<li>If the down and up are scatter among several processes, problems may
+occur
+<ul>
+<li>If the order of down is wrong, deadlocks may occur</li>
+<li>If the order of up is wrong, performance may be poor</li>
+</ul></li>
+<li>We want something that is simple and easy</li>
+</ul></li>
+<li>Implementation of monitors
+<ul>
+<li>A package that consists of a collection of procedures, variables and
+data structures</li>
+<li>Compiler implements the mutual exclusion on monitor entries</li>
+</ul></li>
+</ul></li>
+<li>Monitors
+<ul>
+<li>Definition: a monitor is an abstract data type that provides a
+high-level form of process synchronization</li>
+<li><code>Thread.yield()</code>: if a thread calls this method, it
+voluntarily relinquishes the CPU
+<ul>
+<li>If there are threads with equal or higher priorities, then the
+thread changes its state from running to ready and gives up the CPU</li>
+<li>If there are no threads with equal or higher priorities, then the
+thread continues to run</li>
+</ul></li>
+<li>Bounded buffer problem revisited
+<ul>
+<li>We can replace the mutex and spin lock solution with
+<code>Thread.yield()</code></li>
+<li>Since <code>Thread.yield()</code> does not ensure mutual exclusion,
+we can change the insert and remove method to
+<code>synchronized</code></li>
+<li>Such synchronized insert and remove methods can result in
+deadlocks</li>
+</ul></li>
+<li>Synchronized methods
+<ul>
+<li>All objects in Java have an associated lock</li>
+<li>Calling synchronized method requires owning the lock, if the calling
+thread does not own the lock, it is placed in the entry set for the
+object's lock, the lock is released when the active thread exits the
+synchronized method</li>
+</ul></li>
+<li>Condition variables
+<ul>
+<li><code>wait()</code> and <code>signal()</code></li>
+</ul></li>
+<li>Java thread methods
+<ul>
+<li><code>t.wait()</code>: t release the object's lock, change the state
+of t to blocked, t is placed in the wait set</li>
+<li><code>t.nofity()</code>: select a thread t' from the wait list of
+the object's lock, move t' to the entry set, change the state of t' to
+ready</li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="lecture-17-20220324">Lecture 17 2022/03/24</h2>
 <ol type="1">
 <li>Deadlock
@@ -4229,7 +4416,7 @@ out, its frame is added to the free frame pool</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220317"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220322"><span class="nav-number">15.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220324"><span class="nav-number">16.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-18-20220329"><span class="nav-number">17.</span> <span class="nav-text">Lecture 18 2022&#x2F;03&#x2F;29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">18.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220201"><span class="nav-number">4.</span> <span class="nav-text">Lecture 05 2022&#x2F;02&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220204"><span class="nav-number">5.</span> <span class="nav-text">Lecture 06 2022&#x2F;02&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220207"><span class="nav-number">6.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220210"><span class="nav-number">7.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220215"><span class="nav-number">8.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220217"><span class="nav-number">9.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220301"><span class="nav-number">10.</span> <span class="nav-text">Lecture 11 2022&#x2F;03&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220304"><span class="nav-number">11.</span> <span class="nav-text">Lecture 12 2022&#x2F;03&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220310"><span class="nav-number">12.</span> <span class="nav-text">Lecture 13 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220315"><span class="nav-number">13.</span> <span class="nav-text">Lecture 14 2022&#x2F;03&#x2F;15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220317"><span class="nav-number">14.</span> <span class="nav-text">Lecture 15 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220324"><span class="nav-number">15.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-18-20220329"><span class="nav-number">16.</span> <span class="nav-text">Lecture 18 2022&#x2F;03&#x2F;29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#book-contents"><span class="nav-number">17.</span> <span class="nav-text">Book contents</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -4302,12 +4489,12 @@ out, its frame is added to the free frame pool</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">886k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:18</span>
+    <span title="Reading time total">13:26</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
