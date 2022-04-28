@@ -30,6 +30,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/hardware_hierarchy.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/process_state.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/memory_management.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/interrupt_driven_io_cycle.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/storage_hierarchy.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/os_services.png">
@@ -41,7 +42,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/ia_32_translation.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-27T21:54:05.169Z">
+<meta property="article:modified_time" content="2022-04-28T12:07:32.162Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -220,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-27 17:54:05" itemprop="dateModified" datetime="2022-04-27T17:54:05-04:00">2022-04-27</time>
+                <time title="Modified: 2022-04-28 08:07:32" itemprop="dateModified" datetime="2022-04-28T08:07:32-04:00">2022-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,14 +239,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>125k</span>
+              <span>128k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:53</span>
+              <span>1:57</span>
             </span>
 
         </div>
@@ -2179,9 +2180,171 @@ actually in binary form</li>
 </ol>
 <h2 id="lecture-21-20220407">Lecture 21 2022/04/07</h2>
 <ol type="1">
-<li>Paging (ctd)</li>
+<li>Paging (ctd)
+<ul>
+<li>Page table implementation
+<ul>
+<li>Page table is kept in the main memory</li>
+<li>Each process use process special status registers:
+<ul>
+<li>Page table base register (PTBR): location of page table for
+process</li>
+<li>Page table limit register(PTLR): size of process page table</li>
+</ul></li>
+</ul></li>
+<li>Issues with paging
+<ul>
+<li>Two memory access problem: use TLB</li>
+<li>Page table is too large:
+<ul>
+<li>Use two level page table</li>
+<li>Use inverted page table</li>
+<li>Use hashed page table</li>
+</ul></li>
+</ul></li>
+<li>Improve memory access with TLB
+<ul>
+<li>The implementation of page table requires 2 memory accesses for each
+operation
+<ul>
+<li>Look up the frame location for this process in page table</li>
+<li>Loop up the offset in the frame to find the location of the
+data</li>
+</ul></li>
+<li>Use translation loop-aside buffer to solve the two memory access
+problem
+<ul>
+<li>TLB is a fast lookup hardware cache containing some page table
+entries</li>
+<li>Why TLB is fast
+<ul>
+<li>TLB is cache, and cache is faster than memory</li>
+<li>Associative memory permits parallel search</li>
+</ul></li>
+<li>When doing to page table lookup, first look in the cache TLB, if no
+in cache (called TLB miss), look in memory page table</li>
+</ul></li>
+<li>Effective access time (EAT) with TLB
+<ul>
+<li>If TLB misses, then the performance is even worse than the page
+table lookup with two memory accesses (additional access in TLB)</li>
+<li>Assumption
+<ul>
+<li>Each memory access takes time of 1</li>
+<li>Each TLB access takes <span class="math inline">\(\epsilon\)</span>
+time</li>
+<li>TLB hit ratio <span class="math inline">\(\alpha\)</span> = TBL hits
+/ (TLB hits + TLB misses)</li>
+</ul></li>
+<li>EAT = <span class="math inline">\((1 + 1 + \epsilon) * \alpha + (1 +
+\epsilon) * (1 - \alpha) = 2 + \epsilon - \alpha\)</span></li>
+<li>If the hit ratio <span class="math inline">\(\alpha\)</span> is
+high, then the EAT is better</li>
+</ul></li>
+<li>If there is a TLB miss, then we need to update the TLB entries</li>
+</ul></li>
+<li>Two level page table
+<ul>
+<li>Page table is stored contiguously in the physical memory</li>
+<li>In 32-bit virtual memory, 12 bits are used for offset, 20 bits are
+used for page table, page table entry size is 4 bytes, then page table
+size is 4 * 2 ^ (32 - 12) = 4MB</li>
+<li>In 32-bit virtual memory, 12 bits are used for offset, 10 bits are
+used for outer (primary) page table, 10 bits are used for inner
+(secondary) page table, page table entry size is 4 bytes, then outer
+page table size is 4 * 2 ^ 10 = 4KB, inner page table size is 4 * 2 ^ 10
+= 4KB, there is one outer page table and 2 ^ 10 inner page tables</li>
+<li>In the above two level page table, one virtual address translation
+involves the outer page table and one inner page tables</li>
+</ul></li>
+<li>Inverted page table
+<ul>
+<li>For ordinary page table, each process has a page table</li>
+<li>For inverted page table, there is only one page table for all
+processes</li>
+<li>Comments
+<ul>
+<li>Reduced memory space</li>
+<li>Longer lookup time</li>
+<li>Difficult shared memory implementation</li>
+</ul></li>
+</ul></li>
+<li>Hashed page table
+<ul>
+<li>Page number is hashed to hashed page table</li>
+</ul></li>
+</ul></li>
 </ol>
 <h2 id="lecture-22-20220414">Lecture 22 2022/04/14</h2>
+<ol type="1">
+<li>Segmentation
+<ul>
+<li>Idea: similar to paging, but partitions of logical address
+space/physical memory are variable, not fixed. Partition the logical
+address into text segment, stack segment, etc. Each segment itself is
+continuous, but the page table of a process as a whole is not.</li>
+<li>Architecture
+<ul>
+<li>Logical addresses = (s, d)</li>
+<li>One process has one segment table</li>
+<li>Each process PCB holds segment table base register (STBR) and
+segment table length register(STLR). If a logical address is invalid,
+trap to the OS</li>
+</ul></li>
+<li>Issues with segmentation
+<ul>
+<li>Two memory accesses problem: use TLB</li>
+<li>Segment table is too large: use paged segmentation: segmentation
+based allocation, but each segment is paged</li>
+</ul></li>
+<li>Comments on segmentation
+<ul>
+<li>Easier to implement protection: text segment should be read-only,
+other segments may be non-executable. Page in the paging scheme can
+contain both code and data</li>
+<li>Easier to implement sharing: same text segment can be used by
+multiple processes concurrently</li>
+</ul></li>
+<li>Summary <img src="/images/Course/COSI131A/memory_management.png"></li>
+</ul></li>
+<li>Virtual memory
+<ul>
+<li>Motivation: increase the degree of multiprogramming in a running
+system</li>
+<li>Means
+<ul>
+<li>High memory utilization, flexible memory allocation: allow allocated
+memory to be non-contiguous</li>
+<li>Swapping and virtual memory: allow some process to have address
+space dynamically mapped to physical memory</li>
+</ul></li>
+<li>Swapping
+<ul>
+<li>Idea: ready or blocked processes have no physical memory allocation,
+instead, their address spaces are mapped to disk</li>
+<li>Processes can be swapped out to disk and swapped into memory
+dynamically</li>
+<li>Comments:
+<ul>
+<li>Multiprogramming is limited not to memory but disk</li>
+<li>Easy to implement</li>
+<li>Expensive: involves a lot of disk I/O</li>
+<li>Time variable: depends on process size</li>
+</ul></li>
+</ul></li>
+<li>Virtual memory
+<ul>
+<li>Idea: ready, blocked, or running process have some (but not all) of
+their allocation of physical memory</li>
+<li>Implementation: demand paging/demand segmentation</li>
+<li>Demand paging
+<ul>
+<li>Idea: bring a page into memory only when it's referenced (read or
+written)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="lecture-23-20220426">Lecture 23 2022/04/26</h2>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
@@ -4737,12 +4900,12 @@ out, its frame is added to the free frame pool</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">892k</span>
+    <span title="Symbols count total">896k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:31</span>
+    <span title="Reading time total">13:35</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
