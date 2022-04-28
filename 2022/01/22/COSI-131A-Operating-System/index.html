@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/paging_model.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI131A/ia_32_translation.png">
 <meta property="article:published_time" content="2022-01-23T03:50:39.000Z">
-<meta property="article:modified_time" content="2022-04-28T12:07:32.162Z">
+<meta property="article:modified_time" content="2022-04-28T13:48:28.774Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-28 08:07:32" itemprop="dateModified" datetime="2022-04-28T08:07:32-04:00">2022-04-28</time>
+                <time title="Modified: 2022-04-28 09:48:28" itemprop="dateModified" datetime="2022-04-28T09:48:28-04:00">2022-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,14 +239,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>128k</span>
+              <span>132k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:57</span>
+              <span>2:01</span>
             </span>
 
         </div>
@@ -2341,11 +2341,154 @@ their allocation of physical memory</li>
 <ul>
 <li>Idea: bring a page into memory only when it's referenced (read or
 written)</li>
+<li>Implementation
+<ul>
+<li>Add valid/invalid bit to each page table entry: 1 is valid, which
+means the page is in memory, 0 is invalid, which means the page is not
+in memory</li>
+<li>Page mapping algorithm
+<ul>
+<li>Logical address = (p, d)</li>
+<li>Search p in page table, if valid, convert p to f and get physical
+address = (f, d). If invalid, trap to page fault routine in OS to bring
+p into a free frame and update page table, then restart translation
+(during page fault, control is passed to OS, and when the handling
+process is done, control is returned to the process, the process does
+not know where to start from during execution, and it cannot start in
+the middle of an instruction, so it needs to restart)</li>
+<li>Submit memory request with (f, d)</li>
 </ul></li>
+</ul></li>
+</ul></li>
+<li>Pre-paging: load working set pages into memory before the process
+starts</li>
 </ul></li>
 </ul></li>
 </ol>
 <h2 id="lecture-23-20220426">Lecture 23 2022/04/26</h2>
+<ol type="1">
+<li>Virtual memory
+<ul>
+<li>Page replacement
+<ul>
+<li>If there is no free frame, then we need to replace a existing page
+in the memory using replacement algorithm</li>
+<li>Page replacement algorithms
+<ul>
+<li>Goal: minimize number of page faults</li>
+<li>If page fault rate is <span class="math inline">\(\rho\)</span>,
+then EAT = <span class="math inline">\((1 - \rho) * memory access time +
+\rho * (page_fault_overhead + [swap_out_time] + swap_in_time +
+restart_time)\)</span></li>
+<li>Algorithms
+<ul>
+<li>FIFO:
+<ul>
+<li>Replace pages that has the oldest time when it was brought into the
+memory is replaced</li>
+<li>Belady' anomaly: when the number of allocated frames increases, page
+fault rate increases</li>
+</ul></li>
+<li>Optimal: replace the page that will not be used for the longest
+period time</li>
+<li>LRU: replace the page that hasn't been used for the longest period
+time</li>
+<li>NRU: not recently used</li>
+<li>LFU: replace page referenced fewest times</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Frame allocation
+<ul>
+<li>Idea: we have one set of frames but multiple processes, the problem
+is how to allocate the processes</li>
+<li>Goal:
+<ul>
+<li>Minimize page fault rates</li>
+<li>Avoid any process thrashing</li>
+</ul></li>
+<li>Allocation policy
+<ul>
+<li>Equitable: each process get even share of frames</li>
+<li>Proportional allocation: each process gets proportional share of
+frames</li>
+<li>Priority-based allocation: process with higher priority gets more
+frames</li>
+</ul></li>
+<li>Local allocation
+<ul>
+<li>Idea: assign a process some number of frames when it is created,
+when page fault requires page replacement, replace a frame the process
+itself owns</li>
+<li>Issue: thrashing</li>
+<li>Comment:
+<ul>
+<li>Does not use local allocation</li>
+<li>We need to know the set of current processes</li>
+<li>We need to assume the process' needs do not change over its
+lifetime</li>
+<li>We need to assume frame availability does not change over a process'
+lifetime</li>
+</ul></li>
+</ul></li>
+<li>Global allocation
+<ul>
+<li>Idea: all processes have access to all frames, when replacement is
+needed, a process can replace a page owned by anyone</li>
+<li>Issue: thrashing is still possible</li>
+<li>Working set: a set of pages that a process is currently using
+<ul>
+<li>If entire working set is in memory, there are no page faults at
+all</li>
+<li>If there is insufficient space for working set, thrashing may
+occur</li>
+</ul></li>
+<li>Use working set algorithm and adaptive algorithm (page fault
+frequency scheme) to deal with thrashing
+<ul>
+<li>Locality model: in order to avoid thrashing, we need to provide the
+pages that a process needs. We can say the pages that a process
+currently uses is the pages it needs, the view is called the locality
+model</li>
+<li>Working set model
+<ul>
+<li>Use parameter <span class="math inline">\(\Delta\)</span> to
+determine the working set window size at time <span class="math inline">\(T\)</span>.</li>
+<li>Working set of a process at time <span class="math inline">\(T\)</span>: the set of last pages in the most
+recent <span class="math inline">\(\Delta\)</span> page references</li>
+<li>Allocation algorithm
+<ul>
+<li>Find the working set for each page</li>
+<li>If there are more pages in the working sets of all processes than
+the available frames, some processes must be suspended</li>
+<li>Otherwise, allocate processes frames according to their working
+sets</li>
+<li>If there are available frames after allocation, we can increase the
+number of multiprogramming and allow more processes to run</li>
+</ul></li>
+<li>Issues:
+<ul>
+<li>Working set size <span class="math inline">\(\Delta\)</span> is
+important: if size is too small, do not include enough locality, if size
+is too large, include too many localities</li>
+<li>Maintain the working set of each process is too expensive</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Page fault frequency (PFF) scheme
+<ul>
+<li>We can avoid thrashing by controlling the frequency of page
+faults</li>
+<li>If the page fault rate is high, we give the process more frames</li>
+<li>If the page fault rate is low, we know the process has too many
+frames and can remove some frames</li>
+<li>If the page fault rate is high, but there are no available frames,
+we need to swap out some processes</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="book-contents">Book contents</h2>
 <ol type="1">
 <li>Introduction
@@ -4900,12 +5043,12 @@ out, its frame is added to the free frame pool</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">896k</span>
+    <span title="Symbols count total">900k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:35</span>
+    <span title="Reading time total">13:38</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
