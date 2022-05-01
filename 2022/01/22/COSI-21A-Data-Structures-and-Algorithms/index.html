@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-04-13T13:34:15.910Z">
+<meta property="article:modified_time" content="2022-05-01T00:34:42.536Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-13 09:34:15" itemprop="dateModified" datetime="2022-04-13T09:34:15-04:00">2022-04-13</time>
+                <time title="Modified: 2022-04-30 20:34:42" itemprop="dateModified" datetime="2022-04-30T20:34:42-04:00">2022-04-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>39k</span>
+              <span>46k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>36 mins.</span>
+              <span>42 mins.</span>
             </span>
 
         </div>
@@ -1464,7 +1464,248 @@ sub-array are greater than or equal to x</li>
 <h2 id="lecture-28-20220331">Lecture 28 2022/03/31</h2>
 <h2 id="lecture-29-20220404">Lecture 29 2022/04/04</h2>
 <h2 id="lecture-30-20220406">Lecture 30 2022/04/06</h2>
+<ol type="1">
+<li>Heap
+<ul>
+<li>Introduction
+<ul>
+<li>A heap is a tree-like data structure that can be implemented as an
+array</li>
+<li>Each node of the tree corresponds to an element of the array and
+every node must satisfy the heap properties</li>
+<li>There are different variants of heap: 2-3 heap, beap, Fibonacci
+heap, d-ary heap, binary heap</li>
+</ul></li>
+<li>Binary heap
+<ul>
+<li>A binary heap is a complete binary tree that satisfies the heap
+property
+<ul>
+<li>Let v and u be nodes of a heap, such that us is a child of v</li>
+<li>If <code>v.data &gt;= u.data</code>, we have a max heap</li>
+<li>If <code>v.data &lt;= u.data</code>, we have a min heap</li>
+<li>Min heap: a complete binary tree where the key of each node is less
+than the keys of its children</li>
+<li>Max heap: a complete binary tree where the key of each node is
+greater than the keys of tis children</li>
+</ul></li>
+<li>Array index of a binary heap
+<ul>
+<li>When the array of a binary heap is 1-indexed, if node v is at index
+n, its left child is at index 2 * n, its right child is at index 2 * n +
+1, its parent is at index [n / 2]</li>
+<li>When the array of a binary heap is 0-indexed, if node v is at index
+n, its left child is at index 2 * n + 1, its right child is at index 2 *
+n + 2, its parent is at index [(n - 1) / 2]</li>
+</ul></li>
+<li>Basic heap operations
+<ul>
+<li>Build-max-heap/build-min-heap: create a max-heap/min-heap from an
+unordered array</li>
+<li>Insert a node: new nodes are always inserted at the bottom level
+from left to right</li>
+<li>Delete a node: nodes are removed from the bottom level from right to
+left</li>
+<li>Heapsort: sort an array in place</li>
+<li>Heapify: the key to maintain the heap property
+<ul>
+<li>Heapify up/percolate up</li>
+<li>Heapify down/percolate down</li>
+</ul></li>
+</ul></li>
+<li>Implementation
+<ul>
+<li>Heapify down for max heap, time complexity: <span class="math inline">\(O(logN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapifyDown</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// A is an array of size n + 1 if the heap contains n elements, because</span></span><br><span class="line">  <span class="comment">// ideally we want an 1-indexed array but there is no such thing in Java </span></span><br><span class="line">  <span class="keyword">int</span> n = A.length;</span><br><span class="line">  <span class="keyword">int</span> left = <span class="number">2</span> * k;</span><br><span class="line">  <span class="keyword">int</span> right = <span class="number">2</span> * k + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> largest = k;</span><br><span class="line">  <span class="keyword">if</span> (left &lt; n &amp;&amp; A[left] &gt; A[largest]) &#123;</span><br><span class="line">    largest = left;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (right &lt; n &amp;&amp; A[right] &gt; A[largest]) &#123;</span><br><span class="line">    largest = right;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (largest != k) &#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = A[k];</span><br><span class="line">    A[k] = A[largest];</span><br><span class="line">    A[largest] = tmp;</span><br><span class="line">    heapifyDown(A, largest);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Heapify up for max heap, time complexity: <span class="math inline">\(O(logN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapifyUp</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (k &gt; <span class="number">1</span> &amp;&amp; A[i] &gt; A[i / <span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = A[k];</span><br><span class="line">    A[k] = A[k / <span class="number">2</span>];</span><br><span class="line">    A[k / <span class="number">2</span>] = tmp;</span><br><span class="line">    k = k / <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="lecture-31-20220407">Lecture 31 2022/04/07</h2>
+<ol type="1">
+<li>Heap
+<ul>
+<li>Height: since a heap is a complete binary tree, the height of a heap
+of N elements is <span class="math inline">\(logN\)</span></li>
+<li>Basic operations on heaps run in proportional to the height, <span class="math inline">\(O(logN)\)</span></li>
+<li>Build a max heap, time complexity: <span class="math inline">\(O(NlogN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildMaxHeap</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> len = A.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = (len - <span class="number">1</span>) / <span class="number">2</span>; i &gt;= <span class="number">1</span>; i /= <span class="number">2</span>) &#123;</span><br><span class="line">    heapifyDown(A, i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>In order to build a min heap, the logic is the same, the only
+modification is in the hepifyDown method that we need to swap the
+element with its smallest child when necessary</li>
+<li>Heapsort
+<ul>
+<li>Goal: sort an array using heap implementation</li>
+<li>Idea:
+<ul>
+<li>Build a max heap from an array</li>
+<li>Swap the root with the last element in the array</li>
+<li>Decrease the size of the heap by 1</li>
+<li>Call heapify down on the new root</li>
+<li>Repeat this process until only one node remains in the heap</li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  buildMaxHeap(A);</span><br><span class="line">  <span class="keyword">int</span> n = A.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">2</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = A[<span class="number">1</span>];</span><br><span class="line">    A[<span class="number">1</span>] = A[i];</span><br><span class="line">    A[i] = tmp;</span><br><span class="line">    heap.size -= <span class="number">1</span>;</span><br><span class="line">    heapifyDown(A, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Time complexity: <span class="math inline">\(O(NlogN)\)</span></li>
+<li>In place: yes</li>
+<li>Stable: no</li>
+</ul></li>
+</ul></li>
+<li>Priority Queue
+<ul>
+<li>A priority queue is a data structure for maintaining a set of
+elements with priorities, the key withe the highest/lowest priority is
+extracted first</li>
+<li>Max priority queue operations
+<ul>
+<li>Insert(A, x): insert the element x in A, x has a priority with
+it</li>
+<li>Extract-Max(A): removes and returns the element of A with the
+largest key</li>
+<li>Maximum(A): returns the element of A with the largest key</li>
+<li>Increase-key(A, x, k): increase the value of element's priority to
+the new value k, which is assumed to be at least as large as x's current
+priority</li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(1) operation</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">(A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> A[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(logN) operation</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">extractMax</span><span class="params">(A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> max = A[<span class="number">1</span>];</span><br><span class="line">  A[<span class="number">1</span>] = A[A.length - <span class="number">1</span>];</span><br><span class="line">  A.heapSize -= <span class="number">1</span>;</span><br><span class="line">  heapifyDown(A, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(logN) operation</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increaseKey</span><span class="params">(A, i, key)</span> </span>&#123;</span><br><span class="line">  A[i] = key;</span><br><span class="line">  heapifyUp(A, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(logN) operation</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(A, key)</span> </span>&#123;</span><br><span class="line">  A.heapSize += <span class="number">1</span>;</span><br><span class="line">  A[A.heapSize] = key;</span><br><span class="line">  increaseKey(A, A.heapSize, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-32-20220411">Lecture 32 2022/04/11</h2>
+<ol type="1">
+<li>Graph
+<ul>
+<li>A graph models a set of connections</li>
+<li>A graph G = (V, E) consists of
+<ul>
+<li>A finite set V of vertices, |V| is called the order of a graph</li>
+<li>A finite set E of edges, |E| is called the size of a graph, each
+edge is a pair (u, v) where u, v <span class="math inline">\(\in\)</span> V</li>
+</ul></li>
+<li>Applications of Graphs
+<ul>
+<li>Road maps</li>
+<li>Chemical structures</li>
+<li>Games/ puzzles</li>
+<li>Computer networks</li>
+<li>Web links</li>
+</ul></li>
+<li>Edge types
+<ul>
+<li>Direction
+<ul>
+<li>Directed edge: ordered pair of vertices (u, v), u is called the
+origin, v is called the destination</li>
+<li>Undirected edge: unordered pair of vertices (u, v)</li>
+</ul></li>
+<li>Weight
+<ul>
+<li>Weighted edge</li>
+<li>Unweighted edge</li>
+</ul></li>
+<li>A graph may be directed or undirected, weighted or unweighted</li>
+</ul></li>
+<li>Terminology
+<ul>
+<li>Adjacent vertices: two vertices connected by an edge</li>
+<li>Degree of a vertex: the number of edges starting or ending at that
+vertex
+<ul>
+<li>In-degree: the number of edges ending at a vertex</li>
+<li>Out-degree: the number of edges starting at a vertex</li>
+</ul></li>
+<li>Path: a sequence of edges</li>
+<li>Length of a path: the number of edges on a path</li>
+<li>Simple path: a path where all its vertices and edges are
+distinct</li>
+<li>Cycle: a path beginning and ending at the same vertex</li>
+<li>Simple cycle: a simple cycle is a cycle which does not pass through
+any vertex more than once</li>
+<li>Loop: an edge whose endpoints are the same vertex</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-33-20220413">Lecture 33 2022/04/13</h2>
+<ol type="1">
+<li>Implementing graphs
+<ul>
+<li>Data structure for vertices
+<ul>
+<li>Hash table (generally preferred)</li>
+<li>Array</li>
+<li>List</li>
+<li>Binary search tree</li>
+</ul></li>
+<li>Data structures for edges
+<ul>
+<li>Adjacency list</li>
+<li>Adjacency matrix</li>
+</ul></li>
+<li>Adjacency list
+<ul>
+<li>Consists of an array of length |V|, each position in the list is for
+a vertex in V</li>
+<li>For the position associated with vertex u in the array, the
+adjacency list consists of all vertices v such that there is an edge (u,
+v) <span class="math inline">\(\in\)</span> E</li>
+</ul></li>
+<li>Adjacency matrix
+<ul>
+<li>It consists of an |V| * |V| binary matrix M</li>
+<li>If the graph is directed, <span class="math inline">\(M[i][j] = 1
+\iff (i, j) \in E\)</span></li>
+<li>If the graph is undirected, <span class="math inline">\(M[i][j] =
+M[j][i] = 1 \iff (i, j) \in E\)</span></li>
+</ul></li>
+<li>The time complexity of graph algorithms are often expressed in |E|
+and |V|</li>
+</ul></li>
+<li>Graph traversal
+<ul>
+<li>Two kinds of graph traversal algorithm
+<ul>
+<li>Breadth-first search (BFS)</li>
+<li>Depth-first search (DFS)</li>
+</ul></li>
+<li>BFS
+<ul>
+<li>BFS is the archetype for many graph algorithms: Dijkstra's shortest
+path algorithm, Prim's minimum spanning tree algorithm</li>
+<li>Idea: given a graph G and a source vertex s, BFS systemically
+explores the edge of G to discover every vertex that is a reachable from
+s</li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] dist = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">    dist[i] = Integer.MAX_VALUE;</span><br><span class="line">  &#125;</span><br><span class="line">  dist[s] = <span class="number">0</span>;</span><br><span class="line">  Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">  queue.enqueue(s);</span><br><span class="line">  <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> u = queue.dequeue();</span><br><span class="line">    System.out.println(u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v: G.adj(u)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dist[v] == Integer.MAX_VALUE) &#123;</span><br><span class="line">        dist[v] = dist[u] + <span class="number">1</span>;</span><br><span class="line">        queue.enqueue(v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Time complexity: <span class="math inline">\(O(V + E)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-34-20220414">Lecture 34 2022/04/14</h2>
+<ol type="1">
+<li>Shortest path problem
+<ul>
+<li>Use a weighted graph</li>
+<li>The weight of a path is the sum of the weights of its edges</li>
+<li>Let <span class="math inline">\(\{w(p): u \rightarrow v\}\)</span>
+be the set of the weights of all paths from u to v, if the set has a
+minimum, we call the minimum the shortest path weight from u to v,
+denote <span class="math inline">\(\delta(u, v)\)</span>. If the set
+does not has a minimum, denote <span class="math inline">\(\delta(u, v)
+= \infty\)</span> (If u and v are not connected, or if there is a cycle
+with negative weight in the path from u to v)</li>
+<li>Single source shortest path problem with Dijkstra's algorithm
+<ul>
+<li>Description: find a shortest path from a given source vertex s to
+each of the vertices in the graph</li>
+<li>Assumptions
+<ul>
+<li>Directed graph</li>
+<li>All edges must have nonnegative weights</li>
+<li>Connected graph</li>
+</ul></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] dijkstra(G, <span class="keyword">int</span> src) &#123;</span><br><span class="line">  <span class="keyword">int</span>[] dist = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">  <span class="keyword">int</span>[] prev = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">    dist[i] = Integer.MAX_VALUE;</span><br><span class="line">    prev[i] = -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  dist[src] = <span class="number">0</span>;</span><br><span class="line">  PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;();</span><br><span class="line">  pq.enqueue(src);</span><br><span class="line">  <span class="keyword">while</span> (pq.isEmpty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> u = pq.remove();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v: G.adj(u)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dist[v] &gt; dist[u] + G.weight(u, v)) &#123;</span><br><span class="line">        dist[v] = dist[u] + G.weight(u, v);</span><br><span class="line">        prev[v] = u;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dist;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Time complexity: <span class="math inline">\(O((V +
+E)logV)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -1565,7 +1806,7 @@ sub-array are greater than or equal to x</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-32-20220411"><span class="nav-number">29.</span> <span class="nav-text">Lecture 32 2022&#x2F;04&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-33-20220413"><span class="nav-number">30.</span> <span class="nav-text">Lecture 33 2022&#x2F;04&#x2F;13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-34-20220414"><span class="nav-number">31.</span> <span class="nav-text">Lecture 34 2022&#x2F;04&#x2F;14</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1638,12 +1879,12 @@ sub-array are greater than or equal to x</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">900k</span>
+    <span title="Symbols count total">907k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:38</span>
+    <span title="Reading time total">13:44</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
