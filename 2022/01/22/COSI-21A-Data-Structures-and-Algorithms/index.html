@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-05-01T00:34:42.536Z">
+<meta property="article:modified_time" content="2022-05-10T15:10:55.675Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-30 20:34:42" itemprop="dateModified" datetime="2022-04-30T20:34:42-04:00">2022-04-30</time>
+                <time title="Modified: 2022-05-10 11:10:55" itemprop="dateModified" datetime="2022-05-10T11:10:55-04:00">2022-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>46k</span>
+              <span>49k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>42 mins.</span>
+              <span>45 mins.</span>
             </span>
 
         </div>
@@ -1706,6 +1706,135 @@ E)logV)\)</span></li>
 </ul></li>
 </ul></li>
 </ol>
+<h2 id="lecture-35-20220425">Lecture 35 2022/04/25</h2>
+<ol type="1">
+<li>Depth-first search
+<ul>
+<li>Problems solved by DFS
+<ul>
+<li>Testing whether a graph is connected</li>
+<li>Computing a path between two vertices or equivalently reporting that
+no such path exists</li>
+<li>Compute a cycle or equivalently reporting the no such cycle
+exists</li>
+</ul></li>
+<li>Algorithm <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DFS(V, E)</span><br><span class="line">  for each u in V do</span><br><span class="line">    u.color &#x3D; WHITE</span><br><span class="line">  time &#x3D; 0</span><br><span class="line">  for each u in V do</span><br><span class="line">    if u.color &#x3D; WHITE then</span><br><span class="line">      DFS-VISIT(u)</span><br><span class="line">DFS-VISIT(u)</span><br><span class="line">  u.color &#x3D; GRAY</span><br><span class="line">  time &#x3D; time + 1</span><br><span class="line">  u.i &#x3D; time</span><br><span class="line">  for each v in Adj(u) do</span><br><span class="line">    if v.color &#x3D; WHITE then</span><br><span class="line">      DFS-VISIT(v)</span><br><span class="line">  u.color &#x3D; BLACK</span><br><span class="line">  time &#x3D; time + 1</span><br><span class="line">  u.f &#x3D; time</span><br></pre></td></tr></table></figure></li>
+<li>Time complexity: <span class="math inline">\(O(V + E)\)</span></li>
+</ul></li>
+<li>Edge classification
+<ul>
+<li>The edge in DFS can be classified into four types: tree edge, back
+edge, forward edge and cross edge</li>
+<li>Consider edge (u, v)
+<ul>
+<li>If v is visited for the first time, then (u, v) is a tree edge</li>
+<li>If v is an ancestor of u, then (u, v) is a back edge</li>
+<li>If v is a descendant of u, then (u, v) is a forward edge</li>
+<li>If u is neither an ancestor nor a descendant of v, then (u, v) is a
+cross edge</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-36-20220427">Lecture 36 2022/04/27</h2>
+<ol type="1">
+<li>Edge classification
+<ul>
+<li>Facts
+<ul>
+<li>If G is undirected, then there are only tree and back edges</li>
+<li>If G is DAG <span class="math inline">\(\rightleftarrows\)</span>
+DFS on G yields no back edges</li>
+</ul></li>
+<li>Cycle detection
+<ul>
+<li>A directed graph G contains a cycle if and only if a DFS of G yields
+a back edge</li>
+</ul></li>
+</ul></li>
+<li>Topological sort
+<ul>
+<li>A topological sort of a DAG is a linear ordering of all its vertices
+such that if DAG contains an edge (u, v), then u appears before v in
+ordering</li>
+<li>Algorithm <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TOPOLOGICAL-SORT(G)</span><br><span class="line">  call DFS(G) to compute the finishing times of each vertex</span><br><span class="line">  when each vertex is finished, insert it onto the front of a linked list</span><br><span class="line">  return the linked list</span><br></pre></td></tr></table></figure></li>
+<li>Performance
+<ul>
+<li>Time complexity: <span class="math inline">\(O(V + E)\)</span></li>
+<li>Space complexity: <span class="math inline">\(O(V + E)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-37-20220428">Lecture 37 2022/04/28</h2>
+<ol type="1">
+<li>Graph connectivity
+<ul>
+<li>Definition
+<ul>
+<li>Connected vertices: in an undirected graph G, two vertices u and v
+are called connected if G contains a path from u to v. Otherwise, they
+are called disconnected</li>
+<li>Connected graph: a undirected graph is said to be connected if every
+pair of vertices in the graph is connected. Otherwise, the graph is
+disconnected
+<ul>
+<li>A graph consisting of one vertex is connected</li>
+</ul></li>
+<li>Connected component: if a undirected graph is not connected, then
+each piece is called a connected component
+<ul>
+<li>If a graph is connected, then the thole graph is one single
+connected component</li>
+</ul></li>
+<li>Connectivity for directed graph
+<ul>
+<li>Strongly connected: if there s a path in each direction between each
+pair of vertices of a directed graph, then it is strongly connected</li>
+<li>If a graph is not strongly connected, then it is weakly
+connected</li>
+</ul></li>
+</ul></li>
+<li>Strongly connected components
+<ul>
+<li>A classical application of DFS is to decomposing a directed graph
+into strongly connected components</li>
+<li>Graph transpose/reverse: given a graph <span class="math inline">\(G
+= (V, E)\)</span>, its transpose is <span class="math inline">\(G^{T} =
+(V, E^{T})\)</span>, where <span class="math inline">\(E^{T} = \{(u, v)
+| (v, u) \in E \}\)</span></li>
+<li>Algorithm <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call DFS(G) to compute finished time u.f for each v in V</span><br><span class="line">call DFS(G^T), consider the nodes in order of decreasing u.f </span><br><span class="line">output the strongly connected components</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Minimum spanning tree
+<ul>
+<li>Definition
+<ul>
+<li>Spanning tree: a spanning tree is a subgraph that consists all the
+vertices and is a tree</li>
+<li>Minimum spanning tree: a spanning tree that has minimal total weight
+of its edges is called a minimum spanning tree</li>
+</ul></li>
+<li>Algorithms: both greedy algorithms
+<ul>
+<li>Prim's algorithm</li>
+<li>Kruskal's algorithm</li>
+</ul></li>
+</ul></li>
+<li>P vs NP
+<ul>
+<li>P: the class of all problems that have an algorithm that can be
+computed in polynomial time</li>
+<li>NP: the class of all problems that can be verified in polynomial
+time but may take an exponential time to solve
+<ul>
+<li>Some NP problems are P problems and can be solved in polynomial time
+or less</li>
+<li>The hardest NP problems are NP-complete, which have never been shown
+to be solvable in polynomial time: e.g. the traveling salesman problem,
+the hamiltonian cycle problem</li>
+</ul></li>
+<li>The problem is whether P = NP</li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -1806,7 +1935,7 @@ E)logV)\)</span></li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-32-20220411"><span class="nav-number">29.</span> <span class="nav-text">Lecture 32 2022&#x2F;04&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-33-20220413"><span class="nav-number">30.</span> <span class="nav-text">Lecture 33 2022&#x2F;04&#x2F;13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-34-20220414"><span class="nav-number">31.</span> <span class="nav-text">Lecture 34 2022&#x2F;04&#x2F;14</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-32-20220411"><span class="nav-number">29.</span> <span class="nav-text">Lecture 32 2022&#x2F;04&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-33-20220413"><span class="nav-number">30.</span> <span class="nav-text">Lecture 33 2022&#x2F;04&#x2F;13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-34-20220414"><span class="nav-number">31.</span> <span class="nav-text">Lecture 34 2022&#x2F;04&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-35-20220425"><span class="nav-number">32.</span> <span class="nav-text">Lecture 35 2022&#x2F;04&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-36-20220427"><span class="nav-number">33.</span> <span class="nav-text">Lecture 36 2022&#x2F;04&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-37-20220428"><span class="nav-number">34.</span> <span class="nav-text">Lecture 37 2022&#x2F;04&#x2F;28</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1879,12 +2008,12 @@ E)logV)\)</span></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">907k</span>
+    <span title="Symbols count total">910k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:44</span>
+    <span title="Reading time total">13:47</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
