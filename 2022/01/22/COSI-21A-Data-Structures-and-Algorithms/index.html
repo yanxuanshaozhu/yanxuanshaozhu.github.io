@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-05-10T15:10:55.675Z">
+<meta property="article:modified_time" content="2022-05-10T16:05:11.079Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-10 11:10:55" itemprop="dateModified" datetime="2022-05-10T11:10:55-04:00">2022-05-10</time>
+                <time title="Modified: 2022-05-10 12:05:11" itemprop="dateModified" datetime="2022-05-10T12:05:11-04:00">2022-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>49k</span>
+              <span>50k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>45 mins.</span>
+              <span>46 mins.</span>
             </span>
 
         </div>
@@ -1462,8 +1462,40 @@ sub-array are greater than or equal to x</li>
 </ul></li>
 </ol>
 <h2 id="lecture-28-20220331">Lecture 28 2022/03/31</h2>
+<ol type="1">
+<li>Randomized quick sort
+<ul>
+<li>Motivation: we don't want quick sort to be <span class="math inline">\(O(N^2)\)</span></li>
+<li>Idea: partition around a random element
+<ul>
+<li>Running time is independent of the input order</li>
+<li>No assumptions need to be made about the input distribution</li>
+<li>The worst case is determined only by the output of a random-number
+generator</li>
+</ul></li>
+<li>Pick a random element as the pivot</li>
+</ul></li>
+<li>Sorting in linear time
+<ul>
+<li>Comparison-based sorting algorithms:
+<ul>
+<li>Merge sort and heap sort achieve <span class="math inline">\(O(NlogN)\)</span> time in worst case</li>
+<li>Quick sort achieves <span class="math inline">\(O(NlogN)\)</span>
+time on average</li>
+</ul></li>
+<li>Non comparison-based linear time sorting algorithms:
+<ul>
+<li>Example: counting sort, radix sort, and bucket sort</li>
+</ul></li>
+<li>Counting sort
+<ul>
+<li>Algorithm <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">countingSort(A, B, k)</span><br><span class="line">  # Input: A[1...n], where A[i] in &#123;1, 2, ..., k&#125;</span><br><span class="line">  # Output: B[1...n], B is sorted</span><br><span class="line">  </span><br><span class="line">  Initialize C[0...k]</span><br><span class="line">  for i &lt;- 0 to k do</span><br><span class="line">    C[i] &lt;- 0</span><br><span class="line">  for j &lt;- 1 to size of A do</span><br><span class="line">    C[A[j]] &lt;- C[A[j]] + 1  # Calculate the frequency of items in array A</span><br><span class="line">  for i &lt;- 1 to k do</span><br><span class="line">    C[i] &lt;- C[i] + C[i - 1] # Cumulative frequency, also the last index of an item in the sorted array</span><br><span class="line">  for j &lt;- size of A downto 1 do</span><br><span class="line">    B[C[A[j]]] &lt;- A[j]</span><br><span class="line">    C[A[j]] &lt;- C[A[j]] - 1</span><br></pre></td></tr></table></figure></li>
+<li>Stable: yes</li>
+<li>Complexity: <span class="math inline">\(O(N + k)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
 <h2 id="lecture-29-20220404">Lecture 29 2022/04/04</h2>
-<h2 id="lecture-30-20220406">Lecture 30 2022/04/06</h2>
 <ol type="1">
 <li>Heap
 <ul>
@@ -1521,7 +1553,7 @@ left</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-31-20220407">Lecture 31 2022/04/07</h2>
+<h2 id="lecture-30-20220406">Lecture 30 2022/04/06</h2>
 <ol type="1">
 <li>Heap
 <ul>
@@ -1569,7 +1601,7 @@ priority</li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(logN) operation</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(A, key)</span> </span>&#123;</span><br><span class="line">  A.heapSize += <span class="number">1</span>;</span><br><span class="line">  A[A.heapSize] = key;</span><br><span class="line">  increaseKey(A, A.heapSize, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol>
-<h2 id="lecture-32-20220411">Lecture 32 2022/04/11</h2>
+<h2 id="lecture-31-20220407">Lecture 31 2022/04/07</h2>
 <ol type="1">
 <li>Graph
 <ul>
@@ -1623,7 +1655,7 @@ any vertex more than once</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-33-20220413">Lecture 33 2022/04/13</h2>
+<h2 id="lecture-32-20220411">Lecture 32 2022/04/11</h2>
 <ol type="1">
 <li>Implementing graphs
 <ul>
@@ -1677,7 +1709,7 @@ s</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-34-20220414">Lecture 34 2022/04/14</h2>
+<h2 id="lecture-33-20220413">Lecture 33 2022/04/13</h2>
 <ol type="1">
 <li>Shortest path problem
 <ul>
@@ -1706,7 +1738,7 @@ E)logV)\)</span></li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-35-20220425">Lecture 35 2022/04/25</h2>
+<h2 id="lecture-34-20220414">Lecture 34 2022/04/14</h2>
 <ol type="1">
 <li>Depth-first search
 <ul>
@@ -1735,7 +1767,7 @@ cross edge</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-36-20220427">Lecture 36 2022/04/27</h2>
+<h2 id="lecture-35-20220425">Lecture 35 2022/04/25</h2>
 <ol type="1">
 <li>Edge classification
 <ul>
@@ -1764,7 +1796,7 @@ ordering</li>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="lecture-37-20220428">Lecture 37 2022/04/28</h2>
+<h2 id="lecture-36-20220427">Lecture 36 2022/04/27</h2>
 <ol type="1">
 <li>Graph connectivity
 <ul>
@@ -1935,7 +1967,7 @@ the hamiltonian cycle problem</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-32-20220411"><span class="nav-number">29.</span> <span class="nav-text">Lecture 32 2022&#x2F;04&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-33-20220413"><span class="nav-number">30.</span> <span class="nav-text">Lecture 33 2022&#x2F;04&#x2F;13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-34-20220414"><span class="nav-number">31.</span> <span class="nav-text">Lecture 34 2022&#x2F;04&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-35-20220425"><span class="nav-number">32.</span> <span class="nav-text">Lecture 35 2022&#x2F;04&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-36-20220427"><span class="nav-number">33.</span> <span class="nav-text">Lecture 36 2022&#x2F;04&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-37-20220428"><span class="nav-number">34.</span> <span class="nav-text">Lecture 37 2022&#x2F;04&#x2F;28</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20210126"><span class="nav-number">4.</span> <span class="nav-text">Lecture 04 2021&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20210127"><span class="nav-number">5.</span> <span class="nav-text">Lecture 05 2021&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20210131"><span class="nav-number">6.</span> <span class="nav-text">Lecture 06 2021&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">7.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">8.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">9.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220209"><span class="nav-number">10.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-20220210"><span class="nav-number">11.</span> <span class="nav-text">Lecture 11 2022&#x2F;02&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-20220214"><span class="nav-number">12.</span> <span class="nav-text">Lecture 12 2022&#x2F;02&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-20220216"><span class="nav-number">13.</span> <span class="nav-text">Lecture 13 2022&#x2F;02&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-20220217"><span class="nav-number">14.</span> <span class="nav-text">Lecture 14 2022&#x2F;02&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-16-20220302"><span class="nav-number">16.</span> <span class="nav-text">Lecture 16 2022&#x2F;03&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-17-20220303"><span class="nav-number">17.</span> <span class="nav-text">Lecture 17 2022&#x2F;03&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-19-20220309"><span class="nav-number">18.</span> <span class="nav-text">Lecture 19 2022&#x2F;03&#x2F;09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-20-20220310"><span class="nav-number">19.</span> <span class="nav-text">Lecture 20 2022&#x2F;03&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220316"><span class="nav-number">20.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220317"><span class="nav-number">21.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-25-20220324"><span class="nav-number">22.</span> <span class="nav-text">Lecture 25 2022&#x2F;03&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-26-20220328"><span class="nav-number">23.</span> <span class="nav-text">Lecture 26 2022&#x2F;03&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-27-20220330"><span class="nav-number">24.</span> <span class="nav-text">Lecture 27 2022&#x2F;03&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-28-20220331"><span class="nav-number">25.</span> <span class="nav-text">Lecture 28 2022&#x2F;03&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-29-20220404"><span class="nav-number">26.</span> <span class="nav-text">Lecture 29 2022&#x2F;04&#x2F;04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-30-20220406"><span class="nav-number">27.</span> <span class="nav-text">Lecture 30 2022&#x2F;04&#x2F;06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-31-20220407"><span class="nav-number">28.</span> <span class="nav-text">Lecture 31 2022&#x2F;04&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-32-20220411"><span class="nav-number">29.</span> <span class="nav-text">Lecture 32 2022&#x2F;04&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-33-20220413"><span class="nav-number">30.</span> <span class="nav-text">Lecture 33 2022&#x2F;04&#x2F;13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-34-20220414"><span class="nav-number">31.</span> <span class="nav-text">Lecture 34 2022&#x2F;04&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-35-20220425"><span class="nav-number">32.</span> <span class="nav-text">Lecture 35 2022&#x2F;04&#x2F;25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-36-20220427"><span class="nav-number">33.</span> <span class="nav-text">Lecture 36 2022&#x2F;04&#x2F;27</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2008,12 +2040,12 @@ the hamiltonian cycle problem</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">910k</span>
+    <span title="Symbols count total">911k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:47</span>
+    <span title="Reading time total">13:48</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
