@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
+  <meta name="description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDIA Notes">
 <meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/08/08/DDIA%20Notes/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
+<meta property="og:description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-08T13:44:49.000Z">
-<meta property="article:modified_time" content="2021-08-13T02:23:55.091Z">
+<meta property="article:modified_time" content="2022-05-20T02:10:09.402Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="DDIA">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-12 22:23:55" itemprop="dateModified" datetime="2021-08-12T22:23:55-04:00">2021-08-12</time>
+                <time title="Modified: 2022-05-19 22:10:09" itemprop="dateModified" datetime="2022-05-19T22:10:09-04:00">2022-05-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.5k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -243,13 +243,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="chapter-1-可靠可扩展与可维护的应用系统">Chapter 1 可靠，可扩展与可维护的应用系统</h1>
+        <h1 id="chapter-1-可靠可扩展与可维护的应用系统">Chapter 1
+可靠，可扩展与可维护的应用系统</h1>
 <a id="more"></a>
 <h2 id="前言">前言</h2>
 <ol type="1">
 <li>系统分类
 <ul>
-<li>数据密集型(data-intensive): 数据量，数据的复杂程度何数据的快速多变性是限制</li>
+<li>数据密集型(data-intensive):
+数据量，数据的复杂程度何数据的快速多变性是限制</li>
 <li>计算密集型(compute-intensive): CPU处理能力是限制</li>
 </ul></li>
 <li>常见系统构成:
@@ -263,16 +265,19 @@
 </ol>
 <h2 id="认识数据库系统">认识数据库系统</h2>
 <ol type="1">
-<li>可以把数据库，队列，高速缓存等系统归为一大类数据系统(data systems)得原因:
+<li>可以把数据库，队列，高速缓存等系统归为一大类数据系统(data
+systems)得原因:
 <ul>
 <li>随着技术的发展，一些针对不同应用场景进行优化得工具出现了，他们不能被归为传统类型</li>
 <li>系统需求变得更加广泛，单个组件往往无法完成所有数据处理和存储得需求。需要将任务分解，每个组件负责高效得完成其中一部分，多个组件依靠应用层代码驱动有机衔接起来</li>
 </ul></li>
 <li>系统设计需要注意的问题
 <ul>
-<li>Reliability: 在出现意外得时候，系统应该可以正常运转，虽然性能可能有所降低</li>
+<li>Reliability:
+在出现意外得时候，系统应该可以正常运转，虽然性能可能有所降低</li>
 <li>Scalability: 随着规模得增长，系统应该以合理得方式来匹配这种增长</li>
-<li>Maintainability: 随着时间推移，在对现有场景或者新场景进行适配的时候，系统应该高速运转</li>
+<li>Maintainability:
+随着时间推移，在对现有场景或者新场景进行适配的时候，系统应该高速运转</li>
 </ul></li>
 </ol>
 <h2 id="可靠性">可靠性</h2>
@@ -284,7 +289,8 @@
 <li>系统可以应对典型场景，合理负载压力和数据量</li>
 <li>系统可以防止未经授权的访问和滥用</li>
 </ul></li>
-<li>可容错(fault-tolerant/resilient)系统: 即使发生了错误，系统应该可以继续正常工作</li>
+<li>可容错(fault-tolerant/resilient)系统:
+即使发生了错误，系统应该可以继续正常工作</li>
 <li>Fault != Failure:
 <ul>
 <li>Fault: 组件偏离正常规格</li>
@@ -295,7 +301,8 @@
 <li>硬件故障
 <ul>
 <li>磁盘平均无故障时间: 10~50年</li>
-<li>一般应对硬件故障采用硬件冗余: 磁盘配置RAID, 服务器配备双电源, 热拔插CPU, 数据中心备用电源, 发电机</li>
+<li>一般应对硬件故障采用硬件冗余: 磁盘配置RAID, 服务器配备双电源,
+热拔插CPU, 数据中心备用电源, 发电机</li>
 <li>随着数据量和计算需求增加，一些云平台可能在硬件没问题的情况下软件崩溃，这时应该注重整体灵活性和弹性而非单机可靠性，因而需要软件容错</li>
 </ul></li>
 <li>软件错误
@@ -307,10 +314,14 @@
 <ul>
 <li>防止人为失误的多种方法:
 <ul>
-<li>以最小出错的方式来设计系统: 更多更详细的规定v.s.人们可能存在的逆反</li>
-<li>想办法分离最容易出错的地方，容易发生故障的接口: 提供一个尽可能完备的砂箱环境来模拟生产环境</li>
-<li>充分的测试: 单元测试，全系统集成测试，手动测试，自动化测试注意边界条件</li>
-<li>出现人为失误时提供快速恢复机制: 快速回滚，滚动发布代码，数据校验工具等</li>
+<li>以最小出错的方式来设计系统:
+更多更详细的规定v.s.人们可能存在的逆反</li>
+<li>想办法分离最容易出错的地方，容易发生故障的接口:
+提供一个尽可能完备的砂箱环境来模拟生产环境</li>
+<li>充分的测试:
+单元测试，全系统集成测试，手动测试，自动化测试注意边界条件</li>
+<li>出现人为失误时提供快速恢复机制:
+快速回滚，滚动发布代码，数据校验工具等</li>
 <li>设置详细而清晰的监控子系统，包括性能指标和错误率</li>
 <li>推行管理流程并且加以培训</li>
 </ul></li>
@@ -327,22 +338,28 @@
 <li>描述负载
 <ul>
 <li>负载可以用称为负载参数的若干数字来描述</li>
-<li>具体负载参数取决于系统的体系结构: 比如Web服务器的每秒请求处理次数，数据库中写入的比例，聊天室的活动用户书量，缓存命中率等</li>
+<li>具体负载参数取决于系统的体系结构:
+比如Web服务器的每秒请求处理次数，数据库中写入的比例，聊天室的活动用户书量，缓存命中率等</li>
 <li>有时候平均值很重要，有时候系统瓶颈来自于少数的峰值</li>
 </ul></li>
 <li>描述性能
 <ul>
-<li>批处理系统如Hadoop中可以用吞吐量(thoughput)，线性系统可以用服务响应时间(response time)</li>
+<li>批处理系统如Hadoop中可以用吞吐量(thoughput)，线性系统可以用服务响应时间(response
+time)</li>
 <li>延迟(latency): 花费在处理请求上的时间</li>
-<li>响应时间(response time): 客户端看到的，除了处理请求时间，还包括来回网络延迟和各种排队延迟。响应时间不应该被视作一个常数，而应该视为一种分布</li>
-<li>随机因素影响: 上下文切换， 进程调度， 网络数据包丢失和TCP重传，垃圾回收暂停，缺页中断和瓷盘I/O</li>
+<li>响应时间(response time):
+客户端看到的，除了处理请求时间，还包括来回网络延迟和各种排队延迟。响应时间不应该被视作一个常数，而应该视为一种分布</li>
+<li>随机因素影响: 上下文切换， 进程调度，
+网络数据包丢失和TCP重传，垃圾回收暂停，缺页中断和瓷盘I/O</li>
 <li>描述响应时间:
 <ul>
 <li>平均给响应时间</li>
 <li>中位数响应时间(p50)</li>
 <li>阈值响应时间(p95, p99, p999)</li>
-<li>要考虑长尾效应(tail latencies): 响应比较慢可能是因为数据量大，比如购物价值多</li>
-<li>要注意成本效益分析: 优化分位数响应阈值的成本是否小于优化带来的收益</li>
+<li>要考虑长尾效应(tail latencies):
+响应比较慢可能是因为数据量大，比如购物价值多</li>
+<li>要注意成本效益分析:
+优化分位数响应阈值的成本是否小于优化带来的收益</li>
 </ul></li>
 </ul></li>
 <li>应对负载增加的方法
@@ -369,9 +386,11 @@
 </ul></li>
 <li>简单性，使得工程师能够轻松理解系统:
 <ul>
-<li>复杂性的表现: 状态空间膨胀，模块紧耦合，相互依赖关系，命名和术语不一致</li>
+<li>复杂性的表现:
+状态空间膨胀，模块紧耦合，相互依赖关系，命名和术语不一致</li>
 <li>简化系统设计并不是减少系统功能，主要是消除意外方面的复杂性(坏的软件实现带来的问题)</li>
-<li>一个主要手段: 抽象，从而隐藏细节，提供干净易懂的对外接口。好的抽象设计是很有挑战的</li>
+<li>一个主要手段:
+抽象，从而隐藏细节，提供干净易懂的对外接口。好的抽象设计是很有挑战的</li>
 </ul></li>
 <li>可演化性，后续工程师可以轻松改进
 <ul>
@@ -389,6 +408,22 @@
 <li>用何种内存/磁盘/网络的字节格式来表示上述存储的对象/数据结构，数据表示需要支持CURD</li>
 <li>底层上考虑用电流/脉冲波/磁场等表示字节</li>
 </ol></li>
+</ol>
+<h1 id="chapter-3-storage-and-retrieval">Chapter 3 Storage and
+Retrieval</h1>
+<h2 id="data-structures-that-power-your-database">Data Structures That
+Power Your Database</h2>
+<ol type="1">
+<li>Overview
+<ul>
+<li>An index is an additional structure that is derived from the primary
+data</li>
+<li>Many database allows you to add and remove indexes without affecting
+the contents of the database</li>
+<li>Index is mainly used to speed up queries</li>
+<li>Any kind of index usually slows down writes, because the index also
+needs to be updated every time data is written</li>
+</ul></li>
 </ol>
 
     </div>
@@ -490,7 +525,10 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%8F%AF%E9%9D%A0%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 可靠，可扩展与可维护的应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">认识数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 数据模型和查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%8F%AF%E9%9D%A0%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1
+可靠，可扩展与可维护的应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">认识数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 数据模型和查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-storage-and-retrieval"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 Storage and
+Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-structures-that-power-your-database"><span class="nav-number">3.1.</span> <span class="nav-text">Data Structures That
+Power Your Database</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -563,12 +601,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">916k</span>
+    <span title="Symbols count total">925k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">13:53</span>
+    <span title="Reading time total">14:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
