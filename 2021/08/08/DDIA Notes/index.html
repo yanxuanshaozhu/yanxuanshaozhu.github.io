@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1 可靠，可扩展与可维护的应用系统">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-08T13:44:49.000Z">
-<meta property="article:modified_time" content="2022-05-20T02:10:09.402Z">
+<meta property="article:modified_time" content="2022-05-23T23:24:24.482Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="DDIA">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-19 22:10:09" itemprop="dateModified" datetime="2022-05-19T22:10:09-04:00">2022-05-19</time>
+                <time title="Modified: 2022-05-23 19:24:24" itemprop="dateModified" datetime="2022-05-23T19:24:24-04:00">2022-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.8k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -424,6 +424,246 @@ the contents of the database</li>
 <li>Any kind of index usually slows down writes, because the index also
 needs to be updated every time data is written</li>
 </ul></li>
+<li>Hash Indexes
+<ul>
+<li>Key-value indexes are very common, and it's useful building block
+for more complex indexes</li>
+<li>If the data storage consists only of appending to a file, whenever
+you append a new key-value pair for the file, you also update the hash
+map to reflect the offset of the data you just wrote. When you want to
+look up a value, use the hash map to find the offset in the data file,
+seek to that location, and read the value</li>
+<li>Avoid storage shortage: break the log into segments of certain size
+by closing a segment file when it reaches a certain size, and making
+subsequent writes to a new segment file. We can then perform compaction
+on these frozen segments by throwing away duplicate keys in the log, and
+keeping only the most recent update for each key. We can also merge
+compacted segments into a single segment</li>
+<li>Issues and solutions
+<ul>
+<li>File format: a fast and simple log format should by binary format
+file</li>
+<li>Deleting records: you need to append a special deletion record to
+the data file (called tombstone), the actual deletion happens during
+compaction</li>
+<li>Crash recovery: if the hash map is totally in memory, then recovery
+after crash could be painful, you can save a snapshot of each segment's
+hash map on disk to speed up recovery</li>
+<li>Partially written records: use checksum to ensure data
+integrity</li>
+<li>Concurrency control: use only one writer thread to ensure
+concurrency</li>
+</ul></li>
+<li>Hash index limitations
+<ul>
+<li>The hash tale must fit in memory, so the amount of keys cannot be
+very large</li>
+<li>Range queries are not efficient, you need to loop up each key in the
+range individually</li>
+</ul></li>
+</ul></li>
+<li>SSTables and LSM-Tree
+<ul>
+<li>In hash index, the key-value pairs appear in the order that they
+were written, and values later in the log take precedence over values
+for the same key earlier in the log</li>
+<li>In SSTable (sorted string table), we require that the sequence of
+key-value pairs is sorted by key</li>
+<li>Advantages of SSTable
+<ul>
+<li>Merging segments is simple and efficient, the approach is like the
+merging used in the merge sort algorithm</li>
+<li>In order to find a particular key in the file, you no longer need to
+keep an index of all the keys in the memory</li>
+<li>Since read requests need to scan over several key-value pairs in the
+requested range anyway, it is possible to group those record into a
+block and compress it before writing it to disk</li>
+</ul></li>
+<li>Constructing and maintaining SSTables
+<ul>
+<li>When a write comes int, add it to an in-memory balanced tree data
+structure called memtable</li>
+<li>When the memtable gets bigger than some threshold, write it out to
+disk as an SSTable file</li>
+<li>In order to serve a read request, first try to find the key in the
+memtable, then in the most recent on-disk segment, then in the
+next-older segment etc</li>
+<li>From time to time, run a merging and compaction process in the
+background to combine segment files and to discard overwritten or
+deleted values</li>
+<li>If the database crashes, the most recent writes (in the memtable)
+are lost. In order to avoid this problem, we can keep a separate log on
+disk to which every write is immediately appended. Every time the
+memtable is written out to an SSTable, the corresponding log can be
+discarded</li>
+</ul></li>
+<li>Making an LSM-Tree out of SSTables
+<ul>
+<li>LSM-Tree (Log-Structured Merge Tree), maintain key-value pairs. LSM
+trees maintain data in two or more separate structures, each of which is
+optimized for its respective underlying storage medium; data is
+synchronized between the two structures efficiently, in batches</li>
+<li>LSM uses memtable in memory and SSTable on disk, the point is that
+sequential access is way faster than random access on disk</li>
+</ul></li>
+<li>Performance optimization
+<ul>
+<li>The LSM-tree algorithm can be slow when looking up keys that do not
+exist in the database, you can use Bloom filters to speed up these
+queries</li>
+<li>There are also different strategies to determine the order and
+timing of how SSTables are compacted and merged</li>
+</ul></li>
+</ul></li>
+<li>B-Trees
+<ul>
+<li>Introduction
+<ul>
+<li>B-tree is the standard index implementation in almost all relational
+databases, and many nonrelational databases use them too</li>
+<li>B-trees break the database down into fixed-size blocks or pages,
+traditionally 4Kb in size, and read or write one page at a time. Each
+page can be identified using an address or location, which allows one
+page to refer to another. We can use these page references to construct
+a tree of pages</li>
+<li>A B-tree with n keys always has a depth of <span class="math inline">\(O(logN)\)</span></li>
+<li>Branching factor: the number of references to child pages in one
+page of the B-tree</li>
+<li>A four-level tree of 4KB pages with a branching factor of 500 can
+store up to 256TB</li>
+</ul></li>
+<li>Making B-trees reliable
+<ul>
+<li>The basic underlying write operation of a B-tree is to overwrite a
+page on disk with new data, the overwrite does not change the location
+of the page</li>
+<li>Some operations require several different pages to be overwritten
+(split/merge is involved), this can be dangerous, because if the
+database crashes after only some of the pages have been written, you end
+up with a corrupted index</li>
+<li>In order to make the database resilient to crashed, it is common for
+B-tree implementations to include an additional data structure on disk:
+a write-ahead log(WAL, also known as a redo log). The WAL is an
+append-only file to which every B-tree modification must be written
+before it can be applied to the pages of the tree itself. When the
+database comes back up after crash, this log is used to restore the
+B-tree back to a consistent state</li>
+</ul></li>
+<li>B-tree optimizations
+<ul>
+<li>Instead of overwriting pages and maintaining a WAL for crash
+recovery, some databases use a copy-on-write scheme</li>
+<li>We can save space in pages by not storing the entire key, but
+abbreviating it. Packing more keys into a page allows the tree to have a
+higher branching factor, and thus fewer levels (this variant is known as
+B+ tree)</li>
+<li>In general, pages can be positioned anywhere on disk, there is
+nothing requiring pages with nearby key ranges to be nearby on disk.
+Many B-tree implementation try to lay out the tree so that leaf pages
+appear in sequential order on dis, maintaining this property is
+difficult as the tree grows</li>
+</ul></li>
+</ul></li>
+<li>Comparing B-Trees and LSM-Trees
+<ul>
+<li>B-tree implementations are generally more mature than LSM-tree
+implementations</li>
+<li>As a rule of thumb, LSM-trees are typically faster for writes, but
+B-trees are thought to be faster for reads</li>
+<li>Advantages of LSM-trees
+<ul>
+<li>A B-tree index must write every piece of data at least twice, once
+to the WAL and once to the tree page itself (and perhaps again as pages
+are split)</li>
+<li>Write amplification: one write to the database resulting in multiple
+writes to the disk over the course of the database's lifetime</li>
+<li>Advantage 1: LSM-trees have higher write throughput than B-trees,
+partly because they have lower write amplification, and partly because
+they sequentially write compact SSTable files rather than having to
+overwrite several pages in the tree</li>
+<li>Advantage 2: LSM-trees can be compressed better, and thus often
+produce smaller files on disk (B-trees storage engines have
+fragmentation, LSM-trees periodically use compression to remove
+fragmentation)</li>
+</ul></li>
+<li>Downsides of LSM-trees
+<ul>
+<li>Downside 1: the compaction process can sometimes interfere with the
+performance of ongoing reads and writes. The impact on throughput and
+average response time is usually small, but at higher percentiles the
+response time of queries to LSM-trees based engines can be quite
+high</li>
+<li>Downside 2: the disk's finite write bandwidth needs to be shared
+between the initial write and the compaction threads running in the
+background, this problem is significant when the write throughput is
+high</li>
+<li>Downside 3: log-structured storage engine may have multiple copies
+of the same key in different segments, then it's harder to offer strong
+transactional semantics</li>
+</ul></li>
+</ul></li>
+<li>Other Indexing Structures
+<ul>
+<li>Introduction
+<ul>
+<li>The key-value indexes are like a primary key index in the relational
+model. A primary key uniquely identified one row in a relational table,
+or one document in a document database, or one vertex in a graph
+database</li>
+<li>Secondary indexes are also very common. You can create several
+indexes on the same table in relational databases using the
+<code>CREATE INDEx</code> command, and they are often crucial for
+performing joins efficiently</li>
+<li>A secondary index does not provide unique key-value pairs, i.e.,
+there might be many rows with the same key</li>
+<li>Both B-trees and log-structured indexes can be used as secondary
+indexes</li>
+</ul></li>
+<li>Storing values within the index
+<ul>
+<li>The key in an index is the thing that queries search for, but the
+value can be one of the two things: it could be the actual row in
+question, or it could be a reference to the row stored elsewhere (the
+actual place where rows are stored is called a heap file)</li>
+<li>Cluster index: the values in index are the actual rows</li>
+<li>Covering index/index with included columns: a compromise between a
+cluster index and a non-clustered index, it stores some of a table's
+columns with the index</li>
+</ul></li>
+<li>Multi-column indexes
+<ul>
+<li>The most common type of multi-column index is called a concatenated
+index, which simply combines several fields into one key by appending
+one column to another</li>
+<li>Query with multiple columns cannot be answered using the standard
+B-tree or LSM-tree index efficiently</li>
+</ul></li>
+<li>Full-text search and fuzzy indexes
+<ul>
+<li>Fuzzy queries: search for similar keys, misspelled words</li>
+<li>Full-text search engines commonly allow a search for one word to be
+expanded to include synonyms of the word, to ignore grammatical
+variations of words, and to search for occurrences of words near other
+in the same document, and support various other features that depend on
+linguistic analysis of the text</li>
+</ul></li>
+<li>Keeping everything in memory
+<ul>
+<li>Some in-memory key-value stores are intended for caching use only,
+where it's acceptable for data to be lost if a machine is restarted</li>
+<li>The performance advantage of in-memory databases is not due to the
+fact that they don't need to read from disk, they can be faster because
+they can avoid the overheads of encoding in-memory data structures in a
+form that can be written to disk</li>
+<li>In-memory databases also provide data models that are difficult to
+implement with disk-based indexes</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="transaction-processing-or-analytics">Transaction Processing or
+Analytics</h2>
+<ol type="1">
+<li></li>
 </ol>
 
     </div>
@@ -528,7 +768,8 @@ needs to be updated every time data is written</li>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%8F%AF%E9%9D%A0%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1
 可靠，可扩展与可维护的应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">认识数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 数据模型和查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-storage-and-retrieval"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 Storage and
 Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-structures-that-power-your-database"><span class="nav-number">3.1.</span> <span class="nav-text">Data Structures That
-Power Your Database</span></a></li></ol></li></ol></div>
+Power Your Database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transaction-processing-or-analytics"><span class="nav-number">3.2.</span> <span class="nav-text">Transaction Processing or
+Analytics</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -601,12 +842,12 @@ Power Your Database</span></a></li></ol></li></ol></div>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">925k</span>
+    <span title="Symbols count total">933k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14:01</span>
+    <span title="Reading time total">14:08</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
