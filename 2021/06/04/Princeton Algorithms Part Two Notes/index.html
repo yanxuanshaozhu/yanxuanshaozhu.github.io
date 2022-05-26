@@ -28,7 +28,7 @@
 <meta property="og:description" content="Course Name: Algorithms, Part II   Course Website: Coursera  Instructor: Professor Kevin Wayne, Professor Robert Sedgewick   Books: Algorithms(4th edition)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-04T23:47:06.000Z">
-<meta property="article:modified_time" content="2022-05-22T01:21:44.349Z">
+<meta property="article:modified_time" content="2022-05-26T04:04:55.124Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Algorithm Part Two">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-21 21:21:44" itemprop="dateModified" datetime="2022-05-21T21:21:44-04:00">2022-05-21</time>
+                <time title="Modified: 2022-05-26 00:04:55" itemprop="dateModified" datetime="2022-05-26T00:04:55-04:00">2022-05-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>24k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>22 mins.</span>
+              <span>24 mins.</span>
             </span>
 
         </div>
@@ -839,6 +839,63 @@ t</li>
 <li>Single source: from one vertex to all others</li>
 <li>All pairs: between all pairs of vertices</li>
 </ul></li>
+<li>Restriction on edge weights
+<ul>
+<li>Nonnegative weights</li>
+<li>Arbitrary weights</li>
+<li>Euclidean weights</li>
+</ul></li>
+<li>Does the graph have cycles
+<ul>
+<li>No directed cycles</li>
+<li>No negative cycles</li>
+</ul></li>
+<li>Edge-weighted digraph API
+<ul>
+<li>DirectedEdge <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirectedEdge</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> v, w;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> weight;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DirectedEdge</span> <span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w, <span class="keyword">double</span> weight)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.v = v;</span><br><span class="line">    <span class="keyword">this</span>.w = w;</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">from</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.v;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">to</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.w;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">weight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.weight;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Edge-weighted digraph API <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EdgeWeightedDigraph</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> V;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Bag&lt;DirectedEdge&gt;[] adj;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">EdgeWeightedDigraph</span><span class="params">(<span class="keyword">int</span> V)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.V = V;</span><br><span class="line">    <span class="keyword">this</span>.adj = (Bag&lt;DirectedEdge&gt;[]) <span class="keyword">new</span> Bag[V];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; V; v++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.adj[v] = <span class="keyword">new</span> Bag&lt;DirectedEdge&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(DirectedEdge e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> v = e.from();</span><br><span class="line">    <span class="keyword">this</span>.adj[v].add(e);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Iterable&lt;DirectedEdge&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.adj[v];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Shortest Path Property
+<ul>
+<li>Goal: single source shortest path problem
+<ul>
+<li>A shortest path tree (SPT) exists
+<ul>
+<li>Use <code>dist[v]</code> to get the shortest path from source s to
+vertex v</li>
+<li>Use <code>edgeTo[v]</code> and a stack to get the vertexes on the
+shortest path from s to v <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterable&lt;DirectedEdge&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  Stack&lt;DirectedEdge&gt; path = <span class="keyword">new</span> Stack&lt;DirectedEdge&gt;();</span><br><span class="line">  <span class="keyword">for</span> (DirectedEdge e = edgeTo[v]; e != <span class="keyword">null</span>; e = edgeTo[e.from()]) &#123;</span><br><span class="line">    path.push(e);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> path;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Use edge relaxation to update shortest path <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">relax</span><span class="params">(DirectedEdge e)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> v = e.from();</span><br><span class="line">  <span class="keyword">int</span> w = e.to();</span><br><span class="line">  <span class="keyword">if</span> (distTo[w] &gt; distTo[v] + e.weight()) &#123;</span><br><span class="line">    distTo[w] = distTo[v] + e.weight();</span><br><span class="line">    edgeTo[w] = e;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Shortest path optimality condition: Let G be an edge-weighted
+digraph, then <code>distTo[]</code> are the shortest path distances from
+s iff:
+<ul>
+<li><code>distTo[s] = 0</code></li>
+<li>For each vertex v, <code>distTo[v]</code> is the length of some path
+from s to v</li>
+<li>For each edge e = w<span class="math inline">\(\rightarrow\)</span>w,
+<code>distTo[w] &lt;= distTo[v] + e.weight()</code></li>
+</ul></li>
+<li>Generic algorithm to compute SPT from s
+<ul>
+<li>Idea
+<ul>
+<li>Initialize <code>distTo[s] = 0</code> and
+<code>distTo[v]=</code><span class="math inline">\(\infty\)</span> for
+all other vertices</li>
+<li>Repeat relaxing edges until the optimality conditions are
+satisfied</li>
+</ul></li>
+<li>Efficient implementation
+<ul>
+<li>Dijkstra's algorithm: non-negative weights</li>
+<li>Topological sort algorithm: no directed cycles</li>
+<li>Bellman-Ford algorithm: no negative cycles</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1015,12 +1072,12 @@ t</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">933k</span>
+    <span title="Symbols count total">935k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14:08</span>
+    <span title="Reading time total">14:10</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
