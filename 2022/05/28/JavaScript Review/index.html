@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="What is JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Review">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/05/28/JavaScript%20Review/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="What is JavaScript">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
+<meta property="article:modified_time" content="2022-06-01T13:12:10.200Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/05/28/JavaScript%20Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript Review | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/05/28/JavaScript%20Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript Review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-28 14:41:06" itemprop="dateCreated datePublished" datetime="2022-05-28T14:41:06-04:00">2022-05-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-01 09:12:10" itemprop="dateModified" datetime="2022-06-01T09:12:10-04:00">2022-06-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="what-is-javascript">What is JavaScript</h1>
+<a id="more"></a>
+<ol type="1">
+<li><p>JavaScript was developed in 1995 by Netscape</p></li>
+<li><p>JavaScript implementation</p>
+<ul>
+<li>The core: ECMAScript
+<ul>
+<li>ECMMAScript implements all features described in ECMA-262</li>
+<li>ECMA-262 is ECMAScript edition 7</li>
+</ul></li>
+<li>The Document Object Model(DOM)
+<ul>
+<li>The DOM is an API for XML that was extended for use in HTML</li>
+<li>The DOM maps out an entire page as a hierarchy of nodes</li>
+<li>Each part of an HTML or XML page is a type of node containing
+different kinds of data</li>
+<li>DOM Levels
+<ul>
+<li>DOM level 1: DOM core (provides a way to map XML-based document to a
+hierarchy of nodes), DOM HTML (extends the DOM core)</li>
+<li>DOM level 2: introduces DOM views, DOM events, DOM style, DOM
+traversal and range</li>
+<li>DOM level 3: introduces DOM Load and Save, DOM Validation</li>
+</ul></li>
+</ul></li>
+<li>The Browser Object Model(BOM)
+<ul>
+<li>BOM allows access and manipulation of the browser window</li>
+<li>Primarily, the BOM deals with the browser window and frames, but
+generally any browser-specific extension to JavaScript is considered to
+be a part of the BOM</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="javascript-in-html">JavaScript in HTML</h1>
+<ol type="1">
+<li>The <code>&lt;script&gt;</code> element
+<ul>
+<li>Attributes: <code>charset</code>, <code>crossorigin</code>,
+<code>src</code>, <code>type=text/javascript</code>, ...</li>
+<li>Two ways to use the <code>&lt;script&gt;</code> element: embed
+JavaScript code directly into the page or include JavaScript from an
+external file</li>
+<li>In XHTML, you can write like this:
+<code>&lt;script src="example.js"/&gt;</code>, but in HTML, you should
+write likt this:
+<code>&lt;script src="example.js"&gt; &lt;/script&gt;</code></li>
+<li>Tag placement
+<ul>
+<li>Traditionally, all <code>&lt;script&gt;</code> elements were placed
+within the <code>&lt;head&gt;</code> element on a page, the main purpose
+of this formant was to keep external file references, both CSS files and
+JavaScript files, in the same area. But this format requires all scripts
+are loaded before the page begins rendering</li>
+<li>Modern web applications typically include all JavaScript references
+in the <code>&lt;body&gt;</code> element, after the page content</li>
+<li>Deferred scripts: use <code>defer</code> attribute,
+<code>&lt;script defer src="example.js"&gt;&lt;/script</code></li>
+<li>Asynchronous scripts: use <code>async</code> attribute,
+<code>&lt;script async src="example.js"&gt;&lt;/script</code></li>
+</ul></li>
+<li>Dynamic script loading: use DOM to load scripts dynamically
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">script.src = <span class="string">&#x27;example.js&#x27;</span>;</span><br><span class="line">&lt;!-- Some browser does not support the <span class="keyword">async</span> attribute --&gt;</span><br><span class="line">script.async = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">document</span>.head.appendChild(script);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Inline code versus external files
+<ul>
+<li>Generally it's a best practice to include as much JavaScript as
+possible using external files</li>
+<li>Reasons
+<ul>
+<li>Maintainability: easier to have a directory for all JavaScript
+files</li>
+<li>Caching: browser cache all externally linked JavaScript files to
+improve performance</li>
+<li>Future proof: the syntax is the same in both HTML and XHTML</li>
+</ul></li>
+</ul></li>
+<li>Document modes
+<ul>
+<li>Quirk mode: layout emulates nonstandard behavior in Navigator 4 and
+Internet Explorer 5, this is to support websites that were built before
+the widespread adoption of web standards</li>
+<li>Fully standards mode: the behavior is the one described by the HTML
+and CSS specifications</li>
+<li>Almost standards mode: has a lot of the features of standards mode
+but isn’t as strict</li>
+</ul></li>
+<li>The <code>&lt;nonscript&gt;</code> element
+<ul>
+<li>Some early browser does not support JavaScript, the
+<code>&lt;nonscript&gt;</code> element was created to provide alternate
+content to browsers without JavaScript</li>
+<li><code>&lt;nonscript&gt;</code> element can contain any HTML elements
+that can be included in the document <code>&lt;body&gt;</code>, aside
+from <code>&lt;script&gt;</code></li>
+<li>Any content contained in a <code>&lt;nonscript&gt;</code> element
+will be displayed when the browser does not support scripting or the
+browser's scripting support is turned off</li>
+</ul></li>
+</ol>
+<h1 id="language-basics">Language Basics</h1>
+<ol type="1">
+<li>Syntax
+<ul>
+<li>Case-sensitivity: everything is case-sensitive</li>
+<li>Identifiers:
+<ul>
+<li>Name format
+<ul>
+<li>First character must be a letter, an underscore, or a dollar
+sign</li>
+<li>All other characters may be letters, underscores, dollar signs, or
+number</li>
+</ul></li>
+<li>Identifiers use camel case</li>
+<li>Keywords, reserved words, true, false and null cannot be used as
+identifiers</li>
+</ul></li>
+<li>Comments
+<ul>
+<li><code>//</code> single line comment</li>
+<li><code>/**/</code> multi-line comment</li>
+</ul></li>
+<li>Strict mode
+<ul>
+<li>ECMAScript 5 introduced the strict mode, the strict mode is a
+restricted variant of JavaScript, but is not just a subset: it
+intentionally has different semantics from normal code</li>
+<li>Use strict code for an entire script: add <code>"use strict";</code>
+at the top of the script</li>
+<li>Specify just a function to execute in strict mode:
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &quot;use strict&quot;</span>;</span><br><span class="line">  <span class="comment">// function body</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>All modern browsers support strict mode</li>
+</ul></li>
+<li>Statements
+<ul>
+<li>Statements are terminated by a semicolon</li>
+<li>A semicolon is not required, but you should always include one</li>
+<li>Multiple statements can be combined into a code block using curly
+braces</li>
+<li>Control statements require code blocks only when executing multiple
+statements, but it is considered a best practice to always use code
+blocks with control blocks</li>
+</ul></li>
+</ul></li>
+<li>Keywords and reserved words
+<ul>
+<li>Keywords: <code>typeof</code>, <code>instanceof</code>,
+<code>yield</code>, <code>debugger</code>, etc.</li>
+<li>Reserved words:
+<ul>
+<li>Always reserved: <code>enum</code></li>
+<li>Reserved in strict mode: <code>implements</code>,
+<code>package</code>, <code>public</code>, <code>protected</code>,
+<code>private</code>, <code>let</code>, <code>static</code>,
+<code>interface</code></li>
+<li>Reserved in module code: <code>await</code></li>
+</ul></li>
+</ul></li>
+<li>Variables
+<ul>
+<li>ECMAScript variables are loosely typed, meaning they can hold any
+type of data</li>
+<li><code>var</code> is available for all ECMAScript versions,
+<code>const</code> and <code>let</code> were introduced in ECMAScript
+6</li>
+<li><code>var</code> declaration scope: the <code>var</code> operator
+defines a variable that is local to the function scope in which it is
+defined <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError: x is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  y = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(y); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(y); </span><br><span class="line"><span class="comment">// 1, y is seen as a global variable; in strict mode this line throws a ReferenceError </span></span><br></pre></td></tr></table></figure></li>
+<li><code>var</code> declaration hoisting: the interpreter pulls all
+variable declaration to the top of its scope <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The following two functions are equivalent</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// undefined</span></span><br><span class="line">  <span class="comment">// Redundant declaration is allowed for var</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// undefined</span></span><br><span class="line">  x = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>let</code> declaration
+<ul>
+<li><code>let</code> is block scoped rather than function scoped</li>
+<li>Redundant declaration is not allowed for <code>let</code></li>
+<li>There is not declaration hoisting for <code>let</code></li>
+<li><code>let</code> does not create properties of the window object
+when declared globally</li>
+</ul></li>
+<li><code>const</code> declaration
+<ul>
+<li>Similar to <code>let</code>, but it must be initialized with a value
+and the value cannot be redefined after declaration</li>
+<li>Attempting to modify a <code>const</code> variable will result in a
+runtime error</li>
+</ul></li>
+<li>Declaration styles and best practice
+<ul>
+<li>Don't use <code>var</code></li>
+<li>Prefer <code>cosnt</code> over <code>let</code></li>
+</ul></li>
+</ul></li>
+<li>Date types
+<ul>
+<li>Six primitive data types in ECMAScript: Undefined, Null, Boolean,
+Number, String, and Symbol. One complex data type: Object (unordered
+list of name-value pairs)</li>
+<li>The <code>typeof</code> operator returns one of the following
+things: undefined, boolean, string, number, object, function
+(technically, functions are considered objects in ECMAScript), or
+symbol</li>
+<li>The Undefined type
+<ul>
+<li>Only one value: <code>undefined</code></li>
+<li>When a variable is declared but not initialized, its value is
+<code>undefined</code></li>
+</ul></li>
+<li>The Null type
+<ul>
+<li>Only one value: <code>null</code></li>
+<li><code>undefined</code> is a derivative of <code>null</code>, so
+<code>null == undefined</code> is true</li>
+</ul></li>
+<li>The Boolean type
+<ul>
+<li>Only two values: <code>true</code> and <code>false</code></li>
+<li>Convert to boolean: <code>Boolean(value)</code></li>
+</ul></li>
+<li>The Number type
+<ul>
+<li>Octal lateral: <code>0ab</code></li>
+<li>Hexadecimal lateral: <code>0xab</code></li>
+<li>Floating-point values use approximations</li>
+<li>Infinity: <code>Infinity</code>, <code>-Infinity</code>, use
+<code>isFinite(value)</code> to check for infinity</li>
+<li><code>NaN</code>: not a number
+<ul>
+<li>Any mathematical operation involves <code>NaN</code> results in
+<code>NaN</code></li>
+<li><code>NaN == NaN</code> is false</li>
+<li>Use <code>isNaN(value)</code> to check for NaN</li>
+</ul></li>
+<li>Convert to number: <code>Number(value)</code>,
+<code>parseInt(value)</code>, <code>parseFloat(value)</code></li>
+</ul></li>
+<li>The String type
+<ul>
+<li>String can be delineated by double quotes, single quotes, or
+backticks</li>
+<li>Strings are immutable</li>
+<li>Length of string: <code>value.length</code></li>
+<li>Convert to string
+<ul>
+<li><code>value.toString()</code></li>
+<li>When the string is a number, you can pass the radix as the parameter
+of <code>toString()</code>: <code>value.toString(radix)</code>
+(<code>value.toString(2)</code>, <code>value.toString(8)</code>,
+<code>value.toString(16)</code>)</li>
+<li><code>String(value)</code></li>
+</ul></li>
+<li>Template literals: template literals defined using
+<code>backticks</code> can span multiple lines</li>
+<li>Interpolation: use <code>$&#123;variable&#125;</code> to insert the value of a
+variable into a template literal</li>
+<li>Raw strings: use <code>String.raw(value)</code> to get raw
+strings</li>
+</ul></li>
+<li>The Symbol type
+<ul>
+<li>Symbol instances are unique and immutable</li>
+<li>The purpose of a symbol is to be a guaranteed unique identifier for
+object properties that does not risk property collision</li>
+<li>Use <code>Symbol(value)</code> to create a symbol <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x1 = <span class="built_in">Symbol</span>(<span class="string">&#x27;x1&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> x2 = <span class="built_in">Symbol</span>(<span class="string">&#x27;x1&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x1 === x2); <span class="comment">// false, because symbols are unique</span></span><br><span class="line"><span class="built_in">console</span>.log(x1.description); <span class="comment">// x1 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>();</span><br><span class="line"><span class="keyword">let</span> sym = <span class="built_in">Symbol</span>(); <span class="comment">// You cannot use new keyword to create a symbol</span></span><br></pre></td></tr></table></figure></li>
+<li>Use the global symbol registry: <code>Symbol.for(string)</code> to
+get a symbol if it exists or create a new one if it doesn't, it's an
+idempotent operation
+<ul>
+<li>Global symbols are not the same as local symbols <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> globalSymbol = <span class="built_in">Symbol</span>.for(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> localSymbol = <span class="built_in">Symbol</span>(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(globalSymbol === localSymbol); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+<li>Use <code>Symbol.keyFor(string)</code> to find the global string key
+for a global symbol <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> globalSymbol = <span class="built_in">Symbol</span>.for(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> localSymbol = <span class="built_in">Symbol</span>(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(globalSymbol)); <span class="comment">// test</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(localSymbol)); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></li>
+<li>Anywhere you can use a string or number property, you can also use a
+symbol <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sym = <span class="built_in">Symbol</span>(<span class="string">&#x27;key&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  [sym]: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj[sym]); <span class="comment">// value</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>There are some built-int symbols in ECMAScript 6 that would be used
+to expose internal language behavior for direct access, overriding, or
+emulating
+<ul>
+<li>Example: <code>Symbol.asyncIterator</code>,
+<code>Symbol.hasInstance</code>, <code>Symbol.isConcatSpreadable</code>,
+<code>Symbol.iterator</code>, <code>Symbol.match</code>,
+<code>Symbol.replace</code>, <code>Symbol.search</code>,
+<code>Symbol.species</code>, <code>Symbol.split</code>,
+<code>Symbol.toPrimitive</code>, <code>Symbol.toStringTag</code>,
+<code>Symbol.unscopables</code></li>
+</ul></li>
+</ul></li>
+<li>The Object type
+<ul>
+<li>If the constructor has no arguments, the parentheses are optional,
+but it's recommended to use them: <code>let obj = new Object</code>,
+this is correct, but not recommended</li>
+<li>Properties and methods
+<ul>
+<li><code>constructor</code>, <code>hasOwnProperty(propertyName)</code>,
+<code>isPrototypeOf(object)</code>,
+<code>propertyIsEnumerable(propertyName)</code>,
+<code>toLocaleString()</code>, <code>toString()</code>,
+<code>valueOf()</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Operators
+<ul>
+<li>Unary operators:
+<ul>
+<li>Increment/decrement: <code>++</code>, <code>--</code>, can be used
+on any values
+<ul>
+<li>For string, convert to number/NaN, and then increment/decrement</li>
+<li>For object, use <code>obj.valueOf()</code> to get number/NaN, and
+then increment/decrement</li>
+</ul></li>
+<li>Plus/minus: <code>+</code>, <code>-</code>
+<ul>
+<li>For string, convert to number/NaN, and then plus/minus</li>
+<li>For object, use <code>obj.valueOf()</code> to get number/NaN, and
+then plus/minus</li>
+</ul></li>
+</ul></li>
+<li>Bitwise operators: <code>~</code>, <code>&amp;</code>,
+<code>|</code>, <code>^</code>, <code>&lt;&lt;</code>,
+<code>&gt;&gt;</code>(signed right shift),
+<code>&gt;&gt;&gt;</code>(unsigned right shift)</li>
+<li>Boolean operators: <code>!</code>, <code>&amp;&amp;</code>,
+<code>||</code></li>
+<li>Multiplicative operators: <code>*</code>, <code>/</code>,
+<code>%</code></li>
+<li>Exponentiation operator: <code>**</code></li>
+<li>Additive operators: <code>+</code>, <code>-</code></li>
+<li>Relational operators: <code>&lt;</code>, <code>&lt;=</code>,
+<code>&gt;</code>, <code>&gt;=</code>, <code>instanceof</code>,
+<code>in</code>
+<ul>
+<li>If both are numbers, perform numeric comparison</li>
+<li>If both are strings, compare the character codes of each
+character</li>
+<li>If one is number, convert the other to number, and the perform
+numeric comparison</li>
+<li>If an object, use <code>valueOf()</code> to get numeric value, if
+<code>valueOf()</code> is not available, use <code>toString()</code> to
+get string value, and then compare</li>
+<li>If one is Boolean, convert it to a number and then compare</li>
+</ul></li>
+<li>Equality operators: <code>==</code>, <code>！=</code>,
+<code>===</code>, <code>！==</code>
+<ul>
+<li>If one is a boolean, convert it to a number and then compare</li>
+<li>If one is a string, the other is a number, convert to string to
+number, and then compare</li>
+<li>If one is object, use <code>valueOf()</code> to get numeric value,
+if <code>valueOf()</code> is not available, use <code>toString()</code>
+to get string value, and then compare</li>
+<li><code>null == undefined</code> is true</li>
+<li><code>NaN == x</code> is false</li>
+</ul></li>
+<li>Conditional operator:
+<code>booleanExpression ? valueIfTrue : valueIfFalse</code></li>
+<li>Assignment operators: <code>=</code>, <code>+=</code>,
+<code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>,
+<code>&lt;&lt;=</code>, <code>&gt;&gt;=</code>,
+<code>&gt;&gt;&gt;=</code>, <code>&amp;=</code>, <code>^=</code>,
+<code>|=</code></li>
+<li>Comma operator: <code>,</code>
+<ul>
+<li><code>let x = 1, y = 2;</code></li>
+<li><code>let x = (1, 2);</code>, then <code>x = 2</code></li>
+</ul></li>
+</ul></li>
+<li>Statements
+<ul>
+<li>The <code>if</code> statement</li>
+<li>The <code>do-while</code> statement</li>
+<li>The <code>while</code> statement</li>
+<li>The <code>for</code> statement: initialization, control expression,
+and postloop expression are all optional</li>
+<li>The <code>for-in</code> statement: used to enumerate the non-symbol
+keyed properties of an object</li>
+<li>The <code>for-of</code> statement: used to loop through elements in
+an iterable object</li>
+<li>Labeled statements: <code>label: statement</code>, can be used
+together with <code>break</code>, <code>continue</code></li>
+<li><code>break</code> and <code>continue</code> statements</li>
+<li><code>with</code> statements: sets the scope of the code within a
+particular object <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The following two formats are equivalent</span></span><br><span class="line"><span class="keyword">let</span> eq = location.search.substring(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">let</span> hostName = location.hostname;</span><br><span class="line"><span class="keyword">let</span> url = location.href;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">with</span>(<span class="params">location</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> eq = search.substring(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">let</span> hostName = hostName;</span><br><span class="line">  <span class="keyword">let</span> url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The <code>switch</code> statement <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(expression) &#123;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">    statement;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value2:</span><br><span class="line">    statement;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    statement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Functions
+<ul>
+<li>Basic syntax <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">arg0, arg1, ..., argN</span>) </span>&#123;</span><br><span class="line">  statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Functions do not need to specify whether they return a value, any
+function can return a value at any time by using the <code>return</code>
+statement</li>
+<li>Strict mode places several restrictions on functions
+<ul>
+<li>No function can be named eval or arguments</li>
+<li>No named parameter can be named eval or arguments</li>
+<li>No two named parameters can have the same name</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="variables-scope-and-memory">Variables, Scope, and Memory</h1>
+<ol type="1">
+<li>Primitive and reference values
+<ul>
+<li>ECMAScript variables contain two different types of data: primitive
+values and reference values</li>
+<li>Primitive values are simple atomic pieces of data</li>
+<li>Reference values are objects that may be made up of multiple
+values</li>
+<li>JavaScript does not permit direct access of memory locations, so you
+actually work on a reference to the object that you manipulate</li>
+<li>Primitive values cannot have properties added to them even though
+attempting to do so won't cause an error</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/05/28/JavaScript%20Review/" title="JavaScript Review">https://yanxuanshaozhu.github.io/2022/05/28/JavaScript Review/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/26/%E5%B2%A9%E6%B3%A2%E8%AC%9B%E5%BA%A7-%E6%97%A5%E6%9C%AC%E6%AD%B7%E5%8F%B2/" rel="prev" title="岩波講座 日本歷史">
+      <i class="fa fa-chevron-left"></i> 岩波講座 日本歷史
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">952k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">14:25</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
