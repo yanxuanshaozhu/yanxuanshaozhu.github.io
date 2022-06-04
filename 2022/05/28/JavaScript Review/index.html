@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-01T13:12:10.200Z">
+<meta property="article:modified_time" content="2022-06-04T05:28:11.195Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-01 09:12:10" itemprop="dateModified" datetime="2022-06-01T09:12:10-04:00">2022-06-01</time>
+                <time title="Modified: 2022-06-04 01:28:11" itemprop="dateModified" datetime="2022-06-04T01:28:11-04:00">2022-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -657,7 +657,599 @@ values</li>
 actually work on a reference to the object that you manipulate</li>
 <li>Primitive values cannot have properties added to them even though
 attempting to do so won't cause an error</li>
+<li>Copying values
+<ul>
+<li>When a primitive value is assigned from one variable to another, the
+value stored on the variable object is created and copied into the
+location for the new variable</li>
+<li>When a reference value is assigned from one variable to another, the
+value stored on the variable object is also copied into the location for
+the new variable</li>
 </ul></li>
+<li>Argument passing: all function arguments are passed by value</li>
+<li>Determining type
+<ul>
+<li>If x is null or an object, <code>typeof x</code> returns
+<code>object</code></li>
+<li>Use <code>x instanceof Type</code> to check if the variable is an
+instance of the given reference type, e.g.
+<code>person instanceof Object</code></li>
+</ul></li>
+</ul></li>
+<li>Execution context and scope
+<ul>
+<li>The execution context of a variable or function defines what other
+dat it has access to, as well as how it should behave. Each execution
+context has an associated variable object upon which all of its defined
+variables and functions exist</li>
+<li>The global execution context is the outermost one. In web browsers,
+the global context is that of the <code>window</code> object</li>
+<li>ECMAScript execution flow
+<ul>
+<li>Each function call has its own execution context</li>
+<li>A context stack holds all function contexts</li>
+</ul></li>
+<li>When code is executed, a scope chain of variable objects is created,
+the scope provide ordered access to all variables and functions than an
+execution context has access to</li>
+<li>Each execution context has an associated variable object upon which
+all of its defined variables and functions exist</li>
+<li>Scope chain augmentation: in a <code>catch</code> block of a
+<code>try-catch</code> statement, or in a <code>with</code> statement, a
+temporary addition to the front of the scope chain appears</li>
+<li>Identifier lookup
+<ul>
+<li>Search starts at the front of the scope chain, if target is found in
+the local context, then done, otherwise continuing along the scope
+chain</li>
+<li>The process continues until the global context is done</li>
+</ul></li>
+</ul></li>
+<li>Garbage collection
+<ul>
+<li>JavaScript is a garbage-collected language, it automatically
+allocates what is needed and reclaims memory that is no longer being
+used</li>
+<li>Idea: figure out which variables aren't going to be used and free
+the memory associated with them, run garbage collection
+periodically</li>
+<li>Two strategies have traditionally been used in browsers:
+mark-and-sweep, and reference counting</li>
+<li>Mark-and-sweep
+<ul>
+<li>The most popular JavaScript garbage collection format</li>
+<li>Variables are flagged when they are in context</li>
+<li>GC procedure
+<ul>
+<li>The garbage collector marks all variables stored in memory
+first</li>
+<li>The garbage collector then removes marks off variables that are in
+context or referenced by in-context variables</li>
+<li>All variables that are still marked are considered ready for
+deletion</li>
+<li>The garbage collector then does a memory sweep, destroying each of
+the marked values and reclaiming the memory associated with them</li>
+</ul></li>
+</ul></li>
+<li>Reference counting
+<ul>
+<li>Idea: every value keeps track of how many references are made to it,
+when the reference count reaches zero, there is no way to reach that
+value and it is safe to reclaim the associated memory</li>
+<li>A problem with reference counting is that when there are circular
+references, the reference count will not be zero even when the objects
+are no longer reachable</li>
+</ul></li>
+<li>Performance
+<ul>
+<li>GC runs periodically and can slow normal operations down if there
+are a large number of variable allocations in memory, so the timing of
+GC is important</li>
+<li>The best strategy is to organize your code in such a way that it
+allows garbage collection to do its job to the best of its ability
+whenever it is scheduled to run</li>
+</ul></li>
+<li>Managing memory
+<ul>
+<li>Due to GC, developers typically don't have to worry about memory
+management</li>
+<li>Keeping in the amount of used memory to a minimum leads to better
+page performance</li>
+<li>The best way to optimize memory usage is to ensure that you only
+keep around data that is necessary for the execution of your code. When
+data is no longer necessary, it's best to set the value to null</li>
+<li>Use const and let declarations to boost performance</li>
+<li>Memory leaks
+<ul>
+<li>One of the most common and easily fixed memory leak is accidentally
+declaring global variables</li>
+<li>Interval timers can also cause memory leaks</li>
+<li>JavaScript closures can also cause memory leaks</li>
+</ul></li>
+<li>Static allocation and object pools: use object pools to reduce GC
+and boost performance</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="basic-reference-types">Basic Reference Types</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>A reference value/object is an instance of a specific reference
+type</li>
+</ul></li>
+<li>The <code>Date</code> type
+<ul>
+<li>The <code>Date</code> type stores dates as the number of
+milliseconds that have passed since midnight on January 1, 1970 UTC</li>
+<li>Now: <code>let now = new Date();</code></li>
+<li>Use <code>Date.parse(string)</code> to convert a string to
+milliseconds
+<ul>
+<li>String format: <code>month/date/year</code>,
+<code>month_name date, year</code>,
+<code>YYYY-MM-DDTHH:mm:ss:sssZ</code>,
+<code>day_of_week month_name date year HH:mm:ss time_zone</code></li>
+<li>Example: <code>let date = new Date(Date.parse("06/02/2022))</code>,
+this is equivalent to <code>let date new Date("06/02/2022")</code></li>
+</ul></li>
+<li>Use <code>Date.UTC(YYYY, MM, DD, HH, mm, ss)</code> to convert a
+string to milliseconds
+<ul>
+<li>MM is 0 indexed, so January is 0</li>
+<li>Example:
+<code>let date = new Date(Date.UTC(2022, 5, 2, 12, 0, 0))</code>, this
+is equivalent to
+<code>let date new Date(2022, 5, 2, 12, 0, 0)</code></li>
+<li>During implicit call, <code>Date.parse()</code> creates GMT time,
+<code>Date.UTC()</code> creates local time</li>
+</ul></li>
+<li>Use <code>Date.now()</code> to calculate time difference
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> t1 = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="comment">// do something</span></span><br><span class="line"><span class="keyword">let</span> t2 = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="built_in">console</span>.log(t2 - t1);</span><br></pre></td></tr></table></figure></li>
+<li>Inherited methods: <code>toLocaleString()</code> does not contain
+time zone, <code>toString()</code> contains time zone information,
+<code>valueOf()</code> returns the milliseconds</li>
+<li>Date-formatting methods: <code>toDateString()</code>,
+<code>toTimeString()</code>, <code>toLocaleDateString()</code>,
+<code>toLocaleTimeString()</code>, <code>toUTCString()</code></li>
+<li>Date/time component methods: <code>getTime()</code> returns
+milliseconds, <code>setTime()</code>, <code>getFullYear()</code>,
+<code>getMonth()</code>, <code>getDate()</code>, <code>getDay()</code>,
+<code>getHours()</code>, <code>getMinutes()</code>,
+<code>getSeconds()</code>, <code>getMilliseconds()</code>,
+<code>getTimezoneOffset()</code>, ...</li>
+</ul></li>
+<li><code>RegExp</code>
+<ul>
+<li>ECMAScript supports regular expression through the
+<code>RegExp</code> type</li>
+<li>Regular expression syntax: <code>let expr = /pattern/flags</code>
+<ul>
+<li>flags: <code>g</code>: find all matches instead the first one,
+<code>i</code>: case-insensitive mode, <code>m</code>: multiline mode,
+pattern ends after EOF, <code>u</code>: Unicode mode is enabled</li>
+<li>You can also use <code>let expr = new RegExp(pattern, flags)</code>
+to create regular expressions</li>
+</ul></li>
+<li>Instance properties: <code>global</code> boolean,
+<code>ignoreCase</code> boolean, <code>unicode</code> boolean,
+<code>multiline</code> boolean, <code>flags</code> string</li>
+<li>Instance methods
+<ul>
+<li><code>pattern.exec(target)</code>
+<ul>
+<li>Returns an array of information about the first match, or null if no
+match is found</li>
+<li>The returned array has <code>index</code> and <code>input</code>
+properties to indicate the position of the match, and the input
+string</li>
+<li>The first string in the array is the matched string</li>
+<li>If global flag is set, the <code>exec()</code> method returns
+information about one match per iteration, when the global flag is not
+specified, calling <code>exec()</code> on the same string multiple times
+will always return information about the first match</li>
+</ul></li>
+<li><code>pattern.test(target)</code>
+<ul>
+<li>Returns true if the pattern matches the argument and false if it
+does not</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Primitive wrapper types
+<ul>
+<li>Three special reference types are designed to ease interaction with
+primitive values: <code>Boolean</code>, <code>Number</code>, and
+<code>String</code></li>
+<li>Every time a primitive value is read, an object of the corresponding
+primitive wrapper type is created, the wrapper object is destroyed when
+it's done <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">&quot;text&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> s2 = s1.substring(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// the above line creates a wrapper object from s1, call substring method on it, and destroys the wrapper object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="string">&quot;text&quot;</span>;</span><br><span class="line">s1.color = <span class="string">&quot;red&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s1.color); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></li>
+<li>Calling <code>typeof</code> on an instance of a primitive wrapper
+type returns <code>object</code>, and all primitive wrapper objects
+convert to the Boolean value <code>true</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x == <span class="literal">false</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(x &amp;&amp; <span class="number">1</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(x <span class="keyword">instanceof</span> <span class="built_in">String</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>The <code>Object</code> constructor also acts as a factor method and
+is capable of returning an instance of a primitive wrapper based on the
+type of value passed into the constructor <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x <span class="keyword">instanceof</span> <span class="built_in">String</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>The <code>Boolean</code> type
+<ul>
+<li>Instances of Boolean override the <code>valueOf()</code> method and
+the <code>toString()</code> method</li>
+<li>Boolean objects are seldom used because they can be rather confusing
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x &amp;&amp; <span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">let</span> y = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">console</span>.log(y &amp;&amp; <span class="literal">true</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>Number</code> type
+<ul>
+<li>The <code>toString()</code> method accepts a single argument
+indicating the radix in which to represent the number
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x.toString(<span class="number">2</span>)); <span class="comment">// 1010</span></span><br><span class="line"><span class="built_in">console</span>.log(x.toString(<span class="number">8</span>)); <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">console</span>.log(x.toString(<span class="number">10</span>)); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(x.toString(<span class="number">16</span>)); <span class="comment">// a</span></span><br></pre></td></tr></table></figure></li>
+<li><code>toFixed(n)</code>: returns a string representation of a number
+with a specified number of decimal points</li>
+<li><code>toExponential()</code>: returns a string with the number of
+formatted in exponential notation</li>
+<li><code>toPrecision()</code>: returns either the fixed or the
+exponential representation of a number, depending on which makes the
+most sense</li>
+<li>Some differences <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">let</span> y = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> y); <span class="comment">// number</span></span><br><span class="line"><span class="built_in">console</span>.log(x <span class="keyword">instanceof</span> <span class="built_in">Number</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(y <span class="keyword">instanceof</span> <span class="built_in">Number</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+<li><code>Number.isInteger(value)</code>: whether a number is stored as
+an interger</li>
+<li><code>Number.isSafeInteger(value)</code>: whether a number is stored
+as an interger and is within the range of a 32-bit signed integer, i.e.,
+<span class="math inline">\([-2^{53} + 1, 2^{53} - 1]\)</span></li>
+</ul></li>
+<li>The <code>String</code> type
+<ul>
+<li><code>s.length</code>: return the length of a string</li>
+<li><code>charAt(index)</code>: returns the character at the specified
+index</li>
+<li><code>s1.concat(s2)</code>: creates a new string by concatenating
+two strings, s1 and s2 remain the same</li>
+<li><code>s.slice(start, end)</code>,
+<code>s.substring(start, end)</code>: returns a substring of a
+string</li>
+<li><code>s.substr(start, length)</code>: returns a substring of a
+string</li>
+<li><code>s.indexOf(str[, pos])</code>: returns the index of the first
+occurrence of a substring in a string, starting from pos</li>
+<li><code>s.lastIndexOf(str[, pos])</code>: returns the index of the
+last occurrence of a substring in a string, starting from pos</li>
+<li><code>s.startsWith(str)</code>, <code>s.endsWith(str)</code>:
+returns true if the string starts or ends with the specified
+substring</li>
+<li><code>s.includes(str)</code>: returns true if the string contains
+the specified substring</li>
+<li><code>s.trim()</code>, <code>s.trimLeft()</code>,
+<code>s.trimRight()</code>: returns a string with whitespace
+removed</li>
+<li><code>s.repeat(n)</code>: returns a string consisting of n copies of
+the string</li>
+<li><code>s.padStart()</code>, <code>s.padEnd()</code>: returns a string
+with the specified padding</li>
+<li>String destructuring: <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> c <span class="keyword">of</span> <span class="string">&quot;abc&quot;</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br></pre></td></tr></table></figure></li>
+<li><code>s.toLowerCase()</code>, <code>s.toUpperCase()</code>: returns
+a string with all characters converted to lowercase or uppercase</li>
+<li><code>s.match(pattern)</code>: equivalent to
+<code>pattern.exec(s)</code></li>
+<li><code>s1.localeCompare(s2)</code>: compares two strings in a
+locale-aware manner, returns 1, 0, or -1</li>
+</ul></li>
+</ul></li>
+<li>Singleton built-in objects
+<ul>
+<li>The <code>Global</code> object
+<ul>
+<li>It's the most unique in ECMAScript because it is not explicitly
+accessible</li>
+<li>The <code>Global</code> object is the catchall for properties and
+methods that don't otherwise have an owning object</li>
+<li>URL-encoding methods: <code>encodeURI(uri)</code>,
+<code>encodeURIComponent(uri)</code>, <code>decodeURI(uri)</code>,
+<code>decodeURIComponent(uri)</code></li>
+<li>Properties: <code>undefined</code>, <code>NaN</code>,
+<code>Infinity</code>, <code>Object</code>, ...</li>
+<li>The <code>window</code> object： web browsers implement it in such
+that the <code>window</code> is the <code>Global</code> object's
+delegate</li>
+<li>Use <code>this</code> to get the <code>Global</code> object:
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="built_in">global</span> = <span class="function">() =&gt;</span> &#123;<span class="keyword">return</span> <span class="built_in">this</span>;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>Math</code> object
+<ul>
+<li>Properties: <code>Math.E</code>, <code>Math.PI</code>,
+<code>Math.LN10</code>, <code>Math.LN2</code>, <code>Math.LOG2E</code>,
+<code>Math.LOG10E</code>, <code>Math.SQRT1_2</code>,
+<code>Math.SQRT2</code></li>
+<li>Methods
+<ul>
+<li><code>min(x1, ..., xn)</code>, <code>max(x1, ..., xn)</code></li>
+<li><code>ceil()</code>, <code>floor()</code>, <code>round()</code>,
+<code>fround()</code></li>
+<li><code>random()</code>: use
+<code>Math.floor(Math.random() * max + min)</code> to get an integer
+range of <span class="math inline">\([min, max)\)</span></li>
+<li>Others: <code>abs(x)</code>, <code>exp(x)</code>,
+<code>expm1(x)</code> exp(x) - 1, <code>log(x)</code>,
+<code>log1p(x)</code> log(x) + 1, <code>pow(x, power)</code>, ...</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="collection-reference-types">Collection Reference Types</h1>
+<ol type="1">
+<li>The <code>Object</code> type
+<ul>
+<li>Two ways to create an instance of Object
+<ul>
+<li>Use <code>new</code> operator <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj.name = <span class="string">&#x27;Superman&#x27;</span>;</span><br><span class="line">obj.sex = <span class="string">&#x27;Female&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>Use object lateral notation <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&#x27;Superman&#x27;</span>,</span><br><span class="line">  sex: <span class="string">&#x27;Female&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Property names can be string or number</li>
+<li>Accessing a property: <code>obj.property</code>, or
+<code>obj['property']</code></li>
+</ul></li>
+</ul></li>
+<li>Array
+<ul>
+<li>ECMAScript arrays are ordered lists of data, but they can hold any
+type of data in each slot</li>
+<li>ECMAScript arrays are dynamically sized, automatically growing to
+accommodate any data that is added to them</li>
+<li>Creating arrays: <code>let arr = new Array(3);</code> or
+<code>let arr = new Array('a', 'b', 'c');</code>,
+<code>let arr = ['a', 'b', 'c'];</code></li>
+<li>Use <code>Array.from(iterable[, map_function])</code> to create an
+array from an iterable object</li>
+<li>Use <code>Array.of(x1, ..., xn)</code> to create an array</li>
+<li>Array holes <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = [,,,]; <span class="comment">// [x0, x1, x2,], so length is 3</span></span><br><span class="line"><span class="keyword">let</span> a2 = [<span class="number">1</span>,,,]; <span class="comment">// [1, x0, x1,], so length is 3</span></span><br><span class="line"><span class="keyword">let</span> a3 = [,,,<span class="number">1</span>]; <span class="comment">// [x0, x1, x2, 1], so length is 4</span></span><br><span class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,,,<span class="number">2</span>]; <span class="comment">// [1, x0, x1, 2], so length is 4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>map()</code> method skip array holes, <code>join()</code>
+method treats holes as empty strings</li>
+</ul></li>
+<li>Detect arrays
+<ul>
+<li>Use <code>value instanceof Array</code> to detect</li>
+<li>Use <code>Array.isArray(value)</code> to detect</li>
+</ul></li>
+<li>Iterator methods
+<ul>
+<li><code>arr.keys()</code>, <code>arr.values()</code>,
+<code>arr.entries()</code></li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Array</span>.from(arr.keys())) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0\n 1\n 2\n</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> <span class="built_in">Array</span>.from(arr.values())) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// a\n b\n c\n</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Array</span>.from(arr.entries())) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">&#x27;: &#x27;</span> + value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0: a\n 1: b\n 2: c\n</span></span><br></pre></td></tr></table></figure></li>
+<li>Copy and fill methods
+<ul>
+<li><code>arr.fill(value[, start[, end]])</code>: fill the array with
+the specified value, start and end are optional</li>
+<li><code>arr.copyWithin(target, start[, end])</code>: copy the array to
+a new location, start and end are optional</li>
+</ul></li>
+<li>Conversion methods
+<ul>
+<li><code>toString()</code> and <code>valueOf()</code> methods return
+the same comma separated string or an array</li>
+</ul></li>
+<li>Stack methods
+<ul>
+<li><code>arr.push(value)</code>: add a new element to the end of the
+array</li>
+<li><code>arr.pop()</code>: remove the last element of the array, this
+method returns the removed item</li>
+</ul></li>
+<li>Queue methods
+<ul>
+<li><code>arr.push(value)</code>: add a new element to the end of the
+array</li>
+<li><code>arr.shift()</code>: remove the first element of the array,
+this method returns the removed item</li>
+<li><code>arr.unshift(value)</code>: add a new element to the beginning
+of the array</li>
+<li><code>arr.pop()</code>: remove the last element of the array, this
+method returns the removed item</li>
+</ul></li>
+<li>Reordering methods
+<ul>
+<li><code>arr.reverse()</code>: reverse an array in place, this method
+returns the reversed array</li>
+<li><code>arr.sort()</code>: sort an array in place, this method returns
+the sorted array
+<ul>
+<li>By default , the sort order is ascending, built-upon converting the
+items into strings and then comparing their sequences of UTF-16 code
+units values</li>
+<li>You can pass a compare function to <code>sort</code> to specify the
+sort order, if <code>a &lt; b</code> then a appears before b</li>
+</ul></li>
+</ul></li>
+<li>Manipulation methods
+<ul>
+<li><code>a1.concat(a2)</code>: return a new concatenated array, a1 and
+a2 remain the same</li>
+<li><code>arr.slice(start[, end])</code>: return a new array arr[start:
+end], end is optional, both can be negative</li>
+<li><code>arr.splice(start, deleteCount[, item1[, item2[, ...]]])</code>
+<ul>
+<li>One parameter: delete all items in the array starting from
+<code>start</code></li>
+<li>Two parameters: <code>start</code> and <code>deleteCount</code>,
+delete <code>deleteCount</code> items starting from
+<code>start</code></li>
+<li>More than two parameters, <code>deleteCount</code> is 0: insert the
+items into the array starting from <code>start</code></li>
+<li>More than two parameters, <code>deleteCount</code> is positive:
+delete <code>deleteCount</code> items starting from <code>start</code>,
+then insert the items into the array starting from
+<code>start</code><br>
+</li>
+</ul></li>
+</ul></li>
+<li>Search and location methods
+<ul>
+<li><code>indexOf(item)</code>, <code>lastIndexOf(item)</code>,
+<code>includes(item)</code></li>
+<li>Predicate search
+<ul>
+<li>Predicate:
+<code>(item, index, array) =&gt; boolean_function(item)</code></li>
+<li><code>arr.find(predicate)</code>: return the matched item</li>
+<li><code>arr.findIndex(predicate)</code>: return the index of the
+matched item</li>
+</ul></li>
+</ul></li>
+<li>Iterative methods
+<ul>
+<li><code>every(predicate)</code>: returns true if all items in the
+array satisfy the predicate, otherwise false</li>
+<li><code>filter(predicate)</code>: return a new array with all items
+that satisfy the predicate</li>
+<li><code>forEach((item, index, array) =&gt; &#123;// do something&#125;)</code>:
+execute a function for each item in the array</li>
+<li><code>map(predicate)</code>: return a new array with the result of
+the function</li>
+<li><code>some(predicate)</code>: returns true if any item in the array
+satisfies the predicate, otherwise false</li>
+</ul></li>
+<li>Reduction methods
+<ul>
+<li><code>arr.reduce((pre, cur, index, array) =&gt; &#123;function(pre, cur)&#125;, initialValue)</code>:
+reduce the array to a single value, initialValue is optional (if
+initialValue is not provided, pre = arr[0], cur = arr[1]), start from
+left to right</li>
+<li><code>arr.reduceRight((pre, cur, index, array) =&gt; &#123;function(pre, cur)&#125;, initialValue)</code>:
+reduce the array to a single value, initialValue is optional (if
+initialValue is not provided, pre = arr[arr.length - 1], cur =
+arr[arr.length - 2]), start from right to left</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Typed arrays
+<ul>
+<li>The typed array is a construct designed for efficiently passing
+binary data to native libraries. There is no actual typed array in
+JavaScript, the term refers to a collection of specialized arrays that
+contain numeric types</li>
+<li>Using ArrayBuffers
+<ul>
+<li>ArrayBuffer is a normal JavaScript constructor that can be used to
+allocate a specific number of bytes in memory</li>
+<li><code>const buf = new ArrayBuffer(n);</code>: allocates n bytes of
+memory</li>
+<li>ArrayBuffer cannot be resized once it is created, you can copy a
+part to create a new one:
+<code>const buf = new ArrayBuffer(n).slice(start, end);</code></li>
+<li>You can use views to read data from or write data into an
+ArrayBuffer</li>
+</ul></li>
+<li>DataViews: designed for file I/O and network I/O</li>
+<li>Typed arrays: another form of an ArrayBuffer view, it offers broader
+API and better performance</li>
+</ul></li>
+<li>The <code>Map</code> type
+<ul>
+<li>Prior to the ECMASCript 6, implementing a key/value store in
+JavaScript could be accomplished effectively and easily by using an
+Object. Newly added in the ECMAScript 6, Map is a new collection type
+that introduces true key/value behavior into the language</li>
+<li>Creating a new map <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m1 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"><span class="comment">// Pass an iterable of key/value pair arrays to the map constructor</span></span><br><span class="line"><span class="keyword">const</span> m2 = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">&#x27;k1&#x27;</span>, <span class="string">&#x27;v1&#x27;</span>], [<span class="string">&#x27;k2&#x27;</span>, <span class="string">&#x27;v2&#x27;</span>]]);</span><br><span class="line"><span class="built_in">console</span>.log(m2.size); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+<li>Accessor and mutator
+<ul>
+<li><code>map.get(key)</code>: return the value associated with the
+key</li>
+<li><code>map.set(key, value)</code>: set the value associated with the
+key, return the modified map</li>
+<li><code>map.has(key)</code>: return true if the map contains the key,
+otherwise false</li>
+<li><code>map.delete(key)</code>: delete the value associated with the
+key</li>
+<li><code>map.clear()</code>: delete all values</li>
+</ul></li>
+<li>Order and iteration
+<ul>
+<li>One major departure from the <code>Object</code> type’s conventions
+is that <code>Map</code> instances maintain the order of key/value
+insertion and allow you to perform iterative operations following
+insertion order</li>
+<li>Iterator: <code>map.keys()</code>, <code>map.values()</code>,
+<code>map.entries()</code>
+<ul>
+<li>You can use spread operator to convert a map to an array of
+key/value pairs: <code>[...map]</code></li>
+</ul></li>
+</ul></li>
+<li>Choosing between object and map
+<ul>
+<li>Memory profile: Results may vary by browser, but given a fixed
+amount of memory, a <code>Map</code> will be able to store roughly 50
+percent more key/value pairs than an <code>Object</code></li>
+<li>Insertion performance: insertion into a <code>Map</code> will
+generally be slightly faster across all browser engines</li>
+<li>Lookup performance: when the amount of key/value pairs is small,
+there isn't much difference between <code>Object</code> and
+<code>Map</code>, but when the number of key/value pairs is large,
+<code>Object</code> is faster</li>
+<li>Delete performance: deleting properties from an <code>Object</code>
+is notorious, you should use <code>Map</code> instead</li>
+</ul></li>
+</ul></li>
+<li>The <code>WeakMap</code> type
+<ul>
+<li>Newly added in the ECMAScript 6, <code>WeakMap</code> is a new
+collection type that introduces augmented key/value behavior into the
+language. The “weak” designation describes how JavaScript’s garbage
+collector treats keys in a <code>WeakMap</code></li>
+<li>Basic API
+<ul>
+<li><code>const wm = new WeakMap();</code>: create a new weak map</li>
+<li>Keys in a <code>WeakMap</code> must be objects, and values can be
+anything</li>
+<li><code>wm.has(key)</code>, <code>wm.set(key, value)</code>,
+<code>wm.get(key)</code>, <code>wm.delete(key)</code></li>
+</ul></li>
+<li>Weak keys
+<ul>
+<li>keys in a <code>WeakMap</code> are weak, meaning that they are not
+counted as formal references that would otherwise prevent garbage
+collection</li>
+<li>Values in a <code>WeakMap</code> are not weak</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wm1 = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">wm1.set(&#123;&#125;, <span class="string">&#x27;value&#x27;</span>); <span class="comment">// after the line is done, the key/value pair is garbage collected</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wm2 = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="keyword">let</span> container = &#123;<span class="attr">key</span>: &#123;&#125;&#125;;</span><br><span class="line">wm2.set(container.key, <span class="string">&#x27;value&#x27;</span>); <span class="comment">// the key is not garbage collected because it is referenced by the container</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Non-iterable keys: because the key/value pairs can be garbage
+collected at any time, so you cannot iterate over them (including
+destroying the key/value pairs using the <code>clear</code> method)</li>
+<li>Utility
+<ul>
+<li>Private variables: private variables will be stored in a
+<code>WeakMap</code> with the object instance as the key and a
+dictionary of private members as the value</li>
+<li>DOM data metadata: because WeakMap instances do not interfere with
+garbage collection, they are a terrific tool for cleanup-free metadata
+association</li>
+</ul></li>
+</ul></li>
+<li>The <code>Set</code> type
+<ul>
+<li><code>Set</code> type is added in the ECMAScript 6</li>
+<li>Basic API
+<ul>
+<li>Create a set: <code>const s = new Set();</code></li>
+<li>Create a set with an iterable:
+<code>const s = new Set(iterable);</code></li>
+<li>Accessor and mutator: <code>set.add(value)</code> this is
+idempotent, <code>set.has(value)</code>, <code>set.size</code>,
+<code>set.delete(value)</code> returns boolean and is idempotent,
+<code>set.clear()</code></li>
+</ul></li>
+<li>A <code>Set</code> can contain any JavaScript data type as a
+value</li>
+<li>Order and iteration
+<ul>
+<li>Sets maintain the order of value insertion and allow you to perform
+iterative operations following insertion order</li>
+<li>You can iterate a set using the <code>set.values()</code> method or
+the <code>set[Symbol.iterator]()</code> method <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>(arr);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> s.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> value <span class="keyword">of</span> s[<span class="built_in">Symbol</span>.iterator]()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The <code>set.entries()</code> method returns an iterator that
+yields value/value pairs for each value in the set</li>
+<li>You can use <code>set.forEach(callback)</code> to iterate over the
+set</li>
+</ul></li>
+</ul></li>
+<li>The <code>WeakSet</code> type</li>
 </ol>
 
     </div>
@@ -756,7 +1348,7 @@ attempting to do so won't cause an error</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -829,12 +1421,12 @@ attempting to do so won't cause an error</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">952k</span>
+    <span title="Symbols count total">970k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14:25</span>
+    <span title="Reading time total">14:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
@@ -889,6 +1481,59 @@ attempting to do so won't cause an error</li>
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
