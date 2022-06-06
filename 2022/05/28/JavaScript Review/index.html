@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-04T05:28:11.195Z">
+<meta property="article:modified_time" content="2022-06-06T04:33:31.498Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-04 01:28:11" itemprop="dateModified" datetime="2022-06-04T01:28:11-04:00">2022-06-04</time>
+                <time title="Modified: 2022-06-06 00:33:31" itemprop="dateModified" datetime="2022-06-06T00:33:31-04:00">2022-06-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>29k</span>
+              <span>39k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>27 mins.</span>
+              <span>36 mins.</span>
             </span>
 
         </div>
@@ -1249,7 +1249,233 @@ yields value/value pairs for each value in the set</li>
 set</li>
 </ul></li>
 </ul></li>
-<li>The <code>WeakSet</code> type</li>
+<li>The <code>WeakSet</code> type
+<ul>
+<li>Basic API
+<ul>
+<li>Create a <code>WeakSet</code>:
+<code>const we = new WeakSet();</code></li>
+<li>Create a <code>WeakSet</code> with an iterable:
+<code>const we = new WeakSet(iterable);</code></li>
+<li>Accessor and mutator: <code>set.add(value)</code> this is
+idempotent, <code>set.has(value)</code>,
+<code>set.delete(value)</code></li>
+</ul></li>
+<li>Weak keys
+<ul>
+<li>Values in a WeakSet are “weakly held,” meaning they are not counted
+as formal references, which would otherwise prevent garbage
+collection</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ws1 = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line">ws1.add(&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ws2 = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line"><span class="keyword">let</span> container = &#123; <span class="attr">val</span>: &#123;&#125;&#125;;</span><br><span class="line">ws2.add(container.val);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Non-iterable keys: because the key/value pairs can be garbage
+collected at any time, so you cannot iterate over them (including
+destroying the key/value pairs using the <code>clear</code> method)</li>
+</ul></li>
+<li>Iteration and spread operators
+<ul>
+<li>Four native reference types define a default iterator:
+<code>Array</code>, all <code>Typed Array</code>, <code>Map</code>,
+<code>Set</code></li>
+<li>Iterable types support ordered iteration and can be passed to a
+<code>for..of</code> loop</li>
+<li>Iterable types are compatible with the spread operator, the spread
+operator is especially useful as it performs a shallow copy on the
+iterable object</li>
+</ul></li>
+</ol>
+<h1 id="iterators-and-generators">Iterators and generators</h1>
+<ol type="1">
+<li>Introduction to iteration
+<ul>
+<li>Using index to iterate over an array is not the ideal iteration
+approach:
+<ul>
+<li>You need to have a specific knowledge of how to use the data
+structure</li>
+<li>The order of traversal is not inherent to the data structure</li>
+</ul></li>
+<li>The <code>Array.prototype.forEach()</code> is not ideal</li>
+</ul></li>
+<li>The iteration pattern
+<ul>
+<li>The <code>iterator pattern</code> describes a solution in which
+something can be described as iterable and can implement a formal
+<code>iterable</code> interface and be consumed by an
+<code>Iterator</code></li>
+<li>An <code>iterator</code> is a separate object created on demand and
+intended for a single use. Each iterator is associated with an iterable,
+and the iterator exposes an API to iterate through the associated
+iterable a single time</li>
+<li>The iterable protocol
+<ul>
+<li>Implementing the <code>Iterable</code> interface requires both the
+capability to self-identify as supporting iteration and the capability
+to create an object that implements the <code>Iterator</code> interface.
+In ECMAScript, this requires it must expose a property, the "default
+iterator", keyed with the special <code>Symbol.iterator</code> key.</li>
+<li>Many built-in types implement the <code>Iterable</code> interface:
+<code>String</code>, <code>Array</code>, <code>Map</code>,
+<code>Set</code>, the <code>arguments</code> object, some Dom collection
+types like <code>NodeList</code></li>
+<li>You can use <code>object[Symbol.iterator]</code> to check if an
+object is iterable</li>
+<li>You do not need to explicitly invoke the factory function to produce
+an iterator. Anything that implements the <code>Iterable</code>
+interface will automatically invoke the factor function to produce an
+iterator</li>
+</ul></li>
+<li>The <code>Iterator</code> protocol
+<ul>
+<li>An iterator is a single-use object that will iterate through
+whatever iterable it is associated with</li>
+<li>Use an <code>next()</code> method to advance through the iterable,
+each time return an <code>IteratorResult</code> object containing the
+next value in the iterator, the current position the iterator is at
+cannot be known without invoking the <code>next()</code> method</li>
+<li>The <code>next()</code> method return an object with two properties:
+<code>done</code> true if there is no more values to iterate, and
+<code>value</code> which contains the next value in the iterable if done
+is false</li>
+</ul></li>
+<li>Custom iterator definition
+<ul>
+<li>Any object that implements the <code>Iterator</code> interface can
+be used as an iterator</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">limit</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.count = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">this</span>.limit = limit;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.count &lt;= <span class="built_in">this</span>.limit) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="built_in">this</span>.count++, done: <span class="literal">false</span> &#125;;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Early termination of iterators: the optional <code>return()</code>
+method allows for specifying behavior that will execute only if the
+iterator is closed prematurely <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">limit</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.limit = limit;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line">    limit = <span class="built_in">this</span>.limit;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (count &lt;= limit) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">value</span>: count++, done: <span class="literal">false</span> &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">return</span>() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Early termination&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Generators
+<ul>
+<li>Generators are a delightfully flexible construct introduced in the
+ECMAScript 6 specification that offers the ability to pause and resume
+code execution inside a single function block</li>
+<li>Basics API
+<ul>
+<li>Syntax: <code>function* generatorName() &#123; ... &#125;</code></li>
+<li>When invoked, generator functions produce a generator object,
+generator objects begin in a state of suspended execution, and implement
+the <code>Iterator</code> interface and thus feature a
+<code>next()</code> method</li>
+</ul></li>
+<li>Interrupting execution with <code>yield</code>
+<ul>
+<li>The <code>yield</code> keyword allows generators to stop and start
+execution, and it is what makes generators truly useful</li>
+<li>Upon encountering the <code>yield</code> keyword, execution will be
+halted and the scope state of the function will be preserved. Execution
+will only resume when the <code>next()</code> method is invoked on the
+generator object <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = generatorFunction();</span><br><span class="line"><span class="built_in">console</span>.log(generator.next()); <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(generator.next()); <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(generator.next()); <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Using a generator object as an iterable <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> generatorFunction()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+<li>Using yield for input and output <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">range</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (end &gt; start) &#123;</span><br><span class="line">    <span class="keyword">yield</span> start;</span><br><span class="line">    start += <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> range(<span class="number">1</span>, <span class="number">3</span>)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+<li>Yielding an iterable with <code>yield*</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorFn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>* [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Recursive algorithms using <code>yield*</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">nTimes</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span>* nTimes(n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">yield</span> n - <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> x <span class="keyword">of</span> nTimes(<span class="number">3</span>)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2  </span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Using a generator as the default iterator
+<ul>
+<li>Because generator objects implement the <code>Iterator</code>
+interface, and because both generator functions and the default iterator
+are invoked to produce an iterator, generators are exceptionally well
+suited to be used as default iterators</li>
+</ul></li>
+<li>Early termination of generators
+<ul>
+<li>A generator can use both the <code>next()</code> method and the
+<code>throw()</code> method to be terminated early</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="objects-classes-and-objected-oriented-programming">Objects,
+Classes, and Objected-Oriented Programming</h1>
+<ol type="1">
+<li>Understanding objects
+<ul>
+<li>Create a new custom object <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj1.name = <span class="string">&quot;Obj1&quot;</span>;</span><br><span class="line">obj1.age = -<span class="number">1</span>;</span><br><span class="line">obj1.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hi, I&#x27;m &quot;</span> + <span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  name: <span class="string">&quot;Obj2&quot;</span>,</span><br><span class="line">  age: -<span class="number">2</span>,</span><br><span class="line">  sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Hi, I&#x27;m &quot;</span> + <span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Types of properties
+<ul>
+<li>ECMA-262 describes characteristics of properties through the use of
+internal-only attributes</li>
+<li>Data properties
+<ul>
+<li>Data properties contain a single location for a data value, values
+are read from and written to this location</li>
+<li><code>Configurable</code> attribute: boolean, whether the property
+may be redefined or deleted</li>
+<li><code>Enumerable</code> attribute: boolean, whether the property
+will be returned in a <code>for...in</code> loop</li>
+<li><code>Writable</code> attribute: boolean, whether the value of the
+property can be changed</li>
+<li><code>Value</code> attribute: boolean, contains the actual data
+value for the property</li>
+</ul></li>
+<li>Accessor properties
+<ul>
+<li>Accessor properties do not contain a data value, they contain a
+combination of a getter function and a setter function</li>
+<li><code>Configurable</code> attribute: boolean, whether the property
+may be redefined or deleted</li>
+<li><code>Enumerable</code> attribute: boolean, whether the property
+will be returned in a <code>for...in</code> loop</li>
+<li><code>Get</code> attribute: function, the function to call when the
+property is read from</li>
+<li><code>Set</code> attribute: function, the function to call when the
+property is written to</li>
+</ul></li>
+<li>Object identity and equality
+<ul>
+<li><code>NaN === NaN</code> is false, <code>isNaN(NaN)</code> is true,
+<code>Object.is(NaN, NaN)</code> is true</li>
+</ul></li>
+<li>Enhanced object syntax
+<ul>
+<li>Property value shorthand <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;Obj1&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  name</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    When the property name and the value name are the same, you can omit the </span></span><br><span class="line"><span class="comment">    value name, this is equivalent to name: name;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Concise method syntax <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  sayName: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hi, I&#x27;m <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  <span class="function"><span class="title">sayName</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hi, I&#x27;m <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Object destructuring <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  age: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;name, age&#125; = person;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// John</span></span><br><span class="line"><span class="built_in">console</span>.log(age); <span class="comment">// 30</span></span><br><span class="line"><span class="keyword">let</span> &#123;a, b=<span class="string">&#x27;b&#x27;</span>&#125; = person;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// undefined, no corresponding property in person</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// b, default value is provided</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Object creation
+<ul>
+<li>Although the <code>Object</code> constructor or an object literal
+are convenient ways to create single objects, creating multiple objects
+with the same interface requires a lot of code duplication</li>
+<li>In ECMAScript 6, formal support for classes and inheritance was
+introduced</li>
+<li>The factory pattern
+<ul>
+<li>It is a well-known design pattern used in software engineering to
+abstract away the process of creating specific objects</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  obj.name = name;</span><br><span class="line">  obj.age = age;</span><br><span class="line">  obj.job = job;</span><br><span class="line">  obj.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hi, I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = createPerson(<span class="string">&quot;John&quot;</span>, <span class="number">30</span>, <span class="string">&quot;Programmer&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> obj2 = createPerson(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>, <span class="string">&quot;Designer&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The function constructor pattern
+<ul>
+<li>Constructors are used to create specific types of objects, there are
+native constructors, but it is also possible to define custom
+constructors</li>
+<li>Compared with the factory pattern, the function constructor pattern
+does no explicitly create an object and return it. Defining custom
+constructors also ensures that instances can be identified as a
+particular type of object</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">  <span class="built_in">this</span>.age = age;</span><br><span class="line">  <span class="built_in">this</span>.job = job;</span><br><span class="line">  <span class="built_in">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hi, I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person(<span class="string">&quot;John&quot;</span>, <span class="number">30</span>, <span class="string">&quot;Programmer&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> Person(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>, <span class="string">&quot;Designer&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Problems with constructors: methods are created once for each
+instance, which is unnecessary and inefficient</li>
+</ul></li>
+<li>The prototype pattern
+<ul>
+<li>Each function is created with a prototype property, which is an
+object containing properties and methods that should be available to
+instances of a particular reference type</li>
+<li>The benefit of using the prototype is that all of its properties and
+methods are shared among object instances</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line">Person.prototype.age = <span class="number">30</span>;</span><br><span class="line">Person.prototype.job = <span class="string">&quot;Programmer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// John</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.name); <span class="comment">// John</span></span><br></pre></td></tr></table></figure></li>
+<li>Use <code>isPrototypeOf</code> to check if an object is an instance
+of a prototype <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.isPrototypeOf(obj1)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(obj1) === Person.prototype); <span class="comment">// true</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  You can manually set the prototype of an object, but this will likely cause </span></span><br><span class="line"><span class="comment">  severe slowdowns when used</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.setPrototypeOf(obj1, Person.prototype)); </span><br></pre></td></tr></table></figure></li>
+<li>Understanding the prototype hierarchy</li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -1348,7 +1574,8 @@ set</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
+Classes, and Objected-Oriented Programming</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1421,12 +1648,12 @@ set</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">970k</span>
+    <span title="Symbols count total">979k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14:41</span>
+    <span title="Reading time total">14:50</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
