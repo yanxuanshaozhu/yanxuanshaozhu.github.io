@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-06T04:33:31.498Z">
+<meta property="article:modified_time" content="2022-06-07T17:45:30.345Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-06 00:33:31" itemprop="dateModified" datetime="2022-06-06T00:33:31-04:00">2022-06-06</time>
+                <time title="Modified: 2022-06-07 13:45:30" itemprop="dateModified" datetime="2022-06-07T13:45:30-04:00">2022-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>39k</span>
+              <span>46k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>36 mins.</span>
+              <span>42 mins.</span>
             </span>
 
         </div>
@@ -1473,8 +1473,154 @@ methods are shared among object instances</li>
 <li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line">Person.prototype.age = <span class="number">30</span>;</span><br><span class="line">Person.prototype.job = <span class="string">&quot;Programmer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// John</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.name); <span class="comment">// John</span></span><br></pre></td></tr></table></figure></li>
 <li>Use <code>isPrototypeOf</code> to check if an object is an instance
 of a prototype <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.isPrototypeOf(obj1)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(obj1) === Person.prototype); <span class="comment">// true</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  You can manually set the prototype of an object, but this will likely cause </span></span><br><span class="line"><span class="comment">  severe slowdowns when used</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.setPrototypeOf(obj1, Person.prototype)); </span><br></pre></td></tr></table></figure></li>
-<li>Understanding the prototype hierarchy</li>
+<li>Understanding the prototype hierarchy
+<ul>
+<li>Property searching by name: search the instance first, then the
+prototype</li>
+<li>The property of an instance will shadow the property of the
+prototype with the same name <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// John</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.hasOwnProperty(<span class="string">&quot;name&quot;</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj1); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">obj1.name = <span class="string">&quot;Jane&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// Jane</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.hasOwnProperty(<span class="string">&quot;name&quot;</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
+<li>Property enumeration order
+<ul>
+<li>The <code>for..in</code> loop and <code>Object.keys</code> do not
+have a deterministic order of enumeration, these are determined by the
+JavaScript engine and may vary by browser</li>
+<li><code>Object.getOwnPropertyNames()</code>,
+<code>Object.getOwnPropertySymbols()</code>,
+<code>Object.assign()</code> do have a deterministic enumeration order.
+Number keys will first be enumerated in ascending order, then string and
+symbol keys enumerated in insertion order</li>
+</ul></li>
+<li>Object iteration
+<ul>
+<li>The <code>Object.values()</code> and <code>Object.entries()</code>
+methods return an array of values or entries, respectively</li>
+<li>Alternate prototype syntax <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  name: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  job: <span class="string">&quot;Programmer&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Dynamic nature of prototype
+<ul>
+<li>Because the process of looking up values on a prototype is a search,
+changes made to the prototype at any point are immediately reflected on
+instances, even the instances that existed before the change was
+made</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line">Person.prototype.name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// John</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Problems with prototypes
+<ul>
+<li>Prototype pattern negates the ability to pass initialization
+arguments into the constructor, meaning all instances get the same
+property values by default</li>
+<li>All properties on the prototype are shared among instances, but
+reference value can cause problems <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  name: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  friends: [<span class="string">&quot;Jane&quot;</span>, <span class="string">&quot;Bob&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> Person();</span><br><span class="line">obj1.friends.push(<span class="string">&quot;Mary&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj2.friends); <span class="comment">// [&quot;Jane&quot;, &quot;Bob&quot;, &quot;Mary&quot;]</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Inheritance
+<ul>
+<li>There are two types of inheritance, interface inheritance, where
+only the method signatures are inherited, and implementation
+inheritance, where actual methods are inherited</li>
+<li>Implementation inheritance is the only type of inheritance supported
+by ECMAScript</li>
+<li>ECMA-262 describes prototype chaining as the primary method for
+inheritance in ECMAScript. The idea is to use the concept of prototype
+to inherit properties and methods between two reference types</li>
+<li>Each constructor has a prototype object that points back to the
+constructor, and instances have an internal pointer to the prototype. If
+the prototype were actually an instance of another type, the prototype
+itself would have a pointer to a different prototype that, in turn,
+would have a pointer to another constructor</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.property = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.property;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.subProperty = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</span><br><span class="line"></span><br><span class="line">SubType.prototype.getSubValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.subProperty;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="keyword">new</span> SubType();</span><br><span class="line"><span class="built_in">console</span>.log(instance.getSuperValue()); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>Constructor stealing
+<ul>
+<li>Constructor stealing (also called object masquerading or classical
+inheritance) is the technique that calling the supertype constructor
+from within the subtype constructor</li>
+<li>The <code>apply()</code> and <code>call()</code> methods can be used
+to execute a constructor on the newly created object</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.colors = [<span class="string">&quot;red&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="string">&quot;green&quot;</span>];</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="built_in">this</span>, name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> SubType(<span class="string">&quot;Tom&quot;</span>);</span><br><span class="line">obj1.colors.push(<span class="string">&quot;black&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.colors); <span class="comment">// [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;black&quot;]</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// Tom</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> SubType(<span class="string">&quot;Nicholas&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj2.colors); <span class="comment">// [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.name); <span class="comment">// Nicholas</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Combination inheritance
+<ul>
+<li>Combination inheritance combines prototype chaining and constructor
+stealing to get the best of each approach</li>
+<li>The idea is to use prototype chaining to inherit properties and
+methods on the prototype and to use constructor stealing to inherit
+instance properties</li>
+</ul></li>
+<li>Other inheritance: prototypal inheritance, parasitic inheritance,
+parasitic combination inheritance</li>
+</ul></li>
+<li>Classes
+<ul>
+<li>The ability to formally define classes using the <code>class</code>
+keyword was introduced in ECMAScript 6, although classes still use
+prototype and constructor concepts under the hood</li>
+<li>Class definition basics
+<ul>
+<li>Class declaration: <code>class Person &#123;&#125;</code></li>
+<li>Class expression: <code>const Person = class &#123;&#125;</code></li>
+<li>Class composition
+<ul>
+<li>Components: constructor method, instance methods, getters, setters
+and static class methods</li>
+<li>None of the components are required, an empty class definition is
+valid syntax</li>
+<li>By default, everything inside a class definition executes in strict
+mode</li>
+</ul></li>
+</ul></li>
+<li>The class constructor
+<ul>
+<li>The <code>constructor</code> keyword is used inside the class
+definition block so signal the definition of the class's constructor
+function</li>
+<li>A constructor is not required</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>There is no formal class type in the ECMAScript specification, and
+in may ways ECMAScript classes behave like special functions</li>
+</ul></li>
+<li>Instance, prototype, and class members
+<ul>
+<li>Each instance is assigned unique member objects, meaning nothing is
+shared on the prototype</li>
+<li>Everything defined in the class body is defined on the class
+prototype object</li>
+<li>For static methods, there is one copy in each class
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.locate = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;instance&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  locate = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;prototype&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> locate = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;class&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> Person(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">obj1.locate(); <span class="comment">// instance</span></span><br><span class="line">Person.locate(); <span class="comment">// class</span></span><br><span class="line">Person.prototype.locate(); <span class="comment">// prototype</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Inheritance
+<ul>
+<li>Inheritance basics
+<ul>
+<li>Inherit from class <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> engineer = <span class="keyword">new</span> Engineer();</span><br><span class="line"><span class="built_in">console</span>.log(engineer <span class="keyword">instanceof</span> Person); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>Inherit from function constructor <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> engineer = <span class="keyword">new</span> Engineer();</span><br><span class="line"><span class="built_in">console</span>.log(engineer <span class="keyword">instanceof</span> Person); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>super()</code>
+<ul>
+<li><code>super</code> is used inside the constructor to control when to
+invoke the parent class constructor</li>
+<li><code>super</code> can also be used inside static methods to invoke
+static methods defined on the inherited class</li>
+<li><code>super</code> cannot be referenced by itself</li>
+</ul></li>
+<li>Abstract base classes
+<ul>
+<li>ECMAScript does not explicitly support defining abstract
+classes</li>
+<li>You need to use <code>new.target</code> to prevent instantiating
+abstract class objects <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">new</span>.target === Person) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;Cannot instantiate abstract class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="proxies-and-reflect">Proxies and Reflect</h1>
+<ol type="1">
+<li>Proxy foundation
+<ul>
+<li>Freshly introduced in ECMAScript 6, proxies and reflection are
+totally new constructs that afford you the ability to intercept and shim
+additional behavior into fundamental operations within the language</li>
 </ul></li>
 </ol>
 
@@ -1515,7 +1661,10 @@ of a prototype <figure class="highlight javascript"><table><tr><td class="gutter
     <a href="/2022/02/26/%E5%B2%A9%E6%B3%A2%E8%AC%9B%E5%BA%A7-%E6%97%A5%E6%9C%AC%E6%AD%B7%E5%8F%B2/" rel="prev" title="岩波講座 日本歷史">
       <i class="fa fa-chevron-left"></i> 岩波講座 日本歷史
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/07/Learners%20Permit%20Preparation/" rel="next" title="Driver License Preparation in MA">
+      Driver License Preparation in MA <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -1575,7 +1724,7 @@ of a prototype <figure class="highlight javascript"><table><tr><td class="gutter
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1590,7 +1739,7 @@ Classes, and Objected-Oriented Programming</span></a></li></ol></div>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1601,7 +1750,7 @@ Classes, and Objected-Oriented Programming</span></a></li></ol></div>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1648,12 +1797,12 @@ Classes, and Objected-Oriented Programming</span></a></li></ol></div>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">979k</span>
+    <span title="Symbols count total">1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14:50</span>
+    <span title="Reading time total">15:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
