@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-07T17:45:30.345Z">
+<meta property="article:modified_time" content="2022-06-18T04:35:52.631Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-07 13:45:30" itemprop="dateModified" datetime="2022-06-07T13:45:30-04:00">2022-06-07</time>
+                <time title="Modified: 2022-06-18 00:35:52" itemprop="dateModified" datetime="2022-06-18T00:35:52-04:00">2022-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>46k</span>
+              <span>65k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>42 mins.</span>
+              <span>59 mins.</span>
             </span>
 
         </div>
@@ -1618,10 +1618,481 @@ abstract class objects <figure class="highlight javascript"><table><tr><td class
 <ol type="1">
 <li>Proxy foundation
 <ul>
-<li>Freshly introduced in ECMAScript 6, proxies and reflection are
-totally new constructs that afford you the ability to intercept and shim
-additional behavior into fundamental operations within the language</li>
+<li>Introduced in ECMAScript 6, proxies and reflection are new
+constructs that afford you the ability to intercept and shim additional
+behavior into fundamental operations within the language</li>
+<li>A proxy behaves as an abstraction for a target object, the target
+can either be manipulated directly or through the proxy</li>
+<li>Creating a passthrough proxy
+<ul>
+<li>By default, all operations performed on a proxy object will be
+propagated through to the target object</li>
+<li>A proxy is created using the <code>Proxy</code> constructor, you
+need to provide both a target object and a handler object, without which
+a <code>TypeError</code> is thrown</li>
 </ul></li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> target = &#123;</span><br><span class="line">  id: <span class="string">&#x27;target&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(proxy.id); <span class="comment">// target</span></span><br><span class="line"><span class="built_in">console</span>.log(target.id); <span class="comment">// target</span></span><br></pre></td></tr></table></figure></li>
+<li>Defining traps
+<ul>
+<li>The primary purpose of a proxy is to allow you to define traps,
+which behaves as fundamental operations interceptors inside the handler
+object</li>
+<li>Each handler is made up to a certain amount ot traps, and each trap
+corresponds to a fundamental operation that can be directly or
+indirectly called on the proxy</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123;</span><br><span class="line">  foo: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = &#123;</span><br><span class="line">  <span class="comment">// traps are keyed by method name inside the handler object</span></span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;handler override&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"><span class="built_in">console</span>.log(proxy.foo); <span class="comment">// handler override</span></span><br><span class="line"><span class="built_in">console</span>.log(target.foo); <span class="comment">// bar</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Trap parameters and the reflect API
+<ul>
+<li>All traps have access to parameters that will allow you to fully
+recreate the original behavior of the trapped method</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123;</span><br><span class="line">  msg1: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">  msg2: <span class="string">&quot;everyone&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params">target, property, receiver</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (property === <span class="string">&quot;msg1&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"><span class="built_in">console</span>.log(target.msg1); <span class="comment">// hello</span></span><br><span class="line"><span class="built_in">console</span>.log(proxy.msg1); <span class="comment">// hello world</span></span><br><span class="line"><span class="built_in">console</span>.log(target.msg2); <span class="comment">// everyone</span></span><br><span class="line"><span class="built_in">console</span>.log(proxy.msg2); <span class="comment">// everyone</span></span><br></pre></td></tr></table></figure></li>
+<li>Every method that can be trapped inside a handler object has a
+corresponding Reflect API method, this method has identical name and
+function signature, and performs the exact behavior that the trapped
+method is intercepting <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">       <span class="keyword">const</span> target = &#123;&#125;;</span><br><span class="line">       <span class="comment">// Approach 1</span></span><br><span class="line">       <span class="keyword">const</span> handler = &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"></span><br><span class="line">       <span class="comment">// Approach 2</span></span><br><span class="line">       <span class="keyword">const</span> handler = &#123;</span><br><span class="line">         get: <span class="built_in">Reflect</span>.get</span><br><span class="line">       &#125;;</span><br><span class="line">       <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line">     <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">* Trap invariants</span></span><br><span class="line"><span class="string">  * Traps are not without restriction, each trapped method is aware of the target object context and trap function signature, and the behavior of the trap handler function must obey the trap invariants</span></span><br><span class="line"><span class="string">  * Trap invariants vary by method, but in general they will prevent the trap definition from exhibiting any grossly unexpected behavior</span></span><br><span class="line"><span class="string">* Utility of the Reflect API</span></span><br><span class="line"><span class="string">  * Reflect API vs. Object API</span></span><br><span class="line"><span class="string">    * The Reflect API is not limited to trap handler</span></span><br><span class="line"><span class="string">    * Most Reflect API methods have an analogue on the Object type</span></span><br><span class="line"><span class="string">  * Status flags: many Reflect methods return a Boolean, indicating if the operation they intend to perform will be successful or not</span></span><br><span class="line"><span class="string">* Proxying a Proxy</span></span><br><span class="line"><span class="string">  * Proxies are capable of intercepting Reflect API operations, and this means that it is entirely possible to create a proxy of a proxy, this allows you to build multiple layers of indirection on top of a singular target object</span></span><br><span class="line"><span class="string">  * Example</span></span><br><span class="line"><span class="string">     `</span><span class="string">``</span>javascript</span><br><span class="line">       <span class="keyword">const</span> target = &#123;</span><br><span class="line">         foo: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">const</span> firstProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;first proxy&#x27;</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">const</span> secondProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(firstProxy, &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;second proxy&#x27;</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="built_in">console</span>.log(secondProxy.foo); </span><br><span class="line">       <span class="comment">// second proxy</span></span><br><span class="line">       <span class="comment">// first proxy</span></span><br><span class="line">       <span class="comment">// bar</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Proxy considerations and shortcomings
+<ul>
+<li>One potential source of trouble with proxies is the value of
+<code>this</code></li>
+<li>Some built-in types are not compatible with proxies</li>
+</ul></li>
+</ul></li>
+<li>Proxy types and Reflect methods</li>
+</ol>
+<ul>
+<li>Proxies are able to trap thirteen fundamental operations, each has
+its own entry in the Reflect API, parameters, associated ECMAScript
+operations, and invariants</li>
+<li>Different JavaScript operations may invoke the same trap handler,
+but for any single operation that is performed on a proxy object, only
+one trap handler will ever be called, there is no overlap of trap
+coverage</li>
+<li><code>get()</code>
+<ul>
+<li>The <code>get()</code> trap is called inside operations that
+retrieve a property value, its corresponding Reflect API method is
+<code>Reflect.get()</code></li>
+<li><code>get(target, property, receiver)</code>, return value is
+unrestricted</li>
+</ul></li>
+<li><code>set()</code>
+<ul>
+<li>The <code>set()</code> trap is called inside operations that assign
+a property value, its corresponding Reflect method is
+<code>Reflect.set()</code></li>
+<li><code>set(target, property, value, receiver)</code>, return boolean
+value</li>
+</ul></li>
+<li><code>has()</code>
+<ul>
+<li>The <code>has()</code> trap is called inside the in operator, its
+corresponding Reflect API method is <code>Reflect.has()</code></li>
+<li><code>has(target, property)</code>, return boolean value</li>
+</ul></li>
+<li><code>defineProperty()</code>
+<ul>
+<li>The <code>defineProperty()</code> trap is called inside the
+<code>Object.defineProperty()</code> method, its corresponding Reflect
+API method is <code>Reflect.defineProperty()</code></li>
+<li><code>defineProperty(target, property, descriptor)</code>, return
+boolean value</li>
+</ul></li>
+<li><code>getOwnPropertyDescriptor()</code>
+<ul>
+<li>The <code>getOwnPropertyDescriptor()</code> trap is called inside
+the <code>Object.getOwnPropertyDescriptor()</code> method, its
+corresponding Reflect API method is
+<code>Reflect.getOwnPropertyDescriptor()</code></li>
+<li><code>getOwnPropertyDescriptor(target, property)</code>, return an
+object, or undefined if the property does not exist</li>
+</ul></li>
+<li><code>deleteProperty()</code>
+<ul>
+<li>The <code>deleteProperty()</code> trap is called inside the
+<code>delete</code> operator, its corresponding Reflect API method is
+<code>Reflect.deleteProperty()</code></li>
+<li><code>deleteProperty(target, property)</code>, return a boolean
+value</li>
+</ul></li>
+<li><code>ownKeys()</code>
+<ul>
+<li>The <code>ownKeys()</code> trap is called inside
+<code>Object.keys()</code> and similar methods, its corresponding
+Reflect API method is <code>Reflect.ownKeys()</code></li>
+<li><code>ownKeys(target)</code>, return an enumerable object that
+contains either strings or symbols</li>
+</ul></li>
+<li><code>getPrototypeOf()</code>
+<ul>
+<li>The <code>getPrototypeOf()</code> trap is called inside the
+<code>Object.getPrototypeOf()</code> method, its corresponding Reflect
+API method is <code>Reflect.getPrototypeOf()</code></li>
+<li><code>getPrototypeOf(target)</code>, return an object or null</li>
+</ul></li>
+<li><code>setPrototypeOf()</code>
+<ul>
+<li>The <code>setPrototypeOf()</code> trap is called inside the
+<code>Object.setPrototypeOf()</code> method, its corresponding Reflect
+API method is <code>Reflect.setPrototypeOf()</code></li>
+<li><code>setPrototypeOf(target, prototype)</code>, return a boolean
+value</li>
+</ul></li>
+<li><code>isExtensible()</code>
+<ul>
+<li>The <code>isExtensible()</code> trap is called inside the
+<code>Object.isExtensible()</code> method, its corresponding Reflect API
+method is <code>Reflect.isExtensible()</code></li>
+<li><code>isExtensible(target)</code>, return a boolean value</li>
+</ul></li>
+<li><code>preventExtensions()</code>
+<ul>
+<li>The <code>preventExtensions()</code> trap is called inside the
+<code>Object.preventExtensions()</code> method, its corresponding
+Reflect API method is <code>Reflect.preventExtensions()</code></li>
+<li><code>preventExtensions(target)</code>, return a boolean value</li>
+</ul></li>
+<li><code>apply()</code>
+<ul>
+<li>The <code>apply()</code> trap is called on function calls, its
+corresponding Reflect API method is <code>Reflect.apply()</code></li>
+<li><code>apply(target, thisArg, ...argumentsList)</code>, the return
+value is unrestricted</li>
+</ul></li>
+<li><code>construct()</code>
+<ul>
+<li>The <code>construct()</code> trap is called on the <code>new</code>
+operator, its corresponding Reflect API method is
+<code>Reflect.construct()</code><br>
+</li>
+<li><code>construct(target, argumentsList)</code>, the return value is
+unrestricted</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li>Proxy patterns
+<ul>
+<li>Tracking property access</li>
+<li>Hidden properties</li>
+<li>Property validation</li>
+<li>Function and constructor parameter validation</li>
+<li>Data binding and observables</li>
+</ul></li>
+</ol>
+<h1 id="functions">Functions</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>Each function is an instance of the <code>Function</code> type that
+has properties and methods just like other reference types</li>
+<li>There is no semicolon after the end of the function definition, but
+there is a semicolon after the end of function declaration</li>
+<li>You can use the function keyword or the arrow function syntax to
+define a function</li>
+</ul></li>
+<li>Arrow functions
+<ul>
+<li>For the most part, arrow functions instantiate function objects that
+behave in the same manner as their formal function expression
+counterparts, anywhere a function expression can be used, an arrow
+function can also be used</li>
+<li>Arrow functions are useful in inline situations</li>
+<li>Arrow functions do not require the parentheses if you only want to
+use a single parameter, if you want to have zero parameters, or more
+than one parameter, parentheses are required</li>
+<li>Arrow functions also do no require curly braces</li>
+<li>Arrow functions do not allow the use of arguments, super, or
+new.target, and cannot be used as a constructor, functions objects
+created with the arrow syntax do not have a prototype defined</li>
+</ul></li>
+<li>Function names
+<ul>
+<li>Function names are simply pointers to functions, so it is possible
+to have multiple names for a single function</li>
+<li>All function objects in ECMAScript 6 expose a read-only name
+property that describes the function. If a function is unnamed, the name
+property returns an empty string, if a function is created using the
+function constructor, the name property returns anonymous
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mySum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> anotherSum = mySum;</span><br><span class="line"><span class="built_in">console</span>.log(mySum(<span class="number">1</span>, <span class="number">2</span>)); <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(anotherSum(<span class="number">1</span>, <span class="number">2</span>)); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> testFunc = <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(mySum.name); <span class="comment">// mySum</span></span><br><span class="line"><span class="built_in">console</span>.log(testFunc.name); <span class="comment">// (empty string here)</span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="keyword">new</span> <span class="built_in">Function</span>()),name); <span class="comment">// anonymous </span></span><br><span class="line"><span class="built_in">console</span>.log(anotherSum.name); <span class="comment">// mySum</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Understanding arguments
+<ul>
+<li>An ECMAScript function does not care how many arguments are passed
+in, nor does it care about the data types of those arguments</li>
+<li>Arguments in ECMAScript are represented as an array internally, the
+function does not care what is in the array</li>
+<li>Named arguments are a convenience, not a necessity
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The following functions are equivalent</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi1</span>(<span class="params">name, msg</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, <span class="subst">$&#123;msg&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">0</span>]&#125;</span>, <span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">1</span>]&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The amount of arguments: <code>arguments.length</code></li>
+<li>Arguments in arrow functions
+<ul>
+<li>When a function is defined using the arrow notation, the arguments
+passed to the function cannot be accessed using the
+<code>arguments</code> keyword; they can only be accessed using their
+named token in the function definition</li>
+</ul></li>
+</ul></li>
+<li>No overloading
+<ul>
+<li>ECMAScript functions cannot be overloaded in the traditional sense,
+they don't have signatures</li>
+<li>If two functions are defined to have the same name, it is the last
+function that becomes the owner of that name</li>
+</ul></li>
+<li>Default parameters
+<ul>
+<li>You can define default values for arguments</li>
+<li>Temporal dead zone: the default parameter values are initialized in
+the order in which they are listed in the list of parameters
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This one works</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeKing</span>(<span class="params">name = <span class="string">&#x27;Henry&#x27;</span> numerals = name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`King <span class="subst">$&#123;name&#125;</span> <span class="subst">$&#123;numerals&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This one does not work</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeKing</span>(<span class="params">numerals = name, name = <span class="string">&#x27;Henry&#x27;</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`King <span class="subst">$&#123;name&#125;</span> <span class="subst">$&#123;numerals&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Spread arguments and rest parameters
+<ul>
+<li>Use the spread operator to expand the elements of an array into a
+list of arguments <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">    sum += <span class="built_in">arguments</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(add(-<span class="number">1</span>, ...arr)); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure></li>
+<li>Rest parameter <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> values.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(add(-<span class="number">1</span>, ...arr)); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Function declarations versus function expressions
+<ul>
+<li>Function declarations are read and available in an execution context
+before any code is executed, whereas function expressions aren't
+complete until the execution reaches that line of code
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This works</span></span><br><span class="line"><span class="built_in">console</span>.log(add1(<span class="number">10</span>, <span class="number">10</span>)); <span class="comment">// 20</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This doesn&#x27;t work</span></span><br><span class="line"><span class="built_in">console</span>.log(add2(<span class="number">10</span>, <span class="number">10</span>)); <span class="comment">// Uncaught ReferenceError: add2 is not defined</span></span><br><span class="line"><span class="keyword">let</span> add2 = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Functions as values
+<ul>
+<li>Because function names are variables, functions can be used anywhere
+variables can be used, this means it is possible not only to pass a
+function into another function as an argument, but also to return a
+function as the result of another function <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">comparePropertyFunc</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">obj1, obj2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> val1 = obj1[name];</span><br><span class="line">    <span class="keyword">let</span> val2 = obj2[name];</span><br><span class="line">    <span class="keyword">if</span> (val1 &lt; val2) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val1 &gt; val2) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Function internals
+<ul>
+<li><code>arguments</code>: the <code>arguments</code> object has a
+property named <code>callee</code>, which is a pointer to the function
+that owns the <code>arguments</code> object <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// This recursive call is tightly coupled with the function name</span></span><br><span class="line">  <span class="keyword">return</span> n * fact(n - <span class="number">1</span>);</span><br><span class="line">  <span class="comment">// This is the equivalent one: return n * arguments.callee(n - 1);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<ul>
+<li><code>this</code>: <code>this</code> behaves differently when used
+inside a standard function and an arrow function
+<ul>
+<li>Inside a standard function, it is a reference to the context object
+that the function is operating on, often called the
+<code>this value</code></li>
+<li>Inside an arrow function, it references the context in which the
+arrow function expression is defined</li>
+</ul></li>
+<li><code>caller</code>
+<ul>
+<li>The <code>caller</code> property contains a reference to the
+function that called this function or null if the function was called
+from the global scope</li>
+<li>When function code executes in strict mode,
+<code>arguments.callee</code> and <code>arguments.caller</code> result
+in an error</li>
+<li>In strict mode, you also cannot assign a value fo the caller
+property of a function, otherwise an error is called</li>
+</ul></li>
+</ul>
+<ol start="11" type="1">
+<li>Function properties and methods
+<ul>
+<li>Each function has two properties: <code>length</code> and
+<code>prototype</code>
+<ul>
+<li>The <code>length</code> indicates the number of named arguments that
+the function expects</li>
+<li>The <code>prototype</code> property is the actual location of all
+instance methods for reference types, meaning methods actual exist on
+the prototype and are then accessed from the object instances</li>
+</ul></li>
+<li>Each function has two methods: <code>call</code> and
+<code>apply</code>
+<ul>
+<li>Both methods call the function with a specific this value,
+effectively setting the value of this object inside the function
+body</li>
+<li><code>apply()</code> accepts two arguments: the value of this inside
+the function and an array of arguments</li>
+<li><code>call()</code>: the first arguments is the this value, but
+arguments are passed directly into the function <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum1</span> (<span class="params">val1, val2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Alternative way: return add.apply(this, arguments);</span></span><br><span class="line">  <span class="keyword">return</span> add.apply(<span class="built_in">this</span>, [val1, val2]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum2</span>(<span class="params">val1, val2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> add.call(<span class="built_in">this</span>, val1, val2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Function expressions
+<ul>
+<li>The created function in an function expression is considered to be
+anonymous function/lambda function</li>
+<li>Function expressions must be assigned before usage</li>
+</ul></li>
+<li>Recursion
+<ul>
+<li>A recursive function typically is formed when a function calls
+itself by name</li>
+<li>The ECMAScript 6 introduced a memory management optimization that
+allows the JavaScript engine to reuse stack frames with tail calls,
+where the return value of an outer function is the returned value of an
+inner function</li>
+<li>Requirements for tail call
+<ul>
+<li>The code is executing in strict mode</li>
+<li>The return value of the outer function is the invoked tail call
+function</li>
+<li>There is no further execution required after the tail call function
+returns</li>
+<li>The tail call function is not a closure that refers to variables in
+the outer function's scope</li>
+</ul></li>
+</ul></li>
+<li>Closures
+<ul>
+<li>Closures are functions that have access to variables from another
+function's scope, this is often accomplished by creating a function
+inside a function</li>
+<li>In general, when a variable is accessed inside a function, the scope
+chain is searched for a variable with the given name, once the function
+has completed, the local activation object is destroyed, leaving only
+the global scope in memory</li>
+<li>In closures, the outer function adds the inner function to its own
+scope, and the inner function can access the outer function's variables
+even after the inner function has completed</li>
+<li>There may be memory leaks with closures</li>
+</ul></li>
+<li>Private variables
+<ul>
+<li>Strictly speaking, JavaScript has no concept of private members, all
+object properties are public</li>
+<li>Any variable defined inside a function or block is considered
+private because it is accessible outside that function</li>
+<li>A privileged method is a public method that has access to private
+variables and/or private functions
+<ul>
+<li>Privileged methods can be created inside a constructor</li>
+<li>Privileged methods can also be created by using a private scope to
+define the private variables or functions</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="promises-and-async-functions">Promises and Async Functions</h1>
+<ol type="1">
+<li>Asynchronous programming
+<ul>
+<li>Synchronous behavior is analogous to sequential processor
+instructions in memory, each instruction is executed strictly in the
+order in which it appears. At each step in this program, it is possible
+to reason about the state of the program because execution will not
+proceed until the previous instruction is completed</li>
+<li>Asynchronous behavior is analogous to interrupts, where an entity
+external to the current process is able to trigger code execution,
+asynchronous operation is often required because it is infeasible to
+force the process to wait a long time for an operation to complete</li>
+<li>Legacy asynchronous programming patterns
+<ul>
+<li>In early versions of JavaScript, an asynchronous operation only
+supported definition of a callback function to indicate that the
+asynchronous operation had completed</li>
+<li>Serializing asynchronous behavior was a common problem, usually
+solved by a codebase full of nested callback functions, colloquially
+referred to as callback hell</li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">double</span>(<span class="params">value, success, failure</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">&#x27;number&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;Must provide number as first argument!&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      success(value * <span class="number">2</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      failure(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> successCallback = <span class="function">(<span class="params">value</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Success: <span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line"><span class="keyword">const</span> failureCallback = <span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Failure: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">double(<span class="number">3</span>, successCallback, failureCallback); <span class="comment">// Success: 6</span></span><br><span class="line">double(<span class="string">&#x27;3&#x27;</span>, successCallback, failureCallback); <span class="comment">// Failure: Must provide number as first argument!</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Promises
+<ul>
+<li>Promises are used to describe a programming tool for synchronizing
+program execution</li>
+<li>ECMAScript 6 uses the Promises/A+ Promise Specification to define
+how promises were implemented. ECMAScript 6 introduced a first-class
+implementation of a Promise/A+-compliant Promise type</li>
+<li>Promise basics
+<ul>
+<li>Create a promise with <code>new</code> keyword:
+<code>let p = new Promise(executor)</code></li>
+<li>The promise state machine
+<ul>
+<li>A promise is a stateful object that can exist in one of three
+states: pending, fulfilled (resolved), or rejected</li>
+<li>The pending state is the initial state a promise begins in</li>
+<li>The pending state can become settled by irreversibly transitioning
+to either the fulfilled state or the rejected state</li>
+<li>It is not guaranteed that a promise will leave the pending
+state</li>
+<li>The state of a promise is private and cannot be directly inspected
+in JavaScript</li>
+</ul></li>
+<li>Utilities of promises
+<ul>
+<li>Promise can be used to represent a block of asynchronous execution,
+the pending state indicates that the execution has not yet begun, the
+fulfilled state indicates the execution is successful, the rejected
+state indicates the execution failed</li>
+<li>Promise can be used to generate a value, the fulfilled state
+contains a private internal value, the rejected state contains the
+reason for rejection</li>
+</ul></li>
+<li>Controlling promise state with the executor
+<ul>
+<li>The state of a promise can only be manipulated internally using the
+executor function</li>
+<li>Two methods are involved: <code>resolve()</code> and
+<code>reject()</code></li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">&#x27;Success!&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="string">&#x27;Failure!&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Resolve:
+<code>let p = new Promise((resolve, reject) =&gt; &#123; resolve('Success!'); &#125;)</code>,
+or equivalently, <code>let p = Promise.resolve('Success!')</code></li>
+<li>Reject:
+<code>let p = new Promise((resolve, reject) =&gt; &#123; reject('Failure!'); &#125;)</code>,
+or equivalently, <code>let p = Promise.reject('Failure!')</code></li>
+</ul></li>
+</ul></li>
+<li>Promise methods
+<ul>
+<li>Implementing the Thenable interface
+<ul>
+<li>Any asynchronous constructs expose a <code>then()</code> method,
+which implements the <code>Thenable</code> interface</li>
+</ul></li>
+<li><code>Promise.prototype.then()</code>
+<ul>
+<li>Then <code>then()</code> method accepts up to two arguments, an
+optional <code>onResolved</code> handler function, and an optional
+<code>OnRejected</code> handler function</li>
+<li>The <code>onResolved</code> handler function is called when the
+promise is fulfilled, and the <code>OnRejected</code> handler function
+is called when the promise is rejected</li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">&#x27;Success!&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line">p1.then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// Success!</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="string">&#x27;Failure!&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line">p2.then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// Failure!</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>Promise.prototype.catch()</code>
+<ul>
+<li>The <code>catch()</code> method can be used to attach only a reject
+handler to a promise, it only takes a single argument, the
+<code>onRejected</code> handler function</li>
+<li>The <code>catch(onRejected)</code> is equivalent to
+<code>then(null, onRejected)</code></li>
+</ul></li>
+<li><code>Promise.prototype.finally()</code>
+<ul>
+<li>The <code>finally()</code> method can be used to attach an
+<code>onFinally</code> handler function, which executes when the promise
+reaches either a fulfilled or rejected state</li>
+<li>Since the <code>finally</code> does not know the state of the
+promise, it is designed to be used for things like cleanup, logging, and
+other tasks that need to be performed regardless of the state of the
+promise</li>
+</ul></li>
+<li>Each promise instance methods return a new promise, so promises can
+be chained</li>
+<li><code>Promise.all()</code>: this static method creates an
+all-or-nothing promise that resolves only once every promise in a
+collection of promises resolves, a new promise is returned</li>
+<li><code>Promise.race()</code>: this static method creates a promise
+that will mirror whichever promise inside a collection of promises
+reaches a resolved or rejected state first, a new promise is
+returned</li>
+</ul></li>
+</ul></li>
+<li>Async functions</li>
 </ol>
 
     </div>
@@ -1724,7 +2195,7 @@ additional behavior into fundamental operations within the language</li>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1802,7 +2273,7 @@ Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item na
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">15:24</span>
+    <span title="Reading time total">15:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

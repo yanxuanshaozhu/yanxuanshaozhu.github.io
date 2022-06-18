@@ -247,7 +247,8 @@
 <a id="more"></a>
 <h2 id="list">List</h2>
 <ul>
-<li><p>Can contain objects in different types, size can shrink or grow</p></li>
+<li><p>Can contain objects in different types, size can shrink or
+grow</p></li>
 <li><p><code>[]</code> or <code>list()</code> is empty list</p>
 <table>
 <colgroup>
@@ -275,19 +276,23 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>ls.insert(index, x)</code></td>
-<td style="text-align: center;">if index = 0, inserts at front, ls.insert(len(ls), x) is just ls.append(xs)</td>
+<td style="text-align: center;">if index = 0, inserts at front,
+ls.insert(len(ls), x) is just ls.append(xs)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>ls.remove(x)</code></td>
-<td style="text-align: center;">removes the first x, if x not in ls, <code>ValueError</code></td>
+<td style="text-align: center;">removes the first x, if x not in ls,
+<code>ValueError</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>ls.pop([index])</code></td>
-<td style="text-align: center;">removes and returns the item at index, if index is not provided, removes and returns the last item</td>
+<td style="text-align: center;">removes and returns the item at index,
+if index is not provided, removes and returns the last item</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>ls.index(x)</code></td>
-<td style="text-align: center;">returns the index of first x, if x is not in ls, <code>ValueError</code></td>
+<td style="text-align: center;">returns the index of first x, if x is
+not in ls, <code>ValueError</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>ls.count(x)</code></td>
@@ -295,7 +300,8 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>ls.sort(key=None, reverse=False)</code></td>
-<td style="text-align: center;">key can be a lambda function, if multiple sorting rules, using tuple</td>
+<td style="text-align: center;">key can be a lambda function, if
+multiple sorting rules, using tuple</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>del ls[index]</code></td>
@@ -326,107 +332,145 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>str.capitalize()</code></td>
-<td style="text-align: center;">returns a string with first letter in upper case</td>
+<td style="text-align: center;">returns a string with first letter in
+upper case</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.upper()</code></td>
-<td style="text-align: center;">returns a string with all characters in upper case</td>
+<td style="text-align: center;">returns a string with all characters in
+upper case</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.lower()</code></td>
-<td style="text-align: center;">returns a string with all characters in lower case</td>
+<td style="text-align: center;">returns a string with all characters in
+lower case</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.casefold()</code></td>
-<td style="text-align: center;">returns a string with all characters in lower case, it can work with more characters than lower method, use it for globalization or localization</td>
+<td style="text-align: center;">returns a string with all characters in
+lower case, it can work with more characters than lower method, use it
+for globalization or localization</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.swapcase()</code></td>
-<td style="text-align: center;">returns a string with case swaped in str</td>
+<td style="text-align: center;">returns a string with case swaped in
+str</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.count(sub,start=None,end=None)</code></td>
-<td style="text-align: center;">returns the freq of a subtring, it can set starting index(inclusive) and ending index(exclusive)</td>
+<td style="text-align: center;">returns the freq of a subtring, it can
+set starting index(inclusive) and ending index(exclusive)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.encode()</code></td>
-<td style="text-align: center;">returns an encoded version of string</td>
+<td style="text-align: center;">returns an encoded version of
+string</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.startswith(substr[, start, end])</code></td>
-<td style="text-align: center;">returns True if str[start: end] starts with substr</td>
+<td style="text-align: center;">returns True if str[start: end] starts
+with substr</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.endswith(substr[, start, end])</code></td>
-<td style="text-align: center;">returns True if str[start: end] ends with substr</td>
+<td style="text-align: center;">returns True if str[start: end] ends
+with substr</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.find(substr[, start, end])</code></td>
-<td style="text-align: center;">returns the index of substr, returns -1 on failure, to find the last index of occurance, use <code>str.rfind()</code> instead</td>
+<td style="text-align: center;">returns the index of substr, returns -1
+on failure, to find the last index of occurance, use
+<code>str.rfind()</code> instead</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.index(substr[, start, end])</code></td>
-<td style="text-align: center;">returns the index of substr, <code>ValueError</code> on failure, to find the last index of occcurance, use <code>str.rindex()</code> instead</td>
+<td style="text-align: center;">returns the index of substr,
+<code>ValueError</code> on failure, to find the last index of
+occcurance, use <code>str.rindex()</code> instead</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.format(val1,...,valn)</code></td>
-<td style="text-align: center;">returns the formatted version of str: insert all values into placeholders in str, placeholders are represented using {}</td>
+<td style="text-align: center;">returns the formatted version of str:
+insert all values into placeholders in str, placeholders are represented
+using {}</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.isalnum()</code></td>
-<td style="text-align: center;">returns True if all characters are alphanumeric</td>
+<td style="text-align: center;">returns True if all characters are
+alphanumeric</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.isalpha()</code></td>
-<td style="text-align: center;">returns True if all characters are letters</td>
+<td style="text-align: center;">returns True if all characters are
+letters</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.isnumeric()</code></td>
-<td style="text-align: center;">returns True if all characters are numeric values, "-1", "1.5" returns False for this method, because "-" and "." are not numeric</td>
+<td style="text-align: center;">returns True if all characters are
+numeric values, "-1", "1.5" returns False for this method, because "-"
+and "." are not numeric</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.isdigit()</code></td>
-<td style="text-align: center;">returns True if all characters are digits</td>
+<td style="text-align: center;">returns True if all characters are
+digits</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.isdecimal()</code></td>
-<td style="text-align: center;">returns True if all characters are decimal numbers</td>
+<td style="text-align: center;">returns True if all characters are
+decimal numbers</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.islower()</code></td>
-<td style="text-align: center;">returns True if all characters are in lower case, numbers, symbols and spaces are not checked, only alphabete characters</td>
+<td style="text-align: center;">returns True if all characters are in
+lower case, numbers, symbols and spaces are not checked, only alphabete
+characters</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.isupper()</code></td>
-<td style="text-align: center;">returns True if all characters are in upper case, numbers, symbols and spaces are not checked, only alphabete characters</td>
+<td style="text-align: center;">returns True if all characters are in
+upper case, numbers, symbols and spaces are not checked, only alphabete
+characters</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.isspace()</code></td>
-<td style="text-align: center;">returns True if all characters are white space</td>
+<td style="text-align: center;">returns True if all characters are white
+space</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.join(s1,...,sn)</code></td>
-<td style="text-align: center;">returns a new string joined by n strings, str is the separator in between</td>
+<td style="text-align: center;">returns a new string joined by n
+strings, str is the separator in between</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.replace(s1, s2)</code></td>
-<td style="text-align: center;">returns a new string with all s1 in str replcaed by s2</td>
+<td style="text-align: center;">returns a new string with all s1 in str
+replcaed by s2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.split(sep=, maxsplit=)</code></td>
-<td style="text-align: center;">returns a list of words separated by the delimiter with, if maxsplit = n, then there will be n + 1 segments</td>
+<td style="text-align: center;">returns a list of words separated by the
+delimiter with, if maxsplit = n, then there will be n + 1 segments</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.strip(substr)</code></td>
-<td style="text-align: center;">returns a string with all leading and trailing characters in substr removed,to remove leading characters, use <code>str.lstrip(substr)</code>, to remove trailing characters, use <code>str.rstrip(substr)</code></td>
+<td style="text-align: center;">returns a string with all leading and
+trailing characters in substr removed,to remove leading characters, use
+<code>str.lstrip(substr)</code>, to remove trailing characters, use
+<code>str.rstrip(substr)</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.partition(substr)</code></td>
-<td style="text-align: center;">returns a tuple, (before substr, substr, after substr), search for first occurance of substr,to search for last occurance of substr, use <code>str.rpartition(substr)</code> instead, if substr is not in str, returns (str, "", "")</td>
+<td style="text-align: center;">returns a tuple, (before substr, substr,
+after substr), search for first occurance of substr,to search for last
+occurance of substr, use <code>str.rpartition(substr)</code> instead, if
+substr is not in str, returns (str, "", "")</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.zfill(len)</code></td>
-<td style="text-align: center;">returns a new string with 0 filled at the begining until the length is parameter len, if parameter len is smaller than <code>len(str)</code>, simply returns str itself</td>
+<td style="text-align: center;">returns a new string with 0 filled at
+the begining until the length is parameter len, if parameter len is
+smaller than <code>len(str)</code>, simply returns str itself</td>
 </tr>
 </tbody>
 </table></li>
@@ -452,40 +496,49 @@
 <td style="text-align: center;">create a set from a sequence</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>s1 &amp; s2</code>, <code>s1.intersection(s2)</code></td>
+<td style="text-align: center;"><code>s1 &amp; s2</code>,
+<code>s1.intersection(s2)</code></td>
 <td style="text-align: center;">returns intersection set</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><code>s1 | s2</code>, <code>s1.union(s2)</code></td>
+<td style="text-align: center;"><code>s1 | s2</code>,
+<code>s1.union(s2)</code></td>
 <td style="text-align: center;">returns union set</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>s1 - s2</code>, <code>s1.difference(s2)</code></td>
+<td style="text-align: center;"><code>s1 - s2</code>,
+<code>s1.difference(s2)</code></td>
 <td style="text-align: center;">returns difference set</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><code>s1 ^ s2</code>, <code>s1.symmetric_difference(s2)</code></td>
+<td style="text-align: center;"><code>s1 ^ s2</code>,
+<code>s1.symmetric_difference(s2)</code></td>
 <td style="text-align: center;">returns symmetric difference set</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>s1 &gt; s2</code></td>
-<td style="text-align: center;">returns True if s1 is a proper superset of s2</td>
+<td style="text-align: center;">returns True if s1 is a proper superset
+of s2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>s1 &lt; s2</code></td>
-<td style="text-align: center;">returns True if s1 is a proper subset of s2</td>
+<td style="text-align: center;">returns True if s1 is a proper subset of
+s2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>s1.issuperset(s2)</code></td>
-<td style="text-align: center;">returns True if s1 is a superset of s2</td>
+<td style="text-align: center;">returns True if s1 is a superset of
+s2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>s1.issubset(s2)</code></td>
-<td style="text-align: center;">returns True if s1 is a subset of s2</td>
+<td style="text-align: center;">returns True if s1 is a subset of
+s2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>s1.isdisjoint(s2)</code></td>
-<td style="text-align: center;">returns True is s1 &amp; s2 is empty set</td>
+<td style="text-align: center;">returns True is s1 &amp; s2 is empty
+set</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>s1.add(x)</code></td>
@@ -493,11 +546,13 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>s1.remove(x)</code></td>
-<td style="text-align: center;">removes an item, if x not in the set, <code>KeyError</code></td>
+<td style="text-align: center;">removes an item, if x not in the set,
+<code>KeyError</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>s1.discard(x)</code></td>
-<td style="text-align: center;">removes an item, if x not in the set, no Exception is raised</td>
+<td style="text-align: center;">removes an item, if x not in the set, no
+Exception is raised</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>s1.pop()</code></td>
@@ -512,7 +567,8 @@
 </ul>
 <h2 id="tuple">Tuple</h2>
 <ul>
-<li><p>Tuple items are ordered, unchangable, and allow duplicate values</p></li>
+<li><p>Tuple items are ordered, unchangable, and allow duplicate
+values</p></li>
 <li><p><code>()</code> or <code>tuple()</code> is empty tuple</p>
 <table>
 <colgroup>
@@ -528,11 +584,13 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>tup.count(val)</code></td>
-<td style="text-align: center;">returns the amount of occurance of val in tup, if val is not in tup, returns 0</td>
+<td style="text-align: center;">returns the amount of occurance of val
+in tup, if val is not in tup, returns 0</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>tup.index(val)</code></td>
-<td style="text-align: center;">returns the index of first val in tup, if val is not in tup, <code>ValueError</code></td>
+<td style="text-align: center;">returns the index of first val in tup,
+if val is not in tup, <code>ValueError</code></td>
 </tr>
 </tbody>
 </table></li>
@@ -554,43 +612,56 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>dt.keys()</code></td>
-<td style="text-align: center;">returns a view object containing all keys of dt in a list, type is <code>dict_keys</code></td>
+<td style="text-align: center;">returns a view object containing all
+keys of dt in a list, type is <code>dict_keys</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dt.values()</code></td>
-<td style="text-align: center;">returns a view object containing all values of dt in a list, type is <code>dict_values</code></td>
+<td style="text-align: center;">returns a view object containing all
+values of dt in a list, type is <code>dict_values</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>dt.items()</code></td>
-<td style="text-align: center;">returns a view object containing all key-value pairs of dt in a list of tuples, type is <code>dict_items</code></td>
+<td style="text-align: center;">returns a view object containing all
+key-value pairs of dt in a list of tuples, type is
+<code>dict_items</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dt.clear()</code></td>
-<td style="text-align: center;">clears all items in dt, None return type</td>
+<td style="text-align: center;">clears all items in dt, None return
+type</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>dt.copy()</code></td>
-<td style="text-align: center;">returns a deep copy of dt, modifying dt will not affect this copy</td>
+<td style="text-align: center;">returns a deep copy of dt, modifying dt
+will not affect this copy</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dict.fromkeys(keys, value)</code></td>
-<td style="text-align: center;">returns a dictionary with a list of keys and a single value, value is optional, default value is None</td>
+<td style="text-align: center;">returns a dictionary with a list of keys
+and a single value, value is optional, default value is None</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>dt.get(key, value)</code></td>
-<td style="text-align: center;">returns <code>dt[key]</code>, if key is not in dt, returns value, value is optional, default value is None</td>
+<td style="text-align: center;">returns <code>dt[key]</code>, if key is
+not in dt, returns value, value is optional, default value is None</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dt.pop(key, value)</code></td>
-<td style="text-align: center;">removes a key-value pair from the dictionary, returns <code>dt[key]</code>, value is optional, but if key is not in dt, and value is not provided, <code>KeyError</code></td>
+<td style="text-align: center;">removes a key-value pair from the
+dictionary, returns <code>dt[key]</code>, value is optional, but if key
+is not in dt, and value is not provided, <code>KeyError</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>dt.popitem()</code></td>
-<td style="text-align: center;">removes the last item in dt, returns the item as key-value pair in a tuple</td>
+<td style="text-align: center;">removes the last item in dt, returns the
+item as key-value pair in a tuple</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dt.setdefault(key, value)</code></td>
-<td style="text-align: center;">if key in dt, returns <code>dt[key]</code>, if key is not in dt, insert key in dt with value, value is optional, default value is None</td>
+<td style="text-align: center;">if key in dt, returns
+<code>dt[key]</code>, if key is not in dt, insert key in dt with value,
+value is optional, default value is None</td>
 </tr>
 </tbody>
 </table></li>
@@ -612,39 +683,54 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>int(x, base = n)</code></td>
-<td style="text-align: center;">returns an integer, if base is not provided, truncates numeric x to 0, if base is provided, x must be String</td>
+<td style="text-align: center;">returns an integer, if base is not
+provided, truncates numeric x to 0, if base is provided, x must be
+String</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>long(x, base = n)</code></td>
-<td style="text-align: center;">returns a long integer, if base is not provided, truncates numeric x to 0, if base is provided, x must be String</td>
+<td style="text-align: center;">returns a long integer, if base is not
+provided, truncates numeric x to 0, if base is provided, x must be
+String</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>bin(x)</code></td>
-<td style="text-align: center;">returns a binary String of an integer x, the binary String has a format of <code>0bXX</code> when positive, and <code>-0bXX</code> when negative</td>
+<td style="text-align: center;">returns a binary String of an integer x,
+the binary String has a format of <code>0bXX</code> when positive, and
+<code>-0bXX</code> when negative</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>oct(x)</code></td>
-<td style="text-align: center;">returns an octal String of an integer x, the octal String has a format of <code>0oXX</code> when positive, and <code>-0oXX</code> when negative</td>
+<td style="text-align: center;">returns an octal String of an integer x,
+the octal String has a format of <code>0oXX</code> when positive, and
+<code>-0oXX</code> when negative</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>hex(x)</code></td>
-<td style="text-align: center;">returns a lowercase hexadecimal String of an integer x, the lowercase hexadecimal String has a format of <code>0xXX</code> when positive, and <code>-0xXX</code> when negative</td>
+<td style="text-align: center;">returns a lowercase hexadecimal String
+of an integer x, the lowercase hexadecimal String has a format of
+<code>0xXX</code> when positive, and <code>-0xXX</code> when
+negative</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>ord(x)</code></td>
-<td style="text-align: center;">returns an integer representing the Unicode code point of a String x with length 1</td>
+<td style="text-align: center;">returns an integer representing the
+Unicode code point of a String x with length 1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>chr(i)</code></td>
-<td style="text-align: center;">returns a String of one character whose ASCII value is i, the inverse of ord</td>
+<td style="text-align: center;">returns a String of one character whose
+ASCII value is i, the inverse of ord</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str(obj)</code></td>
-<td style="text-align: center;">returns a string containing a nicely printable representation of obj</td>
+<td style="text-align: center;">returns a string containing a nicely
+printable representation of obj</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>bool([x])</code></td>
-<td style="text-align: center;">returns Falses if x is not provided or x is zero-equivalent, returns True otherwise</td>
+<td style="text-align: center;">returns Falses if x is not provided or x
+is zero-equivalent, returns True otherwise</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>float([x])</code></td>
@@ -652,19 +738,23 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>tuple([iterable])</code></td>
-<td style="text-align: center;">returns a tuple whose order and item are the same as those in the iterable</td>
+<td style="text-align: center;">returns a tuple whose order and item are
+the same as those in the iterable</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>lsit([iterable])</code></td>
-<td style="text-align: center;">returns a list whose order and item are the same as those in the iterable</td>
+<td style="text-align: center;">returns a list whose order and item are
+the same as those in the iterable</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>set([iterable])</code></td>
-<td style="text-align: center;">returns a set whose items are taken from the iterable</td>
+<td style="text-align: center;">returns a set whose items are taken from
+the iterable</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>dict(mapping, **kwarg)</code></td>
-<td style="text-align: center;">returns a dictionary, mapping is key = value</td>
+<td style="text-align: center;">returns a dictionary, mapping is key =
+value</td>
 </tr>
 </tbody>
 </table></li>
@@ -683,7 +773,8 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>pow(x, y[, z])</code></td>
-<td style="text-align: center;">returns <span class="math inline">\(x^{y}\)</span>, if z is provided, returns efficiently <span class="math inline">\(x^{y} \mod z\)</span></td>
+<td style="text-align: center;">returns <span class="math inline">\(x^{y}\)</span>, if z is provided, returns
+efficiently <span class="math inline">\(x^{y} \mod z\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>abs(x)</code></td>
@@ -691,19 +782,25 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>sum(iterable[, start])</code></td>
-<td style="text-align: center;">sums start and the items of an iterable from left to right and returns the total</td>
+<td style="text-align: center;">sums start and the items of an iterable
+from left to right and returns the total</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>max(iterable[, key])</code></td>
-<td style="text-align: center;">returns the largest item in an iterable or the largest of two or more arguments, key is a function used when comparing items</td>
+<td style="text-align: center;">returns the largest item in an iterable
+or the largest of two or more arguments, key is a function used when
+comparing items</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>min(iterable[, key])</code></td>
-<td style="text-align: center;">returns the smallest item in an iterable or the smallest of two or more arguments, key is a function used when comparing items</td>
+<td style="text-align: center;">returns the smallest item in an iterable
+or the smallest of two or more arguments, key is a function used when
+comparing items</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>round(num[,ndigits])</code></td>
-<td style="text-align: center;">returns the floating number num rounded to ndigits digits after the decimal point</td>
+<td style="text-align: center;">returns the floating number num rounded
+to ndigits digits after the decimal point</td>
 </tr>
 </tbody>
 </table></li>
@@ -722,19 +819,25 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>any(iterable)</code></td>
-<td style="text-align: center;">returns True if any element in the iterable is True. If the iterable is empty, returns False</td>
+<td style="text-align: center;">returns True if any element in the
+iterable is True. If the iterable is empty, returns False</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>all(iterable)</code></td>
-<td style="text-align: center;">returns True if all elements in the iterable are True or if the iterable is empty</td>
+<td style="text-align: center;">returns True if all elements in the
+iterable are True or if the iterable is empty</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>filter(function, iterable)</code></td>
-<td style="text-align: center;">returns an iterator containing those elements of iterable for which function returns true, type is <code>filter</code></td>
+<td style="text-align: center;">returns an iterator containing those
+elements of iterable for which function returns true, type is
+<code>filter</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>map(function, iterable)</code></td>
-<td style="text-align: center;">applies function to every item of iterable and returns an interator of the results, type is <code>map</code></td>
+<td style="text-align: center;">applies function to every item of
+iterable and returns an interator of the results, type is
+<code>map</code></td>
 </tr>
 </tbody>
 </table></li>
@@ -757,11 +860,14 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>zip(*iterables, strict=False)</code></td>
-<td style="text-align: center;">iteratez over several iterables in parallel, producing tuples with an item from each one, returns an iterator of tuples</td>
+<td style="text-align: center;">iteratez over several iterables in
+parallel, producing tuples with an item from each one, returns an
+iterator of tuples</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>eval(expression)</code></td>
-<td style="text-align: center;">evulates the String expression as a Python expression, returns the result</td>
+<td style="text-align: center;">evulates the String expression as a
+Python expression, returns the result</td>
 </tr>
 </tbody>
 </table></li>
@@ -783,11 +889,13 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>math.ceil(x)</code></td>
-<td style="text-align: center;">returns the smallest integer grater than or equal to x</td>
+<td style="text-align: center;">returns the smallest integer grater than
+or equal to x</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>math.floor(x)</code></td>
-<td style="text-align: center;">returns the largest integer smaller than or equal to x</td>
+<td style="text-align: center;">returns the largest integer smaller than
+or equal to x</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>math.perm(n, k=None)</code></td>
@@ -807,11 +915,13 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>math.gcd(x, y)</code></td>
-<td style="text-align: center;">returns the greatest common divisior of x and y</td>
+<td style="text-align: center;">returns the greatest common divisior of
+x and y</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>math.lcm(x, y)</code></td>
-<td style="text-align: center;">returns the least common multiplier of x and y</td>
+<td style="text-align: center;">returns the least common multiplier of x
+and y</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>math.exp(x)</code></td>
@@ -819,7 +929,8 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>math.log(x[, base])</code></td>
-<td style="text-align: center;">returns <span class="math inline">\(log_{base}{x}\)</span>, base is optional, default base is <span class="math inline">\(e\)</span></td>
+<td style="text-align: center;">returns <span class="math inline">\(log_{base}{x}\)</span>, base is optional, default
+base is <span class="math inline">\(e\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>math.log2(x)</code></td>
@@ -834,7 +945,8 @@
 <td style="text-align: center;">returns <span class="math inline">\(\sqrt{x}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>math.sin(x)</code>, <code>math.cos(x)</code>, <code>math.tan(x)</code></td>
+<td style="text-align: center;"><code>math.sin(x)</code>,
+<code>math.cos(x)</code>, <code>math.tan(x)</code></td>
 <td style="text-align: center;">trigonometric functions</td>
 </tr>
 <tr class="odd">
@@ -847,7 +959,8 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>math.inf</code></td>
-<td style="text-align: center;">it's equal to <code>float('inf')</code></td>
+<td style="text-align: center;">it's equal to
+<code>float('inf')</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>math.nan</code></td>
@@ -858,7 +971,9 @@
 </ul>
 <h2 id="collections">collections</h2>
 <ul>
-<li><p>This module implements specialized container data types providing alternatives to Python’s general purpose built-in containers, dict, list, set, and tuple</p></li>
+<li><p>This module implements specialized container data types providing
+alternatives to Python’s general purpose built-in containers, dict,
+list, set, and tuple</p></li>
 <li><p>Counter</p>
 <table>
 <colgroup>
@@ -874,11 +989,13 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>Counter([iterable-or-mapping])</code></td>
-<td style="text-align: center;">Returns a Counter is a dict subclass for counting hashable objects</td>
+<td style="text-align: center;">Returns a Counter is a dict subclass for
+counting hashable objects</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>counter.most_common([n])</code></td>
-<td style="text-align: center;">Returns a list, each item is a tuple of key and its associated count</td>
+<td style="text-align: center;">Returns a list, each item is a tuple of
+key and its associated count</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>counter.total()</code></td>
@@ -901,11 +1018,14 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>deque([iterable[, maxlen]])</code></td>
-<td style="text-align: center;">Returns a new deque object initialized left-to-right (using append()) with data from iterable. If iterable is not specified, the new deque is empty</td>
+<td style="text-align: center;">Returns a new deque object initialized
+left-to-right (using append()) with data from iterable. If iterable is
+not specified, the new deque is empty</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>deque.append(x)</code></td>
-<td style="text-align: center;">Add x to the right side of the deque</td>
+<td style="text-align: center;">Add x to the right side of the
+deque</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>deque.appendleft(x)</code></td>
@@ -913,43 +1033,57 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>deque.extend(iterable)</code></td>
-<td style="text-align: center;">Extend the right side of the deque by appending elements from the iterable argument</td>
+<td style="text-align: center;">Extend the right side of the deque by
+appending elements from the iterable argument</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>deque.extendleft(iterable)</code></td>
-<td style="text-align: center;">Extend the left side of the deque by appending elements from iterable</td>
+<td style="text-align: center;">Extend the left side of the deque by
+appending elements from iterable</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>deque.count(x)</code></td>
-<td style="text-align: center;">Count the number of deque elements equal to x</td>
+<td style="text-align: center;">Count the number of deque elements equal
+to x</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>index(x[, start[, stop]])</code></td>
-<td style="text-align: center;">Return the position of x in the deque (at or after index start and before index stop)</td>
+<td style="text-align: center;">Return the position of x in the deque
+(at or after index start and before index stop)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>insert(i, x)</code></td>
-<td style="text-align: center;">Insert x into the deque at position i, if the insertion would cause a bounded deque to grow beyond maxlen, <code>IndexError</code></td>
+<td style="text-align: center;">Insert x into the deque at position i,
+if the insertion would cause a bounded deque to grow beyond maxlen,
+<code>IndexError</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>pop()</code></td>
-<td style="text-align: center;">Remove and return an element from the right side of the deque, if deque is empty, <code>IndexError</code></td>
+<td style="text-align: center;">Remove and return an element from the
+right side of the deque, if deque is empty, <code>IndexError</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>popleft()</code></td>
-<td style="text-align: center;">Remove and return an element from the left side of the deque, if deque is empty, <code>IndexError</code></td>
+<td style="text-align: center;">Remove and return an element from the
+left side of the deque, if deque is empty, <code>IndexError</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>reverse()</code></td>
-<td style="text-align: center;">Reverse the elements of the deque in-place and then return None</td>
+<td style="text-align: center;">Reverse the elements of the deque
+in-place and then return None</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>rotate(n=1)</code></td>
-<td style="text-align: center;">Rotate the deque n steps to the right. If n is negative, rotate to the left, <code>deque.rotate(n=1)</code> is just <code>deque.appendleft(deque.pop())</code>, and <code>deque.rotate(n=-1)</code> is jsut <code>deque.append(deque.popleft())</code></td>
+<td style="text-align: center;">Rotate the deque n steps to the right.
+If n is negative, rotate to the left, <code>deque.rotate(n=1)</code> is
+just <code>deque.appendleft(deque.pop())</code>, and
+<code>deque.rotate(n=-1)</code> is jsut
+<code>deque.append(deque.popleft())</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">field: <code>deque.maxlen</code></td>
-<td style="text-align: center;">Maximum size of a deque or None if unbounded</td>
+<td style="text-align: center;">Maximum size of a deque or None if
+unbounded</td>
 </tr>
 </tbody>
 </table></li>
@@ -975,7 +1109,8 @@
 </ul>
 <h2 id="functools">functools</h2>
 <ul>
-<li><p><code>import functools</code> or <code>from functools import *</code></p>
+<li><p><code>import functools</code> or
+<code>from functools import *</code></p>
 <table>
 <colgroup>
 <col style="width: 17%">
@@ -990,23 +1125,32 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>@cache</code></td>
-<td style="text-align: center;">Create a thin wrapper around a dictionary lookup for the function arguments, faster than <code>@lru_cache</code></td>
+<td style="text-align: center;">Create a thin wrapper around a
+dictionary lookup for the function arguments, faster than
+<code>@lru_cache</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>@lru_cache(maxsize=N)</code></td>
-<td style="text-align: center;">Decorator to wrap a function with a memoizing callable that saves up to the maxsize most recent calls. It can save time when an expensive or I/O bound function is periodically called with the same arguments</td>
+<td style="text-align: center;">Decorator to wrap a function with a
+memoizing callable that saves up to the maxsize most recent calls. It
+can save time when an expensive or I/O bound function is periodically
+called with the same arguments</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>reduce(function, iterable[, initializer])</code></td>
-<td style="text-align: center;">Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value</td>
+<td style="text-align: center;">Apply function of two arguments
+cumulatively to the items of iterable, from left to right, so as to
+reduce the iterable to a single value</td>
 </tr>
 </tbody>
 </table></li>
 </ul>
 <h2 id="heapq">heapq</h2>
 <ul>
-<li><p><code>import heapq</code> or <code>from heapq import *</code></p></li>
-<li><p>Python implements a min heapq with index starting from 0, <span class="math inline">\(\forall k &gt; 0\)</span>, <span class="math inline">\(heap[k] \leq heap[2 * k + 1]\)</span> and <span class="math inline">\(heap[k] \leq heap[2 * k + 2]\)</span>, the smallest one in the heap is <span class="math inline">\(heap[0]\)</span></p>
+<li><p><code>import heapq</code> or
+<code>from heapq import *</code></p></li>
+<li><p>Python implements a min heapq with index starting from 0, <span class="math inline">\(\forall k &gt; 0\)</span>, <span class="math inline">\(heap[k] \leq heap[2 * k + 1]\)</span> and <span class="math inline">\(heap[k] \leq heap[2 * k + 2]\)</span>, the
+smallest one in the heap is <span class="math inline">\(heap[0]\)</span></p>
 <table>
 <colgroup>
 <col style="width: 11%">
@@ -1021,19 +1165,27 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>heapify(x)</code></td>
-<td style="text-align: center;">Transform list x into a heap, in-place, linear time</td>
+<td style="text-align: center;">Transform list x into a heap, in-place,
+linear time</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>heappush(heap, item)</code></td>
-<td style="text-align: center;">Push the value onto the heap, maintaining the heap invariant</td>
+<td style="text-align: center;">Push the value onto the heap,
+maintaining the heap invariant</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>heappop(heap)</code></td>
-<td style="text-align: center;">Pop and return the smallest item from the heap, maintaining the heap invariant. If the heap is empty, IndexError is raised.To access the smallest item without popping it, use <code>heap[0]</code></td>
+<td style="text-align: center;">Pop and return the smallest item from
+the heap, maintaining the heap invariant. If the heap is empty,
+IndexError is raised.To access the smallest item without popping it, use
+<code>heap[0]</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>heappushpop(heap, item)</code></td>
-<td style="text-align: center;">Push item on the heap, then pop and return the smallest item from the heap, this method is more efficient than manually run <code>heappush(heap, item)</code> and then <code>heappop(heap)</code></td>
+<td style="text-align: center;">Push item on the heap, then pop and
+return the smallest item from the heap, this method is more efficient
+than manually run <code>heappush(heap, item)</code> and then
+<code>heappop(heap)</code></td>
 </tr>
 </tbody>
 </table></li>
@@ -1061,51 +1213,65 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.asList(arr)</code></td>
-<td style="text-align: center;">Returns a fixed-size list backed by the specified array</td>
+<td style="text-align: center;">Returns a fixed-size list backed by the
+specified array</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.binarySearch​(T[] a, T key)</code></td>
-<td style="text-align: center;">Searches the specified array of T for the specified value using the binary search algorithm</td>
+<td style="text-align: center;">Searches the specified array of T for
+the specified value using the binary search algorithm</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.binarySearch​(T[] a, int fromIndex, int toIndex, T key)</code></td>
-<td style="text-align: center;">Searches a range of the specified array of T for the specified value using the binary search algorithm</td>
+<td style="text-align: center;">Searches a range of the specified array
+of T for the specified value using the binary search algorithm</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.compare​(T[] a, T[] b)</code></td>
-<td style="text-align: center;">Compares two T arrays lexicographically</td>
+<td style="text-align: center;">Compares two T arrays
+lexicographically</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.compare​(T[] a, int aFromIndex, int aToIndex, T[] b, int bFromIndex, int bToIndex)</code></td>
-<td style="text-align: center;">Compares two T arrays lexicographically over the specified ranges</td>
+<td style="text-align: center;">Compares two T arrays lexicographically
+over the specified ranges</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.copyOf​(T[] original, int newLength)</code></td>
-<td style="text-align: center;">Copies the specified array, truncating or padding with type T zero-equivalents so the copy has the specified length</td>
+<td style="text-align: center;">Copies the specified array, truncating
+or padding with type T zero-equivalents so the copy has the specified
+length</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.copyOfRange​(T[] original, int from, int to)</code></td>
-<td style="text-align: center;">Copies the specified range of the specified array into a new array</td>
+<td style="text-align: center;">Copies the specified range of the
+specified array into a new array</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.equals​(T[] a, T[] a2)</code></td>
-<td style="text-align: center;">Returns true if the two specified arrays of T are equal to one another</td>
+<td style="text-align: center;">Returns true if the two specified arrays
+of T are equal to one another</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.fill(T[] a, T val)</code></td>
-<td style="text-align: center;">Assigns the specified T value to each element of the specified array of T</td>
+<td style="text-align: center;">Assigns the specified T value to each
+element of the specified array of T</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.fill​(T[] a, int fromIndex, int toIndex, T val)</code></td>
-<td style="text-align: center;">Assigns the specified T value to each element of the specified range of the specified array of T</td>
+<td style="text-align: center;">Assigns the specified T value to each
+element of the specified range of the specified array of T</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Arrays.sort(T[] a)</code></td>
-<td style="text-align: center;">Sorts the specified array of objects into ascending order, according to the natural ordering of its elements</td>
+<td style="text-align: center;">Sorts the specified array of objects
+into ascending order, according to the natural ordering of its
+elements</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>Arrays.toString(T[] a)</code></td>
-<td style="text-align: center;">Returns a string representation of the contents of the specified array</td>
+<td style="text-align: center;">Returns a string representation of the
+contents of the specified array</td>
 </tr>
 </tbody>
 </table></li>
@@ -1131,39 +1297,48 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.charAt(int index)</code></td>
-<td style="text-align: center;">Returns the char value at the specified index</td>
+<td style="text-align: center;">Returns the char value at the specified
+index</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.endsWith(String suffix)</code></td>
-<td style="text-align: center;">Tests if this string ends with the specified suffix</td>
+<td style="text-align: center;">Tests if this string ends with the
+specified suffix</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.startsWith​(String prefix)</code></td>
-<td style="text-align: center;">Tests if this string starts with the specified prefix</td>
+<td style="text-align: center;">Tests if this string starts with the
+specified prefix</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.trim()</code></td>
-<td style="text-align: center;">Returns a string with all leading and trailing space removed</td>
+<td style="text-align: center;">Returns a string with all leading and
+trailing space removed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.strip()</code></td>
-<td style="text-align: center;">Returns a string with all leading and trailing space removed</td>
+<td style="text-align: center;">Returns a string with all leading and
+trailing space removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.stripLeading()</code></td>
-<td style="text-align: center;">Returns a string with all leading white space removed.</td>
+<td style="text-align: center;">Returns a string with all leading white
+space removed.</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.stripTrailing()</code></td>
-<td style="text-align: center;">Returns a string with all trailing white space removed</td>
+<td style="text-align: center;">Returns a string with all trailing white
+space removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.indexOf(int n)</code></td>
-<td style="text-align: center;">Returns the index within this string of the first occurrence of the specified character</td>
+<td style="text-align: center;">Returns the index within this string of
+the first occurrence of the specified character</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.lastIndexOf(int ch)</code></td>
-<td style="text-align: center;">Returns the index within this string of the last occurrence of the specified character</td>
+<td style="text-align: center;">Returns the index within this string of
+the last occurrence of the specified character</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.length()</code></td>
@@ -1171,27 +1346,33 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.toCharArray()</code></td>
-<td style="text-align: center;">Converts this string to a new character array</td>
+<td style="text-align: center;">Converts this string to a new character
+array</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.toLowerCase()</code></td>
-<td style="text-align: center;">Converts all of the characters in this String to lower case using the rules of the default locale</td>
+<td style="text-align: center;">Converts all of the characters in this
+String to lower case using the rules of the default locale</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.toUpperCase()</code></td>
-<td style="text-align: center;">Converts all of the characters in this String to upper case using the rules of the given Locale</td>
+<td style="text-align: center;">Converts all of the characters in this
+String to upper case using the rules of the given Locale</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.toString()</code></td>
-<td style="text-align: center;">This object which is already a string</td>
+<td style="text-align: center;">This object which is already a
+string</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>str.valueOf(T a)</code></td>
-<td style="text-align: center;">Returns the string representation of the T element</td>
+<td style="text-align: center;">Returns the string representation of the
+T element</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>str.valueOf(char[] c)</code></td>
-<td style="text-align: center;">Returns the string representation of the char array argument</td>
+<td style="text-align: center;">Returns the string representation of the
+char array argument</td>
 </tr>
 </tbody>
 </table></li>
@@ -1201,8 +1382,11 @@
 <li>List interface
 <ul>
 <li><p><code>import java.util.List</code>;</p></li>
-<li><p><code>List&lt;E&gt; list = new ArrayList&lt;&gt;();</code>, <code>List&lt;E&gt; list = new LinkedList&lt;&gt;();</code></p></li>
-<li><p>List interface extends Collection interface, Collection interface extends Iterable interface, so you can use forEach loop and iterator on the list</p>
+<li><p><code>List&lt;E&gt; list = new ArrayList&lt;&gt;();</code>,
+<code>List&lt;E&gt; list = new LinkedList&lt;&gt;();</code></p></li>
+<li><p>List interface extends Collection interface, Collection interface
+extends Iterable interface, so you can use forEach loop and iterator on
+the list</p>
 <table>
 <colgroup>
 <col style="width: 23%">
@@ -1217,67 +1401,92 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean add(E e)</code></td>
-<td style="text-align: center;">Appends the specified element to the end of this list, returns true if the list is changed</td>
+<td style="text-align: center;">Appends the specified element to the end
+of this list, returns true if the list is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public void add(int index, E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the specified position in this list</td>
+<td style="text-align: center;">Inserts the specified element at the
+specified position in this list</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean addAll(Collection&lt;? extends E&gt; c)</code></td>
-<td style="text-align: center;">Appends all of the elements in the specified collection to the end of this list, returns true if the list is changed</td>
+<td style="text-align: center;">Appends all of the elements in the
+specified collection to the end of this list, returns true if the list
+is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean addAll(int index, Collection&lt;? extends E&gt; c)</code></td>
-<td style="text-align: center;">Inserts all of the elements in the specified collection into this list, starting at the specified position, returns true if the list is changed</td>
+<td style="text-align: center;">Inserts all of the elements in the
+specified collection into this list, starting at the specified position,
+returns true if the list is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public void clear()</code></td>
-<td style="text-align: center;">Removes all of the elements from this list</td>
+<td style="text-align: center;">Removes all of the elements from this
+list</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean contains(Object o)</code></td>
-<td style="text-align: center;">Returns true if this list contains the specified element</td>
+<td style="text-align: center;">Returns true if this list contains the
+specified element</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public int indexOf(Object o)</code></td>
-<td style="text-align: center;">Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element</td>
+<td style="text-align: center;">Returns the index of the first
+occurrence of the specified element in this list, or -1 if this list
+does not contain the element</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public int lastIndexOf(Object o)</code></td>
-<td style="text-align: center;">Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element</td>
+<td style="text-align: center;">Returns the index of the last occurrence
+of the specified element in this list, or -1 if this list does not
+contain the element</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E get(int index)</code></td>
-<td style="text-align: center;">Returns the element at the specified position in this list</td>
+<td style="text-align: center;">Returns the element at the specified
+position in this list</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E set(int index, E element)</code></td>
-<td style="text-align: center;">Replaces the element at the specified position in this list with the specified element, returns replaced value</td>
+<td style="text-align: center;">Replaces the element at the specified
+position in this list with the specified element, returns replaced
+value</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E remove(int index)</code></td>
-<td style="text-align: center;">Removes the element at the specified position in this list</td>
+<td style="text-align: center;">Removes the element at the specified
+position in this list</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean remove(Object o)</code></td>
-<td style="text-align: center;">Removes the first occurrence of the specified element from this list, returns true if the object is in the list</td>
+<td style="text-align: center;">Removes the first occurrence of the
+specified element from this list, returns true if the object is in the
+list</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean removeAll(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Removes from this list all of its elements that are contained in the specified collection, returns true if the list is changed</td>
+<td style="text-align: center;">Removes from this list all of its
+elements that are contained in the specified collection, returns true if
+the list is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean retainAll(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Retains only the elements in this list that are contained in the specified collection, returns true if the list is changed</td>
+<td style="text-align: center;">Retains only the elements in this list
+that are contained in the specified collection, returns true if the list
+is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>size()</code></td>
-<td style="text-align: center;">Returns the number of elements in this list</td>
+<td style="text-align: center;">Returns the number of elements in this
+list</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public List&lt;E&gt; subList​(int fromIndex, int toIndex)</code></td>
-<td style="text-align: center;">Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive</td>
+<td style="text-align: center;">Returns a view of the portion of this
+list between the specified fromIndex, inclusive, and toIndex,
+exclusive</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean isEmpty()</code></td>
@@ -1285,19 +1494,25 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public int size()</code></td>
-<td style="text-align: center;">Returns the amount of elements in the list</td>
+<td style="text-align: center;">Returns the amount of elements in the
+list</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public Iterator&lt;E&gt; iterator()</code></td>
-<td style="text-align: center;">Returns an iterator over the elements in this list in proper sequence</td>
+<td style="text-align: center;">Returns an iterator over the elements in
+this list in proper sequence</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Object[] toArray()</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this list in proper sequence</td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this list in proper sequence</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public T[] toArray(T[] a)</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this list in proper sequence, the runtime type of the returned array is that of the specified array. Exp: <code>Integer[] res = list.toArray(new Integer[0]);</code></td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this list in proper sequence, the runtime type of the
+returned array is that of the specified array. Exp:
+<code>Integer[] res = list.toArray(new Integer[0]);</code></td>
 </tr>
 </tbody>
 </table></li>
@@ -1308,8 +1523,15 @@
 <li><code>List&lt;E&gt; list = new ArrayList&lt;&gt;();</code></li>
 <li>Resizable-array implementation of the List interface</li>
 <li>Permits all types of elements, including null</li>
-<li>The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>, <code>iterator</code>, and <code>listIterator</code> operations run in constant time. The <code>add</code> operation runs in amortized constant time. All of the other operations run roughly in linear time</li>
-<li>The iterators on ArrayList are fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator's own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code></li>
+<li>The <code>size</code>, <code>isEmpty</code>, <code>get</code>,
+<code>set</code>, <code>iterator</code>, and <code>listIterator</code>
+operations run in constant time. The <code>add</code> operation runs in
+amortized constant time. All of the other operations run roughly in
+linear time</li>
+<li>The iterators on ArrayList are fail-fast: if the list is
+structurally modified at any time after the iterator is created, in any
+way except through the iterator's own remove or add methods, the
+iterator will throw a <code>ConcurrentModificationException</code></li>
 </ul></li>
 <li>LinkedList
 <ul>
@@ -1317,8 +1539,13 @@
 <li><code>List&lt;E&gt; list = new LinkedList&lt;&gt;();</code></li>
 <li>Doubly-linked list implementation of the List interface</li>
 <li>Permits all types of elements, including null</li>
-<li>The <code>add</code>, <code>remove</code>, <code>get</code>, <code>set</code>, <code>iterator</code> operations run in constant time</li>
-<li>The iterators on LinkedList are fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator's own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code></li>
+<li>The <code>add</code>, <code>remove</code>, <code>get</code>,
+<code>set</code>, <code>iterator</code> operations run in constant
+time</li>
+<li>The iterators on LinkedList are fail-fast: if the list is
+structurally modified at any time after the iterator is created, in any
+way except through the iterator's own remove or add methods, the
+iterator will throw a <code>ConcurrentModificationException</code></li>
 </ul></li>
 </ul>
 <h2 id="set-interface">Set interface</h2>
@@ -1326,8 +1553,11 @@
 <li>Set interface
 <ul>
 <li><p><code>import java.util.Set;</code></p></li>
-<li><p><code>Set&lt;E&gt; set = new HashSet&lt;&gt;();</code>, <code>Set&lt;E&gt; set = new TreeSet&lt;&gt;();</code></p></li>
-<li><p>Set interface extends Collection interface, Collection interface extends Iterable interface, so you can use forEach loop and iterator on the list</p>
+<li><p><code>Set&lt;E&gt; set = new HashSet&lt;&gt;();</code>,
+<code>Set&lt;E&gt; set = new TreeSet&lt;&gt;();</code></p></li>
+<li><p>Set interface extends Collection interface, Collection interface
+extends Iterable interface, so you can use forEach loop and iterator on
+the list</p>
 <table>
 <colgroup>
 <col style="width: 21%">
@@ -1342,39 +1572,51 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean add(E e)</code></td>
-<td style="text-align: center;">Adds the specified element to the set if it is not already present, returns true if the set is changed</td>
+<td style="text-align: center;">Adds the specified element to the set if
+it is not already present, returns true if the set is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean addAll(Collection&lt;? extends E&gt; c)</code></td>
-<td style="text-align: center;">Adds all of the elements in the specified collection to the set if they're not already present, returns true if the set is changed</td>
+<td style="text-align: center;">Adds all of the elements in the
+specified collection to the set if they're not already present, returns
+true if the set is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public void clear()</code></td>
-<td style="text-align: center;">Removes all of the elements from this set</td>
+<td style="text-align: center;">Removes all of the elements from this
+set</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean contains(Object o)</code></td>
-<td style="text-align: center;">Returns true if this set contains the specified element</td>
+<td style="text-align: center;">Returns true if this set contains the
+specified element</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean containsAll​(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Returns true if this set contains all of the elements of the specified collection</td>
+<td style="text-align: center;">Returns true if this set contains all of
+the elements of the specified collection</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean remove(Object o)</code></td>
-<td style="text-align: center;">Removes the specified element from this set if it is present, returns true if the set is changed</td>
+<td style="text-align: center;">Removes the specified element from this
+set if it is present, returns true if the set is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean removeAll(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Removes from this set all of its elements that are contained in the specified collection, returns true if the set is changed</td>
+<td style="text-align: center;">Removes from this set all of its
+elements that are contained in the specified collection, returns true if
+the set is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean retainAll(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Retains only the elements in this set that are contained in the specified collection, returns true if the set is changed</td>
+<td style="text-align: center;">Retains only the elements in this set
+that are contained in the specified collection, returns true if the set
+is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>size()</code></td>
-<td style="text-align: center;">Returns the number of elements in this set</td>
+<td style="text-align: center;">Returns the number of elements in this
+set</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean isEmpty()</code></td>
@@ -1382,19 +1624,25 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public int size()</code></td>
-<td style="text-align: center;">Returns the amount of elements in the list</td>
+<td style="text-align: center;">Returns the amount of elements in the
+list</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Iterator&lt;E&gt; iterator()</code></td>
-<td style="text-align: center;">Returns an iterator over the elements in this list in proper sequence</td>
+<td style="text-align: center;">Returns an iterator over the elements in
+this list in proper sequence</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public Object[] toArray()</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this set</td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this set</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public T[] toArray(T[] a)</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this set, the runtime type of the returned array is that of the specified array. Exp: <code>Integer[] res = set.toArray(new Integer[0]);</code></td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this set, the runtime type of the returned array is that of
+the specified array. Exp:
+<code>Integer[] res = set.toArray(new Integer[0]);</code></td>
 </tr>
 </tbody>
 </table></li>
@@ -1403,18 +1651,27 @@
 <ul>
 <li><code>import java.util.HashSet;</code></li>
 <li><code>Set&lt;E&gt; set = new HashSet&lt;&gt;();</code></li>
-<li>This class implements the Set interface, backed by a HashMap instance</li>
+<li>This class implements the Set interface, backed by a HashMap
+instance</li>
 <li>This class permits null elements, elements are unordered</li>
-<li>This class offers constant time performance for basic operations(<code>add</code>, <code>remove</code>, <code>contains</code>, <code>size</code>, <code>isEmpty</code>), iterating over the set requires linear time</li>
+<li>This class offers constant time performance for basic
+operations(<code>add</code>, <code>remove</code>, <code>contains</code>,
+<code>size</code>, <code>isEmpty</code>), iterating over the set
+requires linear time</li>
 <li>Iterators on HashSet are fail-fast</li>
 </ul></li>
 <li>TreeSet
 <ul>
 <li><code>import java.util.TreeSet;</code></li>
 <li><code>Set&lt;E&gt; set = new TreeSet&lt;&gt;();</code></li>
-<li>This class implements the Set interface, backed by a TreeMap instance</li>
-<li>This class does not permits null elements, elements are ordered using their natural ordering, or by a Comparator provided at set creation time</li>
-<li>This class provides guaranteed <span class="math inline">\(log(n)\)</span> performance for basic operations(<code>add</code>, <code>remove</code>, <code>contains</code>,<code>size</code>, <code>isEmpty</code>)</li>
+<li>This class implements the Set interface, backed by a TreeMap
+instance</li>
+<li>This class does not permits null elements, elements are ordered
+using their natural ordering, or by a Comparator provided at set
+creation time</li>
+<li>This class provides guaranteed <span class="math inline">\(log(n)\)</span> performance for basic
+operations(<code>add</code>, <code>remove</code>,
+<code>contains</code>,<code>size</code>, <code>isEmpty</code>)</li>
 <li>Iterators on TreeSet are fail-fast</li>
 </ul></li>
 </ul>
@@ -1423,9 +1680,15 @@
 <li>Map interface
 <ul>
 <li><p><code>import java.util.Map;</code></p></li>
-<li><p><code>Map&lt;K, V&gt; map = new HashMap&lt;&gt;();</code>, <code>Map&lt;K, V&gt; map = new TreeMap&lt;&gt;();</code></p></li>
-<li><p>Map interface does not extend Iterable interface, so you cannot use forEach loop or iterator on a map itself, but it provides three collection views: <code>keySet</code>, <code>values</code>, and <code>entrySet</code>, which are all collections of the corresponding type</p></li>
-<li><p>Inner interface: <code>Map.Entry</code>, <code>entry.getKey()</code> and <code>entry.getValue()</code></p>
+<li><p><code>Map&lt;K, V&gt; map = new HashMap&lt;&gt;();</code>,
+<code>Map&lt;K, V&gt; map = new TreeMap&lt;&gt;();</code></p></li>
+<li><p>Map interface does not extend Iterable interface, so you cannot
+use forEach loop or iterator on a map itself, but it provides three
+collection views: <code>keySet</code>, <code>values</code>, and
+<code>entrySet</code>, which are all collections of the corresponding
+type</p></li>
+<li><p>Inner interface: <code>Map.Entry</code>,
+<code>entry.getKey()</code> and <code>entry.getValue()</code></p>
 <table>
 <colgroup>
 <col style="width: 26%">
@@ -1440,59 +1703,76 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public void clear()</code></td>
-<td style="text-align: center;">Removes all of the mappings from this map</td>
+<td style="text-align: center;">Removes all of the mappings from this
+map</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean containsKey​(Object key)</code></td>
-<td style="text-align: center;">Returns true if this map contains a mapping for the specified key</td>
+<td style="text-align: center;">Returns true if this map contains a
+mapping for the specified key</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean containsValue​(Object value)</code></td>
-<td style="text-align: center;">Returns true if this map contains a mapping for the specified value</td>
+<td style="text-align: center;">Returns true if this map contains a
+mapping for the specified value</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()</code></td>
-<td style="text-align: center;">Returns a Set view of the mappings contained in this map</td>
+<td style="text-align: center;">Returns a Set view of the mappings
+contained in this map</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public V get(Object key)</code></td>
-<td style="text-align: center;">Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key</td>
+<td style="text-align: center;">Returns the value to which the specified
+key is mapped, or null if this map contains no mapping for the key</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public V getOrDefault(Object key, V defaultValue)</code></td>
-<td style="text-align: center;">Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key</td>
+<td style="text-align: center;">Returns the value to which the specified
+key is mapped, or defaultValue if this map contains no mapping for the
+key</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean isEmpty()</code></td>
-<td style="text-align: center;">Returns true if this map contains no key-value mappings</td>
+<td style="text-align: center;">Returns true if this map contains no
+key-value mappings</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Set&lt;K&gt; keySet()</code></td>
-<td style="text-align: center;">Returns a Set view of the keys contained in this map</td>
+<td style="text-align: center;">Returns a Set view of the keys contained
+in this map</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public void put(K key, V value)</code></td>
-<td style="text-align: center;">Associates the specified value with the specified key in this map</td>
+<td style="text-align: center;">Associates the specified value with the
+specified key in this map</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public V putIfAbsent​(K key, V value)</code></td>
-<td style="text-align: center;">If the specified key is not already associated with a value, associates it with the given value and returns null, else returns the current value</td>
+<td style="text-align: center;">If the specified key is not already
+associated with a value, associates it with the given value and returns
+null, else returns the current value</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public void remove(Object key)</code></td>
-<td style="text-align: center;">Removes the mapping for a key from this map if it is present</td>
+<td style="text-align: center;">Removes the mapping for a key from this
+map if it is present</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean remove(Object key, Object value)</code></td>
-<td style="text-align: center;">Removes the entry for the specified key only if it is currently mapped to the specified value, returns true if the map is changed</td>
+<td style="text-align: center;">Removes the entry for the specified key
+only if it is currently mapped to the specified value, returns true if
+the map is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public int size()</code></td>
-<td style="text-align: center;">Returns the number of key-value mappings in this map</td>
+<td style="text-align: center;">Returns the number of key-value mappings
+in this map</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Collection&lt;V&gt; values()</code></td>
-<td style="text-align: center;">Returns a Collection view of the values contained in this map</td>
+<td style="text-align: center;">Returns a Collection view of the values
+contained in this map</td>
 </tr>
 </tbody>
 </table></li>
@@ -1502,22 +1782,33 @@
 <li><code>java.util.HashMap;</code></li>
 <li><code>Map&lt;K, V&gt; map = new HashMap&lt;&gt;();</code></li>
 <li>Hash table based implementation of the Map interface</li>
-<li>It permits one null key and multiple null values, elements are unordered</li>
-<li>This class provides constant-time performance for the basic operations (<code>get</code> and <code>put</code>, <code>containsKey</code>, <code>containsValue</code>, <code>size</code>, <code>isEmpty</code>), iterating over the map requires linear performance</li>
+<li>It permits one null key and multiple null values, elements are
+unordered</li>
+<li>This class provides constant-time performance for the basic
+operations (<code>get</code> and <code>put</code>,
+<code>containsKey</code>, <code>containsValue</code>, <code>size</code>,
+<code>isEmpty</code>), iterating over the map requires linear
+performance</li>
 <li>Iterators on HashMap are fail-fast</li>
 </ul></li>
 <li>TreeMap
 <ul>
 <li><code>import java.util.TreeMap;</code></li>
 <li><code>Map&lt;K, V&gt; map = new TreeMap&lt;&gt;();</code></li>
-<li>A Red-Black tree based implementation of the NavigableMap interface, the NavigableMap interface extends the Map interface</li>
-<li>It does not permit null key, but it does permit multiple null values, elements are ordered using their natural ordering, or by a Comparator provided at map creation time</li>
-<li>This class provides guaranteed <span class="math inline">\(log(n)\)</span> time cost for the <code>containsKey</code>, <code>get</code>, <code>put</code> and <code>remove</code> operations</li>
+<li>A Red-Black tree based implementation of the NavigableMap interface,
+the NavigableMap interface extends the Map interface</li>
+<li>It does not permit null key, but it does permit multiple null
+values, elements are ordered using their natural ordering, or by a
+Comparator provided at map creation time</li>
+<li>This class provides guaranteed <span class="math inline">\(log(n)\)</span> time cost for the
+<code>containsKey</code>, <code>get</code>, <code>put</code> and
+<code>remove</code> operations</li>
 </ul></li>
 </ul>
 <h2 id="math-class">Math class</h2>
 <ul>
-<li><p><code>java.lang.Math</code>, so you do not need to import anything</p>
+<li><p><code>java.lang.Math</code>, so you do not need to import
+anything</p>
 <table>
 <colgroup>
 <col style="width: 43%">
@@ -1540,51 +1831,68 @@
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static abs(T a)</code></td>
-<td style="text-align: center;">Returns the absolute value of a T value, T can be double, float, int, long</td>
+<td style="text-align: center;">Returns the absolute value of a T value,
+T can be double, float, int, long</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>public static double acos(double a)</code>, <code>public static double asin(double a)</code>, <code>public static double atan(double a)</code></td>
+<td style="text-align: center;"><code>public static double acos(double a)</code>,
+<code>public static double asin(double a)</code>,
+<code>public static double atan(double a)</code></td>
 <td style="text-align: center;">arc trigonometric functions</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><code>public static double cos(double a)</code>, <code>public static double sin(double a)</code>, <code>public static double tan(double a)</code></td>
+<td style="text-align: center;"><code>public static double cos(double a)</code>,
+<code>public static double sin(double a)</code>,
+<code>public static double tan(double a)</code></td>
 <td style="text-align: center;">trigonometric functions</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>public static double cosh(double a)</code>, <code>public static double sinh(double a)</code>, <code>public static double tanh(double a)</code></td>
+<td style="text-align: center;"><code>public static double cosh(double a)</code>,
+<code>public static double sinh(double a)</code>,
+<code>public static double tanh(double a)</code></td>
 <td style="text-align: center;">hyperbolic trigonometric functions</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static double ceil(double a)</code></td>
-<td style="text-align: center;">Returns the smallest (closest to negative infinity) double value that is greater than or equal to the argument and is equal to a mathematical integer</td>
+<td style="text-align: center;">Returns the smallest (closest to
+negative infinity) double value that is greater than or equal to the
+argument and is equal to a mathematical integer</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static double floor(double a)</code></td>
-<td style="text-align: center;">Returns the largest (closest to positive infinity) double value that is less than or equal to the argument and is equal to a mathematical integer</td>
+<td style="text-align: center;">Returns the largest (closest to positive
+infinity) double value that is less than or equal to the argument and is
+equal to a mathematical integer</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static double exp(double a)</code></td>
-<td style="text-align: center;">Returns e raised to the power of a double value</td>
+<td style="text-align: center;">Returns e raised to the power of a
+double value</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static double log(double a)</code></td>
-<td style="text-align: center;">Returns the natural logarithm of a double value</td>
+<td style="text-align: center;">Returns the natural logarithm of a
+double value</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static T max(T a, T b)</code></td>
-<td style="text-align: center;">Returns the greater of two double values, T can be double, float, int, long</td>
+<td style="text-align: center;">Returns the greater of two double
+values, T can be double, float, int, long</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static T min(T a, T b)</code></td>
-<td style="text-align: center;">Returns the smaller of two double values, T can be double, float, int, long</td>
+<td style="text-align: center;">Returns the smaller of two double
+values, T can be double, float, int, long</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static double random()</code></td>
-<td style="text-align: center;">Returns a double value with a positive sign, greater than or equal to 0.0 and less than 1.0</td>
+<td style="text-align: center;">Returns a double value with a positive
+sign, greater than or equal to 0.0 and less than 1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public double sqrt(double a)</code></td>
-<td style="text-align: center;">Returns the correctly rounded positive square root of a double value</td>
+<td style="text-align: center;">Returns the correctly rounded positive
+square root of a double value</td>
 </tr>
 </tbody>
 </table></li>
@@ -1606,35 +1914,45 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public static &lt;T&gt; int binarySearch​(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key)</code></td>
-<td style="text-align: center;">Searches the specified list for the specified object using the binary search algorithm, returns the index of the search key, if it is contained in the list; otherwise, (-(insertion point) - 1)</td>
+<td style="text-align: center;">Searches the specified list for the
+specified object using the binary search algorithm, returns the index of
+the search key, if it is contained in the list; otherwise, (-(insertion
+point) - 1)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static &lt;T&gt; void copy​(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</code></td>
-<td style="text-align: center;">Copies all of the elements from one list into another</td>
+<td style="text-align: center;">Copies all of the elements from one list
+into another</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>pub static &lt;T&gt; void fill​(List&lt;? super T&gt; list, T obj)</code></td>
-<td style="text-align: center;">Replaces all of the elements of the specified list with the specified element</td>
+<td style="text-align: center;">Replaces all of the elements of the
+specified list with the specified element</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static &lt;T extends Object &amp; Comparable&lt;? super T&gt;&gt; T max​(Collection&lt;? extends T&gt; coll)</code></td>
-<td style="text-align: center;">Returns the maximum element of the given collection, according to the natural ordering of its elements</td>
+<td style="text-align: center;">Returns the maximum element of the given
+collection, according to the natural ordering of its elements</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static &lt;T extends Object &amp; Comparable&lt;? super T&gt;&gt; T min(Collection&lt;? extends T&gt; coll)</code></td>
-<td style="text-align: center;">Returns the minimum element of the given collection, according to the natural ordering of its elements</td>
+<td style="text-align: center;">Returns the minimum element of the given
+collection, according to the natural ordering of its elements</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static void reverse​(List&lt;?&gt; list)</code></td>
-<td style="text-align: center;">Reverses the order of the elements in the specified list</td>
+<td style="text-align: center;">Reverses the order of the elements in
+the specified list</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort​(List&lt;T&gt; list)</code></td>
-<td style="text-align: center;">Sorts the specified list into ascending order, according to the natural ordering of its elements</td>
+<td style="text-align: center;">Sorts the specified list into ascending
+order, according to the natural ordering of its elements</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public static void swap​(List&lt;?&gt; list, int i, int j)</code></td>
-<td style="text-align: center;">Swaps the elements at the specified positions in the specified list</td>
+<td style="text-align: center;">Swaps the elements at the specified
+positions in the specified list</td>
 </tr>
 </tbody>
 </table></li>
@@ -1644,8 +1962,12 @@
 <li><p><code>import java.util.Stack;</code></p></li>
 <li><p><code>Stack&lt;E&gt; stack = new Stack&lt;&gt;();</code></p></li>
 <li><p>This class represents a LIFO stack of objects</p></li>
-<li><p>This class extends Vector class and implements the List interface</p></li>
-<li><p>A more complete and consistent set of LIFO stack operations are provided by the Deque interface, which should be used in preference to this class, <code>Deque&lt;Integer&gt; stack  = new ArrayDeque&lt;&gt;();</code></p>
+<li><p>This class extends Vector class and implements the List
+interface</p></li>
+<li><p>A more complete and consistent set of LIFO stack operations are
+provided by the Deque interface, which should be used in preference to
+this class,
+<code>Deque&lt;Integer&gt; stack  = new ArrayDeque&lt;&gt;();</code></p>
 <table>
 <colgroup>
 <col style="width: 23%">
@@ -1664,19 +1986,23 @@
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E peek()</code></td>
-<td style="text-align: center;">Looks at the object at the top of this stack without removing it from the stack</td>
+<td style="text-align: center;">Looks at the object at the top of this
+stack without removing it from the stack</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E pop()</code></td>
-<td style="text-align: center;">Removes the object at the top of this stack and returns that object as the value of this function</td>
+<td style="text-align: center;">Removes the object at the top of this
+stack and returns that object as the value of this function</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E push(E item)</code></td>
-<td style="text-align: center;">Pushes an item onto the top of this stack</td>
+<td style="text-align: center;">Pushes an item onto the top of this
+stack</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public int search(Object o)</code></td>
-<td style="text-align: center;">Returns the 1-based position where an object is on this stack</td>
+<td style="text-align: center;">Returns the 1-based position where an
+object is on this stack</td>
 </tr>
 </tbody>
 </table></li>
@@ -1684,8 +2010,10 @@
 <h2 id="queue-interface">Queue interface</h2>
 <ul>
 <li><p><code>import java.util.Queue</code></p></li>
-<li><p><code>Queue&lt;E&gt; queue = new ArrayDeque&lt;&gt;();</code>, <code>Queue&lt;E&gt; queue = new LinkedList&lt;&gt;();</code></p></li>
-<li><p>Queues typically, but do not necessarily, order elements in a FIFO manner</p>
+<li><p><code>Queue&lt;E&gt; queue = new ArrayDeque&lt;&gt;();</code>,
+<code>Queue&lt;E&gt; queue = new LinkedList&lt;&gt;();</code></p></li>
+<li><p>Queues typically, but do not necessarily, order elements in a
+FIFO manner</p>
 <table>
 <colgroup>
 <col style="width: 10%">
@@ -1700,35 +2028,47 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean add(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available</td>
+<td style="text-align: center;">Inserts the specified element into this
+queue if it is possible to do so immediately without violating capacity
+restrictions, returning true upon success and throwing an
+IllegalStateException if no space is currently available</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E element()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the head of this queue</td>
+<td style="text-align: center;">Retrieves, but does not remove, the head
+of this queue</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean offer(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions</td>
+<td style="text-align: center;">Inserts the specified element into this
+queue if it is possible to do so immediately without violating capacity
+restrictions</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E peek()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty</td>
+<td style="text-align: center;">Retrieves, but does not remove, the head
+of this queue, or returns null if this queue is empty</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E poll()</code></td>
-<td style="text-align: center;">Retrieves and removes the head of this queue, or returns null if this queue is empty</td>
+<td style="text-align: center;">Retrieves and removes the head of this
+queue, or returns null if this queue is empty</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E remove()</code></td>
-<td style="text-align: center;">Retrieves and removes the head of this queue</td>
+<td style="text-align: center;">Retrieves and removes the head of this
+queue</td>
 </tr>
 </tbody>
 </table></li>
 <li><p>Deque interface</p>
 <ul>
 <li><p><code>import java.util.Deque;</code></p></li>
-<li><p><code>Deque&lt;E&gt; deque = new ArrayDeque&lt;&gt;();</code>, <code>Deque&lt;E&gt; deque = new LinkedList&lt;&gt;();</code></p></li>
-<li><p>A linear collection that supports insertion and removal at both ends. The name deque is short for "double ended queue" and is usually pronounced "deck"</p></li>
+<li><p><code>Deque&lt;E&gt; deque = new ArrayDeque&lt;&gt;();</code>,
+<code>Deque&lt;E&gt; deque = new LinkedList&lt;&gt;();</code></p></li>
+<li><p>A linear collection that supports insertion and removal at both
+ends. The name deque is short for "double ended queue" and is usually
+pronounced "deck"</p></li>
 <li><p>Summary of Deque methods</p>
 <table>
 <col>
@@ -1885,91 +2225,117 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean add(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the end of this deque, returns true if there is enough space, otherwise throws <code>IllegalStateException</code></td>
+<td style="text-align: center;">Inserts the specified element at the end
+of this deque, returns true if there is enough space, otherwise throws
+<code>IllegalStateException</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public void addFirst(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the front of the deque, returns true if there is enough space, otherwise throws <code>IllegalStateException</code></td>
+<td style="text-align: center;">Inserts the specified element at the
+front of the deque, returns true if there is enough space, otherwise
+throws <code>IllegalStateException</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public void addLast(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the end of the deque, returns true if there is enough space, otherwise throws <code>IllegalStateException</code></td>
+<td style="text-align: center;">Inserts the specified element at the end
+of the deque, returns true if there is enough space, otherwise throws
+<code>IllegalStateException</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean contains(Object o)</code></td>
-<td style="text-align: center;">Returns true if this deque contains the specified element</td>
+<td style="text-align: center;">Returns true if this deque contains the
+specified element</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E element()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the first element of this deque</td>
+<td style="text-align: center;">Retrieves, but does not remove, the
+first element of this deque</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E getFirst()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the first element of this deque</td>
+<td style="text-align: center;">Retrieves, but does not remove, the
+first element of this deque</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E getLast()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the last element of this deque</td>
+<td style="text-align: center;">Retrieves, but does not remove, the last
+element of this deque</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean offer(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the end of this deque, returns true if there is enough space, otherwise false</td>
+<td style="text-align: center;">Inserts the specified element at the end
+of this deque, returns true if there is enough space, otherwise
+false</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean offerFirst(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the front of this deque unless it would violate capacity restrictions</td>
+<td style="text-align: center;">Inserts the specified element at the
+front of this deque unless it would violate capacity restrictions</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean offer(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element at the end of this deque unless it would violate capacity restrictions</td>
+<td style="text-align: center;">Inserts the specified element at the end
+of this deque unless it would violate capacity restrictions</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E peek()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the first element of this deque, or returns null if the deque is empty</td>
+<td style="text-align: center;">Retrieves, but does not remove, the
+first element of this deque, or returns null if the deque is empty</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E peekFirst()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the first element of this deque, or returns null if the deque is empty</td>
+<td style="text-align: center;">Retrieves, but does not remove, the
+first element of this deque, or returns null if the deque is empty</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E peekLast()</code></td>
-<td style="text-align: center;">Retrieves, but does not remove, the last element of this deque, or returns null if the deque is empty</td>
+<td style="text-align: center;">Retrieves, but does not remove, the last
+element of this deque, or returns null if the deque is empty</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E poll()</code></td>
-<td style="text-align: center;">Retrieves and removes the first element of this deque, or returns null if this deque is empty</td>
+<td style="text-align: center;">Retrieves and removes the first element
+of this deque, or returns null if this deque is empty</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E pollFirst()</code></td>
-<td style="text-align: center;">Retrieves and removes the first element of this deque, or returns null if this deque is empty</td>
+<td style="text-align: center;">Retrieves and removes the first element
+of this deque, or returns null if this deque is empty</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E pollLast()</code></td>
-<td style="text-align: center;">Retrieves and removes the last element of this deque, or returns null if this deque is empty</td>
+<td style="text-align: center;">Retrieves and removes the last element
+of this deque, or returns null if this deque is empty</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E remove()</code></td>
-<td style="text-align: center;">Retrieves and removes the first element of this deque</td>
+<td style="text-align: center;">Retrieves and removes the first element
+of this deque</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E remove(Object o)</code></td>
-<td style="text-align: center;">Removes the first occurrence of the specified element from this deque</td>
+<td style="text-align: center;">Removes the first occurrence of the
+specified element from this deque</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public E   removeFirst()</code></td>
-<td style="text-align: center;">Retrieves and removes the first element of this deque</td>
+<td style="text-align: center;">Retrieves and removes the first element
+of this deque</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public E   removeLast()</code></td>
-<td style="text-align: center;">Retrieves and removes the last element of this deque</td>
+<td style="text-align: center;">Retrieves and removes the last element
+of this deque</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public int size()</code></td>
-<td style="text-align: center;">Returns the number of elements in the deque</td>
+<td style="text-align: center;">Returns the number of elements in the
+deque</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean isEmpty()</code></td>
-<td style="text-align: center;">Returns whether there are 0 elements in the deque</td>
+<td style="text-align: center;">Returns whether there are 0 elements in
+the deque</td>
 </tr>
 </tbody>
 </table></li>
@@ -1979,9 +2345,17 @@
 <li><p><code>import java.util.PriorityQueue;</code></p></li>
 <li><p><code>PriorityQueue&lt;E&gt; pq = new PriorityQueue&lt;&gt;();</code></p></li>
 <li><p>An unbounded priority queue based on a priority heap</p></li>
-<li><p>Does not permit null elements, elements are ordered using their natural ordering or by a Comparator provided at queue construction time, depending on which constructor is used</p></li>
-<li><p>The head of a priority queue is the least element with respect to the specified ordering</p></li>
-<li><p>This class provides <span class="math inline">\(O(log(n))\)</span> time for the enqueuing and dequeuing methods (<code>offer</code>, <code>poll</code>, <code>remove()</code> and <code>add</code>); linear time for the <code>remove(Object)</code> and <code>contains(Object)</code> methods; and constant time for the retrieval methods (<code>peek</code>, <code>element</code>, and <code>size</code>)</p>
+<li><p>Does not permit null elements, elements are ordered using their
+natural ordering or by a Comparator provided at queue construction time,
+depending on which constructor is used</p></li>
+<li><p>The head of a priority queue is the least element with respect to
+the specified ordering</p></li>
+<li><p>This class provides <span class="math inline">\(O(log(n))\)</span> time for the enqueuing and
+dequeuing methods (<code>offer</code>, <code>poll</code>,
+<code>remove()</code> and <code>add</code>); linear time for the
+<code>remove(Object)</code> and <code>contains(Object)</code> methods;
+and constant time for the retrieval methods (<code>peek</code>,
+<code>element</code>, and <code>size</code>)</p>
 <table>
 <colgroup>
 <col style="width: 50%">
@@ -1996,39 +2370,52 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean add(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element into this priority queue</td>
+<td style="text-align: center;">Inserts the specified element into this
+priority queue</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public void clear()</code></td>
-<td style="text-align: center;">Removes all of the elements from this priority queue</td>
+<td style="text-align: center;">Removes all of the elements from this
+priority queue</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean contains(Object o)</code></td>
-<td style="text-align: center;">Returns true if this queue contains the specified element</td>
+<td style="text-align: center;">Returns true if this queue contains the
+specified element</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean offer(E e)</code></td>
-<td style="text-align: center;">Inserts the specified element into this priority queue, returns true if the priority queue is changed</td>
+<td style="text-align: center;">Inserts the specified element into this
+priority queue, returns true if the priority queue is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean remove(Object o)</code></td>
-<td style="text-align: center;">Removes a single instance of the specified element from this queue, if it is present, returns true if the priority queue is changed</td>
+<td style="text-align: center;">Removes a single instance of the
+specified element from this queue, if it is present, returns true if the
+priority queue is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public boolean removeAll​(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Removes all of this collection's elements that are also contained in the specified collection, returns true if the priority queue is changed</td>
+<td style="text-align: center;">Removes all of this collection's
+elements that are also contained in the specified collection, returns
+true if the priority queue is changed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public boolean retainAll(Collection&lt;?&gt; c)</code></td>
-<td style="text-align: center;">Retains only the elements in this collection that are contained in the specified collection, returns true if the priority queue is changed</td>
+<td style="text-align: center;">Retains only the elements in this
+collection that are contained in the specified collection, returns true
+if the priority queue is changed</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>public Object[] toArray()</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this queue</td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this queue</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>public T[] toArray(T[] a)</code></td>
-<td style="text-align: center;">Returns an array containing all of the elements in this queue; the runtime type of the returned array is that of the specified array</td>
+<td style="text-align: center;">Returns an array containing all of the
+elements in this queue; the runtime type of the returned array is that
+of the specified array</td>
 </tr>
 </tbody>
 </table></li>
@@ -2212,7 +2599,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">15:24</span>
+    <span title="Reading time total">15:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
