@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-18T04:35:52.631Z">
+<meta property="article:modified_time" content="2022-06-22T03:47:36.352Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-18 00:35:52" itemprop="dateModified" datetime="2022-06-18T00:35:52-04:00">2022-06-18</time>
+                <time title="Modified: 2022-06-21 23:47:36" itemprop="dateModified" datetime="2022-06-21T23:47:36-04:00">2022-06-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>65k</span>
+              <span>81k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>59 mins.</span>
+              <span>1:13</span>
             </span>
 
         </div>
@@ -2092,7 +2092,432 @@ reaches a resolved or rejected state first, a new promise is
 returned</li>
 </ul></li>
 </ul></li>
-<li>Async functions</li>
+<li>Async functions
+<ul>
+<li>Async functions, also referred to by the operative keyword pair
+<code>async/await</code>, are the application of the ES6 Promise
+paradigm to ECMAScript functions</li>
+<li>Async function basics
+<ul>
+<li>The <code>async</code> keyword
+<ul>
+<li>An async function can be declared by prepending the
+<code>async</code> keyword, this keyword can be used on function
+declarations, function expressions, arrow functions and methods</li>
+<li>Using the <code>async</code> keyword will create a function that
+exhibits some asynchronous characteristics but overall is still
+synchronously evaluated</li>
+<li>In an async function, whatever value is returned with the return
+keyword will be converted into a promise object with
+<code>Promise.resolve()</code>. An async function will always return a
+promise object</li>
+<li>The return value of an async function anticipates, but does not
+require a thenable object</li>
+<li>Throwing an error value instead return a rejected promise</li>
+</ul></li>
+<li>The <code>await</code> keyword
+<ul>
+<li>An async function indicates to code invoking it that there is no
+exception of timely completion, the logical extension of this behavior
+is the ability to pause and resume execution</li>
+<li>The <code>await</code> keyword is used to pause execution while
+waiting for a promise to resolve</li>
+<li>It can be used standalone or inside an expression</li>
+<li>The <code>await</code> keyword anticipates, but does not actually
+require, a thenable object</li>
+<li>The <code>await</code> keyword can only be used inside an async
+function, otherwise a SyntaxError is thrown</li>
+</ul></li>
+<li>Halting and resuming execution
+<ul>
+<li>Example 1 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(<span class="number">8</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">9</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="number">6</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">bar();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 1 2 3 4 5 6 7 8 9</span></span><br></pre></td></tr></table></figure> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* Strategies for async function</span><br><span class="line">  * Implementing sleep</span><br><span class="line">     &#96;&#96;&#96;javascript</span><br><span class="line">       async function sleep(delay) &#123;</span><br><span class="line">         return new Promise((resolve) &#x3D;&gt; &#123;</span><br><span class="line">           setTimeout(resolve, delay);</span><br><span class="line">         &#125;);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
+<li>Serial promise execution <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTwo</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThree</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFive</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">addTen</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> [addTwo, addThree, addFive]) &#123;</span><br><span class="line">    x = <span class="keyword">await</span> fn(x);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addTen(<span class="number">1</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// 11</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="the-browser-object-model">The Browser Object Model</h1>
+<ol type="1">
+<li>The <code>window</code> object
+<ul>
+<li>Although ECMAScript describes it as the cores of JavaScript, the BOM
+is really the core of using JavaScript on the web. The BOM provides
+objects the expose browser functionality independent of any web page
+content</li>
+<li>At the core of the BOM is the window object, which represents an
+instance of the browser</li>
+<li>Two purposes of window object in browsers:
+<ul>
+<li>Act as the JavaScript interface to the browser window</li>
+<li>Act as the ECMAScript global object</li>
+</ul></li>
+<li>The global scope
+<ul>
+<li>All variables and functions declared globally with var become
+properties and methods of the window object, if they are defined using
+let or const, they are not global <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Susan&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> sayAge = <span class="function">() =&gt;</span> alert(<span class="built_in">this</span>.age);</span><br><span class="line"></span><br><span class="line">alert(<span class="built_in">window</span>.age); <span class="comment">// 20</span></span><br><span class="line">alert(<span class="built_in">window</span>.name); <span class="comment">// undefined</span></span><br><span class="line">alert(<span class="built_in">window</span>.sayAge); <span class="comment">// TypeError: window.sayAge is not a function</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Window relationships
+<ul>
+<li>Introduction
+<ul>
+<li>The <code>top</code> object always points to the very top window,
+which is the browser window itself</li>
+<li>The <code>parent</code> object always points to the current window's
+immediate parent window. For the topmost window, parent is equal to top,
+and both equal to window</li>
+<li>The topmost window will never have a value set for name unless the
+window was opened using <code>window.open()</code></li>
+</ul></li>
+<li>Window position and pixel ratio
+<ul>
+<li>Modern browsers all provide <code>screenLeft</code> and
+<code>screenTop</code> properties that indicate the window's location in
+relation to the left and top of the screen, respectively, in CSS
+pixels</li>
+<li>It's also possible to move the window using the
+<code>window.moveTo(x, y)</code> and <code>window.moveBy(dx, dy)</code>
+methods</li>
+<li>Pixel ratio
+<ul>
+<li>A CSS pixel is the denomination of the pixel used universally in web
+development, it is defined as an angular measurement: 0.0213<span class="math inline">\(^{\circ}\)</span>, approximately 1/96 of an inch
+on a device held at arm's length.</li>
+<li>A CSS pixel (px) is not the same as a physical resolution of a
+device (device pixel, pt)</li>
+<li>Device pixel ratio = device resolution / CSS pixel. If the device
+has a physical resolution of 1920x1080, and we want to convert it to
+640x360, then the device pixel ratio is 3</li>
+</ul></li>
+</ul></li>
+<li>Window size
+<ul>
+<li>All modern browsers provide four properties to determine the window
+size: <code>innerWidth</code>, <code>innerHeight</code>,
+<code>outerWidth</code>, and <code>outerHeight</code>. The
+<code>outerWidth</code> and <code>outerHeight</code> return the
+dimensions of the browser window itself, the <code>innerWidth</code> and
+<code>innerHeight</code> indicate the size of the page viewport inside
+the browser window (minus borders and toolbars)</li>
+<li>The <code>document.documentElement.clientWidth</code> and
+<code>document.documentElement.clientHeight</code> properties return the
+size of the page viewport, for mobile browsers, use
+<code>document.body.clientWidth</code> and
+<code>document.body.clientHeight</code></li>
+<li>The browser window can be resides using the
+<code>window.resizeTo(width, height)</code> and
+<code>resizeBy(dw, dh)</code> methods</li>
+</ul></li>
+<li>Window viewport position
+<ul>
+<li>Because the browser window is usually not large enough to display
+the entire rendered document at once, the user is give the ability to
+scroll around the document with a limited viewport</li>
+<li>The X and Y offsets are each accessible bia two properties, which
+return identical values: <code>window.pageXoffset</code>/
+<code>window.scrollX</code>, and <code>window.pageYoffset</code>/
+<code>window.scrollY</code></li>
+<li>You can also use the <code>window.scroll(x, y)</code>,
+<code>window.scrollTo(x, y)</code>, and
+<code>window.scrollBy(dx, dy)</code> methods to move the viewport</li>
+</ul></li>
+<li>Navigating and opening windows
+<ul>
+<li><code>window.open(stringUR, stringName, stringFeatures, booleanReplace)</code>
+<ul>
+<li>stringURL: the URL to load</li>
+<li>stringName: the name of the new window</li>
+<li>stringFeatures: comma-separated list of features to enable</li>
+<li>booleanReplace: if true, the current window is replaced, otherwise a
+new window is opened</li>
+</ul></li>
+<li><code>window.open()</code> return a window object, this object can
+be used to manipulate the newly opened window in the same way as any
+other window</li>
+<li><code>window.close()</code>: close the current window, return a
+boolean indicating whether the window was closed</li>
+<li>Security restrictions: pop-up windows went through a period of
+overuse by online ads, so browsers nowadays put limits on teh
+configuration of pop-up windows. Browsers will allow the creation of
+pop-up windows only after a user action, a call to
+<code>window.open()</code> while a page is still being loaded will not
+be executed and may cause an error to be displayed to the user</li>
+<li>Pop-up blocks: all modern browsers have pop-up blocking software
+built in
+<ul>
+<li>If a pop-up window is blocked by the built-in blocker, then
+<code>window.open()</code> returns null</li>
+<li>When a browser add-on or other program blocks a pop-up,
+<code>window.open()</code> typically throws an error</li>
+<li>Detection <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> blocked = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> win = <span class="built_in">window</span>.open(url, name, features, replace);</span><br><span class="line">  <span class="keyword">if</span> (win == <span class="literal">null</span>) &#123;</span><br><span class="line">    blocked = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (ex) &#123;</span><br><span class="line">  blocked = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (blocked) &#123;</span><br><span class="line">  alert(<span class="string">&#x27;Pop-ups are blocked&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Intervals and timeouts
+<ul>
+<li>JavaScript execution in a browser is single-threaded, but does allow
+for the scheduling of code to run at specific points in time through the
+use of timeouts and intervals</li>
+<li>Timeouts execute some code after a specified amount of time, whereas
+intervals execute code repeatedly, waiting a specific amount of time in
+between each execution</li>
+<li><code>window.setTimeout(callback, milliseconds)</code></li>
+<li><code>window.clearTimeout(timeoutId)</code>: cancel a pending
+timeout operation, the timeoutId is an unique number returned from the
+setTimeout method</li>
+<li><code>window.setInterval(callback, milliseconds)</code></li>
+<li><code>window.clearInterval(intervalId)</code>: cancel a pending
+interval operation, the intervalId is an unique number returned from the
+setInterval method <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> intervalId = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> max = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> callback = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(num);</span><br><span class="line">  num++;</span><br><span class="line">  <span class="keyword">if</span> (num &gt;= max) &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(intervalId);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">intervalId = <span class="built_in">setInterval</span>(callback, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>System dialogs
+<ul>
+<li>The browser is capable of invoking system dialogs to display to the
+user through the <code>alert()</code>, <code>confirm()</code>, and
+<code>prompt()</code> methods</li>
+<li>The system dialogs are not related to the web page being displayed
+in the browser and do not contain HTML, the appearance is determined by
+operating system and/or browser settings rather than CSS, and each of
+the dialogs is synchronous</li>
+<li>The <code>alert()</code> method
+<ul>
+<li>Accept a string to display to the user, if the argument of alert is
+not a string, it will be converted to a string first</li>
+<li>It contains a single OK button</li>
+<li>Alert dialogs are typically used when users must be made aware of
+something that they have no control over, such as an error, the user's
+only choice is to dismiss the dialog after reading the message</li>
+</ul></li>
+<li>The <code>confirm()</code> method
+<ul>
+<li>It looks similar to an alert dialog in that it displays a message to
+the user, the main difference is that the confirm dialog contains a
+Cancel button along with the OK button, which allows the user to
+indicate if a given action should be taken</li>
+<li>The <code>confirm()</code> method returns a boolean value: true if
+OK was clicked, or false if Cancel was clicked <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (confirm(<span class="string">&#x27;Are you sure?&#x27;</span>)) &#123;</span><br><span class="line">  alert(<span class="string">&quot;I&#x27;m so glad you&#x27;re sure!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  alert(<span class="string">&quot;I&#x27;m sorry to hear you&#x27;re not sure!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>prompt()</code> method
+<ul>
+<li>The prompt dialog prompts the user for input: along with the Cancel
+and OK button, it has a text box where the user may enter some data</li>
+<li><code>window.prompt(stringMessage, stringDefault)</code></li>
+<li>If the OK button is clicked, <code>prompt()</code> returns the value
+in teh text box, if Cancel is clicked or the dialog is otherwise closed
+without clicking OK, <code>prompt()</code> returns null</li>
+</ul></li>
+<li>The system dialogs can be helpful for displaying information to the
+user and asking for confirmation of decisions, because they require not
+HTML or CSS, they are fast and easy ways to enhance a web
+application</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The <code>location</code> object
+<ul>
+<li>One of the most useful BOM object is location, which provides
+information about the document that is currently loaded in the window,
+as well as general navigation functionality</li>
+<li>Both <code>window.location</code> and <code>document.location</code>
+point to the same object</li>
+<li>Some properties of the location object: <code>location.host</code>
+(name of server + port number if present),
+<code>location.hostname</code> (name of server),
+<code>location.port</code> (port number), <code>location.protocol</code>
+(the protocol used by the page, typically http or https),
+<code>location.username</code> (the username specified before the domain
+name), <code>location.password</code> (the password specified before the
+domain name), <code>location.origin</code> (the origin of the URL, read
+only), <code>location.search</code> (the query string of the URL,
+returns a striong beginning with a question mark)</li>
+<li>Convert query string to an object<br>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> getParams = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> queryString = location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">let</span> params = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> queryString.split(<span class="string">&quot;&amp;&quot;</span>).map(<span class="function">(<span class="params">x</span>) =&gt;</span> x.split(<span class="string">&quot;=&quot;</span>))) &#123;</span><br><span class="line">    <span class="comment">// query-string arguments are supposed to be encoded</span></span><br><span class="line">    <span class="keyword">let</span> key = <span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">let</span> value = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span> (key.length) &#123;</span><br><span class="line">      params[key] = value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Manipulating the location
+<ul>
+<li><code>location.assign(URL)</code>: navigate to the new URL and makes
+an entry in the browser's history stack. If
+<code>location.href=URL</code> or <code>window.location=URL</code> is
+used, the <code>location.assign()</code> method is called
+automatically</li>
+<li>Changing various properties on the location object can also modify
+the currently loaded page</li>
+<li>Generally, when the URL is changed, an entry is made in the
+browser's history stack so the user may click the Back button to
+navigate to the previous page. It is possible to disallow this behavior
+by using the <code>replace()</code> method</li>
+</ul></li>
+</ul></li>
+<li>The <code>navigator</code> object
+<ul>
+<li>The navigator object is the standard browser identification on the
+client, each browser supports its own set of properties</li>
+<li>Properties: <code>navigator.appCodeName</code> (return Mozilla),
+<code>navigator.appName</code> (return browser full name),
+<code>navigator.appVersion</code>, <code>navigator.deviceMemory</code>
+(the amount of device memory in GB),
+<code>navigator.hardwareConcurrency</code> (device's number of processor
+cores), <code>navigator.language</code> (browser primary language),
+<code>navigator.languages</code> (all browser's preferred languages),
+<code>navigator.platform</code> (system platform)</li>
+<li>Detecting plug-ins <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> hasPlugin = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">  name = name.toLowerCase();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> navigator.plugins) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.name.toLowerCase().indexOf(name) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(hasPlugin(<span class="string">&quot;Flash&quot;</span>));</span><br></pre></td></tr></table></figure></li>
+<li>Registering handlers <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.registerProtocolHandler(<span class="string">&quot;URL&quot;</span>, name);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>screen</code> object
+<ul>
+<li>The screen object (also a property of window) is one of the few
+object JavaScript objects that have little to no programming use, it is
+used purely as an indication of client capabilities</li>
+<li>Property: <code>screen.height</code>, <code>screen.width</code>,
+<code>screen.left</code> (the pixel distance of the current screen's
+left side), <code>screen.top</code> (the pixel distance of the current
+screen's top), <code>screen.orientation</code>,
+<code>screen.colorDepth</code> (the number of bits used to represent
+colors)</li>
+</ul></li>
+<li>The <code>history</code> object
+<ul>
+<li>The history object represents the user's navigation history since
+the given window was first used</li>
+<li>Because history is a property of window, each browser object has its
+own history object relating specifically to that instance</li>
+<li>The <code>history.go(n)</code>navigates through the user's history
+iun either direction, backward or forward, if n &lt; 0, then navigates
+backward, you can also use <code>history.back(n)</code>,
+<code>history.forward(n)</code></li>
+<li>You can also use <code>history.go(URL)</code> to go the nearest URL
+page</li>
+<li><code>history.length</code> returns the amount of items in the
+history stack</li>
+</ul></li>
+</ol>
+<h1 id="client-detection">Client Detection</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>Although browser vendors have made a concerted effort to implement
+common interfaces, the face remains that each browser presents its own
+capabilities and flaws</li>
+<li>Developers need to either design for the lowest common denominator
+or, more commonly, use various methods of client detection to work with
+or around limitations</li>
+<li>Client detection should be the very last step in solving a problem,
+whenever a more common solution is available, that solution should be
+used</li>
+</ul></li>
+<li>Capability detection
+<ul>
+<li>Capability detection (feature detection) uses a suite of simple
+checks in the browser's JavaScript runtime to test for support of
+various features</li>
+<li>You should verify not just the feature is present but also that the
+feature is likely to behave an appropriate manner</li>
+</ul></li>
+<li>User-agent detection
+<ul>
+<li>User-agent detection uses the browser's user-agent string to
+determine information about the browser being used</li>
+<li>The user-agent string is sent as a response header for every HTTP
+request and is made accessible in JavaScript through
+<code>navigator.userAgent</code></li>
+<li>Mozilla is an abbreviation for Mosaic Killer</li>
+<li>Spoofing a user-agent
+<ul>
+<li>User-agent is an imperfect browser identification solution, because
+it is easy to spoof a user-agent string</li>
+<li>Browsers that implement the <code>window.navigator</code> offer the
+user-agent string as a read-only property, so you cannot modify it
+directly</li>
+<li>If browsers offer the pesudo-private <code>__defineGetter__</code>
+method, then spoofing a user-agent is easy <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.navigator.__defineGetter(<span class="string">&quot;userAgent&quot;</span>, <span class="function">() =&gt;</span> <span class="string">&quot;random&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.navigator.userAgent); <span class="comment">// random</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>You can infer many of the following information from the user-agent:
+browser, browser version, browser rendering engine, device
+class(desktop/mobile), device manufacture, device model, operating
+system, operating system version</li>
+</ul></li>
+<li>Software and hardware detection
+<ul>
+<li>Browser and operating system identification
+<ul>
+<li><code>navigator.oscpu</code>: this is deprecated, Edge and Chrome
+does not have this property</li>
+<li><code>navigator.vendor</code>: return a string of the browser
+vendor</li>
+<li><code>navigator.platform</code>: return a string indicating the
+operating system inside which the browser is executing</li>
+<li><code>screen.colorDepth</code>/ <code>screen.pixelDepth</code>:
+return the number of color bits that can be represented in the
+display</li>
+<li><code>screen.orientation</code>: return a
+<code>ScreenOrientation</code> object, which contains information about
+the browser's screen according to the Screen Orientation API</li>
+</ul></li>
+<li>Browser Metadata
+<ul>
+<li><code>navigator.geolocation</code> property provides access to the
+GeoLocation API, wich allows browser scripts to learn about the current
+device's location <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p;</span><br><span class="line"><span class="comment">// The following line requires user permission </span></span><br><span class="line">navigator.geolocation.getCurrentPosition(<span class="function">(<span class="params">pos</span>) =&gt;</span> p = pos);</span><br><span class="line"><span class="built_in">console</span>.log(p.timestamp);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> p.coords); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(p.coords.latitude, p.coords.longitude); <span class="comment">// get the latitude and the longitude</span></span><br><span class="line"><span class="built_in">console</span>.log(p.coords.altitude); <span class="comment">// the altitude of the device, this can be null</span></span><br><span class="line"><span class="built_in">console</span>.log(p.coords.speed); <span class="comment">// the speed of the device, this can be null</span></span><br></pre></td></tr></table></figure></li>
+<li>The
+<code>navigator.geolocation.getCurrentPosition(callback1, callback2)</code>
+can be rejected, so the first argument is the handler for position
+object, the second argument is the handler for PositionError object, use
+<code>e.code</code>/ <code>e.message</code> to get information about the
+PositionError</li>
+<li>The browser tracks the network connection state and exposes this
+information in two ways: connection events, and the
+<code>navigator.onLine</code> boolean property</li>
+<li>The <code>navigator.connection</code> property exposes teh
+NetworkInformation API</li>
+<li>Battery status API: the <code>navigator.getBattery()</code> returns
+a promises that resolves to a <code>BatteryManager</code> object
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">navigator.getBattery().then(</span><br><span class="line">  (bat) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bat.charing); <span class="comment">// boolean</span></span><br><span class="line">    <span class="built_in">console</span>.log(chargingTime); <span class="comment">// number</span></span><br><span class="line">    <span class="built_in">console</span>.log(dischargingTime); <span class="comment">// number</span></span><br><span class="line">    <span class="built_in">console</span>.log(level); <span class="comment">// number</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Hardware
+<ul>
+<li>Processor cores: <code>navigator.hardwareConcurrency</code></li>
+<li>Device memory: <code>navigator.deviceMemory</code></li>
+<li>Maximum touch points: <code>navigator.maxTouchPoints</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="the-document-object-model">The Document Object Model</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>The Document Object Model (DOM) is an application programming
+interface for HTML and XML documents</li>
+<li>The DOM represents a document as a hierarchical tree of nodes,
+allowing for adding, removing and modifying individual parts of the
+page</li>
+</ul></li>
+<li>Hierarchy of nodes
+<ul>
+<li>A document node represents every document as the root</li>
+<li>In HTML, the only child of the document node is the
+<code>&lt;html&gt;</code> element, which is called the document element.
+There can be only one document element per document. In HTML, the
+document element is always the
+<html>
+element, in XML, any element may be the document element</html></li>
+<li>The node type
+<ul>
+<li>DOM Level 1 describes an interface called Node that is to be
+implemented by all node types in the DOM, the Node interface is
+implemented in JavaScript as the Node type</li>
+<li>There are 12 node types in total: <code>Node.ELEMENT_NODE(1)</code>,
+<code>Node.ATTRIBUTE_NODE(2)</code>, <code>Node.TEXT_NODE(3)</code>,
+<code>Node.CDATA_SECTION_NODE(4)</code>,
+<code>Node.ENTITY_REFERENCE_NODE(5)</code>,
+<code>Node.ENTITY_NODE(6)</code>,
+<code>Node.PROCESSING_INSTRUCTION_NODE(7)</code>,
+<code>Node.COMMENT_NODE(8)</code>, <code>Node.DOCUMENT_NODE(9)</code>,
+<code>Node.DOCUMENT_TYPE_NODE(10)</code>,
+<code>Node.DOCUMENT_FRAGMENT_NODE(11)</code>,
+<code>Node.NOTATION_NODE(12)</code></li>
+<li>Get the type of a node: <code>node.nodeType</code>, this returns the
+node type as a number</li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -2195,7 +2620,7 @@ returned</li>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2268,12 +2693,12 @@ Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item na
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">15:41</span>
+    <span title="Reading time total">15:56</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
