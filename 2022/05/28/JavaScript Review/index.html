@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-24T23:48:25.033Z">
+<meta property="article:modified_time" content="2022-06-27T03:44:40.815Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-24 19:48:25" itemprop="dateModified" datetime="2022-06-24T19:48:25-04:00">2022-06-24</time>
+                <time title="Modified: 2022-06-26 23:44:40" itemprop="dateModified" datetime="2022-06-26T23:44:40-04:00">2022-06-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>83k</span>
+              <span>89k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:16</span>
+              <span>1:21</span>
             </span>
 
         </div>
@@ -2603,9 +2603,161 @@ directly), <code>title</code> (additional information about the
 element), <code>lang</code> (code language), <code>dir</code> (direction
 of the language, "ltf" : left-to-right, "rtl": right-to-left, rarely
 used) <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;item&quot;</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span> <span class="attr">title</span>=<span class="string">&quot;item title&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">dir</span>=<span class="string">&quot;ltr&quot;</span>&gt;</span><span class="tag">&lt;&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> item = <span class="built_in">document</span>.getElementById(<span class="string">&quot;item&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(item.id); <span class="comment">// item</span></span><br><span class="line"><span class="built_in">console</span>.log(item.className); <span class="comment">// item</span></span><br><span class="line"><span class="built_in">console</span>.log(item.title); <span class="comment">// item title</span></span><br><span class="line"><span class="built_in">console</span>.log(item.lang); <span class="comment">// en</span></span><br><span class="line"><span class="built_in">console</span>.log(item.dir); <span class="comment">// ltr</span></span><br></pre></td></tr></table></figure></li>
-<li>Getting properties:</li>
+</ul></li>
+<li>Getting attributes
+<ul>
+<li>Each element may have zero or more attributes, which are typically
+used to give extra information about the particular element or its
+contents, three primary DOM methods for working with attributes are
+<code>getAttribute(attrName)</code>,
+<code>setAttribute(attrName, value)</code>,
+<code>removeAttribute(attrName)</code></li>
+<li><code>item.setAttribute("attrName", "value")</code> is equivalent to
+<code>item.attrName = "value"</code></li>
+</ul></li>
+<li>The attributes property
+<ul>
+<li>The Element type is the only DOM node type that uses the
+<code>attributes</code> property, the attributes property is a
+NamedNodeMap object, which is a list of attributes, each attribute is an
+Attr node</li>
+<li>use <code>item.attributes.getNamedItem(attrName)</code> to get the
+value of an attributes, use
+<code>item.attributes.removeNamedItem(attrName)</code> to remove an
+attributes</li>
+</ul></li>
+<li>Create elements: use <code>document.createElement(tagName)</code> to
+create an element</li>
+</ul></li>
+<li>The <code>Text</code> type
+<ul>
+<li><code>node.nodeType = 3</code>, <code>node.nodeName = #text</code>,
+<code>node.value = textContent</code>, child nodes are not
+supported</li>
+<li>The text contained in a Text node may be accessed via either the
+<code>nodeValue</code> property or the <code>data</code> property, both
+of which contain the same value</li>
+<li>Creating text nodes: use <code>document.createTextNode(text)</code>
+to create a text node <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;text&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> node = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">node.appendChild(textNode);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(node);</span><br></pre></td></tr></table></figure></li>
+<li>Normalizing text nodes
+<ul>
+<li>Typically, elements have only one text node as a child, sibling text
+nodes can be confusing</li>
+<li>Use <code>node.normalize()</code> to merge adjacent text nodes, the
+caller node should be the parent node of the text nodes that are to be
+merged</li>
+</ul></li>
+<li>Splitting text nodes
+<ul>
+<li>The <code>textNode.splitText(offset)</code> method splits one text
+node into two at the given offset</li>
 </ul></li>
 </ul></li>
+<li>The <code>Comment</code> type
+<ul>
+<li><code>node.nodeType = 8</code>,
+<code>node.nodeName = #comment</code>,
+<code>node.value = textContent</code>, child nodes are not
+supported</li>
+<li>The Comment type inherits from the same base as the Text type, so it
+has all of the same string manipulation methods except
+<code>splitText()</code>, the actual content of the comment may be
+retrieved using either <code>nodeValue</code> or the <code>data</code>
+property</li>
+</ul></li>
+<li>The <code>CDATASection</code> type
+<ul>
+<li><code>node.nodeType = 4</code>,
+<code>node.nodeName = #cdata-section</code>,
+<code>node.value = textContent</code>, child nodes are not
+supported</li>
+<li>CDATA sections are specific to XML-based documents and are
+represented by the CDATASection type</li>
+<li>The CDATA section type inherits from the same base as the Text type,
+so it has all of the same string manipulation methods except
+<code>splitText()</code>, the actual content of the CDATA section may be
+retrieved using either <code>nodeValue</code> or the <code>data</code>
+property</li>
+</ul></li>
+<li>The <code>DocumentType</code> type
+<ul>
+<li><code>node.nodeType = 10</code>,
+<code>node.nodeName = #document-type</code>,
+<code>node.value = null</code></li>
+<li>A DocumentType object contains about the document's doctype</li>
+<li>DocumentType objects cannot be created dynamically in DOM level
+1,they are created only as teh document's code is being parsed</li>
+</ul></li>
+<li>The <code>DocumentFragment</code> type
+<ul>
+<li><code>node.nodeType = 11</code>,
+<code>node.nodeName = #document-fragment</code>,
+<code>node.value = null</code></li>
+<li>Of all the node types, the DocumentFragment type is the only one
+that has no representation in markup. DOM defines a document fragment as
+a lightweight document, capable of containing and manipulating nodes
+without all of the additional overhead of a complete document</li>
+<li>A document fragment cannot be added to a document directly. Document
+fragments are created using the
+<code>document.createDocumentFragment()</code> method</li>
+<li>Default fragments inherit all methods from Node and are typically
+used to perform DOM manipulations that are to be applied to a
+document</li>
+</ul></li>
+<li>The <code>Attr</code> type
+<ul>
+<li><code>node.nodeType = 11</code>,
+<code>node.nodeName = attribute name</code>,
+<code>node.value = attribute value</code></li>
+<li>Element attributes are represented by the Attr type in the DOM, the
+Attr type constructor and prototype are accessible in all browsers</li>
+<li>Even though they are nodes, attributes are not considered part of
+the DOM document tree</li>
+<li>There are three properties on an Attr object: <code>name</code> the
+attribute name , <code>value</code> the attribute value,
+<code>specified</code> a boolean value indicating if the attribute was
+specified in code or if it is a default value</li>
+<li>Creating new attributes:
+<code>document.createAttribute(attrName)</code></li>
+</ul></li>
+</ul></li>
+<li>Working with the DOM
+<ul>
+<li>Dynamic scripts
+<ul>
+<li>The <code>&lt;script&gt;</code> element is used to insert JavaScript
+code into the page, either by using the <code>src</code> attribute to
+include an external file or by including text inside the element
+itself</li>
+<li>Dynamic scripts are those that don't exist when teh page is loaded
+but are included later by using the DOM</li>
+<li>Dynamic loading an external file example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">script.src = <span class="string">&quot;script.js&quot;</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script); <span class="comment">//&#x27; This is when the script.js is downloaded</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Dynamic styles
+<ul>
+<li>CSS styles are included in HTML pages using one of two elements: the
+<code>&lt;link&gt;</code> element is used to include CSS from an
+external file, the <code>&lt;style&gt;</code> element is used to specify
+inline styles</li>
+<li>Dynamic styles don't exist on the page when it is loaded initially,
+they are added after the page has been loaded</li>
+<li>Dynamic loading an external CSS file example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> link = <span class="built_in">document</span>.createElement(<span class="string">&quot;link&quot;</span>);</span><br><span class="line">link.rel = <span class="string">&quot;stylesheet&quot;</span>;</span><br><span class="line">link.type = <span class="string">&quot;text/css&quot;</span>;</span><br><span class="line">link.href = <span class="string">&quot;style.css&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">head.appendChild(link); </span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Manipulating tables
+<ul>
+<li>Using the core DOM methods to create and change tables can require a
+large amount of code</li>
+<li>Example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>content<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> table = <span class="built_in">document</span>.createElement(<span class="string">&quot;table&quot;</span>);</span><br><span class="line">table.border = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">table.width = <span class="string">&quot;100%&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> thead = <span class="built_in">document</span>.createElement(<span class="string">&quot;thead&quot;</span>);</span><br><span class="line">table.appendChild(thead);</span><br><span class="line"><span class="keyword">let</span> thr = <span class="built_in">document</span>.createElement(<span class="string">&quot;tr&quot;</span>);</span><br><span class="line">thead.appendChild(thr);</span><br><span class="line"><span class="keyword">let</span> th = <span class="built_in">document</span>.createElement(<span class="string">&quot;th&quot;</span>);</span><br><span class="line">thr.appendChild(th);</span><br><span class="line">th.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">&quot;Title&quot;</span>));</span><br><span class="line"><span class="keyword">let</span> tbody = <span class="built_in">document</span>.createElement(<span class="string">&quot;tbody&quot;</span>);</span><br><span class="line">table.appendChild(tbody);</span><br><span class="line"><span class="keyword">let</span> tbr = <span class="built_in">document</span>.createElement(<span class="string">&quot;tr&quot;</span>);</span><br><span class="line">tbody.appendChild(tbr);</span><br><span class="line"><span class="keyword">let</span> td = <span class="built_in">document</span>.createElement(<span class="string">&quot;td&quot;</span>);</span><br><span class="line">tbr.appendChild(td);</span><br><span class="line">td.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">&quot;content&quot;</span>));</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(table);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="dom-extensions">DOM Extensions</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li></li>
 </ul></li>
 </ol>
 
@@ -2709,7 +2861,7 @@ used) <figure class="highlight html"><table><tr><td class="gutter"><pre><span cl
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2787,7 +2939,7 @@ Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item na
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:01</span>
+    <span title="Reading time total">16:07</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
