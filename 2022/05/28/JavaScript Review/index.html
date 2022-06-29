@@ -28,7 +28,7 @@
 <meta property="og:description" content="What is JavaScript">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-06-27T03:44:40.815Z">
+<meta property="article:modified_time" content="2022-06-29T02:59:27.326Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-26 23:44:40" itemprop="dateModified" datetime="2022-06-26T23:44:40-04:00">2022-06-26</time>
+                <time title="Modified: 2022-06-28 22:59:27" itemprop="dateModified" datetime="2022-06-28T22:59:27-04:00">2022-06-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>89k</span>
+              <span>96k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:21</span>
+              <span>1:27</span>
             </span>
 
         </div>
@@ -2755,9 +2755,258 @@ large amount of code</li>
 </ol>
 <h1 id="dom-extensions">DOM Extensions</h1>
 <ol type="1">
+<li>Selectors API
+<ul>
+<li>Background
+<ul>
+<li>The DOM API is frequently augmented, in 2008 the W3C adopted some of
+the DOM extensions into formal specifications</li>
+<li>The two primary standards specifying DOM extensions are the
+Selectors API and HTML5</li>
+</ul></li>
 <li>Introduction
 <ul>
-<li></li>
+<li>One of the most popular capabilities of JavaScript libraries is the
+ability to retrieve a number of DOM elements matching a pattern
+specified using CSS selectors</li>
+<li>The selectors API was started by the W3C to specify native support
+for CSS queries in browsers</li>
+<li>At the core of Selectors API level 1 are two methods:
+<code>querySelector()</code> and <code>querySelectorAll()</code>, these
+methods are available on the Document type and on the Element type</li>
+<li>The Selectors API level 2 specifications introduces more methods:
+<code>matches()</code>, <code>find()</code>, <code>findAll()</code> on
+the Element type</li>
+</ul></li>
+<li>The <code>querySelector()</code> method
+<ul>
+<li>This method accepts a CSS query and returns the first descendant
+element that matches the pattern or null if there is no matching
+element</li>
+<li>Example query strings: <code>tag</code>, <code>#id</code>,
+<code>.class</code>, etc</li>
+<li>When the method is used on the Document type, it starts trying to
+match the pattern from the document element; when used on an Element
+type, the query attempts to make a match from the descendants of the
+element only</li>
+</ul></li>
+<li>The <code>querySelectorAll()</code> method
+<ul>
+<li>This method accepts a CSS query and returns a NodeList object
+regardless of the number of matching elements, if there are not matches,
+the NodeList is empty</li>
+<li>Can work on Document, DocumentFragment and Element</li>
+</ul></li>
+<li>The <code>matches()</code> method
+<ul>
+<li>This method accepts a single argument, a CSS selector, and returns
+true if the given element matches the selector or false if not</li>
+<li>All major browsers support some form of matches()</li>
+</ul></li>
+</ul></li>
+<li>HTML5
+<ul>
+<li>All HTML specifications before HTML5 were short of any JavaScript
+interfaces, all JavaScripts were binding to the DOM specification. The
+HTML5 specification contains a large amount of JavaScript APIs designed
+for use with the markup additions, part of these APIs overlap with the
+DOM and define DOM extensions that browsers should provide</li>
+<li>Class-related additions
+<ul>
+<li>The <code>getElementByClassName()</code> method
+<ul>
+<li>This method can be called on the Document object and on all HTML
+elements</li>
+<li>Accepts a single string containing one or more class names, returns
+a NodeList containing all elements that have all of the the specified
+classes applied, if multiple class names are specified, the order is
+unimportant</li>
+</ul></li>
+<li>The <code>classList</code> property
+<ul>
+<li>This property is used to add, remove, and replace class names</li>
+<li>The classList property is an instance of a collection named
+<code>DOMTokenList</code>, it has the following methods:
+<code>add(value)</code>, <code>contains(value)</code> returns boolean,
+<code>remove(value)</code>, <code>toggle(value)</code> remove if
+present, add if not present <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;myDiv&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bd user disabled&quot;</span>&gt;</span>content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myDiv&quot;</span>);</span><br><span class="line">div.classList.</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Focus management
+<ul>
+<li><code>document.activeElement</code> contains a pointer to the DOM
+element that currently has focus, an element can receive focus
+automatically as the page is loading, via user input, or
+programmatically using the <code>focus()</code> method
+<ul>
+<li>When the document is first loaded,
+<code>document.activeElement</code> is set to
+<code>document.body</code></li>
+<li>When the document is being loaded,
+<code>document.activeElement</code> is null</li>
+</ul></li>
+<li><code>document.hasFocus()</code> returns true if the document has
+focus or false if not</li>
+</ul></li>
+<li>Changes to HTMLDocument
+<ul>
+<li>The <code>readyState</code> property
+<ul>
+<li>Used to indicate whether the document has been loaded</li>
+<li>The property has two values: <code>loading</code>,
+<code>complete</code></li>
+</ul></li>
+<li>The <code>compatMode</code> property
+<ul>
+<li>Used on the document object to indicate which rendering mode the
+browser is in</li>
+<li>When a browser is in standards mode,
+<code>document.compatMode = CSS1Compat</code>, when a browser is in
+quirks mode, <code>document.compatMode = BackCompat</code></li>
+</ul></li>
+<li>The <code>head</code> property: <code>document.head</code> points to
+the <code>&lt;head&gt;</code> element of a document</li>
+</ul></li>
+<li>Character set properties
+<ul>
+<li>The <code>document.characterSet</code> property indicates the actual
+character being used by the document and can also be used to specify a
+new character set and can also be used to specify a new character
+set</li>
+<li>The default value is <code>UTF-16</code></li>
+</ul></li>
+<li>Custom data attributes
+<ul>
+<li>HTML allows elements to be specified with nonstandard attributes
+prefixed with <code>data-</code> in order to provide information that
+isn't necessary to the rendering or semantic value of the element</li>
+<li>Example:
+<code>&lt;div id="myDiv" data-infoId="myDivInfo" data-nyName="divExp"&gt;Content&lt;/div&gt;</code></li>
+<li>The customized data attributes can be accessed via the
+<code>dataset</code> property of the element, example:
+<code>div.dataset.infoId</code></li>
+</ul></li>
+<li>Markup insertion
+<ul>
+<li>The <code>innerHTML</code> property
+<ul>
+<li>When used in read mode, innerHTML returns the HTML representing all
+of the child nodes, including elements, comment,s and text nodes. When
+used in write mode, innerHTML completely replaces all of the childe node
+in the element with a new DOM subtree based on the given HTML string
+input</li>
+</ul></li>
+<li>In modern browsers, <code>&lt;script&gt;</code> elements cannot be
+executed in innerHTML， the <code>&lt;style&gt;</code> elements causes
+similar problems with innerHTML</li>
+<li>The <code>outerHTML</code> property
+<ul>
+<li>When outerHTML is called in read mode, it returns the HTML of the
+element on which it is called, as well as its child nodes. When called
+in write mode, outerHTML replaces the node on which it is called with
+the DOM subtree created from parsing the given HTML string</li>
+</ul></li>
+<li><code>insertAdjacentHTML(pos, text)</code> and
+<code>insertAdjacentText(pos, text)</code>, the position can be one of
+the following:
+<ul>
+<li><code>beforebegin</code>: insert just before the element as a
+previous sibling</li>
+<li><code>afterbegin</code>: insert inside the element as a new child or
+series of children before the first child</li>
+<li><code>beforeend</code>: insert inside the element as a new child or
+series of children after the last child</li>
+<li><code>afterend</code>: insert just after the element as a next
+sibling</li>
+</ul></li>
+<li>The <code>scrollIntoView()</code> method
+<ul>
+<li>The method exists on all HTML elements and scrolls the browser
+window or container element so the element is visible in the
+viewport</li>
+<li>Variations: <code>element.scrollIntoView()</code>,
+<code>element.scrollIntoView(alignToTop)</code>,
+<code>element.scrollIntoView(scrollIntoViewOptions)</code>
+<ul>
+<li>boolean alignToTop: if true, the element is scrolled to the top of
+the viewport, otherwise the bottom</li>
+<li>object options: with property <code>behavior</code>,
+<code>block</code>, <code>inline</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Proprietary extension
+<ul>
+<li>The <code>children</code> property: returns an HTMLCollection that
+contains only an element's child nodes that are also elements</li>
+<li>The <code>contains</code> method: check if two nodes have parental
+relationship</li>
+<li>Markup insertion
+<ul>
+<li>The <code>innerText</code> property
+<ul>
+<li>When used to read the value, innerText concatenates the values of
+all text nodes in the subtree in DFS order</li>
+<li>When used to write the value, removes all children of the element
+and inserts a text node containing the given value</li>
+</ul></li>
+<li>The <code>outerText</code> property
+<ul>
+<li>For reading text values, outerText and innerText essentially behave
+in the same way, in writing mode, outerText replaces the entire element,
+including child nodes</li>
+</ul></li>
+</ul></li>
+<li>Scrolling
+<ul>
+<li>Scrolling specification didn't exist prior to HTML5</li>
+<li>Apart from <code>scrollIntoView()</code>, you can use
+<code>scrollIntoViewIfNeeded()</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="dom-levels-2-and-3">DOM Levels 2 and 3</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>DOM levels 2 and 3 consist of several modules
+<ul>
+<li>DOM Core: builds on level 1 core, adding methods and properties to
+nodes</li>
+<li>DOM Views: defined different views for a document based on stylistic
+information</li>
+<li>DOM Events: defines how to tie interactivity to DOM documents using
+events</li>
+<li>DOM Style: defines how to programmatically access and changes CSS
+styling information</li>
+<li>DOM Traversal and Range: introduces new interfaces for traversing a
+DOM document and selecting specific parts of it</li>
+<li>DOM HTML: builds on the level 1 HTML, adding properties, methods and
+interfaces</li>
+<li>DOM Mutation Observers: allows for definition of callbacks upon
+changes to the DOM</li>
+</ul></li>
+</ul></li>
+<li>DOM changes
+<ul>
+<li>Backgrounds
+<ul>
+<li>The DOM levels 2 and 3 Core is to expand the DOM API, for the most
+part, this means supporting the concept of XML namespaces</li>
+<li>The DOM Views and DOM HTML augment DOM interfaces, they are fairly
+small</li>
+</ul></li>
+<li>XML namespaces
+<ul>
+<li>XML namespaces allow elements from different XML-based language to
+be mixed together in a single, well-formed document without fear of
+element name clashes. XML namespaces are not supported by HTML but
+supported in XHTML</li>
+<li>Namespaces are specified using the <code>xmlns</code> attribute and
+should be included on the <code>&lt;html&gt;</code> element of any
+well-formed XHTML page</li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -2861,7 +3110,7 @@ large amount of code</li>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2939,7 +3188,7 @@ Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item na
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:07</span>
+    <span title="Reading time total">16:13</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
