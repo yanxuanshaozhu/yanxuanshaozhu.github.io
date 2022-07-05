@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-01T21:35:22.057Z">
+<meta property="article:modified_time" content="2022-07-05T03:51:45.455Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-01 17:35:22" itemprop="dateModified" datetime="2022-07-01T17:35:22-04:00">2022-07-01</time>
+                <time title="Modified: 2022-07-04 23:51:45" itemprop="dateModified" datetime="2022-07-04T23:51:45-04:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>104k</span>
+              <span>124k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:35</span>
+              <span>1:52</span>
             </span>
 
         </div>
@@ -3221,13 +3221,559 @@ also equivalent to the event's target element (say,
 </ul></li>
 <li>DOM level 0 event handlers
 <ul>
-<li><p>The traditional way of assigning event handlers in JavaScript is
-to assign a function to an event handler property</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="kw">let</span> btn <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myBtn&quot;</span>)<span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> &#123;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Clicked!&quot;</span>)<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">alert</span>(<span class="st">&quot;Clicked&quot;</span>)<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   &#125;</span></code></pre></div></li>
+<li>The traditional way of assigning event handlers in JavaScript is to
+assign a function to an event handler property <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">       <span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">       btn.onclick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">         alert(<span class="string">&quot;Clicked&quot;</span>);</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="built_in">this</span>.id); <span class="comment">// myBtn, this refers to the element itself</span></span><br><span class="line">       &#125;</span><br><span class="line">    <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">  * Since the event handler is considered to be a method of the element using the DOM level 0 method, the value of `</span><span class="built_in">this</span><span class="string">` is the element itself</span></span><br><span class="line"><span class="string">* DOM level 2 event handlers</span></span><br><span class="line"><span class="string">  * DOM level 2 events define two methods to deal with the assignment and removal of event handlers: `</span>addEventListener()<span class="string">` and `</span>removeEventListener()<span class="string">`. These methods exist on all DOM nodes and accept three arguments: the event name to handle, the event handler function, and a boolean value indicating whether to call the event handler during the capture phase (true) or during the bubble phase(false), the third argument is optional and defaults to false</span></span><br><span class="line"><span class="string">     `</span><span class="string">``</span>javascript</span><br><span class="line">       <span class="comment">// add an onclick event handler in the bubble phase</span></span><br><span class="line">       <span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">       btn.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">       &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Internet Explorer event handlers
+<ul>
+<li>IE implements methods similar to the DOM called
+<code>attachEvent()</code> and <code>detachEvent()</code>, both accepts
+two arguments: the event handler name and the event handler
+function</li>
+<li>IE 8 and earlier support only event bubbling, event handlers added
+using <code>attachEvent()</code> are attached on the bubbling phase</li>
+<li>A major difference between using <code>attachEvent()</code> and
+using the DOM level 0 approach in IE is the scope of the event handler.
+When using DOM level 0, the event handler runs with a this value equal
+to the element on which it is attached; when using
+<code>attachEvent()</code>, the event handler runs in global context, so
+this is equivalent to window <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">btn.attachEvent(<span class="string">&quot;onclick&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Cross-browser event handler
+<ul>
+<li>To make sure that the event-handling code works in the most
+compatible way possible, you will need it to work only on the bubbling
+phase</li>
+</ul></li>
+</ul></li>
+<li>The event object
+<ul>
+<li>Introduction
+<ul>
+<li>When an event related to the DOM is fired, all of the relevant
+information is gathered and stored on an object called event</li>
+<li>The event object contains basic information such as the element that
+caused the event, the type of event that occurred, and any other data
+that may be relevant to the particular event</li>
+<li>All browsers support the event object, though not in the same
+way</li>
+</ul></li>
+<li>The DOM event object
+<ul>
+<li>In DOM-compliant browsers, the event object is passed in as the sole
+argument to an event handler</li>
+<li>Some properties:
+<ul>
+<li><code>event.bubbles</code>: boolean, indicate if the event
+bubbles</li>
+<li><code>event.currentTarget</code>: element, the element whose event
+handler is currently handling the event, equal to this</li>
+<li><code>event.target</code>: element, the target of the event</li>
+<li><code>event.type</code>: string, the type of event that was
+fired</li>
+</ul></li>
+</ul></li>
+<li>The IE event object
+<ul>
+<li>The legacy IE event object is accessible in different ways, based on
+the way in which the event handler was assigned</li>
+<li>If the handler is assigned using the DOM level 0 approach, the event
+object exists only as a property of the window object
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">btn.onclick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> event = <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="built_in">console</span>.log(event.typ);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>If the handlers is assigned using attachEvent(), the event object is
+passed in as the sole argument to the function <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">btn.attachEvent(<span class="string">&quot;onclick&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(event.type);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Some properties: <code>event.type</code>,
+<code>event.returnValue</code>, <code>event.srcElement</code></li>
+</ul></li>
+<li>The Cross-browser event object
+<ul>
+<li>All of the information and capabilities of the IE event object are
+present in the DOM object, just in a different form. These parallels
+enable easy mapping form one event model to the other</li>
+</ul></li>
+</ul></li>
+<li>Event types
+<ul>
+<li>DOM level 3 events specify the following event groups:
+<ul>
+<li>User interface (UI) events: general browser events that may have
+some interaction with the BOM</li>
+<li>Focus events: fired when an elements gains or loses focus</li>
+<li>Mouse events: fired when the mouse is used to perform an action on a
+page</li>
+<li>Wheel events: fired when a mouse wheel or similar device is
+used</li>
+<li>Text events: fired when text is input into the document</li>
+<li>Keyboard events: fired when the keyboard is used to perform an
+action on the page</li>
+<li>Composition events: fired when inputting characters for an Input
+Method Editor (IME)</li>
+</ul></li>
+<li>UI events
+<ul>
+<li>UI events are not necessarily related to user actions</li>
+<li>The <code>load</code> event
+<ul>
+<li>Fired on a window object when the entire page has been loaded,
+including all external resources such as images, JS files, and CSS
+files</li>
+<li><code>onload</code> handler
+<ul>
+<li>The first approach: define an event handler for the
+<code>load</code> event using JavaScript <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Style 1</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Page loaded&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Style 2</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;load&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Page loaded&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>The second approach: add an onload attribute to the
+<code>&lt;body&gt;</code> element <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">loadHandler</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&quot;Page loaded&quot;</span>);</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">&quot;loadHandler()&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--  --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>The <code>unload</code> event
+<ul>
+<li>Fired on the window object when a document has completely unloaded,
+typically fired when navigating from one page to another and is most
+often used to clean up references to avoid memory leaks</li>
+<li>Can be assigned using JavaScript or the <code>unload</code>
+attribute on the <code>&lt;body&gt;</code> element</li>
+</ul></li>
+<li>The <code>resize</code> event
+<ul>
+<li>Fired on the window object when the browser windows is resized to a
+new height or width</li>
+<li>Can be assigned using JavaScript or the <code>resize</code>
+attribute on the <code>&lt;body&gt;</code> element, prefer to use the
+JavaScript approach</li>
+<li>You should make the resize event handler as simple as possible
+<ul>
+<li>IE, Safari, Chrome, and Opera fire the resize event as soon as the
+browser isw resized by one pixel and then repeatedly as the user resizes
+the browser window</li>
+<li>Firefox fires the resize event only once when the user stops
+resizing the browser window</li>
+</ul></li>
+</ul></li>
+<li>The <code>scroll</code> event
+<ul>
+<li>Even though the scroll event occurs on the window, it actually
+refers to changes in the appropriate page-level element</li>
+<li>In quirk mode, the changes are observed using the
+<code>scrollLeft</code> and <code>scrollTop</code> of the
+<code>&lt;body&gt;</code> element, in standards mode, the changes occur
+on the <code>&lt;html&gt;</code> element in all browsers except
+Safari</li>
+<li>Similar to the resize event, the scroll event is repeatedly
+executed, so it should be computationally efficient</li>
+</ul></li>
+</ul></li>
+<li>Focus events
+<ul>
+<li>Focus events work in concert with the
+<code>document.hasFocus()</code> and <code>document.activeElement</code>
+properties to give insight as to how the user is navigating the
+page</li>
+<li>The six focus events
+<ul>
+<li><code>blur</code>: fired when an element has lost focus, does not
+bubble and is supported in all browsers</li>
+<li><code>DOMFocusIn</code>: fired when an element has received focus,
+this is a bubbling version of the focus HTML event, only Opera supports
+this event, DOM level 3 events deprecate DOMFocusIn in favor of
+focusin</li>
+<li><code>DOMFocusOut</code>: fired when an element has lost focus, this
+is a bubbling version of the blur HTML event, only Opera supports this
+event, DOM level 3 events deprecate DOMFocusOut in favor of
+focusout</li>
+<li><code>focus</code>: fired when an element has received focus, does
+not bubble and is supported in all browsers</li>
+<li><code>focusin</code>: fired when an element has received focus, this
+is a bubbling version of the focus HTML event</li>
+<li><code>focusout</code>: fired when an element has lost focus, this is
+a bubbling version of the blur HTML event</li>
+</ul></li>
+</ul></li>
+<li>Mouse and Wheel events
+<ul>
+<li>Mouse events are the most commonly used group of events on the Web,
+because mouse is the primary navigation device used</li>
+<li>There are 9 mouse events defined in DOM level 3 events:
+<ul>
+<li><code>click</code>: fired when the user clicks the primary mouse
+button or when the user presses the Enter key, <code>onclick</code> can
+be executed using the keyboard and the mouse</li>
+<li><code>dblclick</code>: fired when the user double-clicks the primary
+mouse button</li>
+<li><code>mousedown</code>: fired when the user pushes any mouse button
+down, cannot be fired via the keyboard</li>
+<li><code>mouseenter</code>: fired when the mouse cursor is outside of
+an element and then the user first moves it inside of the boundaries of
+the element, this event does not bubble and is not fired when the cursor
+moves over descendant elements</li>
+<li><code>mouseleave</code>: fired when the mouse cursor is inside of an
+element and then the user moves it outside of the boundaries of the
+element, this event does not bubble and is not fired when the cursor
+moves over descendant elements</li>
+<li><code>mousemove</code>: fired repeatedly as the cursor is being
+moved aro7und an element, cannot be fired via the keyboard</li>
+<li><code>mouseout</code>: fired when the mouse cursor is over an
+element and then the user moves it over another element, the element
+moved to may be outside of the bounds of the original element or a child
+of the original element, this event cannot be fired via the
+keyboard</li>
+<li><code>mouseover</code>: fired when the mouse cursor is outside of an
+element and then the user first moves it inside of the boundaries of the
+element, this event cannot be fired via the keyboard</li>
+<li><code>moustup</code>: fired when the user releases a mouse button,
+this event cannot be fired via the keyboard</li>
+</ul></li>
+<li>All elements on a page support mouse, all mouse events bubble except
+mouseenter and mouseleave, and they can be canceled, which affects the
+default behavior of the browser</li>
+<li>There is also a subgroup of mouse events called wheel events: wheel
+events are really just a single event, <code>moustwheel</code>, which
+monitors interactions of a mouse wheel or a similar device such as the
+Mac trackpad</li>
+</ul></li>
+<li>Keyboard and text events
+<ul>
+<li>There are 3 keyboard events:
+<ul>
+<li><code>keydown</code>: fired when the user presses a key on the
+keyboard and fired repeatedly while the key is being held down</li>
+<li><code>keypress</code>: fired when the user presses a key on the
+keyboard that results in a character and fired repeatedly while the key
+is being held down, deprecated in DOM level 3 events in favor of the
+textInput event</li>
+<li><code>keyup</code>: fired when the user releases a key on the
+keyboard</li>
+</ul></li>
+<li>All elements support the 3 keyboard events, when the uses press a
+character key, the keydown is fired first, then the keypress, and
+finally the keyup event</li>
+<li>1 text event: <code>textInput</code>, an augmentation of the
+keypress event, fired just before text is inserted into a text box</li>
+<li>Key codes: for keydown and keyup events, the
+<code>event.keyCode</code> property contains an integer code that maps
+to a specific key on the keyboard</li>
+<li>Character codes: for keypress events, the
+<code>event.charCode</code> property contains an integer code that maps
+to a specific character on the keyboard</li>
+<li>TextInput properties
+<ul>
+<li><code>event.data</code>: contains the input text</li>
+<li><code>event.inputMethod</code>: contains an integer code that maps
+to the input method used to insert the text</li>
+</ul></li>
+</ul></li>
+<li>Composition events
+<ul>
+<li>Composition events were first introduced in DOM level 3 to handle
+complex inpu8t sequences</li>
+<li>There are 3 composition events
+<ul>
+<li><code>compositionstart</code>: fired when the text composition
+system of the IME is opened, indicating that input is about to
+commence</li>
+<li><code>compositionupdate</code>: fired when a new character has been
+inserted into the input field</li>
+<li><code>compositionend</code>: fired when the text composition system
+is closed, indicating a return to normal keyboard input</li>
+</ul></li>
+</ul></li>
+<li>HTML5 events
+<ul>
+<li>The DOM specification doesn't covert all events that are supported
+by all browsers, HTML5 has an exhaustive list of all events that should
+be supported by browsers</li>
+<li>The <code>contextmenu</code> event
+<ul>
+<li>Context menu: right click on Windows, Ctrl+click on Mac</li>
+<li>The contextmenu event is used to indicate when a context menu is
+about to be displayed</li>
+<li>The contextmenu event bubbles</li>
+</ul></li>
+<li>The <code>beforeunload</code> event
+<ul>
+<li>The beforeunload event is fired on the window and is intended to
+give developers a way to prevent the page from being unloaded</li>
+<li>This event cannot be canceled</li>
+</ul></li>
+<li>The <code>DOMContentLoaded</code> event
+<ul>
+<li>The load event may take a long time because it needs to wait the
+entire page to be loaded, while the DOMContentLoaded event is fired when
+the DOM tree is completely formed and without regard to other
+resources</li>
+</ul></li>
+<li>The <code>readystatechange</code> event
+<ul>
+<li>This event is first defined by IE to provide information about the
+loading state of the document or of an element</li>
+<li>Each object that supports the readystatechange event has a
+<code>object.readyState</code> property that can have five possible
+string values: <code>uninitialized</code>, <code>loading</code>,
+<code>loaded</code>, <code>interactive</code>,
+<code>complete</code></li>
+</ul></li>
+<li>The <code>pageshow</code> and <code>pagehide</code> events
+<ul>
+<li>Firefox and Opera introduced a feature called the back-forward cache
+(bfcache), designed to speed up page transitions when using the
+browsers's Back and Forward buttons, the cache effectively keeps the
+entire page in memory</li>
+<li>The pageshow event is fired whenever a page is displayed, whether
+from the bfcache or not. On a newly loaded page, pageshow is fired after
+the load event, on a page in the bfcache, pageshow is fired as soon as
+the pages's state has been completely restored</li>
+<li>The pagehide event is fired whenever a page is unloaded from the
+browser, immediately before the unload event</li>
+</ul></li>
+<li>The <code>hashchange</code> event
+<ul>
+<li>This event is used as a way to notify developers when the URL hash
+has changed</li>
+<li>The <code>onhashchnage</code> must be attached to the window object,
+and it is called whenever the URL hash changes</li>
+<li>The <code>event.oldURL</code> and <code>event.newURL</code>
+properties are used during the process</li>
+</ul></li>
+</ul></li>
+<li>Other events
+<ul>
+<li>Device events</li>
+<li>Touch and gesture events</li>
+</ul></li>
+</ul></li>
+<li>Memory and performance
+<ul>
+<li>Introduction
+<ul>
+<li>In JavaScript, the number of event handlers on a page directly
+relates to the overall performance of the page, there are several
+reasons:
+<ul>
+<li>Each function is an object and takes up memory</li>
+<li>The amount of DOM access needed to assign all of the event handlers
+up front delays the interactivity of the entire page</li>
+</ul></li>
+</ul></li>
+<li>Event delegation
+<ul>
+<li>The solution to the too many event handlers issue is called the
+event delegation, each delegation takes advantage of event bubbling to
+assign a single event handler to manage all events of a particular type
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;myLinks&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;goSomewhere&quot;</span>&gt;</span>Go somewhere<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>Do something<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;sayHi&quot;</span>&gt;</span>Say Hi<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Multiple event handler approach</span></span><br><span class="line"><span class="keyword">let</span> item1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;goSomewhere&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> item1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;doSomething&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> item1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;sayHi&#x27;</span>);</span><br><span class="line"></span><br><span class="line">item1.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  location.href = <span class="string">&quot;https://www.google.com&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">item2.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.title = <span class="string">&quot;New Title!&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">item3.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">&quot;Hi!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Single event handler approach</span></span><br><span class="line"><span class="keyword">let</span> links = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myLinks&#x27;</span>);</span><br><span class="line"></span><br><span class="line">links.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> target = event.target;</span><br><span class="line">  <span class="keyword">if</span> (target.id === <span class="string">&#x27;goSomewhere&#x27;</span>) &#123;</span><br><span class="line">    location.href = <span class="string">&quot;https://www.google.com&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target.id === <span class="string">&#x27;doSomething&#x27;</span>) &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">&quot;New Title!&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target.id === <span class="string">&#x27;sayHi&#x27;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Hi!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Removing event handlers
+<ul>
+<li>Another way to solve the too many event handlers issue is to remove
+event handlers when they are no longer needed</li>
+</ul></li>
+</ul></li>
+<li>Simulating events
+<ul>
+<li>JavaScript can be used to fire specific events at any time, and
+those events are treated the same as events that are created by the
+browser. This capability can be extremely useful in testing web
+applications</li>
+<li>DOM event simulation
+<ul>
+<li>An event object can be created at any time by using the
+<code>document.createEvent(stringEventType)</code> method</li>
+<li>The method argument can be <code>UIEvents</code>,
+<code>MouseEvents</code>, or <code>HTMLEvents</code></li>
+<li>Procedure
+<ul>
+<li>Create an event of a specific type</li>
+<li>Initialize the event with appropriate properties</li>
+<li>Fire the event with <code>node.dispatchEvent(event)</code>
+method</li>
+</ul></li>
+</ul></li>
+<li>IE event simulation
+<ul>
+<li>The logic are the same: create an event object, assign the
+appropriate information, and then fire the event using the object</li>
+<li>Use <code>document.createEventObject()</code> to create an event
+object</li>
+<li>You need to manually assign the properties of the event</li>
+<li>Use <code>node.fireEvent(stringEventType, eventObject)</code> to
+fire the event</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="animation-and-graphics-with-canvas">Animation and Graphics with
+Canvas</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>The <code>&lt;canvas&gt;</code> tag introduced in HTML5 designates
+an are of page where graphics can be created using JavaScript</li>
+<li>All major browsers support <code>&lt;canvas&gt;</code> to some
+degree</li>
+<li><code>&lt;canvas&gt;</code> is made up of a few API sets, and not
+all browsers support all API sets, there is a 2D context with basic
+drawing capabilities and a 3D context called WebGL. The latest versions
+of the supporting browsers now support both the 2D context and
+WebGL</li>
+</ul></li>
+<li>Using <code>requestAnimationFrame</code>
+<ul>
+<li>For a long time, timers and intervals have been the state of the art
+for JavaScript-based animations, while the
+<code>requestAnimationFrame</code> API gained widespread adoption and is
+now available across all major browsers</li>
+<li>Early animation loops
+<ul>
+<li>The typical way to create animation in JavaScript is to use
+<code>setInterval()</code> to manage all animations</li>
+<li>The delay should be short enough to handle a variety of different
+types smoothly but long enough so as to produce changes the browsers can
+actually render. Since most monitors have a refresh rate of 60Hz, so the
+best intervals should be 1000ms/60, or about 17ms</li>
+<li>The problems is that the intervals are not precise, and the code may
+be delayed</li>
+</ul></li>
+<li><code>requestAnimationFrame(callback)</code>
+<ul>
+<li>This method indicates to the browsers that some JavaScript code is
+performing an animation, so the browser can optimize appropriately after
+running some code</li>
+<li>This method accepts a single argument, which is a function to call
+prior to repainting the screen, you make appropriate changes to DOM
+styles that will be reflected with the next repaint in the function</li>
+</ul></li>
+<li><code>cancelAnimationFrame(id)</code>: this method accepts a request
+ID which can be used to cancel the request of repainting</li>
+</ul></li>
+<li>Basic canvas usage
+<ul>
+<li>The canvas element requires at least its <code>width</code> and
+<code>height</code> attributes to be set in order to indicate the size
+of the drawing to be created. Any content between the opening tag and
+the closing tag is the backup data that is displayed only if the canvas
+element is not supported <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myDrawing&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200ox&quot;</span>&gt;</span>A drawing of nonsense! <span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>You need to retrieve a drawing context to begin drawing, you should
+pass "2d" as the argument to retrieve 2D context <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myDrawing&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> context = drawing.getContext(<span class="string">&#x27;2d&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Image created by canvas can be exported using the
+<code>toDataURL()</code> method, the exported image is PNG by default,
+you can use <code>drawing.toDataURL("image/jpeg")</code> to export a
+JPEG for example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myDrawing&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> context = drawing.getContext(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span> (context) &#123;</span><br><span class="line">  <span class="keyword">let</span> image = drawing.toDataURL();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The 2D context
+<ul>
+<li>Introduction
+<ul>
+<li>The 2D drawing context provides methods for drawing simple 2D
+shapes</li>
+<li>The coordinates in a 2D context begin at the upper-left corner of
+the canvas element, which is considered to be (0, 0), with x increasing
+to the right and y increasing toward to the bottom</li>
+<li>The width and height indicate how many pixels are available in each
+direction</li>
+</ul></li>
+<li>Fills and strokes
+<ul>
+<li>Fills and strokes are the two basic drawing operations</li>
+<li>Fills automatically fills in the shape with specific color, strokes
+colors only the edges</li>
+<li>Fills and strokes are displayed based on the
+<code>context.fillStyle</code> and <code>context.strokeStyle</code>
+properties, both of which can be set using a string, a gradient object
+or a pattern object</li>
+</ul></li>
+<li>Drawing rectangles:
+<code>context.fillRect(x, y, width, height)</code>,
+<code>strokeRect(x, y, width, height)</code>,
+<code>clearRect(x, y, width, height)</code></li>
+<li>Drawing paths:
+<code>arc(x, y, radius, startAngle, endAngle, counterclockwise)</code>,
+<code>arcTo(x1, y1, x2, y2, radius)</code>,
+<code>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</code>,
+<code>ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise)</code>,
+<code>lineTo(x, y)</code>, <code>moveTo(x, y)</code>,
+<code>quadraticCurveTo(cpx, cpy, x, y)</code>,
+<code>rect(x, y, width, height)</code></li>
+<li>Drawing text: <code>fillText(text, x, y)</code>,
+<code>strokeText(text, x, y)</code>, <code>measureText(text)</code></li>
+<li>Transformations: <code>rotate(angle)</code>,
+<code>scale(x, y)</code>, <code>translate(x, y)</code></li>
+<li>Drawing images: <code>drawImage(image, x, y)</code></li>
+<li>Shadows: <code>context.shadowColor</code>,
+<code>context.shadOffsetX</code>, <code>context.shadowOffsetY</code>,
+<code>context.shadowBlur</code></li>
+</ul></li>
+<li>The WebGL
+<ul>
+<li>WebGL is a 3D context for canvas, it's a web version of OpenGL ES
+2.0</li>
+<li>The context <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myDrawing&#x27;</span>);</span><br><span class="line"><span class="comment">// option is an object containing some properties, such as `alpha`, `depth`, `stencil`, `antialias`</span></span><br><span class="line"><span class="keyword">let</span> gl = drawing.getContext(<span class="string">&#x27;webgl&#x27;</span>, options);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="scripting-forms">Scripting Forms</h1>
+<ol type="1">
+<li>Form basics
+<ul>
+<li>Web forms are represented by the <code>&lt;form&gt;</code> element
+in HTML and by the <code>HTMLFormElement</code> type (this type inherits
+the <code>HTMLElement</code> type) in JavaScript</li>
+<li>Some properties and methods
+<ul>
+<li><code>acceptCharset</code>: the character sets that the server can
+process, HTML <code>accept-charset</code> attribute</li>
+<li><code>action</code>: the URL to send the request to, HTML
+<code>action</code> attribute</li>
+<li><code>elements</code>: an HTMLCollection of all controls in the
+form</li>
+<li><code>enctype</code>: the encoding type of the request, HTML
+<code>enctype</code> attribute</li>
+<li><code>length</code>: the number of controls in the form</li>
+<li><code>method</code>: the type of HTTP request to send, HTML
+<code>method</code> attribute</li>
+<li><code>name</code>: the name of the form, HTML <code>name</code>
+attribute</li>
+<li><code>reset()</code>: resets all form fields to their default
+values</li>
+<li><code>submit()</code>: submits the form</li>
+<li><code>target</code>: the name of the window to use for sending the
+request and receiving the response, HTML <code>target</code>
+attribute</li>
+</ul></li>
+<li>Get a specific form
+<ul>
+<li>Using form id: <code>document.getElementById('myForm')</code></li>
+<li>Using form index: <code>document.forms[index]</code></li>
+<li>Using form name: <code>document.forms[name]</code></li>
+</ul></li>
+<li>Submitting forms
+<ul>
+<li>Forms are submitted when the user clicks the submit button</li>
+<li>Submit methods:
+<ul>
+<li>Via input:
+<code>&lt;input type="submit" value="Submit"&gt;</code></li>
+<li>Via button:
+<code>&lt;button type="submit"&gt; Submit &lt;/button&gt;</code></li>
+<li>Via image:
+<code>&lt;input type="image" src="submit.gif" alt="Submit"&gt;</code></li>
+</ul></li>
+<li>When a form is submitted, the submit event is fired before the
+request is sent to the server, this gives you the opportunity to
+validate the form data and decide whether to allow the form submission
+to occur <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myForm&#x27;</span>);</span><br><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. Prevent the form from being submitted first</span></span><br><span class="line">  event.preventDefault();</span><br><span class="line">  <span class="comment">// 2. Validate form inputs</span></span><br><span class="line">  <span class="comment">// some code here</span></span><br><span class="line">  <span class="comment">// 3. Submit the form</span></span><br><span class="line">  form.submit();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Resetting forms
+<ul>
+<li>Forms are rest when the user clicks the reset button</li>
+<li>Reset methods
+<ul>
+<li>Via input:
+<code>&lt;input type="reset" value="Reset"&gt;</code></li>
+<li>Via button:
+<code>&lt;button type="reset"&gt; Reset &lt;/button&gt;</code></li>
+</ul></li>
+<li>When a form is reset, the reset event is fired, which gives you the
+opportunity to cancel the reset if necessary <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myForm&#x27;</span>);</span><br><span class="line">form.addEventListener(<span class="string">&#x27;reset&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. Prevent the form from being reset first</span></span><br><span class="line">  event.preventDefault();</span><br><span class="line">  <span class="comment">// 2. Validate form inputs</span></span><br><span class="line">  <span class="comment">// some code here</span></span><br><span class="line">  <span class="comment">// 3. Reset the form</span></span><br><span class="line">  form.reset();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Form fields
+<ul>
+<li></li>
 </ul></li>
 </ul></li>
 </ol>
@@ -3332,7 +3878,8 @@ to assign a function to an event handler property</p>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
-Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li></ol></div>
+Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
+Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -3410,7 +3957,7 @@ Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item na
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:21</span>
+    <span title="Reading time total">16:39</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
