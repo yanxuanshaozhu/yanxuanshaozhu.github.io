@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-05T03:51:45.455Z">
+<meta property="article:modified_time" content="2022-07-08T04:25:59.411Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-04 23:51:45" itemprop="dateModified" datetime="2022-07-04T23:51:45-04:00">2022-07-04</time>
+                <time title="Modified: 2022-07-08 00:25:59" itemprop="dateModified" datetime="2022-07-08T00:25:59-04:00">2022-07-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>124k</span>
+              <span>135k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1:52</span>
+              <span>2:02</span>
             </span>
 
         </div>
@@ -3773,9 +3773,277 @@ opportunity to cancel the reset if necessary <figure class="highlight javascript
 </ul></li>
 <li>Form fields
 <ul>
-<li></li>
+<li>All form fields are parts of an <code>elements</code> collection
+that is a property of each form, the elements collection is an ordered
+list</li>
+<li>Retrieve form fields <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myForm&#x27;</span>);</span><br><span class="line"><span class="comment">// get the first form field</span></span><br><span class="line"><span class="keyword">let</span> input0 = form.elements[<span class="number">0</span>];</span><br><span class="line"><span class="comment">// get the form field whose name is `myField`</span></span><br><span class="line"><span class="keyword">let</span> input1 = form.elements.myField;</span><br><span class="line"><span class="comment">// get the amount of form fields</span></span><br><span class="line"><span class="keyword">let</span> inputCount = form.elements.length;</span><br></pre></td></tr></table></figure> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">id</span>=<span class="string">&quot;myForm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;green&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;blue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myForm&#x27;</span>);</span><br><span class="line"><span class="comment">// since multiple fields have the same name, this return an HTMLCollection</span></span><br><span class="line"><span class="keyword">let</span> colors = form.elements[<span class="string">&quot;color&quot;</span>];</span><br><span class="line"><span class="comment">// this return the first field</span></span><br><span class="line"><span class="keyword">let</span> firstFormField = form.elements[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> colorFields = colors[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> firstColorField = colors[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(firstColorField == firstFormField); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>Common form-field properties: <code>disabled</code> boolean,
+<code>form</code> read-only, <code>name</code>, <code>readOnly</code>
+boolean, <code>tabIndex</code>, <code>type</code>,
+<code>value</code></li>
+<li>The type property
+<ul>
+<li>For input elements, the type is equal to the HTML type
+attribute</li>
+<li>For other elements, the type is one of these:
+<code>select-one</code>, <code>select-multiple</code>,
+<code>submit</code>, <code>button</code>, <code>reset</code>,
+<code>submit</code></li>
+</ul></li>
+<li>Common form-field methods: <code>focus()</code>,
+<code>blur()</code></li>
+<li>Common form-field events: <code>blur</code>, <code>change</code>,
+<code>focus</code></li>
 </ul></li>
 </ul></li>
+<li>Scripting text boxes
+<ul>
+<li>Two ways to represent text boxes in HTML: a single-line version
+using <code>&lt;input&gt;</code> and a multiline version using
+<code>&lt;textarea&gt;</code></li>
+<li>The <code>&lt;input&gt;</code> text boxes
+<ul>
+<li>Default type is <code>text</code></li>
+<li>The <code>size</code> attribute specifies the width of the text
+box</li>
+<li>The <code>value</code> attribute specifies the initial value of the
+text box</li>
+<li>The <code>maxlength</code> attribute specifies the maximum number of
+characters allowed in the text box</li>
+</ul></li>
+<li>The <code>&lt;textarea&gt;</code> text boxes
+<ul>
+<li>The <code>rows</code> and <code>cols</code> attribute specifies the
+size of the text boxes in number of characters'</li>
+<li>The initial value is between <code>&lt;textarea&gt;</code> and
+<code>&lt;/textarea&gt;</code></li>
+<li>You cannot specify a <code>maxlength</code> attribute for
+<code>&lt;textarea&gt;</code></li>
+</ul></li>
+<li>Text selection
+<ul>
+<li>Both text boxes support the <code>select()</code> method, which
+selects all of the text in a text box, this method only selects the
+text, it does not return the selected text</li>
+<li>There is also a <code>select</code> event, which is fired when the
+text is selected in a text box</li>
+<li>There are two integer properties that can be used to determine the
+selection range: <code>selectionStart</code> and
+<code>selectionEnd</code></li>
+</ul></li>
+<li>HTML5 constraint validation API
+<ul>
+<li>HTML5 introduces the ability for browsers to validate data in forms
+before submitting to the server, this capability enables basic
+validation even when JavaScript is unavailable or fails to load</li>
+<li>Required fields
+<ul>
+<li>Use the <code>required</code> attribute</li>
+<li>Check if the browser supports the required attribute:
+<code>"required" in document.createElement("tagName");</code></li>
+<li>Different browsers behave differently when a form field is required
+<ul>
+<li>Chrome, Firefox, IE, and Opera prevent the form from submitting and
+opo up a help box beneath the field</li>
+<li>Safari does nothing and doesn't prevent the form from
+submitting</li>
+</ul></li>
+</ul></li>
+<li>Alternate input types
+<ul>
+<li>HTML5 introduces the ability to use different input types, for
+example <code>email</code>, <code>password</code>, <code>url</code></li>
+<li>These type attributes not only provide additional information about
+the type of data expected but also provide some default validation</li>
+<li>Check if certain type is supported <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> input = <span class="built_in">document</span>.createElement(<span class="string">&quot;input&quot;</span>);</span><br><span class="line">input.type = <span class="string">&quot;typeName&quot;</span>;</span><br><span class="line"><span class="comment">// if the type is not supported, the type property will be `text`</span></span><br><span class="line"><span class="built_in">console</span>.log(input.type == <span class="string">&quot;typeName&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Numeric ranges
+<ul>
+<li>Type values: <code>number</code>, <code>range</code>,
+<code>datetime</code>, <code>datetime-local</code>, <code>date</code>,
+<code>month</code>, <code>week</code>, <code>time</code></li>
+<li>For these numeric types, you can specify the range and step using
+the <code>min</code>, <code>max</code> and <code>step</code>
+attributes</li>
+<li>Some browsers do not support the above types, you should check
+carefully before you use them</li>
+</ul></li>
+<li>Input patterns: use the <code>pattern</code> attribute to specify a
+regular expression that the input must match</li>
+<li>Checking validity
+<ul>
+<li>Use the <code>checkValidity()</code> method to check if any given
+field on the form is valid</li>
+<li>This method is provided on all elements and returns a boolean
+value</li>
+</ul></li>
+<li>Disabling validation: use the <code>novalidate</code> attribute on
+the form to disable validation</li>
+</ul></li>
+</ul></li>
+<li>Scripting select boxes
+<ul>
+<li>Select boxes are created using the <code>&lt;select&gt;</code> and
+<code>&lt;option&gt;</code> elements</li>
+<li>The HTMLSelectElement type provides the following properties and
+methods in addition to those that are available for all form fields
+<ul>
+<li><code>add(newOption, relOption)</code>: add a new option before the
+related option</li>
+<li><code>multiple</code>: a boolean value indicating if multiple
+selections are allowed, equal to the HTML <code>multiple</code>
+attribute</li>
+<li><code>options</code>: an HTMLCollection of option elements in the
+control</li>
+<li><code>remove(index)</code>: removes the option in the given
+position</li>
+<li><code>selectedIndex</code>: 0-based index of the selected option or
+-1 if no options are selected</li>
+<li><code>size</code>: the number of rows visible in the select box,
+equal to the HTML <code>size</code> attribute</li>
+</ul></li>
+<li>The type of a select box is either <code>select-one</code> or
+<code>select-multiple</code></li>
+<li>The value of the select box is determined using the following rules
+<ul>
+<li>If no option is selected, the value of the select box is an empty
+string</li>
+<li>If one option is selected and has a value attribute, then the value
+of the select box is the value of the selected option</li>
+<li>If one option is selected but does not have a value attribute, then
+the value of the select box is the text of the selected option</li>
+<li>If multiple options are selected, the value of the select box is the
+value taken from the first option according to the rules above</li>
+</ul></li>
+<li>The <code>&lt;option&gt;</code> element
+<ul>
+<li>Each option element is represented in the DOM by an
+HTMLOptionElement object</li>
+<li>Properties: <code>index</code>, <code>value</code>,
+<code>text</code>, <code>label</code>, <code>selected</code></li>
+</ul></li>
+<li>Getting the selected option <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> select = <span class="built_in">document</span>.getElementById(<span class="string">&quot;mySelect&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> selectedOption = select.options[select.selectedIndex];</span><br><span class="line"><span class="built_in">console</span>.log(selectedOption.text);</span><br></pre></td></tr></table></figure></li>
+<li>Adding options <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> select = <span class="built_in">document</span>.getElementById(<span class="string">&quot;mySelect&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> newOption = <span class="built_in">document</span>.createElement(<span class="string">&quot;option&quot;</span>);</span><br><span class="line">newOption.text = <span class="string">&quot;New option&quot;</span>;</span><br><span class="line">newOption.value = <span class="string">&quot;new-value&quot;</span>;</span><br><span class="line">select.appendChild(newOption);</span><br></pre></td></tr></table></figure></li>
+<li>Removing options <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> select = <span class="built_in">document</span>.getElementById(<span class="string">&quot;mySelect&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> optionToRemove = select.options[removeIndex];</span><br><span class="line">select.removeChild(optionToRemove);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="javascript-api">JavaScript API</h1>
+<ol type="1">
+<li><code>Atomics</code> and <code>SharedArrayBuffer</code>
+<ul>
+<li>A SharedArrayBuffer features an identical API to an ArrayBuffer, the
+primary difference is that a reference to an ArrayBuffer must be handed
+off between execution contexts, a reference to a SharedArrayBuffer can
+be used simultaneously by any number of execution contexts</li>
+<li>Sharing memory between multiple execution contexts means that
+concurrent thread operations are possible, thus race condition is a
+problem</li>
+<li>The Atomics API was introduced to allow for thread-safe JavaScript
+operations on a SharedArrayBuffer</li>
+<li>Atomics basics
+<ul>
+<li>The Atomics object exists on all global contexts, and it exposes a
+suite of static methods for performing thread-safe operations</li>
+<li>The Atomics API offers a simple suite of methods for performing an
+in-place modification called AtomicReadModifyWrite operations: read from
+a location in the SharedArrayBuffer, modify the value at that location,
+and write the new value back to the same location in the
+SharedArrayBuffer</li>
+<li>Methods: <code>Atomics.add</code>, <code>Atomics.sub</code>,
+<code>Atomics.or</code>, <code>Atomics.and</code>,
+<code>Atomics.xor</code>, ...</li>
+<li>Atomic exchange: <code>Atomics.exchange</code>,
+<code>Atomics.compareExchange</code></li>
+</ul></li>
+</ul></li>
+<li>Cross-context messaging
+<ul>
+<li>Cross-document messaging (XDM), is the capability to pass
+information between different execution contexts</li>
+<li>The core method of XDM is the
+<code>postMessage(msg, recipient[, options])</code> method
+<ul>
+<li><code>msg</code> is a string message</li>
+<li><code>recipient</code> is a string indicating the intended recipient
+origin</li>
+<li><code>option</code>: an optional array of transferable objects</li>
+</ul></li>
+<li>The <code>message</code> event
+<ul>
+<li>The event is fired asynchronously on the window object when an XDM
+message is received</li>
+</ul></li>
+</ul></li>
+<li>Encoding API
+<ul>
+<li>The encoding API allows for converting between strings and typed
+arrays</li>
+<li>Related classes for conversions: <code>TextEncoder</code>,
+<code>TextEncoderStream</code>, <code>TextDecoder</code>,
+<code>TextDecoderStream</code></li>
+<li>Encoding text
+<ul>
+<li>Two ways to convert a string into its typed array binary equivalent:
+a <code>bulk</code> encoding, and a <code>stream</code> encoding</li>
+<li>The encoder always uses UTF-8</li>
+<li>Bulk encoding: the JavaScript engine synchronously encodes the
+entire string</li>
+<li>Bulk encoding is accomplished using an instance of a TextEncoder
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> textEncoder = <span class="keyword">new</span> TextEncoder();</span><br><span class="line"><span class="keyword">const</span> decodedText = <span class="string">&quot;foo&quot;</span>;</span><br><span class="line"><span class="comment">// this method returns an Unit8Array</span></span><br><span class="line"><span class="keyword">const</span> encodedText = textEncoder.encode(decodedText);</span><br><span class="line"><span class="comment">// returns an object with two properties</span></span><br><span class="line"><span class="comment">// res.read: the amount of characters encoded from decodedText</span></span><br><span class="line"><span class="comment">// res.written: the amount of characters encoded into encodedText</span></span><br><span class="line"><span class="keyword">const</span> res = textEncoder.encodeInto(decodedText, encodedText);</span><br></pre></td></tr></table></figure></li>
+<li>Stream encoding: it accepts a decoded text stream into the
+TextEncoderStream (it's simply a TextEncoder in the form of
+TransformStream) and yields a stream of encoded text chunks</li>
+</ul></li>
+<li>Decoding text
+<ul>
+<li>Two ways to convert a typed array into its string equivalent: a
+<code>bulk</code> decoding, and a <code>stream</code> decoding</li>
+<li>Unlike the encoder classes, when going from typed array to string,
+the decoder supports a large number of string encoding</li>
+<li>Bulk decoding: the JavaScript engine synchronously decode the entire
+string</li>
+<li>Bulk decoding is accomplished using an instance of a DecoderEncoder
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">          <span class="keyword">const</span> textDecoder = <span class="keyword">new</span> TextDecoder();</span><br><span class="line">          <span class="comment">// f encoded in utf-8 is 0x66 (102), o encoded in utf-8 is 0x6f (111)</span></span><br><span class="line">          <span class="keyword">const</span> encodedText = Unit8Array.of(<span class="number">102</span>, <span class="number">111</span>, <span class="number">111</span>);</span><br><span class="line">          <span class="comment">// this method returns a string</span></span><br><span class="line">          <span class="keyword">const</span> decodedText = textDecoder.decode(encodedText);</span><br><span class="line">          <span class="comment">// returns an object with two properties</span></span><br><span class="line">          <span class="comment">// res.read: the amount of characters decoded from encodedText</span></span><br><span class="line">          <span class="comment">// res.written: the amount of characters decoded into decodedText</span></span><br><span class="line">          <span class="keyword">const</span> res = textDecoder.decodeInto(encodedText, decodedText);</span><br><span class="line">        <span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">     * Stream decoding: it accepts an encoded text stream into the TextDecoderStream (it&#x27;s simply a TextDecoder in the form of TransformStream) and yields a stream of decoded text chunks</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4. Blob and File APIs</span></span><br><span class="line"><span class="string">   * History of interaction with file</span></span><br><span class="line"><span class="string">     * The legacy way to interact with file in a form is to use the `</span>&lt;input type=<span class="string">&quot;file&quot;</span>&gt;<span class="string">` element</span></span><br><span class="line"><span class="string">     * The Blob and File API were designed to allow web developers access to files on the client computer in a secure manner that allows for better interaction with those files</span></span><br><span class="line"><span class="string">   * The `</span>File<span class="string">` type</span></span><br><span class="line"><span class="string">     * The File API is still based on the file input filed of a form but adds the ability to access the file information directly</span></span><br><span class="line"><span class="string">     * The `</span>files<span class="string">` collection in HTML5 contains a sequence of `</span>File<span class="string">` object, each object has several read-only attributes: `</span>name<span class="string">`, `</span>size<span class="string">`, `</span>type<span class="string">`, `</span>lastModifiedDate<span class="string">`</span></span><br><span class="line"><span class="string">      `</span><span class="string">``</span>javascript</span><br><span class="line">        <span class="keyword">let</span> fileList = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myFile&quot;</span>);</span><br><span class="line">        fileList.addEventListener(<span class="string">&quot;change&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> files = event.target.files;</span><br><span class="line">          <span class="keyword">let</span> n = files.length;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`&#123;file.name&#125; &#123;file.size&#125; &#123;file.type&#125; &#123;file.lastModifiedDate&#125;`</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>FileReader</code> type
+<ul>
+<li>The FileReader type represents an asynchronously file-reading
+mechanism</li>
+<li>Related methods: <code>readAsText(file, encoding)</code>,
+<code>readAsDataURL(file)</code>, <code>readAsBinaryString(file)</code>,
+<code>readAsArrayBuffer(file)</code></li>
+<li>Because the read happens asynchronously, there are events published
+by each FileReader: <code>progress</code>, <code>error</code>,
+<code>load</code>
+<ul>
+<li>The progress event is fired roughly every 50 ms and has the
+following properties: <code>lengthComputable</code>,
+<code>loaded</code>, <code>total</code> and <code>result</code></li>
+<li>The <code>error</code> events is fired if the file cannot be read
+for some reason</li>
+<li>The <code>load</code> event is fired when the file has been
+successfully loaded and will not be fired if the error event has already
+been fired</li>
+</ul></li>
+<li>You can use the <code>abort()</code> method to stop a read
+progress</li>
+</ul></li>
+<li>The <code>FileReaderSync</code> type: the FileReaderSync is the
+synchronous version (blocking read) of the FileReader type</li>
+<li>Blobs and Partial reads
+<ul>
+<li>Use the <code>file.slice(startByte, byteAmount)</code> to create a
+Blob object to read part of the file</li>
+<li>A blob (binary large object) object, is a JavaScript wrapper for
+immutable binary data, it is the super type of File</li>
+<li>Blobs can be created from an array containing strings, ArrayBuffers,
+ArrayBufferViews, or even other blobs <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Blob([<span class="string">&quot;test&quot;</span>, <span class="string">&quot;abc&quot;</span>])); <span class="comment">// Blob &#123;size: 7, type: &quot;&quot;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Blob([<span class="string">&quot;test&quot;</span>], &#123;<span class="attr">type</span>: <span class="string">&quot;testType&quot;</span>&#125;)); <span class="comment">// Blob &#123;size: 4, type: &quot;testType&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Useful blob properties and methods: <code>size</code>,
+<code>type</code>, <code>slice()</code></li>
+</ul></li>
+</ul></li>
+<li>Media elements</li>
 </ol>
 
     </div>
@@ -3879,7 +4147,7 @@ opportunity to cancel the reset if necessary <figure class="highlight javascript
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
 Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
-Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li></ol></div>
+Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -3957,7 +4225,7 @@ Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href=
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:39</span>
+    <span title="Reading time total">16:48</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
