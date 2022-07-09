@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-08T04:25:59.411Z">
+<meta property="article:modified_time" content="2022-07-09T04:06:55.080Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-08 00:25:59" itemprop="dateModified" datetime="2022-07-08T00:25:59-04:00">2022-07-08</time>
+                <time title="Modified: 2022-07-09 00:06:55" itemprop="dateModified" datetime="2022-07-09T00:06:55-04:00">2022-07-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>135k</span>
+              <span>137k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:02</span>
+              <span>2:05</span>
             </span>
 
         </div>
@@ -4043,7 +4043,90 @@ ArrayBufferViews, or even other blobs <figure class="highlight javascript"><tabl
 <code>type</code>, <code>slice()</code></li>
 </ul></li>
 </ul></li>
-<li>Media elements</li>
+<li>Media elements
+<ul>
+<li>HTML5 introduces two media-related elements to enable cross-browser
+audio and video embedding into a browser baseline without any plug-ins:
+<code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code></li>
+<li>Each of the elements requires a <code>src</code> attribute to
+specify the source of the media</li>
+<li>You may optionally specify multiple different media sources because
+not all browsers support all media formats: omit the src attribute from
+the element and instead include on or more <code>&lt;source&gt;</code>
+elements</li>
+<li>Properties: <code>autoplay</code> boolean, <code>buffered</code>
+time range, <code>duration</code> float amount of seconds,
+<code>loop</code> boolean, <code>muted</code> boolean,
+<code>paused</code> boolean, <code>played</code> time range,
+<code>volume</code> float between 0.0 and 1.0, ...</li>
+<li>Events: <code>abort</code> downloading has been aborted,
+<code>canplay</code> playback can begin, <code>error</code>,
+<code>ended</code>, <code>play</code>, <code>pause</code>, ...</li>
+<li>Custom media players: you can manually control the playback of a
+media file, using the <code>play()</code> and <code>pause()</code>
+methods</li>
+</ul></li>
+<li>Notifications API
+<ul>
+<li>The Notifications API provides greater degree of customizability
+than the alert() dialogue boxes</li>
+<li>Notification permissions
+<ul>
+<li>Two security features are enforced to prevent potential abuse
+<ul>
+<li>Notifications can be triggered only by code executing in a secure
+context</li>
+<li>Notifications must be explicitly allowed by the user on a per-origin
+basis</li>
+</ul></li>
+<li>The user grants notification permission to an origin insider a
+browser dialogue box</li>
+<li>Unless the user does explicit allow or deny permission, the browser
+will remember the decision and will not ask again for the same
+origin</li>
+</ul></li>
+<li>Showing and hiding notification
+<ul>
+<li>Use the constructor to create and show notifications:
+<code>new Notification(title[, options])</code>, the title argument is
+the title of the notification dialogue box, the options is an object
+containing specification information</li>
+<li>Use the <code>notification.close()</code> method to close an
+notification <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> notification = <span class="keyword">new</span> Notification(<span class="string">&quot;Notification title&quot;</span>, &#123;</span><br><span class="line">    lang: <span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">    body: <span class="string">&quot;Notification body&quot;</span>,</span><br><span class="line">    tag: <span class="string">&quot;notification-tag&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    notification.close();</span><br><span class="line">&#125;, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Notification lifecycle callbacks
+<ul>
+<li>Notification aren't always just for displaying text strings, they
+are also designed to be interactive</li>
+<li>Callbacks
+<ul>
+<li><code>onshow</code>: triggered when the notification is
+displayed</li>
+<li><code>onclick</code>: triggered when the notification is
+clicked</li>
+<li><code>onclose</code>: triggered when the notification is dismissed
+or closed via close();</li>
+<li><code>onerror</code>: triggered when an error occurs that prevents
+the notification from being displayed</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Page visibility API
+<ul>
+<li>When a page is minimized or hidden behind another tab, it may not
+take sense to continue functionality of the page, the Page Visibility
+API</li>
+<li>Three parts of the Page Visibility API
+<ul>
+<li><code>document.visibilityState</code>: a string value, can be one of
+<code>hidden</code>, <code>visible</code>, <code>prerender</code></li>
+<li><code>visibilitychange</code> event: fired when a document changes
+from visible to hidden, or vice versa</li>
+<li><code>document.hidden</code>: a boolean value indicating if the page
+is hidden from view</li>
+</ul></li>
+</ul></li>
+<li>Streams API</li>
 </ol>
 
     </div>
@@ -4225,7 +4308,7 @@ Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href=
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:48</span>
+    <span title="Reading time total">16:51</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
