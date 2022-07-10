@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-09T04:06:55.080Z">
+<meta property="article:modified_time" content="2022-07-10T04:21:43.451Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-09 00:06:55" itemprop="dateModified" datetime="2022-07-09T00:06:55-04:00">2022-07-09</time>
+                <time title="Modified: 2022-07-10 00:21:43" itemprop="dateModified" datetime="2022-07-10T00:21:43-04:00">2022-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>137k</span>
+              <span>142k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:05</span>
+              <span>2:09</span>
             </span>
 
         </div>
@@ -4004,7 +4004,30 @@ the decoder supports a large number of string encoding</li>
 <li>Bulk decoding: the JavaScript engine synchronously decode the entire
 string</li>
 <li>Bulk decoding is accomplished using an instance of a DecoderEncoder
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">          <span class="keyword">const</span> textDecoder = <span class="keyword">new</span> TextDecoder();</span><br><span class="line">          <span class="comment">// f encoded in utf-8 is 0x66 (102), o encoded in utf-8 is 0x6f (111)</span></span><br><span class="line">          <span class="keyword">const</span> encodedText = Unit8Array.of(<span class="number">102</span>, <span class="number">111</span>, <span class="number">111</span>);</span><br><span class="line">          <span class="comment">// this method returns a string</span></span><br><span class="line">          <span class="keyword">const</span> decodedText = textDecoder.decode(encodedText);</span><br><span class="line">          <span class="comment">// returns an object with two properties</span></span><br><span class="line">          <span class="comment">// res.read: the amount of characters decoded from encodedText</span></span><br><span class="line">          <span class="comment">// res.written: the amount of characters decoded into decodedText</span></span><br><span class="line">          <span class="keyword">const</span> res = textDecoder.decodeInto(encodedText, decodedText);</span><br><span class="line">        <span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">     * Stream decoding: it accepts an encoded text stream into the TextDecoderStream (it&#x27;s simply a TextDecoder in the form of TransformStream) and yields a stream of decoded text chunks</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4. Blob and File APIs</span></span><br><span class="line"><span class="string">   * History of interaction with file</span></span><br><span class="line"><span class="string">     * The legacy way to interact with file in a form is to use the `</span>&lt;input type=<span class="string">&quot;file&quot;</span>&gt;<span class="string">` element</span></span><br><span class="line"><span class="string">     * The Blob and File API were designed to allow web developers access to files on the client computer in a secure manner that allows for better interaction with those files</span></span><br><span class="line"><span class="string">   * The `</span>File<span class="string">` type</span></span><br><span class="line"><span class="string">     * The File API is still based on the file input filed of a form but adds the ability to access the file information directly</span></span><br><span class="line"><span class="string">     * The `</span>files<span class="string">` collection in HTML5 contains a sequence of `</span>File<span class="string">` object, each object has several read-only attributes: `</span>name<span class="string">`, `</span>size<span class="string">`, `</span>type<span class="string">`, `</span>lastModifiedDate<span class="string">`</span></span><br><span class="line"><span class="string">      `</span><span class="string">``</span>javascript</span><br><span class="line">        <span class="keyword">let</span> fileList = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myFile&quot;</span>);</span><br><span class="line">        fileList.addEventListener(<span class="string">&quot;change&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> files = event.target.files;</span><br><span class="line">          <span class="keyword">let</span> n = files.length;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`&#123;file.name&#125; &#123;file.size&#125; &#123;file.type&#125; &#123;file.lastModifiedDate&#125;`</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> textDecoder = <span class="keyword">new</span> TextDecoder();</span><br><span class="line"><span class="comment">// f encoded in utf-8 is 0x66 (102), o encoded in utf-8 is 0x6f (111)</span></span><br><span class="line"><span class="keyword">const</span> encodedText = Unit8Array.of(<span class="number">102</span>, <span class="number">111</span>, <span class="number">111</span>);</span><br><span class="line"><span class="comment">// this method returns a string</span></span><br><span class="line"><span class="keyword">const</span> decodedText = textDecoder.decode(encodedText);</span><br><span class="line"><span class="comment">// returns an object with two properties</span></span><br><span class="line"><span class="comment">// res.read: the amount of characters decoded from encodedText</span></span><br><span class="line"><span class="comment">// res.written: the amount of characters decoded into decodedText</span></span><br><span class="line"><span class="keyword">const</span> res = textDecoder.decodeInto(encodedText, decodedText);</span><br></pre></td></tr></table></figure></li>
+<li>Stream decoding: it accepts an encoded text stream into the
+TextDecoderStream (it's simply a TextDecoder in the form of
+TransformStream) and yields a stream of decoded text chunks</li>
+</ul></li>
+</ul></li>
+<li>Blob and File APIs
+<ul>
+<li>History of interaction with file
+<ul>
+<li>The legacy way to interact with file in a form is to use the
+<code>&lt;input type="file"&gt;</code> element</li>
+<li>The Blob and File API were designed to allow web developers access
+to files on the client computer in a secure manner that allows for
+better interaction with those files</li>
+</ul></li>
+<li>The <code>File</code> type
+<ul>
+<li>The File API is still based on the file input filed of a form but
+adds the ability to access the file information directly</li>
+<li>The <code>files</code> collection in HTML5 contains a sequence of
+<code>File</code> object, each object has several read-only attributes:
+<code>name</code>, <code>size</code>, <code>type</code>,
+<code>lastModifiedDate</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fileList = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myFile&quot;</span>);</span><br><span class="line">fileList.addEventListener(<span class="string">&quot;change&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> files = event.target.files;</span><br><span class="line">  <span class="keyword">let</span> n = files.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`&#123;file.name&#125; &#123;file.size&#125; &#123;file.type&#125; &#123;file.lastModifiedDate&#125;`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>The <code>FileReader</code> type
 <ul>
@@ -4126,7 +4149,119 @@ from visible to hidden, or vice versa</li>
 is hidden from view</li>
 </ul></li>
 </ul></li>
-<li>Streams API</li>
+<li>Streams API
+<ul>
+<li>The streams API solves the problem of web applications consuming
+information in sequential chunks rather than in bulk</li>
+<li>Application situations
+<ul>
+<li>High-level concepts:
+<ul>
+<li>A block of data may not be available all at once</li>
+<li>A block of data can be processed in small portions</li>
+</ul></li>
+<li>Concrete examples:
+<ul>
+<li>Handle network request</li>
+<li>Read/write to disk</li>
+</ul></li>
+</ul></li>
+<li>Introduction to streams
+<ul>
+<li>Three types of streams
+<ul>
+<li>Readable streams: streams from which chunks can be read via a public
+interface, data enters the stream internally from an underlying source
+and is processed by a consumer</li>
+<li>Writable streams: streams to which chunks can be written via a
+public interface, a producer writes data into the stream, and the data
+is passed internally in an underlying sink</li>
+<li>Transform streams: made up of two streams: a writable stream to
+accept input data, and a readable stream to emit output data</li>
+</ul></li>
+<li>The fundamental unit in streams is the chunk, a chunk can be of any
+data type, but frequently it will take the form of a typed array. The
+size and arrival time of different chunks can also be different</li>
+<li>The ideal stream has approximately the same size and arrive at
+approximately regular intervals, the entrance and exit of an ideal
+stream are also in equilibrium</li>
+</ul></li>
+<li>Readable streams <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">ints</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>, i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Create a readable stream using the ReadableStream constructor</span></span><br><span class="line"><span class="keyword">const</span> readableStream = <span class="keyword">new</span> ReadableStream(</span><br><span class="line">  <span class="comment">// the first argument is the underlyingSource, the start function inside has</span></span><br><span class="line">  <span class="comment">// a controller object as its sole argument, the controller object is an instance</span></span><br><span class="line">  <span class="comment">// of the ReadableStreamDefaultController class</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">start</span>(<span class="params">controller</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> chunk <span class="keyword">of</span> ints()) &#123;</span><br><span class="line">        <span class="comment">// add the chunk to the stream</span></span><br><span class="line">        controller.enqueue(chunk);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// signal the end of the stream</span></span><br><span class="line">      controller.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// read the stream using the readableStreamReader instance</span></span><br><span class="line"><span class="keyword">const</span> readableStreamReader = readableStream.getReader();</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; done, value &#125; = <span class="keyword">await</span> readableStreamReader.read();</span><br><span class="line">  <span class="keyword">if</span> (done) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line">readableStreamReader.releaseLock();</span><br></pre></td></tr></table></figure></li>
+<li>Writable streams <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">ints</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>, i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> writableStream = <span class="keyword">new</span> WritableStream(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">write</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// producer</span></span><br><span class="line"><span class="keyword">const</span> writableStreamWriter = writableStream.getWriter();</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> chunk <span class="keyword">of</span> ints()) &#123;</span><br><span class="line">  <span class="keyword">await</span> writableStreamWriter.write(chunk);</span><br><span class="line">&#125;</span><br><span class="line">writableStreamWriter.close();</span><br></pre></td></tr></table></figure></li>
+<li>Transform streams <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">ints</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>, i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;writable, readable&#125; = <span class="keyword">new</span> TransformStream(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">transform</span>(<span class="params">chunk, controller</span>)</span> &#123;</span><br><span class="line">      controller.enqueue(chunk * <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> transformStreamReader = transformStream.readable.getReader();</span><br><span class="line"><span class="keyword">const</span> transformStreamWriter = transformStream.writable.getWriter();</span><br><span class="line"></span><br><span class="line"><span class="comment">// consumer</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; done, value &#125; = <span class="keyword">await</span> transformStreamReader.read();</span><br><span class="line">  <span class="keyword">if</span> (done) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// producer</span></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> chunk <span class="keyword">of</span> ints()) &#123;</span><br><span class="line">  <span class="keyword">await</span> transformStreamWriter.ready;</span><br><span class="line">  transformStreamWriter.write(chunk);</span><br><span class="line">&#125;</span><br><span class="line">transformStreamWriter.close();</span><br></pre></td></tr></table></figure></li>
+<li>Piping streams
+<ul>
+<li>The ReadableStream can be piped into a TransformStream using the
+<code>pipeThrough()</code> method</li>
+<li>The ReadableStream can also be piped into a WritableStream using the
+<code>pipeTo()</code> method</li>
+</ul></li>
+</ul></li>
+<li>Timing APIs
+<ul>
+<li>Page performance is an area of concern for web developers, the
+interface on the <code>window.performance</code> object provides a way
+to measure the performance of a web page</li>
+<li>Several timing APIs involved: <code>High Resolution Time API</code>,
+<code>Performance Timeline API</code>,
+<code>Navigation Timing API</code>, <code>User Timing API</code>,
+<code>Resource Timing API</code>, <code>Paint Timing API</code></li>
+<li>High Resolution Time API<br>
+<ul>
+<li>Issues with <code>Date.now()</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> to = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="comment">// some function here;</span></span><br><span class="line"><span class="keyword">const</span> t1 = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="keyword">const</span> diff = t1 - t0;</span><br><span class="line"><span class="comment">// diff can be 0 (when the difference is less than 1ms), negative (when </span></span><br><span class="line"><span class="comment">// the system clock is set backwards), or very large (when the system clock</span></span><br><span class="line"><span class="comment">// is set forwards)</span></span><br><span class="line"><span class="built_in">console</span>.log(diff);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Use of the <code>window.performance.now()</code>
+<ul>
+<li>It returns a floating point number with up to microseconds
+precision</li>
+<li>It's also a relative time, the 0 value is when its execution context
+is spawned, so it's not possible to compare values in different
+execution contexts</li>
+</ul></li>
+<li>Performance Timeline API
+<ul>
+<li>This performance information is stored in different PerformanceEntry
+objects, all entry records can be get using the
+<code>window.performance.getEntries()</code> method</li>
+<li>Entry properties: <code>name</code>, <code>entryType</code>,
+<code>startTime</code>, <code>duration</code>, ...</li>
+</ul></li>
+</ul></li>
+<li>Web Cryptography API
+<ul>
+<li>Random number generation
+<ul>
+<li><code>Math.random()</code> uses the PosudoRandom Number Generation
+algorithm (PRNG), it's not fully random, the web browser simply applies
+a fixed algorithm on an internal state to emulate randomness</li>
+<li>The Cryptographically secure PRNG (PSRNG) incorporates a source of
+entropy as its input, so it's slower than the normal PRNG, but it's
+emited values are more difficult to predict</li>
+<li>The Cryptography API provides a CSPRNG that can be accessed on the
+global Crypto object via
+<code>crypto.getRandomValues(typedArray)</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="error-handling-and-debugging">Error handling and Debugging</h1>
+<ol type="1">
+<li>Browser error reporting
+<ul>
+<li>Desktop consoles: all modern desktop web browsers expose errors
+through their web console</li>
+<li>Mobile consoles:
+<ul>
+<li>Mobile phonse will not offer a console interface directly on the
+device</li>
+<li>Chrome and Safari come bundled with utilities that allow you to
+connect the device to a host operating system running that same browser,
+and ytou can then view the errors through the paired desktop
+browsers</li>
+<li>It's also possible to use a third-party utility to debug directly on
+the mobile device</li>
+</ul></li>
+</ul></li>
+<li>Error handling</li>
 </ol>
 
     </div>
@@ -4230,7 +4365,7 @@ is hidden from view</li>
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
 Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
-Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li></ol></div>
+Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-handling-and-debugging"><span class="nav-number">21.</span> <span class="nav-text">Error handling and Debugging</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -4308,7 +4443,7 @@ Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href=
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:51</span>
+    <span title="Reading time total">16:55</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
