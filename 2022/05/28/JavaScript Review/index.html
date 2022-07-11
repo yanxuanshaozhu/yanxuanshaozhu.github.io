@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-10T04:21:43.451Z">
+<meta property="article:modified_time" content="2022-07-11T05:05:16.832Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-10 00:21:43" itemprop="dateModified" datetime="2022-07-10T00:21:43-04:00">2022-07-10</time>
+                <time title="Modified: 2022-07-11 01:05:16" itemprop="dateModified" datetime="2022-07-11T01:05:16-04:00">2022-07-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>142k</span>
+              <span>146k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:09</span>
+              <span>2:13</span>
             </span>
 
         </div>
@@ -1654,7 +1654,33 @@ recreate the original behavior of the trapped method</li>
 <li>Every method that can be trapped inside a handler object has a
 corresponding Reflect API method, this method has identical name and
 function signature, and performs the exact behavior that the trapped
-method is intercepting <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">       <span class="keyword">const</span> target = &#123;&#125;;</span><br><span class="line">       <span class="comment">// Approach 1</span></span><br><span class="line">       <span class="keyword">const</span> handler = &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"></span><br><span class="line">       <span class="comment">// Approach 2</span></span><br><span class="line">       <span class="keyword">const</span> handler = &#123;</span><br><span class="line">         get: <span class="built_in">Reflect</span>.get</span><br><span class="line">       &#125;;</span><br><span class="line">       <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line">     <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">* Trap invariants</span></span><br><span class="line"><span class="string">  * Traps are not without restriction, each trapped method is aware of the target object context and trap function signature, and the behavior of the trap handler function must obey the trap invariants</span></span><br><span class="line"><span class="string">  * Trap invariants vary by method, but in general they will prevent the trap definition from exhibiting any grossly unexpected behavior</span></span><br><span class="line"><span class="string">* Utility of the Reflect API</span></span><br><span class="line"><span class="string">  * Reflect API vs. Object API</span></span><br><span class="line"><span class="string">    * The Reflect API is not limited to trap handler</span></span><br><span class="line"><span class="string">    * Most Reflect API methods have an analogue on the Object type</span></span><br><span class="line"><span class="string">  * Status flags: many Reflect methods return a Boolean, indicating if the operation they intend to perform will be successful or not</span></span><br><span class="line"><span class="string">* Proxying a Proxy</span></span><br><span class="line"><span class="string">  * Proxies are capable of intercepting Reflect API operations, and this means that it is entirely possible to create a proxy of a proxy, this allows you to build multiple layers of indirection on top of a singular target object</span></span><br><span class="line"><span class="string">  * Example</span></span><br><span class="line"><span class="string">     `</span><span class="string">``</span>javascript</span><br><span class="line">       <span class="keyword">const</span> target = &#123;</span><br><span class="line">         foo: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">const</span> firstProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;first proxy&#x27;</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">const</span> secondProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(firstProxy, &#123;</span><br><span class="line">         <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;second proxy&#x27;</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="built_in">console</span>.log(secondProxy.foo); </span><br><span class="line">       <span class="comment">// second proxy</span></span><br><span class="line">       <span class="comment">// first proxy</span></span><br><span class="line">       <span class="comment">// bar</span></span><br></pre></td></tr></table></figure></li>
+method is intercepting <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123;&#125;;</span><br><span class="line"><span class="comment">// Approach 1</span></span><br><span class="line"><span class="keyword">const</span> handler = &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Approach 2</span></span><br><span class="line"><span class="keyword">const</span> handler = &#123;</span><br><span class="line">  get: <span class="built_in">Reflect</span>.get</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Trap invariants
+<ul>
+<li>Traps are not without restriction, each trapped method is aware of
+the target object context and trap function signature, and the behavior
+of the trap handler function must obey the trap invariants</li>
+<li>Trap invariants vary by method, but in general they will prevent the
+trap definition from exhibiting any grossly unexpected behavior</li>
+</ul></li>
+<li>Utility of the Reflect API
+<ul>
+<li>Reflect API vs. Object API
+<ul>
+<li>The Reflect API is not limited to trap handler</li>
+<li>Most Reflect API methods have an analogue on the Object type</li>
+</ul></li>
+<li>Status flags: many Reflect methods return a Boolean, indicating if
+the operation they intend to perform will be successful or not</li>
+</ul></li>
+<li>Proxying a Proxy
+<ul>
+<li>Proxies are capable of intercepting Reflect API operations, and this
+means that it is entirely possible to create a proxy of a proxy, this
+allows you to build multiple layers of indirection on top of a singular
+target object</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123;</span><br><span class="line">  foo: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> firstProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;first proxy&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> secondProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(firstProxy, &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;second proxy&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(...arguments);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(secondProxy.foo); </span><br><span class="line"><span class="comment">// second proxy</span></span><br><span class="line"><span class="comment">// first proxy</span></span><br><span class="line"><span class="comment">// bar</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Proxy considerations and shortcomings
 <ul>
@@ -2135,7 +2161,11 @@ function, otherwise a SyntaxError is thrown</li>
 <li>Halting and resuming execution
 <ul>
 <li>Example 1 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure></li>
-<li>Example 2 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(<span class="number">8</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">9</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="number">6</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">bar();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 1 2 3 4 5 6 7 8 9</span></span><br></pre></td></tr></table></figure> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* Strategies for async function</span><br><span class="line">  * Implementing sleep</span><br><span class="line">     &#96;&#96;&#96;javascript</span><br><span class="line">       async function sleep(delay) &#123;</span><br><span class="line">         return new Promise((resolve) &#x3D;&gt; &#123;</span><br><span class="line">           setTimeout(resolve, delay);</span><br><span class="line">         &#125;);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(<span class="number">8</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">9</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="number">6</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">bar();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 1 2 3 4 5 6 7 8 9</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Strategies for async function
+<ul>
+<li>Implementing sleep <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">delay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, delay);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Serial promise execution <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTwo</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThree</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFive</span>(<span class="params">x</span>) <span class="title">return</span> <span class="title">x</span> + 5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">addTen</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> [addTwo, addThree, addFive]) &#123;</span><br><span class="line">    x = <span class="keyword">await</span> fn(x);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addTen(<span class="number">1</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// 11</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
@@ -3222,7 +3252,21 @@ also equivalent to the event's target element (say,
 <li>DOM level 0 event handlers
 <ul>
 <li>The traditional way of assigning event handlers in JavaScript is to
-assign a function to an event handler property <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">       <span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">       btn.onclick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">         alert(<span class="string">&quot;Clicked&quot;</span>);</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="built_in">this</span>.id); <span class="comment">// myBtn, this refers to the element itself</span></span><br><span class="line">       &#125;</span><br><span class="line">    <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">  * Since the event handler is considered to be a method of the element using the DOM level 0 method, the value of `</span><span class="built_in">this</span><span class="string">` is the element itself</span></span><br><span class="line"><span class="string">* DOM level 2 event handlers</span></span><br><span class="line"><span class="string">  * DOM level 2 events define two methods to deal with the assignment and removal of event handlers: `</span>addEventListener()<span class="string">` and `</span>removeEventListener()<span class="string">`. These methods exist on all DOM nodes and accept three arguments: the event name to handle, the event handler function, and a boolean value indicating whether to call the event handler during the capture phase (true) or during the bubble phase(false), the third argument is optional and defaults to false</span></span><br><span class="line"><span class="string">     `</span><span class="string">``</span>javascript</span><br><span class="line">       <span class="comment">// add an onclick event handler in the bubble phase</span></span><br><span class="line">       <span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">       btn.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">       &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
+assign a function to an event handler property <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">btn.onclick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">  alert(<span class="string">&quot;Clicked&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.id); <span class="comment">// myBtn, this refers to the element itself</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Since the event handler is considered to be a method of the element
+using the DOM level 0 method, the value of <code>this</code> is the
+element itself</li>
+</ul></li>
+<li>DOM level 2 event handlers
+<ul>
+<li>DOM level 2 events define two methods to deal with the assignment
+and removal of event handlers: <code>addEventListener()</code> and
+<code>removeEventListener()</code>. These methods exist on all DOM nodes
+and accept three arguments: the event name to handle, the event handler
+function, and a boolean value indicating whether to call the event
+handler during the capture phase (true) or during the bubble
+phase(false), the third argument is optional and defaults to false
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// add an onclick event handler in the bubble phase</span></span><br><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;myBtn&quot;</span>);</span><br><span class="line">btn.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Clicked!&quot;</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 <li>Internet Explorer event handlers
 <ul>
@@ -4261,8 +4305,157 @@ browsers</li>
 the mobile device</li>
 </ul></li>
 </ul></li>
-<li>Error handling</li>
+<li>Error handling
+<ul>
+<li>Introduction
+<ul>
+<li>Greate care is usually taken by the server-side team to defined an
+error-logging mechanism that categories erros by type, frequency, and
+any other metric that may be important</li>
+<li>Error handling on the browser side of web applications has slowly
+been adopted</li>
+</ul></li>
+<li>The try-catch statement
+<ul>
+<li>Syntax <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// code that may throw an error</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="comment">// code to handle the error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>The finally clause <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// code that may throw an error</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="comment">// code to handle the error</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  <span class="comment">// code to run regardless of whether an error occurred or not</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Error types: <code>Error</code>, <code>InternalError</code>,
+<code>EvalError</code>, <code>RangeError</code>,
+<code>ReferenceError</code>, <code>SyntaxError</code>,
+<code>TypeError</code>, <code>URIError</code></li>
+</ul></li>
+<li>Throwing errors
+<ul>
+<li>The <code>throw</code> operator can be used to throw custom erros at
+any point in time</li>
+<li>The throw operator must be used with a value but places no
+limitation on the type of value that can be thrown</li>
+</ul></li>
+<li>The error event
+<ul>
+<li>Any error that is not handled by a try-catch causes the error event
+to be fired on the window object</li>
+<li>Arguments of the error handler function: the error message, the URL
+on which the error occured, the line number <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function">(<span class="params">msg, url, line</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(msg, url, line);</span><br><span class="line">  <span class="comment">// By returning false, this function actually becomes a try-catch </span></span><br><span class="line">  <span class="comment">// statement for the entire document</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Error handling strategies
+<ul>
+<li>Identify where errors might occur: type coerciosn erros, data type
+erros, communication errors</li>
+<li>Distinguishing between fatal and nonfatal errors</li>
+<li>Log errors to the server</li>
+</ul></li>
+</ul></li>
+<li>Debuggin techniques
+<ul>
+<li>Logging messages to a console
+<ul>
+<li>Methods: <code>console.error(msg)</code>,
+<code>console.warn(msg)</code>, <code>console.info(msg)</code>,
+<code>console.log(msg)</code>, <code>console.debug(msg)</code></li>
+</ul></li>
+<li>Understanding the console runtime： a REPL</li>
+<li>Using the JavaScript debugger: <code>debugger</code> keyword</li>
+<li>Loggin message to the page</li>
+</ul></li>
 </ol>
+<h1 id="xml-in-javascript">XML in JavaScript</h1>
+<ol type="1">
+<li>XML DOM support in browsers
+<ul>
+<li>DOM level 2 core <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create a blank XML document</span></span><br><span class="line"><span class="keyword">let</span> xmldom = docuemnt.implementation.createDocument(namespaceUri, root, doctype);</span><br></pre></td></tr></table></figure></li>
+<li>tHE DOMParser type <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> parser = <span class="keyword">new</span> DOMParser();</span><br><span class="line"><span class="keyword">let</span> xmlDoc = parser.parseFromString(xmlString, <span class="string">&quot;text/xml&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>The XMLS erializer type <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> serializer = <span class="keyword">new</span> XMLSerializer();</span><br><span class="line"><span class="keyword">let</span> xmlString = serializer.serializeToString(xmlDoc);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>XPath support in browsers
+<ul>
+<li>XPath was created as a way to locate specific nodes within a DOM
+document</li>
+<li>DOM level 3 XPath
+<ul>
+<li>Determine if a browser supports DOM level 3 XPath
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.implementation.hasFeature(<span class="string">&quot;XPath&quot;</span>, <span class="string">&quot;3.0&quot;</span>)) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Use the <code>XPathEvaluator</code> to evaluate Xpath expressions
+with a specific context</li>
+<li>Use the <code>XPathResult</code> tp get the result of the
+evaluation</li>
+</ul></li>
+</ul></li>
+<li>XSLT support in browsers
+<ul>
+<li>XSLT is a companion technology to XML that makes use of XPath to
+transform one document representation into another</li>
+<li>The XSLTProcessor type
+<ul>
+<li>The XSLTProcessor type allows developers to transform XML documents
+by using XSLT in a manner similar to XSL processor in IE</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="json">JSON</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>XML was the de facto standard for transmitting structured data over
+the internet</li>
+<li>JSON is a strict subset of JavaScript, making use of several
+patterns found in JavaScript to represent structured data</li>
+<li>The most important thing is that JSON is that it is a data format,
+not a programming language</li>
+</ul></li>
+<li>Syntax
+<ul>
+<li>Three types of values represented by JSON
+<ul>
+<li>Simple values: strings, numbers, booleans, null; undefined is not
+supported by JSON</li>
+<li>Objects</li>
+<li>Arrays</li>
+</ul></li>
+<li>Variables, functions, or object instances are not supported in
+JSON</li>
+<li>Simple values: JSON strings must be enclosed in double quotes</li>
+<li>Objects: JSON properties are named with double quotes</li>
+<li>Arrays: arrays are represented in JSON using array literal</li>
+</ul></li>
+<li>Parsing and serialization
+<ul>
+<li>JSON can be parsed into a usable object in JavaScript, but XML must
+be parsed into a DOM document first</li>
+<li>The JSON object
+<ul>
+<li>Use the <code>JSON.stringify(obj)</code> method to convert a
+JavaScript object into a JSON string</li>
+<li>Use the <code>JSON.parse(jsonString)</code> method to convert a JSON
+string into a JavaScript object</li>
+<li>The JSON string is inside a pair of single quotes</li>
+</ul></li>
+<li>Serialization options
+<ul>
+<li>The <code>JSON.stringify(obj, replacer, space)</code> method can be
+used to specify a replacer and/or a space argument</li>
+<li>The replacer is an array of strings that specify the names of the
+properties to be included in the serialization</li>
+<li>The space is a string or number: if the space is a number, it
+indicates the amount of white space characters used for indention, if
+the space is a string, the string is used as white space</li>
+<li>The <code>toJSON()</code> method: this method can be added to
+JavaScript objects to introduce customized serialization, and is called
+when JSON.stringify() is called on an object</li>
+</ul></li>
+<li>Parsing options
+<ul>
+<li>The <code>JSON.parse(jsonString, reviver)</code> method can be used
+to specify a reviver function</li>
+<li>The reviver function has two arguments: the key and the related
+value, it also needs to return a value</li>
+<li>A very common use of the reviver function is to turn date strings
+into Date objects</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="network-requests-and-remove-resources">Network Requests and
+Remove Resources</h1>
 
     </div>
 
@@ -4365,7 +4558,8 @@ the mobile device</li>
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
 Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
-Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-handling-and-debugging"><span class="nav-number">21.</span> <span class="nav-text">Error handling and Debugging</span></a></li></ol></div>
+Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-handling-and-debugging"><span class="nav-number">21.</span> <span class="nav-text">Error handling and Debugging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xml-in-javascript"><span class="nav-number">22.</span> <span class="nav-text">XML in JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json"><span class="nav-number">23.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network-requests-and-remove-resources"><span class="nav-number">24.</span> <span class="nav-text">Network Requests and
+Remove Resources</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -4380,7 +4574,7 @@ Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href=
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -4443,7 +4637,7 @@ Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href=
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">16:55</span>
+    <span title="Reading time total">17:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
