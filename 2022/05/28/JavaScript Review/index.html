@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-11T05:05:16.832Z">
+<meta property="article:modified_time" content="2022-07-11T22:16:31.787Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-11 01:05:16" itemprop="dateModified" datetime="2022-07-11T01:05:16-04:00">2022-07-11</time>
+                <time title="Modified: 2022-07-11 18:16:31" itemprop="dateModified" datetime="2022-07-11T18:16:31-04:00">2022-07-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>146k</span>
+              <span>149k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:13</span>
+              <span>2:15</span>
             </span>
 
         </div>
@@ -4456,6 +4456,89 @@ into Date objects</li>
 </ol>
 <h1 id="network-requests-and-remove-resources">Network Requests and
 Remove Resources</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>AJAX (asynchronous JavaScript + XML) allows making server requests
+for additional data without reloading the web page</li>
+<li>AJAX uses XMLHttpRequest (XHR) to makes request to the server</li>
+<li>An XHR object could be used to retrieve the data and then the data
+could be inerted into the page using the DOM</li>
+</ul></li>
+<li>The XMLHttpRequest object
+<ul>
+<li>IE 5 was the first browser to introduce the XHR object</li>
+<li>All modern browsers support a native XHR object that can be created
+using the XMLHttpRequest constructor:
+<code>let xhr = new XMLHttpRequest();</code></li>
+<li>XHR usage
+<ul>
+<li>The <code>open(type, URL, async)</code> method is used to open a
+connection to the server
+<ul>
+<li><code>type</code>: can be either <code>get</code>,
+<code>post</code>, ...</li>
+<li><code>URL</code>: the URL of the server to connect to</li>
+<li><code>async</code>: a boolean value indicating whether the request
+should be sent asynchronously or not</li>
+</ul></li>
+<li>To send a specific request, use the <code>send(body)</code> method
+<ul>
+<li>The <code>body</code> can be a document, an XMLHttpRequestBodyInit
+object, or null</li>
+</ul></li>
+<li>XHR response related properties
+<ul>
+<li><code>xhr.responseText</code>: the text taht was returned as the
+body of the response</li>
+<li><code>xhr.responseXML</code>: contains an XML DOM document with
+response data if the response has a context type of "text/xml" or
+"application/xml"</li>
+<li><code>xhr.status</code>: the HTTP status of the response</li>
+<li><code>xhr.statusText</code>: the description of the HTTP status
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status == <span class="number">304</span>) &#123;</span><br><span class="line">  <span class="comment">// do something with successful response</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// do something with error response</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>XHR <code>readyState</code> property
+<ul>
+<li>Integer value indicating the phase of the request/response
+cycle</li>
+<li>0 : Uninitialized, the <code>open()</code> method has not been
+called yet</li>
+<li>1: Open,the <code>open()</code> method has been called, but the
+<code>send()</code> method has not been called yet</li>
+<li>2: Sent, the <code>send()</code> method has been called, but no
+response ahs been received</li>
+<li>3: Receiving: some response data has been retrieved</li>
+<li>4: Complete, all of the response data has been retrieved and is
+available</li>
+</ul></li>
+</ul></li>
+<li>HTTP Headers
+<ul>
+<li>The XHR objects expose both the HTTP request headers and the HTTP
+response headers</li>
+<li>Related headers sent in an XHR request is sent: <code>Accept</code>,
+<code>Accept-Charset</code>, <code>Accept-Encoding</code>,
+<code>Accept-Language</code>, <code>Connection</code>,
+<code>Cookie</code>, <code>Host</code>, <code>Referer</code>,
+<code>User-Agent</code></li>
+<li>Use the <code>xhr.setRequestHeader(header, value)</code> method
+after the <code>xhr.open()</code> and before the <code>xhr.send()</code>
+method to set the value of a request header</li>
+<li>Use the <code>xhr.getResponseHeader(header)</code> method to get the
+value of a response header</li>
+</ul></li>
+<li>GET requests
+<ul>
+<li>The query string must be present and encoded correctly on the URL
+that is passed to the open() method</li>
+<li>Each query-string name and value msut be encoded using the
+<code>encodeURIComponent()</code> before being attached to the URL, and
+all of the name-value pairs must be separated by an ampersand
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addURLParam</span>(<span class="params">url, name, value</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// for the first name-value pair, add the ? first, for other pairs, and </span></span><br><span class="line">  <span class="comment">// an &amp; first</span></span><br><span class="line">  url += (url.indexOf(<span class="string">&quot;?&quot;</span>) == -<span class="number">1</span> ? <span class="string">&quot;?&quot;</span> : <span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">  <span class="comment">// encode the name and value, and append the pair to the URL</span></span><br><span class="line">  url += <span class="built_in">encodeURIComponent</span>(name) + <span class="string">&quot;=&quot;</span> + <span class="built_in">encodeURIComponent</span>(value);</span><br><span class="line">  <span class="keyword">return</span> url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -4637,7 +4720,7 @@ Remove Resources</span></a></li></ol></div>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">17:01</span>
+    <span title="Reading time total">17:02</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
