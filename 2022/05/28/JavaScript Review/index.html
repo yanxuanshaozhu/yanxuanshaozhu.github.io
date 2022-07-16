@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-13T03:50:41.524Z">
+<meta property="article:modified_time" content="2022-07-16T04:44:08.463Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-12 23:50:41" itemprop="dateModified" datetime="2022-07-12T23:50:41-04:00">2022-07-12</time>
+                <time title="Modified: 2022-07-16 00:44:08" itemprop="dateModified" datetime="2022-07-16T00:44:08-04:00">2022-07-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>159k</span>
+              <span>164k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:25</span>
+              <span>2:29</span>
             </span>
 
         </div>
@@ -4826,7 +4826,145 @@ unable to persist</li>
 <ol type="1">
 <li>Cookies
 <ul>
-<li></li>
+<li>HTTP cookies were originally intended to store session information
+on the clicent</li>
+<li>A server sends a <code>Set-Cookie</code> HTTP header containing
+session information as part of any response to an HTTP request. Browsers
+store such session information and send it back to the server via the
+<code>Cookie</code> HTTP header for every request after that point to
+uniquely identify the client from which the request was sent</li>
+<li>Restrictions
+<ul>
+<li>Cookies are tied to a specific domain, when a cookie is set, it is
+sent along with requests to the same domain from which it was
+created</li>
+<li>Other restrictions
+<ul>
+<li>300 cookies in total</li>
+<li>4096 bytes per cookie</li>
+<li>20 cookies per domain</li>
+<li>81920 bytes per domain</li>
+</ul></li>
+</ul></li>
+<li>Cookie parts
+<ul>
+<li>Name: unique name to identify the cookie, case-insensitive, the name
+must be URL-encoded</li>
+<li>Value: stirng value, must be URL-encoded</li>
+<li>Domain: domain for which the cookie is valid, all requests sent from
+a resource at this domain will include the cookie information</li>
+<li>Path: path within the specified domain for which the cookie should
+be sent to the server</li>
+<li>Expiration: timee stamp indicating when the cookie should be
+deleted, by default, all cookies are deleted when the browsers session
+ends, but it is possible to set another time for the deletion. The value
+is in GMT format (DD-Mon-YYYY HH:MM:SS GMT)</li>
+<li>Secure flag: when specified, the cookie information is sent to the
+server only if an SSL connection is used</li>
+</ul></li>
+<li>Cookies in JavaScript
+<ul>
+<li><code>document.cookie</code>: returns a string containing a series
+of name-value pairs separated by semicolons, each name and each value is
+separated by an equal sign</li>
+<li>The name and value should be URL-encoded <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="built_in">encodeURIComponent</span>(<span class="string">&quot;name&quot;</span>) + <span class="string">&quot;=&quot;</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">&quot;value&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Subcookies
+<ul>
+<li>Subcookies are smaller pieces of data stored within a single
+cookie</li>
+<li>The idea is to use the cookie's value to store multiple name-value
+pairs within a single cookie</li>
+</ul></li>
+</ul></li>
+<li>Web Storage
+<ul>
+<li>The Web storage is intent to overcome some of the limitations
+imposed by cookies when data is needed strictly on the client, with no
+need to continuously send data back to the server</li>
+<li>The are two primary goals of the Web Storage specification
+<ul>
+<li>To provide a way to store session data oustide of cookies</li>
+<li>To provide a mechanism for storing large amounts of data that
+persists across sessions</li>
+</ul></li>
+<li>All major browsers support the following two storage objects as
+properties of the window object:
+<ul>
+<li><code>localStorage</code>: the permanent storage mechanism</li>
+<li><code>sessionStorage</code>: the session-scoped storage
+mechanism</li>
+</ul></li>
+<li>The <code>Storage</code> type
+<ul>
+<li>The Storage type is designed to hold name-value pairs up to a
+maximum size</li>
+<li>Related methods
+<ul>
+<li><code>clear()</code>: removes all values, not implemented in
+Firefox</li>
+<li><code>getItem(name)</code>: retrieves the value for the given
+name</li>
+<li><code>key(index)</code>: retrieves the name fo the value in the
+given numeric position</li>
+<li><code>removeItem(name)</code>: removes the name-value pair
+identified by name</li>
+<li><code>setItem(name, value)</code>: sets the value for the given
+name, you can also do <code>sotrage.name = value</code></li>
+</ul></li>
+<li>The <code>sessionStorage</code> object
+<ul>
+<li>This object stores data only for a session, meaning that the data is
+stored until the browser is closed</li>
+<li>Data stored on sessionStorage is accessible only from the page that
+initially placed the data onto the object, making it of limited use for
+multipage applications</li>
+<li>All modern browsers implement storage writing as a blocking
+synchronous action, so data added to storage can immediately be read.
+Older IE implementations write data asynchronously so there may be a
+lag, you can use <code>sessionStorage.begin()</code> and
+<code>sessionStorage.commit()</code> to ensure that all assignments have
+been made <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> sessionStorage) &#123;</span><br><span class="line">  <span class="keyword">let</span> value = sessionStorage.getItem(key);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span> = <span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The <code>localStorage</code> object
+<ul>
+<li>In the revised HTML5 specification, the localStorage object
+superceded globalStorage as a way to store persistent client-side
+data</li>
+<li>In order to access the same localStorage object, pages must be
+served from the same domain, using the same protocol, and on the same
+ports</li>
+<li>The localStorage object can use all methods from the storage
+objects</li>
+</ul></li>
+<li>The storage event
+<ul>
+<li>Whenever a change is made to a Storage object, the storage event is
+fired on the document</li>
+<li>The event object has the following four properties
+<ul>
+<li><code>domain</code>: the domain for which the storage changed</li>
+<li><code>key</code>: the key that was set or removed</li>
+<li><code>newValue</code>: the value that the key was set to, or null if
+the key was removed</li>
+<li><code>oldValue</code>: the value prior to the key being changed</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>IndexedDB
+<ul>
+<li>The Indexed Database API (IndexedDB), is a structured data store in
+the browser, the idea is to create an API that easily allowed the
+storing and retrieval of JavaScript objects while still allowing
+querying and searching</li>
+<li>IndexedDB is designed to be almost completely asynchronous</li>
+<li>Databases
+<ul>
+<li>The IndexedDB is an example of the NoSQL databases</li>
+<li>Connecting to a database <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> db = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">window</span>.indexedDB.open(<span class="string">&quot;dbName&quot;</span>, version);</span><br><span class="line">request.onerror = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">`Failed to open database: <span class="subst">$&#123;event.target.errorCode&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line">request.onsuccess = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Object stores</li>
 </ul></li>
 </ol>
 
@@ -5010,7 +5148,7 @@ Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-l
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">17:12</span>
+    <span title="Reading time total">17:16</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
