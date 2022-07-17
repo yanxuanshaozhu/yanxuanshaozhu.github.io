@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-16T04:44:08.463Z">
+<meta property="article:modified_time" content="2022-07-17T04:04:52.296Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-16 00:44:08" itemprop="dateModified" datetime="2022-07-16T00:44:08-04:00">2022-07-16</time>
+                <time title="Modified: 2022-07-17 00:04:52" itemprop="dateModified" datetime="2022-07-17T00:04:52-04:00">2022-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>164k</span>
+              <span>174k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:29</span>
+              <span>2:39</span>
             </span>
 
         </div>
@@ -4964,7 +4964,282 @@ querying and searching</li>
 <li>The IndexedDB is an example of the NoSQL databases</li>
 <li>Connecting to a database <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> db = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">window</span>.indexedDB.open(<span class="string">&quot;dbName&quot;</span>, version);</span><br><span class="line">request.onerror = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">`Failed to open database: <span class="subst">$&#123;event.target.errorCode&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line">request.onsuccess = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li>Object stores</li>
+<li>Object stores <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  username: <span class="string">&quot;007&quot;</span>,</span><br><span class="line">  firstName: <span class="string">&quot;James&quot;</span>,</span><br><span class="line">  lastName: <span class="string">&quot;Bond&quot;</span>,</span><br><span class="line">  password: <span class="string">&quot;secret&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">request.onupgradeneeded = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> db = event.target.result;</span><br><span class="line">  <span class="keyword">if</span> (db.objectStoreNames.contains(<span class="string">&quot;users&quot;</span>)) &#123;</span><br><span class="line">    db.deleteObjectStore(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  db.createObjectStore(<span class="string">&quot;users&quot;</span>, &#123;</span><br><span class="line">    keyPath: <span class="string">&quot;username&quot;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Transactions
+<ul>
+<li>Create transactions:
+<code>let transcation = db.transaction();</code></li>
+<li>Create transactions with different objects:
+<code>let transcation = db.transaction(["users"]);</code></li>
+<li>Use the <code>objectStore(storeName)</code> method to access a
+particular object store, use <code>add()</code>, <code>put()</code>,
+<code>get()</code>, and <code>delete()</code> on the store object to
+conduct CRUD operations</li>
+</ul></li>
+<li>Insertion
+<ul>
+<li>Use <code>add(obj)</code> and <code>put(pbj)</code> to insert data
+into the database</li>
+<li>The difference occurs only when an object with the same key already
+exists in the object store, add() will cause an error while put() will
+simply overwrite the object</li>
+</ul></li>
+<li>Querying with cursors
+<ul>
+<li>Transactions can be used directly to retrieve a single item with a
+known key, when you want to retrieve multiple items, you need to create
+a cursor with the transaction</li>
+<li>A cursor is a pointer to a result set</li>
+<li>IDBCursor instance properties and methods
+<ul>
+<li><code>direction</code>: the direction of the cursor, can be
+<code>next</code>, <code>nextunique</code>, <code>prev</code>,
+<code>prevunique</code></li>
+<li><code>key</code>: the key of the object</li>
+<li><code>value</code>: the value of the object</li>
+<li><code>primaryKey</code>: the key being used by the cursor, could be
+the object key or an index key</li>
+<li><code>continue([key])</code>: moves to the next item in the result
+set, if the optional argument key is specified, moves to the specified
+key</li>
+<li><code>advance(count)</code>: moves the cursor ahead by count number
+of items <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> transaction = db.transaction(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">store = transaction.objectStore(<span class="string">&quot;users&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> request = store.openCursor();</span><br><span class="line">request.onsuccess = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cursor = event.target.result;</span><br><span class="line">  <span class="keyword">if</span> (cursor) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(cursor.value);</span><br><span class="line">    cursor.continue();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.onerror = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Failed to open cursor: <span class="subst">$&#123;event.target.errorCode&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Key ranges
+<ul>
+<li>Key ranges are used to make working with cursors a little more
+efficient, a key range is represented by an instance of
+<code>IDBKeyRange</code></li>
+<li>Use the only method and retrives values with the specified key:
+<code>const onlyRange = IDBKeyRange.only("keyName")</code></li>
+<li>Use the lower bound method to defines a lower bound for the result
+set (where the cursor should start):
+<ul>
+<li>Starts at a specific
+key:<code>const lowerRange = IDBKeyRange.lowerBound("keyName")</code></li>
+<li>Starts after a specific key:
+<code>const lowerRange = IDBKeyRange.lowerBound("keyName", true)</code></li>
+</ul></li>
+<li>Use the upper bound method to defines an upper bound for the result
+set (where the cursor should end):
+<ul>
+<li>Ends at a specific key:
+<code>const upperRange = IDBKeyRange.upperBound("keyName")</code></li>
+<li>Ends before a specific key:
+<code>const upperRange = IDBKeyRange.upperBound("keyName", true)</code></li>
+</ul></li>
+<li>Use the bound method to specifies both lower bound and upper bound
+<ul>
+<li>Starts at key1, ends at key2:
+<code>const boundRange = IDBKeyRange.bound("key1", "key2")</code></li>
+<li>Starts after key1, ends at key2:
+<code>const boundRange = IDBKeyRange.bound("key1", "key2", true)</code></li>
+<li>Starts after key1, ends before key2:
+<code>const boundRange = IDBKeyRange.bound("key1", "key2", true, true)</code></li>
+<li>Starts at key1, ends before key2:
+<code>const boundRange = IDBKeyRange.bound("key1", "key2", false, true)</code></li>
+</ul></li>
+<li>Use key range in the cursor <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = db.transaction(<span class="string">&quot;users&quot;</span>).objectStore(<span class="string">&quot;users&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> range = IDBKeyRange.only(<span class="string">&quot;007&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> request = store.openCursor(range);</span><br><span class="line">request.onsuccess = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cursor = event.target.result;</span><br><span class="line">  <span class="keyword">if</span> (cursor) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(cursor.value);</span><br><span class="line">    cursor.continue();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Concurrency issues
+<ul>
+<li>Although IndexedDB is an asynchronous API inside of a web page,
+there still can be concurrency issues: if the same web page is open in
+two different browser tabs at the same time, it's possible that one may
+attempt to upgrade the database before the other is ready</li>
+<li>You should assign an <code>oversionchange</code> event handler to
+tackle the concurrency issues, the best response to this event is to
+immediately close the databse so that the version upgrade can be
+completed <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request, database;</span><br><span class="line"></span><br><span class="line">request = indexedDB.open(<span class="string">&quot;dbName&quot;</span>, <span class="number">1</span>);</span><br><span class="line">request.onsuccess = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  database = event.target.result;</span><br><span class="line">  database.onversionchange = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    database.close();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="modules">Modules</h1>
+<ol type="1">
+<li>Understanding the module pattern
+<ul>
+<li>Module pattern ideas
+<ul>
+<li>Break logic into pieces that are totally encapsulated from the rest
+of the code</li>
+<li>Allow each piece to explicitly define what parts of itself are
+exposed to external pieces</li>
+<li>Allow each piece to explicitly define what external pieces it needes
+to execute</li>
+</ul></li>
+<li>Module identifiers
+<ul>
+<li>Module systems are essentially key-value entities, where each module
+has anidentifier that can be used to reference it</li>
+<li>The module identifier can be a string, or an actual path to a module
+file</li>
+<li>Native browser module identifiers must provide a path to an actual
+JavaScript file. In addition, NodeJS will perform a search for module
+matches in side the <code>node_modules</code> directory, and can also
+match an identifier to a directory containing <code>index.js</code></li>
+</ul></li>
+<li>Module dependencies
+<ul>
+<li>The local module declares to the module system a list of external
+dependencies</li>
+<li>The module system inspects the dependencies and in turn guarantees
+that these modules will be loaded and initialized by the time the local
+module executes</li>
+</ul></li>
+<li>Module loading
+<ul>
+<li>When an external module is specified as a dependency, the local
+moduel excepts that when it is executed, the dependencies will be ready
+and initialized</li>
+<li>In the context of browsers, all dependencies should be sent to the
+browsers and loaded before the local module executes</li>
+</ul></li>
+<li>Entry points
+<ul>
+<li>A network of modules that depend upon each other must specify a
+single module as the entry point, where the path of execution will
+begin</li>
+<li>Dependencies between modules in an application can be represented as
+a directed graph</li>
+</ul></li>
+<li>Asynchronous dependencies: it is useful to laod modules on demand by
+allowing JavaScript code to instruct the module system to load a new
+module, and provide the module to a callback once it is ready</li>
+<li>Programmatic dependencies
+<ul>
+<li>Some module systems requier you to specify all dependenciesa at the
+beginning of a module, but some module system will allow you to
+dynamically add dependencies inside the program structure</li>
+<li>Programmatic dependencies allow for more complex dependency
+utilization, but make static module analysis more difficult</li>
+</ul></li>
+<li>Static analysis
+<ul>
+<li>The JavaScript you build into modules and deliver to the browsers is
+often subject to static analysis, where tools will inspect the structure
+of your code and reason about how it will behave without performing
+program execution</li>
+<li>More complicated module behaviro, such as programmatic dependencies,
+will make static analysis more difficult</li>
+</ul></li>
+</ul></li>
+<li>Pre-ES6b module loaders
+<ul>
+<li>Prior to ES6, JavaScript codebases using modules essentially wanted
+to use a language feature that was not available by default. Therefore,
+codebases would be written in a module syntax that conformed to a
+certain specification, and separate module tooling would server to
+bridge the gap between the module syntax and the JavaScript runtime</li>
+<li>CommonJS
+<ul>
+<li>The CommonJS specification outlines a convertion for module
+definition that uses synchronous declarative dependencies</li>
+<li>The specification is primiarily intended for module organization on
+the server, but it will also be used on the client side</li>
+<li>CommonJS module syntax will not work natively in the browser</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moduleB = <span class="built_in">require</span>(<span class="string">&quot;./moduleB&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">  stuff: moduleB.doStuff();s</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// equivalent to :</span></span><br><span class="line"><span class="comment">// module.exports.stuff = moduleB.doStuff();</span></span><br></pre></td></tr></table></figure></li>
+<li>Modules are always singletons, irrespective of how many times a
+module is referenced inside require()</li>
+<li>Modules are cached after the first time they are loaded, subsequent
+attempts to load a module will retrieve the cached module</li>
+<li>Module loading in CommonJs is synchronous, so require() can be
+programmatically invoked inlin in a module <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&quot;./moduleA&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>NodeJs can use absolute or relative paths to modules, the path to
+the module definition might reference a directory, or it might be a
+single JavaScript file</li>
+</ul></li>
+<li>Asynchronous Module Definition (AMD)
+<ul>
+<li>CommonJs is targeted at a server execution model, all loading of
+modules is synchronous, the AMD system is targeted at browser execution
+model, where there are penalties from increased network latency</li>
+<li>The strategy for AMD is for modules to declare their dependencies,
+and the module system runninng in the browsers will fetch the
+dependencies on demand and execute the module that depends on them once
+they have all loaded</li>
+<li>The core of the AMD module implementation is a function wrapper
+around the module definition, which prevents global variable declaration
+and allows for the loader library to control when to load modules</li>
+<li>AMD allows you to speficy the string identifier for your module
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// definition for a module with id moduleA, moduleA depends on moduleB,</span></span><br><span class="line"><span class="comment">// which will be loaded asynchronously</span></span><br><span class="line">define(<span class="string">&quot;moduleA&quot;</span>, [<span class="string">&quot;moduleB&quot;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">moduleB</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">      stuff: moduleB.doStuff();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>AMD also supports the require and exports objects, which allow for
+construction of CommonJs style modules inside an AMD moduel factory
+function</li>
+</ul></li>
+<li>Universal Module Definition (UMD)
+<ul>
+<li>The UMD module system was introduced to create module that could be
+used by both the CommonJS and the AMD module systems</li>
+<li>The UMD pattern defines module in a way that detects which module
+system is being used upon startup, configures it as appropriate, and
+wraps the whole thing in an immediately invoked function expression</li>
+</ul></li>
+<li>Module loader deprecation
+<ul>
+<li>The above module systems will become increasingly obsolete as
+support broadens for the ECMAScript 6 module specification</li>
+<li>The intense conflict between CommonJS and AMD cultivated the
+ECMAScript 6 module specification that we now enjoy</li>
+</ul></li>
+</ul></li>
+<li>Working with ES6 modules
+<ul>
+<li>ES6 module specification is simpler than its predecessor module
+loaders, and native browser support means that loader libraries and
+other preprocessing is not necessary</li>
+<li>Module taggin and definition
+<ul>
+<li>Modules in ES6 exist as a monolithic chunk of JavaScript, a script
+tage with type="module" will signal to the browser that the associate
+code should be executed as a module, as apposed to execution as
+traditional script <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// inline module</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span> </span><br><span class="line"><span class="javascript">  <span class="comment">// module code goes here</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">// external module file</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./myModule.js&quot;</span>&gt;</span> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Downloading a module file begins immediately after the module script
+tag is parsed, but execution is delayed until the document is completely
+parsed</li>
+<li>The order in which module script tag appears on the page is the
+order in which it will be executed <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// executes 3rd</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span> src=<span class="string">&quot;./myModule1.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">// executes 4th</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span> src=<span class="string">&quot;./myModule2.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">// executes 1st</span></span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;./jsFile1.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">// executes 2nd</span></span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;./jsFile2.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>ES 6 modules associated with a
+<code>&lt;script type="module"&gt;</code> tag are considered to be the
+entry module for a module graph. There are no restrictions as how many
+entry modules there can be on a page, and there is no limit to overlap
+of modules. No matter how many times a module is loaded in a page,
+irrespective of how that load occurs, it will only ever load a single
+time</li>
+</ul></li>
+<li>Module loading
+<ul>
+<li>ES 6 modules are unique in theri ability to be loaded both natively
+by the browser as well as in conjunction with third-party loaders and
+build tools</li>
+<li>A browser that supports ES6 modules will load the entire dependency
+graph from a top-level module, and it will do so asynchronously</li>
+</ul></li>
+<li>Module behavior
+<ul>
+<li>Best features from CommonJS and AMD:
+<ul>
+<li>Module code is only executed when it is loaded</li>
+<li>A moddule will only ever be loaded a single time</li>
+<li>Modules are singletons</li>
+<li>Module can define a public interface with which other modules can
+observe and interact</li>
+<li>Modules can request that other modules be loaded</li>
+<li>Circular dependencies are supported</li>
+</ul></li>
+<li>New features introduced in ES6
+<ul>
+<li>Modules by default execute in strict mode</li>
+<li>Modules do not share a global namespace</li>
+<li>The value of <code>this</code> at top-level of a module is
+undefined, as opposed to the <code>window</code> object in normal
+scripts</li>
+<li><code>var</code> declarations will not be added to the
+<code>window</code> object</li>
+<li>Modules are loaded and executed asynchronously</li>
+</ul></li>
+</ul></li>
+<li>Module exports</li>
 </ul></li>
 </ol>
 
@@ -5070,7 +5345,7 @@ querying and searching</li>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
 Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
 Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-handling-and-debugging"><span class="nav-number">21.</span> <span class="nav-text">Error handling and Debugging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xml-in-javascript"><span class="nav-number">22.</span> <span class="nav-text">XML in JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json"><span class="nav-number">23.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network-requests-and-remove-resources"><span class="nav-number">24.</span> <span class="nav-text">Network Requests and
-Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-side-storage"><span class="nav-number">25.</span> <span class="nav-text">Client-Side Storage</span></a></li></ol></div>
+Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-side-storage"><span class="nav-number">25.</span> <span class="nav-text">Client-Side Storage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modules"><span class="nav-number">26.</span> <span class="nav-text">Modules</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -5143,12 +5418,12 @@ Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-l
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">17:16</span>
+    <span title="Reading time total">17:26</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
