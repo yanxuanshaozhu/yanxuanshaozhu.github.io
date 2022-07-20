@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-17T04:04:52.296Z">
+<meta property="article:modified_time" content="2022-07-20T03:55:55.927Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-17 00:04:52" itemprop="dateModified" datetime="2022-07-17T00:04:52-04:00">2022-07-17</time>
+                <time title="Modified: 2022-07-19 23:55:55" itemprop="dateModified" datetime="2022-07-19T23:55:55-04:00">2022-07-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>174k</span>
+              <span>192k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:39</span>
+              <span>2:54</span>
             </span>
 
         </div>
@@ -5239,8 +5239,579 @@ scripts</li>
 <li>Modules are loaded and executed asynchronously</li>
 </ul></li>
 </ul></li>
-<li>Module exports</li>
+<li>Module exports
+<ul>
+<li>Modules can use exports from other modules using the
+<code>import</code> keyword, import must appear in the top level of a
+module</li>
+<li>A module identifier can be either the relative path to that module
+file from the current module or the absolute path to that module file
+form the base path</li>
+<li>Imports are treated as read-only views to the module, effectively
+the same as const-declared variables <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// moduleA.js</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="string">&quot;foo&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> bar = <span class="string">&quot;bar&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> baz = <span class="string">&quot;baz&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;foo, bar, baz&#125;;</span><br><span class="line"><span class="comment">// moduleB.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Foo <span class="keyword">from</span> <span class="string">&quot;./moduleA&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Foo.foo); <span class="comment">// &quot;foo&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(Foo.bar); <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(Foo.baz); <span class="comment">// &quot;baz&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// moduleC.js</span></span><br><span class="line"><span class="keyword">import</span>  &#123; foo, bar, baz <span class="keyword">as</span> myBaz&#125; <span class="keyword">from</span> <span class="string">&quot;./moduleA&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// &quot;foo&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(myBaz); <span class="comment">// &quot;baz&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>Module passthrough exports
+<ul>
+<li>Imported values can be piped directly through to an export
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// moduleA.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="string">&quot;foo&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// moduleB.js</span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">&quot;./moduleA&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="string">&quot;baz&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// moduleC.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Foo <span class="keyword">from</span> <span class="string">&quot;./moduleB&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Foo.foo); <span class="comment">// &quot;baz&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
+<li>Worker modules: ES 6 modules are fully compatible with Worker
+instances</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="workers">Workers</h1>
+<ol type="1">
+<li>Introduction to workers
+<ul>
+<li>A single JavaScript environment is essentially a virtualized
+environment running inside the host operating system, each open page in
+a browsers is allocated its own environment. Each page has its own
+memory, event loop, DOM, and so on. The environments of differeng pageas
+are in parallel</li>
+<li>Using workers, browsers are able to allocate a second child
+environment that is totally separated from the original page
+environment. The child environment is prevented from interacting with
+single-thread-dependent constructs such as the DOM, but is otherwise
+free to execute code in parallel with the parent environment</li>
+<li>Workers and threads
+<ul>
+<li>Similarities
+<ul>
+<li>Workers are implemented as actual threads</li>
+<li>Workers execute in parallel</li>
+<li>Workers can share some memory: workers are able to use a
+SharedArrayBuffer to share memory between multiple environments</li>
+</ul></li>
+<li>Difference
+<ul>
+<li>Workers do not share all memory</li>
+<li>Worker threads are not essentially part of the same process</li>
+<li>Worker threads are more expensive to create</li>
+</ul></li>
+</ul></li>
+<li>Types of workers
+<ul>
+<li>Dedicated web worker: aka dedicated worker, web worker, or just
+worker, can only be accessed by the page that spawned it</li>
+<li>Shared web worker: similar to a dedicated web worker, but can be
+accessed across multiple contexts</li>
+<li>Service worker: different from a dedicated web worker or a shared
+web worker, the primary purpose of a service worker is to act as a
+network request arbiter capable of intercepting, redirecting, and
+modifying requests dispatched by the page</li>
+</ul></li>
+<li>The <code>WorkerGlobalScope</code>
+<ul>
+<li>On a web page, the window object exposes a suite of global
+variables. Inside a worker, its global object is an instance of
+WorkerGlobalScope, which can be accessed using the <code>self</code>
+keyword</li>
+<li>Properties and methods
+<ul>
+<li><code>navigator</code>: returns the <code>WorkerNavigator</code>
+object</li>
+<li><code>self</code>: returns the <code>WorkerGlobalScope</code>
+object</li>
+<li><code>location</code>: returns the <code>WorkerLocation</code>
+object</li>
+<li><code>performance</code>: returns a <code>Performance</code>
+object</li>
+<li><code>console</code>: returns the <code>Console</code> object</li>
+<li><code>caches</code>: returns the <code>CacheStorage</code>
+object</li>
+<li><code>indexDb</code>: returns an <code>IDBFactory</code> object</li>
+<li><code>isSecureContext</code>: returns a boolean indicating whether
+the context of the window is secure</li>
+<li><code>origin</code>: returns the origin of the
+<code>WorkerGlobalScope</code> object</li>
+<li>Methods with the same name and function on window:
+<code>atob()</code>, <code>btoa()</code>, <code>clearInterval()</code>,
+<code>clearTimeout</code>, <code>createImageBitmap()</code>,
+<code>fetch()</code>, <code>setInterval()</code>,
+<code>setTimeout()</code></li>
+</ul></li>
+<li>Subclasses
+<ul>
+<li>A dedicated worker uses a
+<code>DedicatedWorkerGlobalScope</code></li>
+<li>A shared worker uses a <code>SharedWorkerGlobalScope</code></li>
+<li>A service worker uses a <code>ServiceWorkerGlobalScope</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Dedicated worker basics
+<ul>
+<li>Dedicated workers can be described as background scripts</li>
+<li>Creating a dedicated worker (the worker itself exists in a separate
+JavaScript environment) <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pass a javascript file to the worker constructor to </span></span><br><span class="line"><span class="comment">// let it load the script file in the background</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> Worker(<span class="string">&quot;./emptyWorker.js&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Worker security restrictions: worker script files can only be loaded
+from the same origin as the parent page, otherwise an error is thrown
+when attempting to construct the worker</li>
+<li>Using the worker object
+<ul>
+<li>The <code>Worker</code> object returned from the constructor is used
+as the single point of communication with the newly created dedicated
+worker, it can be used to transmit information between the worker and
+the parent context</li>
+<li>Worker object event handlers
+<ul>
+<li><code>onerror</code> called when an error is thrown inside the
+worker</li>
+<li><code>onmessage</code>: called when the worker script sends a
+message back to the parent context</li>
+<li><code>onmessageerror</code>: called when a message is received that
+cannot be deserialized</li>
+</ul></li>
+<li>Worker object methods
+<ul>
+<li><code>postMessage()</code>: used to send information to the worker
+via asynchronous message events</li>
+<li><code>terminate()</code>: used to immediately terminate the worker,
+no opportunity for cleanup</li>
+</ul></li>
+</ul></li>
+<li>The DedicatedWorkerGlobalScope
+<ul>
+<li>The global scope inside a dedicated worker is the
+DedicatedWorkerGlobalScope, this inherits from WorkerGlobalScope</li>
+<li>A worker is able to access this global scope using the
+<code>self</code> keyword</li>
+<li>Methods and properties for the DedicatedWorkerGlobalScope instance
+<ul>
+<li><code>name</code>: optional string identifier</li>
+<li><code>postMessage()</code>: counterpart to the <code>Worker</code>
+object's <code>postMessage()</code> method</li>
+<li><code>close()</code>: counterpart to the <code>Worker</code>
+object's <code>terminate()</code> method</li>
+<li><code>importScripts()</code>: used to import an arbitrary number of
+scripts into the worker</li>
+</ul></li>
+</ul></li>
+<li>The dedicated worker lifecycle
+<ul>
+<li>The <code>Worker()</code> constructor is the beginning of life for a
+dedicated worker</li>
+<li>Once created, a dedicated worker will last the lifetime of the page
+unless explicitly terminated either via self-termination
+(<code>self.close()</code>) or external
+termination(<code>worker.terminate()</code>)</li>
+</ul></li>
+<li>Worker data transfer
+<ul>
+<li>In languages that wupport traditional models of multithreading, you
+can use locks, mutexes, and volatile variables to transfer data between
+threads. In JavaScript, you have three ways: the structured clone
+algorithm, transferable objects, and shared array buffers</li>
+<li>Structured clone algorithm
+<ul>
+<li>This algorithm can be used to share a piece of data between two
+separate execution contexts</li>
+<li>This algorithm is implemented by the brwoser behind the scenes, but
+it cannot be invoked explicitly</li>
+<li>Common JavaScript data types are supported by this algorithm</li>
+<li>Once copied, changes to data in the original context will not affect
+the copied data</li>
+<li>Attemptying to clone an Error object, a Function object, or a DOM
+node will throw an error</li>
+<li>Object property descriptors, getters, setters, prototype chains are
+not cloned</li>
+</ul></li>
+<li>Transferable objects
+<ul>
+<li>It is possible to transfer ownership from one context to another
+using transferable objects</li>
+<li>This is useful when it is impratical to copy large amounts of data
+between contexts</li>
+<li>Transferable data types: <code>ArrayBuffer</code>,
+<code>MessagePort</code>, <code>ImageBitmap</code>,
+<code>OffscreenCanvas</code></li>
+</ul></li>
+<li>SharedArrayBuffer
+<ul>
+<li>When passing a SharedArrayBuffer inside postMessage(), the browser
+only passes a reference to the same block of memory, each context is
+free to modify the buffer as it would with a normal ArrayBuffer</li>
+<li>Sharing memory blocks between parallel threads introduces a risk of
+race condition</li>
+</ul></li>
+</ul></li>
+<li>Worker pools: because starting a worker is quite expensive, there
+are situations where it is more efficient to keep a fixed number of
+workers alive and dispatch work to them as necessary</li>
+</ul></li>
+<li>Shared workers
+<ul>
+<li>Two different pages on the same origin can share a single worker to
+reduce computational overheads</li>
+<li>Shared worker basics
+<ul>
+<li>Creating a shared worker <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pass a javascript file to the worker constructor to </span></span><br><span class="line"><span class="comment">// let it load the script file in the background</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> SharedWorker(<span class="string">&quot;./emptyWorker.js&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Shared worker identity and single occupancy
+<ul>
+<li>The Worker() constructor always creates a new worker instance, the
+SharedWorker() constructor will only create a new worker instance if one
+with the same identity does not already exist</li>
+<li>Shared worker identity is derived from the resolved script URL, the
+worker name, and the document origin</li>
+</ul></li>
+<li>Using the SharedWorker object
+<ul>
+<li>The <code>SharedWorker</code> object returned from the constructor
+is used as the single point of communication with the newly created
+shared worker, it can be used to transmit information between the worker
+and the parent context via a MessagePort, as well as catch error events
+emitted from the worker</li>
+<li>Related properties
+<ul>
+<li><code>onerror</code>: called when an error is thrown inside the
+worker</li>
+<li><code>posrt</code>: the MessagePort for communication with the
+worker</li>
+</ul></li>
+</ul></li>
+<li>The <code>SharedWorkerGlobalScope</code>
+<ul>
+<li>The global scope inside a shared worker is the
+SharedWorkerGlobalScope, which can be accessed using the
+<code>self</code> keyword</li>
+<li>Properties and methods: <code>name</code>,
+<code>importScripts()</code>, <code>close()</code>,
+<code>onconnect</code></li>
+</ul></li>
+<li>The shared worker lifecycle
+<ul>
+<li>A shared worker's lifecycle has the same stages and features of a
+dedicated woker</li>
+<li>A dedicated woker is inextricably bound to a single page, a shared
+worker will persist as long as a context remains connected to it</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Service workers
+<ul>
+<li>A service worker is a type of web worker that behaves like a proxy
+server inside the browser, it allows you to intercept outgoing requests
+and cache the response</li>
+<li>The service worker allows a web page to work without network
+connectivity, as some or all of the page can potentially be served from
+the service worker cache</li>
+<li>Multiple pages on a single domain will all interact with a single
+service worker instance</li>
+<li>Two primary tasks for a service worker
+<ul>
+<li>Act as a chahing layer for network requests</li>
+<li>Enable push notifications</li>
+</ul></li>
+<li>Service worker basics
+<ul>
+<li>The <code>ServiceWorkerContainer</code>
+<ul>
+<li>Service workers have no global constructor, they are managed through
+the <code>navigator.serviceWorker</code> object, which is a
+<code>ServiceWorkerContainer</code> object</li>
+</ul></li>
+<li>Creating a service worker:
+<code>navigator.serviceWorker.register(filePath)</code>, this returns a
+<code>Promise</code> object that resolves to a
+<code>ServiceWorkerRegistration</code> object</li>
+<li>Using the <code>ServiceWorkerContainer</code> object
+<ul>
+<li>Event handlers:
+<ul>
+<li><code>oncontrollerchange</code>: called when a new activated
+ServiceWorkerRegistration is required</li>
+<li><code>onerror</code>: called when an error is thrown inside any
+associated service worker</li>
+<li><code>onmessage</code>: called when the service worker script sends
+a message event back to the parent context</li>
+</ul></li>
+<li>Properties:
+<ul>
+<li><code>ready</code>: returns a <code>Promise</code> object that
+resolves to a <code>ServiceWorkerRegistration</code> object when the
+service worker is ready to receive messages, this promise will never
+reject</li>
+<li><code>controller</code>: returns the activated
+<code>ServiceWorker</code> object associated with the current page, or
+null if there is no active service worker</li>
+</ul></li>
+<li>Methods
+<ul>
+<li><code>register(url, options)</code>: creates or updates a
+<code>ServiceWorkerRegistration</code> using the provided url and
+options object</li>
+<li><code>getRegistration()</code>: returns a promise, which will
+resolve with a <code>ServiceWorkerRegistration</code> object that
+matches the provided scope, or resolve with undefined if there is no
+matching service worker</li>
+<li><code>getRegistrations()</code>: returns a promise, which will
+resolve with an array of all <code>ServiceWorkerRegistration</code>
+objects that are associated with the
+<code>ServiceWorkerContainer</code>, or an empty array if there are not
+associated service workers</li>
+<li><code>startMessage()</code>: starts the transmission of message
+dispatches via Client</li>
+</ul></li>
+</ul></li>
+<li>Using the <code>ServiceWorkerRegistration</code> object
+<ul>
+<li>Event handlers
+<ul>
+<li><code>onupdatefound</code>: called when a new version of this
+service worker begins installation</li>
+</ul></li>
+<li>Properties
+<ul>
+<li><code>scope</code>: returns the full URL path of the service
+worker's scope</li>
+<li><code>navigatyionPreload</code>: returns the
+<code>NavigationPreloadManager</code> instance associated with this
+registration object</li>
+<li><code>pushManager</code>: returns the PushManager instance
+associated with this registration object</li>
+<li><code>installing</code>: returns the service worker with a state of
+installing if there is currently one, else null</li>
+<li><code>waiting</code>: returns the service worker with a state of
+waiting if there is currently one</li>
+<li><code>active</code>: returns the service worker with a state of
+activating or active if there is currently one, else null</li>
+</ul></li>
+<li>Methods
+<ul>
+<li><code>getNotifications()</code>: returns a promise, which resolves
+with an array of Notification objects</li>
+<li><code>showNotifications()</code>: displays a notification
+configurable with a title and options arguments</li>
+<li><code>update()</code>: re-requests the service worker script
+directly from the service and initiates fresh installation if the new
+script differs</li>
+<li><code>unregister()</code>: attempts to un-register a service worker
+registration, this allows service worker execution to complete before
+performing the unregistration</li>
+</ul></li>
+</ul></li>
+<li>Using the <code>ServiceWorker</code> object
+<ul>
+<li>Event handlers
+<ul>
+<li><code>onstatechange</code>: called when the service worker changes
+state</li>
+</ul></li>
+<li>Properties
+<ul>
+<li><code>state</code>: returns the current state of the service worker,
+one of <code>installing</code>, <code>installed</code>,
+<code>activating</code>, <code>activated</code>,
+<code>redundant</code></li>
+<li><code>scriptURL</code>: returns the URL of the service worker
+script</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>The service worker cache
+<ul>
+<li>Before service workers, web pages lacked a roubust meahcnism for
+progrmatically caching network requests</li>
+<li>Some features of service workers
+<ul>
+<li>The service worker cache does not chache any request
+automatically</li>
+<li>The service worker cache has no concept of time-based
+expiration</li>
+<li>Service worker cache entries must by manually updated and
+deleted</li>
+<li>Caches nust by manually versioned</li>
+<li>The only browser-enfored eviction policy is based on storage
+available for the service worker cache to use</li>
+</ul></li>
+<li>The <code>CacheStorage</code> object
+<ul>
+<li>The CacheStorage object is a key-value store of string keys mapping
+to Cache objects, the CacheStorage object features an API that assembles
+an asynchronous Map</li>
+<li>Get the CacheStorage object: use the global object
+<code>caches</code></li>
+<li>Get the cache for a given key: <code>caches.open(key)</code>,
+non-string keys are converted to a string</li>
+<li>Check if a cache exists in the cache storage:
+<code>caches.has(key)</code></li>
+<li>Delete a cache: <code>caches.delete(key)</code></li>
+</ul></li>
+<li>The <code>Cache</code> object
+<ul>
+<li>The Cache also resembles an asynchronous Map, Cache key can either
+be a URL string or a Request object, these keys will map to Response
+object values</li>
+<li>The service worker cache is intended to only cache GET http
+requests, because the response will not change over time</li>
+<li>Methods
+<ul>
+<li><code>put(request, response)</code>: add the key-value pair to the
+cache, the key can be a URL string or a Request object, the value should
+be a Response object</li>
+<li><code>add(request)</code>: used when you only have the key, this
+method will dispatch a fetch() to the network and cache the response.
+Returns a promise, which resolves when the cache entry is successfully
+added</li>
+<li><code>addAll(requests)</code>: used when you wish to perform an
+all-or-nothing bulk addtion to the cache</li>
+<li><code>matchAll(request, options)</code>: returns a promise, which
+resolves to an array of matching cache Response objects</li>
+<li><code>match(request, options)</code>: returns a promise, which
+resolves to a matching cache Response object, or undefined if there are
+no cache hits</li>
+<li><code>cache.keys()</code>, <code>cache.delete(key)</code>, etc.</li>
+</ul></li>
+</ul></li>
+<li>Maximum cache storage
+<ul>
+<li>There is no uniform specification for maximum cache storage</li>
+<li>The <code>navigator.storage.estimate()</code> returns the
+approximate space available and how much is currently used in bytes</li>
+</ul></li>
+</ul></li>
+<li>Service worker clients
+<ul>
+<li>A service worker tracks an association with a window, worker, or
+service worker with a <code>Client</code> object, sertice workers can
+access the Client objects via the <code>Clients</code> interface using
+the <code>self.clients</code> property</li>
+<li>Client object properties and methods
+<ul>
+<li><code>id</code>, <code>type</code> (window, worker, sharedWorker),
+<code>url</code>, <code>postMessage(msg)</code> (send a targeted
+messaging to a single client)</li>
+<li><code>openWindow(url)</code>: allows you to open a new window at the
+specified URL, effectively adding a new Client to the service
+worker</li>
+<li><code>claim()</code>: forcibly set the service worker to control all
+clients in its scope</li>
+</ul></li>
+</ul></li>
+<li>Service workers and consistency
+<ul>
+<li>In order to enable web pages to emulate native application behavior,
+service workers should support versioning</li>
+<li>Two primary form of consistency
+<ul>
+<li>Code consistency: since web pages commonly undergo incremental
+upgrades, service workers should provide an encorcement mechanism to
+ensuer that all concurrently running pages on the same origin are always
+built from the assets from the same version</li>
+<li>Data consistency: since web I/O format may change between different
+versions, service workers consistency mechanism should also ensure that
+web I/O behaves identically for all concurrently running pages on the
+same origin</li>
+</ul></li>
+</ul></li>
+<li>Service worker lifecycle
+<ul>
+<li>There are six states a service worker might exist in:
+<code>parsed</code>, <code>installing</code>, <code>installed</code>,
+<code>activating</code>, <code>activated</code>, <code>redundant</code>.
+A full lifecycle for a service worker will always visit these states in
+this order</li>
+<li>A service worker that encounters an error during installation or
+activation will skip to the redundant state</li>
+<li>The <code>parsed</code> state
+<ul>
+<li>A newly created service worker is in the parsed state</li>
+<li>This state has no event or <code>ServiceWorker.state</code>
+value</li>
+</ul></li>
+<li>The <code>installing</code> state
+<ul>
+<li>This state is where all service worker setup tasks should be
+performed</li>
+<li>If a service worker reaches this state, the
+<code>ServiceWorkerRegistration</code> object will fire the
+<code>updatefound</code> event</li>
+<li>This state is frequently used to populate the service worker's
+cache</li>
+<li>If there is no error thrown or promise rejected, the service worker
+proceeds to the installed state</li>
+</ul></li>
+<li>The <code>installed</code> (<code>waiting</code>) state: this state
+means the service worker has no additional setup tasks to perform and is
+prepared to assume control of clients once it is allowed to do so</li>
+<li>The <code>activating</code> state
+<ul>
+<li>This state indicates that the service worker has been selected by
+the browsers to become the service worker that should control the
+page</li>
+<li>While in the activating state, no functional events such as
+<code>fetch</code> or <code>push</code> will be fired until the service
+worker reaches the <code>activated</code> state</li>
+</ul></li>
+<li>The <code>activated</code> state
+<ul>
+<li>This state indicates that the service worker is in control of one or
+many clients</li>
+<li>In this state, the service state will capture fetch() events inside
+its scope as well as notification and push events</li>
+</ul></li>
+<li>The <code>redundant</code> state: this is the graveyard for a
+service worker, no events will be passed to it, and the browser is free
+to destroy it and free up its resources</li>
+</ul></li>
+<li>Intercepting a fetch event
+<ul>
+<li>The interception ability of service workers is not limited to the
+fetch event, but can also intercept requests for JavaScript, CSS,
+images,and HTML</li>
+<li>Service workers use the <code>event.respondWith()</code> method to
+decide how to handle a fetch event</li>
+<li>Return a response from network: a passthrough for a fetch event.
+This strategy is suitable for requests that need to reach the server
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.onfetch = <span class="function">(<span class="params">fetchEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  fetchEvent.respondWith(</span><br><span class="line">    fetch(fetchEvent.request)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Return from cache: a cache check. This strategy is suitable for
+requests that are guaranteed to be in the cache <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.onfetch = <span class="function">(<span class="params">fetchEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  fetchEvent.respondWith(</span><br><span class="line">    caches.match(fetchEvent.request)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Return from network with cache fallback: gives prefernence to
+up-to-date responses from the network but will return values in the
+cache if they exist. This stragety is suitable for finding the most
+up-to-date information ASAP <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.onfetch = <span class="function">(<span class="params">fetchEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  fetchEvent.respondWith(</span><br><span class="line">    fetch(fetchEvent.request).catch(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> caches.match(fetchEvent.request);</span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Generic fallback: this strategy accounts for scenarios where both
+the cache and network fail to produce a resource <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.onfetch = <span class="function">(<span class="params">fetchEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  fetchEvent.respondWith(</span><br><span class="line">    caches.match(fetchEvent.request).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> response || fetch(fetchEvent.request);</span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Push notifications
+<ul>
+<li>A wqeb application should be able to support push notifications,
+which means it should be able to receive a push event from a server and
+display a notification on the device</li>
+<li>In order for push notifications to work, the service workers should
+be able to display notification, handler interactions with those
+notifications, subscribe to server-event push notifications, handle push
+messages even when the application is not in the foreground or open</li>
+<li>Displaying notifications
+<ul>
+<li>Service workers have access to the Notification API via their
+registration object</li>
+<li>Use
+<code>ServiceWorkerRegistration.showNotification(title, options)</code>
+to display a notification</li>
+</ul></li>
+<li>Handling notification events: handle the
+<code>self.onnotificationclick</code> event and
+<code>self.onnotificationclose</code> event</li>
+<li>Subscribing to push events
+<ul>
+<li>The subsctiption must happen via the service worker's PushManager
+object</li>
+<li>Use the
+<code>ServiceWorkerRegistration.pushManager.subscribe(options)</code>
+method to subscribe to push events</li>
+</ul></li>
+<li>Handling push events
+<ul>
+<li>Once subscribed, the service worker will receive push events each
+time the service pushes a message</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="best-practices">Best Practices</h1>
+<ol type="1">
+<li>Maintainability</li>
 </ol>
 
     </div>
@@ -5345,7 +5916,7 @@ scripts</li>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-javascript"><span class="nav-number">1.</span> <span class="nav-text">What is JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-in-html"><span class="nav-number">2.</span> <span class="nav-text">JavaScript in HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#language-basics"><span class="nav-number">3.</span> <span class="nav-text">Language Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#variables-scope-and-memory"><span class="nav-number">4.</span> <span class="nav-text">Variables, Scope, and Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-reference-types"><span class="nav-number">5.</span> <span class="nav-text">Basic Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collection-reference-types"><span class="nav-number">6.</span> <span class="nav-text">Collection Reference Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterators-and-generators"><span class="nav-number">7.</span> <span class="nav-text">Iterators and generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objects-classes-and-objected-oriented-programming"><span class="nav-number">8.</span> <span class="nav-text">Objects,
 Classes, and Objected-Oriented Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxies-and-reflect"><span class="nav-number">9.</span> <span class="nav-text">Proxies and Reflect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functions"><span class="nav-number">10.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promises-and-async-functions"><span class="nav-number">11.</span> <span class="nav-text">Promises and Async Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-browser-object-model"><span class="nav-number">12.</span> <span class="nav-text">The Browser Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-detection"><span class="nav-number">13.</span> <span class="nav-text">Client Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-document-object-model"><span class="nav-number">14.</span> <span class="nav-text">The Document Object Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-extensions"><span class="nav-number">15.</span> <span class="nav-text">DOM Extensions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dom-levels-2-and-3"><span class="nav-number">16.</span> <span class="nav-text">DOM Levels 2 and 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#events"><span class="nav-number">17.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-and-graphics-with-canvas"><span class="nav-number">18.</span> <span class="nav-text">Animation and Graphics with
 Canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scripting-forms"><span class="nav-number">19.</span> <span class="nav-text">Scripting Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-api"><span class="nav-number">20.</span> <span class="nav-text">JavaScript API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-handling-and-debugging"><span class="nav-number">21.</span> <span class="nav-text">Error handling and Debugging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xml-in-javascript"><span class="nav-number">22.</span> <span class="nav-text">XML in JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json"><span class="nav-number">23.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network-requests-and-remove-resources"><span class="nav-number">24.</span> <span class="nav-text">Network Requests and
-Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-side-storage"><span class="nav-number">25.</span> <span class="nav-text">Client-Side Storage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modules"><span class="nav-number">26.</span> <span class="nav-text">Modules</span></a></li></ol></div>
+Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-side-storage"><span class="nav-number">25.</span> <span class="nav-text">Client-Side Storage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modules"><span class="nav-number">26.</span> <span class="nav-text">Modules</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#workers"><span class="nav-number">27.</span> <span class="nav-text">Workers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#best-practices"><span class="nav-number">28.</span> <span class="nav-text">Best Practices</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -5423,7 +5994,7 @@ Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-l
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">17:26</span>
+    <span title="Reading time total">17:41</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
