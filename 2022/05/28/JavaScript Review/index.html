@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/clientDimension.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/JSReview/scrollDimension.png">
 <meta property="article:published_time" content="2022-05-28T18:41:06.000Z">
-<meta property="article:modified_time" content="2022-07-20T03:55:55.927Z">
+<meta property="article:modified_time" content="2022-07-23T20:23:13.351Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-19 23:55:55" itemprop="dateModified" datetime="2022-07-19T23:55:55-04:00">2022-07-19</time>
+                <time title="Modified: 2022-07-23 16:23:13" itemprop="dateModified" datetime="2022-07-23T16:23:13-04:00">2022-07-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>192k</span>
+              <span>199k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2:54</span>
+              <span>3:01</span>
             </span>
 
         </div>
@@ -5811,7 +5811,233 @@ time the service pushes a message</li>
 </ol>
 <h1 id="best-practices">Best Practices</h1>
 <ol type="1">
-<li>Maintainability</li>
+<li>Maintainability
+<ul>
+<li>What is maintainable code
+<ul>
+<li>Understandable: someone else can pick up the code without a
+walk-through by the original developer</li>
+<li>Intuitive: no matter how complex the operation is, things in the
+code seem to make sense</li>
+<li>Adaptable: the code is written in such a way that variation in data
+does not require a complete rewrite</li>
+<li>Extendable: the code allows for extension of the core functionality
+in the future</li>
+<li>Debuggable: the code gives you enough information to identify the
+issue when something goes wrong</li>
+</ul></li>
+<li>Code conventions
+<ul>
+<li>Readibility
+<ul>
+<li>Indentation is usually done by using foure spaces instead of by
+using the tab key</li>
+<li>Make comments for functions and methods, large sections of code,
+complex algorithms and hacks</li>
+</ul></li>
+<li>Variable and function naming
+<ul>
+<li>Variable names should be nouns, function names should begin with a
+verb</li>
+<li>Use logical names for variables and functions, without worrying
+about the length</li>
+<li>Variables, functions, and methods should begin with a lowercase
+letter and camelCase</li>
+<li>Be descriptive and sensible with names</li>
+</ul></li>
+<li>Variable type transparency
+<ul>
+<li>Variables are loosely typed in JavaScript, it is easy to lose track
+of the type of data that a variable should contain</li>
+<li>The first solution is through initialization: initialize a variable
+with a value of the correct type after declaring it</li>
+<li>The second solution is to use Hungarian notation: prepend one or
+more characters to the beginning of a variable to indicate the data
+type. o for objects, s for strings, i for integers, b for booleans, f
+for floats, etc.</li>
+</ul></li>
+</ul></li>
+<li>Loose coupling
+<ul>
+<li>Whenever parts of an application depend too closely on one another,
+the code becomes too tightly coupled and hard to maintain, this usually
+happens when objects refer directly to one another in such a way that a
+change to one always requires a change to other</li>
+<li>Decouple HTML/JavaScript
+<ul>
+<li>JavaScript that appears inline in HTML, either using a script tag
+with inline code or using HTML attributes, is too tightly coupled</li>
+<li>HTML and JavaScript are also closely coupled when HTML is contained
+in JavaScript, this usually happends using innerHTML to insert HTML into
+the page</li>
+<li>When HTML and JavaScript are too tightly coupled, interpreting an
+JavaScript error means first determining whether the error occured in
+the HTML portion or in the JavaScript portion, which reduces the
+readbility of the code</li>
+</ul></li>
+<li>Decouple CSS/JavaScript
+<ul>
+<li>The most common example of tight coupling is using JavaScript to
+change individual styles</li>
+<li>Modern web applications use JavaScreipt to change styles frequently,
+so it is not possible to completely decouple CSS and JavaScript, the
+coupling can be made looser by changeing element class attributes
+instead of individual styles</li>
+</ul></li>
+<li>Decouple application logic/event handlers
+<ul>
+<li>Rules for loose coupling of application and business logic
+<ul>
+<li>Do not pass event object into other methods, pass only the data from
+the event object</li>
+<li>Every action that is possible in the application should be possible
+without executing an event handler</li>
+<li>Event handlers should process the event and then hand off processing
+to application logic</li>
+</ul></li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The application logic and event handler are highly coupled</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyPress</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.keyCode === <span class="number">13</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> target = event.target;</span><br><span class="line">    <span class="keyword">let</span> value  = <span class="number">5</span> * <span class="built_in">parseInt</span>(target.value);</span><br><span class="line">    <span class="keyword">if</span> (value &gt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">&quot;error-msg&quot;</span>).style.display = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Code after decoupling</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateValue</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  value = <span class="number">5</span> * <span class="built_in">parseInt</span>(value);</span><br><span class="line">  <span class="keyword">if</span> (value &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;error-msg&quot;</span>).style.display = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyPress</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = event.target;</span><br><span class="line">  validateValue(target.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Programming practices
+<ul>
+<li>Respect object ownership
+<ul>
+<li>If you are not responsible for the creation or maintenance of an
+object, its constructor, or its methods, you shouldn't be making changes
+to it</li>
+<li>You can create a new object with the functionality you need, and
+interact with the object of interest</li>
+<li>You can create a custom type that inherits from the type you want to
+modify, you can modify the custom type with additional
+functionality</li>
+<li></li>
+</ul></li>
+<li>Avoid globals
+<ul>
+<li>Avoid global variables and functions whenever possible</li>
+</ul></li>
+<li>Avoid null comparisons
+<ul>
+<li>JavaScript does not do any automatic type checking, it's the
+developer's responsibility</li>
+<li>Checking a value against null is overused, and frequently leads to
+erros due to insufficient type checking, use <code>typeof</code> and
+<code>instanceof</code> for type checking</li>
+</ul></li>
+<li>Use constants
+<ul>
+<li>The goal of relying on constants is to isolate data from application
+logic in such a way that it can be changed without risking the
+introduction of errors</li>
+<li>Repeated values, user interface strings, URLs, and any value that
+may change should be stored in a constant</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Performance
+<ul>
+<li>Be scope-aware
+<ul>
+<li>As the number of scopes in the scope chain increases, so does the
+amount of time it takes to access variables outside of the current
+scope</li>
+<li>It is alwasys slow to access a global variable than it is to access
+a local variable</li>
+<li>Avoid global lookups, avoid with statements (a with statement
+creates its own scope)</li>
+</ul></li>
+<li>Choose the right approach
+<ul>
+<li>Avoid uncessary property lookup</li>
+<li>Optimize loops: simplify the terminal condition, simplify the loop
+body, use postest loops</li>
+</ul></li>
+<li>Minimize statement count
+<ul>
+<li>A single statement can ocmplete multiple operations faster than
+multiple statements each performing a single operation</li>
+<li>Multiple variable declaration should be in one statement</li>
+<li>Insert iterative values <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Before</span></span><br><span class="line"><span class="keyword">let</span> name = values[i];</span><br><span class="line">i++;</span><br><span class="line"><span class="comment">// After  </span></span><br><span class="line"><span class="keyword">let</span> name = values[i++];</span><br></pre></td></tr></table></figure></li>
+<li>Use array and object literals</li>
+</ul></li>
+<li>Optimize DOM interactions
+<ul>
+<li>Minimize live updates</li>
+<li>User innerHTML: for large amounts of updates, using innerHTML is
+faster than using the standard DOM methods (like the
+<code>createElementById()</code> method)</li>
+<li>Beware of HTMLCollection: anytime you access an HTMLCollection,
+whether it be a property or a method, you are performing a query on the
+document, an that querying is quite expensive</li>
+</ul></li>
+</ul></li>
+<li>Deployment
+<ul>
+<li>Build process
+<ul>
+<li>You should not pass your untouhed code to a browser for test purpose
+<ul>
+<li>Intellectual property issues: post source code online let others to
+figure what you are doing</li>
+<li>File size: source with large amount of comments is good for
+maintainability but bad for performance</li>
+<li>Code organization: the way you organize code for maintainability is
+not necessarily the best wasy to deliver it to the browser</li>
+</ul></li>
+<li>File structure: spearate JavaScript files in different files</li>
+<li>Task runners: a task runner with automate tasks is a good idea</li>
+<li>Tree shaking
+<ul>
+<li>Tree shaking is an effective strategy for reducing payload size</li>
+<li>Tree shaking is capable of determining which parts of the codebase
+are not needed at all, and remove them from the codebase to reduce
+bundle size</li>
+</ul></li>
+<li>Module bundlers: used to identify the landscape of JavaScript
+dependencies in an application, combine them into a monolithic
+application, make decition about how the modules should be organized and
+concatenated, and generate the output files that will be provided to the
+browser</li>
+</ul></li>
+<li>Validation
+<ul>
+<li>Checking code in the browser suffers from several issues
+<ul>
+<li>The validation canot be easily automated or ported from system to
+system</li>
+<li>Aside from syntax errors, problems are encountered only when code is
+executed, leaving it possible for errors to occur</li>
+</ul></li>
+<li>Several tools like JSLint and ESLint are popular JavaScript
+debugging tools</li>
+</ul></li>
+<li>Compression
+<ul>
+<li>File comprression involves two aspects
+<ul>
+<li>Code size: the number of bytes that need to be parsed by the
+browser</li>
+<li>Wire weight: the number of bytes that are actually transmitted from
+the server to the browser</li>
+</ul></li>
+<li>Code minification: remove extra white space, remove all comments,
+shorten variable names, function names, and other identifiers</li>
+<li>JavaScript compilation: remove unused code, transform parts of code
+to use more concise syntax, global inlining of function calls, constants
+and variables</li>
+<li>JavaScript transpilation: transpilation will allow you to wield all
+the newest syntactical specification features without having to worry
+about backwards browser compatibility</li>
+<li>HTTP compression
+<ul>
+<li>All major browsers support client-side decompression or resources
+that they receive</li>
+<li>The srever can compress JavaScript using sever-dependent
+capabilities, and include a header indicating the compression
+format</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -5994,7 +6220,7 @@ Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-l
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">17:41</span>
+    <span title="Reading time total">17:48</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
