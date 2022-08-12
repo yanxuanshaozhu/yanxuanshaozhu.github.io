@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/SpringFrameworkRuntime.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/projectStructure.png">
 <meta property="article:published_time" content="2022-07-24T23:44:33.000Z">
-<meta property="article:modified_time" content="2022-08-11T05:42:21.464Z">
+<meta property="article:modified_time" content="2022-08-12T03:38:58.109Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-11 01:42:21" itemprop="dateModified" datetime="2022-08-11T01:42:21-04:00">2022-08-11</time>
+                <time title="Modified: 2022-08-11 23:38:58" itemprop="dateModified" datetime="2022-08-11T23:38:58-04:00">2022-08-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,14 +227,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>47k</span>
+              <span>49k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>43 mins.</span>
+              <span>44 mins.</span>
             </span>
 
         </div>
@@ -779,7 +779,7 @@ read)：事務A訪問數據，期間事務B訪問了數據，并進行了修改�
 </ul></li>
 <li>SpringMVC是一個基於Java實現的MVC設計模型的請求驅動類型的輕量級Web框架，屬於Springframework的後續產品。Spring框架整合SpringMVC比整合其他的表現層框架要容易</li>
 </ul></li>
-<li>Java Web知識補充
+<li>Java Web基礎知識
 <ul>
 <li>資源分類
 <ul>
@@ -803,8 +803,9 @@ read)：事務A訪問數據，期間事務B訪問了數據，并進行了修改�
 <ul>
 <li><code>WEB-INF</code>目錄放<code>web.xml</code>,<code>claasses</code>目錄(設置爲output),
 <code>lib</code>目錄(設置為jar
-directory，注意爲了讓Idea識別Servlet接口，要把Tomcat的lib目錄下的<code>servlet-api.jar</code>放到lib目錄中)
+directory，注意爲了讓Idea識別Servlet接口，要把Tomcat的lib目錄下的<code>servlet-api.jar</code>放到lib目錄中)。<code>WEB-INF</code>目錄下的資源不能被瀏覽器訪問到
 <img src="/images/Spring/projectStructure.png"></li>
+</ul></li>
 </ul></li>
 </ul></li>
 <li>Tomcat
@@ -834,14 +835,60 @@ linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code
 在<code>On Update action</code>和<code>On frame deactivation</code>選擇<code>Update resources</code>；在<code>Deployment</code>下面添加當前項目，根據需求修改<code>Application context</code>(虛擬目錄名字)</li>
 </ul></li>
 </ul></li>
-<li>Servlet概述
+<li>Servlet
 <ul>
 <li>Servlet是server applet的縮寫，意思是運行在服務器的小程序</li>
 <li>瀏覽器訪問一個動態資源的時候，需要在服務器上有一個類來處理請求，這個類就是Servlet的實現類。Servlet是一個接口，定義了Java類被瀏覽器訪問到(被Tomcat識別到)的規則，我們需要實現Servlet接口，重寫對應的方法</li>
-<li>配置Servlet:
+<li>XML配置Servlet:
 爲了讓資源和Servlet類對應起來，需要在<code>web.xml</code>中配置servlet和servlet-mapping
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置Servlet類 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- name是Servlet的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- class是Servlet類的全限定類名 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.yanxuanshaozhu.web.servlet.ServletDemo<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置Servlet類和資源路徑的對應 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Servlet類的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 資源路徑的URL --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置Servlet類 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- name是Servlet的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- class是Servlet類的全限定類名 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.yanxuanshaozhu.web.servlet.ServletDemo<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置Servlet類和資源路徑的對應 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Servlet類的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 資源路徑的URL，以/開頭 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/intro<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Servlet3.0及以上版本支持用注解配置Servlet，不需要<code>web.xml</code>：在類上面使用<code>@WebServlet(urlPatterns = "/資源路徑")</code>，簡寫為<code>@WebServlet("/資源路徑")</code>。一個注解可以定義多個訪問路徑：<code>@WebServlet("/資源路徑1", "/資源路徑2, ..., "/資源路徑n")</code>,
+資源路徑也可使使用通配符，例如<code>@WebServlet("/*")</code></li>
+<li>訪問資源和Sevlet對應：服務器收到請求後解析訪問的URL，遍歷<code>web.xml</code>搜索對應的<code>url-pattern</code>標簽，然找到<code>servlet-class</code>對應的類名，把字節碼加載到服務器内存中，然後通過反射創建實例，調用類中的方法</li>
+<li>Servlet的生命周期
+<ul>
+<li>創建：
+<ul>
+<li>默認第一次資源被訪問的時候，Servlet被創建，然後調用<code>init</code>方法，<code>init</code>方法只執行一次。</li>
+<li>可以通過配置把Servlet改成在啓動服務器后創建，創建後調用<code>init</code>方法，需要在<code>web.xml</code>進行如下配置:
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 啓動時創建，n&gt;= 0；第一次訪問創建，n &lt; 0。默認值n = -1，默認不用配置這個--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>n<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Servlet只會創建一次，是單例對象，多綫程創建可能會有安全問題。所以不要在Servlet類中定義成員變量，防止多綫程共享數據不一致問題</li>
 </ul></li>
+<li>提供服務:
+每次資源被訪問的時候，<code>service</code>方法被調用，這個方法可以被多次調用</li>
+<li>銷毀:
+<ul>
+<li>在服務器正常關閉的時候，Servlet被銷毀，然後調用<code>destroy</code>方法，<code>destroy</code>方法只執行一次</li>
+<li>如果服務器不是正常關閉，<code>destroy</code>方法也不會被調用</li>
+</ul></li>
+<li><code>getServletConfig()</code>：獲取Servlet配置,
+<code>getServletInfo</code>：獲取Servlet信息</li>
+</ul></li>
+<li>Servlet體系結構
+<ul>
+<li><code>Servlet</code>是接口</li>
+<li><code>GenericServlet</code>是實現<code>Servlet</code>接口的抽象類，它對Servlet接口方法做了默認空實現，所以繼承<code>GenericServlet</code>只需要重寫<code>service</code>方法</li>
+<li><code>HttpServlet</code>是繼承<code>GenericServlet</code>抽象類，他是對HTTP協議的封裝，繼承<code>HttpServlet</code>一般只需要重寫<code>doGet</code>、<code>doPost</code>方法
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yanxuanshaozhu.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> jakarta.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> jakarta.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> jakarta.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> jakarta.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> jakarta.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpWebServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;doGot!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;doPosted!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>HTTP概述
+<ul>
+<li>HTTP是基於TCP/IP的高級協議，默認端口號是80，基於請求響應模型(請求和相應一一對應)，
+無狀態(每次請求是獨立的，不能交互數據)</li>
+<li>請求消息數據格式
+<ul>
+<li>請求消息字符串格式
+<ul>
+<li>請求行：格式是 "請求方式 URL 請求協議/版本"</li>
+<li>請求頭：格式是 "key:value"，
+<code>User-Agent</code>表示瀏覽器版本信息，服務器可以用這個來解決兼容性問題，<code>Referer</code>：告訴服務器當前請求從哪裏來(防止盜鏈，便於統計)</li>
+<li>請求空行: 空行，起到分割作用</li>
+<li>請求體: 格式是"key=value"</li>
+</ul></li>
+<li>GET方式請求參數在URL後面，POST方式請求參數在請求體中</li>
+</ul></li>
+<li>響應消息數據格式</li>
 </ul></li>
 </ol>
 
@@ -1019,7 +1066,7 @@ linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:32</span>
+    <span title="Reading time total">18:34</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
