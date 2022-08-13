@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/SpringFrameworkRuntime.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/projectStructure.png">
 <meta property="article:published_time" content="2022-07-24T23:44:33.000Z">
-<meta property="article:modified_time" content="2022-08-12T03:38:58.109Z">
+<meta property="article:modified_time" content="2022-08-13T05:49:17.001Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-11 23:38:58" itemprop="dateModified" datetime="2022-08-11T23:38:58-04:00">2022-08-11</time>
+                <time title="Modified: 2022-08-13 01:49:17" itemprop="dateModified" datetime="2022-08-13T01:49:17-04:00">2022-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,14 +227,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>49k</span>
+              <span>55k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>44 mins.</span>
+              <span>50 mins.</span>
             </span>
 
         </div>
@@ -832,7 +832,7 @@ linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code
 <li><code>Run</code> -&gt; <code>Edit Configurations</code> -&gt;
 左邊加號選擇 <code>Tomcat Server Local</code> -&gt;
 右邊<code>Server</code>下面選擇Tomcat服務器版本,
-在<code>On Update action</code>和<code>On frame deactivation</code>選擇<code>Update resources</code>；在<code>Deployment</code>下面添加當前項目，根據需求修改<code>Application context</code>(虛擬目錄名字)</li>
+在<code>On Update action</code>和<code>On frame deactivation</code>選擇<code>Update classes and resources</code>；在<code>Deployment</code>下面添加當前項目，根據需求修改<code>Application context</code>(虛擬目錄名字)</li>
 </ul></li>
 </ul></li>
 <li>Servlet
@@ -876,19 +876,147 @@ linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code
 <ul>
 <li>HTTP是基於TCP/IP的高級協議，默認端口號是80，基於請求響應模型(請求和相應一一對應)，
 無狀態(每次請求是獨立的，不能交互數據)</li>
-<li>請求消息數據格式
+<li>請求消息格式
 <ul>
-<li>請求消息字符串格式
-<ul>
-<li>請求行：格式是 "請求方式 URL 請求協議/版本"</li>
+<li>請求行：格式是 "請求方式 URL 請求協議/版本"，</li>
 <li>請求頭：格式是 "key:value"，
 <code>User-Agent</code>表示瀏覽器版本信息，服務器可以用這個來解決兼容性問題，<code>Referer</code>：告訴服務器當前請求從哪裏來(防止盜鏈，便於統計)</li>
-<li>請求空行: 空行，起到分割作用</li>
-<li>請求體: 格式是"key=value"</li>
+<li>請求空行: 空行，用來分割請求頭和請求體</li>
+<li>請求體:
+格式是"key=value"，GET方式請求參數在URL後面，POST方式請求參數在請求體中</li>
 </ul></li>
-<li>GET方式請求參數在URL後面，POST方式請求參數在請求體中</li>
+<li>Request對象
+<ul>
+<li><code>ServletRequest</code>對象和<code>ServletResponse</code>對象：收到請求後，服務器創建req和res對象，把請求消息封裝到req中，把req和res傳給service方法，在service方法中用req獲取請求消息，對請求進行處理，把響應消息封裝到res中，最後服務器從res中拿出響應消息返還給瀏覽器</li>
+<li><code>ServletRequest</code>和<code>HttpServletRequest</code>都是接口，<code>RequestFacade</code>實現了<code>HttpServletRequest</code>接口，這個類就是Tomcat用的實現類</li>
+<li>Request對象功能
+<ul>
+<li>獲取請求數據
+<ul>
+<li>獲取請求行:
+<code>req.getMethod()</code>獲取請求方式，<code>req.getContextPath()</code>
+獲取虛擬目錄， <code>req.getServletPath()</code>
+獲取Servlet路徑，<code>req.getQueryString()</code>
+獲取請求參數，<code>req.getRequestURL()</code>
+獲取請求URL，<code>req.getProtocol()</code>獲取請求協議和版本，
+<code>req.getRemoteAddr()</code> 獲取客戶端ip地址</li>
+<li>獲取請求頭: <code>req.getHeader(key)</code>
+通過請求頭名稱獲取請求頭值，
+<code>req.getHeaderNames()</code>獲取所有請求頭名稱 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Enumeration&lt;String&gt; names = req.getHeaderNames();</span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">   String name = names.nextElement();</span><br><span class="line">   String value = req.getHeader(name);</span><br><span class="line">   System.out.println(name + <span class="string">&quot; =&gt; &quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>獲取請求體：請求體數據是流，需要先獲取流，再獲取具體數據。<code>req.getReader()</code>獲取字符流數據，只適用於字符數據，<code>req.getInputStream()</code>獲取字節流流數據，適用於所有數據類型</li>
+<li>獲取請求參數的通用方法：<code>req.geParameter(key)</code>：獲取value，<code>req.getParameterNames()</code>：獲取所有key，<code>req.getParameterValues(key)</code>：獲取所有value，適用於複選框，<code>req.getParameterMap()</code>：獲取參數的k-v組合</li>
 </ul></li>
-<li>響應消息數據格式</li>
+<li>請求轉發
+<ul>
+<li>請求轉發是在服務器内部的一種資源跳轉方式，Servlet需要各自功能邏輯相對獨立，因此一個請求可能需要多個Servlet進行協作，因此就需要請求轉發</li>
+<li>流程:
+<ul>
+<li>通過request對象獲取請求轉發器對象:
+<code>req.getRequestDispatcher(redirectTargetPath)</code></li>
+<li>通過請求轉發器進行轉發:
+<code>dispatcher.forward(req, res)</code></li>
+</ul></li>
+<li>轉發的特點
+<ul>
+<li>轉發之後瀏覽器地址欄路徑沒有變化(轉發是服務器内部的，客戶端不知道發生了轉發)</li>
+<li>轉發只能轉發到服務器内部</li>
+<li>轉發的時候客戶端只對服務器發送了一次請求</li>
+</ul></li>
+</ul></li>
+<li>數據共享
+<ul>
+<li>域對象：一個有作用範圍的對象，範圍内部可以共享數據</li>
+<li>request域：一次請求的範圍，因爲轉發只有一次請求，因此多個Servlet可以共享數據</li>
+<li>request實現共享數據：<code>req.setAttribute(key, value)</code>，一個Servlet設置了req屬性之後，請求轉發的另一個servlet可以通過<code>req.getAttribute(key)</code>獲取</li>
+</ul></li>
+<li>獲取<code>ServletContext</code>對象:
+通過<code>req.getServletContext()</code>獲取</li>
+</ul></li>
+</ul></li>
+<li>一個登錄案例
+<ul>
+<li>用戶登錄：成功顯示用戶名成功，失敗顯示失敗</li>
+<li>邏輯：用戶html頁面提交post請求到loginServlet，在裏面用把請求參數封裝成User對象，通過UserDao和數據庫交互，拿到返回的User對象，如果不是null，把返回的User對象封裝到request中，并且通過請求轉發器轉發到successServlet，輸出成功結果，如果是null，通過請求轉發器轉發到failServlet，輸出失敗結果</li>
+<li>頁面顯示中文:
+<code>resp.setContentType("text/html;charset=utf-8");</code>可以，但是<code>resp.setCharacterEncoding("utf-8");</code>不行</li>
+<li>UserDao放在dao目錄下面，使用JdbcTemplate和數據庫進行交互</li>
+<li>User放在domain目錄下面</li>
+<li>JDBCUtils放在util目錄下面 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yanxuanshaozhu.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.mchange.v2.c3p0.ComboPooledDataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBConnector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> ComboPooledDataSource ds = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 初始化連接池</span></span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">&quot;D:\\MyWork\\Java\\JavaWeb\\LoginDemo\\src\\db.properties&quot;</span>));</span><br><span class="line">            prop.load(buffer);</span><br><span class="line">            ds.setDriverClass(prop.getProperty(<span class="string">&quot;driver&quot;</span>));</span><br><span class="line">            ds.setJdbcUrl(prop.getProperty(<span class="string">&quot;url&quot;</span>));</span><br><span class="line">            ds.setUser(prop.getProperty(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">            ds.setPassword(prop.getProperty(<span class="string">&quot;password&quot;</span>));</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 獲取連接池對象</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DataSource <span class="title">getDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ds;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 獲取鏈接對香港</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ds.getConnection();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>響應消息格式
+<ul>
+<li>響應行
+<ul>
+<li>響應行格式: "協議/版本 響應狀態碼 響應狀態碼描述"</li>
+<li>響應狀態碼:
+<ul>
+<li>1xx: 服務器接受數據沒接收完成，等待后發送1xx給客戶端</li>
+<li>2xx: 成功</li>
+<li>3xx: 302重定向，304訪問緩存</li>
+<li>4xx:
+客戶端錯誤，404請求路徑沒有資源，405請求方式在服務器沒有對應了方法</li>
+<li>5xx: 服務器錯誤，500服務器内部異常</li>
+</ul></li>
+</ul></li>
+<li>響應頭：格式是 "key:value",
+<code>Content-Type</code>服務器告訴客戶端響應躰數據格式和編碼格式,
+<code>Content-disposition</code>服務器告訴客戶端以什麽格式打開響應躰數據，比如<code>in-line</code>或者<code>attachment</code></li>
+<li>響應空行: 空行，用來分割響應頭和響應躰</li>
+<li>響應體: 服務器返回給客戶端的響應數據</li>
+</ul></li>
+<li>Response對象
+<ul>
+<li><code>ServletResponse</code>和<code>HttpServletResponse</code>是接口</li>
+<li>Response對象功能
+<ul>
+<li>設置響應消息
+<ul>
+<li>設置響應狀態碼: <code>res.setStatus(int sc)</code></li>
+<li>設置響應頭:
+<code>res.setHeader(String name, String value)</code></li>
+<li>設置響應躰
+<ol type="1">
+<li>獲取輸出流
+<ul>
+<li>字符輸出流: <code>res.getWriter()</code></li>
+<li>字節輸出流: <code>res.getOutputStream()</code></li>
+</ul></li>
+<li>使用輸出流，將數據輸出到客戶端<br>
+</li>
+</ol></li>
+</ul></li>
+<li>重定向
+<ul>
+<li>定義：瀏覽器請求服務器，服務器告訴瀏覽器重定向到另一個地址，就是重定向</li>
+<li>重定向步驟
+<ol type="1">
+<li>瀏覽器設置響應狀態碼302: <code>res.setStatus(302)</code></li>
+<li>瀏覽器在響應頭中設置key是location，
+value是重定向目標的新資源地址：<code>res.setHeader("location", "/虛擬目錄/新資源地址")</code></li>
+<li>另一種方法：因爲重定向和狀態碼和響應頭key是固定的，只需要傳入重定向地址，因此可以直接使用<code>req.sendRedirect(String location)</code>即可完成重定向</li>
+</ol></li>
+<li>重定向特點
+<ul>
+<li>重定向瀏覽器地址欄發生變化</li>
+<li>重定向可以訪問外部資源</li>
+<li>重定向至少兩次請求，不能使用request域對象來共享數據</li>
+</ul></li>
+<li>路徑的寫法
+<ul>
+<li>相對路徑</li>
+<li>絕對路徑：如果請求是從客戶端訪問的，絕對路徑是<code>/虛擬目錄/資源路徑</code>，虛擬目錄使用<code>req.getContextPath()獲取</code>，比如重定向中的路徑；如果請求是從服務器訪問的，<code>絕對路徑是/資源路徑</code>，比如轉發中的路徑</li>
+</ul></li>
+</ul></li>
+<li>設置驗證碼
+<ul>
+<li>驗證碼是一張圖片，目的是防止惡意表達注冊</li>
+<li>驗證碼可以從圖庫中挑選，也可以用程序隨機生成:
+基礎的可以把程序生成的驗證碼圖片通過字節流輸出到瀏覽器中</li>
+<li>生成驗證碼的Java代碼 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">   <span class="comment">// 1. 創建圖片</span></span><br><span class="line">   <span class="comment">// 單位是pixel</span></span><br><span class="line">   <span class="keyword">int</span> width = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> height = <span class="number">50</span>;</span><br><span class="line">   <span class="comment">// 在内存中創建驗證碼圖片</span></span><br><span class="line">   BufferedImage img = <span class="keyword">new</span> BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">   <span class="comment">// 2. 美化圖片</span></span><br><span class="line">   <span class="comment">// 獲取畫筆</span></span><br><span class="line">   Graphics g = img.getGraphics();</span><br><span class="line">   <span class="comment">// 設置畫筆顔色</span></span><br><span class="line">   g.setColor(Color.pink);</span><br><span class="line">   <span class="comment">// 畫筆畫一個舉行填充背景顏色</span></span><br><span class="line">   g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">   g.setColor(Color.blue);</span><br><span class="line">   g.drawRect(<span class="number">0</span>, <span class="number">0</span>, width - <span class="number">1</span>, height - <span class="number">1</span>);</span><br><span class="line">   <span class="comment">// 設置驗證碼文字内容</span></span><br><span class="line">   g.setColor(Color.black);</span><br><span class="line">   String base = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxya0123456789&quot;</span>;</span><br><span class="line">   Random rand = <span class="keyword">new</span> Random();</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">         <span class="keyword">int</span> index = rand.nextInt(base.length());</span><br><span class="line">         String sub = base.charAt(index) + <span class="string">&quot;&quot;</span>;</span><br><span class="line">         g.drawString(sub, width / <span class="number">5</span> * i, height / <span class="number">2</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 加上干擾綫</span></span><br><span class="line">   g.setColor(Color.green);</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">         <span class="keyword">int</span> x1 = rand.nextInt(width);</span><br><span class="line">         <span class="keyword">int</span> x2 = rand.nextInt(width);</span><br><span class="line">         <span class="keyword">int</span> y1 = rand.nextInt(height);</span><br><span class="line">         <span class="keyword">int</span> y2 = rand.nextInt(height);</span><br><span class="line">         g.drawLine(x1, x2, y1, y2);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 3. 將圖片輸出到瀏覽器頁面上</span></span><br><span class="line">   ImageIO.write(img, <span class="string">&quot;jpg&quot;</span>, resp.getOutputStream());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在瀏覽器中點擊更換驗證碼圖片 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">         <span class="keyword">let</span> img = <span class="built_in">document</span>.getElementById(<span class="string">&quot;verificationcode&quot;</span>);</span></span><br><span class="line"><span class="javascript">         <span class="keyword">let</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&quot;change&quot;</span>);</span></span><br><span class="line"><span class="javascript">         <span class="comment">// 因爲瀏覽器對同一個地址會緩存，所以要對地址加上一段無重複數據保證加載的是新生成的驗證碼</span></span></span><br><span class="line"><span class="javascript">         div.onclick = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">               <span class="keyword">let</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span></span><br><span class="line"><span class="javascript">               img.src = <span class="string">&quot;/verificationCode?&quot;</span> + time;</span></span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/verificationCode&quot;</span> <span class="attr">id</span>=<span class="string">&quot;verificationcode&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;change&quot;</span>&gt;</span>點擊切換驗證碼<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -1066,7 +1194,7 @@ linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:34</span>
+    <span title="Reading time total">18:39</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
