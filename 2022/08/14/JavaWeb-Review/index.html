@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/projectStructure.png">
 <meta property="article:published_time" content="2022-08-14T20:18:06.000Z">
-<meta property="article:modified_time" content="2022-08-15T03:41:33.665Z">
+<meta property="article:modified_time" content="2022-08-16T03:27:07.243Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
@@ -200,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-14 16:18:06 / Modified: 23:41:33" itemprop="dateCreated datePublished" datetime="2022-08-14T16:18:06-04:00">2022-08-14</time>
+              <time title="Created: 2022-08-14 16:18:06" itemprop="dateCreated datePublished" datetime="2022-08-14T16:18:06-04:00">2022-08-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-15 23:27:07" itemprop="dateModified" datetime="2022-08-15T23:27:07-04:00">2022-08-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,14 +226,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>19k</span>
+              <span>24k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>17 mins.</span>
+              <span>21 mins.</span>
             </span>
 
         </div>
@@ -672,7 +678,7 @@ pages)：java服務器頁面，既可以定義html標簽，也可以直接寫jav
 <li>格式：<code>&lt;%@ taglib prefix="前綴" uri="URI" %&gt;</code></li>
 <li>導入JSTL標簽庫
 <ul>
-<li>把<code>jatax.servlet.jsp.jstl.jar</code>和<code>jstl.impl.jar</code>放到<code>WEB-INF/lib</code>中</li>
+<li>把<code>jakarta.servlet.jsp.jstl-2.0.0.jar</code>和<code>jakarta.servlet.jsp.jstl-api-2.0.0.jar</code>放到<code>WEB-INF/lib</code>中</li>
 <li>加上<code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</code>標簽</li>
 </ul></li>
 <li>一般用來導入標簽庫</li>
@@ -761,7 +767,136 @@ request -&gt; session -&gt; application)</li>
 <code>pageContext.request.contextPath</code>在JSP頁面中動態的獲取虛擬目錄</li>
 </ul></li>
 </ul></li>
-<li>JSTL(Java Server Pages Library)標簽</li>
+<li>JSTL(Java Server Pages Library)標簽
+<ul>
+<li>目的：替換和簡化JSP頁面中Java代碼的標簽</li>
+<li>使用步驟
+<ul>
+<li>導入jstl相關jar包:
+把<code>jakarta.servlet.jsp.jstl-2.0.0.jar</code>和<code>jakarta.servlet.jsp.jstl-api-2.0.0.jar</code>放到<code>WEB-INF/lib</code>中</li>
+<li>通過<code>&lt;%@ taglib %&gt;</code>導入標簽庫:
+<code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</code></li>
+</ul></li>
+<li>常用的JSTL標簽
+<ul>
+<li><code>if</code>標簽:
+判斷boolean表達式，如果是true則顯示標簽内容到頁面，否則不顯示
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    request.setAttribute(<span class="string">&quot;number&quot;</span>, <span class="number">3</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;requestScope.number % 2 !=0&#125;&quot;</span>&gt;</span><br><span class="line">    $&#123;requestScope.number&#125;是奇數</span><br><span class="line">&lt;/c:if&gt;</span><br><span class="line">&lt;!-- 因爲<span class="keyword">if</span>標簽沒有<span class="keyword">else</span>，需要手寫<span class="keyword">if</span>來模擬<span class="keyword">else</span>的情況 --&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;requestScope.number % 2 ==0&#125;&quot;</span>&gt;</span><br><span class="line">    $&#123;requestScope.number&#125;是偶數</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>choose</code>標簽:
+判斷表達式的值，如果匹配某一個<code>when</code>標簽，則輸出匹配的值，如果沒有匹配，輸出<code>otherwise</code>標簽的值
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Random random = <span class="keyword">new</span> Random();</span><br><span class="line">    <span class="keyword">int</span> day = random.nextInt(<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    request.setAttribute(<span class="string">&quot;day&quot;</span>, day);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 1&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 2&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 3&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 4&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 5&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 6&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 7&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;數字$&#123;requestScope.day&#125;輸入有無&lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>foreach</code>標簽
+<ul>
+<li>完成重複操作 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i+= <span class="number">2</span>) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach begin=<span class="string">&quot;0&quot;</span> end=<span class="string">&quot;9&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;i&quot;</span>&gt;</span><br><span class="line">    $&#123;i&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></li>
+<li>遍歷容器 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Integer i: list) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;list&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;i&quot;</span> varStatus=<span class="string">&quot;s&quot;</span>&gt;</span><br><span class="line">    $&#123;i&#125; &lt;br&gt;</span><br><span class="line">    $&#123;s.index&#125;&lt;br&gt; &lt;!--容器中元素的索引，從<span class="number">0</span>開始 --&gt;</span><br><span class="line">    $&#123;s.count&#125;&lt;br&gt; &lt;!-- 循環次數，從<span class="number">1</span>開始--&gt;</span><br><span class="line"></span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>三層架構
+<ul>
+<li>表示層(界面層/Web層): 用戶可以通過表示層的組件和服務器進行交互</li>
+<li>業務層(Service層)：處理業務邏輯，組合Dao層的簡單方法，組成業務邏輯</li>
+<li>持久層(數據訪問層/Dao層):
+操作數據存儲文件，和數據庫交互，實現各種CRUD方法</li>
+</ul></li>
+<li>Filter
+<ul>
+<li>作用:
+一般用於完成一些通用的操作，例如登陸驗證，統一編碼處理，敏感字符過濾</li>
+<li>JavaWeb三大組件：Servlet, Filter, Listener</li>
+<li>配置過濾器
+<ul>
+<li>定義一個類，實現接口Filter: <code>jakarta.servlet.Filter</code></li>
+<li>重寫繼承方法: <code>init()</code>, <code>doFilter()</code>,
+<code>destroy()</code>，在<code>doFilter()</code>方法内部需要調用<code>filterChain.doFilter(servletRequest, servletResponse);</code>對能夠訪問的目標資源放行，否則是訪問不到目標資源的</li>
+<li>配置過濾器攔截路徑:
+<ul>
+<li>使用注解配置: <code>@WebFilter(urlPatterns=&#123;"攔截路徑"&#125;)</code></li>
+<li>使用<code>web.xml配置</code>: 和Servlet配置非常相似
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>自定義Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>實現Filter的類的全類名<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>filter標簽中的Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>想要Filter生效的URL攔截路徑<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Filter執行流程:
+<ul>
+<li>請求被Filter攔截，一般在這裏對request進行增强</li>
+<li>Filter使用<code>filterChain.doFilter(req, resp)</code>會傳遞給下一個Filter，如果沒有下一個Filter就執行目標資源</li>
+<li>經過<code>doFilter()</code>方法之後，<code>resp</code>對象已經是有内容的了，一般在這裏對response進行增强</li>
+</ul></li>
+<li>Filter生命周期
+<ul>
+<li>服務器啓動之後會創建Filter對象，然後調用<code>init</code>方法，這個方法只執行一次</li>
+<li>每次請求被攔截的時候,<code>doFilter</code>方法被調用，這個方法會執行多次</li>
+<li>服務器關閉之後，Filter被銷毀，如果服務器是正常關閉，在Filter銷毀之前會調用<code>destroy</code>方法，這個方法只執行一次</li>
+</ul></li>
+<li>Filter配置攔截路徑
+<ul>
+<li>具體資源路徑:
+比如<code>/index.jsp</code>，只有訪問這個具體資源的時候，Filter才會執行</li>
+<li>設置攔截目錄:
+比如<code>/user/*</code>，訪問攔截目錄下的所有資源，Filter都會執行</li>
+<li>後綴名攔截:
+比如<code>*.jsp</code>(注意這裏沒有<code>/</code>)，訪問所有帶這個後綴名的資源，Filter都會執行</li>
+<li>攔截所有資源:
+<code>/*</code>，訪問所有資源的時候，Filter都會執行</li>
+</ul></li>
+<li>Filter配置攔截方式
+<ul>
+<li>使用注解配置:
+在<code>@WebFilter</code>中指定<code>dispatcherTypes</code>屬性，有<code>DispatcherType.REQUEST</code>(默認值，攔截請求),
+<code>DispatcherType.FORWARD</code>(攔截轉發),
+<code>DispatcherType.INCLUDE</code>(包含訪問資源,include控制權在第一個Servlet，forward控制權在第二個Servlet),
+<code>DispatcherType.ERROR</code>(錯誤跳轉),
+<code>DispatcherType.ASYNC</code>(異步訪問)。因爲<code>dispatcherTypes</code>屬性是一個數組，所以可以指定多個攔截方式</li>
+<li>使用<code>web.xml</code>配置: <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>filter標簽中的Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>想要Filter生效的URL攔截路徑<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 加入下面這一行 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>攔截方式(比如REQUEST)<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>FilterChain
+<ul>
+<li>執行順序
+<ul>
+<li>注解配置的Filter:
+比較各個Filter的類名的字符串大小，小的先執行，比如<code>Filter17</code>比<code>Filter6</code>先執行</li>
+<li><code>web.xml</code>配置的Filter:
+按照文件中<code>&lt;filter-mapping&gt;</code>標簽的先後順序執行</li>
+</ul></li>
+</ul></li>
+<li>案例：登陸驗證
+<ul>
+<li>登陸驗證是一種權限控制</li>
+<li>需求：登陸了就訪問，沒登陸跳轉登錄頁面</li>
+<li>邏輯:
+<ul>
+<li>登錄相關的資源直接放行</li>
+<li>其他資源判斷是否登錄決定是否放行: 檢查Session中的登陸狀態即可</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Listener
+<ul>
+<li>JavaWeb三大組件之一</li>
+<li>事件監聽機制
+<ul>
+<li>需要有事件，事件源，監聽器，注冊監聽(把事件，事件源和監聽器綁定在一起，黨事件源發生事件之後，執行監聽器代碼)</li>
+</ul></li>
+<li><code>ServletContextListener</code>
+<ul>
+<li>這個是一個接口，需要手動實現相關的類</li>
+<li>監聽ServletContext對象的創建和銷毀</li>
+<li><code>void contextInitialized(ServletContextEvent sce)</code>:
+在ServletContext對象創建之後調用</li>
+<li><code>void contextDestroyed(ServletContextEvent sce)</code>:
+在ServletContext對象被銷毀之後調用</li>
+</ul></li>
+<li>實現監聽器
+<ul>
+<li>寫一個類實現<code>ServletContextListener</code>接口</li>
+<li>重寫<code>contextInitialized(ServletContextEvent sce)</code>方法和<code>contextDestroyed(ServletContextEvent sce)</code>方法</li>
+<li>配置監聽器
+<ul>
+<li>使用<code>web.xml</code>配置</li>
+<li>使用注解配置</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ol>
 
     </div>
@@ -938,7 +1073,7 @@ request -&gt; session -&gt; application)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:47</span>
+    <span title="Reading time total">18:52</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
