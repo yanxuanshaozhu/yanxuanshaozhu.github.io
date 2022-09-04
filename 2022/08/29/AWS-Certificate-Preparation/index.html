@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="General background">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Certificate Preparation">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/08/29/AWS-Certificate-Preparation/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="General background">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-29T04:12:58.000Z">
+<meta property="article:modified_time" content="2022-09-04T03:17:26.167Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="AWS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/08/29/AWS-Certificate-Preparation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>AWS Certificate Preparation | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/08/29/AWS-Certificate-Preparation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS Certificate Preparation
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-29 00:12:58" itemprop="dateCreated datePublished" datetime="2022-08-29T00:12:58-04:00">2022-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-03 23:17:26" itemprop="dateModified" datetime="2022-09-03T23:17:26-04:00">2022-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>12 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="general-background">General background</h1>
+<a id="more"></a>
+<ol type="1">
+<li>AWS introduction
+<ul>
+<li>AWS regions
+<ul>
+<li>AWS has regions around the world</li>
+<li>A regions is cluster of data centers</li>
+<li>Most AWS services are region-scoped</li>
+<li>How to choose an AWS region
+<ul>
+<li>Compliance with data governance and legal requirements and data
+never leaves a regions without explicit permission</li>
+<li>Proximity to customers to reduce latency</li>
+<li>Available services within a region, check the region tables to find
+if a service is available in a specific region</li>
+<li>Pricing and cost should be taken into account</li>
+</ul></li>
+<li>Each region has available zones, each zone is one or more discrete
+data centers with redundant power, networking, and consistency, zones
+are separate from each other so that to be isolated from disasters,
+zones are connected with high bandwidth, low latency networking</li>
+</ul></li>
+<li>AWS console
+<ul>
+<li>You can see if a service is global or region-scoped</li>
+<li>You can change the displayed UI of a service</li>
+</ul></li>
+</ul></li>
+<li>Methods to access AWS
+<ul>
+<li>AWS management console: protected by password + MFA</li>
+<li>AWS command line interface(CLI): protected by access keys
+<ul>
+<li>Access keys are generated by AWS console</li>
+<li>Users manage their own access keys</li>
+<li>Access keys are secret, users should not share access keys</li>
+<li>AWS cli is open sourced</li>
+<li>Use <code>aws --version</code> to check if the AWS Cli is properly
+installed</li>
+<li>If AWS CloudShell is available in your region, you can use it
+instead of AWS Cli</li>
+</ul></li>
+<li>AWS software developer kit(SDK): protected by access keys
+<ul>
+<li>AWS SDK supports multiple programming languages</li>
+<li>AWS SDK is embedded with your application</li>
+<li>Use <code>aws configure</code> to input access key id, secret access
+key, default region name and default output format to do local
+configuration</li>
+<li>Use <code>aws iam list-users</code> to list all users in the account
+if you have proper permissions to the account</li>
+</ul></li>
+</ul></li>
+<li>Bills and budgets
+<ul>
+<li>Login root account and activate IAM access to billing dashboard</li>
+<li>Then IAM users can check their billing information</li>
+<li>Create budgets to avoid unexpected charges, you can also create
+budget alert thresholds</li>
+</ul></li>
+</ol>
+<h1 id="aws-services">AWS services</h1>
+<ol type="1">
+<li>IAM(Identity and Access Management)
+<ul>
+<li>Introduction
+<ul>
+<li>IAM is a global service</li>
+<li>Create users and groups with IAM</li>
+<li>The Root account is created by default, should not be used or
+shared</li>
+<li>Users are people within your organization, and can be grouped</li>
+<li>Groups only contain users, not other groups, users don't have to
+belong to a group, and users can be in multiple groupds</li>
+<li>Users or groups can be assigned JSON documents called policies,
+policies defined permissions or users</li>
+<li>The lease privilege principle: don't give more permissions than a
+user needs</li>
+</ul></li>
+<li>Create admin users and add it to the admin group, use the
+<code>AdministratorAccess</code> policy(the one with Type of Job
+function)</li>
+<li>You can use the sign-in URL for IAM users created in your AWS
+account, use the URL and the username and password for IAM users to sign
+in, the email format for IAM users in their IAM dashboard is
+<code>username@root_account_aws_alias</code></li>
+<li>IAM policies
+<ul>
+<li>Description
+<ul>
+<li>Group policies apply to all users in the group</li>
+<li>Users without a group have inline policies</li>
+<li>Users in multiple groups are subject to the union of group
+policies</li>
+</ul></li>
+<li>IAM policy structure
+<ul>
+<li>Version: policy version</li>
+<li>ID: an optional identifier for the policy</li>
+<li>Statement: required, one or more individual statements
+<ul>
+<li>Sid: statement id</li>
+<li>Effect: whether the statement allows/denies access,</li>
+<li>Principal: account/user/role to which this policy applied to</li>
+<li>Action: list of actions this policy allows/denies</li>
+<li>Resource: list of resources to which the action applied to</li>
+<li>Condition: conditions for when this policy is in effect, optional
+field</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>IAM security
+<ul>
+<li>Password policy: length, character types, expiration, reuse
+prevention, etc.</li>
+<li>MFA: multi-factor authentication
+<ul>
+<li>Use password + security device to prevent account compromise</li>
+<li>Virtual MFA device: Google Authenticator, Authy</li>
+<li>Universal 2nd Factor(U2F) Security Key: YubiKey</li>
+<li>Hardware Key Fob MFA device</li>
+<li>Hardware Fob MFA device for AWS GovCloud</li>
+</ul></li>
+<li>IAM Security Tools
+<ul>
+<li>IAM credentials report(account-level)
+<ul>
+<li>A report that lists all your account's users and the status of their
+various credentials</li>
+<li>You can download the report as a CSV file</li>
+</ul></li>
+<li>IAM access advisor(user-level)
+<ul>
+<li>Shows the service permissions granted to a user and when those
+services were last accessed</li>
+<li>It shows the service name, policies granting permissions, and last
+accessed time of the user</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>IAM roles
+<ul>
+<li>Some AWS service will need to perform actions on your behalf, you
+need to assign permissions to aws services with iam roles</li>
+<li>You can create roles for AWS services</li>
+<li>Some common roles: EC2 instance roles, Lambda function roles, Roles
+for CloudFormation</li>
+</ul></li>
+</ul></li>
+<li>EC2 Fundamentals
+<ul>
+<li>Introduction
+<ul>
+<li>AWS EC2 is one of the most popular services</li>
+<li>EC2(Elastic computer cloud) is an infrastructure as a service
+(IaaS)</li>
+<li>It contains renting virtual machines(EC2), storing data on virtual
+drives(EBS), distribute load across machines(ELB), scaling the services
+using an auto-scaling group(ASG)</li>
+<li>You need to specify OS, CPU, RAM, storage space(network-attached:
+EBS&amp;EFS, or hardware: EC2 instance store), network card(speed of the
+card, public IP address), firewall rules(security group), bootstrap
+script(EC2 user data)</li>
+<li>It is possible to bootstrap EC2 instances using an EC2 user data
+script at the instance first start, it only runs once</li>
+</ul></li>
+<li>Create an EC2 instance
+<ul>
+<li>Tips: create key pair for login, allow HTTP traffic from the
+internet, add setup user data, the public IP may change after restart,
+but the private IP remains the same</li>
+</ul></li>
+<li>EC2 instance types
+<ul>
+<li>AWS instance naming convention: [instance class] +
+[generation].[size within instance class]</li>
+</ul></li>
+<li>Security groups
+<ul>
+<li>Security groups are the fundamental of network security in AWS</li>
+<li>Security groups control how traffic is allowed into or out of EC2
+instances (access to ports, authorized IP ranges, inbound/outbound
+traffic, etc.)</li>
+<li>Security groups can only contain allow rules, rules can reference by
+IP or by security group</li>
+<li>Security group can attach to multiple instances, a instance can have
+multiple security groups</li>
+<li>It's good to maintain one separate security group for SSH
+access</li>
+<li>Error type: timeout error, the problem is related to security
+groups, connection refused error, then it's an application error or it's
+not launched</li>
+<li>By default, all inbound traffic is blocked, all outbound traffic is
+allowed</li>
+</ul></li>
+<li>Classic ports to know
+<ul>
+<li>port 22: SSH(secure shell), login into a Linux instance</li>
+<li>port 21: FTP(file transfer protocol), upload files into a file
+share</li>
+<li>port 22: SFTP(SSH file transfer protocol) upload files through
+SSH</li>
+<li>port 80: HTTP(hypertext transfer protocol), access unsecured
+websites</li>
+<li>port 443: HTTPS(hypertext transfer protocol secure), access secured
+websites</li>
+<li>port 3389: RDP(remote desktop protocol), login into a Windows
+instance</li>
+</ul></li>
+<li>Connect to EC2 instances
+<ul>
+<li>The default user name is <code>ec2-user</code></li>
+<li>Use local SSH to connect with public key</li>
+<li>Use EC2 instance connect(a browser based SSH terminal) provided by
+AWS</li>
+<li>Do not set <code>aws configure</code> on EC2 instances, otherwise
+all iam users can access your credentials. Attach IAM roles to EC2
+instances instead: instance -&gt; right click -&gt; security -&gt;
+modify IAM roles</li>
+</ul></li>
+<li>EC2 instance purchasing options:
+<ul>
+<li>On-demand instances: pay full price after launch</li>
+<li>Saving plans: commit to use for a time period, get discount</li>
+<li>Reserved instances: commit to use a consistent instance
+configuration(like instance type, region), get discount</li>
+<li>Spot instances: use unused instances, large discount
+<ul>
+<li>Spot fleet: set of spot instances + optional on-demand
+instances</li>
+<li>Strategies to allocate spot instances within a spot fleet
+<ul>
+<li>lowestPrice: from the pool with the lowest price, cost optimization,
+short workload</li>
+<li>diversified: distributed across all pools, great for availability,
+long workload</li>
+<li>capacityOptimized: pool with the optimal capacity for the number of
+instances</li>
+</ul></li>
+</ul></li>
+<li>Dedicated hosts: a physical server with EC2 instance capacity fully
+dedicated to your use</li>
+<li>Dedicated instances: an instance on virtual private cloud that's
+dedicated to a single customer</li>
+<li>Capacity reservations: allow customers to reserve instances in a
+specific zone for any duration</li>
+</ul></li>
+</ul></li>
+<li>EC2 Solutions Architect Associate Level
+<ul>
+<li>Public IP &amp; private IP
+<ul>
+<li>Networking has two sorts of IPs: IPv4 and IPv6<br>
+</li>
+<li>At present, IPv4 is more common than IPv6</li>
+<li>Ipv4 format: [0-255].[0-255].[0-255].[0-255]</li>
+<li>Public IP allows access from everywhere on the Internet, private IP
+allows access from local networks</li>
+<li>Elastic IP
+<ul>
+<li>When you stop and then start an EC2 instance, it can change its
+public IP</li>
+<li>If you need to have a fixed public IP for your instance, you need an
+Elastic IP</li>
+<li>An elastic IP is a public IPv4 IP you own as long as you don't
+delete it, you can attach it to one instance at a time</li>
+<li>Try avoiding elastic IP, instead use a random public IP and register
+a DNS name to it</li>
+</ul></li>
+</ul></li>
+<li>EC2 Placement groups
+<ul>
+<li>Cluster
+<ul>
+<li>Place cluster instances into a low-latency group in a single
+available zone</li>
+<li>Great network, if the rack fails then all instances fail at the same
+time</li>
+<li>Suitable for big that needs low latency and high network
+throughput</li>
+</ul></li>
+<li>Spread
+<ul>
+<li>Spreads instances across underlying hardware</li>
+<li>Can span across available zones, reduce risk in simultaneous
+failure, but limited to 7 instances per available zone per placement
+group</li>
+<li>Suitable for application that maximize high availability, and those
+that must be isolated from each other</li>
+</ul></li>
+<li>Partition
+<ul>
+<li>Spreads instances across many different partitions within a
+available zone</li>
+<li>Can span across multiple available zones, instances in different
+available zone do not share racks, a partition failure can affect many
+instances but won't affect other partitions</li>
+<li>Suitable for distributed applications like HDFS, HBase, Kafka,
+Cassandra</li>
+</ul></li>
+</ul></li>
+<li>Elastic Network Interfaces(ENI)
+<ul>
+<li>ENI is a logical component in a VPC that represents a virtual
+network card</li>
+<li>Attributes of ENI
+<ul>
+<li>One primary private Ipv4, one or more secondary IPv4</li>
+<li>One elastic IPv4 per private Ipv4</li>
+<li>One public Ipv4</li>
+<li>One or more security groups</li>
+<li>A MAC address</li>
+</ul></li>
+<li>You can create ENI independently and attach them on EC2
+instances</li>
+<li>Bound to a specific available zone</li>
+</ul></li>
+<li>EC2 Hibernate
+<ul>
+<li>Stop/terminate an instance
+<ul>
+<li>Stop: the data on disk(EBS) is kept intact in the next start</li>
+<li>Terminate: any EBS volumes also set-upt to be destroyed is lost</li>
+</ul></li>
+<li>On start
+<ul>
+<li>For the first start: the OS boots &amp; the EC2 User Data script is
+run</li>
+<li>Following starts: the OS boots up</li>
+<li>Then your application starts, caches get warmed up, and that can
+take time</li>
+</ul></li>
+<li>EC2 Hibernate
+<ul>
+<li>The RAM state is preserved, then instance boot is much faster</li>
+<li>Actually, the RAM state is written to a file in the root EBS volume,
+the root EBS volume must be encrypted</li>
+</ul></li>
+<li>EC2 hibernate supports a lot instance families, but there are still
+some requirements for instance hardwares; EC2 hibernate is available for
+on-demand, reserved and spot instances</li>
+<li>An instance cannot be hibernated for more than 60 days</li>
+</ul></li>
+<li>EC2 Nitro
+<ul>
+<li>This is the underlying platform for the next generation of EC2
+instances</li>
+<li>Use new virtualization technology, which allows for better
+performance, better underlying security</li>
+</ul></li>
+<li>EC2 vCPU
+<ul>
+<li>Multiple threads can run on one CPU in EC2</li>
+<li>Each thread is represented as a virtual CPU</li>
+<li>EC2 instances come with a combination of RAM and CPU, you can
+optimize CPU options(set number of CPU cores, and threads per core)
+during instance launch</li>
+</ul></li>
+<li>EC2 Capacity Reservations
+<ul>
+<li>Capacity reservation ensure you have EC2 capacity when needed</li>
+<li>There are manual or planed end-date for the reservation</li>
+<li>No need for a long time</li>
+<li>Capacity access is immediate, you get billed as soon as it
+starts</li>
+</ul></li>
+</ul></li>
+<li>EC2 instance storage
+<ul>
+<li>EBS
+<ul>
+<li>EBS intro
+<ul>
+<li>An EBS(Elastic block store) volume is a network drive(not a physical
+drive, might be a bit of latency) you can attach to your instances while
+they run</li>
+<li>It allows your instances to persist data, even after their
+termination</li>
+<li>EBS can be mounted to one instance at a time, and are bound to a
+specific available zone</li>
+<li>EBS can be detached from an EC2 instance and attached to another
+quickly</li>
+</ul></li>
+<li>EBS delete on termination attribute
+<ul>
+<li>When you terminate an EC2 instance, the root EBS volume is deleted
+by default</li>
+<li>You can change the delete on termination attribute to false, so that
+the root EBS volume is not deleted when the instance is terminated</li>
+<li>You can also change the delete on termination attribute to false for
+any additional EBS volumes you attach to your instance</li>
+</ul></li>
+<li>EBS snapshots
+<ul>
+<li>Make a backup of your EBS volume at a point in time</li>
+<li>When detaching volume, snapshot is not required but strongly
+recommended</li>
+<li>Can copy snapshots across available zone or region</li>
+<li>Snapshots can be archived to reduce cost</li>
+<li>You can set recycle bin for snapshots</li>
+</ul></li>
+<li>EBS volume
+<ul>
+<li>Types
+<ul>
+<li>gp2/gp3(general purpose SSD): general purpose ssd volume that
+balances price and performance
+<ul>
+<li>IOPS are throughput are linked in gp2, in gp3 you can independently
+set the IOPS and throughput</li>
+</ul></li>
+<li>io1/io2(provisioned IOPS SSD): highest performance ssd for
+low-latency or high-throughput workloads
+<ul>
+<li>Great for IOPS like databases</li>
+<li>io1/io2 can increase PIOPS independently from storage size</li>
+<li>io2 have more durability and more IOPS per GiB</li>
+</ul></li>
+<li>st1(throughput optimized HDD): low cost volume for frequently
+accessed, throughput-intensive workloads
+<ul>
+<li>st1 is throughput optimized HDD</li>
+<li>Suitable for big data, data warehouses, log processing</li>
+</ul></li>
+<li>sc1(cold HDD): lowest cost volume designed for less frequently
+accessed workloads
+<ul>
+<li>sc1 is cold HDD</li>
+<li>Suitable for scenarios where low cost is important</li>
+</ul></li>
+</ul></li>
+<li>Only gp2/gp3/io1/io2 can be used as root volumes</li>
+<li>EBS multi-attach
+<ul>
+<li>Attach the same EBS volume to multiple EC2 instances</li>
+<li>Only apply to io1/io2 family</li>
+</ul></li>
+<li>EBS encryption
+<ul>
+<li>If you create an encrypted EBS volume, data is encrypted, snapshots
+are encrypted, all volumes created from the snapshots are encrypted</li>
+<li>Encryption has minimal impact on performance</li>
+<li>EMS encryption leverages keys from KMS</li>
+<li>Procedures for EBS encryption
+<ul>
+<li>Create an EBS snapshot of the current volume, and this snapshot is
+unencrypted</li>
+<li>Copy the unencrypted snapshot to create a new encrypted
+snapshot</li>
+<li>Create a new volume from the encrypted snapshot, which is also
+encrypted</li>
+<li>Attach the encrypted volume to the original instance</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>AMI
+<ul>
+<li>AMI(amazon machine image) is a customization of an EC2 instance</li>
+<li>You can add own software, configuration, os, monitoring</li>
+<li>AMI is built for a specific region</li>
+<li>You can launch EC2 instances from
+<ul>
+<li>A public AMI: aws provided</li>
+<li>You own AMI: you make and maintain them yourself</li>
+<li>An aws marketplace AMI: third party AMI</li>
+</ul></li>
+<li>right click on instance -&gt; <code>image and template</code> -&gt;
+<code>create image</code></li>
+</ul></li>
+<li>EC2 instance store
+<ul>
+<li>EBS volumes are network drives with good but limited
+performance</li>
+<li>If you need a high performance hardware drive, you can use EC2
+instance store</li>
+<li>EC2 instance store has better I/O performance, suitable for
+buffer/cache/scratch data</li>
+<li>EC2 instance store lose storage if they're stopped, you should make
+backups and replications to avoid risk of data loss</li>
+</ul></li>
+<li>Amazon EFS
+<ul>
+<li>EFS(Elastic file system): a managed NFS(network file system) that
+can be mounted on many EC2</li>
+<li>EFS works with EC2 instances in multiple available zones</li>
+<li>EFS is highly available, scalable(the size of EFS can be scaled
+automatically), and expensive</li>
+<li>Use security group to control access to EFS</li>
+<li>Performance mode(set on creation time of EFS) of EFS: general
+purpose mode(default), max I/O mode, throughput mode</li>
+<li>EFS storage classes: standard tier for frequently accessed files,
+infrequent access(EFS-IA) tier for low cost</li>
+<li>Availability and durability: standard(multiple-available zone), one
+zone (one available zone, compatible with EFS-IA to formulate EFS One
+Zone-IA)</li>
+</ul></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/08/29/AWS-Certificate-Preparation/" title="AWS Certificate Preparation">https://yanxuanshaozhu.github.io/2022/08/29/AWS-Certificate-Preparation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AWS/" rel="tag"># AWS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/14/JavaWeb-Review/" rel="prev" title="JavaWeb Review">
+      <i class="fa fa-chevron-left"></i> JavaWeb Review
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/31/COSI%20123A-Statistical-Machine-Learning/" rel="next" title="COSI 123A Statistical Machine Learning">
+      COSI 123A Statistical Machine Learning <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#general-background"><span class="nav-number">1.</span> <span class="nav-text">General background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#aws-services"><span class="nav-number">2.</span> <span class="nav-text">AWS services</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.3m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">19:44</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
