@@ -28,7 +28,7 @@
 <meta property="og:description" content="General background">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-29T04:12:58.000Z">
-<meta property="article:modified_time" content="2022-09-04T03:17:26.167Z">
+<meta property="article:modified_time" content="2022-09-07T03:19:29.625Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-03 23:17:26" itemprop="dateModified" datetime="2022-09-03T23:17:26-04:00">2022-09-03</time>
+                <time title="Modified: 2022-09-06 23:19:29" itemprop="dateModified" datetime="2022-09-06T23:19:29-04:00">2022-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -732,7 +732,8 @@ backups and replications to avoid risk of data loss</li>
 can be mounted on many EC2</li>
 <li>EFS works with EC2 instances in multiple available zones</li>
 <li>EFS is highly available, scalable(the size of EFS can be scaled
-automatically), and expensive</li>
+automatically), and expensive, it's compatible with Linux but not
+Windows</li>
 <li>Use security group to control access to EFS</li>
 <li>Performance mode(set on creation time of EFS) of EFS: general
 purpose mode(default), max I/O mode, throughput mode</li>
@@ -740,9 +741,33 @@ purpose mode(default), max I/O mode, throughput mode</li>
 infrequent access(EFS-IA) tier for low cost</li>
 <li>Availability and durability: standard(multiple-available zone), one
 zone (one available zone, compatible with EFS-IA to formulate EFS One
-Zone-IA)</li>
+Zone-IA, huge cost reduction)</li>
+</ul></li>
+<li>Comparison of EBS and EFS
+<ul>
+<li>EBS volumes
+<ul>
+<li>Can be attached to only one instance at a time. In order to migrate
+an EBS across available zone, you need to take a snapshot and restore
+the snapshot to another available zone</li>
+<li>Are locked at one available zone level</li>
+<li>gp2: IO increases if disk size increases</li>
+<li>io1: IO is independent of disk size</li>
+<li>Root EBS volumes is terminated when the EC2 instance is
+terminated</li>
+</ul></li>
+<li>EFS
+<ul>
+<li>Can be mounted to multiple instances across multiple available
+zones</li>
+<li>EFS share website files</li>
+<li>EFS only works for Linux, but not Windows</li>
+<li>EFS has a higher price point than EBS, can switch EFS_IA for cost
+savings</li>
 </ul></li>
 </ul></li>
+</ul></li>
+<li>High availability and scalability</li>
 </ol>
 
     </div>
@@ -859,7 +884,7 @@ Zone-IA)</li>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -922,7 +947,7 @@ Zone-IA)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19:47</span>
+    <span title="Reading time total">19:50</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
