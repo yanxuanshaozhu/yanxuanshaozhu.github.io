@@ -37,8 +37,12 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS04Tank.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS04Modifier.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/HW1.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS05WorldTexture.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS05ObjectTexture.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS06MixShader.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS06UVMapping.png">
 <meta property="article:published_time" content="2022-09-04T21:39:54.000Z">
-<meta property="article:modified_time" content="2022-09-05T20:18:58.334Z">
+<meta property="article:modified_time" content="2022-09-10T03:49:21.530Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="3D Animation">
 <meta name="twitter:card" content="summary">
@@ -217,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-05 16:18:58" itemprop="dateModified" datetime="2022-09-05T16:18:58-04:00">2022-09-05</time>
+                <time title="Modified: 2022-09-09 23:49:21" itemprop="dateModified" datetime="2022-09-09T23:49:21-04:00">2022-09-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,14 +239,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.5k</span>
+              <span>5.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -396,6 +400,85 @@ base geometry of your object <img src="/images/Course/COSI164A/LS04Modifier.png"
 computer on it, an office chari, a floor lamp, a book shelf and a bed
 <img src="/images/Course/COSI164A/HW1.png"></p></li>
 </ol>
+<h1 id="lesson04grad-09062022">Lesson04Grad 09/06/2022</h1>
+<ol type="1">
+<li>Ray tracing intro
+<ul>
+<li>Ray Tracing is a method of generating realistic 3D images from a
+mathematical description of a scene</li>
+<li>There is a one-to-one correspondence between each pixel in a 3D
+scene and a ray starting at a camera and moving into the scene, we can
+use the view from the camera to create a 2D image then</li>
+</ul></li>
+<li>Some math
+<ul>
+<li>3-d coordinates</li>
+<li>Vector norm: <span class="math inline">\(|p| = \sqrt{p_{1}^2 +
+p_{2}^2 + p_{3}^2}\)</span></li>
+<li>Dot product</li>
+<li>Cross product: use right-hand rule to determine the direction of the
+cross product</li>
+<li>Represent a ray: <span class="math inline">\(r(t) = p +
+t*d\)</span>, where p is an origin vector, d is a direction vector, and
+t is time</li>
+</ul></li>
+</ol>
+<h1 id="lesson05-09072022">Lesson05 09/07/2022</h1>
+<ol type="1">
+<li>Textures (纹理) Intro
+<ul>
+<li>There are two types of textures: environment textures and object
+textures</li>
+<li>You can use online texture websites to find textures</li>
+</ul></li>
+<li>Environment textures
+<ul>
+<li>Change from <code>layout</code> to <code>shading</code> in the top
+menu</li>
+<li>Select the <code>World</code> option in the shader type menu</li>
+<li>Choose a source file for the environment texture, and link its
+<code>color</code> property to the <code>surface</code> property of the
+<code>World Output</code></li>
+<li>You need to change the <code>Viewpoint Shading</code> to
+<code>Rendered</code> to see the environment texture <img src="/images/Course/COSI164A/LS05WorldTexture.png"></li>
+</ul></li>
+<li>Object texture
+<ul>
+<li>Change from <code>layout</code> to <code>shading</code> in the top
+menu</li>
+<li>Select the <code>Object</code> option in the shader type menu</li>
+<li>Use the <code>Add</code> button, choose <code>Shader</code>, then
+choose <code>Principled BSDF</code></li>
+<li>Drag a source texture file into the shading view, link its
+<code>Color</code> property to the <code>Base Color</code> property of
+the <code>Principled BSDF</code></li>
+<li>Link the <code>BSDF</code> property of the
+<code>Principled BSDF</code> to the <code>Surface</code> property of the
+<code>Material Output</code></li>
+<li>You need to change the <code>Viewpoint Shading</code> to
+<code>Rendered</code> to see the object texture <img src="/images/Course/COSI164A/LS05ObjectTexture.png"></li>
+</ul></li>
+</ol>
+<h1 id="lesson06-09082022">Lesson06 09/08/2022</h1>
+<ol type="1">
+<li>Material nodes
+<ul>
+<li>You can choose different shaders to create different surfaces</li>
+<li>You can combine different shaders on the same object: create
+multiple shaders, then use them as inputs of the <code>Mix Shader</code>
+node, and then link the <code>Mix Shader</code> node to the
+<code>Material Output</code> node. You can also choose the weight of
+each input shader <img src="/images/Course/COSI164A/LS06MixShader.png"></li>
+</ul></li>
+<li>UV Mapping
+<ul>
+<li>Click the <code>UV Editing</code> button in the top menu</li>
+<li>The surface of a 3D object is mapped to a 2D figure on the UV
+plane</li>
+<li>You can move, resize, rotate the figure on the UV plane as you do in
+the normal layout view <img src="/images/Course/COSI164A/LS06UVMapping.png"></li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -496,7 +579,7 @@ computer on it, an office chari, a floor lamp, a book shelf and a bed
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04grad-09062022"><span class="nav-number">5.</span> <span class="nav-text">Lesson04Grad 09&#x2F;06&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson05-09072022"><span class="nav-number">6.</span> <span class="nav-text">Lesson05 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson06-09082022"><span class="nav-number">7.</span> <span class="nav-text">Lesson06 09&#x2F;08&#x2F;2022</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -574,7 +657,7 @@ computer on it, an office chari, a floor lamp, a book shelf and a bed
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19:51</span>
+    <span title="Reading time total">19:53</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
