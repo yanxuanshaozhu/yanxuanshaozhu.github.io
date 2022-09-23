@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lecture 01 08&#x2F;31&#x2F;2022">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-31T18:29:48.000Z">
-<meta property="article:modified_time" content="2022-09-14T00:52:24.071Z">
+<meta property="article:modified_time" content="2022-09-22T23:06:46.482Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Computation Theory">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-13 20:52:24" itemprop="dateModified" datetime="2022-09-13T20:52:24-04:00">2022-09-13</time>
+                <time title="Modified: 2022-09-22 19:06:46" itemprop="dateModified" datetime="2022-09-22T19:06:46-04:00">2022-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.3k</span>
+              <span>4.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -379,9 +379,41 @@ NFA with epsilon moves</li>
 </ul></li>
 </ol>
 <h1 id="lecture-03-09122022">Lecture 03 09/12/2022</h1>
+<h1 id="lecture-09212022">Lecture ?? 09/21/2022</h1>
 <ol type="1">
-<li></li>
+<li>Context free grammar
+<ul>
+<li>Definition: a context free grammar contains: V a finite set of
+variables(non-terminal), T a finite set of terminals, P a set of
+productions: variable -&gt; strings of terminals/non-terminals, S</li>
+<li>L(G): the set represented by a CFG G, is all strings that can be
+started from S, applying the rules P, to obtain a string of
+terminals</li>
+</ul></li>
+<li>Chomsky Normal Form(CNF)
+<ul>
+<li>Things that can be removed from CFG in order to get CNF
+<ul>
+<li><span class="math inline">\(\epsilon\)</span>-productions</li>
+<li>Unit productions</li>
+<li>Useless productions: define the useful productions, all others are
+useless</li>
+<li>Unreachable productions</li>
+</ul></li>
+<li>There still can be ambiguity after removing these things</li>
+</ul></li>
+<li>?????
+<ul>
+<li>Step 1: label all symbols unmarked , while changes occurred, for all
+productions A -&gt; <span class="math inline">\(\alpha\)</span>, if all
+<span class="math inline">\(\alpha\)</span> marked, mark A</li>
+<li>Step 2: remove all useless productions: A -&gt; <span class="math inline">\(\epsilon\)</span></li>
+<li>Step 3: for all A -&gt; <span class="math inline">\(\alpha\)</span>,
+all additional productions A -&gt; <span class="math inline">\(\beta\)</span> where <span class="math inline">\(\beta\)</span> is a not <span class="math inline">\(\epsilon\)</span> and all combinations of marked
+symbols in <span class="math inline">\(\alpha\)</span> are removed</li>
+</ul></li>
 </ol>
+<p>???? * For each pair of A , B such that A &lt;=&gt; B,</p>
 
     </div>
 
@@ -482,7 +514,7 @@ NFA with epsilon moves</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-08312022"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-09072022"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-09122022"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 09&#x2F;12&#x2F;2022</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-08312022"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-09072022"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-09122022"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 09&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-09212022"><span class="nav-number">4.</span> <span class="nav-text">Lecture ?? 09&#x2F;21&#x2F;2022</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -560,7 +592,7 @@ NFA with epsilon moves</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">20:12</span>
+    <span title="Reading time total">20:18</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

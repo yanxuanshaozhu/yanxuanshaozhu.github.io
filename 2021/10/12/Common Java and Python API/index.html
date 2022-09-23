@@ -28,7 +28,7 @@
 <meta property="og:description" content="Python">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-12T15:05:15.000Z">
-<meta property="article:modified_time" content="2021-12-18T20:45:11.006Z">
+<meta property="article:modified_time" content="2022-09-22T22:35:58.498Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-18 15:45:11" itemprop="dateModified" datetime="2021-12-18T15:45:11-05:00">2021-12-18</time>
+                <time title="Modified: 2022-09-22 18:35:58" itemprop="dateModified" datetime="2022-09-22T18:35:58-04:00">2022-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,7 +224,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>30k</span>
+              <span>31k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -2344,6 +2344,7 @@ the deque</td>
 <ul>
 <li><p><code>import java.util.PriorityQueue;</code></p></li>
 <li><p><code>PriorityQueue&lt;E&gt; pq = new PriorityQueue&lt;&gt;();</code></p></li>
+<li><p>PriorityQueue with customized comparator <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">   <span class="meta">@override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer a, Integer b)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> func(a, b); <span class="comment">// func(a, b) &lt; 0, then a is closer to the head of the queue</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p></li>
 <li><p>An unbounded priority queue based on a priority heap</p></li>
 <li><p>Does not permit null elements, elements are ordered using their
 natural ordering or by a Comparator provided at queue construction time,
@@ -2352,7 +2353,7 @@ depending on which constructor is used</p></li>
 the specified ordering</p></li>
 <li><p>This class provides <span class="math inline">\(O(log(n))\)</span> time for the enqueuing and
 dequeuing methods (<code>offer</code>, <code>poll</code>,
-<code>remove()</code> and <code>add</code>); linear time for the
+<code>remove</code> and <code>add</code>); linear time for the
 <code>remove(Object)</code> and <code>contains(Object)</code> methods;
 and constant time for the retrieval methods (<code>peek</code>,
 <code>element</code>, and <code>size</code>)</p>
@@ -2599,7 +2600,7 @@ of the specified array</td>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">20:12</span>
+    <span title="Reading time total">20:18</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
