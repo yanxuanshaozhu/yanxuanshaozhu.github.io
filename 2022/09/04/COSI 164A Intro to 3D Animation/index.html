@@ -41,8 +41,9 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS05ObjectTexture.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS06MixShader.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS06UVMapping.png">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS08Normal.png">
 <meta property="article:published_time" content="2022-09-04T21:39:54.000Z">
-<meta property="article:modified_time" content="2022-09-21T05:58:06.924Z">
+<meta property="article:modified_time" content="2022-09-28T05:13:25.550Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="3D Animation">
 <meta name="twitter:card" content="summary">
@@ -221,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-21 01:58:06" itemprop="dateModified" datetime="2022-09-21T01:58:06-04:00">2022-09-21</time>
+                <time title="Modified: 2022-09-28 01:13:25" itemprop="dateModified" datetime="2022-09-28T01:13:25-04:00">2022-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +240,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.5k</span>
+              <span>5.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -400,29 +401,6 @@ base geometry of your object <img src="/images/Course/COSI164A/LS04Modifier.png"
 computer on it, an office chari, a floor lamp, a book shelf and a bed
 <img src="/images/Course/COSI164A/HW1.png"></p></li>
 </ol>
-<h1 id="lesson04grad-09062022">Lesson04Grad 09/06/2022</h1>
-<ol type="1">
-<li>Ray tracing intro
-<ul>
-<li>Ray Tracing is a method of generating realistic 3D images from a
-mathematical description of a scene</li>
-<li>There is a one-to-one correspondence between each pixel in a 3D
-scene and a ray starting at a camera and moving into the scene, we can
-use the view from the camera to create a 2D image then</li>
-</ul></li>
-<li>Some math
-<ul>
-<li>3-d coordinates</li>
-<li>Vector norm: <span class="math inline">\(|p| = \sqrt{p_{1}^2 +
-p_{2}^2 + p_{3}^2}\)</span></li>
-<li>Dot product</li>
-<li>Cross product: use right-hand rule to determine the direction of the
-cross product</li>
-<li>Represent a ray: <span class="math inline">\(r(t) = p +
-t*d\)</span>, where p is an origin vector, d is a direction vector, and
-t is time</li>
-</ul></li>
-</ol>
 <h1 id="lesson05-09072022">Lesson05 09/07/2022</h1>
 <ol type="1">
 <li>Textures (纹理) Intro
@@ -497,6 +475,29 @@ light, spot light</li>
 </ul></li>
 </ol>
 <h1 id="lesson08-09142022">Lesson08 09/14/2022</h1>
+<ol type="1">
+<li>Use normal map(法线贴图) to create objects with uneven
+surface(imitate roughness)
+<ul>
+<li>Create two <code>Image Texture</code></li>
+<li>Connect one <code>Image Texture</code> to the
+<code>Base Color</code> of <code>Principled BSDF</code>, connect the
+other to the <code>Normal</code> of <code>Principled BSDF</code></li>
+<li>Connect the <code>BSDF</code> of the <code>Principled BSDF</code> to
+the <code>Surface</code> of the <code>Material Output</code></li>
+</ul>
+<img src="/images/Course/COSI164A/LS08Normal.png"></li>
+</ol>
+<h1 id="lesson09-09152022">Lesson09 09/15/2022</h1>
+<ol type="1">
+<li>Practice for the coming quiz</li>
+</ol>
+<h1 id="lesson10-09192022">Lesson10 09/19/2022</h1>
+<ol type="1">
+<li></li>
+</ol>
+<h1 id="lesson11-09212022">Lesson11 09/21/2022</h1>
+<h1 id="lesson12-09222022">Lesson12 09/22/2022</h1>
 
     </div>
 
@@ -597,7 +598,7 @@ light, spot light</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04grad-09062022"><span class="nav-number">5.</span> <span class="nav-text">Lesson04Grad 09&#x2F;06&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson05-09072022"><span class="nav-number">6.</span> <span class="nav-text">Lesson05 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson06-09082022"><span class="nav-number">7.</span> <span class="nav-text">Lesson06 09&#x2F;08&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson07-09122022"><span class="nav-number">8.</span> <span class="nav-text">Lesson07 09&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson08-09142022"><span class="nav-number">9.</span> <span class="nav-text">Lesson08 09&#x2F;14&#x2F;2022</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson05-09072022"><span class="nav-number">5.</span> <span class="nav-text">Lesson05 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson06-09082022"><span class="nav-number">6.</span> <span class="nav-text">Lesson06 09&#x2F;08&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson07-09122022"><span class="nav-number">7.</span> <span class="nav-text">Lesson07 09&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson08-09142022"><span class="nav-number">8.</span> <span class="nav-text">Lesson08 09&#x2F;14&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson09-09152022"><span class="nav-number">9.</span> <span class="nav-text">Lesson09 09&#x2F;15&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson10-09192022"><span class="nav-number">10.</span> <span class="nav-text">Lesson10 09&#x2F;19&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson11-09212022"><span class="nav-number">11.</span> <span class="nav-text">Lesson11 09&#x2F;21&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson12-09222022"><span class="nav-number">12.</span> <span class="nav-text">Lesson12 09&#x2F;22&#x2F;2022</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -675,7 +676,7 @@ light, spot light</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">20:37</span>
+    <span title="Reading time total">20:38</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
