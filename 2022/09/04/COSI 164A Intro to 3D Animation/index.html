@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS06UVMapping.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI164A/LS08Normal.png">
 <meta property="article:published_time" content="2022-09-04T21:39:54.000Z">
-<meta property="article:modified_time" content="2022-10-18T00:53:37.996Z">
+<meta property="article:modified_time" content="2022-10-27T05:07:25.651Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="3D Animation">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-17 20:53:37" itemprop="dateModified" datetime="2022-10-17T20:53:37-04:00">2022-10-17</time>
+                <time title="Modified: 2022-10-27 01:07:25" itemprop="dateModified" datetime="2022-10-27T01:07:25-04:00">2022-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.9k</span>
+              <span>8.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -493,9 +493,6 @@ the <code>Surface</code> of the <code>Material Output</code></li>
 <li>Practice for the coming quiz</li>
 </ol>
 <h1 id="lesson10-09192022">Lesson10 09/19/2022</h1>
-<ol type="1">
-<li></li>
-</ol>
 <h1 id="lesson11-09202022">Lesson11 09/20/2022</h1>
 <ol type="1">
 <li><p>Transformation of point <span class="math inline">\(q = (x, y,
@@ -621,8 +618,95 @@ s * y + c * z\\
 \]</span></p></li>
 <li><p>Transformation can be composed</p></li>
 </ol>
-<h1 id="lesson11-09212022">Lesson11 09/21/2022</h1>
-<h1 id="lesson11-09222022">Lesson11 09/22/2022</h1>
+<h1 id="lesson12-09222022">Lesson12 09/22/2022</h1>
+<ol type="1">
+<li>Animation
+<ul>
+<li>Default 25 frames/second</li>
+<li>Use <code>i</code> to insert a keyframe, you can change location,
+rotation, scale and other custom properties of the object</li>
+<li>Modify <code>Output Properties</code> to change the output format to
+<code>AVI JPEG</code>, then render animation, there will be an
+<code>avi</code> file in the output folder</li>
+</ul></li>
+</ol>
+<h1 id="lesson-13-09292022">Lesson 13 09/29/2022</h1>
+<ol type="1">
+<li>Exam 1: got 100/100</li>
+</ol>
+<h1 id="lesson-14-09292022">Lesson 14 09/29/2022</h1>
+<h1 id="lesson-15-10032022">Lesson 15 10/03/2022</h1>
+<ol type="1">
+<li>3D printing</li>
+</ol>
+<h1 id="lesson-16-10062022">Lesson 16 10/06/2022</h1>
+<ol type="1">
+<li><p>Jump lamp example</p></li>
+<li><p>Use armature to add bones to the model</p>
+<ul>
+<li>Select <code>Layout</code> model, then select <code>Add</code> -&gt;
+<code>Armature</code></li>
+</ul></li>
+</ol>
+<h1 id="lesson-17-10122022">Lesson 17 10/12/2022</h1>
+<ol type="1">
+<li>Add armature
+<ul>
+<li>Use <code>Ctrl + Alt + Q</code> to change to a quad view and
+back</li>
+<li>Make sure that the armature is inside the object when you setting
+the parent(so some neighbor points are assigned to the armature), the
+armature should be the parent of the object, and use the
+<code>With Automatic Weights</code> mode to automatically assign
+points</li>
+<li>Use the <code>Pose Mode</code> of the armature to change the
+position of the bones as well as the object</li>
+<li>If you cannot see the armature, Click the
+<code>Object Data Properties</code> on the right, in the
+<code>Viewport Display</code> section, check the <code>In Front</code>
+option in the <code>Show</code> section</li>
+<li>Select the armature and the object to which is the child, then
+select the <code>Weight Paint</code> mode, then you can adjust the
+influence of the armature on the object</li>
+<li>You can change the end frame when rendering animation</li>
+</ul></li>
+</ol>
+<h1 id="lesson-18-10132022">Lesson 18 10/13/2022</h1>
+<ol type="1">
+<li>Makeup exam: did not take it because I got 100/100 on the first
+exam</li>
+</ol>
+<h1 id="lesson-19-10182022">Lesson 19 10/18/2022</h1>
+<ol type="1">
+<li><p>You can use some online free <code>fbx</code> human model and
+import it into blender, which contains both model object and its
+armature</p></li>
+<li><p>Rigify</p>
+<ul>
+<li>Click the top left button, select <code>Preferences</code>, in the
+<code>add-ons</code> section, search <code>rigify</code>, check the
+<code>Rigging: Rigify</code> option</li>
+<li>For human model, select <code>Add</code> -&gt;
+<code>Armature</code>, then select <code>Human(Meta-rig)</code></li>
+<li>Use the Pose Mode of the armature to adjust its position</li>
+</ul></li>
+</ol>
+<h1 id="lesson-20-10192022">Lesson 20 10/19/2022</h1>
+<ol type="1">
+<li>Shape Key animation
+<ul>
+<li>Create an object model, click <code>Object Data Properties</code> on
+the right, Click <code>+</code> in the <code>Shape Keys</code> section
+to add a basic shape key</li>
+<li>Add other shape keys, go to <code>Edit Mode</code>, click the shape
+key you want to edit, do some modifications on the model, then go back
+to <code>Object Mode</code>, adjust the <code>value</code> to show the
+influence of that shape key</li>
+<li>For animation, select a key frame, pause your mouse on the value of
+each shape key, press <code>i</code> on the keyboard, then move to the
+next key frame</li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -723,7 +807,7 @@ s * y + c * z\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson05-09072022"><span class="nav-number">5.</span> <span class="nav-text">Lesson05 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson06-09082022"><span class="nav-number">6.</span> <span class="nav-text">Lesson06 09&#x2F;08&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson07-09122022"><span class="nav-number">7.</span> <span class="nav-text">Lesson07 09&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson08-09142022"><span class="nav-number">8.</span> <span class="nav-text">Lesson08 09&#x2F;14&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson09-09152022"><span class="nav-number">9.</span> <span class="nav-text">Lesson09 09&#x2F;15&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson10-09192022"><span class="nav-number">10.</span> <span class="nav-text">Lesson10 09&#x2F;19&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson11-09202022"><span class="nav-number">11.</span> <span class="nav-text">Lesson11 09&#x2F;20&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson11-09212022"><span class="nav-number">12.</span> <span class="nav-text">Lesson11 09&#x2F;21&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson11-09222022"><span class="nav-number">13.</span> <span class="nav-text">Lesson11 09&#x2F;22&#x2F;2022</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson01-08242022"><span class="nav-number">1.</span> <span class="nav-text">Lesson01 08&#x2F;24&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson02-08292022"><span class="nav-number">2.</span> <span class="nav-text">Lesson02 08&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson03-08312022"><span class="nav-number">3.</span> <span class="nav-text">Lesson03 08&#x2F;31&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson04-09012022"><span class="nav-number">4.</span> <span class="nav-text">Lesson04 09&#x2F;01&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson05-09072022"><span class="nav-number">5.</span> <span class="nav-text">Lesson05 09&#x2F;07&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson06-09082022"><span class="nav-number">6.</span> <span class="nav-text">Lesson06 09&#x2F;08&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson07-09122022"><span class="nav-number">7.</span> <span class="nav-text">Lesson07 09&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson08-09142022"><span class="nav-number">8.</span> <span class="nav-text">Lesson08 09&#x2F;14&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson09-09152022"><span class="nav-number">9.</span> <span class="nav-text">Lesson09 09&#x2F;15&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson10-09192022"><span class="nav-number">10.</span> <span class="nav-text">Lesson10 09&#x2F;19&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson11-09202022"><span class="nav-number">11.</span> <span class="nav-text">Lesson11 09&#x2F;20&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson12-09222022"><span class="nav-number">12.</span> <span class="nav-text">Lesson12 09&#x2F;22&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-13-09292022"><span class="nav-number">13.</span> <span class="nav-text">Lesson 13 09&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-14-09292022"><span class="nav-number">14.</span> <span class="nav-text">Lesson 14 09&#x2F;29&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-15-10032022"><span class="nav-number">15.</span> <span class="nav-text">Lesson 15 10&#x2F;03&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-16-10062022"><span class="nav-number">16.</span> <span class="nav-text">Lesson 16 10&#x2F;06&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-17-10122022"><span class="nav-number">17.</span> <span class="nav-text">Lesson 17 10&#x2F;12&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-18-10132022"><span class="nav-number">18.</span> <span class="nav-text">Lesson 18 10&#x2F;13&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-19-10182022"><span class="nav-number">19.</span> <span class="nav-text">Lesson 19 10&#x2F;18&#x2F;2022</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-20-10192022"><span class="nav-number">20.</span> <span class="nav-text">Lesson 20 10&#x2F;19&#x2F;2022</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -801,7 +885,7 @@ s * y + c * z\\
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:17</span>
+    <span title="Reading time total">21:20</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

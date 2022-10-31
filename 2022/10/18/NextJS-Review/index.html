@@ -28,7 +28,7 @@
 <meta property="og:description" content="About Next.js">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-18T04:45:38.000Z">
-<meta property="article:modified_time" content="2022-10-19T15:02:19.652Z">
+<meta property="article:modified_time" content="2022-10-19T15:20:20.923Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Next.js, React">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-19 11:02:19" itemprop="dateModified" datetime="2022-10-19T11:02:19-04:00">2022-10-19</time>
+                <time title="Modified: 2022-10-19 11:20:20" itemprop="dateModified" datetime="2022-10-19T11:20:20-04:00">2022-10-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>13k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>12 mins.</span>
+              <span>13 mins.</span>
             </span>
 
         </div>
@@ -505,7 +505,21 @@ assets</li>
 tag, it supports for image optimization by default (resizing,
 optimizing, and serving images in modern formats) <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Image <span class="keyword">from</span> <span class="string">&quot;next/image&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ProfileFigure = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;Image</span><br><span class="line">            src=<span class="string">&quot;/profile.jpg&quot;</span></span><br><span class="line">            alt=<span class="string">&quot;Picture of the author&quot;</span></span><br><span class="line">            width=&#123;<span class="number">200</span>&#125;</span><br><span class="line">            height=&#123;<span class="number">200</span>&#125;</span><br><span class="line">      /&gt;</span><br><span class="line"></span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">            &lt;ProfileFigure /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Profile;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li>Metadata</li>
+<li>Metadata
+<ul>
+<li>Add head to a page <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Head <span class="keyword">from</span> <span class="string">&quot;next/head&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Head&gt;</span><br><span class="line">                  &lt;title&gt;Profile&lt;/title&gt;</span><br><span class="line">                  &lt;link rel=<span class="string">&quot;icon&quot;</span> href=<span class="string">&quot;/favicon.ico&quot;</span> /&gt;</span><br><span class="line">            &lt;/Head&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Profile;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Third-party scripts
+<ul>
+<li>Method one: use HTML <code>script</code> tag in the
+<code>Head</code> component</li>
+<li>Method two: use the <code>Script</code> component in
+<code>next/script</code>, the <code>strategy</code> attribute controls
+when the third-party script should load, the <code>onLoad</code>
+attribute is used to run any JavaScript code immediately after the
+script has finished loading <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Script <span class="keyword">from</span> <span class="string">&quot;next/script&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Head&gt;</span><br><span class="line">                  &lt;title&gt;Profile&lt;/title&gt;</span><br><span class="line">                  &lt;link rel=<span class="string">&quot;icon&quot;</span> href=<span class="string">&quot;/favicon.ico&quot;</span> /&gt;</span><br><span class="line">            &lt;/Head&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">            &lt;Script </span><br><span class="line">               src=<span class="string">&quot;https://www.google-analytics.com/analytics.js&quot;</span> </span><br><span class="line">               strategy=<span class="string">&quot;lazyOnload&quot;</span></span><br><span class="line">               onLoad=&#123;<span class="function">() =&gt;</span></span><br><span class="line">                  <span class="built_in">console</span>.log(<span class="string">`script loaded correctly, window.FB has been populated`</span>)</span><br><span class="line">               &#125;</span><br><span class="line">            /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>CSS</li>
 </ol>
 
     </div>
@@ -682,7 +696,7 @@ optimizing, and serving images in modern formats) <figure class="highlight javas
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:17</span>
+    <span title="Reading time total">21:20</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
