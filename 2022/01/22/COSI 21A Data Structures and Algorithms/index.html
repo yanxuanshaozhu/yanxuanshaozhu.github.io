@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-10-31T18:08:14.708Z">
+<meta property="article:modified_time" content="2022-10-31T21:18:56.420Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-31 14:08:14" itemprop="dateModified" datetime="2022-10-31T14:08:14-04:00">2022-10-31</time>
+                <time title="Modified: 2022-10-31 17:18:56" itemprop="dateModified" datetime="2022-10-31T17:18:56-04:00">2022-10-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>50k</span>
+              <span>51k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>46 mins.</span>
+              <span>47 mins.</span>
             </span>
 
         </div>
@@ -976,11 +976,11 @@ are larger than or equal to the key of v</li>
 </ul></li>
 <li>Full tree and complete tree
 <ul>
-<li>Full: a binary tree is full if each node has either 0 or 2
-children</li>
+<li>Full: a binary tree is full if each node has either 0 or 2 children
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">isFull(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (v.left == <span class="keyword">null</span> &amp;&amp; v.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (v.left != <span class="keyword">null</span> &amp;&amp; v.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> isFull(v.left) &amp;&amp; isFull(v.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Complete: a binary with n levels is complete if every level is
 completely filled except possibly the last level, which is filled from
-left to right</li>
+left to right <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">isComplete(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  Queue q = <span class="keyword">new</span> Queue();</span><br><span class="line">  q.enqueue(v);</span><br><span class="line">  flag = <span class="keyword">false</span></span><br><span class="line">  <span class="keyword">while</span> (q.size() != <span class="number">0</span>) &#123;</span><br><span class="line">    n = q.size();</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      front = q.dequeue();</span><br><span class="line">      <span class="comment">// If we meet a null in a level, mark the flag as true</span></span><br><span class="line">      <span class="keyword">if</span> (front == <span class="keyword">null</span>) &#123;</span><br><span class="line">        flag = <span class="keyword">true</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// If we met a null before, but now we are at a non-null node, return false</span></span><br><span class="line">        <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q.enqueue(front.left);</span><br><span class="line">        q.enqueue(front.right);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol>
 <h2 id="lecture-17-20220303">Lecture 17 2022/03/03</h2>
@@ -1091,6 +1091,7 @@ node are of the same height</li>
 <li>A tree is balanced if the heights of the left and right subtree of
 each node are within 1 (-1, 1, 0)</li>
 </ul></li>
+<li>Check if a binary tree is balanced <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">isBalanced(v) &#123;</span><br><span class="line">  <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (Math.abs(height(v.left) - height(v.right)) &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> isBalanced(v.left) &amp;&amp; isBalanced(v.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>If you insert a node or delete a node in the BBST, the tree may be
 not balanced, so you need to perform rotations to rebalance the
 tree</li>
@@ -2204,7 +2205,7 @@ the hamiltonian cycle problem</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:20</span>
+    <span title="Reading time total">21:23</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
