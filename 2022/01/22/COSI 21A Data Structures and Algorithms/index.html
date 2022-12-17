@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/left_right_rotation.png">
 <meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Course/COSI21A/right_left_rotation.png">
 <meta property="article:published_time" content="2022-01-23T03:56:51.000Z">
-<meta property="article:modified_time" content="2022-12-17T06:38:15.942Z">
+<meta property="article:modified_time" content="2022-12-17T07:07:19.568Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-17 01:38:15" itemprop="dateModified" datetime="2022-12-17T01:38:15-05:00">2022-12-17</time>
+                <time title="Modified: 2022-12-17 02:07:19" itemprop="dateModified" datetime="2022-12-17T02:07:19-05:00">2022-12-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,7 +229,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>51k</span>
+              <span>52k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -1864,7 +1864,7 @@ path algorithm, Prim's minimum spanning tree algorithm</li>
 <li>Idea: given a graph G and a source vertex s, BFS systemically
 explores the edge of G to discover every vertex that is a reachable from
 s</li>
-<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] dist = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">    dist[i] = Integer.MAX_VALUE;</span><br><span class="line">  &#125;</span><br><span class="line">  dist[s] = <span class="number">0</span>;</span><br><span class="line">  Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">  queue.enqueue(s);</span><br><span class="line">  <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> u = queue.dequeue();</span><br><span class="line">    System.out.println(u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v: G.adj(u)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dist[v] == Integer.MAX_VALUE) &#123;</span><br><span class="line">        dist[v] = dist[u] + <span class="number">1</span>;</span><br><span class="line">        queue.enqueue(v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Implementation <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// you can also use boolean[] visited = new boolean[G.V()]</span></span><br><span class="line">  <span class="keyword">int</span>[] dist = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">    dist[i] = Integer.MAX_VALUE;</span><br><span class="line">  &#125;</span><br><span class="line">  dist[s] = <span class="number">0</span>;</span><br><span class="line">  Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">  queue.enqueue(s);</span><br><span class="line">  <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> u = queue.dequeue();</span><br><span class="line">    System.out.println(u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v: G.adj(u)) &#123;</span><br><span class="line">      <span class="comment">// if vertex v has not been visited</span></span><br><span class="line">      <span class="keyword">if</span> (dist[v] == Integer.MAX_VALUE) &#123;</span><br><span class="line">        dist[v] = dist[u] + <span class="number">1</span>;</span><br><span class="line">        queue.enqueue(v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Time complexity: <span class="math inline">\(O(V + E)\)</span></li>
 </ul></li>
 </ul></li>
