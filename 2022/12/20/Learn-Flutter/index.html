@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn Flutter">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
+<meta property="article:modified_time" content="2022-12-21T06:58:01.244Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Learn Flutter | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Learn Flutter
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-12-20 01:14:29" itemprop="dateCreated datePublished" datetime="2022-12-20T01:14:29-05:00">2022-12-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-12-21 01:58:01" itemprop="dateModified" datetime="2022-12-21T01:58:01-05:00">2022-12-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>笔记结合了Flutter官方文档，Dart官方文档，B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JE411e7Tu/">这个</a>视频</p>
+<h1 id="introduction">Introduction</h1>
+<a id="more"></a>
+<ol type="1">
+<li>Flutter
+跨平台、高保真、高性能，使用Dart语言开发，Impeller将会取代Skia作为Flutter主渲染方案(和React
+Native需要native
+components和javascript通信，Dart可以直接操作UI层，不需要两层通信)</li>
+<li>配环境
+<ul>
+<li>Flutter SDK + 配置bin到环境变量</li>
+<li>Android Studio 配置Flutter,Dart插件, 配置模拟器; VS Code
+配置Flutter, Dart插件; Idea 配置Flutter, Dart插件</li>
+<li>用<code>flutter doctor</code>检查flutter环境和需要的依赖是否完整
+<ul>
+<li>如果是customized Android SDK path:
+<code>flutter config --android-sdk &lt;path&gt;</code></li>
+<li>Android toolchain报错: 再Android
+Studio中下载<code>Android SDK Command-line Tools (latest)</code></li>
+<li>需要同意Android许可:
+<code>flutter doctor --android-licenses</code></li>
+</ul></li>
+<li>升级Flutter: 运行<code>flutter upgrade</code></li>
+<li>Android Studio 修改已安装模拟器的路径:
+<ul>
+<li>添加环境变量: <code>ANDROID_SDK_HOME</code>,
+值是<code>&lt;path&gt;</code></li>
+<li>把<code>C:\Users\&lt;User&gt;\.android</code>中的<code>avd</code>文件夹复制到<code>&lt;path&gt;\.android</code></li>
+<li>修改模拟器对应的<code>&lt;emulator_name&gt;.ini</code>文件，把<code>path</code>改为<code>&lt;path&gt;\.android\avd</code></li>
+</ul></li>
+<li>Dart SDK</li>
+</ul></li>
+<li>Dart语言特性
+<ul>
+<li>General concepts
+<ul>
+<li>Everything in a variable is an object, every object is an instance
+of a class</li>
+<li>Dart is a strong-typed language, but it can do type inference when
+using <code>var</code></li>
+<li>Dart introduced null safety in 2.12, if a variable can be of type x
+or null, it should be declared as <code>x?</code>, if a variable can be
+of type x but Dart disagrees you cau use <code>x!</code> to force it to
+be of type x</li>
+<li>When any type is allowed, use <code>Object?</code>,
+<code>Object</code> or <code>dynamic</code></li>
+<li>Dart supports generic types</li>
+<li>Dart supports top-level functions/variables, as well as
+functions/variables tied to a class or object</li>
+<li>Dart does not have accessibility keywords, for private items, use
+<code>_</code> as the first character</li>
+<li>Dart has both expressions (which have runtime values, like ternary
+expressions) and statements (which don’t, like if else statements)</li>
+<li>Dart tools can report two kinds of problems: warnings and
+errors</li>
+</ul></li>
+<li>Variables
+<ul>
+<li>You can declare a variable with its type, or use type inference</li>
+<li>Uninitialized variables that have a nullable type have an initial
+value of null</li>
+<li>You can use <code>late</code> modifier to defer initialization until
+the first time the variable is used</li>
+<li>A final variable can be set only once; a const variable is a
+compile-time constant(you must initialize a constant variable with a
+value, otherwise there will be a compile error)</li>
+</ul></li>
+<li>Built-int types
+<ul>
+<li>Numbers: <code>int</code>, <code>double</code>; Strings:
+<code>String</code>; Booleans: <code>bool</code>; Lists:
+<code>List</code>; Sets: <code>Set</code>; Maps: <code>Map</code>;
+Runes: <code>Runes</code>; Symbols: <code>Symbol</code>, the value null:
+<code>Null</code>. Other types include: <code>Object</code>,
+<code>Enum</code>, <code>Future</code> and <code>Stream</code>,
+<code>Iterable</code>, <code>Never</code>, <code>dynamic</code>,
+<code>void</code></li>
+<li>字符串转换成数字: <code>int.parse('1')</code>,
+<code>double.parse('1.1')</code></li>
+<li>用三引号创建多行字符串: <code>var a = """ a\n b\n c\n""";</code>,
+用<code>r</code>创建原始字符串</li>
+<li>整形转换成字符串: <code>1.toString()</code></li>
+<li>浮点型转换成字符串并且小数点后保留n位:
+<code>1.1.toStringAsFixed(n)</code></li>
+<li>布尔类型: <code>true</code>和<code>false</code></li>
+<li>列表初始化: 空列表<code>var l0 = &lt;int&gt;[];</code>,
+指定列表大小和初始值<code>var l1 = List.filled(3, 0);</code>,
+指定列表大小和赋值方法<code>var l2 = List.generate(3, (i) =&gt; i);</code>，
+创建constant列表: <code>var l3 = const [1, 2, 3];</code></li>
+<li>列表展开:
+<code>var l1 = [1, 2, 3]; var l2 = [0, ...l1];</code>(使用<code>...</code>),
+对于可能是null的列表进行展开:
+<code>var l1 = [1, 2, 3]; var l2 = [0, ...?l1];</code>
+(使用<code>...?</code>)</li>
+<li>带if和for的列表: <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span> intList = <span class="built_in">List</span>.generate(<span class="number">3</span>, (index) =&gt; index);</span><br><span class="line"><span class="comment">// 下面不要再函数体加括号，想要什么格式直接写什么格式</span></span><br><span class="line"><span class="built_in">List</span> strList1 = [<span class="string">&quot;#0&quot;</span>, <span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">in</span> intList) <span class="string">&quot;#<span class="subst">$&#123;item&#125;</span>&quot;</span>];</span><br><span class="line"><span class="built_in">List</span> strList2 = [...strList1, <span class="keyword">if</span> (<span class="number">3</span> &gt; <span class="number">2</span>) <span class="string">&quot;#4&quot;</span>];</span><br></pre></td></tr></table></figure></li>
+<li>反转列表:
+<code>var l1 = [1, 2, 3];  var l2 = new List.from(l1.reversed);</code></li>
+<li>集合初始化: 空列表<code>var s1 = &lt;int&gt;&#123;&#125;;</code>,
+字面量<code>var s2 = &#123;1, 2, 3&#125;;</code>,
+从Iterable创建集合<code>var s3 = Set.from([1,2,3])</code></li>
+<li>一些集合操作: <code>s1.add(1)</code>, <code>s1.remove(1)</code>,
+<code>s1.clear()</code></li>
+<li>字典初始化: 空字典<code>Map m1 = &lt;String, int&gt;&#123;&#125;;</code>
+字面量<code>Map m = &#123;"a": 0, "b": 1&#125;;</code>,
+构造器<code>Map m = new Map(); m["a"] = 0; m["b"] = 1;</code></li>
+<li>字典一些操作: <code>m.containsKey("a")</code>,
+<code>m.remove("a")</code>, <code>m.clear()</code>, 还包括使用if和for,
+以及<code>...</code>和<code>...?</code></li>
+</ul></li>
+<li>Functions
+<ul>
+<li>functions are objects and have a type, <code>Function</code></li>
+<li>Every app must have a top-level main() function, which serves as the
+entrypoint to the app. The main() function returns void and has an
+optional <code>List&lt;String&gt;</code> parameter for arguments</li>
+<li>函数返回类型也可以进行类型推断，但是不推荐</li>
+<li>A function can have any number of required positional parameters.
+These can be followed either by named parameters or by optional
+positional parameters (but not both)</li>
+<li>Use curly braces <code>&#123;&#125;</code> for named parameters. If no default
+value is provided and marked as required (use <code>required</code>
+keyword), the parameter type must be nullable and its default value
+should be null <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> addAge(&#123;<span class="built_in">int</span> num1 = <span class="number">0</span>, <span class="built_in">int</span> num2 = <span class="number">0</span>&#125;) &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(addAge()); <span class="comment">// 0</span></span><br><span class="line">    <span class="built_in">print</span>(addAge(num1: <span class="number">1</span>)); <span class="comment">// 1</span></span><br><span class="line">    <span class="built_in">print</span>(addAge(num2: <span class="number">2</span>)); <span class="comment">// 2</span></span><br><span class="line">    <span class="built_in">print</span>(addAge(num1: <span class="number">1</span>, num2: <span class="number">2</span>)); <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Use bracket <code>[]</code> for optional positional parameters. If
+no default value is provided, the parameter type must be nullable and
+its default value should be null <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> addAge(&#123;<span class="built_in">int</span> num1, [<span class="built_in">int?</span> num2]) &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + (num2 == <span class="keyword">null</span> ? <span class="number">0</span> : num2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(addAge(<span class="number">1</span>)); <span class="comment">// 1</span></span><br><span class="line">    <span class="built_in">print</span>(addAge(<span class="number">1</span>, <span class="number">2</span>)); <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Functions as first-class objects: you can pass a function as a
+parameter to another function</li>
+<li>Anonymous functions/lambda/closure</li>
+</ul></li>
+<li>Operators
+<ul>
+<li>Some operators: <code>/</code> division, <code>~/</code> integer
+division, <code>??</code> if null operator (<code>var a = b?? c;</code>
+if variable b is null, a is assigned to the value in variable c),
+<code>type1 as type2</code> cast type1 to type2,
+<code>type1 is type2</code> check if type1 is type2,
+<code>type1 is! type2</code> check if type1 is not type2</li>
+<li>Cascade notation: <code>..</code> and <code>?..</code>, usage:
+<code>object..method1()..method2()..method3()</code>, the
+<code>?..</code> guarantees that non of the methods will be called if
+the object is null. Cascade can be nested, you need to use
+<code>()</code> to separate them</li>
+</ul></li>
+<li>Control Flow statements</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/" title="Learn Flutter">https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/18/NextJS-Review/" rel="prev" title="NextJS Review">
+      <i class="fa fa-chevron-left"></i> NextJS Review
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">21:52</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
