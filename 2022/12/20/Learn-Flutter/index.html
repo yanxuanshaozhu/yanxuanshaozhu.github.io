@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2022-12-21T06:58:01.244Z">
+<meta property="article:modified_time" content="2022-12-22T07:07:57.260Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-21 01:58:01" itemprop="dateModified" datetime="2022-12-21T01:58:01-05:00">2022-12-21</time>
+                <time title="Modified: 2022-12-22 02:07:57" itemprop="dateModified" datetime="2022-12-22T02:07:57-05:00">2022-12-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.6k</span>
+              <span>6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>4 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -387,7 +387,31 @@ if variable b is null, a is assigned to the value in variable c),
 the object is null. Cascade can be nested, you need to use
 <code>()</code> to separate them</li>
 </ul></li>
-<li>Control Flow statements</li>
+<li>Control Flow statements
+<ul>
+<li>In and else:
+<code>if(condition) &#123;&#125; else if (condition) &#123;&#125; else &#123;&#125;</code></li>
+<li>For loops: <code>for (initial; condition; increment) &#123;&#125;</code>,
+<code>for (var i in iterable)</code>， forEach on iterable
+<code>iterable.forEach((ele) =&gt; callback(ele));</code>, iterable
+forEach with condition
+<code>iterable.where((ele) =&gt; condition(ele)).forEach((ele) =&gt; callback(ele));</code></li>
+<li>While and do-while loops: <code>while (condition) &#123;&#125;</code>,
+<code>do &#123;&#125; while (condition);</code></li>
+<li>Break and continue: <code>break</code> and <code>continue</code> are
+used to control the flow of the loop</li>
+<li>Switch and case:
+<code>switch (expression) &#123; case value1: break; case value2: break; default: break; &#125;</code>,
+expression can be integers, strings, or compile-time constants. If a
+case is empty and you want fall-through, you can omit break; for a
+non-empty case, if break is omitted, there will be a compile error; if
+you want fall-through with a non empty case, you need to use and labels
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Enter an integer&quot;</span>);</span><br><span class="line">    <span class="built_in">String?</span> command = stdin.readLineSync();</span><br><span class="line">    <span class="built_in">int</span> input = <span class="built_in">int</span>.parse(command!);</span><br><span class="line">    <span class="built_in">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">switch</span> (input) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;<span class="subst">$&#123;res&#125;</span>&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;positive <span class="subst">$&#123;res + input&#125;</span>&quot;</span>);</span><br><span class="line">        <span class="keyword">continue</span> label;</span><br><span class="line">        label:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;done!&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;done!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for input 0, output is 0</span></span><br><span class="line"><span class="comment">// for input 1, output is positive 1 \n done!</span></span><br><span class="line"><span class="comment">// for input 2, output is positive 2 \n done!</span></span><br><span class="line"><span class="comment">// for input 3, output is done!</span></span><br><span class="line"><span class="comment">// for other inputs, output is done!</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Assert: <code>assert(condition, message)</code>, if condition is
+false, an <code>AssertionError</code> is thrown and the message is
+printed</li>
+<li>Exceptions:</li>
 </ul></li>
 </ol>
 
@@ -565,7 +589,7 @@ the object is null. Cascade can be nested, you need to use
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:52</span>
+    <span title="Reading time total">21:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
