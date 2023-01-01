@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2022-12-22T07:07:57.260Z">
+<meta property="article:modified_time" content="2023-01-01T04:46:25.591Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-22 02:07:57" itemprop="dateModified" datetime="2022-12-22T02:07:57-05:00">2022-12-22</time>
+                <time title="Modified: 2022-12-31 23:46:25" itemprop="dateModified" datetime="2022-12-31T23:46:25-05:00">2022-12-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -411,7 +411,115 @@ you want fall-through with a non empty case, you need to use and labels
 <li>Assert: <code>assert(condition, message)</code>, if condition is
 false, an <code>AssertionError</code> is thrown and the message is
 printed</li>
-<li>Exceptions:</li>
+<li>Exceptions:
+<ul>
+<li>Throw exception: <code>throw Object;</code>,
+<code>throw Exception(meg);</code></li>
+<li>Catch exceptions <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    breedMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">on</span> OutOfLlamasException &#123;</span><br><span class="line">    <span class="comment">// A specific exception</span></span><br><span class="line">    buyMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">on</span> Exception <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// Anything else that is an exception</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Unknown exception: <span class="subst">$e</span>&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e, s) &#123;</span><br><span class="line">    <span class="comment">// No specified type, handles alls</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Something really unknown: <span class="subst">$e</span>&#x27;</span>);</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Stack trace:\n <span class="subst">$s</span>&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Finally <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    breedMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Error: <span class="subst">$e</span>&#x27;</span>); <span class="comment">// Handle the exception first.</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    cleanLlamaStalls(); <span class="comment">// Then clean up.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Classes
+<ul>
+<li>All classes except Null descend from Object</li>
+<li>Mixin-based inheritance means that although every class (except for
+the Object class) has exactly one superclass, a class body can be reused
+in multiple class hierarchies</li>
+<li>Use <code>.</code> to refer to an instance variable or method, use
+<code>?.</code> to avoid exception when the leftmost operand is
+null</li>
+<li>Use constructor to, the <code>new</code> keyword is optional,
+constructors can be either <code>ClassName</code>(can have one unnamed
+constructor) or <code>ClassName.identifier</code> (can have multiple
+named constructors), use <code>const</code> to create a compile-time
+constant</li>
+<li>Use <code>object.runtimeType</code> to get the type of an
+object</li>
+<li>All instance variables generate an implicit getter method, non-final
+instance variables and <code>late final</code> instance variables
+without initializers also generate an implicit setter method</li>
+<li>Constructors
+<ul>
+<li>A syntactic sugar <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="comment">// non-null variables must be initialized</span></span><br><span class="line">    <span class="built_in">String</span> name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">int</span> age = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    A (<span class="built_in">String</span> name, <span class="built_in">int</span> age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// recommended syntax in dart</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="comment">// non-null variables and final variables must be initialized</span></span><br><span class="line">    <span class="built_in">String</span> name;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// the instance variables are initialized before the constructor body is executed</span></span><br><span class="line">    A (<span class="keyword">this</span>.name, <span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Each class has a default unnamed constructor with no parameters, if
+you define your own unnamed constructor, the default constructor is not
+generated</li>
+<li>Named parameters, the order does not matter for named parameters
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String</span> name;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String</span> email;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// the user should input email, although it can be null </span></span><br><span class="line">    A (<span class="keyword">this</span>.name, &#123;<span class="keyword">required</span> <span class="keyword">this</span>.email&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    A a = A(<span class="string">&quot;name&quot;</span>, email: <span class="string">&quot;email&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Factory constructor can be used to create instances of subclasses,
+to prepare calculated values to forward them as parameters to a normal
+constructor so that final fields can be initialized with them
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String?</span> name;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String?</span> email;</span><br><span class="line">    </span><br><span class="line">    A._internal(<span class="keyword">this</span>.name, <span class="keyword">this</span>.email);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">factory</span> A(<span class="built_in">String</span> name) &#123;</span><br><span class="line">        <span class="keyword">var</span> email = name + <span class="string">&quot;@gmail.com&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> A._internal(name, email);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Constructors cannot be inherited</li>
+<li>Order of execution in subclass constructor
+<ol type="1">
+<li>Initializer list</li>
+<li>Superclass's no-arg constructor (if it does not exist, you must
+manually call a superclass constructor after colon before the
+constructor body)</li>
+<li>Current class's no-arg constructor</li>
+</ol></li>
+</ul></li>
+<li>Abstract classes: use the <code>abstract class</code> keyword</li>
+<li>Use <code>@override</code> to override a method in a subclass</li>
+<li>If you want to down cast a class, use the <code>covariant</code>
+keyword</li>
+<li>There is not <code>interface</code> keyword in dart, you need to
+implement all the instance members in the interface. Explicit interface:
+use <code>abstract class</code>, implicit interface: every class
+implicitly defines an interface containing all the instance members of
+the class and of any interfaces it implements</li>
+<li>Mixins: mixins are a way of reusing a class’s code in multiple class
+hierarchies
+<ul>
+<li>Use the <code>mixin</code> keyword to define a mixin</li>
+<li>Use the <code>with</code> keyword to apply a mixin to a class, the
+order matters, in <code>A extends B with C, D</code>, the top of the
+inheritance hierarchy is B, then B with C, then B with C and D, then
+A</li>
+<li>Example <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Performer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">void</span> perform() =&gt; <span class="built_in">print</span>(<span class="string">&quot;Performs!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">mixin</span> Guitarist &#123;</span><br><span class="line">    <span class="keyword">void</span> playGuitar() =&gt; <span class="built_in">print</span>(<span class="string">&quot;Play guitar&quot;</span>);</span><br><span class="line">    <span class="keyword">void</span> perform() =&gt; playGuitar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">mixin</span> Drummer &#123;</span><br><span class="line">    <span class="keyword">void</span> playDrums() =&gt; <span class="built_in">print</span>(<span class="string">&quot;Play drums&quot;</span>);</span><br><span class="line">    <span class="keyword">void</span> perform() =&gt; playDrums();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Musician</span> <span class="keyword">extends</span> <span class="title">Performer</span> <span class="title">with</span> <span class="title">Guitarist</span>, <span class="title">Drummer</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    Musician musician = <span class="keyword">new</span> Musician();</span><br><span class="line">    <span class="comment">// in Performer with Guitarist, Drummer, the perform method in mixin Drummer is called</span></span><br><span class="line">    musician.perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Use the <code>on</code> keyword to specify which class the mixin can
+be applied to, <code>mixin A on B</code> means that mixin A can only be
+applied to a class that extends B</li>
+</ul></li>
+<li>Use <code>extension</code> to extend built-in classes
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extension</span> NumberParsing <span class="keyword">on</span> <span class="built_in">String</span> &#123;</span><br><span class="line">    <span class="built_in">int</span> parseInt() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>.parse(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;42&quot;</span>.parseInt());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Generics
+<ul>
+<li>Generics are often required for type safety, but it can also result
+in better generated code and reduce code duplication</li>
+<li>You can use generics with collection literals:
+<code>var names = &lt;String&gt;['Seth', 'Kathy', 'Lars'];</code></li>
+<li>You can use parameterized types with constructors:
+<code>var nameSet = Set&lt;String&gt;.from(names);</code></li>
+<li>You can use generics to restrict the parameterized type:
+<code>class Foo&lt;T extends SomeBaseClass&gt;</code></li>
+<li>You can use generics in methods:
+<code>T first &lt;T&gt;(List&lt;T&gt; ts) &#123;return ts[0];&#125;;</code></li>
+</ul></li>
+<li>Libraries and visibility
+<ul>
+<li>Use <code>import</code> to specify how a namespace from one library
+is used in the scope of another library</li>
+<li>Dart built-in libraries, the URI has the special <code>dart:</code>
+scheme</li>
+<li>You can specify a library prefix when there is a conflict between
+two libraries <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;package1:/lib1/lib1.dart&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;package2:/lib2/lib2.dart&quot;</span> <span class="keyword">as</span> lib2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// use lib1</span></span><br><span class="line"><span class="built_in">Element</span> element1 = <span class="built_in">Element</span>();</span><br><span class="line"><span class="comment">// use lib2</span></span><br><span class="line">lib2.<span class="built_in">Element</span> element2 = lib2.<span class="built_in">Element</span>();</span><br></pre></td></tr></table></figure></li>
+<li>Use part of the library only:
+<code>import 'package:lib1/lib1.dart' show foo;</code> import only foo,
+<code>import 'package:lib1/lib1.dart' hide foo;</code> import everything
+except foo</li>
+<li>Lazily loading a library: only load the library when it is needed,
+<code>import 'package:greetings/hello.dart' deferred as hello;</code></li>
+</ul></li>
+<li>Asynchrony support
+<ul>
+<li>Some functions return <code>Future</code> or <code>Stream</code>
+objects</li>
+<li>Use <code>async</code> and <code>await</code> to write asynchronous
+code (await can only be used in async functions), <code>try</code>,
+<code>catch</code>, <code>finally</code> can also help</li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -452,7 +560,10 @@ printed</li>
     <a href="/2022/10/18/NextJS-Review/" rel="prev" title="NextJS Review">
       <i class="fa fa-chevron-left"></i> NextJS Review
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/31/Build-linux-server-and-get-a-free-domain-name/" rel="next" title="Build a linux server and get a free domain name">
+      Build a linux server and get a free domain name <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -526,7 +637,7 @@ printed</li>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -537,7 +648,7 @@ printed</li>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -575,7 +686,7 @@ printed</li>
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -584,12 +695,12 @@ printed</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.4m</span>
+    <span title="Symbols count total">1.5m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:54</span>
+    <span title="Reading time total">21:59</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
