@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
+  <meta name="description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learn Flutter">
 <meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/12/20/Learn-Flutter/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频 Introduction">
+<meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-01T04:46:25.591Z">
+<meta property="article:modified_time" content="2023-01-02T22:49:57.141Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-31 23:46:25" itemprop="dateModified" datetime="2022-12-31T23:46:25-05:00">2022-12-31</time>
+                <time title="Modified: 2023-01-02 17:49:57" itemprop="dateModified" datetime="2023-01-02T17:49:57-05:00">2023-01-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -243,7 +243,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>笔记结合了Flutter官方文档，Dart官方文档，B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JE411e7Tu/">这个</a>视频</p>
+        <p>笔记结合了Flutter官方文档，Dart官方文档，B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JE411e7Tu/">这个</a>视频，<a target="_blank" rel="noopener" href="https://book.flutterchina.club/">《Flutter实战第二版》</a>这本书</p>
 <h1 id="introduction">Introduction</h1>
 <a id="more"></a>
 <ol type="1">
@@ -275,8 +275,9 @@ Studio中下载<code>Android SDK Command-line Tools (latest)</code></li>
 </ul></li>
 <li>Dart SDK</li>
 </ul></li>
-<li>Dart语言特性
-<ul>
+</ol>
+<h1 id="dart-language">Dart Language</h1>
+<ol type="1">
 <li>General concepts
 <ul>
 <li>Everything in a variable is an object, every object is an instance
@@ -387,6 +388,8 @@ if variable b is null, a is assigned to the value in variable c),
 the object is null. Cascade can be nested, you need to use
 <code>()</code> to separate them</li>
 </ul></li>
+</ol>
+<ul>
 <li>Control Flow statements
 <ul>
 <li>In and else:
@@ -408,17 +411,19 @@ non-empty case, if break is omitted, there will be a compile error; if
 you want fall-through with a non empty case, you need to use and labels
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Enter an integer&quot;</span>);</span><br><span class="line">    <span class="built_in">String?</span> command = stdin.readLineSync();</span><br><span class="line">    <span class="built_in">int</span> input = <span class="built_in">int</span>.parse(command!);</span><br><span class="line">    <span class="built_in">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">switch</span> (input) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;<span class="subst">$&#123;res&#125;</span>&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;positive <span class="subst">$&#123;res + input&#125;</span>&quot;</span>);</span><br><span class="line">        <span class="keyword">continue</span> label;</span><br><span class="line">        label:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;done!&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;done!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for input 0, output is 0</span></span><br><span class="line"><span class="comment">// for input 1, output is positive 1 \n done!</span></span><br><span class="line"><span class="comment">// for input 2, output is positive 2 \n done!</span></span><br><span class="line"><span class="comment">// for input 3, output is done!</span></span><br><span class="line"><span class="comment">// for other inputs, output is done!</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li>Assert: <code>assert(condition, message)</code>, if condition is
+</ul>
+<ol start="6" type="1">
+<li><p>Assert: <code>assert(condition, message)</code>, if condition is
 false, an <code>AssertionError</code> is thrown and the message is
-printed</li>
-<li>Exceptions:
+printed</p></li>
+<li><p>Exceptions:</p>
 <ul>
 <li>Throw exception: <code>throw Object;</code>,
 <code>throw Exception(meg);</code></li>
 <li>Catch exceptions <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    breedMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">on</span> OutOfLlamasException &#123;</span><br><span class="line">    <span class="comment">// A specific exception</span></span><br><span class="line">    buyMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">on</span> Exception <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// Anything else that is an exception</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Unknown exception: <span class="subst">$e</span>&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e, s) &#123;</span><br><span class="line">    <span class="comment">// No specified type, handles alls</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Something really unknown: <span class="subst">$e</span>&#x27;</span>);</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Stack trace:\n <span class="subst">$s</span>&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Finally <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    breedMoreLlamas();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Error: <span class="subst">$e</span>&#x27;</span>); <span class="comment">// Handle the exception first.</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    cleanLlamaStalls(); <span class="comment">// Then clean up.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li>Classes
+<li><p>Classes</p>
 <ul>
 <li>All classes except Null descend from Object</li>
 <li>Mixin-based inheritance means that although every class (except for
@@ -484,7 +489,7 @@ applied to a class that extends B</li>
 <li>Use <code>extension</code> to extend built-in classes
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extension</span> NumberParsing <span class="keyword">on</span> <span class="built_in">String</span> &#123;</span><br><span class="line">    <span class="built_in">int</span> parseInt() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>.parse(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;42&quot;</span>.parseInt());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li>Generics
+<li><p>Generics</p>
 <ul>
 <li>Generics are often required for type safety, but it can also result
 in better generated code and reduce code duplication</li>
@@ -497,7 +502,7 @@ in better generated code and reduce code duplication</li>
 <li>You can use generics in methods:
 <code>T first &lt;T&gt;(List&lt;T&gt; ts) &#123;return ts[0];&#125;;</code></li>
 </ul></li>
-<li>Libraries and visibility
+<li><p>Libraries and visibility</p>
 <ul>
 <li>Use <code>import</code> to specify how a namespace from one library
 is used in the scope of another library</li>
@@ -512,15 +517,70 @@ except foo</li>
 <li>Lazily loading a library: only load the library when it is needed,
 <code>import 'package:greetings/hello.dart' deferred as hello;</code></li>
 </ul></li>
-<li>Asynchrony support
+<li><p>Asynchrony support</p>
 <ul>
 <li>Some functions return <code>Future</code> or <code>Stream</code>
 objects</li>
 <li>Use <code>async</code> and <code>await</code> to write asynchronous
 code (await can only be used in async functions), <code>try</code>,
-<code>catch</code>, <code>finally</code> can also help</li>
+<code>catch</code>, <code>finally</code> can also help
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Before!&quot;</span>);</span><br><span class="line">    <span class="keyword">await</span> Future.delayed(</span><br><span class="line">        <span class="keyword">new</span> <span class="built_in">Duration</span>(seconds: <span class="number">5</span>), () =&gt; <span class="built_in">print</span>(<span class="string">&quot;Delayed 5 seconds&quot;</span>));</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
+<li><p>Generators</p>
+<ul>
+<li>Used to lazily produce a sequence of values</li>
+<li>Synchronous generator returns an Iterable object</li>
+<li>Asynchronous generator returns a Stream object</li>
 </ul></li>
+</ol>
+<h1 id="flutter-introduction">Flutter Introduction</h1>
+<ol type="1">
+<li>跨平台技术简介
+<ul>
+<li>H5 + 原生 (Cordova、Ionic、微信小程序):
+将APP中需要动态变化的内容通过HTML5实现，通过原生网页加载控件来加载</li>
+<li>JavaScript开发 + 原生渲染 (React Native, Weex):
+状态转移之后更新UI(RN中虚拟DOM会通过JavaScriptCore映射为原生控件)</li>
+<li>自绘UI + 原生 (Qt for mobile, Flutter):
+不同平台实现一个同意接口的渲染引擎来绘制UI，不依赖系统原生控件</li>
+</ul></li>
+<li>Flutter 高性能
+<ul>
+<li>Flutter使用Dart，在JIT(Just-In-Time，实时编译)和JS差不多快，在AOT(Ahead-Of-Time,
+预先编译)比JS快</li>
+<li>Flutter使用自绘引擎来绘制UI，不需要Javascript和Native之间通信</li>
+</ul></li>
+<li>Flutter架构
+<ul>
+<li>Flutter framework: a modern, reactive framework written in the Dart
+language
+<ul>
+<li>底层UI库: Foundation, Animation, Painting, Gestures</li>
+<li>抽象布局层: Rendering</li>
+<li>基础组件: Widgets,
+在其之上还有Material和Cupertino风格组件库，分别实现了Material和iOS设计规范</li>
+</ul></li>
+<li>Flutter Engine: mostly written in C++ and supports the primitives
+necessary to support all Flutter applications</li>
+<li>Embedders：the embedder is written in a language that is appropriate
+for the platform</li>
+</ul></li>
+<li>First app
+<ul>
+<li><code>lib/main.dart</code>主要代码</li>
+<li>如果要使用Material风格，在<code>pubspec.yaml</code>的<code>flutter</code>部分加入<code>uses-material-design: true</code>,在主文件中加入<code>import 'package:flutter/material.dart';</code></li>
+<li>In flutter, almost everything is a widget, your class should extend
+<code>StatelessWidget</code> or <code>StatefulWidget</code></li>
+<li>A widget’s main job is to provide a build() method that describes
+how to display the widget in terms of other, lower level widget</li>
+<li>简单来说, Stateful
+widget有状态，这些状态在widget的生命周期中是可以变化的。一个stateful
+widget至少由两个类组成，一个是<code>StatefulWidget</code>类，另一个是<code>State</code>类。<code>StatefulWidget</code>类本身是不变的，但是<code>State</code>类中的状态时可能变化的。
+一般来说Stateful
+widget中的build方法写在State类中，用来解耦，否则需要把State类传到build方法中</li>
+<li><code>Scaffold</code>是Material库中的页面脚手架，它包括了导航栏，标题，包含主屏幕的widget树的<code>body</code>属性</li>
+</ul></li>
+<li>Widget</li>
 </ol>
 
     </div>
@@ -622,7 +682,7 @@ code (await can only be used in async functions), <code>try</code>,
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -700,7 +760,7 @@ code (await can only be used in async functions), <code>try</code>,
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">21:59</span>
+    <span title="Reading time total">22:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
