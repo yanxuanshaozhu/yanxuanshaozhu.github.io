@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-03T02:34:26.331Z">
+<meta property="article:modified_time" content="2023-01-06T00:06:41.942Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-02 21:34:26" itemprop="dateModified" datetime="2023-01-02T21:34:26-05:00">2023-01-02</time>
+                <time title="Modified: 2023-01-05 19:06:41" itemprop="dateModified" datetime="2023-01-05T19:06:41-05:00">2023-01-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>15k</span>
+              <span>18k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>14 mins.</span>
+              <span>17 mins.</span>
             </span>
 
         </div>
@@ -244,7 +244,7 @@
 
       
         <p>笔记结合了Flutter官方文档，Dart官方文档，B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JE411e7Tu/">这个</a>视频，<a target="_blank" rel="noopener" href="https://book.flutterchina.club/">《Flutter实战第二版》</a>这本书</p>
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 <a id="more"></a>
 <ol type="1">
 <li>Flutter
@@ -276,7 +276,7 @@ Studio中下载<code>Android SDK Command-line Tools (latest)</code></li>
 <li>Dart SDK</li>
 </ul></li>
 </ol>
-<h1 id="dart-language">Dart Language</h1>
+<h2 id="dart-language">Dart Language</h2>
 <ol type="1">
 <li>General concepts
 <ul>
@@ -533,7 +533,7 @@ code (await can only be used in async functions), <code>try</code>,
 <li>Asynchronous generator returns a Stream object</li>
 </ul></li>
 </ol>
-<h1 id="flutter-introduction">Flutter Introduction</h1>
+<h2 id="flutter-introduction">Flutter Introduction</h2>
 <ol type="1">
 <li>跨平台技术简介
 <ul>
@@ -671,8 +671,91 @@ widget实现的，而是通过RenderObject实现的</li>
 </ul></li>
 <li>路由管理
 <ul>
-<li></li>
+<li>路由（Route）在移动开发中通常指页面（Page），Route 在 Android中
+通常指一个 Activity，在 iOS 中指一个 ViewController</li>
+<li>路由管理，就是管理页面之间如何跳转，通常也可被称为导航管理</li>
+<li>Flutter中的路由管理和原生开发类似，会维护一个路由栈，路由入栈（push）操作对应打开一个新页面，路由出栈（pop）操作对应页面关闭操作，而路由管理主要是指如何来管理路由栈</li>
+<li>一个例子 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TextButton(</span><br><span class="line">  child: <span class="keyword">const</span> Text(<span class="string">&quot;Navigation.&quot;</span>),</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.push(context, MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">      <span class="keyword">return</span> NewPage();</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure></li>
+<li>MaterialPageRoute
+<ul>
+<li><code>class MaterialPageRoute&lt;T&gt; extends PageRoute&lt;T&gt; with MaterialRouteTransitionMixin&lt;T&gt;</code>,
+这个类继承了PageRoute，PageRoute是一个抽象类，它定义了路由构建及切换时过渡动画的相关接口和属性。MaterialPageRoute的页面切换动画和原生平台风格一致</li>
+<li><code>MaterialPageRoute(&#123; WidgetBuilder builder, RouteSettings settings, bool maintainState = true, bool fullscreenDialog = false&#125;)</code>
+<ul>
+<li><code>builder</code>是一个回调函数，作用是构建路由页面的具体内容，返回值是一个widget</li>
+<li><code>settings</code>包含路由的配置信息，如路由名称、是否初始路由（首页）</li>
+<li><code>maintainState</code>默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中</li>
+<li><code>fullscreenDialog</code>表示新的路由页面是否是一个全屏的模态对话框</li>
 </ul></li>
+<li>如果需要自定义路由切换动画，可以自己继承PageRoute来实现</li>
+</ul></li>
+<li>Navigator
+<ul>
+<li>Navigator是一个路由器管理的组件，它提供了打开和退出路由页面的方法</li>
+<li><code>Navigator.push(BuildContext context, Route route)</code>：打开<code>route</code>对应的路由页面，返回一个Future对象，当路由出栈关闭时，Future才会结束</li>
+<li><code>Navigator.pop(BuildContext context, [ result ])</code>：关闭当前路由页面，返回上一个路由页面，<code>result</code>是关闭时传递给上一个路由页面的数据</li>
+<li>Navigator类中第一个参数为context的静态方法都对应一个Navigator的实例方法,
+比如<code>Navigator.push(BuildContext context, Route route)</code>等价于<code>Navigator.of(context).push(Route route)</code></li>
+</ul></li>
+<li>路由器传值
+<ul>
+<li>Navigator.pop()方法可以传一个参数给上一个路由页面，这个参数可以是任意类型，如String、int、bool、Map等。这时候需要上一个路由页面使用<code>async</code>方法和<code>await</code>来接受<code>Navigator.push()</code>方法Future的返回值</li>
+<li>注意直接点击导航栏是不会触发<code>Navigator.pop()</code>方法的，所以需要在<code>onWillPop</code>回调中处理</li>
+</ul></li>
+<li>命名路由
+<ul>
+<li>对于据大多数应用来说，不推荐使用命名路由</li>
+<li>给路由器起一个名字，然后通过名字直接打开新的路由,
+需要一个<code>Map&lt;String, WidgetBuilder&gt; routes</code>的路由表</li>
+<li>在App中配置<code>routes</code>属性, 比如 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">routes: &#123;</span><br><span class="line">    <span class="comment">// new_page</span></span><br><span class="line">    <span class="string">&quot;new_page&quot;</span>: (context) =&gt; NewPage(),</span><br><span class="line">    <span class="comment">// HomePage</span></span><br><span class="line">    <span class="string">&quot;/&quot;</span>: (context) =&gt; MyHomePage(title: <span class="string">&#x27;Flutter Demo Home Page&#x27;</span>)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>使用<code>Navigator.pushNamed(BuildContext context, String routeName,&#123;Object arguments&#125;)</code>打开新的路由</li>
+<li>传递参数
+<ul>
+<li>在<code>pushNamed</code>中传递参数</li>
+<li>在路由页面通过<code>var args = ModalRoute.of(context)!.settings.arguments</code>获取参数</li>
+</ul></li>
+</ul></li>
+<li>路由器生成钩子
+<ul>
+<li><code>onGenerateRoute</code>在打开命名路由的时候可能调用：如果路由表中没有注册，才会调用，如果注册了，就会直接调用路由的builder方法</li>
+<li>在进入页面前需要进行权限控制的时候(比如判断是否登录),
+可以不使用路由表，而是在APP中重写这个方法 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">onGenerateRoute:(RouteSettings settings)&#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialPageRoute(builder: (context)&#123;</span><br><span class="line">        <span class="built_in">String</span> routeName = settings.name;</span><br><span class="line">        <span class="comment">// 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，</span></span><br><span class="line">        <span class="comment">// 引导用户登录；其他情况则正常打开路由。</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>包管理
+<ul>
+<li>Flutter通过配置<code>pubspec.yaml</code>文件来管理依赖包</li>
+<li>在<code>dependencies</code>下面添加依赖包</li>
+<li>在<code>dev_dependencies</code>下面添加开发依赖包</li>
+<li>Pub（https://pub.dev/ ）是 Google 官方的 Dart Packages 仓库</li>
+<li>还可以使用本地包，和Git仓库中的包 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dependencies:</span></span><br><span class="line">    <span class="attr">pkg1:</span></span><br><span class="line">        <span class="comment"># path of package</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">../../code/pkg1</span></span><br><span class="line">    <span class="attr">pkg2:</span></span><br><span class="line">        <span class="comment"># git url of package</span></span><br><span class="line">        <span class="attr">git:</span></span><br><span class="line">            <span class="comment"># if the package is not in the root path, you can use the path attribute</span></span><br><span class="line">            <span class="attr">url:</span> <span class="string">git://github.com/xxx/pkg1.git</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>资源管理
+<ul>
+<li>Flutter APP 安装包中会包含代码和 assets（资源）两部分。Assets
+是会打包到程序安装包中的，可在运行时访问。常见类型的 assets
+包括静态数据（例如JSON文件）、配置文件、图标和图片等</li>
+<li>在<code>pubspec.yaml</code>文件中配置资源文件 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">assets:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">assets/images/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">assets/config.json</span></span><br></pre></td></tr></table></figure></li>
+<li>在代码中加载资源文件
+<ul>
+<li>加载文本文件 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">String</span>&gt; loadAsset() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> rootBundle.loadString(<span class="string">&#x27;assets/config.json&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>加载图片 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> DecoratedBox(</span><br><span class="line">        decoration: BoxDecoration(</span><br><span class="line">            image: DecorationImage(</span><br><span class="line">                image: AssetImage(<span class="string">&#x27;graphics/background.png&#x27;</span>),</span><br><span class="line">            ),</span><br><span class="line">        ),</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>设置APP图标
+<ul>
+<li>Android中在<code>.../android/app/src/main/res</code>修改</li>
+<li>iOS中在<code>.../ios/Runner/Assets.xcassets/AppIcon.appiconset</code>中修改</li>
+</ul></li>
+<li>修改启动页图片
+<ul>
+<li>Android中在<code>.../android/app/src/main/res/drawable/launch_background.xml</code>中修改</li>
+<li>iOS中在<code>.../ios/Runner/Assets.xcassets/LaunchImage.imageset</code>中修改</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="basic-flutter-widgets">Basic Flutter Widgets</h2>
+<ol type="1">
+<li></li>
 </ol>
 
     </div>
@@ -774,7 +857,7 @@ widget实现的，而是通过RenderObject实现的</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -789,7 +872,7 @@ widget实现的，而是通过RenderObject实现的</li>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -800,7 +883,7 @@ widget实现的，而是通过RenderObject实现的</li>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -852,7 +935,7 @@ widget实现的，而是通过RenderObject实现的</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:02</span>
+    <span title="Reading time total">22:06</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
