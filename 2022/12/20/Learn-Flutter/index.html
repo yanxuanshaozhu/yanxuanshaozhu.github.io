@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-06T00:06:41.942Z">
+<meta property="article:modified_time" content="2023-01-13T03:39:45.327Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-05 19:06:41" itemprop="dateModified" datetime="2023-01-05T19:06:41-05:00">2023-01-05</time>
+                <time title="Modified: 2023-01-12 22:39:45" itemprop="dateModified" datetime="2023-01-12T22:39:45-05:00">2023-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>18k</span>
+              <span>26k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>17 mins.</span>
+              <span>23 mins.</span>
             </span>
 
         </div>
@@ -755,7 +755,241 @@ widget实现的，而是通过RenderObject实现的</li>
 </ol>
 <h2 id="basic-flutter-widgets">Basic Flutter Widgets</h2>
 <ol type="1">
-<li></li>
+<li>Text
+<ul>
+<li>Text用于显示简单样式文本，包含一些控制文本样式的一些属性</li>
+<li><code>Text("&lt;textContent&gt;", textAlign: &lt;align&gt;, maxLines: n, overflow: &lt;overflow&gt;, textScaleFactor: &lt;scale&gt;)</code>
+<ul>
+<li>textAlign: <code>TextAlign.left</code>,
+<code>TextAlign.right</code>, <code>TextAlign.center</code>, etc.
+对齐参考的是Text的宽度，如果只有一行，那么就是整个textContent的宽度</li>
+<li>maxLines: 最大行数,
+默认自动换行，指定这个参数之后，文本不会超过n行</li>
+<li>overflow:
+超出显示方式，<code>TextOverflow.clip</code>裁剪，<code>TextOverflow.fade</code>渐隐，<code>TextOverflow.ellipsis</code>省略号</li>
+<li>textScaleFactor: 字体缩放因子，相当于style中的fontSize</li>
+</ul></li>
+<li>TextStyle
+<ul>
+<li>用于指定文本显示的样式</li>
+<li>用法:<code>Text(..., style: TextStyle(key: val,...))</code></li>
+<li>属性: <code>color</code>, <code>fontSize</code>, <code>height</code>
+(是个倍数因子，相当于行高 = fontSize * height), <code>fontFamily</code>,
+<code>background</code></li>
+</ul></li>
+<li>TextSpan
+<ul>
+<li>对于Text的内容的不同部分按照不同的样式显示</li>
+<li>用法:<code>Text.rich(TextSpan(children: [TextSpan(text: "&lt;content1&gt;", style: TextStyle(...)), TextSpan(text: "&lt;content2&gt;", style: TextStyle(...))]))</code></li>
+</ul></li>
+<li>DefaultTextStyle
+<ul>
+<li>注意到父级别的设置会被子级别继承，因此可以用DefaultTextStyle作为父级别，给它设置一个默认样式，然后所有的子级别Text都会继承这个样式</li>
+<li>用法:<code>DefaultTextStyle(style: TextStyle(...), child: Text(...))</code>，这里child可以是多个Text的列表之类的，他们都会继承在style中定义的样式，如果子级别不想继承父级别的样式，可以在它自己的TextStyle中加入属性<code>inherit: false</code></li>
+</ul></li>
+<li>Font
+<ul>
+<li>如果需要外部字体，首先需要修改<code>pubspec.yaml</code>文件，添加字体文件的路径
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">flutter:</span></span><br><span class="line">    <span class="attr">fonts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">family:</span> <span class="string">&lt;fontFamily&gt;</span></span><br><span class="line">            <span class="attr">fonts:</span></span><br><span class="line">                <span class="comment"># 下面代表了不同的写法</span></span><br><span class="line">                <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">&lt;fontPath&gt;</span></span><br><span class="line">                <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">&lt;fontPath&gt;</span></span><br><span class="line">                    <span class="attr">weight:</span> <span class="string">&lt;weight&gt;</span></span><br><span class="line">                <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">&lt;fontPath&gt;</span></span><br><span class="line">                    <span class="attr">weight:</span> <span class="string">&lt;weight&gt;</span></span><br><span class="line">                    <span class="attr">style:</span> <span class="string">&lt;style&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在代码中使用字体 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">    <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">    style: TextStyle(</span><br><span class="line">        fontFamily: &lt;fontFamily&gt;,</span><br><span class="line">        fontSize: <span class="number">18</span>,</span><br><span class="line">    ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>使用package中的字体 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">    <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">    style: TextStyle(</span><br><span class="line">        fontFamily: &lt;fontFamily&gt;,</span><br><span class="line">        package: &lt;package&gt;,</span><br><span class="line">    ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Button
+<ul>
+<li>Material组件库中有不同的按钮，比如<code>ElevatedButton</code>,
+<code>TextButton</code>, <code>OutlineButton</code>等</li>
+<li>Material Button的相同点
+<ul>
+<li>按下按钮都会有水波动画</li>
+<li>按钮都有一个<code>onPressed</code>属性，用于设置点击事件，没设置这个callback不影响点击</li>
+</ul></li>
+<li>ElevatedButton
+<ul>
+<li>默认带有阴影和灰色背景，按下按钮之后，阴影会变大</li>
+<li>用法:<code>ElevatedButton(child: &lt;child&gt;， onPressed: &lt;callback&gt;)</code></li>
+</ul></li>
+<li>TextButton
+<ul>
+<li>默认背景透明不带阴影，按下之后会有背景色</li>
+<li>用法:<code>TextButton(child: &lt;child&gt;， onPressed: &lt;callback&gt;)</code></li>
+</ul></li>
+<li>OutlineButton
+<ul>
+<li>默认有一个边框，不带阴影并且背景透明，按下后，边框颜色会变亮、同时出现背景和阴影(较弱)</li>
+<li>用法:<code>OutlineButton(child: &lt;child&gt;， onPressed: &lt;callback&gt;)</code></li>
+</ul></li>
+<li>IconButton
+<ul>
+<li>是一个可点击的Icon，不包括文字，默认没有背景，点击后会出现背景</li>
+<li>用法:<code>IconButton(icon: &lt;icon&gt;, onPressed: &lt;callback&gt;)</code></li>
+<li><code>icon</code>举例:<code>Icon(Icons.add)</code>,
+<code>Icon(Icons.send)</code>, <code>Icon(Icons.thumb_up)</code>,
+<code>Icon(Icons.info)</code>, <code>Icon(Icons.favorite)</code></li>
+</ul></li>
+<li><code>ElevatedButton</code>, <code>TextButton</code>,
+<code>OutlineButton</code>都有一个icon构造函数，通过它门可以轻松创建带图标的按钮
+<ul>
+<li>用法:<code>XXXXXButton.icon(onPressed: &lt;callback&gt;, icon: &lt;icon&gt;, label: &lt;label&gt;)</code></li>
+</ul></li>
+</ul></li>
+<li>Image and ICON
+<ul>
+<li>通过Image组件加载并且显示图片，数据源可以是asset，文件，内存和网路</li>
+<li><code>ImageProvider</code>是一个抽象类，主要定义了图片数据获取的接口<code>load()</code>，从不同数据源获取图片需要不同的ImageProvider，比如<code>AssetImage</code>,
+<code>NetworkImage</code></li>
+<li><code>Image</code>
+<ul>
+<li>必选属性<code>image</code>,对应了一个ImageProvider</li>
+<li>在asset中加载图片
+<ul>
+<li>图片放到<code>/images/</code>下面</li>
+<li>在<code>pubsepc.yaml</code>中添加图片路径</li>
+<li>在<code>Image</code>的<code>image</code>属性中加入<code>AssetImage("&lt;assetPath&gt;")</code>,
+或者使用<code>Image.asset("&lt;assetPath&gt;", ...)</code></li>
+</ul></li>
+<li>在网路加载图片:在Image的image属性中加入<code>NetworkImage("&lt;URL&gt;")</code>,或者使用<code>Image.network("&lt;URL&gt;", ...)</code></li>
+<li>其他参数 <code>width</code>, <code>height</code>
+(如果不指定长宽则会根据parent大小限制尽可能显示图片原始大小)，<code>fit</code>(值fill,
+cover, contain, fitWidth, fitHeight,
+none,在不指定长宽的时候大小适应模式), <code>color</code>,
+<code>colorBlendMode</code>(混合模式，值是<code>BlendMode.&lt;attr&gt;</code>),
+<code>repeat</code>(值是<code>ImageRepeat.&lt;attr&gt;</code>,
+图片重复方式)</li>
+</ul></li>
+<li>Flutter对加载过的图片会缓存在内存中</li>
+<li><code>ICON</code>
+<ul>
+<li>默认有Material Design的图标，需要在<code>pubsepc.yaml</code>中配置
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">flutter:</span></span><br><span class="line">    <span class="attr">uses-material-design:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li>使用<code>Icon</code>组件加载图标:
+<code>Icon(Icons.&lt;attr&gt;, color: Colors.&lt;attr&gt;)</code></li>
+</ul></li>
+</ul></li>
+<li>Switch/Checkbox/Radio
+<ul>
+<li><code>Switch</code>和<code>Checkbox</code>都是StatefulWidget，但是他们本身不保存当前选中的状态，选中状态由parent管理。当点击的时候会触发<code>onChanged</code>回调改变逻辑</li>
+<li>Switch和Checkbox都有<code>value</code>属性，代表当前状态，value初始值可以自选true和false,
+在<code>onChanged</code>回调中通过<code>setState</code>改变状态</li>
+<li>Switch和Checkbox都有<code>activeColor</code>属性，代表选中的时候的状态</li>
+<li>Radio是互斥多选框中的一个，有<code>value</code>属性和<code>groupValue</code>属性，如果这两个相同就回被选中，在<code>onChanged</code>回调中通过<code>setState</code>把groupValue修改成当前value。一般多个多选框可以用<code>Column</code>和<code>ListTitle</code>(一行中有Text和ICON)完成</li>
+</ul></li>
+<li>TextField and Form
+<ul>
+<li><code>TextField</code>用于文本输入
+<ul>
+<li><code>controller</code>属性用来获取/编辑文本内容，监听时间等，一般是显示提供，否则会自动重建</li>
+<li><code>inputDecoration</code>属性用来控制显示外观</li>
+<li><code>keyboardType</code>属性用书设置输入的键盘类型，比如<code>TextInputType.number</code>，<code>TextInputType.emailAddress</code>，<code>TextInputType.text</code>，<code>TextInputType.multiline</code>等</li>
+<li><code>style</code>控制文本样式，<code>textAlign</code>控制文本水平对齐，<code>autofocus</code>是否自动获取焦点,
+<code>obscureText</code>控制是否隐藏文本，适用于密码等,
+<code>maxLines</code>最大行数，默认1，如果是null就是没有行数限制，<code>maxLength</code>和<code>maxLengthEnforcement</code>控制最大长度和截断方式,
+<code>toolbarOptions</code>控制长按或者右键出现的菜单,
+<code>onChange</code>内容改变时的回调，可以通过controller完成，<code>onEditingComplete</code>和<code>onSubmitted</code>输入完毕时的回调</li>
+<li>一个例子 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Column(</span><br><span class="line">    children: <span class="keyword">const</span> &lt;Widget&gt;[</span><br><span class="line">    TextField(</span><br><span class="line">        <span class="comment">// 自动获取焦点，会弹出键盘</span></span><br><span class="line">        autofocus: <span class="keyword">true</span>,</span><br><span class="line">        <span class="comment">// 输入文本的样式</span></span><br><span class="line">        decoration: InputDecoration(</span><br><span class="line">        labelText: <span class="string">&quot;Username&quot;</span>,</span><br><span class="line">        hintText: <span class="string">&quot;Username or email&quot;</span>,</span><br><span class="line">        <span class="comment">// 前置图标</span></span><br><span class="line">        prefixIcon: Icon(Icons.person),</span><br><span class="line">        ),</span><br><span class="line">    ),</span><br><span class="line">    TextField(</span><br><span class="line">        decoration: InputDecoration(</span><br><span class="line">        labelText: <span class="string">&quot;Password&quot;</span>,</span><br><span class="line">        hintText: <span class="string">&quot;Password&quot;</span>,</span><br><span class="line">        prefixIcon: Icon(Icons.lock),</span><br><span class="line">        ),</span><br><span class="line">        obscureText: <span class="keyword">true</span>,</span><br><span class="line">    ),</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>使用controller获取输入内容 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TextEditingController _controller = TextEditingController();</span><br><span class="line">TextField(</span><br><span class="line">    controller: _controller,</span><br><span class="line">)</span><br><span class="line"><span class="comment">// Get TextField content</span></span><br><span class="line"><span class="built_in">print</span>(_controller.text);</span><br></pre></td></tr></table></figure></li>
+<li>监听文本变化 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach 1</span></span><br><span class="line">TextField(</span><br><span class="line">    onChanged: (value) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;onChanged: <span class="subst">$&#123;value&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"><span class="comment">// Approach 2</span></span><br><span class="line">TextEditingController _controller = TextEditingController();</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    _controller.addListener(() &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;addListener: <span class="subst">$&#123;_controller.text&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>控制焦点变化: <code>FocusNode</code>管理焦点,
+<code>FocusScopeNode</code>在输入框之间移动焦点，设置默认焦点
+<ul>
+<li>Step1:
+创建不同的<code>FocusNode</code>实例，并且关联给不同输入框的<code>focusNode</code>属性</li>
+<li>Step2:
+<code>FocusScope.of(context).requestFocus(&lt;FocusNode实例&gt;)</code>,
+其中<code>FocusScope.of(context)</code>获取了<code>FocusScopeNode</code>实例</li>
+<li>让输入框失去焦点: <code>focusNode实例.unfocus()</code></li>
+<li>获取当前节点是否有焦点: <code>focusNode实例.hasFocus</code></li>
+<li>获取有焦点的节点:
+<code>FocusScope.of(context).focusedChild</code></li>
+</ul></li>
+</ul></li>
+<li><code>Form</code>
+<ul>
+<li><code>autovalidate</code>: 对于表单每一个子内容输入是否校验,
+<code>onWillPop</code>决定Form所在的路由是否直接返回，这个回调返回一个Future，通常用来拦截返回按钮,
+<code>onChanged</code>如果任意一个表单子内容改变会触发这个回调</li>
+<li>Form的子元素必须是<code>FormField</code>类型，这是一个抽象类，它的子类有<code>TextFormField</code>，<code>DropdownButtonFormField</code>等</li>
+<li><code>FormState</code>是Form的State类，可以通过<code>Form.of(context)</code>或者<code>GlobalKey</code>获得
+<ul>
+<li><code>FormState.validate()</code>
+用来调用每一个<code>FormField</code>的<code>validate</code>方法，如果有一个返回false，那么整个表单就会返回false</li>
+<li><code>FormState.save()</code>
+用来调用每一个<code>FormField</code>的<code>save</code>方法，用来保存表单内容</li>
+<li><code>FormState.reset()</code>
+用来调用每一个<code>FormField</code>的<code>reset</code>方法，用来重置表单内容</li>
+</ul></li>
+<li>对于每一个Form添加验证，可以通过<code>validator</code>属性，这个属性是一个回调函数，返回一个字符串，如果为空则表示验证通过，否则验证失败</li>
+<li>对于表达提交验证 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// globalKey.currentState 拿到FormState，调用validate方法会调用每一个FormField的validate方法</span></span><br><span class="line"><span class="keyword">if</span> ((globalKey.currentState <span class="keyword">as</span> FormState).validate()) &#123;</span><br><span class="line">    <span class="comment">// Submit form</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>ProgressIndicator
+<ul>
+<li>Material组件库中有<code>LinearProgressIndicator</code>和<code>CircularProgressIndicator</code>两种进度指示器,
+他们都有精确进度指示和模糊进度指示</li>
+<li><code>LinearProgressIndicator</code>
+<ul>
+<li><code>value</code>属性在[0,1]
+之间，如果是null则表示模糊进度(一个循环动画)</li>
+<li><code>backgroundColor</code>属性表示进度条背景色</li>
+<li><code>valueColor</code>属性表示进度条颜色，它是一个<code>Animation&lt;Color&gt;</code>类型，可以通过<code>AlwaysStoppedAnimation(Colors.&lt;颜色&gt;)</code>来指定一个固定的颜色</li>
+</ul></li>
+<li><code>CircularProgressIndicator</code>
+<ul>
+<li><code>value</code>, <code>backgroundColor</code>,
+<code>valueColor</code>属性与<code>LinearProgressIndicator</code>一致,
+<code>strokeWidth</code>属性表示进度条的宽度，默认是4.0</li>
+</ul></li>
+<li>LinearProgressIndicator和CircularProgressIndicator都是用父容器的尺寸作为边界的，因此可以使用<code>SizedBox</code>当作parent，从而可以指定进度条大小的尺寸</li>
+</ul></li>
+</ol>
+<h2 id="layout-widgets">Layout Widgets</h2>
+<ol type="1">
+<li>布局原理和约束
+<ul>
+<li>Flutter有两种布局模型:
+<code>RenderBox</code>和<code>RenderSiler</code>
+<ul>
+<li>布局流程:
+上层组件向下传递约束条件，下层组件确认自己的大小并告诉上层组件，上层组件确认下层组件相对于自身的偏移并确认自身的大小</li>
+<li>RenderBox模型中，Widget对应的渲染对象继承于<code>RenderBox</code>类，父组件传递给子组件的约束信息通过<code>BoxConstraints</code>描述</li>
+</ul></li>
+<li><code>BoxConstraints</code>
+<ul>
+<li>默认属性: <code>minWidth =0.0</code>,
+<code>maxWidth = double.infinity</code>, <code>minHeight = 0.0</code>,
+<code>maxHeight = double.infinity</code></li>
+<li>其他方法:
+<code>BoxConstraints.tight(Size size)</code>生成固定宽高的限制，<code>BoxConstraints.expand()</code>可以生成一个尽可能大的用以填充另一个容器的BoxConstraints</li>
+</ul></li>
+<li><code>ConstrainedBox</code>:
+用来对于子组件添加额外的约束。用法<code>ConstrainedBox(constraints: BoxConstraints(&lt;&gt;), child:Container(&lt;&gt;))</code></li>
+<li><code>SizedBox(width:&lt;&gt;, height: &lt;&gt;, child: &lt;&gt;)</code></li>
+<li><code>UnconstrainedBox</code>:
+一般A包含B，B包含C，会导致B把A的约束传给C，如果不想让A影响到C，那么需要B是<code>UnconstrainedBox</code>，注意这样A仍然会影响B</li>
+</ul></li>
+<li>线性布局(Row, Column)
+<ul>
+<li>Row水平是主轴，Column垂直是主轴</li>
+<li><code>MainAxisAlignment</code>是主轴对齐，<code>CrossAxisAlignment</code>是交叉轴对齐</li>
+<li><code>Row</code>和<code>Column</code>的属性
+<ul>
+<li><code>textDirection = TextDirection.ltr/rtl</code>表示文字方向</li>
+<li><code>mainAxisSize = MainAxisSize.max/min</code>表示主轴占用的空间,
+默认是max，也就是占满主轴空间</li>
+<li><code>MainAxisAlignment.start/center/end</code>
+具体取决于<code>textDirection</code>的方向</li>
+<li><code>CrossAxisAlignment.start/center/end/stretch</code>表示交叉轴对齐方式,
+取决于<code>verticalDirection.up/down</code>的方向</li>
+<li>对于交叉轴，长度取决于最大子元素的长度</li>
+</ul></li>
+<li>嵌套Row/Column:
+对于嵌套的情况，只有最外层默认主轴占满，内层占用实际大小空间，如需要内层占满外层主轴，需要使用<code>Expanded</code>包裹内层</li>
+</ul></li>
+<li>弹性布局(Flex)
+<ul>
+<li>Row和Column都继承了Flex</li>
+<li><code>Flex</code>可以和<code>Expanded</code>配合实现弹性布局。Expanded只能作为Flex的孩子组件</li>
+</ul></li>
 </ol>
 
     </div>
@@ -857,7 +1091,7 @@ widget实现的，而是通过RenderObject实现的</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -935,7 +1169,7 @@ widget实现的，而是通过RenderObject实现的</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:06</span>
+    <span title="Reading time total">22:13</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
