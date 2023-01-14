@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-13T03:39:45.327Z">
+<meta property="article:modified_time" content="2023-01-14T03:36:21.678Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-12 22:39:45" itemprop="dateModified" datetime="2023-01-12T22:39:45-05:00">2023-01-12</time>
+                <time title="Modified: 2023-01-13 22:36:21" itemprop="dateModified" datetime="2023-01-13T22:36:21-05:00">2023-01-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>26k</span>
+              <span>28k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>23 mins.</span>
+              <span>26 mins.</span>
             </span>
 
         </div>
@@ -989,6 +989,107 @@ none,在不指定长宽的时候大小适应模式), <code>color</code>,
 <ul>
 <li>Row和Column都继承了Flex</li>
 <li><code>Flex</code>可以和<code>Expanded</code>配合实现弹性布局。Expanded只能作为Flex的孩子组件</li>
+<li>用法:
+<code>Flex(direction: Axis.horizontal/vertical, children: &lt;Widget&gt;[Expanded(flex: &lt;int数字&gt;, child: &lt;Widget实现类&gt;), ...])</code></li>
+<li><code>Spacer(flex: &lt;int数字&gt;)</code>是Expanded的简化版，作用是占据空间，但是不显示任何内容</li>
+</ul></li>
+<li>流式布局(Wrap, Flow)
+<ul>
+<li>对于线性布局如果超出屏幕范围会报错，对于流式布局超出屏幕范围会自动换行。<code>Wrap</code>和<code>Flow</code>都是流式布局</li>
+<li><code>Wrap</code>
+<ul>
+<li><code>direction = Axis.horizontal/vertical</code>表示主轴方向</li>
+<li><code>alignment = WrapAlignment.start/center/end/spaceAround/spaceBetween/spaceEvenly</code>表示主轴对齐方式</li>
+<li><code>runAlignment = WrapAlignment.start/center/end/spaceAround/spaceBetween/spaceEvenly</code>表示交叉轴对齐方式'</li>
+<li><code>spacing = &lt;double&gt;</code>表示主轴方向子Widget的间距</li>
+<li><code>runSpacing = &lt;double&gt;</code>表示交叉轴方向子Widget的间距</li>
+</ul></li>
+<li><code>Flow</code>
+<ul>
+<li>一般首先考虑Wrap是否能满足对象，Flow很少使用，因为需要自己实现Widget的位置转换</li>
+<li>Flow主要用于一些需要自定义布局策略或者性能要求比较高的场景
+<ul>
+<li>Flow性能好，对于子组件的尺寸和位置调整效率非常高</li>
+<li>Flow比较灵活，需要自己计算每一个组建的位置，可以自定义布局策略</li>
+<li>Flow使用比较复杂</li>
+<li>Flow不能自动适应子Widget的大小，需要通过指定父容器大小或者实现<code>TestFlowDelegate</code>的<code>getSize(BoxConstraints constraints)</code>来指定大小</li>
+</ul></li>
+</ul></li>
+<li>注意<code>ListTitle(title, leading)</code>本身和<code>Chip(avatar, label)</code>差不多，但是ListTitle自己独占一行，Chip可以一行多个</li>
+</ul></li>
+<li>堆叠布局(Stack, Positioned)
+<ul>
+<li>层叠布局中子组件可以通过父容器四个角的位置来确定自身位置，这和Web中的绝对定位，Android中的Frame布局是类似的</li>
+<li>Flutter中使用<code>Stack</code>和<code>Positioned</code>来实现绝对定位。Stack允许子组件堆叠，Positioned用于根据Stack的四个角来确定子组件的位置</li>
+<li><code>Stack</code>
+<ul>
+<li><code>alignment = AlignmentDirectional.top/left/right/bottom/Start</code>
+决定如何对齐没有使用Positioned或者部分定位的子组件</li>
+<li><code>textDirection = TextDirection.ltr/rtl</code>
+决定alignment对齐的参考系</li>
+<li><code>fit = StackFit.loose/expand</code>
+决定没有定位的子组件如何去适应Stack的大小，loose表示使用子组件的大小，expand表示扩伸到Stack的大小</li>
+<li><code>clipBehavior = Clip.hardEdge</code>等，决定对超出Stack显示空间的部分如何裁剪，hardEdge表示直接裁剪</li>
+</ul></li>
+<li><code>Positioned</code>
+<ul>
+<li><code>left/right/width</code>三选二，<code>top/bottom/height</code>三选二</li>
+</ul></li>
+</ul></li>
+<li>对齐和相对位置(Align)
+<ul>
+<li><code>Align</code>
+<ul>
+<li><code>Align</code>可以简单的调整一个元素在父元素中的位置</li>
+<li><code>alignment = Alignment(x, y)</code>表示相对于父元素的位置,
+Alignment(0, 0)是中心，Alignment(-1, -1)是左上角，Alignment(1,
+1)是右下角</li>
+<li><code>widthFactor/heightFactor</code>表示相对于父元素的宽高比例</li>
+</ul></li>
+<li><code>Center</code>
+<ul>
+<li>Center继承自Align, 比Align少了一个alignment参数</li>
+</ul></li>
+</ul></li>
+<li>LayoutBuilder, AfterLayout
+<ul>
+<li>通过LayoutBuilder可以在布局过程中拿到父组件传递的约束信息，然后根据约束信息动态的构建不同的布局</li>
+<li>比如可以使用 LayoutBuilder 来根据设备的尺寸来实现响应式布局
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> LayoutBuilder(</span><br><span class="line">        builder: (BuildContext context, BoxConstraints constraints) &#123;</span><br><span class="line">            <span class="keyword">if</span> (constrains.maxWidth &lt; &lt;constraint&gt;) &#123;</span><br><span class="line">                <span class="comment">// do something;</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// do something else;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>AfterLayout可以在布局完成后执行回调，比如可以获取组件大小和相对于屏幕/父组件的位置坐标</li>
+<li>Flutter的build和layout是可以交错执行的，并不是严格的先执行build再执行layout</li>
+</ul></li>
+</ol>
+<h2 id="container-widget">Container Widget</h2>
+<ol type="1">
+<li>填充(Padding)
+<ul>
+<li>Padding可以给其他子节点填充(空白)，和边距效果类似</li>
+<li>用法：<code>Padding(EdgeInsetsGeometry padding, Widget child)</code>,
+一般来说使用<code>EdgeInsets</code>,
+因为他提供了一些设置填充的便捷方法</li>
+<li><code>EdgeInset</code>便捷方法
+<ul>
+<li><code>fromLTRB(double left, double top, double right, double bottom)</code>：分别指定四个方向的填充</li>
+<li><code>all(double value)</code>： 所有方向均使用相同数值的填充</li>
+<li><code>only(&#123;key: value&#125;)</code>:
+指定某个方向的填充，可以有多个方向，key是LTRB中的一个</li>
+<li><code>symmetric(&#123;vertical, horizontal&#125;)</code>:
+分别指定垂直方向和水平方向的填充</li>
+</ul></li>
+</ul></li>
+<li>装饰容器(DecoratedBox)
+<ul>
+<li>可以在组件上绘制一些装饰，比如背景，边框，渐变等等</li>
+<li>属性
+<ul>
+<li><code>decoration = BoxDecoration()</code>：装饰的样式，可以通过BoxDecoration来指定</li>
+<li><code>position = DecorationPosition.background/foreground</code>：指定装饰的绘制位置，bg是背景装饰，fg是前景装饰</li>
+</ul></li>
+<li><code>BoxDecoration</code>是Decoration的子类，一般decoration属性都是用BoxDecoration。可以定义<code>color</code>,
+<code>image</code>, <code>border</code>, <code>borderRadius</code>,
+<code>gradient</code>(渐变), <code>backgroundBlendMode</code>,
+<code>shape</code>等属性</li>
 </ul></li>
 </ol>
 
@@ -1091,7 +1192,7 @@ none,在不指定长宽的时候大小适应模式), <code>color</code>,
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container-widget"><span class="nav-number">6.</span> <span class="nav-text">Container Widget</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1169,7 +1270,7 @@ none,在不指定长宽的时候大小适应模式), <code>color</code>,
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:13</span>
+    <span title="Reading time total">22:15</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
