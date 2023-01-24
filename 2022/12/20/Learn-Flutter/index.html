@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-23T05:01:44.866Z">
+<meta property="article:modified_time" content="2023-01-24T05:02:23.040Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-23 00:01:44" itemprop="dateModified" datetime="2023-01-23T00:01:44-05:00">2023-01-23</time>
+                <time title="Modified: 2023-01-24 00:02:23" itemprop="dateModified" datetime="2023-01-24T00:02:23-05:00">2023-01-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>32k</span>
+              <span>33k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>29 mins.</span>
+              <span>30 mins.</span>
             </span>
 
         </div>
@@ -1231,8 +1231,40 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
 <li>在<code>iniState</code>方法中添加监听，判断offset和显示状态，从而更改显示状态。
 先<code>super.initState()</code>，然后<code>controller.addListener(() =&gt; &#123;&#125;)</code></li>
 <li>在<code>dispose</code>方法中移除监听，避免内存泄漏。先<code>controller.dispose()</code>，然后<code>super.dispose()</code></li>
-<li>在<code>build</code>方法中根据显示状态显示按钮</li>
+<li>在<code>build</code>方法中根据显示状态显示按钮，按钮使用<code>floatingActionButton</code>并且在点击的时候重置<code>offset</code></li>
 </ul></li>
+<li>保存滚动位置
+<ul>
+<li><code>PageStorage</code>可以用来存储滚动的位置</li>
+<li>对于不同的滚动组件，需要指定不同的<code>PageStorageKey</code></li>
+</ul></li>
+<li>使用<code>ScrollBar</code>和<code>NotificationListener</code>来进行滚动监听
+<ul>
+<li><code>NotificationListener</code>可以在不同地方监听滚动事件，而<code>ScrollController</code>只能在和具体的滚动组件关联之后才可以</li>
+<li><code>NotificationListener</code>可以收到更多的滚动事件(<code>ScrollMetrics metrics</code>属性中包含了<code>pixels</code>当前滚动位置，<code>maxScrollExtent</code>最大滚动长度，<code>atEdge</code>是否到底等)，而<code>ScrollController</code>只能获取当前滚动位置</li>
+</ul></li>
+</ul></li>
+<li>AnimatedList
+<ul>
+<li>和ListView相似，但是可以再插入和删除节点时执行一个动画</li>
+<li>添加和删除方法<code>insertItem(int index, &#123;Duration duration&#125;)</code>,
+<code>removeItem(int index, AnimatedListRemovedItemBuilder builder, &#123; Duration duration&#125;)</code></li>
+<li><code>itemBuilder: (context, index, animation) &#123;&#125;</code>
+用来在创建item的时候执行的动画，会被<code>insertItem</code>调用，<code>removeItem</code>里面会传入一个删除item的时候执行的动画的builder</li>
+<li>一个例子: 点击按钮添加新的item，点击item的删除icon删除这个icon
+<ul>
+<li>用一个counter记录当前数据的数量，用一个list保存初始数据，用一个GlobalKey用来在AnimatedList之外获取state然后调用插入和修改方法</li>
+<li>插入: 修改counter,
+修改数据list，<code>globalKey.currentState!.insertItem(data.length - 1)</code></li>
+<li>删除: 修改counter,
+修改数据list，<code>globalKey.currentState!.removeItem(index, builder: (context, animation) &#123;return &lt;Transition&gt;&#125; ...)</code>，
+如果什么效果都不想要，直接return一个空的widget即可</li>
+<li>重置list：首先清空数据列表，在循环中调用<code>removeItem(&lt;args&gt;)</code>，然后初始化数据列表，初始化counter，在循环中调用<code>insertItem(&lt;args&gt;)</code>(相当于initState中循环多了insertItem的调用)</li>
+</ul></li>
+</ul></li>
+<li>GridView
+<ul>
+<li>常见布局类型，是实现了网格布局的组件</li>
 </ul></li>
 </ol>
 
@@ -1413,7 +1445,7 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:18</span>
+    <span title="Reading time total">22:19</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
