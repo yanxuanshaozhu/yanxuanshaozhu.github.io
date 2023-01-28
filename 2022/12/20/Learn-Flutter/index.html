@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-28T04:58:37.746Z">
+<meta property="article:modified_time" content="2023-01-28T06:27:07.157Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-27 23:58:37" itemprop="dateModified" datetime="2023-01-27T23:58:37-05:00">2023-01-27</time>
+                <time title="Modified: 2023-01-28 01:27:07" itemprop="dateModified" datetime="2023-01-28T01:27:07-05:00">2023-01-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1307,6 +1307,12 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
 其中<code>onWillPop</code>回调在点击返回按钮和物理返回按钮的时候触发，返回Future对象，只有Future最终是true的时候路由才会返回</li>
 <li>一个onWillPop的例子 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onWillPop: () <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_lastPressedAt == <span class="keyword">null</span> || <span class="built_in">DateTime</span>.now().difference(_lastPressedAt) &gt; <span class="built_in">Duration</span>(seconds: <span class="number">1</span>)) &#123;</span><br><span class="line">        <span class="comment">// Prevent user from leaving the page by accident</span></span><br><span class="line">        _lastPressedAt = <span class="built_in">DateTime</span>.now();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>使用的时候<code>WillPopScope</code>的child设置成<code>Scaffold</code>即可</li>
+</ul></li>
+<li>InheritedWidget
+<ul>
+<li>Inherited可以在Widget树中共享数据，比如Flutter
+SDK中的Theme和Locale就是通过InheritedWidget共享的</li>
+<li>使用InheritedWidget可以直接在两个Widget之间共享数据，不需要在多层Widget的每一层之间都传递同一个数据</li>
 </ul></li>
 </ol>
 
