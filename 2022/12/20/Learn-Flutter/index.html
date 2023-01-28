@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-24T05:02:23.040Z">
+<meta property="article:modified_time" content="2023-01-28T04:58:37.746Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-24 00:02:23" itemprop="dateModified" datetime="2023-01-24T00:02:23-05:00">2023-01-24</time>
+                <time title="Modified: 2023-01-27 23:58:37" itemprop="dateModified" datetime="2023-01-27T23:58:37-05:00">2023-01-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>33k</span>
+              <span>35k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>30 mins.</span>
+              <span>32 mins.</span>
             </span>
 
         </div>
@@ -1264,7 +1264,49 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
 </ul></li>
 <li>GridView
 <ul>
-<li>常见布局类型，是实现了网格布局的组件</li>
+<li>常见布局类型，是实现了网格布局的组件。和ListView很多属性相同,
+<code>gridDelegate</code>用来控制子组件如何排列</li>
+<li><code>SilverGridDelegate</code>是一个抽象类，定义了GridView布局的相关接口，子类需要通过实现它们来实现具体的布局算法。Flutter中提供了两个子类<code>SliverGridDelegateWithFixedCrossAxisCount</code>,
+<code>SliverGridDelegateWithMaxCrossAxisExtent</code></li>
+</ul></li>
+<li>PageView与页面缓存
+<ul>
+<li>如果需要实现页面切换和Tab布局(Tab换页，图片轮动，上下滑动页面切换等)，可以使用<code>PageView</code>组件</li>
+<li>PageView的<code>children</code>里面放的是不同的Widget(不同页面)，设置不同滑动方向来进行页面切换</li>
+</ul></li>
+<li>可滚动组件子项缓存
+<ul>
+<li>ListView中<code>addAutomaticKeepAlives: true</code>会为每一个表项添加<code>AutomaticKeepAlive</code>父组件，从而将对应的RenderObject的<code>keepAlive</code>标记成true和false，从而决定是否缓存</li>
+<li>当keepAlive是false的时候，如果列表项滑出加载区域的时候，列表组件将会被销毁，
+当是true的时候会缓存，列表进入加载区域的时候会首先检查缓存</li>
+<li>keepAlive从true修改成false的时候需要释放缓存</li>
+<li><code>AutomaticKeepAlive</code>
+<ul>
+<li>Flutter中AutomaticKeepAlive设置组件keepAlive的时机由开发者决定。AutomaticKeepAlive相当于一个server，子组件相当于client，AutomaticKeepAlive收到子组件的统治之后会修改子组件的keepAlive状态，同时进行一些必要的资源清理工作</li>
+<li>需要类混入<code>AutomaticKeepAliveClientMixin</code>,在<code>build</code>方法中调用<code>super.build(context)</code>(这里调用了AutomaticKeepAliveClientMixin的方法，根据wantKeepAlive的值给AutomaticKeepAlive发送信息让其工作)，并且在<code>wantKeepAlive</code>返回true</li>
+</ul></li>
+</ul></li>
+<li>TabBarView
+<ul>
+<li>TabBarView提供了Tab布局组件，通常和TabBar配合使用</li>
+<li>TarBarView封装了PageView(可以有页面缓存)，TabController用来监听和控制TabBarView的页面切换</li>
+<li>TabBar一般在AppBar最底部(AppBar的<code>bottom</code>属性)，和TabBarView的controller共同使用的话，使用同一个TabController</li>
+<li>两种写法
+<ul>
+<li>在<code>initState</code>中初始化TabController，<code>dispose</code>中释放资源，然后在<code>build</code>中对应到TabBar和TabBarView</li>
+<li>直接在<code>build</code>中创建一个<code>DefaultTabController</code>，它的child是一个页面，此时TabBar和TabBarView的controller不需要显示指定，它们会自动在组件树上向上查找饼使用最近的一个DefaultTabController</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="navigation-widget">Navigation Widget</h2>
+<ol type="1">
+<li>导航栏返回拦截(WillPopScope)
+<ul>
+<li>为了防止用户误触返回按钮导致APP退出可以设置返回按钮拦截，<code>WillPopScope</code>可以用来实现这一点</li>
+<li><code>WillPopScope( WillPopCallback onWillPop, Widget child)</code>，
+其中<code>onWillPop</code>回调在点击返回按钮和物理返回按钮的时候触发，返回Future对象，只有Future最终是true的时候路由才会返回</li>
+<li>一个onWillPop的例子 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onWillPop: () <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_lastPressedAt == <span class="keyword">null</span> || <span class="built_in">DateTime</span>.now().difference(_lastPressedAt) &gt; <span class="built_in">Duration</span>(seconds: <span class="number">1</span>)) &#123;</span><br><span class="line">        <span class="comment">// Prevent user from leaving the page by accident</span></span><br><span class="line">        _lastPressedAt = <span class="built_in">DateTime</span>.now();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用的时候<code>WillPopScope</code>的child设置成<code>Scaffold</code>即可</li>
 </ul></li>
 </ol>
 
@@ -1367,7 +1409,7 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container-widget"><span class="nav-number">6.</span> <span class="nav-text">Container Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slidable-widgets"><span class="nav-number">7.</span> <span class="nav-text">Slidable Widgets</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container-widget"><span class="nav-number">6.</span> <span class="nav-text">Container Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slidable-widgets"><span class="nav-number">7.</span> <span class="nav-text">Slidable Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigation-widget"><span class="nav-number">8.</span> <span class="nav-text">Navigation Widget</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1445,7 +1487,7 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:19</span>
+    <span title="Reading time total">22:21</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
