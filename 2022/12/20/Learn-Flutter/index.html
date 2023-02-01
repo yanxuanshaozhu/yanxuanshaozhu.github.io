@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-01-28T06:27:07.157Z">
+<meta property="article:modified_time" content="2023-02-01T22:05:17.179Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-01-28 01:27:07" itemprop="dateModified" datetime="2023-01-28T01:27:07-05:00">2023-01-28</time>
+                <time title="Modified: 2023-02-01 17:05:17" itemprop="dateModified" datetime="2023-02-01T17:05:17-05:00">2023-02-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>35k</span>
+              <span>38k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>32 mins.</span>
+              <span>35 mins.</span>
             </span>
 
         </div>
@@ -1313,7 +1313,75 @@ Silver对应的渲染对象是<code>RenderSilver</code>，它的约束是<code>S
 <li>Inherited可以在Widget树中共享数据，比如Flutter
 SDK中的Theme和Locale就是通过InheritedWidget共享的</li>
 <li>使用InheritedWidget可以直接在两个Widget之间共享数据，不需要在多层Widget的每一层之间都传递同一个数据</li>
+<li>使用方法
+<ul>
+<li>自定义class继承<code>InheritedWidget</code></li>
+<li>重写<code>of</code>,
+<code>maybeOf</code>方法(返回值是否允许为null)</li>
+<li>重写<code>updateShouldNotify</code>方法，当数据发生变化的时候，返回true，此时子类会重新渲染。这个方法的参数类型改成自定义的class类型</li>
+<li>在子类中使用<code>class.of(context).field</code>来获取继承的数据</li>
 </ul></li>
+</ul></li>
+<li>跨组件状态共享
+<ul>
+<li>对于跨足剑状态共享，一般通过各个组件共同的父元素来管理</li>
+<li><code>EventBus</code>
+<ul>
+<li>这是Flutter的全局事件总线</li>
+<li>它是一个观察者模式：状态持有方更新，发布状态，状态使用方监听状态变化</li>
+<li>缺点是需要手动定义每一个事件，然后再持有方和使用方手动注册和注销事件</li>
+</ul></li>
+<li><code>Provider</code>
+<ul>
+<li>思路是InheritedWidget保存跨组件共享的状态，子孙组件引用InheritedWidget来获取状态即可</li>
+<li>保存数据:
+<code>class InheritedProvider&lt;T&gt; extends InheritedWidget</code></li>
+<li>数据发生变化时通过<code>ChangeNotifier</code>来通知子孙组件:<code>class Model extends ChangeNotifier</code>,
+状态变化的时候调用<code>notifyListeners()</code></li>
+<li>结合:
+<code>class ChangeNotifierProvider&lt;T extends ChangeNotifier&gt; extends StatefulWidget</code></li>
+</ul></li>
+</ul></li>
+<li>颜色和主题
+<ul>
+<li>颜色
+<ul>
+<li>将颜色字符串转换成Color对象，16进制字符串比如<code>0xffdc380d</code>,直接<code>Color(0xffdc380d)</code>即可，普通字符串比如<code>var c = "dc380d"</code>,使用<code>Color(int.parse(c,radix:16)|0xFF000000)</code></li>
+<li>颜色亮度，通过<code>color.computeLuminance()</code>可以获取颜色的亮度，返回值是0-1之间的值，0是黑色，1是白色</li>
+<li><code>MaterialColor</code>通过<code>[]</code>表示颜色深度，index从50,
+100到900，每100表示一种颜色深度,可以使用<code>color.shade&lt;index&gt;</code>来获取具体颜色，比如<code>Colors.blue.shade900</code></li>
+</ul></li>
+<li>主题
+<ul>
+<li><code>Theme</code>可以为MaterialApp定义主题数据，<code>Theme</code>内部使用InheritedWidget来共享样式数据</li>
+<li>主题数据在<code>ThemeData</code>中，按照Material
+Design规范，一些是固定的，一些是可以自定义的<br>
+</li>
+<li><code>ThemeData</code>中<code>primarySwatch</code>是主题颜色的样本色，可以生成一些其他的属性</li>
+<li>使用主题的方法
+<code>Theme(data: ThemeData(&lt;args&gt;), child: &lt;Widget&gt;)</code></li>
+<li>复制属性，并且修改一部分:
+<code>Theme.of(context).copyWith(&lt;args&gt;)</code>在copyWith中传入需要修改的属性即可</li>
+</ul></li>
+</ul></li>
+<li>异步UI更新
+<ul>
+<li><code>FutureBuilder</code>和<code>StreamBuilder</code>可以在异步任务完成时更新UI</li>
+<li><code>FutureBuilder</code>
+<ul>
+<li><code>FutureBuilder(future:&lt;Future&gt;, initialData: &lt;data&gt;, builder: &lt;builder&gt;)</code></li>
+<li>builder是<code>Function (BuildContext context, AsyncSnapshot snapshot)</code>,它会在Future构建的不同阶段被多次调用。<code>snapshot</code>含有异步任务的状态信息和结果信息</li>
+<li>应用场景：网路请求数据的时候显示加载框，请求完成后显示数据
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Return a Future&lt;String&gt; that will resolve after 2 seconds</span></span><br><span class="line">Future&lt;<span class="built_in">String</span>&gt; mockNetworkData() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Future.delayed(<span class="built_in">Duration</span>(seconds: <span class="number">2</span>), () =&gt; <span class="string">&quot;Data from network&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Center(</span><br><span class="line">        child: FutureBuilder&lt;<span class="built_in">String</span>&gt;(</span><br><span class="line">        future: mockNetworkData(),</span><br><span class="line">        builder: (BuildContext context, AsyncSnapshot snapshot) &#123;</span><br><span class="line">            <span class="comment">// If network request is done</span></span><br><span class="line">            <span class="keyword">if</span> (snapshot.connectionState == ConnectionState.done) &#123;</span><br><span class="line">                <span class="comment">// If request filed, show error</span></span><br><span class="line">                <span class="keyword">if</span> (snapshot.hasError) &#123;</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&quot;Error: <span class="subst">$&#123;snapshot.error&#125;</span>&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// If request succeeded, show data</span></span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&quot;Contents: <span class="subst">$&#123;snapshot.data&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// If network request is still ongoing, show loading</span></span><br><span class="line">                <span class="keyword">return</span> CircularProgressIndicator();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        ),</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>StreamBuilder</code>
+<ul>
+<li>构造函数，builder和FutureBuilder的格式是一样的</li>
+<li>应用场景：可以接收多个异步操作的结果，常用于会多次读取数据的异步任务场景，如网络内容下载、文件读写等
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;<span class="built_in">int</span>&gt; getStreamData() &#123;</span><br><span class="line">    <span class="keyword">return</span> Stream.periodic(<span class="keyword">const</span> <span class="built_in">Duration</span>(seconds: <span class="number">4</span>), (i) =&gt; (i)).take(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> StreamBuilder&lt;<span class="built_in">int</span>&gt;(</span><br><span class="line">        stream: getStreamData(), </span><br><span class="line">        builder: (BuildContext context, AsyncSnapshot&lt;<span class="built_in">int</span>&gt; snapshot) &#123;</span><br><span class="line">            <span class="keyword">if</span> (snapshot.hasError)</span><br><span class="line">                <span class="keyword">return</span> Text(<span class="string">&#x27;Error: <span class="subst">$&#123;snapshot.error&#125;</span>&#x27;</span>);</span><br><span class="line">            <span class="keyword">switch</span> (snapshot.connectionState) &#123;</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.none:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Empty Stream&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.waiting:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Awaiting for data...&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.active:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;active: <span class="subst">$&#123;snapshot.data&#125;</span>&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.done:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Stream closed&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>对话框</li>
 </ol>
 
     </div>
@@ -1493,7 +1561,7 @@ SDK中的Theme和Locale就是通过InheritedWidget共享的</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:21</span>
+    <span title="Reading time total">22:24</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
