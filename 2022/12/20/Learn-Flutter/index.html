@@ -28,7 +28,7 @@
 <meta property="og:description" content="笔记结合了Flutter官方文档，Dart官方文档，B站这个视频，《Flutter实战第二版》这本书 Introduction">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-20T06:14:29.000Z">
-<meta property="article:modified_time" content="2023-02-01T22:05:17.179Z">
+<meta property="article:modified_time" content="2023-02-09T01:03:32.610Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-01 17:05:17" itemprop="dateModified" datetime="2023-02-01T17:05:17-05:00">2023-02-01</time>
+                <time title="Modified: 2023-02-08 20:03:32" itemprop="dateModified" datetime="2023-02-08T20:03:32-05:00">2023-02-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>38k</span>
+              <span>42k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>35 mins.</span>
+              <span>39 mins.</span>
             </span>
 
         </div>
@@ -1381,7 +1381,155 @@ Design规范，一些是固定的，一些是可以自定义的<br>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;<span class="built_in">int</span>&gt; getStreamData() &#123;</span><br><span class="line">    <span class="keyword">return</span> Stream.periodic(<span class="keyword">const</span> <span class="built_in">Duration</span>(seconds: <span class="number">4</span>), (i) =&gt; (i)).take(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> StreamBuilder&lt;<span class="built_in">int</span>&gt;(</span><br><span class="line">        stream: getStreamData(), </span><br><span class="line">        builder: (BuildContext context, AsyncSnapshot&lt;<span class="built_in">int</span>&gt; snapshot) &#123;</span><br><span class="line">            <span class="keyword">if</span> (snapshot.hasError)</span><br><span class="line">                <span class="keyword">return</span> Text(<span class="string">&#x27;Error: <span class="subst">$&#123;snapshot.error&#125;</span>&#x27;</span>);</span><br><span class="line">            <span class="keyword">switch</span> (snapshot.connectionState) &#123;</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.none:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Empty Stream&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.waiting:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Awaiting for data...&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.active:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;active: <span class="subst">$&#123;snapshot.data&#125;</span>&#x27;</span>);</span><br><span class="line">                <span class="keyword">case</span> ConnectionState.done:</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&#x27;Stream closed&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
-<li>对话框</li>
+<li>对话框
+<ul>
+<li>Material库中有不同的对话框，比如<code>AlertDialog</code>、<code>SimpleDialog</code>等，它们都使用了<code>Dialog</code>类</li>
+<li><code>AlertDialog</code>
+<ul>
+<li>属性 <code>title</code>, <code>titlePadding</code>,
+<code>titleTextStyle</code>, <code>content</code>,
+<code>contentPadding</code>, <code>contentTextStyle</code>,
+<code>actions</code>(按钮), <code>backgroundColor</code>,
+<code>shape</code></li>
+<li>关闭对话框:
+<code>Navigator.of(context).pop(&lt;args&gt;)</code></li>
+</ul></li>
+<li><code>showDialog()</code>
+<ul>
+<li>用法:
+<code>Future&lt;T?&gt; showDialog(BuildContext context, WidgetBuilder builder, bool barrierDismissible = true)</code>。barrierDismissible表示点击对话框外部是否关闭对话框。如果点击对话框是点击外部关闭的话，返回值是null，否则返回的是<code>Navigator.of(context).pop(&lt;args&gt;)</code>中的args</li>
+<li>用法:
+自定义函数，返回Future&lt;T?&gt;类型，在函数中调用<code>showDialog&lt;T&gt;()</code>，在<code>showDialog&lt;T&gt;()</code>的builder中返回对话框，对话框中不同按钮的<code>Navigator.of(context).pop(&lt;args&gt;)</code>返回不同T类型值，或者null。在需要的Widget中调用自定义函数，使用<code>await</code>关键字获取返回值</li>
+</ul></li>
+<li><code>SimpleDialog</code>
+<ul>
+<li>这个对话框会展示一个列表，用来进行不同选择。具体选项是<code>SimpleDialogOption</code>，选项们组成了<code>children</code>属性</li>
+<li>在自定义函数里面可以用switch case来处理不同选项的返回值:
+<code>switch(await SimpleDialog()) &#123; case 1: ... &#125;</code></li>
+</ul></li>
+<li>日历选择器
+<ul>
+<li>Material风格的日历选择器:
+自定义函数，在其中返回<code>showDatePicker()</code>。这里涉及到DateTime的格式问题，如果只要日期的话用<code>date.toString().split(' ')[0]</code></li>
+<li>iOS风格的日历选择器:
+自定义函数，在其中返回<code>showCupertinoModalPopup()</code>，在<code>showCupertinoModalPopup()</code>的builder中返回<code>CupertinoDatePicker</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="event-and-notification">Event and Notification</h2>
+<ol type="1">
+<li>Pointer Event
+<ul>
+<li>完整的指针事件分成三个阶段：按下、移动、抬起，其他事件都是基于这些原始事件的</li>
+<li><code>Listener</code>
+<ul>
+<li>可以用Listener监听原始触摸事件</li>
+<li>Listener有<code>onPointerDown</code>, <code>onPointerMove</code>,
+<code>onPointerUp</code>回调，监听不同阶段的事件</li>
+<li><code>PointerEvent</code>的属性<code>position</code>(对全局坐标偏移),
+<code>localPosition</code>(对本身布局坐标的偏移),
+<code>delta</code>(对上一次事件的偏移), <code>pressure</code>(压力值),
+<code>orientation</code>(角度方向)</li>
+</ul></li>
+<li>忽略指针事件: <code>IgnorePointer</code>,
+<code>AbsorbPointer</code>这两个都会阻止子组件接收指针事件。<code>IgnorePointer</code>使得本组件不接受指针事件，<code>AbsorbPointer</code>允许本组件接受指针事件</li>
+</ul></li>
+<li>Gesture Detector
+<ul>
+<li><code>GestureDetector</code>是一个用于手势识别的功能性组件，可以通过它来识别各种手势。它内部封装了Listener</li>
+<li>点击事件:
+<code>onTap</code>点击，<code>onDoubleTap</code>双击，<code>onLongPress</code>长按。注意如果同时监听点击和双击，点击事件会有一个小延迟，因为要判断是否是双击。只监听点击事件的话没有延迟</li>
+<li>拖动，滑动事件:
+<ul>
+<li><code>onPanDown</code>手指按下触发此事件，<code>onPanUpdate</code>手指滑动触发此事件，<code>onPanEnd</code>手指抬起触发此事件</li>
+<li>单一方向滑动可以用<code>onVerticalDragUpdate</code>和<code>onHorizontalDragUpdate</code></li>
+<li><code>onScaleUpdate(ScaleUpdateDetails details)</code>缩放事件
+<code>details.scale.clamp(minScale, maxScale)</code>缩放倍数</li>
+</ul></li>
+</ul></li>
+<li>Flutter事件机制
+<ul>
+<li>事件处理流程
+<ol type="1">
+<li>命中测试：事件发生的时候，对渲染树进行深度优先遍历，对每一个渲染对象进行命中测试，测试通过的组件会被添加到<code>HitTestResult</code>中</li>
+<li>事件分发：命中测试完成后遍历HitTestResult列表，调用每一个对象的事件处理方法，这个过程叫做事件分发</li>
+<li>时间清理：当事件结束或者取消的时候，会首先对时间进行分发，然后清空HitTestResult列表</li>
+</ol></li>
+<li>如果父子组件都监听了同一个事件，子组件会先响应，因为是DFS遍历的</li>
+<li>同一个组建的多个GestureDetector是竞争关系的。解决冲突方法：使用Listener，自定义手势识别器(Recognizer)</li>
+</ul></li>
+<li>事件总线
+<ul>
+<li>事件总线通过订阅者模式可以用来进行跨页面广播</li>
+</ul></li>
+<li>通知Notification
+<ul>
+<li>Widget树中每一个节点都可以分发通知，通知沿着当前节点向上传递。所有父节点都可以通过<code>NotificationListener</code>来监听通知。这叫做通知冒泡。</li>
+<li>通知冒泡可以终止，但是用户触摸事件冒泡不可以终止</li>
+<li>自定义通知：自定义类继承<code>NOtification</code>类，使用<code>dispatch(context)</code>分发通知，使用<code>NotificationListener</code>监听通知,
+<code>NotificationListener</code>的<code>onNotification</code>方法返回值为<code>bool</code>，如果返回<code>true</code>则阻止冒泡，返回<code>false</code>则继续冒泡</li>
+</ul></li>
+</ol>
+<h2 id="animation">Animation</h2>
+<ol type="1">
+<li>动画简介
+<ul>
+<li>动画原理:
+一段时间内多次更改UI外观，从而达到动画效果。流畅度由FPS(Frame Per
+Second)决定，一般32FPS以上就可以了</li>
+<li>Flutter中动画抽象
+<ul>
+<li>Flutter中动画主要涉及<code>Animation</code>, <code>Curve</code>,
+<code>Controller</code>, <code>Tween</code>等</li>
+<li><code>Animation</code>
+<ul>
+<li>主要是用来保存动画的插值和状态，本身和UI渲染没有关系，在一段时间内依次生成一个区间</li>
+<li>常用的是<code>Animation&lt;double&gt;</code></li>
+<li>通过<code>Animation</code>对象的<code>value</code>获取动画当前的状态值</li>
+<li>通过Animation监听动画每一帧的执行状态变化<code>addListener()</code>,
+<code>addStatusListener()</code></li>
+</ul></li>
+<li><code>Curve</code>
+<ul>
+<li>用来描述动画过程，比如线性和非线性</li>
+<li>状态<code>Curve.&lt;value&gt;</code>, value可以是linear,
+decelerate(匀减速), ease(先加速后减速), easeln(先慢后快),
+easeOut(先快后慢), easeLnOut(先慢后加速再减速)</li>
+</ul></li>
+<li><code>AnimationController</code>
+<ul>
+<li>用来控制动画播放，比如<code>forward()</code>开始，<code>stop()</code>，<code>reverse()</code>反向播放等</li>
+<li><code>AnimationController(duration:  Duration(&lt;args&gt;), vsync: this)</code></li>
+<li>默认在duration内从0线性到1，可以用<code>lowerBound</code>,
+<code>upperBound</code>来控制</li>
+<li><code>vsync</code>是一个<code>TickerProvider</code>对象，可以创建<code>Ticker</code></li>
+</ul></li>
+<li><code>Tween</code>
+<ul>
+<li>配合<code>AnimationController</code>使用，可以把其对象值从0.0到1.0修改成执行范围</li>
+<li>用法 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> AnimationController controller = AnimationController(</span><br><span class="line">    duration: <span class="keyword">const</span> <span class="built_in">Duration</span>(milliseconds: <span class="number">500</span>), </span><br><span class="line">    vsync: <span class="keyword">this</span>,</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 在500毫秒内生成0到255的整数值</span></span><br><span class="line">Animation&lt;<span class="built_in">int</span>&gt; alpha = IntTween(begin: <span class="number">0</span>, end: <span class="number">255</span>).animate(controller);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="file-processing-and-network-request">File Processing and Network
+Request</h2>
+<ol type="1">
+<li>文件操作
+<ul>
+<li>Dart IO库把敖汉了文件读写的相关类，它属于Dart语法标准的一部分。Dart
+VM下的脚本和Flutter都是通过Dart IO库来操作文件的</li>
+<li>APP目录:
+Android和iOS的存储目录不同，可以使用插件<code>PathProvider</code>插件提供了一种平台透明的方式来访问文件系统上的常用位置(在<code>pubspec.yaml</code>中声明<code>path_provider:^&lt;version&gt;</code>)
+<ul>
+<li>临时目录: <code>getTemporaryDirectory()</code></li>
+<li>文档目录: <code>getApplicationDocumentsDirectory()</code></li>
+<li>外部存储目录: <code>getExternalStorageDirectory()</code></li>
+</ul></li>
+<li><code>File</code>,
+<code>Directory</code>等类都是源于<code>dart:io</code>库，并且都是异步操作
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;File&gt; getFile() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="comment">// getApplicationDocumentsDirectory返回了一个Directory对象</span></span><br><span class="line">    <span class="built_in">String</span> path = (<span class="keyword">await</span> getApplicationDocumentsDirectory()).path;</span><br><span class="line">    <span class="keyword">return</span> File(<span class="string">&#x27;<span class="subst">$path</span>/counter.txt&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Future&lt;<span class="built_in">int</span>&gt; readCounter() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="comment">// 因为File可能不存在所以需要try catch</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        File file = <span class="keyword">await</span> getFile();</span><br><span class="line">        <span class="comment">// 读取文件内容</span></span><br><span class="line">        <span class="built_in">String</span> contents = <span class="keyword">await</span> file.readAsString();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>.parse(contents);</span><br><span class="line">    &#125; <span class="keyword">on</span> FileSystemException &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Future&lt;<span class="keyword">void</span>&gt; setCounter() <span class="keyword">async</span> &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">        _counter += <span class="number">1</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">await</span> (<span class="keyword">await</span> getFile()).writeAsString(<span class="string">&#x27;<span class="subst">$_counter</span>&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    setState(() &#123;</span><br><span class="line">        getCounter().then((value) &#123;</span><br><span class="line">            setState(() &#123;</span><br><span class="line">                _counter = value;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ol>
 
     </div>
@@ -1483,7 +1631,8 @@ Design规范，一些是固定的，一些是可以自定义的<br>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container-widget"><span class="nav-number">6.</span> <span class="nav-text">Container Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slidable-widgets"><span class="nav-number">7.</span> <span class="nav-text">Slidable Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigation-widget"><span class="nav-number">8.</span> <span class="nav-text">Navigation Widget</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dart-language"><span class="nav-number">2.</span> <span class="nav-text">Dart Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flutter-introduction"><span class="nav-number">3.</span> <span class="nav-text">Flutter Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-flutter-widgets"><span class="nav-number">4.</span> <span class="nav-text">Basic Flutter Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-widgets"><span class="nav-number">5.</span> <span class="nav-text">Layout Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container-widget"><span class="nav-number">6.</span> <span class="nav-text">Container Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slidable-widgets"><span class="nav-number">7.</span> <span class="nav-text">Slidable Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigation-widget"><span class="nav-number">8.</span> <span class="nav-text">Navigation Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event-and-notification"><span class="nav-number">9.</span> <span class="nav-text">Event and Notification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#animation"><span class="nav-number">10.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-processing-and-network-request"><span class="nav-number">11.</span> <span class="nav-text">File Processing and Network
+Request</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1561,7 +1710,7 @@ Design规范，一些是固定的，一些是可以自定义的<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:24</span>
+    <span title="Reading time total">22:26</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
