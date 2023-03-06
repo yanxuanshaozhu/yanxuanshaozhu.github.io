@@ -28,7 +28,7 @@
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-03-06T05:39:02.168Z">
+<meta property="article:modified_time" content="2023-03-06T22:06:50.881Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-06 00:39:02" itemprop="dateModified" datetime="2023-03-06T00:39:02-05:00">2023-03-06</time>
+                <time title="Modified: 2023-03-06 17:06:50" itemprop="dateModified" datetime="2023-03-06T17:06:50-05:00">2023-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.1k</span>
+              <span>6.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>4 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -252,8 +252,8 @@
 built-in functions</li>
 <li><code>who</code>: show defined variables, <code>whos</code> show
 variable information, <code>clear</code> clear workspace variables,
-<code>clc</code> clear window <code>clear x</code>: clear variable
-x</li>
+<code>clc</code> clear window <code>clear x</code>: clear variable x,
+<code>clf</code> clear figure window</li>
 <li>By default, doubles are displayed with four decimal places</li>
 <li>Use <code>format xxx</code> to change format
 <code>format = format short</code> 4 decimals, <code>format long</code>
@@ -277,6 +277,101 @@ for formatting output</li>
 <li>Format output: <code>fprintf('format_string', val)</code>, use
 format string to format output, <code>%d</code> integer, <code>%f</code>
 float, <code>%c</code> single character, <code>%s</code> string</li>
+</ul></li>
+<li>File Input/Out
+<ul>
+<li><code>save xxx.mat var1 var2 --ascii -append</code>把变量var1和var2按照ascii追加保存到xxx.mat中</li>
+<li><code>load xxx.mat</code>读取xxx.mat文件</li>
+</ul></li>
+<li>Function
+<ul>
+<li>Function name should be the same as the file name</li>
+</ul></li>
+<li>Some built-in functions
+<ul>
+<li><code>sum(x)</code>, <code>cumsum(x)</code>, <code>prod(x)</code>,
+<code>cumprod(x)</code></li>
+<li><code>tic</code>, <code>toc</code> will display time elapse in
+milliseconds</li>
+</ul></li>
+<li>Cell Arrays, Structures, Strings
+<ul>
+<li>Cell arrays: store values of different types, commonly used to store
+strings of different lengths
+<ul>
+<li>Create a cell array: <code>x = cell(2,2)</code></li>
+<li>Indexing cell arrays: <code>x&#123;r, c&#125;</code></li>
+<li>Compare if two cell arrays are equal:
+<code>cellfun(@isequal, x, y)</code> returns a logical matrix, then we
+can use
+<code>sum(cellfun(@isequal, x, y), 'all') == numel(x)</code></li>
+<li><code>celldisp(x)</code> display all elements in cell array x</li>
+</ul></li>
+<li>Structures: group values that are logically related, but are not the
+same thing and not necessarily the same type
+<ul>
+<li>Consist of fields, each field contains an array of some Matlab
+type</li>
+<li><code>x = struct('key1', val1, 'key2', val2)</code></li>
+<li><code>x.key1</code> get val1</li>
+<li><code>rmfield(x, 'key1')</code> remove filed key1 from structure
+x</li>
+<li><code>isstruct(x)</code> check if s is a structure</li>
+<li><code>isfield(x, 'key1')</code> check if key1 is a field of
+structure x</li>
+<li><code>fieldnames(x)</code> find all field names of structure x,
+return a cell array</li>
+</ul></li>
+<li>Strings
+<ul>
+<li>Strings are treated the same as single-character arrays
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;bc&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]; </span><br><span class="line">[r, c] = <span class="built_in">size</span>(x); <span class="comment">% r = 1, c = 4</span></span><br><span class="line"><span class="built_in">disp</span>(x); <span class="comment">% &#x27;abcd&#x27;</span></span><br><span class="line">x = [<span class="string">&#x27;ab&#x27;</span>; <span class="string">&#x27;c&#x27;</span>]; <span class="comment">% An error occured, the length should be the same for each row</span></span><br><span class="line">x = &#123;<span class="string">&#x27;ab&#x27;</span>, <span class="string">&#x27;c&#x27;</span>; <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;; <span class="comment">% Use cell arrays to hold strings with different length</span></span><br><span class="line"></span><br><span class="line">x =  &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;bc&#x27;</span>&#125;;</span><br><span class="line">q1 = char(x); <span class="comment">% 2 * 2 char array: &#x27;a &#x27;, &#x27;bc&#x27; (there is an space after a so that row is length 2)</span></span><br><span class="line">q2 = cellstr(x); <span class="comment">% 1 * 2 cell array: &#123;&#x27;a&#x27;&#125;, &#123;&#x27;bc&#x27;&#125; </span></span><br></pre></td></tr></table></figure></li>
+<li><code>strcat(s1, s2, ..., sn)</code>concatenate n strings</li>
+<li><code>strcmp(s1, s2)</code> compare two strings</li>
+</ul></li>
+</ul></li>
+<li>Permutation and combination
+<ul>
+<li><code>factorial(n)</code> <span class="math inline">\(n!\)</span></li>
+<li><code>prod(n:-1:m)</code> (n &gt; m) <span class="math inline">\(P_{n}^{n-m}\)</span></li>
+<li><code>nchoosek(n, k)</code>: <span class="math inline">\(C_{n}^{k}\)</span></li>
+</ul></li>
+<li>Vector
+<ul>
+<li>Norm Properties
+<ul>
+<li>Homogeneous: <code>p(au) = |a| * p(u)</code></li>
+<li>Subadditive: <code>p(u + v) &lt;= p(u) + p(v)</code></li>
+<li>Positive: <code>p(u) &gt;= 0</code></li>
+<li>Zero vector: <code>p(u) = 0 &lt;=&gt; u = 0</code></li>
+</ul></li>
+<li><span class="math inline">\(|X|_{p} = (\sum\limits_{i =
+1}^{n}|x_i|^{p})^{1/p}\)</span></li>
+<li><span class="math inline">\(x\cdot y = |x||y|cos\theta\)</span></li>
+<li>Orthogonal matrix: <span class="math inline">\(AA^{T} = A^{T}A =
+I\)</span></li>
+<li>Symmetrix matrix: <span class="math inline">\(A =
+A^{T}\)</span></li>
+<li>Skew-symmetric matrix: <span class="math inline">\(A^{T} =
+-A\)</span></li>
+</ul></li>
+<li>Dimensionality Reduction
+<ul>
+<li>Assumpation: data lies on or near a low dimensional subspace, axes
+of this subspace are effective representation of the data</li>
+<li>Rank is dimensionality</li>
+<li>Why reduce dimensions
+<ul>
+<li>Discover hidden correlations/topics</li>
+<li>Remove redundant and noisy features</li>
+<li>Interpretation and visualization</li>
+<li>Easier storage and processing data</li>
+</ul></li>
+<li>SVD Decomposition(singular value decomposition)
+<ul>
+<li><span class="math inline">\(A_{m*n} =
+U_{m*r}\Sigma_{r*r}(V_{n*r})^{T}\)</span></li>
+</ul></li>
 </ul></li>
 </ol>
 <h1 id="matlab-basics">Matlab Basics</h1>
@@ -306,7 +401,9 @@ inc可以是负数; <code>linspace(a,b,n)</code>初始，end，个数</li>
 <li><code>magic(n)</code>n阶数组，行列对角线的和都一样</li>
 <li><code>rand(a, b)</code>a*b阶元素在(0,1)均匀分布矩阵</li>
 <li><code>randn(a, b)</code>a*b阶标准正态分布矩阵</li>
-<li><code>randi(max, n)</code>1:max均匀分布的n*n随机整数矩阵</li>
+<li><code>randi(max, n)</code>1:max均匀分布的n<em>n随机整数矩阵,
+<code>randi([min, max], m, n)</code>生成在[min,
+max]内均匀分布的m</em>n阶随机矩阵</li>
 </ul></li>
 <li>一些操作函数:
 <code>permute(A, [dims])</code>按照A维度index的顺序重排A,
@@ -324,9 +421,10 @@ inc可以是负数; <code>linspace(a,b,n)</code>初始，end，个数</li>
 <code>A([idx])</code>返回行向量, <code>A([idx]')</code>返回列向量</li>
 <li>数组运算:
 数组之间是对应元素的运算，数组和标量之间是标量和数组每一个元素的运算</li>
-<li>逻辑运算符: <code>A&amp;B</code>, <code>A|B</code>, <code>~A</code>,
-<code>xor(A,B)</code>, <code>all(A)</code>是否全部非零,
-<code>any(A)</code>是否存在非零</li>
+<li>逻辑运算符: <code>A&amp;B</code>(<code>A&amp;&amp;B</code> is
+short-circuiting), <code>A|B</code>(<code>A||B</code> is
+short-circuiting), <code>~A</code>, <code>xor(A,B)</code>,
+<code>all(A)</code>是否全部非零, <code>any(A)</code>是否存在非零</li>
 <li>初等函数都是对数组每一个元素进行运算的</li>
 <li>矩阵乘除法
 <ul>
@@ -589,7 +687,7 @@ labels是cell标签(大括号)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:30</span>
+    <span title="Reading time total">22:32</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
