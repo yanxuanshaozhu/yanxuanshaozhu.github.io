@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Slides">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI177A Scientific Data Processing in Matlab">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Slides">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
+<meta property="article:modified_time" content="2023-03-06T05:39:02.168Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI177A Scientific Data Processing in Matlab | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI177A Scientific Data Processing in Matlab
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-03-05 15:14:54" itemprop="dateCreated datePublished" datetime="2023-03-05T15:14:54-05:00">2023-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-03-06 00:39:02" itemprop="dateModified" datetime="2023-03-06T00:39:02-05:00">2023-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="slides">Slides</h1>
+<a id="more"></a>
+<ol type="1">
+<li>Variable
+<ul>
+<li>Name: begin with letter, case sensitive, cannot use reserved words,
+built-in functions</li>
+<li><code>who</code>: show defined variables, <code>whos</code> show
+variable information, <code>clear</code> clear workspace variables,
+<code>clc</code> clear window <code>clear x</code>: clear variable
+x</li>
+<li>By default, doubles are displayed with four decimal places</li>
+<li>Use <code>format xxx</code> to change format
+<code>format = format short</code> 4 decimals, <code>format long</code>
+15 decimals, <code>format loose/compact</code></li>
+<li>Use <code>;</code> at the end of command to suppress output</li>
+<li>Different types: float(single, double), integer(int8, int16, ...),
+unsigned integer(uint8, ...), complex(complex single/double). Type
+conversion may cause overflow, and overflow is handled using
+saturation</li>
+<li>Numbers are stored by default as double</li>
+<li>Characters are represented using single quotes</li>
+</ul></li>
+<li>Random numbers：the seed remain the same for each time Matlab is
+started, unless you change the seed</li>
+<li>Input and output
+<ul>
+<li>Input as an integer: <code>x = input('Message')</code>, input as a
+character/string: <code>x = input('Message', 's')</code></li>
+<li>Output on screen: <code>disp(x)</code>, disp function does not allow
+for formatting output</li>
+<li>Format output: <code>fprintf('format_string', val)</code>, use
+format string to format output, <code>%d</code> integer, <code>%f</code>
+float, <code>%c</code> single character, <code>%s</code> string</li>
+</ul></li>
+</ol>
+<h1 id="matlab-basics">Matlab Basics</h1>
+<ol start="0" type="1">
+<li><code>Ctrl + R</code>注释, <code>Ctrl + T</code>取消注释</li>
+<li>Matlab使用三个<code>...</code>表示连接下一行</li>
+<li>特殊值：i, j 虚数单位; eps浮点数相对精度; Inf/inf无穷大;
+intmax/intmin整数范围; realmax/realmin实数范围; pi;
+NaN/nan(NaN参与的结果都是NaN);</li>
+<li>复数: <code>x = a + bi</code>,
+<code>real(x) = a, imag(x) = b</code></li>
+<li>求n次根号不要用幂，幂只能得到第一象限的根，用<code>nthroot(a, n)</code></li>
+<li>Matlab中标量是1*1数组，空数组是有一个维度为0，空数组用<code>[]</code>表示，可以把<code>[]</code>赋给值表示删除</li>
+<li>数组结构:
+<code>ndims(x)</code>x的维度，<code>size(x)</code>x的大小，<code>size(x, nd)</code>x在第nd维度上的大小，<code>length(A)</code>所有维度的最大值，<code>numel(x)</code>x中总元素个数</li>
+<li>自变量数组创建
+<code>a:inc:b</code>初始，step，结束，并且<code>abs(end) &lt; abs(b)</code>,
+inc可以是负数; <code>linspace(a,b,n)</code>初始，end，个数</li>
+<li>二维数组创建:
+行内空格或者逗号，行间分号或者回车；中等二维数组使用Matlab的<code>New Variable</code>功能创建，；大的二维数组使用<code>.m</code>文件创建</li>
+<li>一些内置数组函数
+<ul>
+<li><code>diag(x)</code>生成对角矩阵，或者取矩阵的对角线</li>
+<li><code>ones(a, b)</code>全1矩阵</li>
+<li><code>eye(n)</code>n阶单位阵</li>
+<li><code>zeros(a, b)</code>全0矩阵</li>
+<li><code>magic(n)</code>n阶数组，行列对角线的和都一样</li>
+<li><code>rand(a, b)</code>a*b阶元素在(0,1)均匀分布矩阵</li>
+<li><code>randn(a, b)</code>a*b阶标准正态分布矩阵</li>
+<li><code>randi(max, n)</code>1:max均匀分布的n*n随机整数矩阵</li>
+</ul></li>
+<li>一些操作函数:
+<code>permute(A, [dims])</code>按照A维度index的顺序重排A,
+<code>repmat(A, x, y)</code>把A当单位，生成x<em>y阶单位的矩阵;
+<code>reshape(A, x, y)</code>改变行列数;
+<code>flipud(A)</code>水平中心为轴，上下翻转;
+<code>fliplr(A)</code>垂直中心为轴，左右翻转;
+<code>rot90(A, n)</code>逆时针旋转A角度90 </em> n</li>
+<li>数组下标:
+二维数组默认按列填充，序号坐标按列填充。转换函数<code>[row, col] = ind2sub(size(A), idx)</code>,
+<code>idx = sub2ind(size(A), row, col)</code>。<code>end</code>可以代表最后一行，最后一列，或者最后一个</li>
+<li>数组访问: <code>A(r, c)</code>, <code>A(r, :)</code>,
+<code>A(:, c)</code>, <code>A(idx)</code>,
+<code>A(:)</code>访问所有，返回列向量。 注意序号访问返回结果和序号相同:
+<code>A([idx])</code>返回行向量, <code>A([idx]')</code>返回列向量</li>
+<li>数组运算:
+数组之间是对应元素的运算，数组和标量之间是标量和数组每一个元素的运算</li>
+<li>逻辑运算符: <code>A&amp;B</code>, <code>A|B</code>, <code>~A</code>,
+<code>xor(A,B)</code>, <code>all(A)</code>是否全部非零,
+<code>any(A)</code>是否存在非零</li>
+<li>初等函数都是对数组每一个元素进行运算的</li>
+<li>矩阵乘除法
+<ul>
+<li><code>a*B</code>标量和每一个矩阵元素相乘</li>
+<li><code>A*B</code>矩阵乘法</li>
+<li><code>X = A\B</code>给出方程<code>AX = B</code>的解</li>
+<li><code>X = B/A</code>给出方程<code>XA = B</code>的解</li>
+<li><code>x = A\b</code>给出方程<code>Ax = b</code>,
+<code>row(A) &gt; col(A)</code>的最小二乘解</li>
+<li><code>x = A\b</code>给出方程<code>Ax = b</code>,
+<code>row(A) &lt; col(A)</code>的最小二乘基础解</li>
+</ul></li>
+<li>矩阵的标量特征参数: <code>rank(A)</code>, <code>trace(A)</code>,
+<code>det(A)</code>, <code>inv(A)</code>逆矩阵</li>
+<li>特征值和特征向量
+<ul>
+<li><code>vals = eig(A)</code>返回列向量特征值,
+<code>vals = eig(A, 'matrix')</code>返回矩阵形式的特征值矩阵</li>
+<li><code>[V, D] = eig(A)</code>，其中V是特征向量矩阵，每一列是一个特征向量，D是特征值矩阵，D除了对角线是特征值外都是0。<code>A * V = V *D</code></li>
+</ul></li>
+<li>除法解方程: <code>Ax = b =&gt; x = A\b</code>,
+<code>xC = d =&gt; x = d/C</code></li>
+<li>二项分布: <code>pk = binopdf(k, N, p)</code>一共N次发生k次的概率,
+<code>Fk = binocdf(k, N, p)</code>一共N次发生不大于k次的总概率,
+<code>E(k)=Np, D(k)=Npq</code>。<code>r = binornd(N, P, m, n)</code>产生m*n服从B(N,p)的随机数组</li>
+<li>正态分布: <code>px = normpdf(x, mu, sigma)</code>取值x的概率密度,
+<code>Fx = normcdf(x, mu, sigma)</code>不大于x的总概率,
+<code>r = normrnd(mu, sigma, m, n)</code>产生m*n服从N(mu,
+sigma^2)的随机数组。<code>E(x)=mu, D(x)=sigma^2</code></li>
+<li>统计分析命令:
+<ul>
+<li><code>max(X)/min(X)</code>每一列的最大/最小值,
+<code>max(x, [], 'all')</code>求矩阵最大值</li>
+<li><code>mean(X)</code>每一列的平均值,
+<code>mean(X, 1)</code>每一列平均值,
+<code>mean(X, 2)</code>每一行平均值,
+<code>mean(X, 'all')</code>矩阵平均值</li>
+<li><code>std(x)</code>每一列标准差,
+<code>std(x, 0, 1)</code>每一列标准差,
+<code>std(x, 0, 2)</code>每一行标准差,
+<code>std(x, 0, 'all')</code>全部的标准差</li>
+<li><code>var(x)</code>每一列方差, <code>var(x, 0, 1)</code>每一列方差,
+<code>var(x, 0, 2)</code>每一行方差,
+<code>var(x, 0, 'all')</code>全部的方差</li>
+<li><code>cov(x)</code>不同列的协方差,
+<code>diag(cov(x))' = var(x)</code></li>
+<li><code>corrcoef(x)</code>不同列的协相关系数</li>
+</ul></li>
+<li>Matlab绘制连续曲线的时候,
+会根据用户指定的离散点，自动进行插值计算，从而绘制出连续的曲线</li>
+<li>基本plot
+<ul>
+<li><code>plot(x, y, key, val)</code>y后面是参数，比如<code>Color</code>,
+<code>LineStyle</code>, <code>LineWidth</code>, <code>Marker</code>,
+<code>MarkerSize</code>, <code>MarkerEdgeColor</code>,
+<code>MarkerFaceColor</code></li>
+<li><code>plot(x)</code>当x是一维数组的时候，下标是x轴，x是y轴。当x是二维数组的时候，行是x轴，列是y轴，画出列数条曲线</li>
+<li>先画图，再设置其他参数</li>
+<li><code>axis([x1, x2, y1, y2])</code>二维绘图坐标轴范围</li>
+<li><code>grid on</code> 画出分格线,
+<code>box on</code>坐标呈现封闭形式, <code>title(xxx)</code>,
+<code>xlabel(xxx)</code>, <code>ylabel(xxx)</code>,
+<code>text(x, y, xxx)</code>在(x, y)处写文字,
+<code>legend(s1, s2)</code>图例</li>
+<li><code>hold on</code>同一张图不刷新，从而在一张图上面画多个曲线</li>
+<li><code>subplot(m, n, k)</code>在m<em>n的图的第k个子图,
+<code>subplot('position', [left, bottom, width, height])</code>,图总体是[0,1]</em>[0,1]并且原点是左下角,这个可以指定位置画图，比如一个图占一行/一列</li>
+<li><code>plot3(x, y, z)</code>三维画图，画曲线</li>
+<li>三维曲面图流程 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = linespace(x1,x2,n);</span><br><span class="line">y = linespace(y1,y2,m);</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = fun(X., Y.) <span class="comment">% 这里注意数组运算需要加.</span></span><br><span class="line">surf(X, Y, Z); <span class="comment">% 三维曲面图</span></span><br><span class="line"><span class="built_in">hold</span> one;</span><br><span class="line">stem3(X, Y, Z); <span class="comment">% 杆状图，指向曲面上的点</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>其他画图
+<ul>
+<li><code>bar(x)</code>x是一维数组的画, x轴是idx,
+y轴是x值。x是二维数组的话是分组直方图，每一列是一组。<code>bar(x, 'stacked')</code>对二维数组画分组直方图。</li>
+<li><code>hist(x)</code>x是一维数组, x轴是idx,
+y轴是x值。x是二维数组的话是分组频率图，每一列是一组。<code>hist(x, nbins)</code></li>
+<li><code>pie(x, explode, labels)</code>x是一维数组, explode是扇形间距,
+labels是cell标签(大括号)</li>
+</ul></li>
+<li>控制流
+<ul>
+<li><code>if expr stat elseif expr stat else stat end</code>中的表达式可以是逻辑数组，这时候只有全部是逻辑1才是true从而执行对应的statement</li>
+<li><code>switch expr case val stat otherwise stat end</code>这里不用在case最后写break，但是执行中会break。这里的expr是标量数值或者标量字符串，数值用==进行比较，字符串用<code>strcmp(s1, s2)</code>进行比较</li>
+<li><code>for idx = arr stat end</code>,
+<code>while expr stat end</code></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/" title="COSI177A Scientific Data Processing in Matlab">https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Matlab/" rel="tag"># Matlab</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/23/A-Funny-Lunar-Year-Greetings-Letter/" rel="prev" title="A-Funny-Lunar-Year-Greetings-Letter.md">
+      <i class="fa fa-chevron-left"></i> A-Funny-Lunar-Year-Greetings-Letter.md
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#slides"><span class="nav-number">1.</span> <span class="nav-text">Slides</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab-basics"><span class="nav-number">2.</span> <span class="nav-text">Matlab Basics</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.5m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">22:30</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
