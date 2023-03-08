@@ -28,7 +28,7 @@
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-03-08T16:32:29.063Z">
+<meta property="article:modified_time" content="2023-03-08T21:23:10.969Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-08 11:32:29" itemprop="dateModified" datetime="2023-03-08T11:32:29-05:00">2023-03-08</time>
+                <time title="Modified: 2023-03-08 16:23:10" itemprop="dateModified" datetime="2023-03-08T16:23:10-05:00">2023-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,7 +224,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>9.7k</span>
+              <span>10k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -316,7 +316,7 @@ type</li>
 <li><code>x.key1</code> get val1</li>
 <li><code>rmfield(x, 'key1')</code> remove filed key1 from structure
 x</li>
-<li><code>isstruct(x)</code> check if s is a structure</li>
+<li><code>isstruct(x)</code> check if x is a structure</li>
 <li><code>isfield(x, 'key1')</code> check if key1 is a field of
 structure x</li>
 <li><code>fieldnames(x)</code> find all field names of structure x,
@@ -333,7 +333,7 @@ return a cell array</li>
 <li>Permutation and combination
 <ul>
 <li><code>factorial(n)</code> <span class="math inline">\(n!\)</span></li>
-<li><code>prod(n:-1:m)</code> (n &gt; m) <span class="math inline">\(P_{n}^{n-m}\)</span></li>
+<li><code>prod(n:-1:n-m+1)</code> (n &gt; m) <span class="math inline">\(P_{n}^{m}=\frac{n!}{(n-m)!}\)</span></li>
 <li><code>nchoosek(n, k)</code>: <span class="math inline">\(C_{n}^{k}\)</span></li>
 </ul></li>
 <li>Vector
@@ -371,7 +371,7 @@ of this subspace are effective representation of the data</li>
 <ul>
 <li><span class="math inline">\(A_{m*n} =
 U_{m*r}\Sigma_{r*r}(V_{n*r})^{T}\)</span></li>
-<li>U, <span class="math inline">\(\Sigma\)</span>, V are unique. U, v
+<li>U, <span class="math inline">\(\Sigma\)</span>, V are unique. U, V
 are column orthonormal. <span class="math inline">\(\Sigma\)</span> is
 diagonal, singular values are positive are are sorted in descending
 order</li>
@@ -400,7 +400,8 @@ x_n\)</span>, find line <span class="math inline">\(x(t) = tv +
 b\)</span> defined by vector v and b such that 1D projection <span class="math inline">\(a_i = v^{t}(x_i - b)\)</span> has the largest
 possible variance.
 <ul>
-<li>The solution is not unique, since there can be parallel lines</li>
+<li>The solution is not unique, since there can be parallel
+lines(different b)</li>
 <li>Let <span class="math inline">\(b =
 \frac{1}{n}\sum\limits_{i=1}^{n}{x_i}\)</span></li>
 <li>Find v, s.t. <span class="math inline">\(|v| = 1, v = argmax\sum
@@ -408,8 +409,10 @@ possible variance.
 <li><span class="math inline">\(v = argmax \;v^{t}Cv\)</span>, where C
 is square, symmetric, and positive semidefinite(nonnegative
 eigenvalues)</li>
-<li>Theorem: v is the largest eigenvector of the covariance matrix <span class="math inline">\(C = \sum{(x_i-\bar{x})(x_i - \bar{x})^{T}} =
-X^{T}X, X \in \mathbb{R}^{n*d}\)</span></li>
+<li>Theorem: Given set of points <span class="math inline">\(x1,...,x_n\)</span>, the optimal direction for
+projecting the data is the largest v is the largest eigenvector of the
+covariance matrix <span class="math inline">\(C = \sum{(x_i-\bar{x})(x_i
+- \bar{x})^{T}} = X^{T}X, X \in \mathbb{R}^{n*d}\)</span></li>
 <li>Do SVD: <span class="math inline">\(X = U\Sigma V^{T}\)</span>, then
 <span class="math inline">\(C = V(\Sigma^{T}\Sigma V^{T}x\)</span></li>
 </ul></li>
@@ -432,7 +435,7 @@ S\)</span></li>
 <li>Use <code>x = linprog(f,A,b,Aeq,Beq)</code> to solave <span class="math inline">\(x = argmin \{f\}, s.t. Ax \le b, Aeqx =
 beq\)</span></li>
 <li>Use <code>x = linprog(f,A,b,Aeq,Beq,lb,ub)</code> to solve <span class="math inline">\(x = argmin \{f\}, s.t. Ax \le b, Aeqx = beq, lb
-\le x \ge\)</span> <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%  max x1 + x2/3</span></span><br><span class="line"><span class="comment">%  x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">%  x1 + x2/4 &lt;= 1</span></span><br><span class="line"><span class="comment">%  x1 - x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% -x1/4 - x2 &lt;= 1</span></span><br><span class="line"><span class="comment">% -x1-x2 &lt;= -1</span></span><br><span class="line"><span class="comment">% -x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% x1 + x2/4 = 1/2</span></span><br><span class="line"><span class="comment">% -1 &lt;= x1 &lt;= 3/2</span></span><br><span class="line"><span class="comment">% -0.5 &lt;= x2 &lt;= 5/4</span></span><br><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>/<span class="number">4</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">1</span>];</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">2</span>];</span><br><span class="line">Aeq = [<span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>];</span><br><span class="line">beq = <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">lb = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">2</span>];</span><br><span class="line">ub = [<span class="number">3</span>/<span class="number">2</span>, <span class="number">5</span>/<span class="number">4</span>];</span><br><span class="line">f = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">3</span>];</span><br><span class="line">x = linprog(f,A,b,Aeq,beq,lb,ub);</span><br></pre></td></tr></table></figure></li>
+\le x \le ub\)</span> <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%  max x1 + x2/3</span></span><br><span class="line"><span class="comment">%  x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">%  x1 + x2/4 &lt;= 1</span></span><br><span class="line"><span class="comment">%  x1 - x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% -x1/4 - x2 &lt;= 1</span></span><br><span class="line"><span class="comment">% -x1-x2 &lt;= -1</span></span><br><span class="line"><span class="comment">% -x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% x1 + x2/4 = 1/2</span></span><br><span class="line"><span class="comment">% -1 &lt;= x1 &lt;= 3/2</span></span><br><span class="line"><span class="comment">% -0.5 &lt;= x2 &lt;= 5/4</span></span><br><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>/<span class="number">4</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">1</span>];</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">2</span>];</span><br><span class="line">Aeq = [<span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>];</span><br><span class="line">beq = <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">lb = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">2</span>];</span><br><span class="line">ub = [<span class="number">3</span>/<span class="number">2</span>, <span class="number">5</span>/<span class="number">4</span>];</span><br><span class="line">f = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">3</span>];</span><br><span class="line">x = linprog(f,A,b,Aeq,beq,lb,ub);</span><br></pre></td></tr></table></figure></li>
 <li>The assignment problem
 <ul>
 <li>Description:
@@ -471,12 +474,12 @@ inc可以是负数; <code>linspace(a,b,n)</code>初始，end，个数</li>
 <li><code>ones(a, b)</code>全1矩阵</li>
 <li><code>eye(n)</code>n阶单位阵</li>
 <li><code>zeros(a, b)</code>全0矩阵</li>
-<li><code>magic(n)</code>n阶数组，行列对角线的和都一样</li>
+<li><code>magic(n)</code>n阶数组，行列对角线的和都一样，<span class="math inline">\(n &gt; 2\)</span></li>
 <li><code>rand(a, b)</code>a*b阶元素在(0,1)均匀分布矩阵</li>
 <li><code>randn(a, b)</code>a*b阶标准正态分布矩阵</li>
-<li><code>randi(max, n)</code>1:max均匀分布的n<em>n随机整数矩阵,
+<li><code>randi(max, n)</code>1:max均匀分布的n * n随机整数矩阵,
 <code>randi([min, max], m, n)</code>生成在[min,
-max]内均匀分布的m</em>n阶随机矩阵</li>
+max]内均匀分布的m*n阶随机矩阵</li>
 </ul></li>
 <li>一些操作函数:
 <code>permute(A, [dims])</code>按照A维度index的顺序重排A,
@@ -506,9 +509,9 @@ short-circuiting), <code>~A</code>, <code>xor(A,B)</code>,
 <li><code>X = A\B</code>给出方程<code>AX = B</code>的解</li>
 <li><code>X = B/A</code>给出方程<code>XA = B</code>的解</li>
 <li><code>x = A\b</code>给出方程<code>Ax = b</code>,
-<code>row(A) &gt; col(A)</code>的最小二乘解</li>
+<code>row(A) &gt; col(A)</code>的最小二乘解, b是列向量</li>
 <li><code>x = A\b</code>给出方程<code>Ax = b</code>,
-<code>row(A) &lt; col(A)</code>的最小二乘基础解</li>
+<code>row(A) &lt; col(A)</code>的最小二乘基础解, b是列向量</li>
 </ul></li>
 <li>矩阵的标量特征参数: <code>rank(A)</code>, <code>trace(A)</code>,
 <code>det(A)</code>, <code>inv(A)</code>逆矩阵</li>
@@ -554,7 +557,7 @@ sigma^2)的随机数组。<code>E(x)=mu, D(x)=sigma^2</code></li>
 <code>LineStyle</code>, <code>LineWidth</code>, <code>Marker</code>,
 <code>MarkerSize</code>, <code>MarkerEdgeColor</code>,
 <code>MarkerFaceColor</code></li>
-<li><code>plot(x)</code>当x是一维数组的时候，下标是x轴，x是y轴。当x是二维数组的时候，行是x轴，列是y轴，画出列数条曲线</li>
+<li><code>plot(x)</code>当x是一维数组的时候，下标是x轴，x是y轴。当x是二维数组的时候，行是x轴坐标1:n，列是y轴，画出列数条曲线</li>
 <li>先画图，再设置其他参数</li>
 <li><code>axis([x1, x2, y1, y2])</code>二维绘图坐标轴范围</li>
 <li><code>grid on</code> 画出分格线,
@@ -564,7 +567,9 @@ sigma^2)的随机数组。<code>E(x)=mu, D(x)=sigma^2</code></li>
 <code>legend(s1, s2)</code>图例</li>
 <li><code>hold on</code>同一张图不刷新，从而在一张图上面画多个曲线</li>
 <li><code>subplot(m, n, k)</code>在m<em>n的图的第k个子图,
-<code>subplot('position', [left, bottom, width, height])</code>,图总体是[0,1]</em>[0,1]并且原点是左下角,这个可以指定位置画图，比如一个图占一行/一列</li>
+<code>subplot('position', [left, bottom, width, height])</code>,图总体是[0,1]
+</em>
+[0,1]并且原点是左下角,这个可以指定位置画图，比如一个图占一行/一列</li>
 <li><code>plot3(x, y, z)</code>三维画图，画曲线</li>
 <li>三维曲面图流程 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = linespace(x1,x2,n);</span><br><span class="line">y = linespace(y1,y2,m);</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = fun(X., Y.) <span class="comment">% 这里注意数组运算需要加.</span></span><br><span class="line">surf(X, Y, Z); <span class="comment">% 三维曲面图</span></span><br><span class="line"><span class="built_in">hold</span> one;</span><br><span class="line">stem3(X, Y, Z); <span class="comment">% 杆状图，指向曲面上的点</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
@@ -583,6 +588,22 @@ labels是cell标签(大括号)</li>
 <li><code>switch expr case val stat otherwise stat end</code>这里不用在case最后写break，但是执行中会break。这里的expr是标量数值或者标量字符串，数值用==进行比较，字符串用<code>strcmp(s1, s2)</code>进行比较</li>
 <li><code>for idx = arr stat end</code>,
 <code>while expr stat end</code></li>
+</ul></li>
+</ol>
+<h1 id="assignments">Assignments</h1>
+<ol type="1">
+<li>Solve Ax = b
+<ul>
+<li>Use <code>x = A\b</code>, where b is a column vector
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">b = [<span class="number">30</span>; <span class="number">80</span>];</span><br><span class="line">res = A\b;</span><br></pre></td></tr></table></figure></li>
+<li>Use symbolic function <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">syms x y</span><br><span class="line">eq1 = x + y == <span class="number">30</span>;</span><br><span class="line">eq2 = <span class="number">2</span> * x + <span class="number">4</span> * y == <span class="number">80</span>;</span><br><span class="line">[resx, resy] = solve([eq1, eq2], [x, y]);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Symbolic function value <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">syms x</span><br><span class="line">f = x^<span class="number">2</span> + <span class="number">2</span> * x + <span class="number">1</span>;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">subs(f); <span class="comment">% 9</span></span><br></pre></td></tr></table></figure></li>
+<li>In triangle ABC, <span class="math inline">\(\frac{a}{sinA} =
+\frac{b}{sinB} = \frac{c}{sinC}\)</span>, <span class="math inline">\(c^2 = a^2 + b^2 - 2abcosC\)</span>
+<ul>
+<li><code>sin(x)</code> for values, <code>sind(x)</code>for degrees,
+<code>asin(x)</code> for values, <code>asind(x)</code> for degrees</li>
 </ul></li>
 </ol>
 
@@ -682,7 +703,7 @@ labels是cell标签(大括号)</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#slides"><span class="nav-number">1.</span> <span class="nav-text">Slides</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab-basics"><span class="nav-number">2.</span> <span class="nav-text">Matlab Basics</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#slides"><span class="nav-number">1.</span> <span class="nav-text">Slides</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab-basics"><span class="nav-number">2.</span> <span class="nav-text">Matlab Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assignments"><span class="nav-number">3.</span> <span class="nav-text">Assignments</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
