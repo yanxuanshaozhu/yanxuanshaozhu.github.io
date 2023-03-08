@@ -4251,6 +4251,7 @@ to measure the performance of a web page</li>
 <code>Navigation Timing API</code>, <code>User Timing API</code>,
 <code>Resource Timing API</code>, <code>Paint Timing API</code></li>
 <li>High Resolution Time API<br>
+
 <ul>
 <li>Issues with <code>Date.now()</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> to = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="comment">// some function here;</span></span><br><span class="line"><span class="keyword">const</span> t1 = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="keyword">const</span> diff = t1 - t0;</span><br><span class="line"><span class="comment">// diff can be 0 (when the difference is less than 1ms), negative (when </span></span><br><span class="line"><span class="comment">// the system clock is set backwards), or very large (when the system clock</span></span><br><span class="line"><span class="comment">// is set forwards)</span></span><br><span class="line"><span class="built_in">console</span>.log(diff);</span><br></pre></td></tr></table></figure></li>
 </ul></li>
@@ -6220,7 +6221,7 @@ Remove Resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-l
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:32</span>
+    <span title="Reading time total">22:34</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

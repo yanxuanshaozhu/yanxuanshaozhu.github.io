@@ -22,18 +22,18 @@
 
   <meta name="description" content="Slides">
 <meta property="og:type" content="article">
-<meta property="og:title" content="COSI177A Scientific Data Processing in Matlab">
-<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/index.html">
+<meta property="og:title" content="COSI 177A Scientific Data Processing in Matlab">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/03/05/COSI%20177A-Scientific-Data-Processing-in-Matlab/index.html">
 <meta property="og:site_name" content="My Blog">
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-03-06T22:06:50.881Z">
+<meta property="article:modified_time" content="2023-03-08T05:22:27.432Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/">
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI%20177A-Scientific-Data-Processing-in-Matlab/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>COSI177A Scientific Data Processing in Matlab | My Blog</title>
+  <title>COSI 177A Scientific Data Processing in Matlab | My Blog</title>
   
 
 
@@ -176,7 +176,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI%20177A-Scientific-Data-Processing-in-Matlab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          COSI177A Scientific Data Processing in Matlab
+          COSI 177A Scientific Data Processing in Matlab
         </h1>
 
         <div class="post-meta">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-06 17:06:50" itemprop="dateModified" datetime="2023-03-06T17:06:50-05:00">2023-03-06</time>
+                <time title="Modified: 2023-03-08 00:22:27" itemprop="dateModified" datetime="2023-03-08T00:22:27-05:00">2023-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.7k</span>
+              <span>8.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -371,7 +371,54 @@ of this subspace are effective representation of the data</li>
 <ul>
 <li><span class="math inline">\(A_{m*n} =
 U_{m*r}\Sigma_{r*r}(V_{n*r})^{T}\)</span></li>
+<li>U, <span class="math inline">\(\Sigma\)</span>, V are unique. U, v
+are column orthonormal. <span class="math inline">\(\Sigma\)</span> is
+diagonal, singular values are positive are are sorted in descending
+order</li>
+<li>Choose the first several large singular values to reduce
+dimensionality</li>
+<li>Time complexity of SVD: <span class="math inline">\(min\{O(nm^{2}),
+O(n^{2}m)\}\)</span></li>
 </ul></li>
+<li>CUR Decomposition
+<ul>
+<li><span class="math inline">\(A = CUR\)</span></li>
+<li>When A is huge and sparse. In SVD, <span class="math inline">\(\Sigma\)</span> is sparse and small, U and V are
+big and dense. In CUR, U is dense and small, C and R are big and
+sparse</li>
+<li>CUR is lesss accurate, but faster than SVD</li>
+</ul></li>
+<li>SVD is limisted to linear projectsions, for non-linear methods, use
+isomap</li>
+</ul></li>
+<li>PCA
+<ul>
+<li>PCA is a statistical technique for reducing the dimensionality of a
+dataset while preserving the maximum amount of information</li>
+<li>One-dimensional PCA: for <span class="math inline">\(x_1, ...,
+x_n\)</span>, find line <span class="math inline">\(x(t) = tv +
+b\)</span> defined by vector v and b such that 1D projection <span class="math inline">\(a_i = v^{t}(x_i - b)\)</span> has the largest
+possible variance.
+<ul>
+<li>The solution is not unique, since there can be parallel lines</li>
+<li>Let <span class="math inline">\(b =
+\frac{1}{n}\sum\limits_{i=1}^{n}{x_i}\)</span></li>
+<li>Find v, s.t. <span class="math inline">\(|v| = 1, v = argmax\sum
+{a_i}^2, a_i = v^{t}(x_i - \bar{x})\)</span></li>
+<li><span class="math inline">\(v = argmax \;v^{t}Cv\)</span>, where C
+is square, symmetric, and positive semidefinite(nonnegative
+eigenvalues)</li>
+<li>Theorem: v is the largest eigenvector of the covariance matrix <span class="math inline">\(C = \sum{(x_i-\bar{x})(x_i - \bar{x})^{T}} =
+X^{T}X, X \in \mathbb{R}^{n*d}\)</span></li>
+<li>Do SVD: <span class="math inline">\(X = U\Sigma V^{T}\)</span>, then
+<span class="math inline">\(C = V(\Sigma^{T}\Sigma V^{T}x\)</span></li>
+</ul></li>
+<li>One example <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% rows of x are observations, columns of x are dimensions to be reduced</span></span><br><span class="line"><span class="comment">% X is m * n: m obs, n dims</span></span><br><span class="line">x = [<span class="number">80</span> <span class="number">85</span> <span class="number">60</span> <span class="number">55</span></span><br><span class="line">    <span class="number">90</span> <span class="number">85</span> <span class="number">70</span> <span class="number">45</span></span><br><span class="line">    <span class="number">95</span> <span class="number">80</span> <span class="number">40</span> <span class="number">50</span>];</span><br><span class="line"><span class="comment">% rows of coef are dimensions, columns of coef are principals</span></span><br><span class="line"><span class="comment">% coef is n * k: we want to reduce dimensions from n to k</span></span><br><span class="line"><span class="comment">% data in coef is principal component coefficients: the coefs </span></span><br><span class="line"><span class="comment">% to transform from the dimension space to the principal component space</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% rows of score are observations, columns of score are principal components</span></span><br><span class="line"><span class="comment">% score is: m * k, m obs, k pcs</span></span><br><span class="line"><span class="comment">% data in score is obs values in the principal component space</span></span><br><span class="line">[coef, score] = pca(x); </span><br><span class="line"></span><br><span class="line"><span class="comment">% An equivalent way to get the scores</span></span><br><span class="line">colmean = <span class="built_in">mean</span>(x, <span class="number">1</span>); <span class="comment">% calculate column mean</span></span><br><span class="line">meanmat = <span class="built_in">repmat</span>(colmean, <span class="built_in">size</span>(x, <span class="number">1</span>), <span class="number">1</span>); <span class="comment">% generate mean matrix for x</span></span><br><span class="line">xtilde = x - meanmat; <span class="comment">% center obs values by subtracting column means</span></span><br><span class="line">myscore = xtilde * coef; <span class="comment">% translate obs values in the dim space to the pc space</span></span><br></pre></td></tr></table></figure></li>
+<li>For non-linear scenarios, use manifold learning, isomap</li>
+</ul></li>
+<li>Linear programming
+<ul>
+<li></li>
 </ul></li>
 </ol>
 <h1 id="matlab-basics">Matlab Basics</h1>
@@ -527,7 +574,7 @@ labels是cell标签(大括号)</li>
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/" title="COSI177A Scientific Data Processing in Matlab">https://yanxuanshaozhu.github.io/2023/03/05/COSI177A-Scientific-Data-Processing-in-Matlab/</a>
+    <a href="https://yanxuanshaozhu.github.io/2023/03/05/COSI%20177A-Scientific-Data-Processing-in-Matlab/" title="COSI 177A Scientific Data Processing in Matlab">https://yanxuanshaozhu.github.io/2023/03/05/COSI 177A-Scientific-Data-Processing-in-Matlab/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -687,7 +734,7 @@ labels是cell标签(大括号)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:32</span>
+    <span title="Reading time total">22:34</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
