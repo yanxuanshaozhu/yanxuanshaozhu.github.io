@@ -28,7 +28,7 @@
 <meta property="og:description" content="尚硅谷 Node.js 教程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-16T16:50:08.000Z">
-<meta property="article:modified_time" content="2023-03-18T05:11:29.645Z">
+<meta property="article:modified_time" content="2023-03-19T03:48:37.325Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Web Development">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-18 01:11:29" itemprop="dateModified" datetime="2023-03-18T01:11:29-04:00">2023-03-18</time>
+                <time title="Modified: 2023-03-18 23:48:37" itemprop="dateModified" datetime="2023-03-18T23:48:37-04:00">2023-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,14 +225,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>7.1k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -329,6 +329,163 @@ with all keys in lowercase</p></li>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// The second argument converts the query from string to object</span></span><br><span class="line">  <span class="keyword">const</span> res = url.parse(req.url, <span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">const</span> pathname = res.pathname;</span><br><span class="line">  <span class="built_in">console</span>.log(pathname);</span><br><span class="line">  <span class="keyword">const</span> value = res.query.key;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">  res.end(<span class="string">&quot;Server response here&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">9000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Server started&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Another way to get query value without use of <code>url</code>
 module <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="keyword">new</span> URL(req.url, <span class="string">&quot;http://localhost&quot;</span>);</span><br><span class="line">  <span class="keyword">let</span> value = url.searchParams.get(key);</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">9000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Server started&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Set response status code:
+<code>res.statusCode = xxx</code></p></li>
+<li><p>Set response status message:
+<code>res.statusMessage = xxx</code></p></li>
+<li><p>Set response header: <code>res.setHeader(key, value)</code>,
+multiple values with one key:
+<code>res.setHeader(key, [values])</code></p></li>
+<li><p>Set response body:
+<code>res.write(content); res.end();</code></p></li>
+<li><p>Notice
+<code>let docs = document.getElementsByTagName(name)</code> returns a
+<code>HTMLCollection</code> and cannot use <code>forEach</code>
+directly, you need to use <code>Array.from(docs).forEach()</code>
+<code>let docs = document.querySelectorAll(name)</code> returns a
+<code>NodeList</code> and can use <code>forEach</code> directly</p></li>
+<li><p>Respond to different file types <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> url = req.url;</span><br><span class="line">  <span class="keyword">if</span> (url === <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    res.setHeader(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html;charset-utf-8;&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> html = fs.readFileSync(__dirname + <span class="string">&quot;/response.html&quot;</span>);</span><br><span class="line">    res.end(html);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (url.includes(<span class="string">&quot;.css&quot;</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> css = fs.readFileSync(__dirname + <span class="string">&quot;/style.css&quot;</span>);</span><br><span class="line">    res.end(css);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (url.includes(<span class="string">&quot;.js&quot;</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> script = fs.readFileSync(__dirname + <span class="string">&quot;/script.js&quot;</span>);</span><br><span class="line">    res.end(script);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.statusCode = <span class="number">404</span>;</span><br><span class="line">    res.end(<span class="string">&quot;&lt;h1&gt; 404 Not Found.&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">9000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Server started&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Absolute Path and Relative path</p>
+<ul>
+<li>Absolute path
+<ul>
+<li><code>https://www.google.com</code> directly send request to the
+url, used with external links</li>
+<li><code>//test.com/web</code> combine URL with current portocol and
+then send request, example <code>http://test.com/web</code></li>
+<li><code>/test.com/web</code> combine URL with current portocol, server
+name, port number and then send request, example
+<code>http://localhost:9000/test.com/web</code></li>
+</ul></li>
+<li>Relative path: do calculation first, then send request. You should
+use absolute path instead of relative path when possible</li>
+</ul></li>
+<li><p>Set MIME(Multipurpose Internet Mail Extensions) type</p>
+<ul>
+<li>Use file extension to get MIME type <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pathname = url.parse(req.url, <span class="literal">true</span>); </span><br><span class="line"><span class="keyword">const</span> filePath = __dirname + pathname;</span><br><span class="line"><span class="comment">// remote . in the extension name</span></span><br><span class="line"><span class="keyword">const</span> ext = path.extname(filePath).slice(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Use a map from extension name to MIME types <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> type = mappng[ext];</span><br><span class="line"><span class="keyword">if</span> (type) &#123;</span><br><span class="line">  <span class="comment">// if content type is valid</span></span><br><span class="line">  res.setHeader(<span class="string">&#x27;content-type&#x27;</span>, type);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// used for unknown binary files</span></span><br><span class="line">  res.setHeader(<span class="string">&#x27;content-type&#x27;</span>, <span class="string">&#x27;application/octet-stream&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Charset problem</p>
+<ul>
+<li><code>res.setHeader('content-type', 'test/xxx;charset=utf-8');</code></li>
+<li>In html, you can set <code>&lt;meta charset="UTF-8"&gt;</code>. But
+response heder has high priority if the mata and response header have
+different charsets</li>
+<li>You do not need to charsets for stylesheets and scripts, they will
+automatically be converted to the same charset as the HTML file by
+browser</li>
+<li>Handling process <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> type = mapping[ext];</span><br><span class="line"><span class="keyword">if</span> (ext === <span class="string">&#x27;html&#x27;</span>) &#123;</span><br><span class="line">  type += <span class="string">&quot;;charset=utf-8&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (type) &#123;</span><br><span class="line">  <span class="comment">// if content type is valid</span></span><br><span class="line">  res.setHeader(<span class="string">&#x27;content-type&#x27;</span>, type);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// used for unknown binary files</span></span><br><span class="line">  res.setHeader(<span class="string">&#x27;content-type&#x27;</span>, <span class="string">&#x27;application/octet-stream&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Error Handling <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Method not allowed</span></span><br><span class="line"><span class="keyword">if</span> (req.method !== <span class="string">&#x27;GET&#x27;</span>) &#123;</span><br><span class="line">    res.statusCode = <span class="number">405</span>;</span><br><span class="line">    res.end(<span class="string">&quot;&lt;h1&gt;405 Method Not allowed&lt;/h1&gt;&quot;</span>);</span><br><span class="line">    <span class="comment">// Should have return here</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">if</span> (err) &#123;</span><br><span class="line">  <span class="keyword">switch</span>(err.code) &#123;</span><br><span class="line">    <span class="comment">// No file or directory</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;ENOENT&#x27;</span>:</span><br><span class="line">      res.statusCode = <span class="number">404</span>;</span><br><span class="line">      res.end(<span class="string">&quot;&lt;h1&gt;Resource Not Found&lt;/h1&gt;&quot;</span>);</span><br><span class="line">    <span class="comment">// Operation not allowed</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;ETERM&#x27;</span>:</span><br><span class="line">      res.statusCode = <span class="number">403</span>;</span><br><span class="line">      res.end(<span class="string">&quot;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      res.statusCode = <span class="number">500</span>;</span><br><span class="line">      res.end(<span class="string">&quot;&lt;h1&gt;Server internal error&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul></li>
+<li><p>Modularity</p>
+<ul>
+<li>Export data <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;a, b&#125;;</span><br><span class="line"><span class="built_in">exports</span>.a = a;</span><br></pre></td></tr></table></figure></li>
+<li><code>requirex(xxx)</code> retrieves the <code>module.exports</code>
+object in a module</li>
+<li>Initially, <code>exports = module.exports = &#123;&#125;</code></li>
+<li>Use relative path for user-made module, extension for js file and
+json file can be omitted</li>
+<li><code>require(directory)</code>
+<ol type="1">
+<li>Checks the <code>package.json</code>, finds the <code>main</code>
+property, and import the corresponding value file</li>
+<li>If <code>main</code> property or <code>package.json</code> does not
+exist, tries to import <code>index.js</code> and
+<code>index.json</code></li>
+<li>Raises an error</li>
+</ol></li>
+<li>Node.js is compatible with CommonJS(<code>require</code> style) and
+ECMAScript(<code>import</code> style)</li>
+<li>npm
+<ul>
+<li><code>npm -v</code>, <code>npm init -y</code>
+<code>npm s &lt;name&gt;</code>(search package), you can also search
+packages on <code>https://www.npmjs.com/</code>,
+<code>npm i &lt;name&gt;@&lt;version&gt;</code>(install package for a
+specific version), <code>npm r &lt;name&gt;</code>(remote package)
+<code>pack-lock.json</code>(used to hold information about exact package
+version number)</li>
+<li>For NPM packages, simply write its name in the <code>require</code>
+function, this will allow npm to search hierarchically for the package
+upward until the root directory of the disk</li>
+<li>Some packages are development
+dependencies(<code>npm i -S &lt;name&gt;</code>), some packages are
+production dependencies(<code>npm i -D &lt;name&gt;</code>)</li>
+<li>Global installation: <code>npm i -g &lt;name&gt;</code>, global
+uninstallation: <code>npm r -g &lt;name&gt;</code>]</li>
+<li>Run scripts: <code>npm run &lt;script-name&gt;</code>, for scripts
+with key <code>start</code>, you can simply use
+<code>npm start</code></li>
+</ul></li>
+<li>yarn
+<ul>
+<li>yarn is a fast, secure and reliable node package manager,
+<code>npm i -g yarn</code></li>
+<li><code>yarn init -y</code>, <code>yarn add &lt;name&gt;</code>,
+<code>yarn</code> (install add required dependencies),
+<code>yarn &lt;script-name&gt;</code>,
+<code>yarn global install &lt;name&gt;</code>(need to add the global
+package folder to the path environment variable)<br>
+</li>
+<li><code>yarn.lock</code> is the lockfile for yarn-managed project</li>
+<li>Only use npm or yark for a project, do not mix them together</li>
+</ul></li>
+<li>Package managers
+<ul>
+<li><code>composer</code> for PHP, <code>pip</code> for Python,
+<code>maven</code> for Java, <code>go mod</code> for go,
+<code>npm/yarn</code> for JavaScript, <code>rubyGems</code> for
+Ruby</li>
+<li><code>yum</code> for Centos, <code>apt</code> for Ubuntu,
+<code>homebrew</code> for MacOS, <code>chocolatey</code> for
+Windows</li>
+</ul></li>
+<li>nvm
+<ul>
+<li>Node Version Manager, used to switch Node.js version</li>
+<li><code>nvm install x.x.x</code>, <code>nvm use x.x.x</code>,
+<code>nvm uninstall x.x.x</code>, <code>nvm list</code></li>
+</ul></li>
+</ul></li>
+<li><p>Express.js</p>
+<ul>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">9000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&quot;&lt;h1&gt; Hello Express.&lt;/h1&gt;&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = req.params[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line">  res.end(<span class="string">`&lt;h1&gt;Hello Page <span class="subst">$&#123;id&#125;</span>&lt;/h1&gt;`</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server started on port <span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Router: <code>router.method(url, callback)</code>, <code>all</code>,
+<code>get</code>, <code>post</code>, ...</li>
+<li>Request
+<ul>
+<li>Get some parameters:
+<ul>
+<li>Native parameters: <code>req.method</code>, <code>req.url</code>,
+<code>req.httpVersion</code>, <code>req.headers</code></li>
+<li>Express parameters: <code>req.path</code>, <code>req.query</code>,
+<code>req.ip</code></li>
+</ul></li>
+<li>Get URL parameters: <code>req.params[key]</code> or
+<code>req.params.key</code></li>
+</ul></li>
+<li>Response
+<ul>
+<li>Native parameters: <code>res.statusCode</code>,
+<code>res.statusMessage</code>, <code>res.write()</code>,
+<code>res.end()</code></li>
+<li>Express method: <code>res.send()</code>, this method will
+automatically set <code>content-type</code> in response headers</li>
+<li><code>res.redirect(url)</code>,
+<code>res.download(resourceAbsolutePath)</code>,
+<code>res.json(jsonObject)</code>,
+<code>res.sendFile(resourceAbsolutePath)</code> you need to set
+<code>content-type</code> in header for some file types, otherwise files
+like JSON will be downloaded instead of being displayed in the
+brwoser</li>
+</ul></li>
+<li>Middleware
+<ul>
+<li>Application-level middleware: handle all requests</li>
+<li>Router-level middleware: handle requests to URLs specified by a
+router</li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -507,7 +664,7 @@ module <figure class="highlight javascript"><table><tr><td class="gutter"><pre><
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:42</span>
+    <span title="Reading time total">22:48</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
