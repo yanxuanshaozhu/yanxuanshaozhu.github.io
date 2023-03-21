@@ -28,7 +28,7 @@
 <meta property="og:description" content="尚硅谷 Node.js 教程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-16T16:50:08.000Z">
-<meta property="article:modified_time" content="2023-03-20T04:01:16.284Z">
+<meta property="article:modified_time" content="2023-03-21T03:57:25.612Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Web Development">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-20 00:01:16" itemprop="dateModified" datetime="2023-03-20T00:01:16-04:00">2023-03-20</time>
+                <time title="Modified: 2023-03-20 23:57:25" itemprop="dateModified" datetime="2023-03-20T23:57:25-04:00">2023-03-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,14 +225,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>19k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>18 mins.</span>
+              <span>24 mins.</span>
             </span>
 
         </div>
@@ -589,7 +589,82 @@ order to use CommonJS style, use lowdb 1.0.0
 </ol>
 <h2 id="mongodb">MongoDB</h2>
 <ol type="1">
-<li></li>
+<li>Introduction
+<ul>
+<li>database -&gt; collection -&gt; document</li>
+<li><code>show dbs</code>, <code>use &lt;db&gt;</code>, <code>db</code>,
+<code>db.createCollection(&lt;collection&gt;)</code>,
+<code>db.dropDatabase()</code></li>
+<li><code>show collections</code>,
+<code>db.&lt;collection&gt;.drop</code>,
+<code>db.&lt;collection&gt;.renameCollection(&lt;collection&gt;)</code></li>
+<li><code>db.&lt;collection&gt;.insert(&lt;document&gt;)</code>,
+<code>db.&lt;collection&gt;.find(&lt;condition&gt;)</code>,
+<code>db.&lt;collection&gt;.updateOne/updateMany(&lt;condition&gt;, &#123;$set: &lt;new-value&gt;&#125;)</code>,
+<code>db.&lt;collection&gt;.deleteOne/deleteMany(&lt;condition&gt;)</code></li>
+<li>You can use mongo shell to connect to MongoDB: run
+<code>mongosh</code> in cmd, and you will connect to the local MongoDb
+database running at <code>localhost:27017</code></li>
+</ul></li>
+<li>The <code>mongoose</code> module
+<ul>
+<li>Installation: <code>npm i mongoose --save</code></li>
+<li>In mongoose 7.x.x version, support for callback is removed
+(<a target="_blank" rel="noopener" href="https://github.com/Automattic/mongoose/blob/master/CHANGELOG.md">Reference:
+7.0.0-rc0 / 2023-02-23 update</a>), so you need
+<code>npm i mongoose@6.10.0</code> in order to use callbacks</li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> db = <span class="string">&quot;cosi152&quot;</span>;</span><br><span class="line">mongoose.connect(<span class="string">`mongodb://127.0.0.1:27017/<span class="subst">$&#123;db&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">mongoose.connection.once(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Connected to database&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mongoose.connection.on(<span class="string">&quot;error&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Error occured&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mongoose.connection.on(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Connection terminated&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  mongoose.disconnect();</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Insert document: <code>&lt;Model&gt;.create()</code>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connection.on(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Connected to database&quot;</span>);</span><br><span class="line">  <span class="keyword">let</span> accountSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    id: <span class="built_in">Number</span>,</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">Number</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">let</span> bookModel = mongoose.model(<span class="string">&quot;accounts&quot;</span>, accountSchema);</span><br><span class="line">  bookModel.create(&#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;Wendy&quot;</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Schema datatype: <code>String</code>, <code>Number</code>,
+<code>Boolean</code>, <code>Array</code>, <code>Date</code>,
+<code>Buffer(can store binary files, but static resources are commonly stored on the server static resource directory instead)</code>,
+<code>Mixed(mongoose.Schema.Types.Mixed)</code>,
+<code>ObjectId(commonly used for foreign key)</code>,
+<code>Decimal128</code></li>
+<li>Mongoose field validation: <code>required: true</code>,
+<code>default: &lt;value&gt;</code>,
+<code>enum: [...&lt;values&gt;]</code>, <code>unique: true</code>(in
+order for unique to have effect, you need to drop and then recreate the
+collection)</li>
+<li>Delete document:
+<code>&lt;Model&gt;.deleteOne(&lt;condition&gt;, &lt;callback&gt;)</code>,
+<code>&lt;Model&gt;.deleteMany()</code>, ... <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connection.on(<span class="string">&quot;open&quot;</span>,  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Databse connected to <span class="subst">$&#123;url&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> arr = <span class="keyword">await</span> BookModel.find();</span><br><span class="line">  BookModel.deleteOne(&#123; <span class="attr">_id</span>: <span class="string">&quot;6418b5cf5cbd30962f396157&quot;</span> &#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Update document:
+<code>&lt;Model&gt;.updateOne(&lt;condition&gt;, &lt;newValue&gt;, &lt;callback&gt;)</code>,
+<code>&lt;Model&gt;.updateMany()</code>, ... <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connection.on(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Connected to <span class="subst">$&#123;url&#125;</span>`</span>);</span><br><span class="line">  BookModel.updateOne(&#123;<span class="attr">_id</span>: <span class="string">&quot;6418b5cf5cbd30962f396158&quot;</span>&#125;, &#123;<span class="attr">name</span>:<span class="string">&quot;HongLouMeng&quot;</span>&#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Query
+document:<code>&lt;Model&gt;.find(&lt;condition&gt;, &lt;callback&gt;)</code>,
+<code>&lt;Model&gt;.findById(&lt;id&gt;, &lt;callback&gt;)</code>,
+<code>&lt;Model&gt;.findOne(&lt;condition&gt;, &lt;callback&gt;)</code>,
+... <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connection.on(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Connected to <span class="subst">$&#123;url&#125;</span>`</span>);</span><br><span class="line">  BookModel.findOne(&#123;<span class="attr">_id</span>: <span class="string">&quot;6418b5cf5cbd30962f396158&quot;</span>&#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">  <span class="built_in">console</span>.log(data.length);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Conditions:
+<ul>
+<li>Operators: <code>$lt</code>, <code>$gt</code>, <code>$lte</code>,
+<code>$gte</code>, <code>$ne</code>,
+<code>&#123;price: &#123;$lt: 10&#125;&#125;</code></li>
+<li>Logic operators: <code>$or</code>, <code>$and</code>,
+<code>&#123; $and: [&#123; price: &#123; $lt: 20 &#125; &#125;, &#123; price: &#123; $gt: 10 &#125; &#125;] &#125;</code></li>
+<li>Regular expression: <code>&#123;name: /123/&#125;</code>,
+<code>&#123;name: new RegExp("123")&#125;</code> (can be used to match values
+passed from variables)</li>
+</ul></li>
+<li>Customized query
+<ul>
+<li>Only return specific fields from queries:
+<code>BookModel.find().select(field: 1).exec(callback)</code>, only
+fields with value 1 in the select method will be returned</li>
+<li>Sort results:
+<code>BookModel.find().sort(price: 1).exec(callback)</code>,1 means
+ascending, 0 means descending</li>
+<li>Limit results with offsets:
+<code>BookModel.find().sort(price: 0).skip(m).limit(n).exec(callback)</code>,
+select n items with top m items skipped</li>
+</ul></li>
+<li>Modularized mongoose connection <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config.js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  dbhost: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">  dbport: <span class="number">27017</span>,</span><br><span class="line">  dbname: <span class="string">&quot;cosi152&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dbConnect.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123;dbhost, dbport, dbname&#125; = <span class="built_in">require</span>(<span class="string">&quot;./config&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbConnect = <span class="function">(<span class="params">success, fail</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> db = <span class="string">&quot;cosi152&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">`mongodb://<span class="subst">$&#123;dbhost&#125;</span>:<span class="subst">$&#123;dbport&#125;</span>/<span class="subst">$&#123;db&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">  mongoose.connect(url);</span><br><span class="line"></span><br><span class="line">  mongoose.connection.on(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Connected to <span class="subst">$&#123;url&#125;</span>`</span>);</span><br><span class="line">    success();</span><br><span class="line">  &#125;);</span><br><span class="line">  mongoose.connection.on(<span class="string">&quot;error&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Error occured&quot;</span>);</span><br><span class="line">    fail();</span><br><span class="line">  &#125;);</span><br><span class="line">  mongoose.connection.on(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Disconnected from <span class="subst">$&#123;url&#125;</span>`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    mongoose.disconnect();</span><br><span class="line">  &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = dbConnect;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// usage.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> BookModel = <span class="built_in">require</span>(<span class="string">&quot;./book&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> dbConnect = <span class="built_in">require</span>(<span class="string">&quot;./db&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> success = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  BookModel.find(&#123; <span class="attr">price</span>: &#123; <span class="attr">$gt</span>: <span class="number">10</span> &#125; &#125;)</span><br><span class="line">    .select(&#123; <span class="attr">author</span>: <span class="number">1</span>, <span class="attr">price</span>: <span class="number">1</span> &#125;)</span><br><span class="line">    .sort(&#123; <span class="attr">price</span>: <span class="number">1</span> &#125;)</span><br><span class="line">    .limit(<span class="number">3</span>)</span><br><span class="line">    .exec(<span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fail = <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">dbConnect(success, fail);</span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// book.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BookSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  author: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  price: &#123;</span><br><span class="line">    type: <span class="built_in">Number</span>,</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  is_hot: &#123;</span><br><span class="line">    type: <span class="built_in">Boolean</span>,</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BookModel = mongoose.model(<span class="string">&quot;novels&quot;</span>, BookSchema);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = BookModel;</span><br></pre></td></tr></table></figure></li>
+<li>Promise chain <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> movieModel(&#123; <span class="attr">title</span>: <span class="string">&quot;The Wandering Earth 2&quot;</span>, <span class="attr">director</span>: <span class="string">&quot;Fan Guo&quot;</span> &#125;)</span><br><span class="line">  .save()        <span class="comment">// save in the database, return saved document</span></span><br><span class="line">  .then(<span class="function">(<span class="params">movie</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Saved movie: <span class="subst">$&#123;movie&#125;</span>`</span>);        <span class="comment">// print saved document</span></span><br><span class="line">    <span class="keyword">return</span> movieModel.findOne(&#123; <span class="attr">title</span>: movie.title &#125;);   <span class="comment">// find a document, return found document</span></span><br><span class="line">  &#125;)                             </span><br><span class="line">  .then(<span class="function">(<span class="params">movie</span>) =&gt;</span> &#123;                          </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Found movie:, <span class="subst">$&#123;movie&#125;</span>`</span>);      <span class="comment">// print found document</span></span><br><span class="line">    <span class="keyword">return</span> movieModel.findOneAndUpdate(         <span class="comment">// find a document and update it</span></span><br><span class="line">      &#123; <span class="attr">title</span>: movie.title &#125;,</span><br><span class="line">      &#123; <span class="attr">director</span>: <span class="string">&quot;123&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">returnDocument</span>: <span class="string">&quot;after&quot;</span> &#125;               <span class="comment">// return updated document rather than the original one</span></span><br><span class="line">    );</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">movie</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Updated movie: ,<span class="subst">$&#123;movie&#125;</span>`</span>);    <span class="comment">// print updated document</span></span><br><span class="line">    <span class="keyword">return</span> movieModel.findOneAndDelete(&#123; <span class="attr">title</span>: movie.title &#125;); <span class="comment">// find a document and delete it, return deleted document</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">movie</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Delete movie: <span class="subst">$&#123;movie&#125;</span>`</span>);     <span class="comment">// print deleted document</span></span><br><span class="line">    <span class="keyword">return</span> movieModel.find();                  <span class="comment">// find all documents in the database</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">results</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Data in the database: <span class="subst">$&#123;results&#125;</span>`</span>);  <span class="comment">// print all documents in the database</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;Error:&quot;</span>, error));</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ol>
 
     </div>
@@ -630,7 +705,10 @@ order to use CommonJS style, use lowdb 1.0.0
     <a href="/2023/03/05/COSI%20177A-Scientific-Data-Processing-in-Matlab/" rel="prev" title="COSI 177A Scientific Data Processing in Matlab">
       <i class="fa fa-chevron-left"></i> COSI 177A Scientific Data Processing in Matlab
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/20/Microsoft-Azure-Certificates-Preparation/" rel="next" title="Microsoft Azure Certificates Preparation">
+      Microsoft Azure Certificates Preparation <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -704,7 +782,7 @@ order to use CommonJS style, use lowdb 1.0.0
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -715,7 +793,7 @@ order to use CommonJS style, use lowdb 1.0.0
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -767,7 +845,7 @@ order to use CommonJS style, use lowdb 1.0.0
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22:53</span>
+    <span title="Reading time total">23:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
