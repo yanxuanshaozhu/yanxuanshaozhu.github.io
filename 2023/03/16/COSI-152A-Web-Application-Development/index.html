@@ -28,7 +28,7 @@
 <meta property="og:description" content="尚硅谷 Node.js 教程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-16T16:50:08.000Z">
-<meta property="article:modified_time" content="2023-03-22T03:04:04.949Z">
+<meta property="article:modified_time" content="2023-03-23T03:53:14.937Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Web Development">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-21 23:04:04" itemprop="dateModified" datetime="2023-03-21T23:04:04-04:00">2023-03-21</time>
+                <time title="Modified: 2023-03-22 23:53:14" itemprop="dateModified" datetime="2023-03-22T23:53:14-04:00">2023-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,14 +225,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>30k</span>
+              <span>33k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>27 mins.</span>
+              <span>30 mins.</span>
             </span>
 
         </div>
@@ -547,7 +547,9 @@ statements</p>
 <code>app.set("views", path.resolve(__dirname, "./views"));</code>, the
 template files should have extension <code>.ejs</code></li>
 <li>Render EJS templates
-<code>res.ender("templatename", dataObject)</code></li>
+<code>res.render("templatename", dataObject)</code></li>
+<li>File hierarchy: for <code>view/auth/auth.js</code>, the render
+method should be <code>res.render(auth/auth.js)</code></li>
 </ul></li>
 </ul></li>
 <li><p>Express application generator</p>
@@ -789,7 +791,56 @@ logins, the server knows user identity</li>
 <li>Use session in express and save session to MongoDB
 <ul>
 <li>Installation: <code>npm i express-session connect-mongo</code>,
-express-session stores session by default in</li>
+express-session stores session in memory by default, we can use
+connect-mongo to store the session object into MongoDB</li>
+<li>App session configuration <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">  session(&#123;</span><br><span class="line">    <span class="comment">// the name of the cookie that server sets in its response</span></span><br><span class="line">    name: <span class="string">&quot;sid&quot;</span>,</span><br><span class="line">    <span class="comment">// the secret used to sign the session id cookie(generate hash session id), can be string or array of strings</span></span><br><span class="line">    secret: <span class="string">&quot;yanxuanshaozhu&quot;</span>,</span><br><span class="line">    <span class="comment">// whether each request should be made a session</span></span><br><span class="line">    saveUninitialized: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// force the session be saved back to the session store, so user credentials are valid</span></span><br><span class="line">    resave: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// save session to MongoDB, the collection name is sessions</span></span><br><span class="line">    store: MongoStore.create(&#123;</span><br><span class="line">      mongoUrl: <span class="string">&quot;mongodb://127.0.0.1:27017/cosi152&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// set options for the cookie in the response</span></span><br><span class="line">    cookie: &#123;</span><br><span class="line">      <span class="comment">// if this is true, then client cannot access the session cookie in the response</span></span><br><span class="line">      httpOnly: <span class="literal">true</span>,</span><br><span class="line">      maxAge:<span class="number">1000</span> * <span class="number">60</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li>Let the server set session <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&quot;/login&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; username, password &#125; = req.body;</span><br><span class="line">  userModel.findOne(</span><br><span class="line">    &#123; <span class="attr">username</span>: username, <span class="attr">password</span>: md5(password) &#125;,</span><br><span class="line">    (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&quot;Registration failed&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!data) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.send(<span class="string">&quot;Login failed&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// User successfully logined, set session cookie in response</span></span><br><span class="line">      req.session.username = data.username;</span><br><span class="line">      req.session._id = data._id;</span><br><span class="line">      res.render(<span class="string">&quot;success&quot;</span>, &#123;</span><br><span class="line">        msg: <span class="string">&quot;Login success&quot;</span>,</span><br><span class="line">        url: <span class="string">&quot;/account&quot;</span>,</span><br><span class="line">        title: <span class="string">&quot;Success Page&quot;</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Use session to check login status middleware: <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.session.username) &#123;</span><br><span class="line">    res.redirect(<span class="string">&quot;/loign&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Do not forget to call next method to continue to execute other logics</span></span><br><span class="line">  next();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><p>Password encryption</p>
+<ul>
+<li>Password should be encrypted before being stored inside the
+database</li>
+<li>Use <code>md5</code> moduel to do password hashing:
+<code>npm i md5</code>,
+<code>password = md5(req.body.password)</code></li>
+</ul></li>
+<li><p>Protect CSRF</p>
+<ul>
+<li>Cross-Site Request Forgery (CSRF) is an attack that forces
+authenticated users to submit a request to a Web application against
+which they are currently authenticated</li>
+<li>Example: in website B, it sends a get request to website A with a
+cookie from website A, then user logging status can be changed on
+website A</li>
+<li>How to deal with this: Use <code>POST</code> request instead of
+<code>GET</code> request</li>
+</ul></li>
+<li><p>token</p>
+<ul>
+<li>Definition: a encrypted string sent from user to client to identify
+client identity</li>
+<li>tokent is commonly used in mobile apps for session controls</li>
+<li>cookie is automatically included in request header, but a client
+needs to manually include tokens inside the header of its requests</li>
+<li>Advantage of token
+<ul>
+<li>Saved on client, so less pressure on the server</li>
+<li>Can prevent CSRF</li>
+<li>Tokens can be shared among services</li>
+</ul></li>
+</ul></li>
+<li><p>JWT(JSON Web Token)</p>
+<ul>
+<li>Enable secure claims between two parties as a JSON object</li>
+<li>Use JWT in javascript: <code>npm i jsonwebtoken</code></li>
+<li>Logic
+<ul>
+<li>When client side credentials match records stored in the database,
+server will creat a token and send it to client</li>
+<li>For later on requests, the token is included in the request and sent
+to the server</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -973,7 +1024,7 @@ express-session stores session by default in</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">23:04</span>
+    <span title="Reading time total">23:10</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

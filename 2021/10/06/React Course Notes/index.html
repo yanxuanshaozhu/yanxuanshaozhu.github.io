@@ -28,7 +28,7 @@
 <meta property="og:description" content="Udemy React Course Section 1 Getting Started">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-06T19:00:39.000Z">
-<meta property="article:modified_time" content="2023-03-07T07:53:02.381Z">
+<meta property="article:modified_time" content="2023-03-23T06:58:18.307Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-07 02:53:02" itemprop="dateModified" datetime="2023-03-07T02:53:02-05:00">2023-03-07</time>
+                <time title="Modified: 2023-03-23 02:58:18" itemprop="dateModified" datetime="2023-03-23T02:58:18-04:00">2023-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>849</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -267,19 +267,78 @@ web</li>
 </ul></li>
 </ol>
 <h1 id="尚硅谷react-course">尚硅谷React Course</h1>
-<h2 id="react基础">React基础</h2>
+<h2 id="react-basics">React Basics</h2>
 <ol type="1">
-<li>React是一个将数据渲染成HTML视图的开源JavaScript库。它不负责发送请求获取数据，不负责处理数据，只负责操作DOM呈现页面。</li>
-<li>React优点
+<li>React is a javascript that can render data to HTML。It's not
+responsible for making requests，for handling requests，it's only
+responsible for manipulating DOM。</li>
+<li>React advantage
 <ul>
-<li>原生Javascript操作DOM繁琐，效率低；直接操作DOM，浏览器会进行大量的重绘重排；没有组件化编码方案，代码复用效率低</li>
-<li>React采用组件化模式，声明式编码，提高效率；React
-Native可以进行移动端开发；使用虚拟DOM和Diffing算法，减少和真实DOM的交互</li>
+<li>Using vanilla javascript to manipulate DOM is
+inefficient；manipulating DOM using javascript requires lots of DOM
+regeneration;</li>
+<li>React uses component and declarative programming to improve
+efficienty；React Native can be used to make mobile apps；VDOM and the
+diffing algorithm reduces interaction with the real DOM</li>
 </ul></li>
-<li>基本案例
+<li>An example
 <ul>
-<li>相关js库：
-<code>react.js</code>React核心库，<code>react-dom.js</code>提供操作DOM的react扩展库，<code>babel.min.js</code>解析JSX语法转为JS代码的库</li>
+<li>Related javascript library： <code>react.development.js</code>core
+React library，<code>react-dom.development.js</code> core React DOM
+library，<code>babel.min.js</code> convert JSX to javascript that is
+recognizedby the browser</li>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Import core react library, this must be imported before react-dom.development.js --&gt;</span></span><br><span class="line">   &lt;script</span><br><span class="line">      type=&quot;text/javascript&quot;</span><br><span class="line">      src=&quot;./javascript/react.development.js&quot;</span><br><span class="line">   &gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Import react library for dom --&gt;</span></span><br><span class="line">   &lt;script</span><br><span class="line">      type=&quot;text/javascript&quot;</span><br><span class="line">      src=&quot;./javascript/react-dom.development.js&quot;</span><br><span class="line">   &gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Import library to convert JXS to JS --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!-- Write JSX, the type must be text/babel --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 1. Create virtual DOM(VDOM)</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> VDOM = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 2. Render VDOM to html page</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// Two global variables: React from react core, ReactDOM from react-dom</span></span></span><br><span class="line"><span class="javascript">      ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>You can use pure javascript to generate VDOM, in such case you do
+not need the babel library <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="comment">// 1. Create virtual DOM(VDOM)</span></span></span><br><span class="line"><span class="handlebars"><span class="xml">   // Equivalent to: const VDOM = <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>; with type=&quot;text/babel&quot;</span></span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> VDOM = React.createElement(<span class="string">&quot;h1&quot;</span>, &#123; <span class="attr">id</span>: <span class="string">&quot;title&quot;</span> &#125;, <span class="string">&quot;Hello React&quot;</span>);</span></span><br><span class="line"><span class="javascript">   <span class="comment">// 2. Render VDOM to html page</span></span></span><br><span class="line"><span class="javascript">   <span class="comment">// Two global variables: React from react core, ReactDOM from react-dom</span></span></span><br><span class="line"><span class="javascript">   ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>VDOM is actually a javascript object that has less attributes than
+the real DOM, it will be converted by React to the real DOM</li>
+</ul></li>
+<li>JSX
+<ul>
+<li>JavaScript XML, it' in essence the sugar for
+<code>React.createElement(tag, attribute, children)</code></li>
+<li>Syntax:
+<ul>
+<li>Use <code>className</code> to replace the class attribute in
+css</li>
+<li>Use javascript expression(you cannot use javascript statements)
+<code>&#123;variable&#125;</code></li>
+<li>Use <code>style=&#123;&#123;k1:v1, ...,k2:v2&#125;&#125;</code>(the outer curly braces
+specify inside is javascript code, the innder curly specifys the code is
+a javascript object)</li>
+<li>VDOM can have only one root JXS tag</li>
+<li>JSX tags must be have its closing tag or is self-closing</li>
+<li>JSX tags with lowercase names will be converted by React to HTML
+tags with same names. If the first latter of a JSX tag is capatialized,
+it will be converted by React to JSX component</li>
+<li>Working with arr in React: notice you need to provide a unique key
+for each item in the array, because React diffing algorithm utilizes
+keys to speed-up converting VDOM to real DOM. Using index as the unique
+key may cause error <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> arr = [<span class="string">&quot;Angular&quot;</span>, <span class="string">&quot;Vue&quot;</span>, <span class="string">&quot;React&quot;</span>];</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> VDOM = (</span></span><br><span class="line"><span class="handlebars"><span class="xml">   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">      &#123;arr.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> (</span></span><br><span class="line"><span class="javascript">      <span class="comment">// Here is still JSX, so you need &#123;item&#125;</span></span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line">      ))&#125;</span><br><span class="line"><span class="handlebars"><span class="xml">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line">   );</span><br><span class="line"><span class="javascript">   ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="react-components">React Components</h2>
+<ol type="1">
+<li><p>Module and component</p>
+<ul>
+<li>Module: reusable javascript file</li>
+<li>Component: reusable html, css, js, img, video, ...</li>
+</ul></li>
+<li><p>React Developer Tools Chrome extension</p></li>
+<li><p>Functional component</p>
+<ul>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="comment">// 1. Create a functional component, the first letter should be </span></span></span><br><span class="line"><span class="javascript">   <span class="comment">// capitalized so the it will be regarded as a JSX component</span></span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> Mycomp = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span></span><br><span class="line">   &#125;;</span><br><span class="line"><span class="javascript">   <span class="comment">// 2. Render the component with component tag</span></span></span><br><span class="line"><span class="javascript">   ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomp</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Notice the <code>this</code> inside user-defined component is
+<code>undefined</code>, because the code will be translated by babel
+into javascript, and <code>use strict</code> will be added to the code
+during translation&gt; In strict mode, <code>this</code> inside
+user-defined function is not allowed to point to the <code>window</code>
+obejct</li>
+<li>Logic of functional component: <code>ReactDom.render()</code> will
+call the function that defines the functional component, get the VDOM
+returned by the function, and then convert the VDOM to real DOM of the
+html page.</li>
 </ul></li>
 </ol>
 
@@ -382,7 +441,7 @@ Native可以进行移动端开发；使用虚拟DOM和Diffing算法，减少和�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#udemy-react-course"><span class="nav-number">1.</span> <span class="nav-text">Udemy React Course</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#section-1-getting-started"><span class="nav-number">1.1.</span> <span class="nav-text">Section 1 Getting Started</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%9A%E7%A1%85%E8%B0%B7react-course"><span class="nav-number">2.</span> <span class="nav-text">尚硅谷React Course</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#react%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">React基础</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#udemy-react-course"><span class="nav-number">1.</span> <span class="nav-text">Udemy React Course</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#section-1-getting-started"><span class="nav-number">1.1.</span> <span class="nav-text">Section 1 Getting Started</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%9A%E7%A1%85%E8%B0%B7react-course"><span class="nav-number">2.</span> <span class="nav-text">尚硅谷React Course</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#react-basics"><span class="nav-number">2.1.</span> <span class="nav-text">React Basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-components"><span class="nav-number">2.2.</span> <span class="nav-text">React Components</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -460,7 +519,7 @@ Native可以进行移动端开发；使用虚拟DOM和Diffing算法，减少和�
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">23:04</span>
+    <span title="Reading time total">23:10</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
