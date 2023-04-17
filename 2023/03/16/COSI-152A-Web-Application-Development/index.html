@@ -29,7 +29,7 @@
 <meta property="og:description" content="尚硅谷 Node.js 教程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-16T16:50:08.000Z">
-<meta property="article:modified_time" content="2023-03-29T04:52:29.585Z">
+<meta property="article:modified_time" content="2023-04-17T06:00:18.120Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Web Development">
@@ -216,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-29 00:52:29" itemprop="dateModified" datetime="2023-03-29T00:52:29-04:00">2023-03-29</time>
+                <time title="Modified: 2023-04-17 02:00:18" itemprop="dateModified" datetime="2023-04-17T02:00:18-04:00">2023-04-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -794,9 +794,38 @@ same directory as the <code>db.json</code> file</li>
 <ul>
 <li>Add an api router</li>
 <li>Let the router return json format data</li>
-<li>Common JSON format <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">          &#123;</span><br><span class="line">              code: res.statusCode,</span><br><span class="line">              msg: res.statusMessage,</span><br><span class="line">              data: data</span><br><span class="line">          &#125;</span><br><span class="line">        ``` </span><br><span class="line"></span><br><span class="line">5. Session Control</span><br><span class="line">    - Common session control techniques: cookie, session, token </span><br><span class="line">    - Cookie</span><br><span class="line">      - data saved in browser, same hostname has same cookie, hostname cookie is wrapped in request header inside `cookie` attribute</span><br><span class="line">      - Cookie is sent from server inside response header `set-cookie` attribute, and the browser saved cookie locally</span><br><span class="line">      - Use cookie in express: </span><br><span class="line">        - `res.cookie(key, value)`, for multiple cookies, simply call this method multiple times. Cookies set using the above method expires when the browser is closed. </span><br><span class="line">        - `res.cookie(key, value, &#123;maxAge: &lt;milliseconds&gt;&#125;)`, cookie set in this way only expires when reaches its max age. when you use browser inspector, the maxAge is displayed in seconds</span><br><span class="line">        - `res.clearCookie(key)` removes cookie specified by the key</span><br><span class="line">        - User `cookie-parser` to get cookie from request</span><br><span class="line">          - Install `npm i cookie-parser`</span><br><span class="line">          - An example</span><br><span class="line">              ```javascript</span><br><span class="line">                const cookieParser = require(&quot;cookie-parser&quot;);</span><br><span class="line"></span><br><span class="line">                app.user(cookieParser);</span><br><span class="line"></span><br><span class="line">                app.get(&#x27;/&#x27;, function (req, res) &#123;</span><br><span class="line">                  <span class="comment">// Cookies that have not been signed</span></span><br><span class="line">                  console.log(&#x27;Cookies: &#x27;, req.cookies);</span><br><span class="line"></span><br><span class="line">                  <span class="comment">// Cookies that have been signed</span></span><br><span class="line">                  console.log(&#x27;Signed Cookies: &#x27;, req.signedCookies);</span><br><span class="line">                  res.json(req.cookies);</span><br><span class="line">                &#125;)</span><br><span class="line"></span><br><span class="line">                app.listen(8080)</span><br></pre></td></tr></table></figure></li>
+<li>Common JSON format <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    code: res.statusCode,</span><br><span class="line">    msg: res.statusMessage,</span><br><span class="line">    data: data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
-<li><p>Session</p>
+</ul></li>
+<li><p>Session Control</p>
+<ul>
+<li>Common session control techniques: cookie, session, token</li>
+<li>Cookie
+<ul>
+<li>data saved in browser, same hostname has same cookie, hostname
+cookie is wrapped in request header inside <code>cookie</code>
+attribute</li>
+<li>Cookie is sent from server inside response header
+<code>set-cookie</code> attribute, and the browser saved cookie
+locally</li>
+<li>Use cookie in express:
+<ul>
+<li><code>res.cookie(key, value)</code>, for multiple cookies, simply
+call this method multiple times. Cookies set using the above method
+expires when the browser is closed.</li>
+<li><code>res.cookie(key, value, &#123;maxAge: &lt;milliseconds&gt;&#125;)</code>,
+cookie set in this way only expires when reaches its max age. when you
+use browser inspector, the maxAge is displayed in seconds</li>
+<li><code>res.clearCookie(key)</code> removes cookie specified by the
+key</li>
+<li>User <code>cookie-parser</code> to get cookie from request
+<ul>
+<li>Install <code>npm i cookie-parser</code></li>
+<li>An example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.user(cookieParser);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Cookies that have not been signed</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Cookies: &#x27;</span>, req.cookies);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Cookies that have been signed</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Signed Cookies: &#x27;</span>, req.signedCookies);</span><br><span class="line">  res.json(req.cookies);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Session
 <ul>
 <li>Data saved on the server, can be used for user authentication: when
 user tries to login, server compare credentials in the database. If the
@@ -814,7 +843,7 @@ connect-mongo to store the session object into MongoDB</li>
 <li>Use session to check login status middleware: <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.session.username) &#123;</span><br><span class="line">    res.redirect(<span class="string">&quot;/loign&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Do not forget to call next method to continue to execute other logics</span></span><br><span class="line">  next();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
-<li><p>Password encryption</p>
+<li>Password encryption
 <ul>
 <li>Password should be encrypted before being stored inside the
 database</li>
@@ -822,7 +851,7 @@ database</li>
 <code>npm i md5</code>,
 <code>password = md5(req.body.password)</code></li>
 </ul></li>
-<li><p>Protect CSRF</p>
+<li>Protect CSRF
 <ul>
 <li>Cross-Site Request Forgery (CSRF) is an attack that forces
 authenticated users to submit a request to a Web application against
@@ -833,7 +862,7 @@ website A</li>
 <li>How to deal with this: Use <code>POST</code> request instead of
 <code>GET</code> request</li>
 </ul></li>
-<li><p>token</p>
+<li>token
 <ul>
 <li>Definition: a encrypted string sent from user to client to identify
 client identity</li>
@@ -847,7 +876,7 @@ needs to manually include tokens inside the header of its requests</li>
 <li>Tokens can be shared among services</li>
 </ul></li>
 </ul></li>
-<li><p>JWT(JSON Web Token)</p>
+<li>JWT(JSON Web Token)
 <ul>
 <li>Enable secure claims between two parties as a JSON object</li>
 <li>Use JWT in javascript: <code>npm i jsonwebtoken</code></li>
@@ -1233,7 +1262,7 @@ can use <code>for...of</code> loop on set</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">24:07</span>
+    <span title="Reading time total">24:08</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
