@@ -29,7 +29,7 @@
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-03-08T21:23:10.969Z">
+<meta property="article:modified_time" content="2023-04-26T18:03:15.940Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-08 16:23:10" itemprop="dateModified" datetime="2023-03-08T16:23:10-05:00">2023-03-08</time>
+                <time title="Modified: 2023-04-26 14:03:15" itemprop="dateModified" datetime="2023-04-26T14:03:15-04:00">2023-04-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>10k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>9 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -465,6 +465,51 @@ algorithm</a></li>
 Algorithm in Matlab</a> <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;</span><br><span class="line">costmat = [<span class="number">14</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">12</span>,<span class="number">6</span>,<span class="number">5</span>;</span><br><span class="line">    <span class="number">7</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">9</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">10</span>];</span><br><span class="line">[assign,cost] = munkres(costmat);</span><br><span class="line"><span class="built_in">disp</span>(assign);  <span class="comment">% 2 4 3 1, m1 assigned to t2, m2 assigned to t4, m3 assigned to t3, m4 assigned to t1 </span></span><br><span class="line"><span class="built_in">disp</span>(cost);    <span class="comment">% 15</span></span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ul></li>
+<li>Basic image processing
+<ul>
+<li>Show image information: <code>info = imfinfo(filename)</code></li>
+<li>Read input image: <code>img = imread(filename)</code></li>
+<li>Write output image:
+<code>imwrite(img, filename, fmt, 'Quality', qualityvalue)</code> refer
+to the documentation for more arguments</li>
+<li>Rgb to grayscale: <code>img_gray = rgb2gray(img)</code></li>
+<li>Grayscale to rgb without colormap:
+<code>img_rgb = cat(3, img_gray, img_gray, img_gray);</code></li>
+<li>Grayscale to binarize: <code>img_bin = imbinarize(img_gray)</code>,
+can add threshold, refer to the documentation for more details</li>
+<li>Save histogram of an image <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imhist(img_gray);</span><br><span class="line">title(<span class="string">&#x27;Histogram of the original image&#x27;</span>);</span><br><span class="line"><span class="comment">% gcf(get current figure)</span></span><br><span class="line">saveas(gcf, <span class="string">&quot;histogram.png&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Histogram equalization of an grayscale image
+<code>img_heq = histeq(img_gray)</code></li>
+<li>Adjust image intensity: <code>J = imadjust(I)</code>, this increase
+the contrast, by default, out is <code>[0.01, 0.99]</code></li>
+<li>Image enhancement:
+<code>J = imadjust(I,[low_in high_in],[low_out high_out],gamma)</code>
+<ul>
+<li>If gamma &lt; 1: nonlinear mapping, weighted toward higher(brighter)
+output values</li>
+<li>If gamma = 1: linear mapping, default value of gamma</li>
+<li>If gamma &gt; 1: nonlinear mapping, weighted toward lower(darker)
+output values</li>
+</ul></li>
+<li>Find limits to contrast stretch image:
+<code>lowhigh = stretchlim(I)</code>, often used with imadjust:
+<code>J = imadjust(I,stretchlim(I), []);</code></li>
+<li>Convert img to double precision: <code>I2 = im2double(I)</code></li>
+<li>Point processing
+<ul>
+<li>Negative/inverted image: <code>J = 255 - I</code>, or
+<code>J = imadjust(I, [0, 1], [1, 0])</code></li>
+<li>Darken image: <code>J = I - 128</code></li>
+<li>Linearly lower contrast: <code>J - I / 2</code></li>
+<li>Nonlinearly lower contrast:
+<code>J1 = im2double(I); J = J1.^(1/3)</code></li>
+<li>Lighten image: <code>J = I + 128</code></li>
+<li>Linearly raise contrast: <code>J = I * 2</code></li>
+<li>Nonlinearly raise contrast:
+<code>J1 = im2double(I); J = J1.^3</code></li>
+</ul></li>
+</ul></li>
+<li>Image Pyramid <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">img = imread(<span class="string">&#x27;cameraman.tif&#x27;</span>);</span><br><span class="line">img = im2double(img);</span><br><span class="line">pyramid = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">residual = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">pyramid&#123;<span class="number">1</span>&#125; = img;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">2</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    tmp = imgaussfilt(pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125;);</span><br><span class="line">    residual&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; = pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; - tmp;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = imresize(tmp, <span class="number">0.5</span>,<span class="string">&quot;lanczos2&quot;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">tmp = imgaussfilt(pyramid&#123;<span class="keyword">end</span>&#125;);</span><br><span class="line">residual&#123;<span class="keyword">end</span>&#125; = pyramid&#123;<span class="keyword">end</span>&#125; - tmp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"></span><br><span class="line">[m0, n0] = <span class="built_in">size</span>(pyramid&#123;<span class="number">1</span>&#125;);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = pyramid&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> == <span class="number">1</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Original image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Filtered image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = residual&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    residual&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    title_str = strjoin([<span class="string">&quot;Residual of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="matlab-basics">Matlab Basics</h1>
 <ol start="0" type="1">
@@ -803,7 +848,7 @@ labels是cell标签(大括号)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">24:24</span>
+    <span title="Reading time total">24:27</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
