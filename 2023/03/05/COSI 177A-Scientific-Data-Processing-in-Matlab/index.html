@@ -29,7 +29,7 @@
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-04-26T18:03:15.940Z">
+<meta property="article:modified_time" content="2023-05-01T04:00:51.132Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-04-26 14:03:15" itemprop="dateModified" datetime="2023-04-26T14:03:15-04:00">2023-04-26</time>
+                <time title="Modified: 2023-05-01 00:00:51" itemprop="dateModified" datetime="2023-05-01T00:00:51-04:00">2023-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>13k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>12 mins.</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -495,6 +495,7 @@ output values</li>
 <code>lowhigh = stretchlim(I)</code>, often used with imadjust:
 <code>J = imadjust(I,stretchlim(I), []);</code></li>
 <li>Convert img to double precision: <code>I2 = im2double(I)</code></li>
+</ul></li>
 <li>Point processing
 <ul>
 <li>Negative/inverted image: <code>J = 255 - I</code>, or
@@ -508,8 +509,163 @@ output values</li>
 <li>Nonlinearly raise contrast:
 <code>J1 = im2double(I); J = J1.^3</code></li>
 </ul></li>
-</ul></li>
 <li>Image Pyramid <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">img = imread(<span class="string">&#x27;cameraman.tif&#x27;</span>);</span><br><span class="line">img = im2double(img);</span><br><span class="line">pyramid = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">residual = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">pyramid&#123;<span class="number">1</span>&#125; = img;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">2</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    tmp = imgaussfilt(pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125;);</span><br><span class="line">    residual&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; = pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; - tmp;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = imresize(tmp, <span class="number">0.5</span>,<span class="string">&quot;lanczos2&quot;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">tmp = imgaussfilt(pyramid&#123;<span class="keyword">end</span>&#125;);</span><br><span class="line">residual&#123;<span class="keyword">end</span>&#125; = pyramid&#123;<span class="keyword">end</span>&#125; - tmp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"></span><br><span class="line">[m0, n0] = <span class="built_in">size</span>(pyramid&#123;<span class="number">1</span>&#125;);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = pyramid&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> == <span class="number">1</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Original image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Filtered image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = residual&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    residual&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    title_str = strjoin([<span class="string">&quot;Residual of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
+<li>Spatial 2d image filter
+<ul>
+<li>Box filter(separable)
+<ul>
+<li>Example <span class="math display">\[ \frac{1}{9}\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 1 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 box average filter </span></span><br><span class="line">box = fspecial(<span class="string">&quot;average&quot;</span>);</span><br><span class="line"><span class="comment">%Filtered image</span></span><br><span class="line">img_box = imfilter(img, box);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Gaussian filter(separable)
+<ul>
+<li>Example <span class="math display">\[ \frac{1}{16}\begin{bmatrix}
+  1 &amp; 2 &amp; 1\\
+  2 &amp; 4 &amp; 2\\
+  1 &amp; 2 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 gaussian filter with sigma = 0.5 </span></span><br><span class="line">gau = fspecial(<span class="string">&quot;gaussian&quot;</span>);</span><br><span class="line">img_gau = imfilter(img, gau);</span><br><span class="line"><span class="comment">% This way is recommended</span></span><br><span class="line">img_gau2 = imgaussfilt(img);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Laplacian of gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 5 * 5 Laplacian of Gaussian filter with sigma = 0.5</span></span><br><span class="line">logau = fspecial(<span class="string">&quot;log&quot;</span>);</span><br><span class="line">img_log = imfilter(img, logau);</span><br></pre></td></tr></table></figure></li>
+<li>Derivative of gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">H1 = fspecial(<span class="string">&#x27;gaussian&#x27;</span>, <span class="number">4</span>, <span class="number">1</span>);</span><br><span class="line">H2 = fspecial(<span class="string">&#x27;gaussian&#x27;</span>, <span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">dog = H2 - H1;</span><br><span class="line">img_dog = imfilter(rgb2gray(img), dog);</span><br></pre></td></tr></table></figure></li>
+<li>Laplacian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 laplacial filter with alpha = 0.2</span></span><br><span class="line">lap = fspecial(<span class="string">&quot;laplacian&quot;</span>);</span><br><span class="line">img_lap = imfilter(img, lap);</span><br></pre></td></tr></table></figure></li>
+<li>Other filters
+<ul>
+<li>Unchanged <span class="math display">\[\begin{bmatrix}
+  0 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+  0 &amp; 0 &amp; 0\end{bmatrix}\]</span></li>
+<li>Shift to left by one <span class="math display">\[\begin{bmatrix}
+  0 &amp; 0 &amp; 0\\
+  0 &amp; 0 &amp; 1\\
+  0 &amp; 0 &amp; 0\end{bmatrix}\]</span></li>
+<li>Sharpening: do nothing for flat areas, stress intensity peaks <span class="math display">\[\begin{bmatrix}
+  0 &amp; 0 &amp; 0\\
+  0 &amp; 2 &amp; 0\\
+  0 &amp; 0 &amp; 0\end{bmatrix}
+  -
+  \frac{1}{9}\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 1 &amp; 1\end{bmatrix}
+  \]</span></li>
+</ul></li>
+<li>Sober filter(separable)
+<ul>
+<li>Vertical sober filter
+<ul>
+<li>Example <span class="math display">\[\begin{bmatrix}
+  1 &amp; 2 &amp; 1\\
+  0 &amp; 0 &amp; 0\\
+  -1 &amp; -2 &amp; -1\end{bmatrix}\]</span></li>
+<li>Matlab cod <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 vertical sober filter that emphasizes horizontal edges</span></span><br><span class="line">vs = fspecial(<span class="string">&quot;sobel&quot;</span>);</span><br><span class="line">img_vs = imfilter(img, vs);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Horizontal sober filter
+<ul>
+<li>Example <span class="math display">\[\begin{bmatrix}
+  1 &amp; 0 &amp; -1\\
+  2 &amp; 0 &amp; -2\\
+  1 &amp; -2 &amp; -1\end{bmatrix}\]</span></li>
+<li>Matlab cod <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 horizontal sober filter that emphasizes vertical edges</span></span><br><span class="line">hs = fspecial(<span class="string">&quot;sobel&quot;</span>)&#x27;;</span><br><span class="line">img_hs = imfilter(img, hs);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Frequency basics
+<ul>
+<li>Given <span class="math inline">\(f(x,y)\)</span> on <span class="math inline">\(x = 0,...,M - 1\)</span> and <span class="math inline">\(y = 0,...,N-1\)</span>, DFT <span class="math inline">\(F(u,v) = \sum\limits_{x = 0}^{M -
+1}\sum\limits_{y=0}^{N - 1}f(x,y)e^{2\pi i (ux/M + vy/N)}\)</span> for
+<span class="math inline">\(u=0,...,M-1\)</span> and <span class="math inline">\(v=0,...,N-1\)</span>. IDFT of <span class="math inline">\(F(u,v)\)</span> is <span class="math inline">\(f(x,y) = \frac{1}{MN}\sum\limits_{u = 0}^{M -
+1}\sum\limits_{v=0}^{N - 1}F(u,v)e^{2\pi i (ux/M + vy/N)}\)</span></li>
+<li>Fourier spectrum <span class="math inline">\(|F(u,v)| = [R^{2}(u,v)
++ I^{2}(u,v)]^{\frac{1}{2}}\)</span>, phase angle <span class="math inline">\(\phi(u,v) =
+arctan[\frac{I(u,v)}{R(u,v)}]\)</span></li>
+<li>If <span class="math inline">\(f(x,y)\)</span> is real, then <span class="math inline">\(F(u,v) = F(-u, -v)\)</span>, and <span class="math inline">\(|F(u,v)| = |F(-u,-v)|\)</span></li>
+<li>FFT of f: <code>F = fft2(f)</code>, IFFT of F:
+<code>f = ifft2(F)</code>. If f is real,then the result of ifft2 should
+be real, but for some MATLAB versions this is not the case, so you can
+use <code>f = real(ifft2(F))</code></li>
+<li>Move the origin of the transform to the center of the frequency
+rectangle: <code>Fc = fftshift(F)</code>, reverse centering:
+<code>F = ifftshift(Fc)</code></li>
+<li>Get the phase angle: <code>phi = atan2(imag(F), real(F))</code>, or
+<code>phi = angle(F)</code></li>
+<li>Fourier spectrum: <code>S = abs(F)</code>,
+<code>F = S.*exp(i*phi)</code></li>
+<li>Visualize the Fourier spectrum <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;q1_origin.png&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Convert image to grayscale</span></span><br><span class="line">img_gray = rgb2gray(img);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Compute Fourier transform of the image</span></span><br><span class="line">F = fft2(img_gray);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Move the origin of the transform to the center of the frequency rectangle</span></span><br><span class="line">Fc = fftshift(F);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Compute Fourier spectrum</span></span><br><span class="line">F_mag = <span class="built_in">abs</span>(Fc);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Increase in visualization details</span></span><br><span class="line">F_log = <span class="built_in">log</span>(<span class="number">1</span> + F_mag);</span><br><span class="line">F_log = F_log/<span class="built_in">max</span>(F_log(:));</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshow(F_log, []);</span><br><span class="line">title(<span class="string">&quot;Fourier spectrum&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>General steps in DFT filtering
+<ol type="1">
+<li>Convert to grayscale <code>f = rgb2gray(f);</code></li>
+<li>Convert the image to floating point
+<code>[f, revertclass] = tofloat(f);</code></li>
+<li>Obtain size <code>[N, N] = size(f)</code></li>
+<li>Obtain FFT <code>F = fft2(f)</code></li>
+<li>Generate a filter H, of size M * N, if the filter is centered
+instead, let <code>H = ifftshift(H)</code> before using the filter. But
+when you need to show the image, you need to show the centered one, use
+<code>H = fftshift(H)</code> if H is not centered</li>
+<li>Multiply the transform by the filter <code>G = H .*F</code></li>
+<li>Obtain the inverse FFT of G, ie, the filtered image
+<code>g = ifft2(G)</code></li>
+<li>Convert the filtered image to the class of the input image
+<code>g = revertclass(g)</code></li>
+</ol></li>
+<li>Frequency gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;filter_input.jpg&quot;</span>);</span><br><span class="line">img = rgb2gray(img);</span><br><span class="line"><span class="comment">%  tofloat.m, lpfilter.m(requires dftuv.m) are from the textbook</span></span><br><span class="line">[f, revertclss] = tofloat(img);</span><br><span class="line">[M, N] = <span class="built_in">size</span>(f);</span><br><span class="line">F = fft2(f);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Generate gaussian filter</span></span><br><span class="line">std = <span class="number">20</span>;</span><br><span class="line">filter_gaussian = lpfilter(<span class="string">&#x27;gaussian&#x27;</span>, M, N, std);</span><br><span class="line"><span class="comment">% Center the filter for display</span></span><br><span class="line">Fc_gaussian = fftshift(filter_gaussian);</span><br><span class="line"></span><br><span class="line">G_gaussian = filter_gaussian.*F;</span><br><span class="line"><span class="comment">% This is the filtered image</span></span><br><span class="line">gaussian_filtered_img = ifft2(G_gaussian);</span><br><span class="line">gaussian_filtered_img = revertclss(gaussian_filtered_img);</span><br></pre></td></tr></table></figure></li>
+<li>Frequency box filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Generate box filter of the same size of image</span></span><br><span class="line">filter_box = <span class="built_in">zeros</span>(M, N);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:M</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:N</span><br><span class="line">        cond1 = <span class="built_in">i</span> &gt;= M / <span class="number">2</span> - <span class="number">30</span> &amp;&amp; <span class="built_in">i</span> &lt;= M / <span class="number">2</span> + <span class="number">30</span>;</span><br><span class="line">        cond2 = <span class="built_in">j</span> &gt;= N / <span class="number">2</span> - <span class="number">30</span> &amp;&amp; <span class="built_in">j</span> &lt;= N / <span class="number">2</span> + <span class="number">30</span>;</span><br><span class="line">        <span class="keyword">if</span> cond1 &amp;&amp; cond2</span><br><span class="line">            filter_box(<span class="built_in">i</span>, <span class="built_in">j</span>) = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% The created box filter is already centered</span></span><br><span class="line">Fc_box = filter_box; </span><br><span class="line"><span class="comment">% The filter is centered so ifftshift is needed</span></span><br><span class="line">filter_box = ifftshift(filter_box);</span><br><span class="line"></span><br><span class="line">G_box = filter_box.*F;</span><br><span class="line">g_box = <span class="built_in">real</span>(ifft2(G_box));</span><br><span class="line">g_box = revertclss(g_box);</span><br></pre></td></tr></table></figure></li>
+<li></li>
+</ul></li>
+<li>Image transformation
+<ul>
+<li>Translation
+<ul>
+<li>Transformation matrix <span class="math display">\[\begin{bmatrix}
+  1 &amp; 0 &amp; t_x\\
+  0 &amp; 1 &amp; t_y\\
+  0 &amp; 0 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"><span class="comment">% Get spatial referencing information </span></span><br><span class="line">img_ref = imref2d(<span class="built_in">size</span>(img));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set tx and ty, and generate the transformation matrix</span></span><br><span class="line">tx = <span class="number">15</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [<span class="number">1</span>, <span class="number">0</span>, tx;</span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>, ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = transltform2d(A);</span><br><span class="line"><span class="comment">% Adjust the spatial referencing information of the translated image</span></span><br><span class="line">translated_ref = img_ref;</span><br><span class="line">translated_ref.XWorldLimits(<span class="number">2</span>) = translated_ref.XWorldLimits(<span class="number">2</span>) + tx;</span><br><span class="line">translated_ref.YWorldLimits(<span class="number">2</span>) = translated_ref.YWorldLimits(<span class="number">2</span>) + ty;</span><br><span class="line">[translated_img, translated_ref] = imwarp(img, tform,OutputView=translated_ref);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Display the original and translated images</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">imshow(img, img_ref)</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">imshow(translated_img, translated_ref);</span><br><span class="line">sgtitle(<span class="string">&#x27;\color&#123;red&#125; Original image(left), translated image(right)&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Euclidean(rigit): rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[\begin{bmatrix}
+  cos(\theta) &amp; -sin(\theta) &amp; t_x\\
+  sin(\theta) &amp; cos(\theta) &amp; t_y\\
+  0 &amp; 0 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set theta, tx and ty to generate the transformation matrix</span></span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [<span class="built_in">cosd</span>(theta), -<span class="built_in">sind</span>(theta), tx;</span><br><span class="line">    <span class="built_in">sind</span>(theta), <span class="built_in">cosd</span>(theta), ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = rigidtform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshowpair(img, translated_img, <span class="string">&quot;montage&quot;</span>);</span><br><span class="line">title(<span class="string">&#x27;\color&#123;red&#125;Original Image(left), translated image(right)&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Similarity: uniform scaling + rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[\begin{bmatrix}
+  s*cos(\theta) &amp; -s*sin(\theta) &amp; t_x\\
+  s*sin(\theta) &amp; s*cos(\theta) &amp; t_y\\
+  0 &amp; 0 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set scale, theta, tx and ty to generate the transformation matrix</span></span><br><span class="line">scale = <span class="number">2</span>;</span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [scale * <span class="built_in">cosd</span>(theta), -scale * <span class="built_in">sind</span>(theta), tx;</span><br><span class="line">    scale * <span class="built_in">sind</span>(theta), scale * <span class="built_in">cosd</span>(theta), ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = simtform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Affine: uniform scaling + shearing + rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[A = s *
+\begin{bmatrix}
+  cos(\theta) &amp; -sin(\theta)  \\
+  sin(\theta) &amp; cos(\theta) \end{bmatrix}
+  *
+  \begin{bmatrix}
+  1 &amp; h_1\\
+  h_2&amp; 1\end{bmatrix}
+  \]</span> <span class="math display">\[\begin{bmatrix}
+  A(1,1) &amp; A(1,2) &amp; t_x\\
+  A(2,1) &amp; A(2,2) &amp; t_y\\
+  0 &amp; 0 &amp; 1\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set scale, theta, tx, ty h1, h2 to generate the transformation matrix</span></span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">scale = <span class="number">3</span>;</span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">h1 = <span class="number">3</span>;</span><br><span class="line">h2 = <span class="number">2</span>;</span><br><span class="line">r = [<span class="built_in">cosd</span>(theta), -<span class="built_in">sind</span>(theta);</span><br><span class="line">    <span class="built_in">sind</span>(theta), <span class="built_in">cosd</span>(theta)];</span><br><span class="line">h = [<span class="number">1</span>, h1;</span><br><span class="line">    h2, <span class="number">1</span>];</span><br><span class="line">top = scale * r * h;</span><br><span class="line">A = [<span class="number">0</span>, <span class="number">0</span>, tx;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">A(<span class="number">1</span>:<span class="number">2</span>, <span class="number">1</span>:<span class="number">2</span>) = top;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tform = affinetform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Projection: affine transformation + projective wrap
+<ul>
+<li>Transformation matrix <span class="math display">\[\begin{bmatrix}
+  a_{11} &amp; a_{11} &amp; a_{11}\\
+  a_{21} &amp; a_{22} &amp;a_{23}\\
+  a_{31} &amp; a_{32} &amp; a_{33}\end{bmatrix}\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set the transformation matrix </span></span><br><span class="line">A = [<span class="number">2</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line">    <span class="number">0.33</span> <span class="number">1</span> <span class="number">0</span>; </span><br><span class="line">    <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = affinetform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
 </ol>
 <h1 id="matlab-basics">Matlab Basics</h1>
 <ol start="0" type="1">
@@ -848,7 +1004,7 @@ labels是cell标签(大括号)</li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">24:27</span>
+    <span title="Reading time total">24:34</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
