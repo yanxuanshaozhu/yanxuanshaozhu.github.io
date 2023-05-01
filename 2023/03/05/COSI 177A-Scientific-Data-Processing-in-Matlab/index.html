@@ -29,7 +29,7 @@
 <meta property="og:description" content="Slides">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
-<meta property="article:modified_time" content="2023-05-01T17:47:26.596Z">
+<meta property="article:modified_time" content="2023-05-01T18:01:11.866Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-05-01 13:47:26" itemprop="dateModified" datetime="2023-05-01T13:47:26-04:00">2023-05-01</time>
+                <time title="Modified: 2023-05-01 14:01:11" itemprop="dateModified" datetime="2023-05-01T14:01:11-04:00">2023-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -675,6 +675,24 @@ when you need to show the image, you need to show the centered one, use
 parametric model</li>
 <li>A line becomes a point, a point becomes a line</li>
 <li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Reference for hough: https://www.mathworks.com/help/images/ref/hough.html</span></span><br><span class="line">img = imread(<span class="string">&quot;filter_input.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">img = rgb2gray(img);</span><br><span class="line"></span><br><span class="line"><span class="comment">% If method is not specified, the default one is &quot;Sobel&quot;</span></span><br><span class="line"><span class="comment">% Reference for edge:https://www.mathworks.com/help/images/ref/edge.html#d124e102512</span></span><br><span class="line"><span class="comment">% Default method for edge is sobel,</span></span><br><span class="line">BW = edge(img);</span><br><span class="line">[H,theta,rho] = hough(BW);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">imshow(img);</span><br><span class="line">title(<span class="string">&#x27;Original image&#x27;</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">% rescale(H) rescales H to [0,1]</span></span><br><span class="line">imshow(imadjust(rescale(H)),<span class="string">&#x27;XData&#x27;</span>,theta,<span class="string">&#x27;YData&#x27;</span>,rho,<span class="string">&#x27;InitialMagnification&#x27;</span>,<span class="string">&#x27;fit&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;Hough transform of original image&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;\theta&#x27;</span>), ylabel(<span class="string">&#x27;\rho&#x27;</span>);</span><br><span class="line">axis on, axis normal, <span class="built_in">hold</span> on;</span><br><span class="line"><span class="comment">% Add color map</span></span><br><span class="line">colormap(gca,hot);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>1-D digital filter
+<ul>
+<li>Rational transfer function: <span class="math inline">\(Y(z) =
+\frac{b_1 + b_2 z^{-1}+...+b_{n_b + 1}z^{-n_{b}}}{1 + a_2 z^{-1} +
+...+a_{n_a + 1}z^{-n_a}}X(z)\)</span></li>
+<li><code>y = filter(b, a, x)</code> filters the input data x using a
+rational transfer function defined by the numerator and denominator
+coefficients b and a
+<ul>
+<li>If x is a vector, then filter returns the filtered data as a vector
+of the same size as x</li>
+<li>If x is a matrix, then filter acts along the first dimension and
+returns the filtered data for each column</li>
+<li>If x is a multidimensional array, then filter acts along the first
+array dimension whose size does not equal 1</li>
+</ul></li>
+<li>Example <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Reference: https://www.mathworks.com/help/matlab/ref/filter.html#buagwwg-2</span></span><br><span class="line">t = <span class="built_in">linspace</span>(-<span class="built_in">pi</span>,<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">rng default  <span class="comment">%initialize random number generator</span></span><br><span class="line">x = <span class="built_in">sin</span>(t) + <span class="number">0.25</span>*<span class="built_in">rand</span>(<span class="built_in">size</span>(t));</span><br><span class="line"></span><br><span class="line">windowSize = <span class="number">5</span>; </span><br><span class="line">b = (<span class="number">1</span>/windowSize)*<span class="built_in">ones</span>(<span class="number">1</span>,windowSize);</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">y = filter(b,a,x);</span><br><span class="line"></span><br><span class="line"><span class="built_in">plot</span>(t,x);</span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line"><span class="built_in">plot</span>(t,y);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;Input Data&#x27;</span>,<span class="string">&#x27;Filtered Data&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 </ul></li>
 </ol>
 <h1 id="matlab-basics">Matlab Basics</h1>
