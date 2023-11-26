@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+
+  <meta name="description" content="Java Basic   JDK, JVM, JRE  JDK &gt; JRE &gt; JVM JDK is complete Java SDK, JDK &#x3D; JRE + compiler(javac) and tools(javadoc) JRE is the java runtime, cannot create java programs, JRE &#x3D; JVM + li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java interview questions">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/04/05/Java-interview-questions/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Java Basic   JDK, JVM, JRE  JDK &gt; JRE &gt; JVM JDK is complete Java SDK, JDK &#x3D; JRE + compiler(javac) and tools(javadoc) JRE is the java runtime, cannot create java programs, JRE &#x3D; JVM + li">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-04T22:52:20.000Z">
+<meta property="article:modified_time" content="2023-05-19T02:33:56.549Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/04/05/Java-interview-questions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XJFNFZBNCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XJFNFZBNCJ');
+</script>
+  <title>Java interview questions | My Blog</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories" rel="section"><i class="fa fa-folder fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio" rel="section"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/04/05/Java-interview-questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java interview questions
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-04-05 06:52:20" itemprop="dateCreated datePublished" datetime="2023-04-05T06:52:20+08:00">2023-04-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-05-19 10:33:56" itemprop="dateModified" datetime="2023-05-19T10:33:56+08:00">2023-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="java-basic">Java Basic</h1>
+<!--  -->
+<ol type="1">
+<li><p>JDK, JVM, JRE</p>
+<ul>
+<li>JDK &gt; JRE &gt; JVM</li>
+<li>JDK is complete Java SDK, JDK = JRE + compiler(javac) and
+tools(javadoc)</li>
+<li>JRE is the java runtime, cannot create java programs, JRE = JVM +
+libraries + other tools</li>
+<li>JVM multi-platform virtual machine, has different implementations on
+different OSs</li>
+</ul></li>
+<li><p>Binary code: source program -&gt; (javac compile) binary code
+-&gt; (JIT) mathine code</p>
+<ul>
+<li>Compiled language: source code compile to machine code then run, C,
+C++,...</li>
+<li>Interpreted language: interpreter interprets code during runtime,
+Python, JavaScript</li>
+</ul></li>
+<li><p>Basic syntax</p>
+<ul>
+<li><code>&lt;&lt;</code>: left shift operator,
+<code>x &lt;&lt; 1</code> is equivalent to <code>x * 2</code>, lower
+positions are filled with 0s</li>
+<li><code>&gt;&gt;</code>: signed right shift, <code>x &gt;&gt; 1</code>
+is equivalent to <code>x * 2</code>, if x isnegative, higher positions
+are filld with signs</li>
+<li><code>&gt;&gt;&gt;</code> unsigned right shift, higher positions are
+filled with 0s</li>
+<li>For overflow, the shift is rounded first, eg for int x,
+<code>x &lt;&lt; 42</code> is equivalent to <code>x &lt;&lt; 10</code>
+since the maximum amount of bits for an integer is 32</li>
+</ul></li>
+<li><p>Java primitive types</p>
+<ul>
+<li>byte, short, int, long, float, double, char, boolean</li>
+<li>Wrapper class can be used in generic, different stored place(heap vs
+stack), different comparison methods (== vs equals)</li>
+<li>Cache for wrapper class: Byte, Short, Integer, Long caches
+<code>[-128, 127]</code>, Character <code>[0, 127]</code>, Boolean
+stores Ture/False, Double/Float does not have cache <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i1 is the cached value</span></span><br><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line"><span class="comment">// i2 is a new instance with value 40</span></span><br><span class="line">Integer i2 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Auto-boxing and auto-unboxing <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="number">40</span>; <span class="comment">// Integer i = Integer.valueOf(40);</span></span><br><span class="line"><span class="keyword">int</span> j = i; <span class="comment">// int j = i.intValue();</span></span><br></pre></td></tr></table></figure></li>
+<li>Truncation error for floating point numbers, use
+<code>BigDecimal</code> to avoid the error</li>
+<li>For large integer values, use <code>BigInteger</code></li>
+</ul></li>
+<li><p>Instances of the same class share same static variables, so there
+is less memory usage</p></li>
+<li><p>Static methods</p>
+<ul>
+<li>Can be invoked using <code>Class.method</code> or
+<code>Instance.method</code></li>
+<li>Can access only static methods/fields, cannto access instance
+methods/fields (initialization order: static field, static block,
+instance field, instance block, constructor)</li>
+</ul></li>
+<li><p>Overloading vs overriding</p>
+<ul>
+<li>Overloading: same name, different argument type, order, amount, can
+have different return value or access modifier</li>
+<li>Overriding: same name, same argument, same or narrower scope of
+return value and exception, larger scope of access modifier, constructor
+cannot be overridded</li>
+</ul></li>
+<li><p>Variable arguments in Java</p>
+<ul>
+<li>Can have 0 or more arguments</li>
+<li>Must be the last argument in a method</li>
+</ul></li>
+<li><p>Object oriented programming vs procedural programming</p>
+<ul>
+<li>PP: step by step approach</li>
+<li>OOP: focus on object</li>
+<li>Example: calcualte the area of a circle</li>
+</ul></li>
+<li><p>OOP characteristics</p>
+<ul>
+<li>Encapsulation: encapsulate information inside object, access data
+through API</li>
+<li>Inheritance: child does have but cannot access private field/method
+in parent class, reduce code redundancy, increase readability</li>
+<li>Polymorphism: compile time type != runtime type</li>
+</ul></li>
+<li><p>Interface vs abstract class</p>
+<ul>
+<li>Common: cannot be instantiated, can have abstract method, can have
+concrete method(default method in interface in Java 8)</li>
+<li>Difference: implement n interfaces, extend 1 class, interface fields
+are public static final</li>
+</ul></li>
+<li><p>hashCode and equals</p>
+<ul>
+<li>Different hashCode =&gt; different objects</li>
+<li>Same hashCode, different equals =&gt; different objects</li>
+<li>Same hashCode, same equals =&gt; same object</li>
+</ul></li>
+<li><p>String, StringBuffer, StringBuilder</p>
+<ul>
+<li>String is immutable(<code>private final byte value[];</code> before
+Java 9 it's <code>private final char value[];</code>, this change was
+made for better encoding reason), StringBuilder and StringBuffer extends
+<code>AbstractStringBuilder</code>and they are mutable</li>
+<li>String is immutable and so thread safe, StringBuffer uses
+<code>synchronized</code> for its method so is thread safe,
+StringBuilder is not thread safe</li>
+<li>Before JDK 9, String concatenation using <code>+</code> actually
+calls <code>append()</code> in StringBuilder, using <code>+</code> in a
+loop is slow because it creates multiple StringBuilder instead of 1.
+After JDK 9 <code>+</code> uses <code>makeConcatWithConstants()</code>
+and there is no efficiency issue</li>
+<li>String constant pool <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create &quot;aa&quot; in the heap, create &quot;aa&quot; in string constant pool</span></span><br><span class="line">String a = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="comment">// return &quot;aa&quot; in the string constant pool</span></span><br><span class="line">String b = <span class="string">&quot;aa&quot;</span></span><br><span class="line">System.out.println(aa == bb); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Exception and error</p>
+<ul>
+<li><code>java.lang.Throwable</code>
+<ul>
+<li>Exception: can be handled by program
+<ul>
+<li>Checked exception should be handled, otherwise there will a compile
+error. ClassNotFoundException, IO related exceptions, SQLException,
+...</li>
+<li>Unchecked exception (Runtime exception), NullPointerException,
+IllegalArgumentException, ...</li>
+</ul></li>
+<li>Error: cannot be handled by program, generally program will
+stop</li>
+</ul></li>
+<li>Finally is not always executed <code>System.exit(1)</code> stops the
+JVM</li>
+<li>try-with-resources (for AutoCloseable or Closeable resources, like
+Scanner, Stream, Writer, ...) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (Scanner scanner = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> File(<span class="string">&quot;test.txt&quot;</span>))) &#123;</span><br><span class="line">    <span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">        System.out.println(scanner.nextLine());</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException fnfe) &#123;</span><br><span class="line">    fnfe.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Generic</p>
+<ul>
+<li>Introduced in JDK5, using generic parameters can increase
+readability and stability. Compiler checks generic argument
+compatibility</li>
+<li>Generic parameter can be used on class, method or interface(when
+implementing a generic interface, you can either implement or do not
+implement the generic parameter)</li>
+</ul></li>
+<li><p>Reflection</p>
+<ul>
+<li>Allow you to dynamically get all fields and methods of a class
+during runtime</li>
+<li>Dynamic delegation and annotation uses reflection</li>
+</ul></li>
+<li><p>Annotation</p>
+<ul>
+<li>Introduced in JDK5</li>
+<li>Annotation actually extends the <code>Annotation</code> class</li>
+</ul></li>
+<li><p>Serialization and deserialization</p>
+<ul>
+<li>Serialization: convert data into a format that can be persisted or
+transported, deserialization: convert serialized binary sequence back to
+data</li>
+<li>Common usage: convert a stream into an object</li>
+<li>The Object should implements the <code>java.io.Serializable</code>
+interface(recommended to provide a <code>serialVersionUID</code>)</li>
+<li><code>transient</code> keyword: if a field is marked as transient,
+then that field is not serialized, then during deserialization, the
+default value for that type will be used</li>
+<li>Disadvantage of java built-int serialization approach
+<ul>
+<li>Not supported by other language</li>
+<li>Poor performance: the serialized stream is large in size</li>
+<li>Safety issue: the serialized stream can be manipulated during
+deserialization, which suffers from safety issues</li>
+</ul></li>
+<li>Other serialization protocol: <code>XML</code>, <code>JSON</code>,
+<code>Fastjson</code>, <code>Kryo</code>, <code>Avro</code>...</li>
+</ul></li>
+<li><p>IO</p>
+<ul>
+<li>Basics
+<ul>
+<li>Top level streams: InputStream/OutputStream(for byte stream),
+Reader/Writer(for character stream)</li>
+<li><code>FileInputStream</code> wrapped by
+<code>BufferedInputStream</code> or <code>ObjectInputStream</code> or
+<code>DataInputStream</code>, etc.</li>
+<li><code>FileOutputStream</code> wrapped by
+<code>BufferedOutputStream</code> or <code>ObjectInputStream</code> or
+<code>DataOutputStream</code>, etc.</li>
+<li><code>InputStreamReader</code>, <code>FileReader</code>,
+<code>OutputStreamWriter</code>, <code>FileWriter</code></li>
+<li><code>PrintStream</code>, <code>PrintWriter</code></li>
+</ul></li>
+<li>BIO(blocking I/O), NIO(non-blocking/new I/O), AIO(asynchronous I/O,
+JDK7 NIO)</li>
+</ul></li>
+</ol>
+<h1 id="java-collection">Java Collection</h1>
+<ol type="1">
+<li>Basics
+<ul>
+<li>Collection =&gt; List(ordered, can have duplicates), Set(unordered,
+unique values), Queue(ordered, can have duplicates), Map(k-v pairs)</li>
+<li>Underlying data structures:
+<ul>
+<li>List: ArrayList(Object[] array DEFAULT_CAPACITY 10),
+LinkedList(doubly linked list:
+<code>private static class Node&lt;E&gt;</code>) are not thread safe,
+Vector(Object[] array) is thread safe</li>
+<li>Set: HashSet(HashMap, unordered, unique),
+LinkedHashSet(LinkedHashMap), TreeMap(TreeMap, ordered, unique)</li>
+<li>Queue: PriorityQueue(Object[] array based binary heap),
+ArrayDeque(Object[] array with the head and tail pointers)</li>
+<li>Map: HashMap(Node&lt;K,V&gt;[] array, 0.75 default load factor, 8
+TREEIFY_THRESHOLD, 6 UNTREEIFY_THRESHOLD, 64 MIN_TREEIFY_CAPACITY),
+LinkedHashMap(based on HashMap), Hashyable(Node&lt;?,?&gt; array +
+similiar to HashMap fields), TreeMap(Red-Black tree based map)</li>
+</ul></li>
+</ul></li>
+<li>Comparable and Comparator
+<ul>
+<li>If a class implements the <code>java.lang.Comparable</code> and
+overrides the <code>public int compareTo(Object obj)</code> method, you
+can use <code>Collections.sort(list)</code> to sort the list of that
+class objects</li>
+<li>You can also use provide a <code>java.util.Comparator</code> to the
+sort method if the class does not implement the Comparable interface.
+This works for both <code>Arrays.sort()</code> and
+<code>Collections.sort()</code> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;E&gt;() &#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(E o1, E o2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ascending order</span></span><br><span class="line">        <span class="keyword">return</span> o1.getValue() - o2.getValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Map
+<ul>
+<li>You can provide a Comparator to the constructor when creating a
+TreeMap to specify how the keys are ordered</li>
+<li>Using entrySet to iterate through a map is faster than using the
+keySet</li>
+</ul></li>
+<li>Collections
+<ul>
+<li>sort, reverse, swap</li>
+<li>synchronizedCollection, synchronizedList, synchronizedList,
+synchronizedSet</li>
+</ul></li>
+<li>Others
+<ul>
+<li>Using isEmpty is faster than size() == 0</li>
+<li>Use remove method on the iterator</li>
+<li><code>Collection.removeIf(filter)</code> to remove items from
+collections according a specific condition:
+<code>list.removeIf(item -&gt; item % 2 == 0);</code></li>
+<li>Convert array to List and vice versa <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = <span class="keyword">new</span> String[] &#123;<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>&#125;;</span><br><span class="line">List&lt;String&gt; list = Arrays.asList(arr);</span><br><span class="line"><span class="comment">// if not argument is passed to toArray, the result will be an Object array</span></span><br><span class="line">String[] tmp = list.toArray(<span class="keyword">new</span> String[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></li>
+<li><code>asList()</code>
+<ul>
+<li>You cannot use array that contains primitive values, should use the
+wrapper objects</li>
+<li>The result list does not support <code>add/remove/clear</code></li>
+<li>Approach to support add/remove/clear <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer[] arr = <span class="keyword">new</span> Integer[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(arr);</span><br><span class="line">list = <span class="keyword">new</span> ArrayList(list);</span><br></pre></td></tr></table></figure></li>
+<li>Approach to solve both the problems <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">List&lt;Integer&gt; list  = Arrays.stream(arr).boxed().collect(Collectors.toList());</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="concurrent-programming">Concurrent Programming</h1>
+<ol type="1">
+<li>Basics
+<ul>
+<li>JVM is a process, each program has multiple threads, with at least
+the main thread included. Each process has its own memory space</li>
+<li>A thread has its own stack and program counter but multiple stacks
+share the heap</li>
+<li>Concurrency and parallelism
+<ul>
+<li>Concurrency: multiple tasks execute in turn on a single CPU
+core</li>
+<li>Parallelism: multiple tasks execute at the same time on multiple CPU
+cores</li>
+</ul></li>
+</ul></li>
+<li>Threading
+<ul>
+<li>State: new, waiting, runnable, blocked, terminated,
+timed_waiting</li>
+<li>Context switch</li>
+<li>Deadlock</li>
+</ul></li>
+<li>Multi-threading in Java</li>
+</ol>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2023/04/05/Java-interview-questions/" title="Java interview questions">https://yanxuanshaozhu.github.io/2023/04/05/Java-interview-questions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+       <!-- Begin Insert clustrmaps.com -->
+      <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=i0TWq7SreSD0pQ9beNr4AITjg7OlFGYqHDF_L5QEOMQ&cl=ffffff&w=a"></script>
+      <!-- End Insert clustrmaps.com -->
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-basic"><span class="nav-number">1.</span> <span class="nav-text">Java Basic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-collection"><span class="nav-number">2.</span> <span class="nav-text">Java Collection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concurrent-programming"><span class="nav-number">3.</span> <span class="nav-text">Concurrent Programming</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.7m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:01</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
