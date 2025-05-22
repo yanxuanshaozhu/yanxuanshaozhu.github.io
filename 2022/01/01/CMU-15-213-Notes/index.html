@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="This is the my notes for course CMU 15-213, lecture videos are here, lecture website is here.   The note is very informal, and it&#39;s highly likely that I will put aside learning this course an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15-213 Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/01/01/CMU-15-213-Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="This is the my notes for course CMU 15-213, lecture videos are here, lecture website is here.   The note is very informal, and it&#39;s highly likely that I will put aside learning this course an">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-01T21:50:00.000Z">
+<meta property="article:modified_time" content="2022-01-07T23:34:30.603Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="15-213">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/01/01/CMU-15-213-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>CMU 15-213 Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/01/01/CMU-15-213-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CMU 15-213 Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-01 16:50:00" itemprop="dateCreated datePublished" datetime="2022-01-01T16:50:00-05:00">2022-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-07 18:34:30" itemprop="dateModified" datetime="2022-01-07T18:34:30-05:00">2022-01-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>36k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>33 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>
+This is the my notes for course CMU 15-213, lecture videos are
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ScMxnXq6fbI&list=PLcQU3vbfgCc9sVAiHf5761UUApjZ3ZD3x">here</a>,
+lecture website is
+<a target="_blank" rel="noopener" href="http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/index.html">here</a>.
+</p>
+<p>
+The note is very informal, and it's highly likely that I will put aside
+learning this course and come back someday.
+</p>
+<span id="more"></span>
+<h2 id="lecture-1-20150901">Lecture 1 2015/09/01</h2>
+<ol type="1">
+<li>Abstraction is good but don't forget reality
+<ul>
+<li>Ints are not integers, floats are not reals</li>
+<li>You need to know assembly based on Intel x86-64 instruction set</li>
+<li>C and C++ do not provide any memory protection: out of bounds array
+references, invalid pointer values, abuses malloc/free</li>
+<li>Computers do more than execute programs, they need to get data in
+and out, they communicate with each other over networks</li>
+</ul></li>
+<li>Bits, bytes, and integers
+<ul>
+<li>1 Byte = 8 bits
+<ul>
+<li>most computers use bytes rather than bits as the smallest
+addressable unit of memory</li>
+<li>virtual memory is an array of bytes, each byte has a unique number
+called address, the set of address is virtual address space</li>
+<li>Binary: 00000000 to 11111111</li>
+<li>Decimal: 0 to 255</li>
+<li>Hexadecimal: 00 to FF</li>
+</ul></li>
+<li>x86-64 data representations
+<ul>
+<li>char: 1 byte, short: 2 bytes, int: 4 bytes, long: 8 bytes</li>
+<li>float: 4 bytes, double: 8 bytes, long double: 10/16 bytes</li>
+<li>pointer: 8 bytes</li>
+</ul></li>
+<li>Boolean algebra
+<ul>
+<li>and: &amp;, or: |, not: ~, xor(exclusive or): ^</li>
+<li>The logical operators: &amp;&amp;, ||, and ! always return 0 or
+1</li>
+</ul></li>
+<li>Shift operations:
+<ul>
+<li>Lest shift: x &lt;&lt; y, throw away extra bits on the left, fill
+with 0's on the right</li>
+<li>Right shift: x &gt;&gt; y, throw away extra bits on the right,
+<ul>
+<li>Logical shift: fill with 0's on the left</li>
+<li>Arithmetic shift: replicate most significant bit on the left</li>
+</ul></li>
+</ul></li>
+<li>Encoding integers:
+<ul>
+<li>From bits to unsigned integer: <span class="math inline">\(\sum\limits_{i=0}^{w-1} x_i 2^i\)</span></li>
+<li>From bits to signed integer: <span class="math inline">\(-x_{w-1}
+2^{w-1} + \sum\limits_{i=0}^{w-2} x_i 2^i\)</span></li>
+<li>For unsigned values: the range is <span class="math inline">\([0,
+2^{w} - 1]\)</span>
+<ul>
+<li>0..0 is 0</li>
+<li>1..1 is <span class="math inline">\(2^{w} - 1\)</span></li>
+</ul></li>
+<li>For signed values: the range is <span class="math inline">\([-2^{w-1}, 2^{w-1}-1]\)</span>
+<ul>
+<li>01..1 is <span class="math inline">\(2^{w} - 1\)</span></li>
+<li>10..0 is <span class="math inline">\(-2^w - 1\)</span></li>
+<li>11..1 is -1</li>
+</ul></li>
+<li>If there is a mix of unsigned and signed in single expression,
+signed values implicitly cast to unsigned
+<ul>
+<li><code>sizeof(xxx)</code> returns an unsigned integer</li>
+</ul></li>
+<li>Expanding numbers, given a w-bit signed integer x, convert it to a w
++ k-bit integer with same value:
+<ul>
+<li>If the sign bit is 0, then add k zeros to the left</li>
+<li>If the sign bit is 1, then add k ones to the left</li>
+</ul></li>
+<li>Truncating numbers:
+<ul>
+<li>If the number is unsigned, removing the highest digit at position k
+(assume it's 1 there) is the same as the modulizing the number by <span class="math inline">\(2^{k}\)</span></li>
+<li>If the number is signed, removing the highest may lead to switch of
+sign, but the absolute value of the resulting number is still modulizing
+the absolute value of the original number by <span class="math inline">\(2 ^{k}\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="csapp-book-notes">CSAPP Book notes</h2>
+<ol type="1">
+<li>Program translation in the compilation system
+<ul>
+<li>The system: preprocessor, compiler, assembler, linker</li>
+<li>Preprocessing phase: modifies the original <code>xxx.c</code>
+according to directives that begin with <code>#</code> character, the
+result is a new file <code>xxx.i</code> text file</li>
+<li>Compilation phase: the compiler translates the text file
+<code>xxx.i</code> into the text file <code>xxx.s</code>, which contains
+an assembly language program</li>
+<li>Assembly phase: the assembler translates <code>xxx.s</code> into
+machine language instructions, packages them in the form known as
+relocatable object program <code>xxx.o</code>, the <code>xxx.o</code> is
+a binary file</li>
+<li>Linking phase: the linker combines the <code>xxx.o</code> file and
+functions from standard libraries (such functions reside in separate
+pre-compiled files whose names end with <code>.o</code>), the merged
+file is called <code>xxx</code>, which is an executable object file that
+is ready to be loaded into memory and executed by the system</li>
+</ul></li>
+<li>Hardware organization of a system
+<ul>
+<li>Buses
+<ul>
+<li>A collection of electrical conduits called buses carry bytes of
+information in the system</li>
+<li>Buses are designed to transfer fixed-size chunks of bytes called
+words, the word size is pre-specified by the system, word size can by 4
+bytes or 8 bytes</li>
+</ul></li>
+<li>I/O devices
+<ul>
+<li>I/O devices are the system's connection to the external world</li>
+<li>Each I/O device is connected to the I/O bus by either a controller
+or an adapter</li>
+</ul></li>
+<li>Main memory
+<ul>
+<li>It's a temporary storage device that holds both a program and the
+data it manipulates while the processor is executing the program</li>
+<li>Physically it contains a collection of dynamic random access
+memory(DRAM) chips. Logically, memory is organized as a linear array of
+bytes, each with its own address starting at 0</li>
+</ul></li>
+<li>Processor
+<ul>
+<li>The central processing unit(CPU) is the engine that interprets
+instructions stored in the main memory</li>
+<li>The core of a CPU has a word-size storage device(register) called
+the program counter(PC). PC points at some machine-language instructions
+in the main memory during execution</li>
+<li>A processor operates according its instruction set architecture</li>
+<li>CPU also contains the register file, the arithmetic/logic unit(ALU),
+cache memory(static random access memory,SRAM)</li>
+</ul></li>
+<li>Memory hierarchy: register -&gt; L1 cache(SRAM) -&gt; L2 cache(SRAM)
+-&gt; L3 cache(SRAM) -&gt; main memory(DRAM) -&gt;local secondary
+storage(local disks) -&gt; remote secondary storage (distributed file
+systems, web services)</li>
+</ul></li>
+<li>OS manages the system
+<ul>
+<li>Operating system is a layer of software interposed between the
+application program and the hardware, all attempts by an application
+program to manipulate the hardware must to through the operating
+system</li>
+<li>Primary purpose of the operating system:
+<ul>
+<li>Protect the hardware from misuse by applications</li>
+<li>Provide applications with simple and uniform mechanisms for
+manipulating hardware devices(processes, virtual memory, files)</li>
+</ul></li>
+<li>Processes
+<ul>
+<li>A process is the operating system's abstraction for a running
+program. Multiple processes can run concurrently, and each process
+appears to have exclusive use of the hardware</li>
+<li>CPU uses context (context is all the state information the CPU needs
+to know when executing a process) switching to switch between processes,
+so that multiple processes can be executed concurrently</li>
+<li>The transition from one process to another is managed by the
+operating system kernel, the kernel is a collection of code and data
+structures that are resident in the memory and the OS uses to manage all
+processes</li>
+<li>When a process requires some action by the OS, it executes a special
+system call, transferring control to the kernel, the kernel executes the
+requested action and returns back to the application</li>
+</ul></li>
+<li>Threads
+<ul>
+<li>A process can have multiple execution units called threads, each
+thread runs in the context of the process and shares the same code and
+global data</li>
+<li>Multi-threads is more efficient and easier to share data than
+multi-processes</li>
+</ul></li>
+<li>Virtual memory
+<ul>
+<li>Virtual memory is an abstraction that provides each process with the
+illusion that it has exclusive use of the main memory</li>
+<li>Each process has the same uniform view of memory, which is known as
+the virtual address space</li>
+<li>Virtual address space construction(from lower region to higher
+region, the addresses increase):
+<ul>
+<li>Program code and data: for all processes, this region begins at the
+same address and the size is fixed once the process begins running</li>
+<li>Heap: the size of the runtime heap expands and contracts
+dynamically</li>
+<li>Shared libraries: holds the data and code for shared libraries</li>
+<li>Stack: at the top of the user's virtual address space, it expands
+and contracts dynamically in runtime</li>
+<li>Kernel virtual memory: invisible to application programs</li>
+</ul></li>
+</ul></li>
+<li>Files
+<ul>
+<li>A file is a sequence of bytes</li>
+<li>Every I/O device is modeled as a file</li>
+<li>All input and output in the system is performed by reading and
+writing files, using a small set of system calls known as Unix I/O</li>
+</ul></li>
+</ul></li>
+<li>Important themes
+<ul>
+<li>Amdahl's law: total execution time is <span class="math inline">\(T_{old}\)</span>, a part of the system requires a
+fraction <span class="math inline">\(\alpha\)</span> of the execution
+time, we can improve its performance by a factor of <span class="math inline">\(k\)</span>, then the total new execution time
+<span class="math inline">\(T_{new}\)</span> is <span class="math inline">\(T_{new} = (1-\alpha)T_{old} + \alpha T_{old}/k =
+T_{old}[(1-\alpha) + \alpha /k]\)</span>, and speedup factore is <span class="math inline">\(S_k = \frac{T_{old}}{T_{new}} =
+\frac{1}{(1-\alpha) + \alpha / k}\)</span>. Notice <span class="math inline">\(S_{\infty} = \frac{1}{1-\alpha}\)</span></li>
+<li>Concurrency and parallelism
+<ul>
+<li>Concurrency: the general concept of a system with multiple,
+simultaneous activities</li>
+<li>Parallelism: the use of concurrency to make a system run faster</li>
+<li>Thread-level concurrency:
+<ul>
+<li>For uni-processor system, concurrency is simulated by context
+switching among processes</li>
+<li>Multi-processor system consists of multi-core processors or
+hyper-threading:
+<ul>
+<li>Multi-core processors have several cores integrated onto a single
+chip</li>
+<li>Hyper-threading (simultaneous multi-threading): allows a single core
+to execute multiple flows, it has multiple copies of some of the CPU
+hardware</li>
+</ul></li>
+<li>Multi-processor system reduces the need to simulate concurrency when
+performing multiple tasks, and if the application can be expressed in
+terms of multiple threads, it can execute the program efficiently</li>
+</ul></li>
+<li>Instruction-level parallelism
+<ul>
+<li>Modern processors can execute multiple instructions at one time,
+this is called instruction-level</li>
+<li>Using the term of pipelining, actions required to execute an
+instruction are partitioned into different steps, and the processor
+hardware is organized as a series of stages, each performing one of
+these steps</li>
+<li>If the processor can sustain execution rates faster than 1
+instruction per cycle, then it is called super-scalar processors, most
+modern processors support super-scalar operation</li>
+</ul></li>
+<li>Single-instruction, multiple-data parallelism(SIMD)
+<ul>
+<li>Many modern processors have special hardware that allows a single
+instruction to cause multiple operations to be performed in
+parallel</li>
+<li>These SIMD instructions are provided mostly to speed up applications
+that process image, sound, and video data</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Some problems
+<ul>
+<li>The lowest byte of x: <code>x &amp; 0xff</code></li>
+<li>x without the lowest byte(shift included):
+<code>x &gt;&gt; 8</code></li>
+<li>x without the lowest byte(shift not included):
+<code>x &amp; ~0xff</code></li>
+<li>reverse number: <code>~x + 1</code></li>
+<li>absolute value: <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">abs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sign = x &gt;&gt; <span class="number">31</span>;</span><br><span class="line">  <span class="comment">// if sign == 0, x ^ sign = x</span></span><br><span class="line">  <span class="comment">// if sign == -1, x ^ sign = ~x</span></span><br><span class="line">  <span class="keyword">return</span> x ^ sign - sign;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>swap lower 4 bits and higher 4 bits of a 8-bit number:
+<code>x = (x &gt;&gt; 4) | (x &lt;&lt; 4)</code></li>
+<li>calculate the amount of ones in binary expression <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_ones</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (x)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// x &amp; x - 1 removes the lowest position one in x</span></span><br><span class="line">    x &amp;= x - <span class="number">1</span>;</span><br><span class="line">    cnt++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>If x is a power of 2: <code>x &amp; (x - 1) == 0</code></li>
+<li><code>x ^ x = 0</code>, <code>x ^ 0 = x</code></li>
+<li>If only one number appears once, the other number appears k times (k
+is odd):<br>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">  &#123;</span><br><span class="line">    cur += nums[j] &gt;&gt; i &amp; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  temp |= (cur % <span class="number">3</span>) &lt;&lt; i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> temp;</span><br></pre></td></tr></table></figure></li>
+<li>If only one number appears once, the other number appears k times (k
+is even): <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">  res ^= nums[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></li>
+<li>If the only two number appears twice, the other number appears even
+times: find the two: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_number</span>(<span class="params">nums</span>):</span></span><br><span class="line">  res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    re ^= nums[i]</span><br><span class="line">  i = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> res &amp; i == <span class="number">0</span>:</span><br><span class="line">    i &lt;&lt; <span class="number">1</span></span><br><span class="line">  res1, res2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    <span class="keyword">if</span> nums[i] &amp; i == <span class="number">0</span>:</span><br><span class="line">      res1 ^= nums[i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      res2 ^= nums[i]</span><br><span class="line">  <span class="keyword">return</span> [res1, res2]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="tcpl-notes">TCPL notes</h2>
+<p>Disclaimer: In order to learn a bit about operating system, I did a
+quick review on C. The following notes are take from the book The C
+Programming Language.</p>
+<h3 id="chapter-1-a-tutorial-introduction">Chapter 1 A Tutorial
+Introduction</h3>
+<ol type="1">
+<li><p>Getting started</p>
+<ul>
+<li>A C program, consists of functions and variables, a function
+contains statements that specify the computing operations to be
+done</li>
+<li>Program begins executing at the beginning of main, so every program
+must have a main function somewhere, main function will usually call
+other functions to help perform its job</li>
+<li><code>#include &lt;stdio.h&gt;</code> tells the compiler to include
+the standard input/output library</li>
+</ul></li>
+<li><p>Variables and arithmetic expressions</p>
+<ul>
+<li>Comments in C:
+<ul>
+<li>single-line comment: <code>//</code></li>
+<li>multi-line comment: <code>/*</code> and <code>*/</code></li>
+</ul></li>
+<li>All variables must be declared before they are used, usually at the
+beginning of the function before any executable statements</li>
+<li>A declaration announces the properties of variables, it consists of
+a type name and a list of variables</li>
+<li>Primitive types: boolean, char, byte, short, int, long, float,
+double</li>
+<li><code>%d</code> print as decimal integer, <code>%f</code> print as
+floating point number</li>
+</ul></li>
+<li><p>The for statement</p>
+<ul>
+<li>you can use while statement or for statement</li>
+</ul></li>
+<li><p>Symbolic constants</p>
+<ul>
+<li>a <code>#define</code> line defines a symbolic name or symbolic
+constant to be a particular string of characters</li>
+</ul></li>
+<li><p>Character input and output</p>
+<ul>
+<li>The model of input and output supported by the standard library is
+very simple, text is dealt with as streams of characters</li>
+<li>A text stream is a sequence of characters divided into lines, each
+line consists of zero or more characters followed by a newline
+character</li>
+<li>Input: <code>c = getchar()</code> contains the next character of
+input</li>
+<li>Output: <code>putchar(c)</code> prints a character each time it is
+called</li>
+<li><code>EOF</code> is <code>CTRL+D</code> on MacOS and
+<code>CTRL+Z</code> on Windows1</li>
+<li>In C, any assignment has a value, which is the value of the left
+hand side after the assignment, i.e., the value of <code>c = 5</code> is
+5. <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">main() </span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> c;</span><br><span class="line">   c = getchar();</span><br><span class="line">   <span class="keyword">while</span> (c != EOF)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="built_in">putchar</span>(c);</span><br><span class="line">      c = getchar();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() </span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> c;</span><br><span class="line">   <span class="keyword">while</span> ((c = getchar()) != EOF)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="built_in">putchar</span>(c);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Arrays</p>
+<ul>
+<li>The <code>type name[size]</code> is an array called
+<code>name</code>, has type <code>type</code> and size
+<code>size</code></li>
+</ul></li>
+<li><p>Functions</p>
+<ul>
+<li>A function provides a convenient way to encapsulate some
+computation, which can be used without worrying about its
+implementation</li>
+<li>With properly designed functions, it is possible to ignore how a job
+is done, knowing what is done is sufficient</li>
+<li>Write function declaration, called function prototype, before the
+main function is a good practice</li>
+</ul></li>
+<li><p>Arguments - call by value</p>
+<ul>
+<li>The called functions are given teh values of its arguments in
+temporary variables rather than the originals. The called cannot
+directly alter a variable in the calling function, it can only alter its
+private, temporary copy</li>
+</ul></li>
+<li><p>Character array</p>
+<ul>
+<li>The most common type of array in C is the array of characters</li>
+</ul></li>
+<li><p>External variables and scope</p>
+<ul>
+<li>Variables declared inside a function only persist inside the
+function, they are often called automatic variables</li>
+<li>Variables that are external to all functions, they are globally
+accessible, so they can be used between functions. An external variable
+must be defined, exactly once, outside of any function</li>
+<li>Use external variables inside a function: use <code>extern</code>
+keyword</li>
+<li>If you want to use bool type(<code>true</code>, <code>false</code>),
+you should use <code>#include &lt;stdbool.h&gt;</code></li>
+</ul></li>
+</ol>
+<h3 id="chapter-2-types-operators-and-expressions">Chapter 2 Types,
+Operators and Expressions</h3>
+<ol type="1">
+<li><p>Variable Names</p>
+<ul>
+<li>Names are made up of letters and digits, the first character must be
+a letter, the underscore counts as a letter, don't begin variable names
+with underscore</li>
+<li>Upper case and lower case letters are distinct, traditional C
+practice is to use lower case for variable names, and all upper case for
+symbolic constants</li>
+<li>Variable names should be related to the purpose of the variable</li>
+</ul></li>
+<li><p>Data types and sizes</p>
+<ul>
+<li>char: a single byte, capable of holding one character in the local
+character set</li>
+<li>int: an integer, typically reflecting the natural size of integer on
+the host machine</li>
+<li>float: single-precision floating point</li>
+<li>double: double-precision floating point</li>
+<li>qualifiers: short, long can be applied to integers, unsigned and
+signed can be applied to char or any integer, long double</li>
+<li><code>&lt;limits.h&gt;</code>, <code>&lt;float.h&gt;</code></li>
+</ul></li>
+<li><p>Constants</p>
+<ul>
+<li>An integer constant is an int, a long constant is written with a
+terminal l or L, an integer too big to fit into an int will also be
+taken as a long</li>
+<li>Unsigned constants are written with a terminal u or U</li>
+<li>Floating-point constants contain a decimal point, or an exponent or
+both, their type is double, unless suffixed. The suffixes f or F
+indicate a float constant, l or L indicate a long double</li>
+<li>The value of an integer can be specified in octal or hexadecimal
+instead of decimal, a leading 0 on an integer constant means octal, a
+leading 0x or 0X means hexadecimal</li>
+<li>A character constant is an integer, written as one character within
+single quotes, such as <code>x</code>. The value of a character constant
+is the numeric value of the character in the machine's character
+set</li>
+<li>A constant expression is an expression that involves only constants,
+such expressions may be evaluated during compilation rather than
+run-time, and accordingly may be used in any place that a constant can
+occur</li>
+<li>A string constant, or string literal, is a sequence of zero or more
+characters surrounded by double quotes. The internal representation of a
+string has a null character '\0' at the end, so the physical storage
+required is one more than the number of characters written between the
+quotes</li>
+<li>The standard library function <code>strlen(s)</code>
+(<code>strlen(s)</code> and other string functions are inside
+<code>&lt;string.h&gt;</code>)returns the length of its character string
+argument s, excluding the terminal '\0'</li>
+<li>The enumeration constant:
+<ul>
+<li>An enumeration is a list of constant integer values</li>
+<li>The first name in an enum has value 0, then next 1, and so on,
+unless explicit values are specified</li>
+<li>If not vall value are specified, unspecified values continue the
+progression from the last specified value</li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">boolean</span> &#123;</span>NO, YES&#125;;</span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">escape</span> &#123;</span>BELL = <span class="string">&#x27;\b&#x27;</span>,  BACKSPACE = <span class="string">&#x27;\b&#x27;</span>, TAB = <span class="string">&#x27;\t&#x27;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">months</span> &#123;</span>JAN = <span class="number">1</span>, FEB, MAR, APR&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><p>Declarations</p>
+<ul>
+<li>All variables must be declared before use, although certain
+declarations can be made implicitly by context</li>
+<li>A declaration specifies a type, and contains a list of one or more
+variables of that type</li>
+</ul></li>
+<li><p>Arithmetic operations</p>
+<ul>
+<li>The binary arithmetic operators are +, -, *, /, and the modulus
+operator %</li>
+</ul></li>
+<li><p>Relational and logical operators</p>
+<ul>
+<li>The relational operators are &gt;, &gt;=, &lt;, &lt;=, they have the
+same precedence, below them in the precedence are the equality
+operators: ==, !=</li>
+<li>Relational operators have lower precedence than arithmetic
+operators</li>
+<li>The logical operators are &amp;&amp; and ||, expressions connected
+by them are evaluated left to right, and evaluations stop as soon as the
+truth or falsehood of the result is known</li>
+<li>The unary negation operator ! converts a non-zero operand into 0,
+and a zero operand into 1</li>
+</ul></li>
+<li><p>Type conversions</p>
+<ul>
+<li>When an operator has operands of different types, they are converted
+to a common type according to a small number of rules. The only
+automatic conversion are those that convert a narrower operand into a
+wider one without losing information</li>
+<li>The functions in <code>&lt;ctype.h&gt;</code> defines a family of
+functions that provide tests and conversions that are independent of
+character set</li>
+<li>If there are no unsigned operands, the following informal set of
+rules will suffice:
+<ul>
+<li>If either operand is long double, convert the other to long
+double</li>
+<li>Otherwise, if either operand is double, convert the other to
+double</li>
+<li>Otherwise, if either operand is float, convert the other to
+float</li>
+<li>Otherwise, convert char and short to int</li>
+<li>Then, if either operand is long, convert the other to long</li>
+</ul></li>
+<li>When unsigned operands are involved, situations become more complex,
+because comparisons between signed and unsigned values are
+machine-dependent</li>
+<li>Explicit type conversions can be forced in any expressions, with a
+unary operator called a cast: <code>(type-name) expression</code></li>
+</ul></li>
+<li><p>Increment and decrement operators</p>
+<ul>
+<li>Increment operator: <code>++</code>, decrement operator:
+<code>--</code>.</li>
+<li>Prefix v.s. postfix <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c  = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> d = ++c; <span class="comment">// d = 1, c = 1</span></span><br><span class="line"><span class="keyword">int</span> e = c++; <span class="comment">// e = 1, c = 2</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Bitwise operators</p>
+<ul>
+<li>C provides 6 operators for bit manipulation, these may only be
+applied to integral operands, that is, char, short, int, long, whether
+signed or unsigned</li>
+<li>Bitwise operators: <code>&amp;</code> for bitwise and,
+<code>|</code> for bitwise inclusive or, <code>^</code> for bitwise
+exclusive or, <code>&lt;&lt;</code> for left shift,
+<code>&gt;&gt;</code> for right shift, <code>~</code> for one's
+complement(unary)</li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">n = n &amp; <span class="number">0177</span>; <span class="comment">// truncate to 7 bits, because 0177 in octal is 0111 1111 in binary</span></span><br><span class="line">n = n &lt;&lt; <span class="number">2</span>; <span class="comment">// shift left by 2 bits, this is the same as n = n * 4</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Assignment operators and expressions</p></li>
+</ol>
+<ul>
+<li><code>expr1 op= expr2</code> is equivalent to
+<code>expr1 = expr1 op expr2</code></li>
+</ul>
+<ol start="11" type="1">
+<li>Conditional expressions</li>
+</ol>
+<ul>
+<li>Syntax: <code>expr1 ? expr2 : expr3</code></li>
+</ul>
+<ol start="12" type="1">
+<li>Precedence and order of evaluation</li>
+</ol>
+<ul>
+<li>If you are not sure, use parenthesis to clarify the order of
+evaluation</li>
+<li>Unary operators have higher precedence than binary operators</li>
+</ul>
+<h3 id="chapter-3-control-flow">Chapter 3 Control Flow</h3>
+<ol type="1">
+<li>Statements and blocks
+<ul>
+<li>An expression becomes a statement when it is followed by a
+semicolon</li>
+<li>Braces are used to group declaration and statements together into a
+compound statement, or block, so that they are syntactically equivalent
+to a single statement</li>
+</ul></li>
+<li>If-else
+<ul>
+<li>The if-else statement is used to express decisions
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)</span><br><span class="line">   statement1;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   statement2;</span><br></pre></td></tr></table></figure></li>
+<li>If simply tests the numeric value of an expression, certain coding
+shortcuts are possible</li>
+<li>Else is optional, and it is associated with the closest previous
+else-less if</li>
+</ul></li>
+<li>Else-if
+<ul>
+<li>If-else-if is used to express multi-way decision <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)</span><br><span class="line">   statement1;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (expression)</span><br><span class="line">   statement2;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (expression)</span><br><span class="line">   statement3;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   statement4;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Switch
+<ul>
+<li>The switch statement is a multi-way decision that tests whether an
+expression matches one of a number of constant integer values, and
+branches accordingly <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (expression) </span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">case</span> <span class="keyword">const</span>-expr: statements;</span><br><span class="line">   <span class="keyword">case</span> <span class="keyword">const</span>-expr: statements;</span><br><span class="line">   <span class="keyword">default</span>: statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Each case is labeled by one ore more integer-valued constants or
+constant expressions. If a case matches the expression value, execution
+starts at that case. All case expressions must be different. The case
+labeled default is executed if none of the other cases are satisfied. A
+default label is optional.</li>
+<li>The <code>break</code> statement causes an immediate exit from the
+switch, unless you use a break for the cases, switch statement executes
+sequentially from where it starts</li>
+</ul></li>
+<li>Loop - While and for
+<ul>
+<li>While loop <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (expression)</span><br><span class="line">   statement;</span><br></pre></td></tr></table></figure></li>
+<li>For loop <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (expr1; expr2; expr3)</span><br><span class="line">   statement;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Loop - Do-while
+<ul>
+<li>Do-while loop <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">   statement;</span><br><span class="line"><span class="keyword">while</span> (expression);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Break and continue
+<ul>
+<li>A break causes the innermost enclosing loop or switch to be exited
+immediately</li>
+<li>A continue causes the next iteration of the enclosing for, while, or
+do loop to begin</li>
+</ul></li>
+<li>Loop - While and for
+<ul>
+<li>A goto statement jumps from the goto to a labeled statement in the
+same function</li>
+<li>The goto statement is often abused, formally, it is never
+necessary</li>
+<li>When you need to abandon processing in some deeply nested structure
+(such as breaking out of two or more loops at once), you can use
+goto</li>
+<li>A label has the same form as a variable name, and is followed by a
+colon. The scope of a label is the entire function</li>
+</ul></li>
+</ol>
+<h3 id="chapter-4-functions-and-program-structure">Chapter 4 Functions
+and Program Structure</h3>
+<ol type="1">
+<li><p>Basic of Functions</p>
+<ul>
+<li>Function form <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span>-type function-name (argument declaration)</span><br><span class="line">&#123;</span><br><span class="line">   declarations <span class="keyword">and</span> statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>If the return type is omitted, int is assumed</li>
+<li><code>xx.c</code> source file, <code>xx.o</code> object file</li>
+</ul></li>
+<li><p>Functions returning onn-integers</p>
+<ul>
+<li>function <code>atof</code> is inside
+<code>&lt;stdlib.h&gt;</code></li>
+</ul></li>
+<li><p>External variables</p>
+<ul>
+<li>External variables are defined outside of any function, and are thus
+potentially available to many functions</li>
+<li>External variables are more efficient and convenient than long
+argument lists if a large number of variables must be shared among
+functions</li>
+</ul></li>
+<li><p>Scope Rules</p>
+<ul>
+<li>The scope of a name is the part of the program within which the name
+can be used</li>
+<li>Local variables of the same name in different functions are
+unrelated</li>
+<li>The scope of an external variable or a function lasts from the point
+at which it is declared to the end of the file being complied<br>
+</li>
+<li>Declaration v.s. definition
+<ul>
+<li>Declaration: announce the properties of a variable,
+<code>extern int x;</code>, other files using an external should have
+declarations to access it</li>
+<li>Definition: causes storage to be set for the variable,
+<code>int x;</code>, there must be one definition of an external
+variable among files that make up the source program</li>
+</ul></li>
+</ul></li>
+<li><p>Header file</p>
+<ul>
+<li>A header file is a file with extension .h which contains C function
+declarations and macro definitions to be shared between several source
+files</li>
+<li>There are two types of header files: the files that the programmer
+writes and the files that comes with your compiler</li>
+<li>To include a header file, use
+<code>#include &lt;header.h&gt;</code>, or
+<code>#include "header.h"</code></li>
+</ul></li>
+<li><p>Static variables</p>
+<ul>
+<li>If you want a variable to be shared among multiple files, use
+<code>extern</code> keyword</li>
+<li>If you want a variable to be shared among multiple places in a
+single file, use <code>static</code> keyword</li>
+<li>There are also internal static variables</li>
+</ul></li>
+<li><p>Register variables</p>
+<ul>
+<li>A register declaration advises the complier that the variable in
+question will be heavily used. Register variables are to be placed in
+machine registers, which may result in smaller and faster programs.</li>
+<li>Register declaration: <code>register int x;</code></li>
+<li>The register declaration can only be applied to automatic variables
+and to the formal parameters of a function</li>
+<li>In practice, there are restrictions on register variables, only a
+few variables in each function may be kept in registers, and only
+certain types are allowed. The specific restrictions vary from machine
+to machine</li>
+</ul></li>
+<li><p>Block structure</p>
+<ul>
+<li>C is not a block-structured language, because functions cannot be
+nested, you cannot define a function inside another one</li>
+<li>Variables can be defined in a block-structured fashion within a
+function</li>
+<li>Automatic variables can hide external and static variables</li>
+</ul></li>
+<li><p>Initialization</p>
+<ul>
+<li>In the absence of explicit initialization, external and static
+variables are guaranteed to be initialized to zero, automatic and
+register variables have undefined values</li>
+<li>Initialization for static and external variables are done once, for
+automatic and register variables, initialization is done each time the
+function or block is entered</li>
+<li>Initializer for static and external variables should be constant,
+for automatic and register variables, the initializer is not restricted
+to being a constant</li>
+</ul></li>
+<li><p>Recursion</p></li>
+</ol>
+<ul>
+<li>C functions may be used recursively</li>
+<li>Recursive quicksort <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> v[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i, last;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> v[], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>;</span><br><span class="line">   <span class="keyword">if</span> (left &gt;= right)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   swap(v, left, (left + right) / <span class="number">2</span>);</span><br><span class="line">   last = left;</span><br><span class="line">   <span class="keyword">for</span> (i = left + <span class="number">1</span>; i &lt;= right; i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span> (v[i] &lt; v[left])</span><br><span class="line">      &#123;</span><br><span class="line">            swap(v, ++last, i);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   swap(v, left, last);</span><br><span class="line">   quicksort(v, left, last - <span class="number">1</span>);</span><br><span class="line">   quicksort(v, last + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> v[], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> temp;</span><br><span class="line">   temp = v[i];</span><br><span class="line">   v[i] = v[j];</span><br><span class="line">   v[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="11" type="1">
+<li>The C Preprocessor</li>
+</ol>
+<ul>
+<li>Preprocessor is a separate first step in compilation, the two most
+frequently used are <code>#include</code> and <code>#define</code>,
+other features include conditional compilation and macros with
+arguments</li>
+<li>File inclusion
+<ul>
+<li>Use <code>#include</code> to include the contents of a file during
+compilation</li>
+<li>Syntax: <code>#include &lt;stdio.h&gt;</code>, or
+<code>#include "stdio.h"</code></li>
+<li>If file is quoted, searching begins where the source program is
+found, if it is not found there, or if the name is enclosed in &lt; and
+&gt;, searching follows an implementation-defined rule to find the
+file</li>
+<li>When an included file is changed, all files that depend on it must
+be recompiled</li>
+</ul></li>
+<li>Macro substitution
+<ul>
+<li>Use <code>#define</code> to replace a token by an arbitrary sequence
+of characters</li>
+<li>Syntax: <code>#define name  replacement-text</code></li>
+<li>Replacement-text can be arbitrary:
+<code>#define forever for (;;)</code> defines an infinite loop</li>
+<li>It's possible to define macros with arguments:
+<code>#define max(a, b) ((a) &gt; (b) ? (a) : (b))</code></li>
+</ul></li>
+<li>Conditional inclusion
+<ul>
+<li><code>#if</code>, <code>#elif</code>, <code>#else</code>,
+<code>#endif</code></li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> SYSTEM == SYSV</span></span><br><span class="line">   <span class="meta">#<span class="meta-keyword">define</span> HDR <span class="meta-string">&quot;sysv.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> SYSTEM == BSD</span></span><br><span class="line">   <span class="meta">#<span class="meta-keyword">define</span> HDR <span class="meta-string">&quot;bsd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">   <span class="meta">#<span class="meta-keyword">define</span> HDR <span class="meta-string">&quot;default.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> HDR</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h3 id="chapter-5-pointers-and-arrays">Chapter 5 Pointers and
+Arrays</h3>
+<ol type="1">
+<li><p>Pointers and addresses</p>
+<ul>
+<li>A pointer is a variable (a group of cells) that contains the address
+of a variable. Pointers and arrays are closely related</li>
+<li>Syntax: <code>p = &amp;c;</code> assigns the address of c to
+variable p, and p is said to point to c, the unary &amp; operator only
+applies to objects in memory: variables and array elements, it cannot be
+applied to expressions, constants, or register variables</li>
+<li>The unary * operator is the indirection or dereferencing operator,
+when applied to a pointer, it access the object the pointer points
+to.</li>
+<li>Syntax: <code>int *p;</code> declares a pointer p which points to an
+integer</li>
+<li>Every pointer points to a specific data type (a pointer to void is
+used to hold any type of pointer but cannot be dereferenced itself)</li>
+</ul></li>
+<li><p>Pointers and function arguments</p>
+<ul>
+<li>C passes arguments to functions by value, there is no direct way for
+the called function to alter a variable in the calling function
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap2</span><span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> a, b;</span><br><span class="line">   a = <span class="number">1</span>;</span><br><span class="line">   b = <span class="number">2</span>;</span><br><span class="line">   swap1(a, b); <span class="comment">// This does not work,it only swaps copies of a and b</span></span><br><span class="line">   swap2(&amp;a, &amp;b); <span class="comment">// This works</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap1</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> tmp;</span><br><span class="line">   temp = x;</span><br><span class="line">   x = y;</span><br><span class="line">   y = tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap2</span> <span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> tmp;</span><br><span class="line">   tmp = *p1;</span><br><span class="line">   *p1 = *p2;</span><br><span class="line">   *p2 = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Pointers and arrays</p>
+<ul>
+<li>Any operations that can be achieved by array subscripting can also
+be done with pointers. Pointer version will be in general faster, but
+somewhat harder to understand</li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>], *p, x;</span><br><span class="line">p = &amp;a[<span class="number">0</span>]; </span><br><span class="line"><span class="comment">// you can also write  p = a, because the name of an array is a synonym for the location of the initial elements</span></span><br><span class="line">x = *(p + <span class="number">2</span>); </span><br><span class="line"><span class="comment">// x = a[2], since array is consecutive in memory</span></span><br></pre></td></tr></table></figure></li>
+<li>For array <code>arr</code>, <code>arr[i]</code> can also be written
+as <code>*(a + i)</code></li>
+<li>For function arguments, <code>type arr[]</code> and
+<code>type *arr</code> are equivalent</li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strlen</span> <span class="params">(<span class="keyword">char</span> *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n;</span><br><span class="line">   <span class="keyword">for</span> (n = <span class="number">0</span>; *s != <span class="string">&#x27;\0&#x27;</span>; s++)</span><br><span class="line">   &#123;</span><br><span class="line">      n++;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Address arithmetic</p>
+<ul>
+<li>If <code>p</code> is a pointer to some element of an array, then
+<code>p++</code> increments p to point to the next element, and
+<code>p += i</code> increments it to point i elements beyond where it
+currently does</li>
+<li>Example
+<ul>
+<li><code>alloc(p)</code>: returns a pointer p to n-consecutive
+character position</li>
+<li><code>afree(p)</code>: releases the storage thus acquired so it can
+be reused again</li>
+<li>The storage managed by alloc and afree should be a stack, the
+analogous functions called <code>malloc</code> and <code>free</code>
+does not have this restriction</li>
+<li>We use a large character array called <code>allocbuf</code> for
+alloc and afree to operate on. Such array should be private to the
+functions, so we use a static variable for it</li>
+<li>We use a pointer called <code>allocp</code> to indicate how much
+allocbuf has been used <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ALLOCSIZE 10000;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> allocbuf[ALLOCSIZE];</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> *allocp = allocbuf;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">alloc</span><span class="params">( <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (allocp - allocbuf + n &lt;= ALLOCSIZE)</span><br><span class="line">   &#123;</span><br><span class="line">      allocp += n;</span><br><span class="line">      <span class="keyword">return</span> allocp - n;</span><br><span class="line">   &#125; </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// use null pointer indicate there is not enough space</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afree</span><span class="params">(<span class="keyword">char</span> *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (p &gt;= allocbuf &amp;&amp; p &lt;= allocbuf + ALLOCSIZE)</span><br><span class="line">   &#123;</span><br><span class="line">      allocp = p;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><p>Character pointers and functions</p>
+<ul>
+<li>Character string v.s. pointer
+<ul>
+<li><code>char amessage[] = "time out;"</code>: amessage always refer to
+the same storage, the content characters can be changed</li>
+<li><code>char *pmessage = "time out";</code>: pmessage is a pointer, it
+can point to elsewhere, but the content of the string literal cannot be
+changed</li>
+</ul></li>
+<li><code>strcpy</code>: copy string t to string s
+<ul>
+<li>You cannot simply write s = t, because this only copies the pointer,
+not the content</li>
+<li>Array version <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">strcpy</span> <span class="params">(<span class="keyword">char</span> t[], <span class="keyword">char</span> s[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i;</span><br><span class="line">   <span class="keyword">while</span> ((s[i] = t[i]) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      i++;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Pointer version <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">strcpy</span> <span class="params">(<span class="keyword">char</span> *t, <span class="keyword">char</span> *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">while</span> ((*s = *t) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      t++;</span><br><span class="line">      s++;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Abbreviation version <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">strcpy</span> <span class="params">(<span class="keyword">char</span> *t, <span class="keyword">char</span> *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">while</span> (*s++ = *t++)</span><br><span class="line">   &#123;</span><br><span class="line">      ;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>strcmp</code>: compares string t and s lexicographically,
+returns negative, zero or positive
+<ul>
+<li>Array version <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strcmp</span> <span class="params">(<span class="keyword">char</span> t[], <span class="keyword">char</span> s[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i;</span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">0</span>; t[i] == s[i]; i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span> (s[i] == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> s[i] - t[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Pointer version <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strcmp</span><span class="params">(<span class="keyword">char</span> *t, <span class="keyword">char</span> *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">while</span> (*t++ == *s++)</span><br><span class="line">   &#123;</span><br><span class="line">      ;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> *t - *s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><p>Pointer arrays, pointers to pointers</p>
+<ul>
+<li>Since pointers are variables themselves, they can be stored in
+arrays just as other variables can</li>
+</ul></li>
+<li><p>Multi-dimensional arrays</p>
+<ul>
+<li>C provides rectangular multi-dimensional arrays, although in
+practice they are much less used than arrays of pointers</li>
+<li>Example: <code>int a[2][2] = &#123;&#123;0, 1&#125;, &#123;2, 3&#125;&#125;;</code>,
+<code>int a[2][2] = &#123;0, 1, 2, 3&#125;;</code></li>
+<li>If you want to use array of arrays of different sizes, you need to
+use pointer arrays</li>
+</ul></li>
+<li><p>Initialization of pointer arrays</p>
+<ul>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">month_name</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">char</span> *name[] = &#123;<span class="string">&quot;Illegal Month&quot;</span>, <span class="string">&quot;January&quot;</span>, <span class="string">&quot;February&quot;</span>, <span class="string">&quot;March&quot;</span>, </span><br><span class="line">   <span class="string">&quot;April&quot;</span>, <span class="string">&quot;May&quot;</span>, <span class="string">&quot;June&quot;</span>, <span class="string">&quot;July&quot;</span>, <span class="string">&quot;August&quot;</span>, <span class="string">&quot;September&quot;</span>, <span class="string">&quot;October&quot;</span>, <span class="string">&quot;November&quot;</span>, <span class="string">&quot;December&quot;</span>&#125;;</span><br><span class="line">   <span class="keyword">return</span> (n &lt; <span class="number">0</span> || n &gt; <span class="number">12</span>)? name[<span class="number">0</span>]: name[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Pointers v.s. multi-dimensional arrays</p>
+<ul>
+<li><code>int a[10][20]</code>:
+<ul>
+<li>Two-dimensional array, fixed memory allocation</li>
+<li>Use <code>a[i][j]</code> to access elements</li>
+</ul></li>
+<li><code>int *b[10]</code>:
+<ul>
+<li>Array of pointers, int allocation for the elements and allocation
+for the 10 pointers</li>
+<li>Use <code>b[i][j]</code> to access elements</li>
+<li>The 2d-array may not be rectangular, because the pointers can point
+to arrays of different sizes</li>
+</ul></li>
+</ul></li>
+<li><p>Command-line arguments</p></li>
+</ol>
+<ul>
+<li>When main is called, it is called with two arguments:
+<ul>
+<li><code>argc</code>: the number of command-line arguments the program
+was invoked with</li>
+<li><code>argv</code>: a pointer to an array of character strings that
+contain the arguments, one per string <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">while</span> (--argv &gt; <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%s%s&quot;</span>, *++argv, (argc &gt; <span class="number">1</span>)?:<span class="string">&quot; &quot;</span>:<span class="string">&quot;&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<ol start="11" type="1">
+<li>Pointers to functions</li>
+</ol>
+<ul>
+<li>In C, it's possible to define pointers to functions, which can be
+assigned, placed in arrays, passed to functions, returned by functions,
+and so on</li>
+</ul>
+<h3 id="chapter-6-structures">Chapter 6 Structures</h3>
+<ol type="1">
+<li>Basic of structures
+<ul>
+<li>A structure is a collection of variables, possibly of different
+types, grouped together under a single name for convenient handling</li>
+<li>Syntax: <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">name</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   type variable;</span><br><span class="line">   type variable;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>The <code>struct</code> keyword introduces a structure declaration.
+The name of the structure is called the structure tag, it's optional.
+The variables in the structure are called members</li>
+<li>Structure tag names, structure member names and normal variable
+names can be the same. Structure member names in different structures
+can be the same</li>
+<li>Declaration <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">int</span> x;</span><br><span class="line">   <span class="keyword">int</span> y;</span><br><span class="line">&#125; p1, p2;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">p3</span>, <span class="title">p4</span>;</span></span><br></pre></td></tr></table></figure></li>
+<li>Initialization: <code>struct point p1 = &#123;1, 2&#125;;</code></li>
+<li>Member reference: <code>p1.x = 2;</code></li>
+<li>Nested structure <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rect</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">p1</span>;</span></span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">p2</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Structures and functions
+<ul>
+<li>The only legal operations on a structure are copying it or assigning
+to it as a unit, taking its address with &amp;, and accessing its
+members</li>
+<li>Function example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct point <span class="title">makepoint</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">tmp</span>;</span></span><br><span class="line">   tmp.x = x;</span><br><span class="line">   tmp.y = y;</span><br><span class="line">   <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>If a large structure is to be passed to a function, it is generally
+more efficient to pass a pointer than to copy the whole structure
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">origin</span>, *<span class="title">ptr</span>;</span></span><br><span class="line">origin = makepoint(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">ptr = &amp;origin;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;origin is (%d, %d)\n&quot;</span>, origin.x, origin.y);</span><br></pre></td></tr></table></figure></li>
+<li>There is an alternative shorthand notation for pointer to structure
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// p -&gt; member</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">origin</span>, *<span class="title">ptr</span>;</span></span><br><span class="line">origin = makepoint(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">ptr = &amp;origin;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;origin is (%d, %d)\n&quot;</span>, ptr-&gt;x, ptr-&gt;y);</span><br></pre></td></tr></table></figure></li>
+<li>The structure operators . and -&gt;, together with () for function
+calls and [] for subscripts, are at the top of the precedence hierarchy
+and thus bind very tightly</li>
+</ul></li>
+<li>Arrays of structures
+<ul>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">point</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="keyword">int</span> x;</span><br><span class="line">      <span class="keyword">int</span> y;</span><br><span class="line">   &#125; points[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// You can use &#123;&#123;1, 2&#125;, &#123;3, 4&#125;&#125;, but the inner braces are not necessary</span></span><br></pre></td></tr></table></figure></li>
+<li>sizeof operator
+<ul>
+<li><code>sizeof object</code>, <code>sizeof(type-name)</code></li>
+<li>Determine array length <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NPOINTS (sizeof points / sizeof(struct point));</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NPOINTS (sizeof points / sizeof points[0]);</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Pointers to structures
+<ul>
+<li>You cannot do pointers addition, but you can do pointers subtraction
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">key</span> *<span class="title">lo</span> =</span> &amp;keys[<span class="number">0</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">key</span> *<span class="title">hi</span> =</span> &amp;keys[NKEYS - <span class="number">1</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">key</span> *<span class="title">mid</span>;</span></span><br><span class="line"></span><br><span class="line">mid = (lo + hi) / <span class="number">2</span>; <span class="comment">// This is wrong</span></span><br><span class="line">mid = lo + (hi - lo) / <span class="number">2</span>; <span class="comment">// This is right</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Self-referential structures
+<ul>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">char</span> *word;</span><br><span class="line">   <span class="keyword">int</span> count;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">left</span>;</span></span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">right</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Typedef
+<ul>
+<li>C provides a facility called typedef for creating new data type
+names <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Length; <span class="comment">// length is an alias for int</span></span><br><span class="line">Length len, maxlen;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *String; <span class="comment">// string is a pointer to char</span></span><br><span class="line">String p;</span><br></pre></td></tr></table></figure></li>
+<li>You can use capitalized names for typedefs to make them stand
+out</li>
+</ul></li>
+<li>Unions
+<ul>
+<li><p>A union is a variable that may hold objects of different types
+and sizes, with the complier keeping track of size and alignment
+requirements. It provides a way to manipulate different kinds of data in
+a single area of storage, without embedding any machine-dependent
+information in the program</p></li>
+<li><p>Syntax <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">union</span> <span class="title">u_tag</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">int</span> ival;</span><br><span class="line">   <span class="keyword">float</span> fval;</span><br><span class="line">   <span class="keyword">char</span> *sval;</span><br><span class="line">&#125; u;</span><br><span class="line"><span class="comment">// the size of u is the size of the largest member</span></span><br><span class="line"><span class="keyword">if</span> (utype == INT)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, u.ival);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (utype == FLOAT)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>, u.fval);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (utype == STRING)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, u.sval;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;bad type %d in utype\n&quot;</span>, utype);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Comparison of struct and union</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Structure</th>
+<th style="text-align: center;">Union</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Keyword</td>
+<td style="text-align: center;"><code>struct</code></td>
+<td style="text-align: center;"><code>union</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">The size of a structure is the greater
+than or equal to the sum of sizes of its members, each member is
+allocated an area of memory</td>
+<td style="text-align: center;">The size of an union is equal to the
+size of its largest member, all members shared the memory</td>
+</tr>
+<tr>
+<td style="text-align: center;">Memory</td>
+<td style="text-align: center;">Each member is assigned unique storage
+area of location</td>
+<td style="text-align: center;">Memory is shared by individual members
+of union</td>
+</tr>
+<tr>
+<td style="text-align: center;">Value altering</td>
+<td style="text-align: center;">Altering the value of a member will not
+affect other members in a structure</td>
+<td style="text-align: center;">Altering the value of any of the members
+will alter other member values</td>
+</tr>
+<tr>
+<td style="text-align: center;">Accessing members</td>
+<td style="text-align: center;">Individual members can be assessed at a
+time</td>
+<td style="text-align: center;">Only one member can be accessed at a
+time</td>
+</tr>
+<tr>
+<td style="text-align: center;">Initialization of members</td>
+<td style="text-align: center;">Several members can be initialized at
+once</td>
+<td style="text-align: center;">Only the first member of a union can be
+initialized</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>Bit-fields
+<ul>
+<li>Convert objects into bits of a single char or int, the usual way is
+to define a set of masks corresponding to the relevant bit positions
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">   <span class="comment">// The numbers should be power of 2</span></span><br><span class="line">   KEYWORD = <span class="number">01</span>,</span><br><span class="line">   EXTERNAL = <span class="number">02</span>,</span><br><span class="line">   STATIC = <span class="number">04</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>A bit-field, or field, is a set of adjacent bits within a single
+implementation-defined storage unit that we will call a word
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> is_keyword: <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> is_extern: <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> is_static: <span class="number">1</span>;</span><br><span class="line">&#125; flags;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h3 id="chapter-7-input-and-output">Chapter 7 Input and Output</h3>
+<ol type="1">
+<li><p>Standard input and output</p>
+<ul>
+<li>Read one character at a time from the standard input,
+<code>int getchar(void)</code>, getchar returns the next input character
+each time it is called, or EOF when it encounters end of file</li>
+<li>Substitute standard input with input file:
+<code>xxx.exe &lt; input</code></li>
+<li>Substitute standard output with output file:
+<code>xxx.exe &gt; input</code></li>
+</ul></li>
+<li><p>Formatted output-printf</p>
+<ul>
+<li><code>int printf(char *format, arg1, arg2, ...)</code></li>
+<li>The format string contains two types of objects: ordinary characters
+and conversion specifications</li>
+<li><code>%d</code> for decimal int, <code>%o</code> for unsigned octal
+int, <code>%x</code> or <code>%X</code> for unsigned hexadecimal int,
+<code>%u</code> for unsigned decimal int, <code>%c</code> for single
+character, <code>%s</code> for string until a '\0', <code>%f</code> for
+double, <code>%e</code> or <code>%E</code> for scientific double,
+<code>%p</code> for pointer</li>
+<li><code>int sprintf(char *string, char *format, arg1, arg2, ...)</code></li>
+</ul></li>
+<li><p>Variable-length argument lists</p>
+<ul>
+<li><code>int printf(char *fmt, ...);</code></li>
+</ul></li>
+<li><p>Forrmatted input-scanf</p>
+<ul>
+<li><code>int scanf(char *fmt, ...);</code></li>
+<li>The arguments to scanf and sscanf must be pointers</li>
+</ul></li>
+<li><p>File access</p>
+<ul>
+<li>A file should be opened by the library function <code>fopen</code>,
+before it can be read or written. fileopen takes an external name, does
+some housekeeping and negotiation with the operating system, and returns
+a pointer to be used in subsequent reads or writes of the file</li>
+<li>The pointer, called the file pointer, points to a structure that
+contains information about the file <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File *fp;</span><br><span class="line"><span class="function">File *<span class="title">fopen</span><span class="params">(<span class="keyword">char</span> *name, <span class="keyword">char</span> *mode)</span></span>;</span><br><span class="line">fp = fopen(name,  mode);</span><br></pre></td></tr></table></figure></li>
+<li>mode can be <code>r</code> read, <code>w</code> write, and
+<code>a</code> append</li>
+<li>File manipulation
+<ul>
+<li><code>int get(File *fp);</code> returns the next character from a
+file</li>
+<li><code>int  putc(int c, File *fp);</code> writes the character c to
+the file fp and returns the character written, or EOF if an error
+occurs</li>
+</ul></li>
+<li>When a C program is started, the operating system opens three files
+and providing the file pointers for them. These files are the standard
+input, the standard output, and the standard error; the corresponding
+file pointers are <code>stdin</code>, <code>stdout</code> and
+<code>stderr</code>. Normally stdin is connected to the keyboard, stdout
+and stderr to the screen</li>
+</ul></li>
+<li><p>Error handling-stderr and exit</p>
+<ul>
+<li><code>int exit(int status);</code></li>
+<li><code>int ferror(FILE *fp);</code></li>
+<li><code>int feof(FILE *fp);</code></li>
+</ul></li>
+<li><p>Line input and output</p>
+<ul>
+<li><code>char *fgets(char *line, int maxline, FILE *fp);</code> reads
+the next line from file fp into the character array line, at most
+maxline-1 characters will be read</li>
+<li><code>int fputs(char *line, FILE *fp);</code> writes a string to a
+file, it returns EOF if an error occurs, and 0 otherwise</li>
+</ul></li>
+</ol>
+<h3 id="chapter-8-the-unix-system-interface">Chapter 8 The UNIX System
+Interface</h3>
+<ol type="1">
+<li>File Descriptors
+<ul>
+<li>The UNIX operating system provides its services through a set of
+system calls, which are in effect functions within the operating system
+that may be called by user program</li>
+<li>In UNIX, all input and output is done by reading or writing files,
+because all peripheral devices are files in the file system</li>
+<li>In the most general case, you need to open a file first</li>
+</ul></li>
+<li>Low level I/O-read and write
+<ul>
+<li>Input and output uses the read and write system calls, which are
+accessed from C programs through two functions called read and write.
+Each call returns a count of the number of bytes transferred</li>
+<li><code>int n_read =  read(int fd, char *buf, int n);</code></li>
+<li><code>int n_written = write(int fd, char *buf, int n);</code></li>
+<li>Example <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">   <span class="keyword">int</span> n;</span><br><span class="line">   <span class="keyword">while</span> ((n = read(<span class="number">0</span>, buf, <span class="number">1024</span>)) &gt; <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      write(<span class="number">1</span>, buf, n);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Open, creat, close, unlink
+<ul>
+<li>You can explicitly open files in order to read or write them, there
+are two system calls for this, <code>open</code> and
+<code>creat</code></li>
+<li><code>open</code> is like the <code>fopen</code>, except that
+instead of returning a file pointer, it returns a file descriptor, which
+is just an int. It returns -1 if any error occurs <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fd;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">char</span> *name, <span class="keyword">int</span> flags, <span class="keyword">int</span> perms)</span></span>;</span><br><span class="line"><span class="comment">// flags = O_RDONLY, read only </span></span><br><span class="line"><span class="comment">// flags = O_WRONLY, write only;</span></span><br><span class="line"><span class="comment">// flags = O_RDWR, read and write only</span></span><br><span class="line">fd = open(name, flags, perms);</span><br></pre></td></tr></table></figure></li>
+<li>Use <code>creat</code> to create new files, or to re-write old ones
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fd;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">creat</span><span class="params">(<span class="keyword">char</span> *name, <span class="keyword">int</span> perms)</span></span>;</span><br><span class="line">fd = create(name, perms);</span><br></pre></td></tr></table></figure></li>
+<li>The function <code>unlink(char *name)</code> removes the file name
+from the file system, it corresponds to the standard libyrary function
+remove</li>
+</ul></li>
+<li>Random access-lseek
+<ul>
+<li>Input and output are normally sequential: each read or write takes
+place at a position in the file right after the previous one. A file can
+be read or written in any arbitrary order, the system call
+<code>lseek</code> provides a way to move around in a file without
+reading or writing any data</li>
+<li><code>long lseek(int fd, long offset, int origin);</code> sets the
+current position in the file whose descriptor is fd to offset, whicn is
+taken relative to the location specified by origin. origin can be 0, 1,
+or 2 to specify that offset is to be measured from the beginning, from
+the current position, or from theend of the file respectively</li>
+<li>The return value from lseek is a long that gives the new position in
+the file, or -1 if an error occurs</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/01/01/CMU-15-213-Notes/" title="CMU 15-213 Notes">https://yanxuanshaozhu.github.io/2022/01/01/CMU-15-213-Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/15-213/" rel="tag"># 15-213</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/15/LeetCode-Notes/" rel="prev" title="LeetCode Notes">
+      <i class="fa fa-chevron-left"></i> LeetCode Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/19/COSI-103A-Software-Engineering/" rel="next" title="COSI 103A Software Engineering">
+      COSI 103A Software Engineering <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-20150901"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 2015&#x2F;09&#x2F;01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csapp-book-notes"><span class="nav-number">2.</span> <span class="nav-text">CSAPP Book notes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpl-notes"><span class="nav-number">3.</span> <span class="nav-text">TCPL notes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-1-a-tutorial-introduction"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 1 A Tutorial
+Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-2-types-operators-and-expressions"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 2 Types,
+Operators and Expressions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-3-control-flow"><span class="nav-number">3.3.</span> <span class="nav-text">Chapter 3 Control Flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-4-functions-and-program-structure"><span class="nav-number">3.4.</span> <span class="nav-text">Chapter 4 Functions
+and Program Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-5-pointers-and-arrays"><span class="nav-number">3.5.</span> <span class="nav-text">Chapter 5 Pointers and
+Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-6-structures"><span class="nav-number">3.6.</span> <span class="nav-text">Chapter 6 Structures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-7-input-and-output"><span class="nav-number">3.7.</span> <span class="nav-text">Chapter 7 Input and Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-8-the-unix-system-interface"><span class="nav-number">3.8.</span> <span class="nav-text">Chapter 8 The UNIX System
+Interface</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

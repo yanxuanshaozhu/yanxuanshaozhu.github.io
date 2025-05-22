@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Lesson 01 2021&#x2F;08&#x2F;30  Install Node.js Install GitHub Desktop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 153A Mobile Development">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/09/01/COSI-153A-Mobile-Development/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Lesson 01 2021&#x2F;08&#x2F;30  Install Node.js Install GitHub Desktop">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Courses/COSI153A/0.svg">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Courses/COSI153A/1.png">
+<meta property="article:published_time" content="2021-09-01T14:19:09.000Z">
+<meta property="article:modified_time" content="2024-08-11T07:24:06.913Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Mobile Development">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yanxuanshaozhu.github.io/images/Courses/COSI153A/0.svg">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/09/01/COSI-153A-Mobile-Development/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 153A Mobile Development | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/09/01/COSI-153A-Mobile-Development/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 153A Mobile Development
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-01 10:19:09" itemprop="dateCreated datePublished" datetime="2021-09-01T10:19:09-04:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-08-11 03:24:06" itemprop="dateModified" datetime="2024-08-11T03:24:06-04:00">2024-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>35k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>32 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="lesson-01-20210830">Lesson 01 2021/08/30</h1>
+<ol type="1">
+<li>Install Node.js</li>
+<li>Install GitHub Desktop <span id="more"></span></li>
+<li>Run react-native app
+<ul>
+<li>Run on browser: use React Native website, or use snack.expo.dev</li>
+<li>Run locally using Expo CLI</li>
+<li>Install Expo CLI: <code>npm install -g expo-cli</code></li>
+<li>Create a new React Native project and run <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">expo init ProjectName</span><br><span class="line">        </span><br><span class="line">cd .&#x2F;ProjectName</span><br><span class="line">        </span><br><span class="line">npm start    # expo start is also okay</span><br></pre></td></tr></table></figure></li>
+<li>Run one your phone: download Expo Go and scan the QR code</li>
+</ul></li>
+</ol>
+<h1 id="lesson-02-20210901">Lesson 02 2021/09/01</h1>
+<ol type="1">
+<li>Scope <img src="/images/Courses/COSI153A/0.svg"></li>
+<li>Introduction
+<ul>
+<li>Intro
+<ul>
+<li>React Native is an open source framework for building Android and
+iOS applications using React and the app platform’s native
+capabilities</li>
+<li>With React Native, you use JavaScript to access your platform’s APIs
+as well as to describe the appearance and behavior of your UI using
+React components</li>
+</ul></li>
+<li>View
+<ul>
+<li>In mobile development, a view is a basic building block of UI: a
+rectangular element on the screen which can be used to display text,
+images, or respond to user input</li>
+<li>Views can be nested</li>
+</ul></li>
+<li>Native Components
+<ul>
+<li>You can invoke Andriod and iOS components with JS using React
+components, React Native creates the corresponding Andriod and iOS
+components at runtime. We call these platform-backed components Native
+Components</li>
+<li>React Native comes with a set of essential, ready-to-use Native
+Components you can use to start building your app today. These are React
+Native's Core Components</li>
+<li>React Native lets you build your own Native Components for Android
+and iOS to suit your app’s unique needs</li>
+<li>React Native has a thriving ecosystem of community-contributed
+components</li>
+</ul></li>
+</ul></li>
+<li>Core components
+<ul>
+<li>View
+<ul>
+<li>View is the most fundamental component for building a UI. It is a
+container that supports layout with flexbox, style, some touch handling,
+and accessibility controls</li>
+<li>View is designed to be nested inside other views and can have 0 to
+many children of any type</li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;View, Text, StyleSheet&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ViewApp = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">// It is recommended to use StyleSheet for clarity and performance</span></span><br><span class="line">        &lt;View style =&#123;styles.container&#125;&gt;</span><br><span class="line">            <span class="comment">// Inline styles are also supported</span></span><br><span class="line">            &lt;Text style =&#123;&#123;<span class="attr">fontSize</span>: <span class="number">40</span>, <span class="attr">fontWeight</span>:<span class="string">&#x27;bold&#x27;</span>&#125;&#125;&gt;</span><br><span class="line">                Try editing me!</span><br><span class="line">            &lt;/Text&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        backgroundColor: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">        justifyContent: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        alignItems: <span class="string">&#x27;center&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ViewApp;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<ul>
+<li>Text
+<ul>
+<li>Text is a React component for displaying text</li>
+<li>Text supports nesting, styling, and touch handling</li>
+<li>Limited Style Inheritance: in order to inherit styles from parent
+components, you must wrap all the text nodes inside of a Text component,
+you cannot have a text node directly under a View</li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;View, Text, StyleSheet&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TextApp = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &lt;Text style=&#123;styles.baseText&#125;&gt;</span><br><span class="line">                This is a</span><br><span class="line">                &lt;Text style=&#123;styles.innerText&#125;&gt;</span><br><span class="line">                    paragraph!</span><br><span class="line">                &lt;/Text&gt;</span><br><span class="line">            &lt;/Text&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TextApp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        backgroundColor: <span class="string">&#x27;lightblue&#x27;</span>,</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">        justifyContent: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        alignItems: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    baseText: &#123;</span><br><span class="line">        fontWeight: <span class="string">&#x27;bold&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    innerText: &#123;</span><br><span class="line">        fontSize: <span class="number">20</span>,</span><br><span class="line">        color: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>TextInput
+<ul>
+<li>TextInput is a foundational component for inputting text into the
+app via a keyboard</li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, StyleSheet, TextInput, Text &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TextInputApp = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style =&#123;styles.container&#125;&gt;</span><br><span class="line">            &lt;label &gt;</span><br><span class="line">                Enter Your Name.</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">            &lt;TextInput style=&#123;styles.input&#125; placeholder=<span class="string">&quot;Jesse Li&quot;</span> /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TextInputApp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        backgroundColor:<span class="string">&#x27;lightblue&#x27;</span>,</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">        justifyContent: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        alignItems: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    input: &#123;</span><br><span class="line">        backgroundColor:<span class="string">&#x27;yellow&#x27;</span>,</span><br><span class="line">        borderColor: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">        borderRadius: <span class="number">5</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Image
+<ul>
+<li>Image is a React component for displaying different types of images,
+including network images, static resources, temporary local images, and
+images from local disk, such as the camera roll</li>
+<li>Static image <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// project structure</span></span><br><span class="line"><span class="comment">//    ├── app.js</span></span><br><span class="line"><span class="comment">//    └── img</span></span><br><span class="line"><span class="comment">//        ├── my-icon.png</span></span><br><span class="line"><span class="comment">// in app.js</span></span><br><span class="line">&lt;Image source=&#123;<span class="built_in">require</span>(<span class="string">&#x27;./img/my-icon.png&#x27;</span>)&#125; /&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Network image <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You should mannually give the image its size</span></span><br><span class="line">&lt;Image source=&#123;&#123;uri: <span class="string">&#x27;https://reactjs.org/logo-og.png&#x27;</span>&#125;&#125;</span><br><span class="line">    style=&#123;&#123;width: <span class="number">400</span>, height: <span class="number">400</span>&#125;&#125; /&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>ScrollView
+<ul>
+<li>ScrollViews must have a bounded height in order to work, it is
+recommended that all parent containers have a bound height</li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;StyleSheet, View, ScrollView,Text&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ScrollViewApp = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &lt;ScrollView style=&#123;styles.scroolview&#125;&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.text&#125;&gt;</span><br><span class="line">                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <span class="keyword">do</span></span><br><span class="line">                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</span><br><span class="line">                minim veniam, quis nostrud exercitation ullamco laboris nisi ut</span><br><span class="line">                aliquip ex ea commodo consequat. Duis aute irure dolor nin</span><br><span class="line">                reprehenderit nin voluptate velit esse cillum dolore eu fugiat nulla</span><br><span class="line">                pariatur. Excepteur sint occaecat cupidatat non proident, sunt nin</span><br><span class="line">                culpa qui officia deserunt mollit anim id est laborum.</span><br><span class="line">                &lt;/Text&gt;</span><br><span class="line">            &lt;/ScrollView&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    scroolview: &#123;</span><br><span class="line">        backgroundColor: <span class="string">&#x27;lightblue&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    text: &#123;</span><br><span class="line">        fontSize: <span class="number">42</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ScrollViewApp;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Button
+<ul>
+<li>A basic button component that should render nicely on any
+platform</li>
+<li>Basic demo <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React from <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, Button, View, Text, Alert &#125; from <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = () =&gt; (</span><br><span class="line">    &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;View&gt;</span><br><span class="line">            &lt;Text style=&#123;styles.title&#125;&gt;</span><br><span class="line">                The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.</span><br><span class="line">            &lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                title=<span class="string">&quot;Press me&quot;</span></span><br><span class="line">                onPress=&#123;() =&gt; Alert.alert(<span class="string">&#x27;Simple Button pressed&#x27;</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">            &lt;Text style=&#123;styles.title&#125;&gt;</span><br><span class="line">                All interaction <span class="keyword">for</span> the component are disabled.</span><br><span class="line">            &lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                title=<span class="string">&quot;Press me&quot;</span></span><br><span class="line">                <span class="comment">// Then this button cannot be pressed</span></span><br><span class="line">                disabled</span><br><span class="line">                onPress=&#123;() =&gt; Alert.alert(<span class="string">&#x27;Cannot press this one&#x27;</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">        justifyContent: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        marginHorizontal: <span class="number">16</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    title: &#123;</span><br><span class="line">        textAlign: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        marginVertical: <span class="number">8</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>StyleSheet
+<ul>
+<li>A StyleSheet is an abstraction similar to CSS StyleSheets</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Flexbox
+<ul>
+<li>flex
+<ul>
+<li><code>flex: N</code>, occupies <span class="math inline">\(\frac{N_i}{\sum{N_i}}\)</span> space of row or
+column depending on flexDirection</li>
+</ul></li>
+<li><code>flexDirection</code>
+<ul>
+<li><code>flexDirection: column</code>, default, main axis is column,
+from top to bottom</li>
+<li><code>flexDirection: row</code>, main axis is row, from left to
+right</li>
+<li><code>flexDirection: column-reverse</code>: main axis is column,
+from bottom to top</li>
+<li><code>flexDirection: row-reverse</code>: main axis is row, from
+right to left</li>
+</ul></li>
+<li><code>justifuContent</code>
+<ul>
+<li><code>justifyContent: flex-start</code>, default, children starts
+from start of main axis</li>
+<li><code>justifyContent: flex-end</code>, children starts from end of
+main axis</li>
+<li><code>justifyContent: center</code>, aligns children in the center
+of main axis</li>
+<li><code>justifyContent: space-between</code>, no space before the
+first children and after the last children</li>
+<li><code>justifyContent: space-around</code>, half space before the
+first children and after the last children</li>
+<li><code>justifyContent: space-evenly</code>, all space is evenly
+divided</li>
+</ul></li>
+<li><code>alignItems</code>
+<ul>
+<li><code>alignItems: stretch</code>, default, stretch children to match
+the height of the container's cross axis</li>
+<li><code>alignItems: flex-start</code>, children starts from the start
+of the cross axis</li>
+<li><code>alignItems: flex-end</code>, children starts from the end of
+the cross axis</li>
+<li><code>alignItems: center</code>, align children in the center of the
+container's cross axis</li>
+<li><code>alignItems: flex-start</code>, align children along a common
+baseline</li>
+</ul></li>
+<li><code>alignContent</code>: distribution on the cross axis, only has
+effect when <code>flexWrap: wrap</code></li>
+<li><code>flexWrap</code>, <code>flexWrap: wrap</code> or
+<code>flexWrap: nowrap</code></li>
+<li><code>flexBasis</code>, <code>flexGrow</code>,
+<code>flexShrink</code></li>
+<li><code>width</code>, <code>height</code>, default <code>auto</code>,
+can also set to integer pixels(eg <code>width: 300</code>) or string
+percentage(eg <code>width: "80%"</code>)</li>
+<li><code>position</code>: defines how an element is positioned within
+its parent
+<ul>
+<li><code>position: relative</code>, default</li>
+<li><code>position: absolute</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-03-20210913">Lesson 03 2021/09/13</h1>
+<ol type="1">
+<li>Steps to design a page
+<ul>
+<li>Decide on the top level components and if they will be laid out
+horizontally or vertically</li>
+<li>Decide on the justifyContent values (for the main axis) and the
+alignItem values for the cross-axis</li>
+<li>Create the toplevel components (possibly view) and use the grid
+property to state the relative size of that component</li>
+<li>Repeat the process for each of the toplevel components, which can
+themselves consist of embedded components</li>
+<li>Select colors, borders, fonts, and other style elements for the core
+components (Text, Button, TextInput, etc.)</li>
+</ul></li>
+</ol>
+<h1 id="lesson-04-20210915">Lesson 04 2021/09/15</h1>
+<ol type="1">
+<li>Introduction to Navigator
+<ul>
+<li>Managing the presentation of, and transition between, multiple
+screens of a mobile app is typically handled by what is known as a
+navigator</li>
+<li>React Navigation provides a straightforward navigation solution,
+with the ability to present common stack navigation and tabbed
+navigation patterns on both Android and iOS</li>
+</ul></li>
+<li>React Navigation
+<ul>
+<li>Installation: <code>npm install @react-navigation/native</code></li>
+<li>Installation of dependent libraries
+<ul>
+<li>Install into an Expo managed project:
+<code>expo install react-native-screens react-native-safe-area-context</code></li>
+<li>Install into a bare React Native project:
+<code>npm install react-native-screens react-native-safe-area-context</code></li>
+</ul></li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;NavigationContainer&gt;</span><br><span class="line">        &#123;<span class="comment">/* Rest of your app code */</span>&#125;</span><br><span class="line">        &lt;/NavigationContainer&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></li>
+<li>he Navigation logic
+<ul>
+<li>Web browser nagivator
+<ul>
+<li>When a link is clicked, the browser jumps to a new page, the URL is
+pushed to the browser history stack</li>
+<li>When the back button is clicked, the browser pops the item from the
+top of the history stack</li>
+</ul></li>
+<li>React Navigation's native stack navigator does the same things, it
+also provides gestures and animations when navigating between routes in
+the stack</li>
+</ul></li>
+<li>The native stack navigator
+<ul>
+<li>Installation:
+<code>npm install @react-navigation/native-stack</code></li>
+<li>Basic demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text, Button &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createNativeStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native-stack&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// In the native stack navigator, each Screen has a navigation property</span></span><br><span class="line"><span class="keyword">const</span> HomeScreen = <span class="function">(<span class="params">&#123;navigation&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View&gt;</span><br><span class="line">            &lt;Text&gt; Home Screen &lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                title = <span class="string">&quot;Go to details&quot;</span></span><br><span class="line">                <span class="comment">// Call the navigate function to move between pages, if the destination is the current page, navigate method does nothing</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> navigation.navigate(<span class="string">&#x27;Details&#x27;</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DetailsScreen = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span> &#125;&#125;&gt;</span><br><span class="line">            &lt;Text&gt;Details Screen&lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                title = <span class="string">&quot;Go to details&quot;</span></span><br><span class="line">                <span class="comment">// Call the push function to move between pages, this method can go to the same page multiple times</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> navigation.push(<span class="string">&#x27;Details&#x27;</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This function returns an object with two properties: Screen and Navigator</span></span><br><span class="line"><span class="keyword">const</span> Stack = createNativeStackNavigator();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">// NavigationContainer manages the navigation tree and contains the navigation state</span></span><br><span class="line">        &lt;NavigationContainer&gt;</span><br><span class="line">            <span class="comment">// Navigator should contain Screen to define the configuration for routes</span></span><br><span class="line">            &lt;Stack.Navigator initialRouteName=<span class="string">&quot;Home&quot;</span>&gt;</span><br><span class="line">                &lt;Stack.Screen name=<span class="string">&quot;Home&quot;</span> component=&#123;HomeScreen&#125; /&gt;</span><br><span class="line">                &lt;Stack.Screen name=<span class="string">&quot;Details&quot;</span> component=&#123;DetailsScreen&#125; /&gt;</span><br><span class="line">            &lt;/Stack.Navigator&gt;</span><br><span class="line">        &lt;/NavigationContainer&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></li>
+<li>Go to a page: <code>navigation.navigate("pageName")</code></li>
+<li>Go to a page including the current one:
+<code>navigation.push("pageName")</code></li>
+<li>Go back to the previous page: <code>navigation.goBack()</code></li>
+<li>Go back to the first screen in the stack:
+<code>navigation.popToTop()</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-05-20210920">Lesson 05 2021/09/20</h1>
+<ol type="1">
+<li>Demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text, Button, StyleSheet, TextInput &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createNativeStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native-stack&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HomeScreen = <span class="function">(<span class="params">&#123; navigation &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &lt;Text&gt; Welcome to the home screen!&lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                title=<span class="string">&quot;Go to Details&quot;</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> navigation.navigate(<span class="string">&#x27;Details&#x27;</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DetailsScreen = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> [count1, setCount1] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &lt;Text&gt;Count = &#123;count&#125;&lt;/Text&gt;</span><br><span class="line"></span><br><span class="line">            &lt;Button</span><br><span class="line">                color=<span class="string">&quot;red&quot;</span></span><br><span class="line">                title=<span class="string">&quot;Increment&quot;</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> setCount(count + <span class="number">1</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">            &lt;Text&gt;Count = &#123;count1&#125;&lt;/Text&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                color=<span class="string">&quot;red&quot;</span></span><br><span class="line">                title=<span class="string">&quot;Increment&quot;</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> setCount1(count1 - <span class="number">1</span>)&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">            &lt;Button</span><br><span class="line">                color=<span class="string">&quot;red&quot;</span></span><br><span class="line">                title=<span class="string">&quot;Reset&quot;</span></span><br><span class="line">                onPress=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                setCount(<span class="number">0</span>);</span><br><span class="line">                setCount1(<span class="number">0</span>);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Stack = createNativeStackNavigator();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;NavigationContainer&gt;</span><br><span class="line">            &lt;Stack.Navigator initialRouteName=<span class="string">&quot;Home&quot;</span>&gt;</span><br><span class="line">                &lt;Stack.Screen name=<span class="string">&quot;Home&quot;</span> component=&#123;HomeScreen&#125; /&gt;</span><br><span class="line">                &lt;Stack.Screen name=<span class="string">&quot;Details&quot;</span> component=&#123;DetailsScreen&#125; /&gt;</span><br><span class="line">            &lt;/Stack.Navigator&gt;</span><br><span class="line">        &lt;/NavigationContainer&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        flex: <span class="number">1</span>,</span><br><span class="line">        backgroundColor: <span class="string">&#x27;yellow&#x27;</span>,</span><br><span class="line">        justifyContent: <span class="string">&#x27;space-evenly&#x27;</span>,</span><br><span class="line">        alignItems: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="lesson-06-20210922">Lesson 06 2021/09/22</h1>
+<h1 id="lesson-07-20210929">Lesson 07 2021/09/29</h1>
+<ol type="1">
+<li>Asynchronous Storage
+<ul>
+<li>Installation:
+<code>npm install @react-native-async-storage/async-storage</code></li>
+</ul></li>
+</ol>
+<h1 id="lesson-08-20211004">Lesson 08 2021/10/04</h1>
+<ol type="1">
+<li>Context and Data Sharing
+<ul>
+<li>In a typical React application, data is passed top-down (parent to
+child) via props, but such usage can be cumbersome for certain types of
+props (e.g. locale preference, UI theme) that are required by many
+components within an application</li>
+<li>Context provides a way to share values like these between components
+without having to explicitly pass a prop through every level of the
+tree</li>
+<li>When to use context: Context is designed to share data that can be
+considered “global” for a tree of React components, such as the current
+authenticated user, theme, or preferred language</li>
+<li>Before you use context: If you only want to avoid passing some props
+through many levels, component composition is often a simpler solution
+than context <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This one is tedious</span></span><br><span class="line">&lt;Page user=&#123;user&#125; avatarSize=&#123;avatarSize&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&lt;PageLayout user=&#123;user&#125; avatarSize=&#123;avatarSize&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&lt;NavigationBar user=&#123;user&#125; avatarSize=&#123;avatarSize&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&lt;Link href=&#123;user.permalink&#125;&gt;</span><br><span class="line">&lt;Avatar user=&#123;user&#125; size=&#123;avatarSize&#125; /&gt;</span><br><span class="line">&lt;/Link&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This one is better</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Page</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> user = props.user;</span><br><span class="line">    <span class="keyword">const</span> userLink = (</span><br><span class="line">        &lt;Link href=&#123;user.permalink&#125;&gt;</span><br><span class="line">            &lt;Avatar user=&#123;user&#125; size=&#123;props.avatarSize&#125; /&gt;</span><br><span class="line">        &lt;/Link&gt;</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">PageLayout</span> <span class="attr">userLink</span>=<span class="string">&#123;userLink&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now, we have:</span></span><br><span class="line">&lt;Page user=&#123;user&#125; avatarSize=&#123;avatarSize&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&lt;PageLayout userLink=&#123;...&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&lt;NavigationBar userLink=&#123;...&#125; /&gt;</span><br><span class="line"><span class="comment">// ... which renders ...</span></span><br><span class="line">&#123;props.userLink&#125;</span><br></pre></td></tr></table></figure></li>
+<li>API
+<ul>
+<li><code>React.createContext</code>: Creates a Context object. When
+React renders a component that subscribes to this Context object it will
+read the current context value from the closest matching Provider above
+it in the tree <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyContext = React.createContext(defaultValue);</span><br></pre></td></tr></table></figure></li>
+<li><code>Context.Provider</code>: Every Context object comes with a
+Provider React component that allows consuming components to subscribe
+to context changes. The Provider component accepts a value prop to be
+passed to consuming components that are descendants of this Provider.
+One Provider can be connected to many consumers. Providers can be nested
+to override values deeper within the tree <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;MyContext.Provider value=&#123;<span class="comment">/* some value */</span>&#125;&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>Context.Consumer</code>: A React component that subscribes to
+context changes. Using this component lets you subscribe to a context
+within a function component <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;MyContext.Consumer&gt;</span><br><span class="line">    &#123;<span class="function"><span class="params">value</span> =&gt;</span> <span class="comment">/* render something based on the context value */</span>&#125;</span><br><span class="line">&lt;/MyContext.Consumer&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>useContext</code> hook: Accepts a context object (the value
+returned from React.createContext) and returns the current context value
+for that context. The current context value is determined by the value
+prop of the nearest <code>&lt;MyContext.Provider&gt;</code> above the
+calling component in the tree. useContext(MyContext) is equivalent to
+<code>&lt;MyContext.Consumer&gt;</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> value = useContext(MyContext);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-09-20211006">Lesson 09 2021/10/06</h1>
+<ol type="1">
+<li>Device specific options
+<ul>
+<li>https://docs.expo.dev/versions/latest/</li>
+</ul></li>
+</ol>
+<h1 id="lesson-10-20211011">Lesson 10 2021/10/11</h1>
+<ol type="1">
+<li>JavaScript module
+<ul>
+<li>As programs become more complicated, it's useful to provide
+mechanisms for splitting JavaScript programs up into separate modules
+that can be imported when needed
+<ul>
+<li>Node.js, CommonJS, RequireJS all supports modules</li>
+<li>Modern browsers have started to support module functionality
+natively</li>
+<li>Use of native JavaScript modules is dependent on the import and
+export statements</li>
+</ul></li>
+<li>Exporting module features
+<ul>
+<li>The first thing you do to get access to module features is export
+them. This is done using the export statement</li>
+<li>The easiest way to use it is to place it in front of any items you
+want exported out of the module <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// suppose the relative path is &quot;./modules/square.js&quot;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">&#x27;square&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">ctx, length, x, y, color</span>) </span>&#123;</span><br><span class="line">    ctx.fillStyle = color;</span><br><span class="line">    ctx.fillRect(x, y, length, length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        length: length,</span><br><span class="line">        x: x,</span><br><span class="line">        y: y,</span><br><span class="line">        color: color</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>You can export functions, var, let, const, and classes</li>
+<li>A more convenient way of exporting all the items you want to export
+is to use a single export statement at the end of your module file,
+followed by a comma-separated list of the features you want to export
+wrapped in curly braces <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;name, draw&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>mporting features into your script
+<ul>
+<li>Once you've exported some features out of your module, you need to
+import them into your script to be able to use them</li>
+<li>You use the import statement, followed by a comma-separated list of
+the features you want to import wrapped in curly braces, followed by the
+keyword from, followed by the path to the module file — a path relative
+to the site root <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; name, draw &#125; <span class="keyword">from</span> <span class="string">&quot;./modules/square.js&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>In some module systems, you can omit ./, ../, .js, but this does not
+work in native JavaScript</li>
+<li>Although imported features are available in the file, they are read
+only views of the feature that was exported</li>
+</ul></li>
+<li>Applying the module to your HTML
+<ul>
+<li>You need to include <code>type="module"</code> in the
+<code>&lt;script&gt;</code> element</li>
+<li>Method 1: reference a script <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span> src=<span class="string">&quot;./script.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Method 2: directly embed a module in the HTML file
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// JavaScript code here</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Default exports v.s. named exports
+<ul>
+<li>Default export: designed to make it easy to have a default function
+provided by a module, and also helps JavaScript modules to interoperate
+with existing CommonJS and AMD module systems
+<ul>
+<li>There is only one default export allowed per module
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Method 1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">const</span> name = <span class="string">&quot;Square&quot;</span>;</span><br><span class="line"><span class="comment">// Method 2</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;Square&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> name;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Shorthand import for default feature</span></span><br><span class="line"><span class="keyword">import</span> name <span class="keyword">from</span> <span class="string">&quot;./modules/square.js&quot;</span>;</span><br><span class="line"><span class="comment">// Full import statement for default feature</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> name &#125; <span class="keyword">from</span> <span class="string">&quot;./modules/square.js&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Named export: each item is referred to by its name upon export</li>
+</ul></li>
+<li>Avoiding naming conflicts
+<ul>
+<li>If you try to import different functions of the same name into the
+same top-level module file, you would end up with conflicts and
+errors</li>
+<li>Rename exports and imports <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; function1 <span class="keyword">as</span> newFunction1, function2 <span class="keyword">as</span> newFunction2 &#125;;</span><br><span class="line"><span class="keyword">import</span> &#123; newFunction1, newFunction2 &#125; <span class="keyword">from</span> <span class="string">&quot;./modules/function.js&quot;</span>;</span><br><span class="line"><span class="comment">// Method 2</span></span><br><span class="line"><span class="keyword">export</span> &#123; function1, function2&#125;;</span><br><span class="line"><span class="keyword">import</span> &#123; function1 <span class="keyword">as</span> newFunction1, function2 <span class="keyword">as</span> newFunction2&#125; <span class="keyword">from</span> <span class="string">&quot;./modules/function.js&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Create a module object <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; function1, function2 &#125;;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="built_in">Function</span> <span class="keyword">from</span> <span class="string">&quot;./modules/function.js&quot;</span>;</span><br><span class="line"><span class="built_in">Function</span>.function1();</span><br><span class="line"><span class="built_in">Function</span>.function2();</span><br></pre></td></tr></table></figure></li>
+<li>Modules and Classes <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">ctx, listId, length, x, y, color</span>)</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">draw</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; Square &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Square &#125; <span class="keyword">from</span> <span class="string">&quot;./modules/square.js&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>class
+<ul>
+<li>Classes are a template for creating objects</li>
+<li>Functions can be called in code that appears before they are
+defined, classes must be defined before they can be constructed</li>
+<li>Class declarations <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">height, width</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">        <span class="built_in">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Class expressions <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Rectangle = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">height, width</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">        <span class="built_in">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Class body
+<ul>
+<li>Constructor</li>
+<li>Fields and methods</li>
+<li>Use <code>#</code> for private field</li>
+<li>Use <code>extends</code> for inheritance</li>
+<li>Use <code>this</code> and <code>super</code> keywords when
+necessary</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-11-20211013">Lesson 11 2021/10/13</h1>
+<ol type="1">
+<li>function
+<ul>
+<li>Defining functions
+<ul>
+<li>Function declarations <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> number * number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Function expressions <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> number * number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Arrow functions <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> number * number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Function parameters
+<ul>
+<li>Default parameters</li>
+<li>Rest parameters <code>...theArgs</code></li>
+</ul></li>
+</ul></li>
+<li>closure
+<ul>
+<li>A closure is the combination of a function bundled together
+(enclosed) with references to its surrounding state (the lexical
+environment). In other words, a closure gives you access to an outer
+function’s scope from an inner function <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line">add5(<span class="number">2</span>); <span class="comment">// 7</span></span><br></pre></td></tr></table></figure></li>
+<li>Closure scope chain
+<ul>
+<li>Local Scope (Own scope)</li>
+<li>Outer Functions Scope</li>
+<li>Global Scope</li>
+</ul></li>
+</ul></li>
+<li>User-defined components
+<ul>
+<li>Function components <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Text &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Cat = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Text&gt;Hello, I am your cat!&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Cat;</span><br></pre></td></tr></table></figure></li>
+<li>Class component <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Text &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        &lt;Text&gt;Hello, I am your cat!&lt;/Text&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Cat;</span><br></pre></td></tr></table></figure></li>
+<li>Use state with class components
+<ul>
+<li>Declare the state: <code>state = &#123; key: value &#125;;</code></li>
+<li>Use the state: <code>this.state.key</code></li>
+<li>Set the state: <code>this.setState(&#123; key: value &#125;);</code></li>
+</ul></li>
+</ul></li>
+<li>You can have conditional rendering with useState hook</li>
+</ol>
+<h1 id="lesson-12-20211018">Lesson 12 2021/10/18</h1>
+<ol type="1">
+<li>Ideas
+<ul>
+<li>Each app will have its own appKey,so data can be shared between
+users of the app</li>
+<li>Each device will have its own userKey, so users can access their own
+data on the cloud</li>
+<li>Users can store and retrieve data with a valueKey and a String
+value, just as with AsyncStorage but the data will be stored in the
+cloud and they can share data with each other</li>
+<li>Server: Heroku, database: MongoDB</li>
+</ul></li>
+<li>Axios
+<ul>
+<li>Use axios is more easier than the built-in fetch function</li>
+<li>Usage <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> z = <span class="keyword">await</span> Axios.get(URL)  <span class="comment">// to get data from the server using only the URL</span></span><br><span class="line"><span class="keyword">const</span> z = <span class="keyword">await</span> Axios.post(URL,JSONdata) <span class="comment">// to send data to server and get something back   </span></span><br></pre></td></tr></table></figure></li>
+<li>For a browser, you can only have <code>get</code> and
+<code>post</code>, for mobile phones, you can have more HTTP verbs</li>
+</ul></li>
+<li>Get and retrieve data from server
+<ul>
+<li>Store and export appKey and appUrl locally on the device</li>
+<li>Use the following code <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button, StyleSheet, Text, TextInput, View &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> AsyncStorage <span class="keyword">from</span> <span class="string">&#x27;@react-native-async-storage/async-storage&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; appKey, appURL &#125; <span class="keyword">from</span> <span class="string">&#x27;../lib/appKey.js&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CloudRegistration = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [userKey, setUserKey] = useState(<span class="literal">null</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                clearAll();</span><br><span class="line">                getData();&#125;</span><br><span class="line">            ,[])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> storeData = <span class="keyword">async</span> (key,value) =&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">await</span> AsyncStorage.setItem(key, jsonValue)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.dir(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> getData = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">await</span> AsyncStorage.getItem(<span class="string">&#x27;@userKey&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(data).length === <span class="number">0</span>) &#123;</span><br><span class="line">                setUserKey(data.userKey)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> result =</span><br><span class="line">                    <span class="keyword">await</span> Axios.post(appURL + <span class="string">&#x27;/getNewUserKey&#x27;</span>, &#123; <span class="attr">appKey</span> : appKey &#125;)</span><br><span class="line">                setUserKey(result.data.userKey)</span><br><span class="line">                <span class="keyword">await</span> AsyncStorage.setItem(key, result.data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.dir(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> clearAll = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">await</span> AsyncStorage.clear()</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.dir(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> registrationComponent = <span class="xml"><span class="tag">&lt;<span class="name">Text</span>&gt;</span>initializing userKey:&#123;userKey&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line">    <span class="keyword">if</span> (userKey) &#123;</span><br><span class="line">        registrationComponent = </span><br><span class="line">        &lt;View&gt;</span><br><span class="line">            &lt;View style=&#123;&#123;<span class="attr">flexDirection</span> : <span class="string">&#x27;row&#x27;</span>, <span class="attr">flex</span> : <span class="number">1</span>, <span class="attr">justifyContent</span> : <span class="string">&#x27;space-around&#x27;</span>&#125;&#125;&gt;</span><br><span class="line">            &lt;Text&gt;UserKey = &#123;userKey&#125; &lt;/Text&gt;</span><br><span class="line">            &lt;Button title=<span class="string">&quot;clear user key (Dangerous only for debugging)&quot;</span></span><br><span class="line">                color=<span class="string">&#x27;red&#x27;</span></span><br><span class="line">                onPress = &#123;<span class="function">() =&gt;</span> &#123;clearAll()&#125;&#125; /&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &#123; registrationComponent &#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CloudRegistration;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="lesson-13-20211020">Lesson 13 2021/10/20</h1>
+<ol type="1">
+<li>Idea
+<ul>
+<li>Check asynchronous storage, if there is not data, fetch from cloud
+storage</li>
+</ul></li>
+</ol>
+<h1 id="lesson-14-20211101">Lesson 14 2021/11/01</h1>
+<ol type="1">
+<li>Container components
+<ul>
+<li>Demo <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; SafeAreaView, View&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ScreenTemplate = <span class="function">(<span class="params">&#123;header,footer,children&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;SafeAreaView style=&#123;&#123;<span class="attr">flex</span>:<span class="number">1</span>,<span class="attr">padding</span>:<span class="number">0</span>,<span class="attr">margin</span>:<span class="number">0</span>&#125;&#125;&gt;</span><br><span class="line">            &#123;header&#125;</span><br><span class="line">            &lt;View style=&#123;&#123;<span class="attr">flex</span>:<span class="number">1</span>, <span class="attr">backgroundColor</span>:<span class="string">&quot;#eee&quot;</span>&#125;&#125;&gt;</span><br><span class="line">                    &#123;children&#125;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">            &#123;footer&#125;</span><br><span class="line">        &lt;/SafeAreaView&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ScreenTemplate;</span><br><span class="line"><span class="comment">// Then you can use like this:</span></span><br><span class="line"><span class="keyword">import</span> ScreenTemplate <span class="keyword">from</span> <span class="string">&quot;./containers/screenTemplate.js&quot;</span>;</span><br><span class="line">&lt;ScreenTemplate </span><br><span class="line">    header=&#123;&#125;</span><br><span class="line">    footer=&#123;&#125;</span><br><span class="line">    children =&#123;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Javascript concepts from the book
+&lt;<Modern javascript for the impatient>&gt;
+<ul>
+<li>hapter 1 Values and Variables
+<ul>
+<li>Types: number, boolean, undefined/null, string, symbol, object</li>
+<li>Comments
+<ul>
+<li>Single line: <code>//</code></li>
+<li>Multiple line: /* */</li>
+</ul></li>
+<li>Variable declaration
+<ul>
+<li>Declared but not assigned variables have value of undefined</li>
+<li>Use let or constant, do not use var</li>
+</ul></li>
+<li>Numbers are all double-precision floating-point numbers
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// convert string to numbers</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">3.14</span></span><br><span class="line"><span class="keyword">const</span> y = <span class="built_in">parseFloat</span>(x);</span><br><span class="line"><span class="keyword">const</span> z = <span class="built_in">parseInt</span>(x);</span><br><span class="line"><span class="comment">// convert number to string</span></span><br><span class="line"><span class="keyword">const</span> c = y.toString();</span><br></pre></td></tr></table></figure></li>
+<li>null and undefined
+<ul>
+<li>Use null to denote the intentional absence of value</li>
+<li>Use undefined to indicate a declared but not assigned variable</li>
+</ul></li>
+<li>Template literal <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="string">&quot;world&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> greeting = <span class="string">`Hello, <span class="subst">$&#123;x.toUpperCase()&#125;</span>`</span>;</span><br></pre></td></tr></table></figure></li>
+<li>Objects
+<ul>
+<li>Objects in JavaScript are simply key/value pairs or properties</li>
+<li>The key should be a string</li>
+</ul></li>
+<li>JSON
+<ul>
+<li>JavaScript Object Notation is a lightweight text format of
+exchanging object data between applications</li>
+<li>All strings are inside double quotes</li>
+<li>Convert JavaScript object into JSON:
+<code>JSON.stringify(object)</code></li>
+<li>Convert JSON string to JavaScript object:
+<code>JSON.parse(jsonStr)</code></li>
+</ul></li>
+<li>Destructing
+<ul>
+<li>Swap the value of two variables: <code>[x, y] = [y, x]</code></li>
+<li>Rest declarations <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nums1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> [x, y, ...others] = nums1; <span class="comment">// others is [3,4]</span></span><br><span class="line"><span class="keyword">const</span> nums2 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> [x, y, ...others] = nums2; <span class="comment">// others is []</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Chapter 2 Control Structures
+<ul>
+<li>Any comparison involving NaN yields false</li>
+<li>If one operand is a number, the other operand is converted to a
+number <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;</span> &lt; <span class="number">5</span>; <span class="comment">// true, &quot;&quot; is converted to 0</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span> &lt; <span class="number">5</span>, <span class="comment">// false, &quot;Hello&quot; is converted to NaN</span></span><br><span class="line">[] &lt; <span class="number">5</span> <span class="comment">// true, [] is converted to 0</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>] &lt; <span class="number">5</span> <span class="comment">// false, [1, 2] is converted to NaN</span></span><br></pre></td></tr></table></figure></li>
+<li>If neither operand is a number, both are converted to strings
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] &lt; &#123;&#125; <span class="comment">// true, [1, 2, 3] is converted to &#x27;1,2,3&#x27;, &#123;&#125; to &#x27;[object Object]&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>Statements
+<ul>
+<li><code>if else</code></li>
+<li><code>switch</code></li>
+<li><code>for</code>, <code>for of</code>(loop on iterable object),
+<code>for in</code>(loop on object properties)</li>
+<li><code>while</code></li>
+<li><code>do while</code></li>
+<li><code>break</code>, <code>continue</code></li>
+<li><code>try catch</code></li>
+</ul></li>
+</ul></li>
+<li>Chapter 3 Functions and Functional Programming
+<ul>
+<li>Functional array processing <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> arr1 = arr.map(<span class="function"><span class="params">x</span> =&gt;</span> x * x); <span class="comment">// arr1 is [1, 4, 9]</span></span><br><span class="line">arr.forEach(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;<span class="built_in">console</span>.log(ele);&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Put "use strict" in your file to enable strict mode</li>
+<li>Test types <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="string">&quot;abc&quot;</span>;  </span><br><span class="line"><span class="comment">// method 1</span></span><br><span class="line"><span class="keyword">typeof</span> x === <span class="string">&#x27;string&#x27;</span>; <span class="comment">// true</span></span><br><span class="line"><span class="comment">// method 2</span></span><br><span class="line">x <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> [] === <span class="string">&quot;string&quot;</span>; <span class="comment">// true</span></span><br><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<li>Rest parameters and spread operator <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> avg = <span class="function">(<span class="params">first = <span class="number">0</span>, ...others</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> sum = first;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> others) &#123;</span><br><span class="line">        sum += value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum / (<span class="number">1</span> + others.length);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">avg([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// return 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">const</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">result = <span class="built_in">Math</span>.max(nums);  <span class="comment">// NaN, max cannot calculate maximum of one array</span></span><br><span class="line">result = <span class="built_in">Math</span>.max(...nums); <span class="comment">// 3, use ... operator to destruct the array</span></span><br></pre></td></tr></table></figure></li>
+<li>Exceptions
+<ul>
+<li>Throw: <code>throw Error(reasonStr)</code></li>
+<li>Catch</li>
+<li>Finally</li>
+</ul></li>
+</ul></li>
+<li>Chapter 9 Asynchronous Programming
+<ul>
+<li>Concurrent tasks
+<ul>
+<li>A program is concurrent when it manages multiple activities with
+overlapping timelines</li>
+<li>A JavaScript program runs in a single thread, so time-consuming
+operations in JavaScript are asynchronous</li>
+</ul></li>
+<li>Promise
+<ul>
+<li>A promise is an action that will produce a result at some point in
+the future, unless it dies with an exception</li>
+<li>A promise has a resolve handler and a reject handler
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// template</span></span><br><span class="line"><span class="keyword">const</span> myPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; </span><br><span class="line">    <span class="keyword">const</span> callback = <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">        . . .</span><br><span class="line">        <span class="keyword">if</span> (success) resolve(result) <span class="keyword">else</span> reject(reason)</span><br><span class="line">    &#125;</span><br><span class="line">    invokeTask(callback)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>You can use promise chain with <code>.then</code></li>
+</ul></li>
+<li>Async functions
+<ul>
+<li>Use <code>await/async</code> syntax with promise and asynchronous
+functions</li>
+<li>Usage <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Arrow functions</span></span><br><span class="line"><span class="keyword">async</span> (url) =&gt; &#123;...&#125;</span><br><span class="line"><span class="comment">// Methods</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">load</span>(<span class="params">url</span>)</span> &#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Named functions</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params">url</span>) </span>&#123;...&#125;</span><br><span class="line"><span class="comment">// Object literal methods</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">load</span>(<span class="params">url</span>)</span> &#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Async return values
+<ul>
+<li>An async function returns a promise</li>
+<li>In the fetch API, you should use <code>await result.json()</code>,
+because JSON is processing asynchronously</li>
+</ul></li>
+<li>Concurrent await
+<ul>
+<li>Successive calls to await are done one after another, you can let
+them execute concurrently when necessary <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sequential execution</span></span><br><span class="line"><span class="keyword">const</span> img1 = <span class="keyword">await</span> loadImage(url1);</span><br><span class="line"><span class="keyword">const</span> img2 = <span class="keyword">await</span> loadImage(url2);</span><br><span class="line"><span class="comment">// Concurrent execution</span></span><br><span class="line"><span class="keyword">const</span> [img1, img2] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(loadImage(url1), loadImage(url2));</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Chapter 10 Modules
+<ul>
+<li>The module concept
+<ul>
+<li>A module provides features for programmers, called the exported
+features. Any features that are not exported are private to the
+module</li>
+<li>A module also specified on which other modules it depends</li>
+<li>Modules manage name conflicts</li>
+</ul></li>
+<li>ECMAScript modules
+<ul>
+<li>Node.js implements a module system (called Common.js) that manages
+module dependencies. When a module is needed, it and its dependencies
+are loaded synchronously</li>
+<li>The AMD (Asynchronous Module Definition) standard defines a system
+for loading modules asynchronously, which is better suited for
+browser-based applications</li>
+<li>ECMAScript modules improve on both of these systems</li>
+</ul></li>
+</ul></li>
+</ul></Modern></li>
+</ol>
+<h1 id="lesson-15-20211103">Lesson 15 2021/11/03</h1>
+<ol type="1">
+<li>Express
+<ul>
+<li>MERN stack(MongoDB, Express.JS, React, Nood.JS) <img src="/images/Courses/COSI153A/1.png"></li>
+<li>Express is a fast, unopinionated, minimalist web framework for
+Node.js</li>
+<li>Installation
+<ul>
+<li><code>npm install express --save for express</code></li>
+<li><code>npm install -g express-generator</code> for the
+express-generator</li>
+<li>You can run your file with express using <code>node xxx.js</code>,
+express-generator creates the scaffolding for a full app with numerous
+JavaScript files, Jade templates, and sub-directories for various
+purposes</li>
+<li>Create express project using express-generator
+<ul>
+<li><code>express projectName</code></li>
+<li><code>cd projectName</code>, then <code>npm install</code></li>
+<li>Start
+<ul>
+<li>On MacOS or Linux: <code>DEBUG=projectName:* npm start</code></li>
+<li>Windows Command Prompt:
+<code>set DEBUG=projectName:* &amp; npm start</code></li>
+<li>Windows PowerShell:
+<code>$env:DEBUG='projectName:*'; npm start</code></li>
+<li>Or simply: <code>npm start</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Demo <code>app.js</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.send(<span class="string">&#x27;Hello World!&#x27;</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Example app listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Some settings <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="comment">// view engine setup</span></span><br><span class="line">app.set(<span class="string">&#x27;views&#x27;</span>, path.join(__dirname, <span class="string">&#x27;views&#x27;</span>));</span><br><span class="line">app.set(<span class="string">&#x27;view engine&#x27;</span>, <span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = app;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<ul>
+<li>Import and require
+<ul>
+<li>Express is based on Node.js, the module system syntax in Node.js is
+<code>require</code></li>
+<li>Plain JavaScript is based on ES6, the module system syntax is
+<code>import</code> and <code>export</code></li>
+<li><code>import</code> must be at the beginning of a file, but
+<code>require</code> can be anywhere in a file</li>
+<li>API
+<ul>
+<li><code>app.get()</code>: Routes HTTP GET requests to the specified
+path with the specified callback functions <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>;</span><br><span class="line">app.get(<span class="string">&#x27;path&#x27;</span>, <span class="keyword">async</span> (req, req) =&gt; &#123;</span><br><span class="line">    counter += <span class="number">1</span>;</span><br><span class="line">    res.send(<span class="string">`Counter = <span class="subst">$&#123;counter&#125;</span> `</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li><code>app.post()</code>: Routes HTTP POST requests to the specified
+path with the specified callback functions <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> messages = [];</span><br><span class="line">app.use(<span class="string">&quot;/messages&quot;</span>, </span><br><span class="line">    <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> msg = req.body;</span><br><span class="line">        messages.push(msg);</span><br><span class="line">        res.json(messages);</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>SQL vs NoSQL database
+<ul>
+<li>Difference
+<ul>
+<li>SQL db is relational, NoSQL db is not relational</li>
+<li>SQL db is based on table, NoSQL db can be based on document,
+key/value pair</li>
+<li>There is automatic sql optimization in sql db</li>
+</ul></li>
+<li>MondoDB
+<ul>
+<li>Local Server Installation
+<ul>
+<li>Download and install MongoDB</li>
+<li>To use in shell, install MongoDB shell(mongosh)</li>
+</ul></li>
+<li>MongoDB Atlas(Cloud version)
+<ul>
+<li>Create new database</li>
+<li>Configure database access and network access</li>
+<li>Connection
+<ul>
+<li>Download MongoDb compass and use that to connect MongoDB Atlas</li>
+<li>Connect using mongosh</li>
+</ul></li>
+</ul></li>
+<li>Shell CRUD commands
+<ul>
+<li>Query databases: <code>show dbs;</code></li>
+<li>Switch to one database: <code>use dbName;</code></li>
+<li>Query collections: <code>show collections;</code></li>
+<li>Read: query document:
+<ul>
+<li>Query all: <code>db.cName.find(&#123;&#125;);</code>, or
+<code>db.cName.find();</code> this is just
+<code>select * from cName;</code></li>
+<li>Query with equal condition:
+<code>db.cName.find(&#123;key: value&#125;);</code>, this is just
+<code>select * from cName where key = value;</code></li>
+<li>Query with and:
+<code>db.cName.find(&#123;k1: v1, k2: &#123;$lt: v2&#125;&#125;);</code>, this is just
+<code>select * from cName where k1 = v1 and k2 &lt; v2;</code></li>
+<li>Query with or:
+<code>db.cName.find(&#123;$or: [&#123;k1: v1&#125;, &#123;k2: &#123;$gt: v2&#125;&#125;]&#125;);</code>, this is
+just <code>select * from cName where k1 = v1 or k2 &gt; v2;</code></li>
+</ul></li>
+<li>Create: insert document:
+<ul>
+<li>Insert one document:
+<code>db.cName.insertOne(&#123;k1 : v1, ..., kn: vn&#125;);</code>, this is just
+<code>insert into cName (k1, ..., kn) values (v1, ..., vn);</code></li>
+<li>Insert multiple documents:
+<code>db.cName.insertMany(&#123;k11: v11, ..., k1n: v1n&#125;, ..., &#123;km1: vm1, ..., kmn: vmn&#125;);</code>,
+this is just
+<code>insert into cName(k1, ..., kn) values (v11, ..., v1n), ... ,(vm1, ..., vmn);</code></li>
+</ul></li>
+<li>Update: update document
+<ul>
+<li>Update one document:
+<code>db.cName.updateOne(&#123;k1 : v1&#125;, &#123;$set: &#123;k1: k2&#125;, $inc: &#123;k2: 1&#125;&#125;);</code>,
+this is just
+<code>update cName set k1 = v2, k2 = k2 + 1 where k1 = v1;</code></li>
+<li>Update multiple documents:
+<code>db.cName.updateMany(&#123;k1: v1&#125;, &#123;$set: &#123;k1: v2&#125;&#125;);</code>, this is
+just <code>update cName set k1 = v2 where k1 = v1;</code></li>
+</ul></li>
+<li>Delete: delete document
+<ul>
+<li>Delete one document: <code>db.cName.deleteOne(&#123;k1: v1&#125;);</code>,
+this is just <code>delete from cName where k1 = v1;</code></li>
+<li>Delete multiple documents:
+<code>db.cName.deleteMany(&#123;k1: v1&#125;);</code>, this is just
+<code>delete from cName where k1 = v1;</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Connect MongoDB in Express
+<ul>
+<li><code>npm install mongodb</code> in project directory</li>
+<li>Add the following code in app.js <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; MongoClient &#125; = <span class="built_in">require</span>(<span class="string">&#x27;mongodb&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">&quot;urlString&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> MongoClient(uri, &#123; <span class="attr">useNewUrlParser</span>: <span class="literal">true</span>, <span class="attr">useUnifiedTopology</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">client.connect(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">const</span> collection = client.db(<span class="string">&quot;testing&quot;</span>).collection(<span class="string">&quot;collection1&quot;</span>);</span><br><span class="line">    collection.find().toArray(<span class="function">(<span class="params">err, result</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(err) &#123;</span><br><span class="line">            <span class="keyword">throw</span> err;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">client.close();</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Some concepts
+<ul>
+<li>Collection: a collection in MongoDb is equivalent to a table in
+RDBMS, mongoDB has flexible Schema, so documents in one collection do
+not need to have the same set of fields and the data type for a field
+can differ</li>
+<li>Document: MongoDB stores data records as BSON documents. BSON is a
+binary representation of JSON documents, though it contains more data
+types than JSON</li>
+<li>Schema: a document schema is a JSON object that allows you to define
+the shape and content of documents and embedded documents in a
+collection</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-16-20211108">Lesson 16 2021/11/08</h1>
+<ol type="1">
+<li>mongoose
+<ul>
+<li>mongoose is an elegant mongodb object modeling for node.js</li>
+<li>Define a Schema
+<ul>
+<li>Permitted types in a schema: <code>String</code>,
+<code>Number</code>, <code>Date</code>, <code>Buffer</code>,
+<code>Boolean</code>, <code>Mixed</code>, <code>ObjectId</code>,
+<code>Array</code>, <code>Decimal128</code>, <code>Map</code></li>
+<li>By default, mongoose adds an <code>_id</code> property to the schema
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">&quot;mongoose&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>  userSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    email: <span class="built_in">String</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = mongoose.model(<span class="string">&quot;User&quot;</span>, userSchema);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = User;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Create a model
+<ul>
+<li>You need to convert a schema into a model. Models are constructors
+compiled from schema definitions. An instance of a model is a
+document</li>
+<li>Create a model: const User = mongoose.model("User", userSchema)</li>
+</ul></li>
+<li>Queries
+<ul>
+<li><code>Model.find()</code>, <code>Model.findOne()</code></li>
+<li><code>Model.updateOne()</code>, <code>Model.updateMany()</code></li>
+<li><code>Model.deleteOne()</code>, <code>Model.deleteMany()</code></li>
+<li><code>query.then()</code></li>
+</ul></li>
+<li>Connections: <code>mongoose.connect(uriString)</code></li>
+</ul></li>
+</ol>
+<h1 id="lesson-17-20211110">Lesson 17 2021/11/10</h1>
+<ol type="1">
+<li>Heroku
+<ul>
+<li>Installation
+<ul>
+<li>Download installer</li>
+<li>Or run <code>npm install -g heroku</code></li>
+<li>Check heroku version: <code>heroku --version</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="lesson-18-20211115">Lesson 18 2021/11/15</h1>
+<h1 id="lesson-19-20211117">Lesson 19 2021/11/17</h1>
+<h1 id="lesson-20-20211122">Lesson 20 2021/11/22</h1>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/09/01/COSI-153A-Mobile-Development/" title="COSI 153A Mobile Development">https://yanxuanshaozhu.github.io/2021/09/01/COSI-153A-Mobile-Development/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Mobile-Development/" rel="tag"># Mobile Development</a>
+              <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/30/COSI-12B-Java-Programming/" rel="prev" title="COSI 12B Java Programming">
+      <i class="fa fa-chevron-left"></i> COSI 12B Java Programming
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/12/Common-Java-And-Python-API/" rel="next" title="Common Java And Python API">
+      Common Java And Python API <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-01-20210830"><span class="nav-number">1.</span> <span class="nav-text">Lesson 01 2021&#x2F;08&#x2F;30</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-02-20210901"><span class="nav-number">2.</span> <span class="nav-text">Lesson 02 2021&#x2F;09&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-03-20210913"><span class="nav-number">3.</span> <span class="nav-text">Lesson 03 2021&#x2F;09&#x2F;13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-04-20210915"><span class="nav-number">4.</span> <span class="nav-text">Lesson 04 2021&#x2F;09&#x2F;15</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-05-20210920"><span class="nav-number">5.</span> <span class="nav-text">Lesson 05 2021&#x2F;09&#x2F;20</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-06-20210922"><span class="nav-number">6.</span> <span class="nav-text">Lesson 06 2021&#x2F;09&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-07-20210929"><span class="nav-number">7.</span> <span class="nav-text">Lesson 07 2021&#x2F;09&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-08-20211004"><span class="nav-number">8.</span> <span class="nav-text">Lesson 08 2021&#x2F;10&#x2F;04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-09-20211006"><span class="nav-number">9.</span> <span class="nav-text">Lesson 09 2021&#x2F;10&#x2F;06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-10-20211011"><span class="nav-number">10.</span> <span class="nav-text">Lesson 10 2021&#x2F;10&#x2F;11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-11-20211013"><span class="nav-number">11.</span> <span class="nav-text">Lesson 11 2021&#x2F;10&#x2F;13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-12-20211018"><span class="nav-number">12.</span> <span class="nav-text">Lesson 12 2021&#x2F;10&#x2F;18</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-13-20211020"><span class="nav-number">13.</span> <span class="nav-text">Lesson 13 2021&#x2F;10&#x2F;20</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-14-20211101"><span class="nav-number">14.</span> <span class="nav-text">Lesson 14 2021&#x2F;11&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-15-20211103"><span class="nav-number">15.</span> <span class="nav-text">Lesson 15 2021&#x2F;11&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-16-20211108"><span class="nav-number">16.</span> <span class="nav-text">Lesson 16 2021&#x2F;11&#x2F;08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-17-20211110"><span class="nav-number">17.</span> <span class="nav-text">Lesson 17 2021&#x2F;11&#x2F;10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-18-20211115"><span class="nav-number">18.</span> <span class="nav-text">Lesson 18 2021&#x2F;11&#x2F;15</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-19-20211117"><span class="nav-number">19.</span> <span class="nav-text">Lesson 19 2021&#x2F;11&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lesson-20-20211122"><span class="nav-number">20.</span> <span class="nav-text">Lesson 20 2021&#x2F;11&#x2F;22</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

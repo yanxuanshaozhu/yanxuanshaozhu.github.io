@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Chapter 1 可靠，可扩展与可维护的应用系统 前言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDIA Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/08/08/DDIA-Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Chapter 1 可靠，可扩展与可维护的应用系统 前言">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-08T14:18:02.000Z">
+<meta property="article:modified_time" content="2024-07-13T15:28:39.792Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="System Design">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>DDIA Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DDIA Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-08 10:18:02" itemprop="dateCreated datePublished" datetime="2021-08-08T10:18:02-04:00">2021-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-13 11:28:39" itemprop="dateModified" datetime="2024-07-13T11:28:39-04:00">2024-07-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="chapter-1-可靠可扩展与可维护的应用系统">Chapter 1
+可靠，可扩展与可维护的应用系统</h1>
+<h2 id="前言">前言</h2>
+<span id="more"></span>
+<ol type="1">
+<li>系统分类
+<ul>
+<li>数据密集型(data-intensive):
+数据量，数据的复杂程度何数据的快速多变性是限制</li>
+<li>计算密集型(compute-intensive): CPU处理能力是限制</li>
+</ul></li>
+<li>常见系统构成:
+<ul>
+<li>数据库: 存储数据</li>
+<li>高速缓存: 缓存复杂或者代价昂贵的操作，加速访问</li>
+<li>索引: 关键字搜索和过滤</li>
+<li>流式处理: 持续发送消息到另一个进程，异步处理</li>
+<li>批处理: 定期处理大量数据</li>
+</ul></li>
+</ol>
+<h2 id="认识数据库系统">认识数据库系统</h2>
+<ol type="1">
+<li>可以把数据库，队列，高速缓存等系统归为一大类数据系统(data
+systems)得原因:
+<ul>
+<li>随着技术的发展，一些针对不同应用场景进行优化得工具出现了，他们不能被归为传统类型</li>
+<li>系统需求变得更加广泛，单个组件往往无法完成所有数据处理和存储得需求。需要将任务分解，每个组件负责高效得完成其中一部分，多个组件依靠应用层代码驱动有机衔接起来</li>
+</ul></li>
+<li>系统设计需要注意的问题
+<ul>
+<li>Reliability:
+在出现意外得时候，系统应该可以正常运转，虽然性能可能有所降低</li>
+<li>Scalability: 随着规模得增长，系统应该以合理得方式来匹配这种增长</li>
+<li>Maintainability:
+随着时间推移，在对现有场景或者新场景进行适配的时候，系统应该高速运转</li>
+</ul></li>
+</ol>
+<h2 id="可靠性">可靠性</h2>
+<ol type="1">
+<li>系统的期望
+<ul>
+<li>应用可以执行用户希望的功能</li>
+<li>应用可以容忍用户操作错误或者不正确的使用方法</li>
+<li>系统可以应对典型场景，合理负载压力和数据量</li>
+<li>系统可以防止未经授权的访问和滥用</li>
+</ul></li>
+<li>可容错(fault-tolerant/resilient)系统:
+即使发生了错误，系统应该可以继续正常工作</li>
+<li>Fault != Failure:
+<ul>
+<li>Fault: 组件偏离正常规格</li>
+<li>Failure: 整个系统停止</li>
+<li>不太可能组件故障概率为0，我们应该设计容错机制避免故障引起失效</li>
+<li>一般来说倾向于容忍故障而不是预防故障，但是对于安全故障来说应该提前预防</li>
+</ul></li>
+<li>硬件故障
+<ul>
+<li>磁盘平均无故障时间: 10~50年</li>
+<li>一般应对硬件故障采用硬件冗余: 磁盘配置RAID, 服务器配备双电源,
+热拔插CPU, 数据中心备用电源, 发电机</li>
+<li>随着数据量和计算需求增加，一些云平台可能在硬件没问题的情况下软件崩溃，这时应该注重整体灵活性和弹性而非单机可靠性，因而需要软件容错</li>
+</ul></li>
+<li>软件错误
+<ul>
+<li>一般来说硬件故障是独立的，但是软件错误可能跨节点导致系统故障</li>
+<li>一般软件错误需要进行测试，进程隔离，允许进程崩溃重启，监控生产环境的行为表现等操作才能解决</li>
+</ul></li>
+<li>人为失误
+<ul>
+<li>防止人为失误的多种方法:</li>
+<li>以最小出错的方式来设计系统:
+更多更详细的规定v.s.人们可能存在的逆反</li>
+<li>想办法分离最容易出错的地方，容易发生故障的接口:
+提供一个尽可能完备的砂箱环境来模拟生产环境</li>
+<li>充分的测试:
+单元测试，全系统集成测试，手动测试，自动化测试注意边界条件</li>
+<li>出现人为失误时提供快速恢复机制:
+快速回滚，滚动发布代码，数据校验工具等</li>
+<li>设置详细而清晰的监控子系统，包括性能指标和错误率</li>
+<li>推行管理流程并且加以培训</li>
+</ul></li>
+<li>可靠性的重要性
+<ul>
+<li>无论是强制指标还是非强制指标，都应该对可靠性有着高要求</li>
+<li>有时为了成本考虑，可以适度降低非关键系统的可靠性要求</li>
+</ul></li>
+</ol>
+<h2 id="可扩展性">可扩展性</h2>
+<ol type="1">
+<li>随着负载增加，可靠系统有可能变成不可靠的</li>
+<li>描述负载
+<ul>
+<li>负载可以用称为负载参数的若干数字来描述</li>
+<li>具体负载参数取决于系统的体系结构:
+比如Web服务器的每秒请求处理次数，数据库中写入的比例，聊天室的活动用户书量，缓存命中率等</li>
+<li>有时候平均值很重要，有时候系统瓶颈来自于少数的峰值</li>
+</ul></li>
+<li>描述性能
+<ul>
+<li>批处理系统如Hadoop中可以用吞吐量(thoughput)，线性系统可以用服务响应时间(response
+time)</li>
+<li>延迟(latency): 花费在处理请求上的时间</li>
+<li>响应时间(response time):
+客户端看到的，除了处理请求时间，还包括来回网络延迟和各种排队延迟。响应时间不应该被视作一个常数，而应该视为一种分布</li>
+<li>随机因素影响: 上下文切换， 进程调度，
+网络数据包丢失和TCP重传，垃圾回收暂停，缺页中断和瓷盘I/O</li>
+<li>描述响应时间:
+<ul>
+<li>平均给响应时间</li>
+<li>中位数响应时间(p50)</li>
+<li>阈值响应时间(p95, p99, p999)</li>
+<li>要考虑长尾效应(tail latencies):
+响应比较慢可能是因为数据量大，比如购物价值多</li>
+<li>要注意成本效益分析:
+优化分位数响应阈值的成本是否小于优化带来的收益</li>
+</ul></li>
+</ul></li>
+<li>应对负载增加的方法
+<ul>
+<li>针对负载增加而设计的构架一般不太可能应对超出设计目标10倍的实际负载</li>
+<li>垂直扩展(升级更强大的机器)，水平扩展(将负载分布到集群中)</li>
+<li>有一些弹性特征的系统可以自动检测负载增加，然后自动添加更多计算资源。一些手动扩展的系统需要人工分析性能表现和添加资源。如果负载度不可测，自动弹性系统会更高效，手动方式可以减少执行期间的意外情况</li>
+<li>无状态服务进行分布式扩展比有状态服务更容易</li>
+<li>超大规模的系统往往针对特定应用而高度定制，很难有一种通用的结构</li>
+<li>一般来说，可扩展架构通常是从通用模块逐步构建而来，往往有规可循</li>
+</ul></li>
+</ol>
+<h2 id="可维护性">可维护性</h2>
+<ol type="1">
+<li>软件系统总体成本里开发成本只占一小部分，绝大部分成本是整个生命周期内持续的投入</li>
+<li>软件系统的三个设计原则:
+<ul>
+<li>可运维性，方便运营团队保持系统平稳运行:
+<ul>
+<li>监视系统健康，出现问题及时恢复服务，追踪问题原因</li>
+<li>保持软件和平台更新</li>
+<li>预测和防范未来的问题</li>
+<li>制定流程规范和规范的工具包</li>
+</ul></li>
+<li>简单性，使得工程师能够轻松理解系统:
+<ul>
+<li>复杂性的表现:
+状态空间膨胀，模块紧耦合，相互依赖关系，命名和术语不一致</li>
+<li>简化系统设计并不是减少系统功能，主要是消除意外方面的复杂性(坏的软件实现带来的问题)</li>
+<li>一个主要手段:
+抽象，从而隐藏细节，提供干净易懂的对外接口。好的抽象设计是很有挑战的</li>
+</ul></li>
+<li>可演化性，后续工程师可以轻松改进
+<ul>
+<li>可以使用敏捷开发模式: TDD(Test driven design)和重构</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="chapter-2-数据模型和查询语言">Chapter 2 数据模型和查询语言</h1>
+<h2 id="前言-1">前言</h2>
+<ol type="1">
+<li>大多数应用程序可以表示为数据模型的一层层叠加，下面是一个例子(可能还有更多的中间层，但是每层都通过一个简介的数据模型隐藏下一层的复杂性):
+<ul>
+<li>观测现实世界，抽象出对象或者数据结构，以及操作对象/数据结构的API来进行建模</li>
+<li>在需要对对象/数据结构进行存储的时候，可以采用通过数据模型(JSON/XML文档/表/图)来表示</li>
+<li>用何种内存/磁盘/网络的字节格式来表示上述存储的对象/数据结构，数据表示需要支持CURD</li>
+<li>底层上考虑用电流/脉冲波/磁场等表示字节</li>
+</ul></li>
+</ol>
+<h1 id="chapter-3-storage-and-retrieval">Chapter 3 Storage and
+Retrieval</h1>
+<h2 id="data-structures-that-power-your-database">Data Structures That
+Power Your Database</h2>
+<ol type="1">
+<li>Overview
+<ul>
+<li>An index is an additional structure that is derived from the primary
+data</li>
+<li>Many database allows you to add and remove indexes without affecting
+the contents of the database</li>
+<li>Index is mainly used to speed up queries</li>
+<li>Any kind of index usually slows down writes, because the index also
+needs to be updated every time data is written</li>
+</ul></li>
+<li>Hash Indexes
+<ul>
+<li>Key-value indexes are very common, and it's useful building block
+for more complex indexes</li>
+<li>If the data storage consists only of appending to a file, whenever
+you append a new key-value pair for the file, you also update the hash
+map to reflect the offset of the data you just wrote. When you want to
+look up a value, use the hash map to find the offset in the data file,
+seek to that location, and read the value</li>
+<li>Avoid storage shortage: break the log into segments of certain size
+by closing a segment file when it reaches a certain size, and making
+subsequent writes to a new segment file. We can then perform compaction
+on these frozen segments by throwing away duplicate keys in the log, and
+keeping only the most recent update for each key. We can also merge
+compacted segments into a single segment</li>
+<li>Issues and solutions
+<ul>
+<li>File format: a fast and simple log format should by binary format
+file</li>
+<li>Deleting records: you need to append a special deletion record to
+the data file (called tombstone), the actual deletion happens during
+compaction</li>
+<li>Crash recovery: if the hash map is totally in memory, then recovery
+after crash could be painful, you can save a snapshot of each segment's
+hash map on disk to speed up recovery</li>
+<li>Partially written records: use checksum to ensure data
+integrity</li>
+<li>Concurrency control: use only one writer thread to ensure
+concurrency</li>
+</ul></li>
+<li>Hash index limitations
+<ul>
+<li>The hash tale must fit in memory, so the amount of keys cannot be
+very large</li>
+<li>Range queries are not efficient, you need to loop up each key in the
+range individually</li>
+</ul></li>
+</ul></li>
+<li>SSTables and LSM-Tree
+<ul>
+<li>In hash index, the key-value pairs appear in the order that they
+were written, and values later in the log take precedence over values
+for the same key earlier in the log</li>
+<li>In SSTable (sorted string table), we require that the sequence of
+key-value pairs is sorted by key</li>
+<li>Advantages of SSTable
+<ul>
+<li>Merging segments is simple and efficient, the approach is like the
+merging used in the merge sort algorithm</li>
+<li>In order to find a particular key in the file, you no longer need to
+keep an index of all the keys in the memory</li>
+<li>Since read requests need to scan over several key-value pairs in the
+requested range anyway, it is possible to group those record into a
+block and compress it before writing it to disk</li>
+</ul></li>
+<li>Constructing and maintaining SSTables
+<ul>
+<li>When a write comes int, add it to an in-memory balanced tree data
+structure called memtable</li>
+<li>When the memtable gets bigger than some threshold, write it out to
+disk as an SSTable file</li>
+<li>In order to serve a read request, first try to find the key in the
+memtable, then in the most recent on-disk segment, then in the
+next-older segment etc</li>
+<li>From time to time, run a merging and compaction process in the
+background to combine segment files and to discard overwritten or
+deleted values</li>
+<li>If the database crashes, the most recent writes (in the memtable)
+are lost. In order to avoid this problem, we can keep a separate log on
+disk to which every write is immediately appended. Every time the
+memtable is written out to an SSTable, the corresponding log can be
+discarded</li>
+</ul></li>
+<li>Making an LSM-Tree out of SSTables
+<ul>
+<li>LSM-Tree (Log-Structured Merge Tree), maintain key-value pairs. LSM
+trees maintain data in two or more separate structures, each of which is
+optimized for its respective underlying storage medium; data is
+synchronized between the two structures efficiently, in batches</li>
+<li>LSM uses memtable in memory and SSTable on disk, the point is that
+sequential access is way faster than random access on disk</li>
+</ul></li>
+<li>Performance optimization
+<ul>
+<li>The LSM-tree algorithm can be slow when looking up keys that do not
+exist in the database, you can use Bloom filters to speed up these
+queries</li>
+<li>There are also different strategies to determine the order and
+timing of how SSTables are compacted and merged</li>
+</ul></li>
+</ul></li>
+<li>B-Trees
+<ul>
+<li>Introduction
+<ul>
+<li>B-tree is the standard index implementation in almost all relational
+databases, and many nonrelational databases use them too</li>
+<li>B-trees break the database down into fixed-size blocks or pages,
+traditionally 4Kb in size, and read or write one page at a time. Each
+page can be identified using an address or location, which allows one
+page to refer to another. We can use these page references to construct
+a tree of pages</li>
+<li>A B-tree with n keys always has a depth of</li>
+<li>Branching factor: the number of references to child pages in one
+page of the B-tree</li>
+<li>A four-level tree of 4KB pages with a branching factor of 500 can
+store up to 256TB</li>
+</ul></li>
+<li>Making B-trees reliable
+<ul>
+<li>The basic underlying write operation of a B-tree is to overwrite a
+page on disk with new data, the overwrite does not change the location
+of the page</li>
+<li>Some operations require several different pages to be overwritten
+(split/merge is involved), this can be dangerous, because if the
+database crashes after only some of the pages have been written, you end
+up with a corrupted index</li>
+<li>In order to make the database resilient to crashed, it is common for
+B-tree implementations to include an additional data structure on disk:
+a write-ahead log(WAL, also known as a redo log). The WAL is an
+append-only file to which every B-tree modification must be written
+before it can be applied to the pages of the tree itself. When the
+database comes back up after crash, this log is used to restore the
+B-tree back to a consistent state</li>
+</ul></li>
+<li>B-tree optimizations
+<ul>
+<li>Instead of overwriting pages and maintaining a WAL for crash
+recovery, some databases use a copy-on-write scheme</li>
+<li>We can save space in pages by not storing the entire key, but
+abbreviating it. Packing more keys into a page allows the tree to have a
+higher branching factor, and thus fewer levels (this variant is known as
+B+ tree)</li>
+<li>In general, pages can be positioned anywhere on disk, there is
+nothing requiring pages with nearby key ranges to be nearby on disk.
+Many B-tree implementation try to lay out the tree so that leaf pages
+appear in sequential order on dis, maintaining this property is
+difficult as the tree grows</li>
+</ul></li>
+</ul></li>
+<li>Comparing B-Trees and LSM-Trees
+<ul>
+<li>B-tree implementations are generally more mature than LSM-tree
+implementations</li>
+<li>As a rule of thumb, LSM-trees are typically faster for writes, but
+B-trees are thought to be faster for reads</li>
+<li>Advantages of LSM-trees
+<ul>
+<li>A B-tree index must write every piece of data at least twice, once
+to the WAL and once to the tree page itself (and perhaps again as pages
+are split)</li>
+<li>Write amplification: one write to the database resulting in multiple
+writes to the disk over the course of the database's lifetime</li>
+<li>Advantage 1: LSM-trees have higher write throughput than B-trees,
+partly because they have lower write amplification, and partly because
+they sequentially write compact SSTable files rather than having to
+overwrite several pages in the tree</li>
+<li>Advantage 2: LSM-trees can be compressed better, and thus often
+produce smaller files on disk (B-trees storage engines have
+fragmentation, LSM-trees periodically use compression to remove
+fragmentation)</li>
+</ul></li>
+<li>Downsides of LSM-trees
+<ul>
+<li>Downside 1: the compaction process can sometimes interfere with the
+performance of ongoing reads and writes. The impact on throughput and
+average response time is usually small, but at higher percentiles the
+response time of queries to LSM-trees based engines can be quite
+high</li>
+<li>Downside 2: the disk's finite write bandwidth needs to be shared
+between the initial write and the compaction threads running in the
+background, this problem is significant when the write throughput is
+high</li>
+<li>Downside 3: log-structured storage engine may have multiple copies
+of the same key in different segments, then it's harder to offer strong
+transactional semantics</li>
+</ul></li>
+</ul></li>
+<li>Other Indexing Structures
+<ul>
+<li>Introduction
+<ul>
+<li>The key-value indexes are like a primary key index in the relational
+model. A primary key uniquely identified one row in a relational table,
+or one document in a document database, or one vertex in a graph
+database</li>
+<li>Secondary indexes are also very common. You can create several
+indexes on the same table in relational databases using the CREATE INDEx
+command, and they are often crucial for performing joins
+efficiently</li>
+<li>A secondary index does not provide unique key-value pairs, i.e.,
+there might be many rows with the same key</li>
+<li>Both B-trees and log-structured indexes can be used as secondary
+indexes</li>
+</ul></li>
+<li>Storing values within the index
+<ul>
+<li>The key in an index is the thing that queries search for, but the
+value can be one of the two things: it could be the actual row in
+question, or it could be a reference to the row stored elsewhere (the
+actual place where rows are stored is called a heap file)</li>
+<li>Cluster index: the values in index are the actual rows</li>
+<li>Covering index/index with included columns: a compromise between a
+cluster index and a non-clustered index, it stores some of a table's
+columns with the index</li>
+</ul></li>
+<li>Multi-column indexes
+<ul>
+<li>The most common type of multi-column index is called a concatenated
+index, which simply combines several fields into one key by appending
+one column to another</li>
+<li>Query with multiple columns cannot be answered using the standard
+B-tree or LSM-tree index efficiently</li>
+</ul></li>
+<li>Full-text search and fuzzy indexes
+<ul>
+<li>Fuzzy queries: search for similar keys, misspelled words</li>
+<li>Full-text search engines commonly allow a search for one word to be
+expanded to include synonyms of the word, to ignore grammatical
+variations of words, and to search for occurrences of words near other
+in the same document, and support various other features that depend on
+linguistic analysis of the text</li>
+</ul></li>
+<li>Keeping everything in memory
+<ul>
+<li>Some in-memory key-value stores are intended for caching use only,
+where it's acceptable for data to be lost if a machine is restarted</li>
+<li>The performance advantage of in-memory databases is not due to the
+fact that they don't need to read from disk, they can be faster because
+they can avoid the overheads of encoding in-memory data structures in a
+form that can be written to disk</li>
+<li>In-memory databases also provide data models that are difficult to
+implement with disk-based indexes ## Transaction Processing or
+Analytics</li>
+</ul></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/08/08/DDIA-Notes/" title="DDIA Notes">https://yanxuanshaozhu.github.io/2021/08/08/DDIA-Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/System-Design/" rel="tag"># System Design</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/05/Learn%20Python%20Web%20Scraper/" rel="prev" title="Learn Python Web Scraper(Chinese Version)">
+      <i class="fa fa-chevron-left"></i> Learn Python Web Scraper(Chinese Version)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/26/COSI-29A-Discrete-Structure/" rel="next" title="COSI 29A Discrete Structure">
+      COSI 29A Discrete Structure <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-%E5%8F%AF%E9%9D%A0%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1
+可靠，可扩展与可维护的应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">认识数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 数据模型和查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-storage-and-retrieval"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 Storage and
+Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-structures-that-power-your-database"><span class="nav-number">3.1.</span> <span class="nav-text">Data Structures That
+Power Your Database</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

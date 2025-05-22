@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="My Blog">
 <meta property="og:description" content="Lecture 01 2018&#x2F;08&#x2F;22 1 The Zen of Python: 1import this">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-03T15:20:35.000Z">
+<meta property="article:published_time" content="2021-02-04T04:20:35.000Z">
 <meta property="article:modified_time" content="2021-04-05T11:58:21.143Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta property="article:tag" content="CS61A">
@@ -123,19 +123,29 @@
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
 
   </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
@@ -189,14 +199,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-02-03 23:20:35" itemprop="dateCreated datePublished" datetime="2021-02-03T23:20:35+08:00">2021-02-03</time>
+              <time title="Created: 2021-02-03 23:20:35" itemprop="dateCreated datePublished" datetime="2021-02-03T23:20:35-05:00">2021-02-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-05 19:58:21" itemprop="dateModified" datetime="2021-04-05T19:58:21+08:00">2021-04-05</time>
+                <time title="Modified: 2021-04-05 07:58:21" itemprop="dateModified" datetime="2021-04-05T07:58:21-04:00">2021-04-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +246,7 @@
         <h1 id="lecture-01-20180822">Lecture 01 2018/08/22</h1>
 <p>1 The Zen of Python:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<span id="more"></span>
 <p>2 Different ways for reading files:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;myFile&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">words = file.read().split()</span><br><span class="line"></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;myFile&#x27;</span>, <span class="string">&#x27;br&#x27;</span>)</span><br><span class="line">words = file.read().decode().split()</span><br></pre></td></tr></table></figure>
 <h1 id="lecture-02-20180824">Lecture 02 2018/08/24</h1>
@@ -250,15 +260,23 @@
 <h1 id="lab-00">Lab 00</h1>
 <p>1 Test labs and homework using ok in your own computer:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python ok -q question_function_name --local <span class="comment"># test for a specific question.</span></span><br><span class="line">python ok --local <span class="comment"># test for the whole Python file.</span></span><br><span class="line">python ok -q question_name -u <span class="comment"># unlock the question, if you add --local, it will fail. In this situation, I use the 2020 fall homework instead</span></span><br></pre></td></tr></table></figure>
-<p>Notice: only the latest version(currently the ok for 2020 Fall class and 2021 Spring class) of ok can be working without the <code>--local</code> parameter. If you use an older version of ok python without <code>--local</code>, it will display <code>checking for software updates</code> and stuck at there.</p>
+<p>Notice: only the latest version(currently the ok for 2020 Fall class
+and 2021 Spring class) of ok can be working without the
+<code>--local</code> parameter. If you use an older version of ok python
+without <code>--local</code>, it will display
+<code>checking for software updates</code> and stuck at there.</p>
 <h1 id="hw-01">HW 01</h1>
 <p>1 Answer for the Quine question:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quline = <span class="string">&#x27;print(&quot;quline = &quot; + repr(quline) + &quot;;eval(quline)&quot;)&#x27;</span>;<span class="built_in">eval</span>(quline)</span><br></pre></td></tr></table></figure>
-<p>The built-in <code>eval</code> function, which evaluates a string as a Python expression.</p>
-<p>The built-in <code>repr</code> function, which returns an expression that evaluates to its argument.</p>
+<p>The built-in <code>eval</code> function, which evaluates a string as
+a Python expression.</p>
+<p>The built-in <code>repr</code> function, which returns an expression
+that evaluates to its argument.</p>
 <h1 id="lecture-03-20180827">Lecture 03 2018/08/27</h1>
-<p>1 If not short-circuiting, <code>and</code> and <code>or</code> Boolean operator returns the last expression they evaluate.</p>
-<p>2 Some examples for including <code>1/0(ZeroDivisionError)</code>in the Boolean expressions:</p>
+<p>1 If not short-circuiting, <code>and</code> and <code>or</code>
+Boolean operator returns the last expression they evaluate.</p>
+<p>2 Some examples for including <code>1/0(ZeroDivisionError)</code>in
+the Boolean expressions:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span> <span class="keyword">and</span> <span class="number">1</span>/<span class="number">0</span>  <span class="comment"># No short-circuiting, so the result is ZeroDivisionError</span></span><br><span class="line"><span class="literal">True</span> <span class="keyword">or</span> <span class="number">1</span>/<span class="number">0</span>  <span class="comment"># The right expression is short-circuited, so the result is True</span></span><br><span class="line"><span class="literal">False</span> <span class="keyword">and</span> <span class="number">1</span>/<span class="number">0</span> <span class="comment"># The right expression is short-circuited, so the result is False</span></span><br><span class="line"><span class="literal">False</span> <span class="keyword">or</span> <span class="number">1</span>/<span class="number">0</span> <span class="comment"># No short-circuiting, so the result is ZeroDivisionError</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>/<span class="number">0</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="literal">True</span>/<span class="literal">False</span>  <span class="comment"># The left expression will cause an error, so the result is ZeroDivisionError</span></span><br></pre></td></tr></table></figure>
 <p>3 Debugging Methods:</p>
 <ol type="1">
@@ -270,32 +288,47 @@
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> doctest <span class="keyword">import</span> testmod</span><br><span class="line">testmode()   <span class="comment"># test for all tests in all docstrings in the session</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> doctest <span class="keyword">import</span> run_docstring_examples</span><br><span class="line">run_docstring_examples(function_name, <span class="built_in">globals</span>(), <span class="literal">True</span>) <span class="comment"># test for tests in the docstring of a specific function</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="lab-01">Lab 01</h1>
-<p>1 Assertion statement should be included in a release version of your codes, but debugging print statement should not.</p>
-<p>2 Traceback Message: <code>File &lt;file_name&gt; line &lt;line_number&gt; in &lt;function&gt;</code></p>
-<p>3 Error Message: <code>&lt;error type&gt; : &lt;error message&gt;</code></p>
-<p>4 Common Error Types: SyntaxError, IndentationError, TypeError, ZeroDivisionError, NameError, IndexError</p>
-<p>5 Common Bugs: spelling, missing parentheses, missing close quotes, == v.s. =, infinite loops, off-by-one errors(boundary condition error)</p>
+<p>1 Assertion statement should be included in a release version of your
+codes, but debugging print statement should not.</p>
+<p>2 Traceback Message:
+<code>File &lt;file_name&gt; line &lt;line_number&gt; in &lt;function&gt;</code></p>
+<p>3 Error Message:
+<code>&lt;error type&gt; : &lt;error message&gt;</code></p>
+<p>4 Common Error Types: SyntaxError, IndentationError, TypeError,
+ZeroDivisionError, NameError, IndexError</p>
+<p>5 Common Bugs: spelling, missing parentheses, missing close quotes,
+== v.s. =, infinite loops, off-by-one errors(boundary condition
+error)</p>
 <h1 id="lecture-04-20180829">Lecture 04 2018/08/29</h1>
 <p>1 Notice the following tuple assignment:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">n,term</span>):</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>2 Currying(so-called 柯里化 in Chinese): use high-order function to convert functions with multiple arguments into a chin of functions(in some languages like Haskell a function can have at most one argument ):</p>
+<p>2 Currying(so-called 柯里化 in Chinese): use high-order function to
+convert functions with multiple arguments into a chin of functions(in
+some languages like Haskell a function can have at most one argument
+):</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use g(x)(y) to represent f(x,y)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">g</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">h</span>(<span class="params">y</span>):</span></span><br><span class="line">        <span class="keyword">return</span> f(x,y)</span><br><span class="line">    <span class="keyword">return</span> h</span><br></pre></td></tr></table></figure>
 <p>3 Lambda expression :</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># An example: the three ways return the identical result</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">f,g</span>):</span>                                                   <span class="comment"># func.__name__ : &#x27;&lt;lambda&gt;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(g(x)) </span><br><span class="line">f = func(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, <span class="keyword">lambda</span> y: y + <span class="number">1</span>)                      <span class="comment"># f.__name__:&#x27;&lt;lambda&gt;&#x27;</span></span><br><span class="line">f(<span class="number">12</span>) <span class="comment"># return 169</span></span><br><span class="line"></span><br><span class="line">func = <span class="keyword">lambda</span> f, g: <span class="keyword">lambda</span> x: f(g(x))</span><br><span class="line">f = func(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, <span class="keyword">lambda</span> y: y + <span class="number">1</span>)</span><br><span class="line">f(<span class="number">12</span>) <span class="comment"># return 169</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">lambda</span> f,g: <span class="keyword">lambda</span> x: f(g(x)))(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, <span class="keyword">lambda</span> y: y + <span class="number">1</span>)(<span class="number">12</span>) <span class="comment"># return 169</span></span><br></pre></td></tr></table></figure>
-<p>4 Decorator: apply a higher-order function as part of executing a def statement:</p>
+<p>4 Decorator: apply a higher-order function as part of executing a def
+statement:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trace</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapped</span>(<span class="params">x</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;=&gt;&#x27;</span>, func, <span class="string">&#x27;(&#x27;</span>, x, <span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> wrapped</span><br><span class="line"></span><br><span class="line"><span class="meta">@trace</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">identity</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;identity(<span class="number">5</span>) <span class="comment"># when executing the def statement with  @ &lt;decorator_name&gt; above it, the interpreter will automatically run the decorator function</span></span><br></pre></td></tr></table></figure>
 <p>5 Newton's Method:</p>
 <p>The procedure of Newton's method:</p>
 <ol type="1">
-<li><p>have the function <span class="math display">\[func\]</span> and an initial guess <span class="math display">\[x_0\]</span></p></li>
-<li><p>update the guess by the relationship: <span class="math display">\[x_n = x_{n-1} - \frac{func(x_{n-1})}{d func(x_{n-1})}\]</span></p></li>
-<li><p>stop the iteration when <span class="math display">\[func(x_{n}) = 0\]</span> or <span class="math display">\[|func(x_n) - target| &lt; boundary\]</span></p></li>
+<li><p>have the function <span class="math display">\[func\]</span> and
+an initial guess <span class="math display">\[x_0\]</span></p></li>
+<li><p>update the guess by the relationship: <span class="math display">\[x_n = x_{n-1} - \frac{func(x_{n-1})}{d
+func(x_{n-1})}\]</span></p></li>
+<li><p>stop the iteration when <span class="math display">\[func(x_{n})
+= 0\]</span> or <span class="math display">\[|func(x_n) - target| &lt;
+boundary\]</span></p></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The following example calculates the nth root of a number using Newton&#x27;s Method:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nth_root</span>(<span class="params">n, f, df, guess, target, boundary=<span class="number">1e-6</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Calculate the nth root of a number</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    n -- the nth order</span></span><br><span class="line"><span class="string">    f -- the function used in the calculation process</span></span><br><span class="line"><span class="string">    df -- the differential function of f</span></span><br><span class="line"><span class="string">    guess -- initial guess of the root</span></span><br><span class="line"><span class="string">    target -- the base of which we want to know the root</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">abs</span>(f(guess, n, target)) &gt; boundary:</span><br><span class="line">        guess = guess - f(guess, n, target) / df(guess, <span class="number">5</span>)</span><br><span class="line">    <span class="keyword">return</span> guess</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>(<span class="params">x, n, target</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;The function used to calculate nth root</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    x -- the independent variable in the function</span></span><br><span class="line"><span class="string">    n -- the nth order</span></span><br><span class="line"><span class="string">    target -- the base of which we want to know the root</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x ** n - target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">df1</span>(<span class="params">x, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;The differential function of f1</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    x -- the independent variable in the function</span></span><br><span class="line"><span class="string">    n -- the nth order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> n * (x ** (n - <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="project-01-hog">Project 01 Hog</h1>
 <p>1 Randint</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">randint(a,b) <span class="comment"># a &lt;= x &lt;= b</span></span><br></pre></td></tr></table></figure>
-<p>2 Nonlocal variable: a variable declared in the outer function but can be modified in the inner function</p>
+<p>2 Nonlocal variable: a variable declared in the outer function but
+can be modified in the inner function</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    x = <span class="number">5</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span> x</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">    f2()</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">print(f1())    <span class="comment"># 6</span></span><br></pre></td></tr></table></figure>
 <p>3 Sort</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ls.sort(key = <span class="keyword">lambda</span> x: x[<span class="number">0</span>],reverse = <span class="literal">True</span>)  <span class="comment"># Default ascending</span></span><br><span class="line">rs = []</span><br><span class="line"><span class="keyword">for</span> ele <span class="keyword">in</span> ls:</span><br><span class="line">    <span class="keyword">if</span> ele[<span class="number">0</span>] == ls[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">    rs.append(ele[<span class="number">1</span>])                       <span class="comment"># List comprehension: rs = [ele[1] for ele in ls if ele[0] == ls[0][0]]</span></span><br><span class="line">print(<span class="built_in">min</span>(rs))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -313,42 +346,70 @@
 create a local frame titled with the function being called
 </li>
 <li>
-copy the parent of the function to the local frame: [parent = &amp;lt parent &amp;gt]
+copy the parent of the function to the local frame: [parent = &amp;lt
+parent &amp;gt]
 </li>
 <li>
 bind &amp;lt formal-parameters &amp;gt to arguments in the local frame
 </li>
 <li>
-execute the body of the function in the environment that starts with the local frame
+execute the body of the function in the environment that starts with the
+local frame
 </li>
 </ol>
 <h1 id="lecture-06-20180903">Lecture 06 2018/09/03</h1>
-<p>1 Self-reference: a function that refers to itself in the function body is called self-reference</p>
+<p>1 Self-reference: a function that refers to itself in the function
+body is called self-reference</p>
 <h1 id="lecture-07-20180905">Lecture 07 2018/09/05</h1>
-<p>1 Recursive function: can be divided into a base case and recursive function calls</p>
-<p>2 Mutual recursion: if a recursive procedure can be divided into two functions that call each other, then the two functions are mutual recursive.</p>
-<p>The mutual recursive functions can be rewritten into a single recursive function. Say if you use two functions to represent the even and odd cases respectively, you can then replace them using one function that uses a step of two.</p>
-<p>3 Tree recursion: a function calls itself multiple times in the function body</p>
+<p>1 Recursive function: can be divided into a base case and recursive
+function calls</p>
+<p>2 Mutual recursion: if a recursive procedure can be divided into two
+functions that call each other, then the two functions are mutual
+recursive.</p>
+<p>The mutual recursive functions can be rewritten into a single
+recursive function. Say if you use two functions to represent the even
+and odd cases respectively, you can then replace them using one function
+that uses a step of two.</p>
+<p>3 Tree recursion: a function calls itself multiple times in the
+function body</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># An example: let par(n, m) be the function that calculates the number of different partitions of an integer n, requiring each fraction no greater than m</span></span><br><span class="line"><span class="comment"># In such a case we must have par(n, m) = par(n - m, m) + par(n, m - 1). par(n - m, m) represents the partitions that use m as a fraction while par(n, m - 1) represents the remaining partitions</span></span><br></pre></td></tr></table></figure>
 <p>4 The Luhn algorithm: used for the credit card number checker.</p>
-<p>The credit card number consists of two parts: the ordinary digits and the check digit at last. For example,if the account number is "7992739871" and the check number is X, then the full account number is "7992739871X". The Luhn algorithm is used to calculate what the number X is.</p>
+<p>The credit card number consists of two parts: the ordinary digits and
+the check digit at last. For example,if the account number is
+"7992739871" and the check number is X, then the full account number is
+"7992739871X". The Luhn algorithm is used to calculate what the number X
+is.</p>
 <p>Steps of Luhn Algorithm:</p>
 <ol type="1">
-<li><p>Starting from the rightmost digit(the check digit) and moving left, double the value of every second digit; if the result of doubling operation is greater than 9, then sum the digits of the result(e.g., 6 * 2 = 12 &gt; 9, then replace 12 with 1 + 2 = 3 )</p></li>
-<li><p>Add the resulting numbers in each place, denote it as sum_results, then the check digit can be calculated in the following ways:</p>
-<p>​ <span class="math display">\[ check\_digit = (10 - (sum\_results \quad mod \quad 10) \quad mod \quad 10)\]</span></p></li>
+<li><p>Starting from the rightmost digit(the check digit) and moving
+left, double the value of every second digit; if the result of doubling
+operation is greater than 9, then sum the digits of the result(e.g., 6 *
+2 = 12 &gt; 9, then replace 12 with 1 + 2 = 3 )</p></li>
+<li><p>Add the resulting numbers in each place, denote it as
+sum_results, then the check digit can be calculated in the following
+ways:</p>
+<p>​ <span class="math display">\[ check\_digit = (10 - (sum\_results
+\quad mod \quad 10) \quad mod \quad 10)\]</span></p></li>
 </ol>
-<p>For the above example, the sum_results = 1 * 2 + 7 + 7( 8 * 2 =&gt; 7) + 9 + 3 * 2 + 7 + 2 * 2 + 9 + 9( 9 * 2 =&gt; 9) + 7 = 67. Then check_digit = (10 - 67 % 10) % 10 = 3. So the full credit card number is "7992739871X".</p>
-<p>A simple way to verify whether the check_digit is correct: if <code>(sum_results + check_digit) % 10 == 0</code>, then the check_digit is correct.</p>
+<p>For the above example, the sum_results = 1 * 2 + 7 + 7( 8 * 2 =&gt;
+7) + 9 + 3 * 2 + 7 + 2 * 2 + 9 + 9( 9 * 2 =&gt; 9) + 7 = 67. Then
+check_digit = (10 - 67 % 10) % 10 = 3. So the full credit card number is
+"7992739871X".</p>
+<p>A simple way to verify whether the check_digit is correct: if
+<code>(sum_results + check_digit) % 10 == 0</code>, then the check_digit
+is correct.</p>
 <h1 id="lecture-08-20180907">Lecture 08 2018/09/07</h1>
-<p>1 Functional abstractions: concrete implementations do not matter in this situation.</p>
+<p>1 Functional abstractions: concrete implementations do not matter in
+this situation.</p>
 <p>2 Choosing names:</p>
 <ul>
 <li>
-Names should convey the meaning or purpose of the values to which they're bound
+Names should convey the meaning or purpose of the values to which
+they're bound
 </li>
 <li>
-The type of values bound to the name is best documented in the docstring of the function
+The type of values bound to the name is best documented in the docstring
+of the function
 </li>
 <li>
 Names can be long if they help to document your code
@@ -360,7 +421,8 @@ Names can be short if they represent generic quantities
 <p>3 Test-driven development:</p>
 <ul>
 <li>
-Write test for functions before you actually implementing the function itself
+Write test for functions before you actually implementing the function
+itself
 </li>
 <li>
 Develop incrementally and test each piece before moving on
@@ -373,24 +435,35 @@ Run your code interactively
 <p>1 Different ways to implementations recursive functions:</p>
 <ul>
 <li>
-If multiple implementations of a function are equally clear, then you should choose the shorter one
+If multiple implementations of a function are equally clear, then you
+should choose the shorter one
 </li>
 <li>
 If the longer one is more clear, then you should use it
 </li>
 <li>
-Sometimes the base case is omitted so the function implementations are shorter, however, the function is still recursive in these cases
+Sometimes the base case is omitted so the function implementations are
+shorter, however, the function is still recursive in these cases
 </li>
 </ul>
-<p>2 If you store every intermediate value during the recursion process, then it is pretty slow compared with Iteration.</p>
+<p>2 If you store every intermediate value during the recursion process,
+then it is pretty slow compared with Iteration.</p>
 <h1 id="hw-02">HW 02</h1>
-<p>1 This one is quite hard for me, I spent a long time converting iteration to recursion for the ping pong question and the count coins question. At first there were duplicate results in my recursion formula and I checked for a while, also I turned to the hint videos on the website for inspiration. I learnt several lessons from these two problems:</p>
+<p>1 This one is quite hard for me, I spent a long time converting
+iteration to recursion for the ping pong question and the count coins
+question. At first there were duplicate results in my recursion formula
+and I checked for a while, also I turned to the hint videos on the
+website for inspiration. I learnt several lessons from these two
+problems:</p>
 <ol>
 <li>
-If you want to preserve several variables through the recursion process, define a helper function with all needed variables as arguments inside the target function.
+If you want to preserve several variables through the recursion process,
+define a helper function with all needed variables as arguments inside
+the target function.
 </li>
 <li>
-If counting from the largest number doesn't work, then try starting from the smallest one.
+If counting from the largest number doesn't work, then try starting from
+the smallest one.
 </li>
 <li>
 A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
@@ -399,56 +472,90 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <p>2 The recursive lambda:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args)             <span class="comment"># This is a general form for recursive lambda, the func is a two-argument recursive function</span></span><br><span class="line">(<span class="keyword">lambda</span> func: <span class="keyword">lambda</span> args: func(func,args))(<span class="keyword">lambda</span> f, x: x * f(f, x - <span class="number">1</span>))(n) <span class="comment"># This calculate the factorial(n)</span></span><br></pre></td></tr></table></figure>
 <h1 id="lecture-10-20180914">Lecture 10 2018/09/14</h1>
-<p>1 Each value in Python has a class that determines the type of the value, values share class and behavior.</p>
+<p>1 Each value in Python has a class that determines the type of the
+value, values share class and behavior.</p>
 <p>2 Native data types:</p>
 <ul>
 <li>Properties:
 <ul>
-<li>literals: expressions that evaluate to values of native data types</li>
-<li>functions and operations to manipulate values of native data types</li>
+<li>literals: expressions that evaluate to values of native data
+types</li>
+<li>functions and operations to manipulate values of native data
+types</li>
 </ul></li>
 <li>Categories:
 <ul>
-<li>numeric types: int (integers), float (real numbers), complex (complex numbers)</li>
-<li>no-numeric types: bool (True / False), the majority of no-numeric data types cannot be described in native data types</li>
+<li>numeric types: int (integers), float (real numbers), complex
+(complex numbers)</li>
+<li>no-numeric types: bool (True / False), the majority of no-numeric
+data types cannot be described in native data types</li>
 </ul></li>
 </ul>
-<p>3 Data abstraction: separate segments of programs that deal with how data are represented from segments of programs that deal with how data are manipulated</p>
-<p>Function abstraction: separate how function is implemented and how function is used</p>
-<p>4 Abstraction barrier: lower-layer functions are invisible to function users, they only access higher-layer functions, the higher-layer functions can interact with the lower-layer functions. In such a way, how data is actually implemented, how lower-layer function is defined (like selector/ constructor e.g., get/set, constructor in Java) don't affect the behavior of the data types/ functions.</p>
+<p>3 Data abstraction: separate segments of programs that deal with how
+data are represented from segments of programs that deal with how data
+are manipulated</p>
+<p>Function abstraction: separate how function is implemented and how
+function is used</p>
+<p>4 Abstraction barrier: lower-layer functions are invisible to
+function users, they only access higher-layer functions, the
+higher-layer functions can interact with the lower-layer functions. In
+such a way, how data is actually implemented, how lower-layer function
+is defined (like selector/ constructor e.g., get/set, constructor in
+Java) don't affect the behavior of the data types/ functions.</p>
 <h1 id="lecture-11-20180917">Lecture 11 2018/09/17</h1>
-<p>1 Sequence: an ordered collection of values, there are different types of sequences, but they share common behaviors.</p>
+<p>1 Sequence: an ordered collection of values, there are different
+types of sequences, but they share common behaviors.</p>
 <ul>
 <li>Properties: finite length, an empty sequence has 0 length</li>
 <li>Indexing: starting from 0</li>
-<li>list is a type of sequence, string is a type of sequence, range is a type of sequence</li>
+<li>list is a type of sequence, string is a type of sequence, range is a
+type of sequence</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)  <span class="comment"># use underscore instead of index like i</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_list</span>(<span class="params">func, ls</span>):</span></span><br><span class="line">    <span class="keyword">return</span> [func(ele) <span class="keyword">for</span> ele <span class="keyword">in</span> ls]</span><br><span class="line"></span><br><span class="line">map_list = <span class="keyword">lambda</span> func,ls: <span class="built_in">list</span>(<span class="built_in">map</span>(func, ls))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subset_list</span>(<span class="params">func, ls</span>):</span></span><br><span class="line">    <span class="keyword">return</span> [ele <span class="keyword">for</span> ele <span class="keyword">in</span> ls <span class="keyword">if</span> func(ele)]</span><br><span class="line"></span><br><span class="line">subset_list = <span class="keyword">lambda</span> func, ls: <span class="built_in">list</span>(<span class="built_in">filter</span>(func, ls))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reduce_list</span>(<span class="params">func, ls, initial</span>):</span></span><br><span class="line">    reduced = initial</span><br><span class="line">    <span class="keyword">for</span> ele <span class="keyword">in</span> ls:</span><br><span class="line">        reduced  = func(reduced, ele)</span><br><span class="line">    <span class="keyword">return</span> reduced</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line">reduce_list = reduce(func, ls)  <span class="comment"># The initial value for reduce function can be omitted</span></span><br></pre></td></tr></table></figure>
 <h1 id="lab-04">Lab 04</h1>
-<p>1 I stuck at question 5 for some time, so I put the question here:</p>
-<p>A subsequence of a number is a series of (not necessarily contiguous) digits of the number. For example, 12345 has subsequences that include 123, 234, 124, 245, etc. Your task is to get the maximum subsequence below a certain length.</p>
+<p>1 I stuck at question 5 for some time, so I put the question
+here:</p>
+<p>A subsequence of a number is a series of (not necessarily contiguous)
+digits of the number. For example, 12345 has subsequences that include
+123, 234, 124, 245, etc. Your task is to get the maximum subsequence
+below a certain length.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subseq</span>(<span class="params">n, t</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Return the maximum subsequence of length at most t that can be found in the given number n.</span></span><br><span class="line"><span class="string">    For example, for n = 20125 and t = 3, we have that the subsequences are</span></span><br><span class="line"><span class="string">        2</span></span><br><span class="line"><span class="string">        0</span></span><br><span class="line"><span class="string">        1</span></span><br><span class="line"><span class="string">        2</span></span><br><span class="line"><span class="string">        5</span></span><br><span class="line"><span class="string">        20</span></span><br><span class="line"><span class="string">        21</span></span><br><span class="line"><span class="string">        22</span></span><br><span class="line"><span class="string">        25</span></span><br><span class="line"><span class="string">        01</span></span><br><span class="line"><span class="string">        02</span></span><br><span class="line"><span class="string">        05</span></span><br><span class="line"><span class="string">        12</span></span><br><span class="line"><span class="string">        15</span></span><br><span class="line"><span class="string">        25</span></span><br><span class="line"><span class="string">        201</span></span><br><span class="line"><span class="string">        202</span></span><br><span class="line"><span class="string">        205</span></span><br><span class="line"><span class="string">        212</span></span><br><span class="line"><span class="string">        215</span></span><br><span class="line"><span class="string">        225</span></span><br><span class="line"><span class="string">        012</span></span><br><span class="line"><span class="string">        015</span></span><br><span class="line"><span class="string">        025</span></span><br><span class="line"><span class="string">        125</span></span><br><span class="line"><span class="string">    and of these, the maxumum number is 225, so our answer is 225.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 3)</span></span><br><span class="line"><span class="string">    225</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 5)</span></span><br><span class="line"><span class="string">    20125</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(20125, 6) # note that 20125 == 020125</span></span><br><span class="line"><span class="string">    20125</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 3)</span></span><br><span class="line"><span class="string">    345</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 0) # 0 is of length 0</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; max_subseq(12345, 1)</span></span><br><span class="line"><span class="string">    5</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">if</span> t == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> t &gt;= <span class="built_in">len</span>(<span class="built_in">str</span>(n)):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">10</span> * max_subseq(n // <span class="number">10</span>, t - <span class="number">1</span>) + n % <span class="number">10</span>, max_subseq(n // <span class="number">10</span>, t))</span><br></pre></td></tr></table></figure>
 <h1 id="lecture-12-20180919">Lecture 12 2018/09/19</h1>
-<p>1 Box- and-pointer notation: a way to represent lists in the environment diagrams</p>
-<p>It's a series of adjacent boxes with two parts in each box, the first part is an index, the second is a value for this box or a pointer pointing to another box or pointing to a function.</p>
+<p>1 Box- and-pointer notation: a way to represent lists in the
+environment diagrams</p>
+<p>It's a series of adjacent boxes with two parts in each box, the first
+part is an index, the second is a value for this box or a pointer
+pointing to another box or pointing to a function.</p>
 <p>2 Processing container values:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sum(iterable [, initial_value]) -&gt; value</span><br><span class="line">max(iteratable, key = func) -&gt; value # max([func(ele) for ele in iterable])</span><br><span class="line">all(iterable) -&gt; bool # True if the iterable is empty or bool(x) is true for each x in the iterable, False otherwise</span><br></pre></td></tr></table></figure>
 <p>3 Trees abstraction:</p>
 <ul>
-<li>Recursive definition: a root label and a list of branches, each branch is a tree; a tree with no branch is called a leaf</li>
-<li>Relative definition: each location in a tree is a node, each node has a label that can be any value; one node can be parent/child of another</li>
+<li>Recursive definition: a root label and a list of branches, each
+branch is a tree; a tree with no branch is called a leaf</li>
+<li>Relative definition: each location in a tree is a node, each node
+has a label that can be any value; one node can be parent/child of
+another</li>
 </ul>
-<p>4 Sum of nested list: return a list, the element of which is the sum of the elements of the original list at that place</p>
-<p>5 Functions that take trees as inputs/outputs are often tree-recursive themselves</p>
+<p>4 Sum of nested list: return a list, the element of which is the sum
+of the elements of the original list at that place</p>
+<p>5 Functions that take trees as inputs/outputs are often
+tree-recursive themselves</p>
 <h1 id="lecture-13-20180921">Lecture 13 2018/09/21</h1>
-<p>1 Objects combine data and behavior, objects represent information, but also behave like the things they represent.</p>
+<p>1 Objects combine data and behavior, objects represent information,
+but also behave like the things they represent.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line">mydate = date(<span class="number">22021</span>,<span class="number">2</span>,<span class="number">20</span>)</span><br><span class="line">mydate.strftime(<span class="string">&#x27;%a, %b %d&#x27;</span>)  <span class="comment"># &#x27;Sat Feb 20&#x27;  %a means week, %b means month, %d means day</span></span><br></pre></td></tr></table></figure>
 <p>2 Swapcase of a string</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.swapcase()  <span class="comment"># swap lowercase and uppercase in a string</span></span><br></pre></td></tr></table></figure>
 <p>3 Identity operator and equality operator:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">is</span> b <span class="comment"># True is a and b points to the same object</span></span><br><span class="line">a == b <span class="comment"># True if the pointed objects have the same value</span></span><br><span class="line"><span class="comment"># If a is b equals to true then a == b must be true, but no otherwise</span></span><br></pre></td></tr></table></figure>
 <h1 id="lecture-14-20180924">Lecture 14 2018/09/24</h1>
-<p>1 Motivation: Sometimes we want to maintain some state within a function. For example, if we define a function called <code>withdraw(amount)</code> to withdraw a certain amount of money from the bank, the function returns the remaining balance in your account. We then want to maintain the balance within the function, which means if we call the function multiple times with the same amount parameter, we should have different returning values.</p>
+<p>1 Motivation: Sometimes we want to maintain some state within a
+function. For example, if we define a function called
+<code>withdraw(amount)</code> to withdraw a certain amount of money from
+the bank, the function returns the remaining balance in your account. We
+then want to maintain the balance within the function, which means if we
+call the function multiple times with the same amount parameter, we
+should have different returning values.</p>
 <p>There are two different ways to tackle this problem:</p>
 <ul>
 <li>We can use the nonlocal statement:</li>
@@ -458,31 +565,52 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>We can use the mutable objects:</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">withdraw_account</span>(<span class="params">balance</span>):</span></span><br><span class="line">    b = [balance]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">amount</span>):</span></span><br><span class="line">        <span class="keyword">if</span> amount &gt; b[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;Insufficient funds&#x27;</span></span><br><span class="line">        b[<span class="number">0</span>] -= amount</span><br><span class="line">        <span class="keyword">return</span> b[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> withdraw</span><br></pre></td></tr></table></figure>
-<p>2 If you use nonlocal statement for a variable, then it must be bound in the first non-local parent frame of the current frame.</p>
-<p>3 Python pre-computes which frame contains which names before executing the function body. Within a function body, all instances of a name must refer to the same frame.</p>
+<p>2 If you use nonlocal statement for a variable, then it must be bound
+in the first non-local parent frame of the current frame.</p>
+<p>3 Python pre-computes which frame contains which names before
+executing the function body. Within a function body, all instances of a
+name must refer to the same frame.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">withdraw_account</span>(<span class="params">balance</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">amount</span>):</span></span><br><span class="line">        <span class="comment">#nonlocal balance</span></span><br><span class="line">        <span class="keyword">if</span> amount &gt; balance:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;Insufficient funds&#x27;</span></span><br><span class="line">        balance -= amount</span><br><span class="line">        <span class="keyword">return</span> balance</span><br><span class="line">    <span class="keyword">return</span> withdraw</span><br></pre></td></tr></table></figure>
-<p>In the above example, if we omit the nonlocal statement, it will cause a UnboundLocalError, because within the body of function withdraw, the local variable <code>balance</code> is referenced before assignment.</p>
-<p>4 Referential transparency: if an expression can be replaced by its value without changing the meaning of a program, then the expression is called referential transparent.</p>
+<p>In the above example, if we omit the nonlocal statement, it will
+cause a UnboundLocalError, because within the body of function withdraw,
+the local variable <code>balance</code> is referenced before
+assignment.</p>
+<p>4 Referential transparency: if an expression can be replaced by its
+value without changing the meaning of a program, then the expression is
+called referential transparent.</p>
 <p>5 An example of nonlocal statement:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    x = <span class="number">4</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span>(<span class="params">y</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">h</span>(<span class="params">z</span>):</span></span><br><span class="line">            <span class="keyword">nonlocal</span> x</span><br><span class="line">            x += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> x + y + z</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    <span class="keyword">return</span> g</span><br><span class="line">a = f(<span class="number">1</span>)</span><br><span class="line">b = a(<span class="number">2</span>)</span><br><span class="line">total = b(<span class="number">3</span>) + b(<span class="number">4</span>) <span class="comment"># 22, b(3) == 10, b(4) == 12</span></span><br></pre></td></tr></table></figure>
 <h1 id="lecture-15-20180926">Lecture 15 2018/09/26</h1>
 <p>1 Iterators:</p>
 <ol type="1">
-<li><p>An container can provide and iterator that provides access to its elements in some order</p></li>
-<li><p>Some related functions: 2.1. iter(iterable): returns an iterator 2.2. next(iterator): returns the next element in the iterator 2.3. list(iterator): list the unvisited elements in the iterator. If listed, then an iterator cannot be used again, otherwise an StopIterationError will be caused</p></li>
+<li><p>An container can provide and iterator that provides access to its
+elements in some order</p></li>
+<li><p>Some related functions: 2.1. iter(iterable): returns an iterator
+2.2. next(iterator): returns the next element in the iterator 2.3.
+list(iterator): list the unvisited elements in the iterator. If listed,
+then an iterator cannot be used again, otherwise an StopIterationError
+will be caused</p></li>
 <li><p>Iterators are mutable objects</p></li>
 </ol>
 <p>2 Dictionary iteration:</p>
 <ol type="1">
-<li>The values, keys and items of a dictionary are all iterable. For Python version 3.6 and higher, the iteration order is the order by which items are added into the dictionary, for Python version 3.5 or lower, the iteration order is arbitrary.</li>
-<li>If the size of the dictionary is changed during iteration(you add something into the dictionary or you pop something during iteration), an RuntimeError will be caused. For lists, you can do whatever you want to the list during iteration.</li>
+<li>The values, keys and items of a dictionary are all iterable. For
+Python version 3.6 and higher, the iteration order is the order by which
+items are added into the dictionary, for Python version 3.5 or lower,
+the iteration order is arbitrary.</li>
+<li>If the size of the dictionary is changed during iteration(you add
+something into the dictionary or you pop something during iteration), an
+RuntimeError will be caused. For lists, you can do whatever you want to
+the list during iteration.</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If you want to remove keys of which the values are empty,the following way is wrong and causes an RuntimeError</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d[key]:</span><br><span class="line">        d.pop(key)                               </span><br><span class="line"><span class="comment"># You should do like this</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d.copy():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d[key]:</span><br><span class="line">        d.pop(key)</span><br></pre></td></tr></table></figure>
 <p>3 For iteration over iterables and iterators:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> iterable:                 <span class="comment"># Iteration on iterables can be executed multiple times</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> iterator:                 <span class="comment"># Iteration on iterators can be executed only once, otherwise StopIterationError is caused</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <p>4 Built-in iterator functions:</p>
 <ol type="1">
-<li><p>Many operations on sequences return iterators that compute results lazily, lazy computation means result is only computed when needed</p></li>
+<li><p>Many operations on sequences return iterators that compute
+results lazily, lazy computation means result is only computed when
+needed</p></li>
 <li><p>Example functions:</p>
 <p>2.1 map(func, iterable)</p>
 <p>2.2 filter(func, iterable)</p>
@@ -491,53 +619,103 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 </ol>
 <p>5 Generators:</p>
 <ol type="1">
-<li>Generators are special iterators that they are results of generator functions</li>
-<li>A generator function uses yield statements to replace the return statement, all yield statements can be executed and related values can be returned</li>
-<li>Yield from statement: returns al values in an iterable or an iterator,the following two ways are equal:</li>
+<li>Generators are special iterators that they are results of generator
+functions</li>
+<li>A generator function uses yield statements to replace the return
+statement, all yield statements can be executed and related values can
+be returned</li>
+<li>Yield from statement: returns al values in an iterable or an
+iterator,the following two ways are equal:</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="keyword">yield</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">from</span> iterable</span><br></pre></td></tr></table></figure>
 <h1 id="lab-05">Lab 05</h1>
 <p>1 Q9: Riffle Shuffle</p>
-<p>The familiar <a target="_blank" rel="noopener" href="https://fredhohman.com/card-shuffling/static/images/riffle.gif">riffle shuffle</a> of a deck of cards (or in our case, of a sequence of things) results in a new configuration of cards in which the top card is followed by the middle card, then by the second card, then the card after the middle, and so forth. Assuming the deck (sequence) contains an even number of cards, write a list comprehension that produces the shuffled sequence.</p>
-<p><em>Hint:</em> To write this as a single comprehension, you may find the expression <code>k%2</code>, which evaluates to 0 on even numbers and 1 on odd numbers, to be useful. Consider how you can use the 0 or 1 returned by <code>k%2</code> to alternatively access the beginning and the middle of the list.</p>
+<p>The familiar <a target="_blank" rel="noopener" href="https://fredhohman.com/card-shuffling/static/images/riffle.gif">riffle
+shuffle</a> of a deck of cards (or in our case, of a sequence of things)
+results in a new configuration of cards in which the top card is
+followed by the middle card, then by the second card, then the card
+after the middle, and so forth. Assuming the deck (sequence) contains an
+even number of cards, write a list comprehension that produces the
+shuffled sequence.</p>
+<p><em>Hint:</em> To write this as a single comprehension, you may find
+the expression <code>k%2</code>, which evaluates to 0 on even numbers
+and 1 on odd numbers, to be useful. Consider how you can use the 0 or 1
+returned by <code>k%2</code> to alternatively access the beginning and
+the middle of the list.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">riffle</span>(<span class="params">deck</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Produces a single, perfect riffle shuffle of DECK, consisting of</span></span><br><span class="line"><span class="string">    DECK[0], DECK[M], DECK[1], DECK[M+1], ... where M is position of the</span></span><br><span class="line"><span class="string">    second half of the deck.  Assume that len(DECK) is even.</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; riffle([3, 4, 5, 6])</span></span><br><span class="line"><span class="string">    [3, 5, 4, 6]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; riffle(range(20))</span></span><br><span class="line"><span class="string">    [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _______</span><br></pre></td></tr></table></figure>
-<p>My intuition: we first make a list of nested lists, each element in the out-layer list is a two-element list, then we reduce the out-layer list to one dimension,</p>
+<p>My intuition: we first make a list of nested lists, each element in
+the out-layer list is a two-element list, then we reduce the out-layer
+list to one dimension,</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [item <span class="keyword">for</span> sublist <span class="keyword">in</span> [[deck[k], deck[k + <span class="built_in">len</span>(deck) // <span class="number">2</span>] <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(deck) // <span class="number">2</span>)] <span class="keyword">for</span> item <span class="keyword">in</span> sublist] </span><br></pre></td></tr></table></figure>
-<p>Another solution following the hint: for odd position, the index needs to plus <code>len(deck) // 2</code>, for even position, the index is just <code>k</code>, so we simply use <code>k % 2</code> to separate the indices,</p>
+<p>Another solution following the hint: for odd position, the index
+needs to plus <code>len(deck) // 2</code>, for even position, the index
+is just <code>k</code>, so we simply use <code>k % 2</code> to separate
+the indices,</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [deck[k + (k % <span class="number">2</span>) * (<span class="built_in">len</span>(deck) // <span class="number">2</span>)] <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(deck))] </span><br></pre></td></tr></table></figure>
 <h1 id="lab-06">Lab 06</h1>
 <p>1 Q4: Insert Items</p>
-<p>Write a function which takes in a list <code>lst</code>, an argument <code>entry</code>, and another argument <code>elem</code>. This function will check through each item present in <code>lst</code> to see if it is equivalent with <code>entry</code>. Upon finding an equivalent entry, the function should modify the list by placing <code>elem</code> into the list right after the found entry. At the end of the function, the modified list should be returned. See the doctests for examples on how this function is utilized. Use list mutation to modify the original list, no new lists should be created or returned.</p>
-<p><strong>Be careful in situations where the values passed into <code>entry</code> and <code>elem</code> are equivalent, so as not to create an infinitely long list while iterating through it.</strong> If you find that your code is taking more than a few seconds to run, it is most likely that the function is in a loop of inserting new values.</p>
+<p>Write a function which takes in a list <code>lst</code>, an argument
+<code>entry</code>, and another argument <code>elem</code>. This
+function will check through each item present in <code>lst</code> to see
+if it is equivalent with <code>entry</code>. Upon finding an equivalent
+entry, the function should modify the list by placing <code>elem</code>
+into the list right after the found entry. At the end of the function,
+the modified list should be returned. See the doctests for examples on
+how this function is utilized. Use list mutation to modify the original
+list, no new lists should be created or returned.</p>
+<p><strong>Be careful in situations where the values passed into
+<code>entry</code> and <code>elem</code> are equivalent, so as not to
+create an infinitely long list while iterating through it.</strong> If
+you find that your code is taking more than a few seconds to run, it is
+most likely that the function is in a loop of inserting new values.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_items</span>(<span class="params">lst, entry, elem</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; test_lst = [1, 5, 8, 5, 2, 3]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; new_lst = insert_items(test_lst, 5, 7)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; new_lst</span></span><br><span class="line"><span class="string">    [1, 5, 7, 8, 5, 7, 2, 3]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst = [1, 4, 8]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst2 = insert_items(large_lst, 4, 4)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst2</span></span><br><span class="line"><span class="string">    [1, 4, 4, 8]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst3 = insert_items(large_lst2, 4, 6)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst3</span></span><br><span class="line"><span class="string">    [1, 4, 6, 4, 6, 8]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; large_lst3 is large_lst</span></span><br><span class="line"><span class="string">    True</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br></pre></td></tr></table></figure>
-<p>At first , I did not notice the restriction that no new lists were allowed to be created, so I wrote the following codes.</p>
+<p>At first , I did not notice the restriction that no new lists were
+allowed to be created, so I wrote the following codes.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_items</span>(<span class="params">lst, entry, elem</span>):</span></span><br><span class="line">    items = [(ele, <span class="number">0</span>) <span class="keyword">for</span> ele <span class="keyword">in</span> lst]</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(items)):</span><br><span class="line">        <span class="keyword">if</span> items[_][<span class="number">0</span>] == entry <span class="keyword">and</span> items[_][<span class="number">1</span>] == <span class="number">0</span>:</span><br><span class="line">            items.insert(- + <span class="number">1</span>, (elem, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> [item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> items]</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-<p>The main idea is that we can add a marker to identify whether the element locates originally in the list or is inserted into the list. Although this way does not meet the requirement of this question, I still find it interesting.</p>
+<p>The main idea is that we can add a marker to identify whether the
+element locates originally in the list or is inserted into the list.
+Although this way does not meet the requirement of this question, I
+still find it interesting.</p>
 <p>The following codes do meet the needs of this question:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_items</span>(<span class="params">lst, entry, elem</span>):</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> index &lt; <span class="built_in">len</span>(lst):</span><br><span class="line">        <span class="keyword">if</span> lst[index] == entry:</span><br><span class="line">            lst.insert(index + <span class="number">1</span>, elem)</span><br><span class="line">            index += <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> lst</span><br></pre></td></tr></table></figure>
 <h1 id="lecture-16-20180928">Lecture 16 2018/09/28</h1>
 <p>1 Classes and objects:</p>
 <ol type="1">
-<li>class is a template for objects that share same attributes and behaviors, the objects are class instances</li>
-<li>creating an instance of a class is also called instancing the class</li>
-<li>attributes associated with instances are also called instance attributed, fields, properties and instance variables, function attributes are also called methods</li>
+<li>class is a template for objects that share same attributes and
+behaviors, the objects are class instances</li>
+<li>creating an instance of a class is also called instancing the
+class</li>
+<li>attributes associated with instances are also called instance
+attributed, fields, properties and instance variables, function
+attributes are also called methods</li>
 </ol>
-<p>2 Dual roles of object in the <code>object.method</code> expression:</p>
+<p>2 Dual roles of object in the <code>object.method</code>
+expression:</p>
 <ol type="1">
-<li>the object means the method is not in the global environment, but inside the local environment of a class</li>
-<li>the object is bound to the first argument <code>self</code> in the method</li>
+<li>the object means the method is not in the global environment, but
+inside the local environment of a class</li>
+<li>the object is bound to the first argument <code>self</code> in the
+method</li>
 </ol>
 <p>3 Functions and methods:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(Class_name.func_name(<span class="built_in">object</span>, arguments))          <span class="comment"># &lt;class &#x27;function&#x27;&gt;</span></span><br><span class="line"><span class="built_in">type</span>(instance_name.func_name(arguments))               <span class="comment"># &lt;class &#x27;method&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Notice that when calling a method using a Class object, we need to explicitly specify the object that is bound to the <code>self</code> argument in the method, but when calling a method using an instance, we don't need to do that.</p>
+<p>Notice that when calling a method using a Class object, we need to
+explicitly specify the object that is bound to the <code>self</code>
+argument in the method, but when calling a method using an instance, we
+don't need to do that.</p>
 <p>4 Class attributes:</p>
 <ol type="1">
-<li>Evaluation procedure of <code>&lt;object&gt;.&lt;attribute&gt;</code>:
+<li>Evaluation procedure of
+<code>&lt;object&gt;.&lt;attribute&gt;</code>:
 <ol type="1">
 <li>we first evaluate the object</li>
-<li>then we look up the attribute in the current class, if it exists, return the value of that attribute</li>
-<li>if the attribute doesn't exist in the current class, we look up the attribute in parent classes, if it is found, return the value of that attribute</li>
-<li>if the attribute is a method instead, return the result value of that method</li>
+<li>then we look up the attribute in the current class, if it exists,
+return the value of that attribute</li>
+<li>if the attribute doesn't exist in the current class, we look up the
+attribute in parent classes, if it is found, return the value of that
+attribute</li>
+<li>if the attribute is a method instead, return the result value of
+that method</li>
 </ol></li>
 <li>attribute assignment</li>
 </ol>
@@ -546,23 +724,33 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <p>1 Terminologies: parent class/ base class/ superclass/ subclass</p>
 <p>2 Interfaces:</p>
 <ol type="1">
-<li>Def: a collection of attributes and conditions on those attributes</li>
-<li>In Java, you need to explicitly declare an interface, however, in Python, Ruby and Go, an object with the appropriate name implements an interface already</li>
+<li>Def: a collection of attributes and conditions on those
+attributes</li>
+<li>In Java, you need to explicitly declare an interface, however, in
+Python, Ruby and Go, an object with the appropriate name implements an
+interface already</li>
 </ol>
 <p>3 Multiple inheritances:</p>
 <ol type="1">
-<li>Order: from bottom to top, from left to right in the same layer(the left-to-right order is the same as the order written in the class arguments)</li>
+<li>Order: from bottom to top, from left to right in the same layer(the
+left-to-right order is the same as the order written in the class
+arguments)</li>
 <li>The algorithm is called the C3 Resolution Ordering</li>
 </ol>
 <p>4 Object-oriented design principles:</p>
 <ol type="1">
 <li>Don't repeat yourself, use existing implementations</li>
-<li>Attributes that have been overridden are still accessible via class objects: <code>Parent_class_name.attribute</code></li>
+<li>Attributes that have been overridden are still accessible via class
+objects: <code>Parent_class_name.attribute</code></li>
 <li>Look up attributes on instances whenever possible</li>
 </ol>
 <h1 id="lab-07">Lab 07</h1>
-<p>1 Don't modify a list while iterating on it using for loop, it may result in wrong results, particularly, don't remove elements during iteration.</p>
-<p>Reason: the for loop uses list indices to record the iteration process, however, deleting items in the list results in mismatch of the current list with the original indices.</p>
+<p>1 Don't modify a list while iterating on it using for loop, it may
+result in wrong results, particularly, don't remove elements during
+iteration.</p>
+<p>Reason: the for loop uses list indices to record the iteration
+process, however, deleting items in the list results in mismatch of the
+current list with the original indices.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Say if you want to delete all zeros in the following list and you write codes like this:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">ls = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> ls:</span><br><span class="line">    <span class="keyword">if</span> item == <span class="number">0</span>:</span><br><span class="line">        ls.remove(item)</span><br><span class="line"><span class="comment"># &gt;&gt; x   =&gt; [1, 1, 1, 0, 0, 1]</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">The whole procedure</span></span><br><span class="line"><span class="string">list.remove(item): remove the first element in the list that equals to item</span></span><br><span class="line"><span class="string">index = 0,  len(ls) = 8       original list: ls = [1, 0, 0, 1, 1, 0, 0, 1]       item = ls[index] = 1       nothing changed</span></span><br><span class="line"><span class="string">index = 1,  len(ls) = 7       original list: ls = [1, 0, 0, 1, 1, 0, 0, 1]       item = ls[index] = 0       delete the first 0 in ls</span></span><br><span class="line"><span class="string">index = 2   len(ls) = 7		  original list: ls = [1, 0, 1, 1, 0, 0, 1]          item = ls[index] = 1       nothing changed</span></span><br><span class="line"><span class="string">index = 3   len(ls) = 7       original list: ls = [1, 0, 1, 1, 0, 0, 1]          item = ls[index] = 1       nothing changed</span></span><br><span class="line"><span class="string">index = 4   len(ls) = 7       original list: ls = [1, 0, 1, 1, 0, 0, 1]          item = ls[index] = 0       delete the first 0 in ls</span></span><br><span class="line"><span class="string">index = 5   len(ls) = 6       original list: ls = [1, 1, 1, 0, 0, 1]             item = ls[index] = 1       done!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Another failed trail would be like this:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">ls = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ls)):</span><br><span class="line">    <span class="keyword">if</span> ls[_] == <span class="number">0</span>:</span><br><span class="line">        ls.pop(_)</span><br><span class="line"><span class="comment"># &gt;&gt;IndexError: list index out of range</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">The for loop will adjust for changes in list length, but the for with index loop will not, so it will iterate for len(ls) times, however, because of the item deletion during the iteration, the length of list is shortened, thus an error will be caused.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 <p>There are several ways to correct this:</p>
 <ol type="1">
@@ -581,7 +769,8 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <p>1 Generic functions:</p>
 <ol type="1">
 <li>Can accept values of multiple types</li>
-<li>Three implementing techniques: shared interfaces, type dispatching and type coercion</li>
+<li>Three implementing techniques: shared interfaces, type dispatching
+and type coercion</li>
 </ol>
 <p>2 String conversion:</p>
 <ol type="1">
@@ -590,57 +779,79 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>Human-interpretable text: <code>str(x)</code></li>
 <li>Python-interpretable expression: <code>repr(x)</code></li>
 </ol></li>
-<li><code>repr(object)</code>: returns the canonical string representation of the object
+<li><code>repr(object)</code>: returns the canonical string
+representation of the object
 <ol type="1">
-<li>For most cases we have: <code>eval(repr(object)) == object</code></li>
-<li>For some cases like built-in functions the above relationship doesn't hold</li>
+<li>For most cases we have:
+<code>eval(repr(object)) == object</code></li>
+<li>For some cases like built-in functions the above relationship
+doesn't hold</li>
 </ol></li>
 <li>Use string representations in user-defined classes:
 <ol type="1">
-<li>The <code>str(object)</code> invokes <code>object.__str__()</code> , it is used in the <code>print(object)</code></li>
-<li>The <code>repr(object)</code> invokes <code>object.__repr__()</code>, it is used in the interactive session</li>
-<li>If we explicitly overwrite the <code>__str__()</code> and the <code>__repr__()</code> in our class, then instances of our class have string representation</li>
+<li>The <code>str(object)</code> invokes <code>object.__str__()</code> ,
+it is used in the <code>print(object)</code></li>
+<li>The <code>repr(object)</code> invokes
+<code>object.__repr__()</code>, it is used in the interactive
+session</li>
+<li>If we explicitly overwrite the <code>__str__()</code> and the
+<code>__repr__()</code> in our class, then instances of our class have
+string representation</li>
 </ol></li>
 </ol>
 <p>3 Special Methods:</p>
 <ol type="1">
 <li><p><code>__init__()</code>: construct objects</p></li>
 <li><p><code>__str__()</code>: print objects</p></li>
-<li><p><code>__repr__()</code>: display objects in the interactive session</p></li>
+<li><p><code>__repr__()</code>: display objects in the interactive
+session</p></li>
 <li><p><code>__bool__()</code>: return bool values of objects,</p>
 <ol type="1">
-<li><p>For instances of user-defined classes, the default <code>object.__bool__()</code> returns <code>True</code></p></li>
+<li><p>For instances of user-defined classes, the default
+<code>object.__bool__()</code> returns <code>True</code></p></li>
 <li><p>We can overwrite the function to manipulate its behavior:</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__bool__ = <span class="keyword">lambda</span> self: self.__len__() == <span class="number">0</span>           <span class="comment"># If the length of an object equals to zero, returns True</span></span><br></pre></td></tr></table></figure></p></li>
 </ol></li>
-<li><p><code>__call__()</code>: allows objects to behave like higher-order function</p></li>
+<li><p><code>__call__()</code>: allows objects to behave like
+higher-order function</p></li>
 </ol>
 <p>4 Three ways to implement generic function:</p>
 <ol type="1">
-<li><p>Shared Interfaces: use a collection of shared attributes and behaviors, interface is additive</p></li>
-<li><p>Type Dispatching: check instance types, do different things for instances of different types, the <code>isinstance(object, type)</code> function is used here</p></li>
-<li><p>Type Coercion: we can deem subclass objects as superclass objects, or we can explicitly define a conversion function to transfer objects of one type into objects of another type</p></li>
+<li><p>Shared Interfaces: use a collection of shared attributes and
+behaviors, interface is additive</p></li>
+<li><p>Type Dispatching: check instance types, do different things for
+instances of different types, the <code>isinstance(object, type)</code>
+function is used here</p></li>
+<li><p>Type Coercion: we can deem subclass objects as superclass
+objects, or we can explicitly define a conversion function to transfer
+objects of one type into objects of another type</p></li>
 </ol>
 <h1 id="lecture-19-20181005">Lecture 19 2018/10/05</h1>
 <p>1 Efficiency:</p>
 <ol type="1">
-<li><p>Definition: the computational resources used by a representation or processes</p></li>
+<li><p>Definition: the computational resources used by a representation
+or processes</p></li>
 <li><p>Measurement: time and space</p></li>
-<li><p>Space requirements: how memory is used, preserved and reclaimed</p>
+<li><p>Space requirements: how memory is used, preserved and
+reclaimed</p>
 <ol type="1">
-<li>All active environments with referenced values and frames are preserved by the interpreter</li>
+<li>All active environments with referenced values and frames are
+preserved by the interpreter</li>
 </ol></li>
 <li><p>Efficiency can be greatly improved by memorization:</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">memo</span>(<span class="params">f</span>):</span></span><br><span class="line">        cache = &#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">memoized</span>(<span class="params">n</span>):</span></span><br><span class="line">            <span class="keyword">if</span> n <span class="keyword">not</span> <span class="keyword">in</span> cache:</span><br><span class="line">                cache[n] = f(n)</span><br><span class="line">            <span class="keyword">return</span> cache[n]</span><br><span class="line">        <span class="keyword">return</span> memoized</span><br><span class="line">fib = memo(fib)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Notice we can use dp to solve this:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        p, q, r = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            p, q = q, r</span><br><span class="line">            r = p + q</span><br><span class="line">        <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <p>2 Order of growth:</p>
 <ol type="1">
-<li>Definition: let input scale be <span class="math inline">\(n\)</span>, let resource requirement b <span class="math inline">\(R(n)\)</span>, We say that <span class="math inline">\(R(n)\)</span> as order of growth <span class="math inline">\(\Theta(f(n))\)</span>, written <span class="math inline">\(R(n) = \Theta(f(n))\)</span>, if there are positive constants <span class="math inline">\(k_1\)</span>, <span class="math inline">\(k_2\)</span> such that <span class="math inline">\(k_1 * f(n) \leq R(n) \leq k_2 * f(n)\)</span></li>
+<li>Definition: let input scale be <span class="math inline">\(n\)</span>, let resource requirement b <span class="math inline">\(R(n)\)</span>, We say that <span class="math inline">\(R(n)\)</span> as order of growth <span class="math inline">\(\Theta(f(n))\)</span>, written <span class="math inline">\(R(n) = \Theta(f(n))\)</span>, if there are
+positive constants <span class="math inline">\(k_1\)</span>, <span class="math inline">\(k_2\)</span> such that <span class="math inline">\(k_1 * f(n) \leq R(n) \leq k_2 * f(n)\)</span></li>
 <li>Tips:
 <ol type="1">
 <li>Constants do not affect order of growth</li>
 <li>Base of logarithms does not affect order of growth</li>
-<li>When an inner computational process is repeated for each step in an outer process, then the order of growth of the entire process is a product of the number of steps in the outer and inner processes</li>
+<li>When an inner computational process is repeated for each step in an
+outer process, then the order of growth of the entire process is a
+product of the number of steps in the outer and inner processes</li>
 </ol></li>
 <li>Common categories:
 <ol type="1">
@@ -654,9 +865,11 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <h1 id="lecture-20-20181008">Lecture 20 2018/10/08</h1>
 <p>1 Linked List:</p>
 <ol type="1">
-<li>Definition: first + rest of the list; the rest of the linked list is also a linked list;</li>
+<li>Definition: first + rest of the list; the rest of the linked list is
+also a linked list;</li>
 <li>Empty linked list: no first element, no rest of the list</li>
-<li>A linked list is a sequence, it has finite length and supports element selection</li>
+<li>A linked list is a sequence, it has finite length and supports
+element selection</li>
 </ol>
 <p>2 Tree:</p>
 <ol type="1">
@@ -666,16 +879,21 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <h1 id="lecture-21-20181010">Lecture 21 2018/10/10</h1>
 <p>1 Set:</p>
 <ol type="1">
-<li><p>Definition: unordered collection or elements, no duplication in a set</p></li>
-<li><p>Printing order of a set may be different from the displaying order of a set</p></li>
+<li><p>Definition: unordered collection or elements, no duplication in a
+set</p></li>
+<li><p>Printing order of a set may be different from the displaying
+order of a set</p></li>
 <li><p>Set operations:</p>
 <ul>
 <li>union, intersection, isdisjoint, issubset, issuperset</li>
 <li>add, remove, discard, pop
 <ul>
-<li>remove: return None, if the element is not in the set, KeyError is caused</li>
-<li>discard: return None, if the element is not in the set, KeyError is not caused</li>
-<li>pop: return the removed element, if the element is not in the set, KeyError is caused</li>
+<li>remove: return None, if the element is not in the set, KeyError is
+caused</li>
+<li>discard: return None, if the element is not in the set, KeyError is
+not caused</li>
+<li>pop: return the removed element, if the element is not in the set,
+KeyError is caused</li>
 </ul></li>
 <li>clear, update</li>
 </ul></li>
@@ -684,12 +902,14 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>Unordered sequence: implemented by linked list:
 <ul>
 <li>Contain operation complexity: <span class="math inline">\(\Theta(n)\)</span></li>
-<li>Intersect operation complexity: <span class="math inline">\(\Theta(n * m)\)</span></li>
+<li>Intersect operation complexity: <span class="math inline">\(\Theta(n
+* m)\)</span></li>
 </ul></li>
 <li>Ordered sequence: implemented by linked list:
 <ul>
 <li>Contain operation complexity: <span class="math inline">\(\Theta(n)\)</span></li>
-<li>Intersect operation complexity: <span class="math inline">\(\Theta(n + m)\)</span></li>
+<li>Intersect operation complexity: <span class="math inline">\(\Theta(n
++ m)\)</span></li>
 </ul></li>
 <li>Binary search tree: implemented by tree:
 <ul>
@@ -704,35 +924,53 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li><p>Definition:</p>
 <ul>
 <li><p>A leaf is a BST</p></li>
-<li><p>Each node has at most two children, each children is a BST</p></li>
-<li><p>For each node, the entries in the left child should be smaller than the label of the node</p></li>
-<li><p>For each node, the entries in the right child should be larger than the label of the node</p></li>
+<li><p>Each node has at most two children, each children is a
+BST</p></li>
+<li><p>For each node, the entries in the left child should be smaller
+than the label of the node</p></li>
+<li><p>For each node, the entries in the right child should be larger
+than the label of the node</p></li>
 </ul></li>
-<li><p>For adjourn operation, a BST is faster than an ordered linked list</p></li>
+<li><p>For adjourn operation, a BST is faster than an ordered linked
+list</p></li>
 </ol>
-<h1 id="lecture-23-20181015-lecture-24-20181019">Lecture 23 2018/10/15 &amp; Lecture 24 2018/10/19</h1>
+<h1 id="lecture-23-20181015-lecture-24-20181019">Lecture 23 2018/10/15
+&amp; Lecture 24 2018/10/19</h1>
 <p>Lecture 23 is a review session, nothing interesting.</p>
-<p>Lecture 24 is Alan Kay's presentation on the history of programming language and user interface design.</p>
+<p>Lecture 24 is Alan Kay's presentation on the history of programming
+language and user interface design.</p>
 <h1 id="lecture-25-20181022">Lecture 25 2018/10/22</h1>
-<p>1 Interpreter: a program that carries out evaluation and execution procedures</p>
+<p>1 Interpreter: a program that carries out evaluation and execution
+procedures</p>
 <p>2 Programming Language:</p>
 <ol type="1">
-<li>PLs vary widely in syntactic structures, features and domain of application</li>
-<li>A powerful PL can exist without object system, higher-order function, assignment or even control structures</li>
-<li>The part of Scheme discussed in this class is limited into topics like expressions but not statements, symbolic computations and mutable values</li>
+<li>PLs vary widely in syntactic structures, features and domain of
+application</li>
+<li>A powerful PL can exist without object system, higher-order
+function, assignment or even control structures</li>
+<li>The part of Scheme discussed in this class is limited into topics
+like expressions but not statements, symbolic computations and mutable
+values</li>
 </ol>
 <p>3 Functional Programming</p>
 <ol type="1">
-<li><p>Low-level machine language cares about representation of data and control in terms of storage and primitive machine structures, higher-level language has means of combination and abstraction to apply in larger-scale organization of software systems</p></li>
+<li><p>Low-level machine language cares about representation of data and
+control in terms of storage and primitive machine structures,
+higher-level language has means of combination and abstraction to apply
+in larger-scale organization of software systems</p></li>
 <li><p>Scheme is a dialect of Lisp</p></li>
 <li><p>Expressions:</p>
 <ul>
 <li>Expressions are bound with parentheses</li>
-<li>If statement:<code>(if &lt;predicate&gt; &lt;consequent&gt; &lt;alternative&gt;)</code>. Scheme does not have <code>elif</code> statement, you need to use nested if statements.
+<li>If
+statement:<code>(if &lt;predicate&gt; &lt;consequent&gt; &lt;alternative&gt;)</code>.
+Scheme does not have <code>elif</code> statement, you need to use nested
+if statements.
 <ul>
 <li>For numeric comparison: <code>(&gt; 2 3)</code> is okay</li>
 </ul></li>
-<li>Boolean values: <code>#t</code> for <code>True</code>, <code>#f</code> for <code>False</code></li>
+<li>Boolean values: <code>#t</code> for <code>True</code>,
+<code>#f</code> for <code>False</code></li>
 <li>Logical operations, short-circuiting is applied:
 <ul>
 <li><code>(and &lt;e1&gt; ... &lt;en&gt;)</code></li>
@@ -742,14 +980,18 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 </ul></li>
 <li><p>Definitions</p>
 <ul>
-<li>Definition of variable: <code>(define &lt;var&gt; &lt;value&gt;)</code></li>
-<li>Definition of function: <code>(define (&lt;name&gt; &lt;formal parameters&gt;) &lt;body&gt;)</code></li>
+<li>Definition of variable:
+<code>(define &lt;var&gt; &lt;value&gt;)</code></li>
+<li>Definition of function:
+<code>(define (&lt;name&gt; &lt;formal parameters&gt;) &lt;body&gt;)</code></li>
 <li>Call of function: <code>(&lt;name&gt; &lt;arguments&gt;)</code></li>
-<li>Lambda expression/ anonymous function: <code>(lambda (&lt;formal parameters&gt; &lt;body&gt;))</code></li>
+<li>Lambda expression/ anonymous function:
+<code>(lambda (&lt;formal parameters&gt; &lt;body&gt;))</code></li>
 </ul></li>
 <li><p>Compound Values:</p>
 <ul>
-<li><p>Built-in pairs: <code>(cons &lt;value1&gt; &lt;value2&gt;)</code></p>
+<li><p>Built-in pairs:
+<code>(cons &lt;value1&gt; &lt;value2&gt;)</code></p>
 <p><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> x (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>))</span><br><span class="line"><span class="comment">; Anything followed by a &#x27;;&#x27; is a comment</span></span><br><span class="line"><span class="comment">; Take the first element of a pair</span></span><br><span class="line">(<span class="name"><span class="builtin-name">car</span></span> x) <span class="comment">; 1</span></span><br><span class="line"><span class="comment">; Take the second element of a pair</span></span><br><span class="line">(<span class="name"><span class="builtin-name">cdr</span></span> x) <span class="comment">; 2</span></span><br></pre></td></tr></table></figure></p></li>
 <li><p>Built-in lists:</p>
 <ul>
@@ -763,25 +1005,45 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <h1 id="lab-10">Lab 10</h1>
 <p>1 <code>cond</code>expression</p>
 <ol type="1">
-<li>Syntax: <code>(cond (&lt;p1&gt; &lt;e1&gt;) (&lt;p2&gt; &lt;e2&gt;) ... (&lt;pn&gt; &lt;en&gt;) [(else &lt;else expression&gt;)])</code></li>
-<li><code>&lt;p1&gt; ... &lt;pn&gt;</code> are predicates that can be evaluated to be <code>#t</code> or <code>#f</code>, <code>&lt;e1&gt; ... &lt;en&gt;</code> are expressions that could be executed</li>
-<li>If <code>&lt;p1&gt; ... &lt;pk-1&gt;</code> are all <code>#f</code> and <code>&lt;pk&gt;</code> is <code>#t</code>, then <code>&lt;ek&gt;</code> is executed and the <code>cond</code> expression terminates here</li>
+<li>Syntax:
+<code>(cond (&lt;p1&gt; &lt;e1&gt;) (&lt;p2&gt; &lt;e2&gt;) ... (&lt;pn&gt; &lt;en&gt;) [(else &lt;else expression&gt;)])</code></li>
+<li><code>&lt;p1&gt; ... &lt;pn&gt;</code> are predicates that can be
+evaluated to be <code>#t</code> or <code>#f</code>,
+<code>&lt;e1&gt; ... &lt;en&gt;</code> are expressions that could be
+executed</li>
+<li>If <code>&lt;p1&gt; ... &lt;pk-1&gt;</code> are all <code>#f</code>
+and <code>&lt;pk&gt;</code> is <code>#t</code>, then
+<code>&lt;ek&gt;</code> is executed and the <code>cond</code> expression
+terminates here</li>
 </ol>
 <p>2 Selecting elements from a list:</p>
 <ol type="1">
-<li>The <code>car</code> operator selects the first element in the list</li>
-<li>The <code>cdr</code> operator selects all elements in the list but the first one, is returns a sublist</li>
+<li>The <code>car</code> operator selects the first element in the
+list</li>
+<li>The <code>cdr</code> operator selects all elements in the list but
+the first one, is returns a sublist</li>
 </ol>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> x list(<span class="name">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">car</span></span> x)<span class="comment">; 1</span></span><br><span class="line">(<span class="name"><span class="builtin-name">cdr</span></span> x)<span class="comment">; (2 3 4)</span></span><br></pre></td></tr></table></figure>
 <h1 id="lecture-26-20181024">Lecture 26 2018/10/24</h1>
-<p>1 Python interpreter handles errors by terminating immediately and printing an error message.<br></p>
-<p>2 Raise an expression is a technique for interrupting the normal flow of execution in a program, signaling that some exceptional circumstance has arisen, and returning directly to an enclosing part of a program that was designated to react to this circumstance.<br></p>
-<p>3 You can raise an exception with the <code>raise</code> statement or the <code>assert</code> statement</p>
+<p>1 Python interpreter handles errors by terminating immediately and
+printing an error message.<br></p>
+<p>2 Raise an expression is a technique for interrupting the normal flow
+of execution in a program, signaling that some exceptional circumstance
+has arisen, and returning directly to an enclosing part of a program
+that was designated to react to this circumstance.<br></p>
+<p>3 You can raise an exception with the <code>raise</code> statement or
+the <code>assert</code> statement</p>
 <ol type="1">
-<li>An exception is an object instance inherited from the <code>BaseException</code> class</li>
-<li><code>assert</code> statement raises an exception with the <code>AssertionError</code> class</li>
-<li>Syntax for raise statement: <code>raise Exception('Error information string')</code></li>
-<li>If an exception occurs, no further statements in the same block of codes will be executed unless the exception is handled, the interpreter will also print a stack backtree to indicate the source of the exception<br></li>
+<li>An exception is an object instance inherited from the
+<code>BaseException</code> class</li>
+<li><code>assert</code> statement raises an exception with the
+<code>AssertionError</code> class</li>
+<li>Syntax for raise statement:
+<code>raise Exception('Error information string')</code></li>
+<li>If an exception occurs, no further statements in the same block of
+codes will be executed unless the exception is handled, the interpreter
+will also print a stack backtree to indicate the source of the
+exception<br></li>
 </ol>
 <p>4 Handling an exception:</p>
 <ol type="1">
@@ -791,34 +1053,43 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <p>5 Exception objects:</p>
 <ol type="1">
 <li>Exception objects can have attributes</li>
-<li>You can build a class that inherits the Exception class and customize instance behaviors<br></li>
+<li>You can build a class that inherits the Exception class and
+customize instance behaviors<br></li>
 </ol>
 <h1 id="lecture-27-20181026">Lecture 27 2018/10/26</h1>
 <p>1 The Scheme-Syntax Calculator(aka Calculator)</p>
 <ol type="1">
-<li>It has two legal expressions: numbers that are self-evaluating and call expressions that are Pair instances representing Scheme lists</li>
-<li>It has an interpreter that takes in text inputs and outputs Calculator expressions<br></li>
+<li>It has two legal expressions: numbers that are self-evaluating and
+call expressions that are Pair instances representing Scheme lists</li>
+<li>It has an interpreter that takes in text inputs and outputs
+Calculator expressions<br></li>
 </ol>
 <p>2 Parsing Expressions:</p>
 <ol type="1">
 <li>Definition: generate expression trees from raw text input</li>
-<li>Construction of the parser: lexical parser(aka tokenizer) and the syntactic analyzer
+<li>Construction of the parser: lexical parser(aka tokenizer) and the
+syntactic analyzer
 <ul>
-<li>Lexical parser: partitions one text input expression into tokens</li>
-<li>Syntactic parser: construct an expression tree from tokens, it is a tree-recursive process<br></li>
+<li>Lexical parser: partitions one text input expression into
+tokens</li>
+<li>Syntactic parser: construct an expression tree from tokens, it is a
+tree-recursive process<br></li>
 </ul></li>
 </ol>
 <p>3 The REPL</p>
 <ol type="1">
-<li>The interactive interface of an interpreter is a REPL(read-eval-print loop)</li>
-<li>The implementation of a REPL can be independent of the interpreter it uses</li>
+<li>The interactive interface of an interpreter is a
+REPL(read-eval-print loop)</li>
+<li>The implementation of a REPL can be independent of the interpreter
+it uses</li>
 <li>The process of the REPL:
 <ol type="1">
 <li>Print a prompt to denote the REPL is ready</li>
 <li>Read the text input</li>
 <li>Parse the text input into expression</li>
 <li>Evaluate the expression</li>
-<li>If error occurs, report the error, otherwise print the expression value and return to Step 1</li>
+<li>If error occurs, report the error, otherwise print the expression
+value and return to Step 1</li>
 </ol></li>
 </ol>
 <h1 id="lecture-28-20181029">Lecture 28 2018/10/29</h1>
@@ -837,33 +1108,44 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 </ol>
 <p>3 Quotation:</p>
 <ol type="1">
-<li>Definition: the <code>quote</code> special form evaluates to the quoted expression, which is not evaluated</li>
+<li>Definition: the <code>quote</code> special form evaluates to the
+quoted expression, which is not evaluated</li>
 <li>Syntax: <code>(quote &lt;expression&gt;)</code></li>
-<li><code>'&lt;expression&gt;</code> is shorthand for <code>(quote &lt;expression&gt;)</code></li>
+<li><code>'&lt;expression&gt;</code> is shorthand for
+<code>(quote &lt;expression&gt;)</code></li>
 </ol>
 <p>4 Lambda expression:</p>
 <ol type="1">
 <li>Lambda expressions evaluate to user-defined procedures</li>
-<li>Syntax <code>(lambda (&lt;formal-parameters&gt;) &lt;body&gt;)</code></li>
+<li>Syntax
+<code>(lambda (&lt;formal-parameters&gt;) &lt;body&gt;)</code></li>
 </ol>
 <p>5 Frames and environments:</p>
 <ol type="1">
 <li>A frame represents an environment by having a parent frame</li>
-<li>Frames are Python instances with methods <code>lookup</code> and <code>define</code></li>
+<li>Frames are Python instances with methods <code>lookup</code> and
+<code>define</code></li>
 </ol>
 <p>6 Define expressions:</p>
 <ol type="1">
-<li>Define binds a symbol to a value in the first frame of the current environment</li>
-<li>Procedure definition is shorthand of define with a lambda expression</li>
-<li>To apply a user-defined procedure, create a new frame in which formal parameters are bound to argument values, whose parent is the <code>env</code> of the procedure</li>
+<li>Define binds a symbol to a value in the first frame of the current
+environment</li>
+<li>Procedure definition is shorthand of define with a lambda
+expression</li>
+<li>To apply a user-defined procedure, create a new frame in which
+formal parameters are bound to argument values, whose parent is the
+<code>env</code> of the procedure</li>
 </ol>
 <h1 id="lecture-29-20181031">Lecture 29 2018/10/31</h1>
 <p>1 Dynamic scope:</p>
 <ol type="1">
-<li><p>The way names are looked up in Python and Scheme is called lexical scope(static scope)</p>
+<li><p>The way names are looked up in Python and Scheme is called
+lexical scope(static scope)</p>
 <ul>
-<li>Lexical scope: the parent of a frame is the environment in which a procedure is defined</li>
-<li>Dynamic scope: the parent of a frame is the environment in which a procedure is called</li>
+<li>Lexical scope: the parent of a frame is the environment in which a
+procedure is defined</li>
+<li>Dynamic scope: the parent of a frame is the environment in which a
+procedure is called</li>
 </ul></li>
 </ol>
 <p>2 Tail recursion:</p>
@@ -878,23 +1160,38 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 </ul></li>
 <li>Advantage:
 <ul>
-<li>Value of expression is independent of order of sub-expression evaluation, sub-expression can be evaluated in parallel or in demand(lazily)</li>
-<li>Referential transparency: expression value does not change if sub-expression is replaced by its value</li>
+<li>Value of expression is independent of order of sub-expression
+evaluation, sub-expression can be evaluated in parallel or in
+demand(lazily)</li>
+<li>Referential transparency: expression value does not change if
+sub-expression is replaced by its value</li>
 </ul></li>
 </ol></li>
-<li><p>Iteration: Implementation of Scheme are required to be properly tail-recursive, this allows the execution of an iterative computation in constant space (<span class="math inline">\(\Theta(1)\)</span>), even if the iterative computation is described by a syntactically recursive procedure</p></li>
+<li><p>Iteration: Implementation of Scheme are required to be properly
+tail-recursive, this allows the execution of an iterative computation in
+constant space (<span class="math inline">\(\Theta(1)\)</span>), even if
+the iterative computation is described by a syntactically recursive
+procedure</p></li>
 <li><p>Tail calls:</p>
 <ol type="1">
-<li>A procedure call that has not returned is active, some procedure calls are tail calls. A scheme interpreter should have an unbounded number of tail calls using only a constant amount of space</li>
+<li>A procedure call that has not returned is active, some procedure
+calls are tail calls. A scheme interpreter should have an unbounded
+number of tail calls using only a constant amount of space</li>
 <li>A tail call is a call expression in a tail context, for example:
 <ul>
 <li>The last body sub-expression in a lambda expression</li>
-<li>Sub-expression 2 &amp; sub-expression in a tail context <code>if</code> expression, namely, the consequent expression and the alternative expression</li>
-<li>All non-predicate sub-expressions in a tail context <code>cond</code> expression</li>
-<li>The last sub-expression in a tail context <code>and</code> or <code>or</code></li>
+<li>Sub-expression 2 &amp; sub-expression in a tail context
+<code>if</code> expression, namely, the consequent expression and the
+alternative expression</li>
+<li>All non-predicate sub-expressions in a tail context
+<code>cond</code> expression</li>
+<li>The last sub-expression in a tail context <code>and</code> or
+<code>or</code></li>
 <li>The last sub-expression in a tail context <code>begin</code></li>
 </ul></li>
-<li>The return value of the tail call should be the return value of the current procedure call, in this way, tail calls don't increase environment size</li>
+<li>The return value of the tail call should be the return value of the
+current procedure call, in this way, tail calls don't increase
+environment size</li>
 </ol></li>
 </ol>
 <h1 id="lecture-30-20181102">Lecture 30 2018/11/02</h1>
@@ -903,17 +1200,22 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>A scheme expression is a scheme list
 <ul>
 <li>Expression: primitive expression and combination</li>
-<li>Eval a scheme list of expressions return the value of the expression</li>
+<li>Eval a scheme list of expressions return the value of the
+expression</li>
 </ul></li>
 </ol>
 <p>2 Macros:</p>
 <ol type="1">
-<li>A macro is an operation performed on source code before evaluation that allows you to define special forms</li>
-<li>Scheme has a define-macro special form that defines a source code transformation</li>
+<li>A macro is an operation performed on source code before evaluation
+that allows you to define special forms</li>
+<li>Scheme has a define-macro special form that defines a source code
+transformation</li>
 <li>Evaluation procedure of a macro call expression:
 <ol type="1">
-<li>Evaluate the operator sub-expression, which evaluates to a macro</li>
-<li>Call the macro procedure on the operand expressions without evaluating them first</li>
+<li>Evaluate the operator sub-expression, which evaluates to a
+macro</li>
+<li>Call the macro procedure on the operand expressions without
+evaluating them first</li>
 </ol></li>
 </ol>
 <p>3 Quasi-quotation</p>
@@ -922,29 +1224,41 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <p>1 Sequence operations: map, filter, reduce</p>
 <p>2 Streams are lazy Scheme lists：</p>
 <ol type="1">
-<li>A stream is a list, but the rest of the list is computed only when needed. If there is error in the rest part, there will be no error report before it is actually computed</li>
-<li>Syntax: <code>cons-stream</code>, <code>car</code>, <code>cdr-stream</code></li>
+<li>A stream is a list, but the rest of the list is computed only when
+needed. If there is error in the rest part, there will be no error
+report before it is actually computed</li>
+<li>Syntax: <code>cons-stream</code>, <code>car</code>,
+<code>cdr-stream</code></li>
 </ol>
 <p>3 Infinite-streams:</p>
 <ol type="1">
-<li>An integer stream is a stream of consecutive integer numbers, the rest of the stream is not yet computed when created</li>
+<li>An integer stream is a stream of consecutive integer numbers, the
+rest of the stream is not yet computed when created</li>
 </ol>
 <p>4 Higher-order functions:</p>
 <ol type="1">
-<li><code>cons</code> -&gt; <code>cons-stream</code>, <code>car</code> -&gt; <code>car</code>, <code>cdr</code> -&gt; <code>cdr-stream</code></li>
+<li><code>cons</code> -&gt; <code>cons-stream</code>, <code>car</code>
+-&gt; <code>car</code>, <code>cdr</code> -&gt;
+<code>cdr-stream</code></li>
 <li>A stream of primes, the "Sieve of Eratosthenes:
 <ol type="1">
 <li>A list: <span class="math inline">\(1, 2, ..., n\)</span></li>
 <li>Let <span class="math inline">\(p = 2\)</span>, mark all <span class="math inline">\(k * p\)</span> in the list</li>
-<li>Find the smallest unmarked number in the list, if it exists, let <span class="math inline">\(p\)</span> equal to it and repeat step 2, otherwise stop the procedure</li>
-<li>When the procedure is stopped, the unmarked numbers in the list are all primes</li>
+<li>Find the smallest unmarked number in the list, if it exists, let
+<span class="math inline">\(p\)</span> equal to it and repeat step 2,
+otherwise stop the procedure</li>
+<li>When the procedure is stopped, the unmarked numbers in the list are
+all primes</li>
 </ol></li>
 </ol>
 <p>5 Promises:</p>
 <ol type="1">
-<li>A promise is an expression along with an environment in which to evaluate it</li>
-<li>Delaying an expression creates a promise to evaluate it later in the current environment</li>
-<li>Forcing a promise returns its value in the environment in which it is defined</li>
+<li>A promise is an expression along with an environment in which to
+evaluate it</li>
+<li>Delaying an expression creates a promise to evaluate it later in the
+current environment</li>
+<li>Forcing a promise returns its value in the environment in which it
+is defined</li>
 </ol>
 <h1 id="lab-11">Lab 11</h1>
 <p>1 Two programing languages for an interpreter:</p>
@@ -952,18 +1266,30 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>The language being interpreted</li>
 <li>The underlying implementation language</li>
 </ol>
-<p>For Python interpreter, the first is of course Python itself. The most common Python interpreter <code>CPython</code> is implemented using C, another popular Python interpreter <code>PyPy</code> is written in Python.</p>
+<p>For Python interpreter, the first is of course Python itself. The
+most common Python interpreter <code>CPython</code> is implemented using
+C, another popular Python interpreter <code>PyPy</code> is written in
+Python.</p>
 <p>2 The REPL</p>
 <ol type="1">
-<li><p>Read: The interpreter takes the user input (a string) and passes it through a lexer and parser</p>
+<li><p>Read: The interpreter takes the user input (a string) and passes
+it through a lexer and parser</p>
 <ul>
-<li>The lexer turns the user input string into atomic pieces (tokens) that are like "words" of the implemented language</li>
-<li>The parser takes the tokens and organizes them into data structures that the underlying language can understand</li>
+<li>The lexer turns the user input string into atomic pieces (tokens)
+that are like "words" of the implemented language</li>
+<li>The parser takes the tokens and organizes them into data structures
+that the underlying language can understand</li>
 </ul></li>
-<li><p>Eval: Mutual recursion between eval and apply evaluate the expression to obtain a value</p>
+<li><p>Eval: Mutual recursion between eval and apply evaluate the
+expression to obtain a value</p>
 <ul>
-<li>Eval takes an expression and evaluates it according to the rules of the language. Evaluating a call expression involves calling apply to apply an evaluated operator to its evaluated operands</li>
-<li>Apply takes an evaluated operator, i.e., a function, and applies it to the call expression's arguments. Apply may call eval to do more work in the body of the function, so eval and apply are mutually recursive</li>
+<li>Eval takes an expression and evaluates it according to the rules of
+the language. Evaluating a call expression involves calling apply to
+apply an evaluated operator to its evaluated operands</li>
+<li>Apply takes an evaluated operator, i.e., a function, and applies it
+to the call expression's arguments. Apply may call eval to do more work
+in the body of the function, so eval and apply are mutually
+recursive</li>
 </ul></li>
 <li><p>Print: Display the result of evaluating the user input</p></li>
 </ol>
@@ -971,120 +1297,205 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <h1 id="section">§ 4.1 - § 4.2</h1>
 <p>1 Introduction:</p>
 <ol type="1">
-<li>A sequence can be represented without each element being stored explicitly in the memory of the computer. The elements can be computed on demand(lazily).</li>
+<li>A sequence can be represented without each element being stored
+explicitly in the memory of the computer. The elements can be computed
+on demand(lazily).</li>
 <li>For example, the range container is computed lazily.</li>
 </ol>
 <p>2 Iterators: provide sequential access to values</p>
 <ol type="1">
-<li>Usage: <code>iter(object)</code>, <code>next(iterator)</code>, <code>StopIteration</code> exception, <code>iter(iterator)</code> returns itself, not an copy of the iterator</li>
+<li>Usage: <code>iter(object)</code>, <code>next(iterator)</code>,
+<code>StopIteration</code> exception, <code>iter(iterator)</code>
+returns itself, not an copy of the iterator</li>
 <li>Comparison:
 <ul>
-<li>Range: arbitrary element accessible(this is called random access)</li>
-<li>Iterator: only the next element is accessible(this is called the sequential access), the class of underlying sequential datasets are broader</li>
+<li>Range: arbitrary element accessible(this is called random
+access)</li>
+<li>Iterator: only the next element is accessible(this is called the
+sequential access), the class of underlying sequential datasets are
+broader</li>
 </ul></li>
 </ol>
-<p>3 Iterables: any value that can produce an iterator is called an iterable value, i.e., anything that can be passed in the <code>iter</code> function is an iterable</p>
+<p>3 Iterables: any value that can produce an iterator is called an
+iterable value, i.e., anything that can be passed in the
+<code>iter</code> function is an iterable</p>
 <ol type="1">
 <li>For example, tuples, strings, lists iterators are all iterables</li>
-<li>If a dictionary adds, removes or modifies its keys, then all existing iterators become invalid</li>
-<li>If an object has <code>__iter__</code> method, then it is an iterable</li>
+<li>If a dictionary adds, removes or modifies its keys, then all
+existing iterators become invalid</li>
+<li>If an object has <code>__iter__</code> method, then it is an
+iterable</li>
 </ol>
-<p>4 Streams: apart from iterator, stream is another way to represent sequential data implicitly</p>
+<p>4 Streams: apart from iterator, stream is another way to represent
+sequential data implicitly</p>
 <ol type="1">
 <li>A stream is a lazily computed list</li>
-<li>Like a linked list, a stream has first part and rest part, the rest part is also a stream, but the rest part is computed lazily</li>
-<li>Higher-order functions like <code>map</code>, <code>filter</code> also apply to streams</li>
+<li>Like a linked list, a stream has first part and rest part, the rest
+part is also a stream, but the rest part is computed lazily</li>
+<li>Higher-order functions like <code>map</code>, <code>filter</code>
+also apply to streams</li>
 </ol>
 <h1 id="lecture-32-20181107">Lecture 32 2018/11/07</h1>
 <p>1 Databases:</p>
 <ol type="1">
-<li>A database is a collection of data. A database management system(DBMS) is a software which can be used to manage the data by storing it onto the database and by retrieving and transforming it from the database. Each value stored is called a record, records with similar structure are grouped into tables.</li>
-<li>A query is a statement in a query language, and it is used for retrieving and transforming data values. The most common query language now is the structured query language(SQL). SQL is ANSI and ISO standard, but DBMS's implement custom variants</li>
-<li>SQL is an example of declarative language where statements do not describe computations directly but describe the result of computations. The database systems use a query interpreter to design and perform a computational process to get the result
+<li>A database is a collection of data. A database management
+system(DBMS) is a software which can be used to manage the data by
+storing it onto the database and by retrieving and transforming it from
+the database. Each value stored is called a record, records with similar
+structure are grouped into tables.</li>
+<li>A query is a statement in a query language, and it is used for
+retrieving and transforming data values. The most common query language
+now is the structured query language(SQL). SQL is ANSI and ISO standard,
+but DBMS's implement custom variants</li>
+<li>SQL is an example of declarative language where statements do not
+describe computations directly but describe the result of computations.
+The database systems use a query interpreter to design and perform a
+computational process to get the result
 <ul>
-<li>Declarative language: a program is a description of the desired result, the interpreter figures out how to generate the result, such as SQL and Prolog</li>
-<li>Imperative language: a program is a description of computational processes, the interpreter carries out execution rules, such as Python and Scheme</li>
+<li>Declarative language: a program is a description of the desired
+result, the interpreter figures out how to generate the result, such as
+SQL and Prolog</li>
+<li>Imperative language: a program is a description of computational
+processes, the interpreter carries out execution rules, such as Python
+and Scheme</li>
 </ul></li>
 </ol>
 <p>2 Tables:</p>
 <ol type="1">
-<li>A table is also called a relation, the columns in a table are named and typed, each row in a table is a record</li>
+<li>A table is also called a relation, the columns in a table are named
+and typed, each row in a table is a record</li>
 <li>Create a table using the <code>select</code> statement</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQlite Syntax</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- Create a table with one record</span></span><br><span class="line"><span class="keyword">create</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> <span class="keyword">as</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Create a table with multiple records</span></span><br><span class="line"><span class="keyword">create</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> <span class="keyword">as</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> <span class="keyword">as</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- MySQL Syntax</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--Create a new empty table</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> (</span><br><span class="line">    <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span>   <span class="operator">&lt;</span><span class="keyword">column</span> type<span class="operator">&gt;</span>);  <span class="comment">-- if this column cannot be null, then: &lt;column name&gt; &lt;column type&gt; &lt;not null&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--Insert records into the table</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">table</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> (<span class="operator">&lt;</span>column1 name<span class="operator">&gt;</span>, <span class="operator">&lt;</span>column2 name<span class="operator">&gt;</span>) <span class="keyword">values</span> (<span class="operator">&lt;</span>column1 <span class="keyword">value</span><span class="operator">&gt;</span>, <span class="operator">&lt;</span>column2 <span class="keyword">value</span><span class="operator">&gt;</span>)</span><br></pre></td></tr></table></figure>
 <p>3 Select Statements:</p>
 <ol type="1">
-<li>A select statement defines a new table either by listing values in a single row or by projecting an existing table using <code>from</code> clause: <code>select [column description] from [existing table name]</code></li>
+<li>A select statement defines a new table either by listing values in a
+single row or by projecting an existing table using <code>from</code>
+clause:
+<code>select [column description] from [existing table name]</code></li>
 <li>Details:
 <ul>
-<li>The <code>[column description]</code> can be an arithmetic expression on the column</li>
-<li>You can rename the the column in the expression: <code>select [column description] as [new column name]</code></li>
-<li>Example: <code>select (distance - 40) as dist_diff from city</code></li>
+<li>The <code>[column description]</code> can be an arithmetic
+expression on the column</li>
+<li>You can rename the the column in the expression:
+<code>select [column description] as [new column name]</code></li>
+<li>Example:
+<code>select (distance - 40) as dist_diff from city</code></li>
 </ul></li>
 <li><code>where</code> clause: condition</li>
-<li><code>order by</code> clause: ordering by a specific column, default order is ascending, you can alter to descending</li>
+<li><code>order by</code> clause: ordering by a specific column, default
+order is ascending, you can alter to descending</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span>        <span class="comment">-- Ascending by default</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">asc</span>    <span class="comment">-- Explicitly specify ascending order using asc </span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">-</span><span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span>       <span class="comment">-- Explicitly specify descending order using a minus mark</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span><span class="keyword">column</span> name<span class="operator">&gt;</span> <span class="keyword">desc</span>   <span class="comment">-- Explicitly specify descending order using desc </span></span><br></pre></td></tr></table></figure>
 <h1 id="hw-08">HW 08</h1>
-<p>1 How many times <code>scheme_eval</code> and <code>scheme_apply</code> are called in the Scheme interpreter.</p>
+<p>1 How many times <code>scheme_eval</code> and
+<code>scheme_apply</code> are called in the Scheme interpreter.</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">+</span></span> <span class="number">2</span> <span class="number">3</span> (<span class="name"><span class="builtin-name">-</span></span> <span class="number">4</span> <span class="number">5</span>) <span class="number">1</span>) </span><br><span class="line"><span class="comment">; scheme_eval</span></span><br><span class="line"><span class="comment">;1:	(+ 2 3 (- 4 5) 1) </span></span><br><span class="line"><span class="comment">;2:	+</span></span><br><span class="line"><span class="comment">;3:	2</span></span><br><span class="line"><span class="comment">;4:	3</span></span><br><span class="line"><span class="comment">;5:  (- 4 5)</span></span><br><span class="line"><span class="comment">;6:	-</span></span><br><span class="line"><span class="comment">;7:	4</span></span><br><span class="line"><span class="comment">;8: 5</span></span><br><span class="line"><span class="comment">;9: 1   So scheme_eval is called for nine times</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; scheme_apply</span></span><br><span class="line"><span class="comment">;1: (- 4 5)</span></span><br><span class="line"><span class="comment">;2: (+ 2 3 -1 1)</span></span><br></pre></td></tr></table></figure>
 <h1 id="lecture-33-20181109">Lecture 33 2018/11/09</h1>
 <p>1 Joining tables:</p>
 <ol type="1">
-<li>The type of join used in this class is cross join, since a table with <span class="math inline">\(m\)</span> rows joins a table with <span class="math inline">\(n\)</span> rows results in a Cartesian product table with <span class="math inline">\(m * n\)</span> rows</li>
+<li>The type of join used in this class is cross join, since a table
+with <span class="math inline">\(m\)</span> rows joins a table with
+<span class="math inline">\(n\)</span> rows results in a Cartesian
+product table with <span class="math inline">\(m * n\)</span> rows</li>
 <li>Aliases and dot expressions:
 <ul>
-<li>Join with overlapping columns: <code>select A.x, B.y from A, B where A.n = B.m</code></li>
-<li>If the column names are same in two two tables, use <code>table_name.column_name</code> to distinguish</li>
+<li>Join with overlapping columns:
+<code>select A.x, B.y from A, B where A.n = B.m</code></li>
+<li>If the column names are same in two two tables, use
+<code>table_name.column_name</code> to distinguish</li>
 </ul></li>
 </ol>
-<p>2 Numerical expressions: expressions can contain function calls and arithmetic operators</p>
+<p>2 Numerical expressions: expressions can contain function calls and
+arithmetic operators</p>
 <ol type="1">
-<li>Combine values: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>and</code>, <code>or</code></li>
-<li>Transform values: <code>abs</code>, <code>round</code>, <code>not</code>,<code>-</code></li>
-<li>Compare values: <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&lt;&gt;</code>, <code>!=</code>, <code>=</code></li>
+<li>Combine values: <code>+</code>, <code>-</code>, <code>*</code>,
+<code>/</code>, <code>%</code>, <code>and</code>, <code>or</code></li>
+<li>Transform values: <code>abs</code>, <code>round</code>,
+<code>not</code>,<code>-</code></li>
+<li>Compare values: <code>&gt;</code>, <code>&gt;=</code>,
+<code>&lt;</code>, <code>&lt;=</code>, <code>&lt;&gt;</code>,
+<code>!=</code>, <code>=</code></li>
 </ol>
 <p>3 String expressions:</p>
 <ol type="1">
-<li>String concatenation using <code>||</code>: <code>'hello, ' || 'world'</code> =&gt; <code>hello, world</code></li>
-<li><code>substr(&lt;string name&gt;, &lt;start index&gt;, &lt;length&gt;)</code>: notice the index starts from 1 not 0 in SQL</li>
-<li><code>instr(&lt;string name&gt;, &lt;substring name&gt;)</code>: returns the index by which the substring appears first in the string</li>
+<li>String concatenation using <code>||</code>:
+<code>'hello, ' || 'world'</code> =&gt; <code>hello, world</code></li>
+<li><code>substr(&lt;string name&gt;, &lt;start index&gt;, &lt;length&gt;)</code>:
+notice the index starts from 1 not 0 in SQL</li>
+<li><code>instr(&lt;string name&gt;, &lt;substring name&gt;)</code>:
+returns the index by which the substring appears first in the
+string</li>
 </ol>
 <h1 id="lecture-34-20181014">Lecture 34 2018/10/14</h1>
 <p>1 Aggregation and grouping:</p>
 <ol type="1">
-<li>Aggregate functions: <code>max</code>, <code>min</code>, <code>sum</code>, <code>count</code>
+<li>Aggregate functions: <code>max</code>, <code>min</code>,
+<code>sum</code>, <code>count</code>
 <ul>
-<li>In the class, the professor says in the situation where we want to count unique values in a column, we should use <code>count(distinct &lt;column name&gt;)</code> instead of <code>count(*)</code></li>
-<li><code>count(1)</code>: ignores all columns in the table and counts a new column with all elements equal to 1, doesn't ignore <code>null</code> value, the result is the number of rows in the table</li>
-<li><code>count(*)</code>: takes all columns in the table into consideration, doesn't ignore <code>null</code> values, the result is the number of rows in the table</li>
-<li><code>count(&lt;column name&gt;)</code>: takes only one column into consideration, ignores <code>null</code> values in the column</li>
-<li>if the <column name> is the primary key in the table , then <code>count(&lt;column name&gt;)</code> is the fastest, otherwise <code>count(1)</code> is the fastest</column></li>
+<li>In the class, the professor says in the situation where we want to
+count unique values in a column, we should use
+<code>count(distinct &lt;column name&gt;)</code> instead of
+<code>count(*)</code></li>
+<li><code>count(1)</code>: ignores all columns in the table and counts a
+new column with all elements equal to 1, doesn't ignore
+<code>null</code> value, the result is the number of rows in the
+table</li>
+<li><code>count(*)</code>: takes all columns in the table into
+consideration, doesn't ignore <code>null</code> values, the result is
+the number of rows in the table</li>
+<li><code>count(&lt;column name&gt;)</code>: takes only one column into
+consideration, ignores <code>null</code> values in the column</li>
+<li>if the <column name> is the primary key in the table , then
+<code>count(&lt;column name&gt;)</code> is the fastest, otherwise
+<code>count(1)</code> is the fastest</column></li>
 </ul></li>
-<li>You can put aggregate functions and ordinary columns in one <code>select</code> statement, but the result may not be meaningful.</li>
+<li>You can put aggregate functions and ordinary columns in one
+<code>select</code> statement, but the result may not be
+meaningful.</li>
 <li>Grouping records: <code>group by</code>, <code>having</code>
 <ul>
-<li><code>group by &lt;column name&gt;</code>: partition the table into groups using a specific group or groups</li>
+<li><code>group by &lt;column name&gt;</code>: partition the table into
+groups using a specific group or groups</li>
 <li><code>having &lt;condition&gt;</code>: filter in each group</li>
-<li>Firstly you use <code>where</code> to filter the whole table, then you use <code>group by</code> to partition the filtered table into groups, after that <code>having</code> is executed on each group to do further filtration</li>
-<li>Aggregate function is executed for each group if there is a <code>group by</code> clause</li>
+<li>Firstly you use <code>where</code> to filter the whole table, then
+you use <code>group by</code> to partition the filtered table into
+groups, after that <code>having</code> is executed on each group to do
+further filtration</li>
+<li>Aggregate function is executed for each group if there is a
+<code>group by</code> clause</li>
 </ul></li>
 </ol>
 <p>2 Select grammar:</p>
 <ol type="1">
 <li>You can refer to this link :https://sqlite.org/lang_select.html</li>
-<li>Order of execution: <code>with(comma-separated tables)</code> =&gt; <code>select(distinct/all/ ...)</code> =&gt; <code>from(table/ sub-query)</code> =&gt; <code>where(condition)</code> =&gt; <code>group by(column names)</code> =&gt; <code>having(column names)</code> =&gt; <code>values(comma-separated values)</code> =&gt; <code>order by(column names)</code> =&gt; <code>limit(number)</code> =&gt; <code>offset(number)</code>
+<li>Order of execution: <code>with(comma-separated tables)</code> =&gt;
+<code>select(distinct/all/ ...)</code> =&gt;
+<code>from(table/ sub-query)</code> =&gt; <code>where(condition)</code>
+=&gt; <code>group by(column names)</code> =&gt;
+<code>having(column names)</code> =&gt;
+<code>values(comma-separated values)</code> =&gt;
+<code>order by(column names)</code> =&gt; <code>limit(number)</code>
+=&gt; <code>offset(number)</code>
 <ul>
-<li>You can use values to inject values into a table, you can also use select to inject values, but there is a restriction called <code>SQLITE_LIMIT_COMPOUND_SELECT</code> limiting the maximum number of terms in a select statement</li>
+<li>You can use values to inject values into a table, you can also use
+select to inject values, but there is a restriction called
+<code>SQLITE_LIMIT_COMPOUND_SELECT</code> limiting the maximum number of
+terms in a select statement</li>
 </ul></li>
 </ol>
 <h1 id="lecture-35-20181119">Lecture 35 2018/11/19</h1>
 <p>1 Create tables and drop table:</p>
 <ol type="1">
-<li><p>Create statement usage: <code>create table if not exists &lt;table name&gt; (column definitions);</code></p>
+<li><p>Create statement usage:
+<code>create table if not exists &lt;table name&gt; (column definitions);</code></p>
 <ul>
-<li>Column definition: <code>&lt;column name&gt; &lt;column type&gt; &lt;column constraints&gt;</code>; <column constraints> like <code>&lt;not null&gt;</code>, <code>&lt;primary key&gt;</code>, <code>&lt;unique&gt;</code>, <code>&lt;default default-values&gt;</code></column></li>
+<li>Column definition:
+<code>&lt;column name&gt; &lt;column type&gt; &lt;column constraints&gt;</code>;
+<column constraints> like <code>&lt;not null&gt;</code>,
+<code>&lt;primary key&gt;</code>, <code>&lt;unique&gt;</code>,
+<code>&lt;default default-values&gt;</code></column></li>
 <li>Check tables in the current database:</li>
 </ul>
 <p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQlite3</span></span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line"><span class="comment">-- MySQL</span></span><br><span class="line"><span class="keyword">show</span> tables;</span><br></pre></td></tr></table></figure></p>
@@ -1092,55 +1503,79 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <li>Show table definition:</li>
 </ul>
 <p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQlite3</span></span><br><span class="line">.schema <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- MySQL</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> <span class="operator">&lt;</span><span class="keyword">table</span> name<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Drop statement usage: <code>drop it exists &lt;table name&gt;</code></p></li>
+<li><p>Drop statement usage:
+<code>drop it exists &lt;table name&gt;</code></p></li>
 </ol>
 <p>2 Modify tables</p>
 <ol type="1">
-<li>Insert statement usage: <code>insert &lt;replace&gt; into table (column names) values (expressions)</code>
+<li>Insert statement usage:
+<code>insert &lt;replace&gt; into table (column names) values (expressions)</code>
 <ul>
-<li>If insert into all columns, the <code>(column names)</code> can be omitted</li>
-<li>Insert into multiple rows: <code>values (row1), (row2), ..., (rownn)</code></li>
+<li>If insert into all columns, the <code>(column names)</code> can be
+omitted</li>
+<li>Insert into multiple rows:
+<code>values (row1), (row2), ..., (rownn)</code></li>
 </ul></li>
-<li>Update statement usage: <code>update table &lt;table name&gt; set &lt;column name&gt; = &lt;expression&gt; where &lt;condition&gt;</code>
+<li>Update statement usage:
+<code>update table &lt;table name&gt; set &lt;column name&gt; = &lt;expression&gt; where &lt;condition&gt;</code>
 <ul>
-<li>Set the intersection of rows specified in where clause and column name clause equal to expression</li>
+<li>Set the intersection of rows specified in where clause and column
+name clause equal to expression</li>
 </ul></li>
-<li>Delete statement usage: <code>delete from table &lt;table name&gt; where &lt;condition&gt;</code>
+<li>Delete statement usage:
+<code>delete from table &lt;table name&gt; where &lt;condition&gt;</code>
 <ul>
-<li>If there is no where clause, the all rows in the table are deleted. Notice in this situation, the records in the table are deleted but the table itself still exists, which is different from the drop statement where the whole table together with all records is deleted</li>
+<li>If there is no where clause, the all rows in the table are deleted.
+Notice in this situation, the records in the table are deleted but the
+table itself still exists, which is different from the drop statement
+where the whole table together with all records is deleted</li>
 </ul></li>
 </ol>
 <p>3 Python and SQL</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"></span><br><span class="line">db = sqlite3.Connection(<span class="string">&#x27;filename.db&#x27;</span>)</span><br><span class="line">db.execute(<span class="string">&#x27;create table nums(value int not null);&#x27;</span>)</span><br><span class="line"><span class="comment"># db.execute(&#x27;insert into nums values(1), (2);&#x27;)</span></span><br><span class="line">db.execute(<span class="string">&#x27;insert into nums values (?), (?);&#x27;</span>, <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">3</span>))  </span><br><span class="line">db.execute(<span class="string">&#x27;select * from nums;&#x27;</span>)</span><br><span class="line">db.commit()</span><br></pre></td></tr></table></figure>
-<p>4 SQL injection attack: it's better to use template and Python object to avoid SQL injection attack</p>
+<p>4 SQL injection attack: it's better to use template and Python object
+to avoid SQL injection attack</p>
 <h1 id="lecture-36-20181126">Lecture 36 2018/11/26</h1>
-<p>1 Language ambiguity: natural languages have ambiguity, say the part of speech can be ambiguous, but there is no ambiguity in a programming language</p>
-<p>2 Syntax trees: a tree represents a phrase, a leaf represents a word</p>
+<p>1 Language ambiguity: natural languages have ambiguity, say the part
+of speech can be ambiguous, but there is no ambiguity in a programming
+language</p>
+<p>2 Syntax trees: a tree represents a phrase, a leaf represents a
+word</p>
 <p>3 Context-free grammar rules:</p>
 <ol type="1">
-<li>A grammar rule describes how a tag can be expanded into a sequence of tags or words</li>
-<li>Examples: <code>(N, cow)</code>, <code>(V, cow)</code>, the former one refers to the noun cow, while the latter one refers to the verb cow</li>
+<li>A grammar rule describes how a tag can be expanded into a sequence
+of tags or words</li>
+<li>Examples: <code>(N, cow)</code>, <code>(V, cow)</code>, the former
+one refers to the noun cow, while the latter one refers to the verb
+cow</li>
 </ol>
-<p>4 Parsing: a parser takes in sentences and outputs syntax structures, a parser is similar to a syntax generator</p>
-<p>5 Learning: since not all trees are equally common, you can score a tree using relative frequencies</p>
-<p>6 Translation: natural language parsing can be used in translation, which may include syntactic reordering</p>
+<p>4 Parsing: a parser takes in sentences and outputs syntax structures,
+a parser is similar to a syntax generator</p>
+<p>5 Learning: since not all trees are equally common, you can score a
+tree using relative frequencies</p>
+<p>6 Translation: natural language parsing can be used in translation,
+which may include syntactic reordering</p>
 <h1 id="lecture-37-20181128">Lecture 37 2018/11/28</h1>
 <p>1 Trees</p>
 <ol type="1">
 <li>Tree-structured data: label + branches -&gt; a tree</li>
-<li>You can define ADT using functions alone, or you can use a class to do so</li>
+<li>You can define ADT using functions alone, or you can use a class to
+do so</li>
 <li>BTree: binary tree</li>
 </ol>
 <p>2 Tree processing steps:</p>
 <ol type="1">
 <li>Understand the problems</li>
-<li>Draw a figure for the data structure and work through some examples</li>
+<li>Draw a figure for the data structure and work through some
+examples</li>
 <li>Code recursively</li>
 </ol>
-<p>3 How to design programs: from «How to design programs» at <a target="_blank" rel="noopener" href="http://htdp.org/2018-01-06/Book/"> here </a></p>
+<p>3 How to design programs: from «How to design programs» at
+<a target="_blank" rel="noopener" href="http://htdp.org/2018-01-06/Book/"> here </a></p>
 <ol type="1">
 <li>From problem analysis to data definitions</li>
-<li>Write function documentations: signature, purpose statement, header</li>
+<li>Write function documentations: signature, purpose statement,
+header</li>
 <li>Functional examples</li>
 <li>Function templates</li>
 <li>Function definition</li>
@@ -1246,7 +1681,8 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-20180822"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-20180824"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-00"><span class="nav-number">3.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-01"><span class="nav-number">4.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-20180827"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-01"><span class="nav-number">6.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-04-20180829"><span class="nav-number">7.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-01-hog"><span class="nav-number">8.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-05-20180831"><span class="nav-number">9.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-06-20180903"><span class="nav-number">10.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-07-20180905"><span class="nav-number">11.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-08-20180907"><span class="nav-number">12.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-09-20180912"><span class="nav-number">13.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-02"><span class="nav-number">14.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10-20180914"><span class="nav-number">15.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11-20180917"><span class="nav-number">16.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-04"><span class="nav-number">17.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12-20180919"><span class="nav-number">18.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13-20180921"><span class="nav-number">19.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14-20180924"><span class="nav-number">20.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-15-20180926"><span class="nav-number">21.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-05"><span class="nav-number">22.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-06"><span class="nav-number">23.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-16-20180928"><span class="nav-number">24.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-17-20181001"><span class="nav-number">25.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-07"><span class="nav-number">26.</span> <span class="nav-text">Lab 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-18-20181003"><span class="nav-number">27.</span> <span class="nav-text">Lecture 18 2018&#x2F;10&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-19-20181005"><span class="nav-number">28.</span> <span class="nav-text">Lecture 19 2018&#x2F;10&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-20-20181008"><span class="nav-number">29.</span> <span class="nav-text">Lecture 20 2018&#x2F;10&#x2F;08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-21-20181010"><span class="nav-number">30.</span> <span class="nav-text">Lecture 21 2018&#x2F;10&#x2F;10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-22-20181012"><span class="nav-number">31.</span> <span class="nav-text">Lecture 22 2018&#x2F;10&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-23-20181015-lecture-24-20181019"><span class="nav-number">32.</span> <span class="nav-text">Lecture 23 2018&#x2F;10&#x2F;15 &amp; Lecture 24 2018&#x2F;10&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-25-20181022"><span class="nav-number">33.</span> <span class="nav-text">Lecture 25 2018&#x2F;10&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-10"><span class="nav-number">34.</span> <span class="nav-text">Lab 10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-26-20181024"><span class="nav-number">35.</span> <span class="nav-text">Lecture 26 2018&#x2F;10&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-27-20181026"><span class="nav-number">36.</span> <span class="nav-text">Lecture 27 2018&#x2F;10&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-28-20181029"><span class="nav-number">37.</span> <span class="nav-text">Lecture 28 2018&#x2F;10&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-29-20181031"><span class="nav-number">38.</span> <span class="nav-text">Lecture 29 2018&#x2F;10&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-30-20181102"><span class="nav-number">39.</span> <span class="nav-text">Lecture 30 2018&#x2F;11&#x2F;02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-31-20181105"><span class="nav-number">40.</span> <span class="nav-text">Lecture 31 2018&#x2F;11&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-11"><span class="nav-number">41.</span> <span class="nav-text">Lab 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">42.</span> <span class="nav-text">§ 4.1 - § 4.2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-32-20181107"><span class="nav-number">43.</span> <span class="nav-text">Lecture 32 2018&#x2F;11&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-08"><span class="nav-number">44.</span> <span class="nav-text">HW 08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-33-20181109"><span class="nav-number">45.</span> <span class="nav-text">Lecture 33 2018&#x2F;11&#x2F;09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-34-20181014"><span class="nav-number">46.</span> <span class="nav-text">Lecture 34 2018&#x2F;10&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-35-20181119"><span class="nav-number">47.</span> <span class="nav-text">Lecture 35 2018&#x2F;11&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-36-20181126"><span class="nav-number">48.</span> <span class="nav-text">Lecture 36 2018&#x2F;11&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-37-20181128"><span class="nav-number">49.</span> <span class="nav-text">Lecture 37 2018&#x2F;11&#x2F;28</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-01-20180822"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2018&#x2F;08&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-02-20180824"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2018&#x2F;08&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-00"><span class="nav-number">3.</span> <span class="nav-text">Lab 00</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-01"><span class="nav-number">4.</span> <span class="nav-text">HW 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-03-20180827"><span class="nav-number">5.</span> <span class="nav-text">Lecture 03 2018&#x2F;08&#x2F;27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-01"><span class="nav-number">6.</span> <span class="nav-text">Lab 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-04-20180829"><span class="nav-number">7.</span> <span class="nav-text">Lecture 04 2018&#x2F;08&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-01-hog"><span class="nav-number">8.</span> <span class="nav-text">Project 01 Hog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-05-20180831"><span class="nav-number">9.</span> <span class="nav-text">Lecture 05 2018&#x2F;08&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-06-20180903"><span class="nav-number">10.</span> <span class="nav-text">Lecture 06 2018&#x2F;09&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-07-20180905"><span class="nav-number">11.</span> <span class="nav-text">Lecture 07 2018&#x2F;09&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-08-20180907"><span class="nav-number">12.</span> <span class="nav-text">Lecture 08 2018&#x2F;09&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-09-20180912"><span class="nav-number">13.</span> <span class="nav-text">Lecture 09 2018&#x2F;09&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-02"><span class="nav-number">14.</span> <span class="nav-text">HW 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10-20180914"><span class="nav-number">15.</span> <span class="nav-text">Lecture 10 2018&#x2F;09&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11-20180917"><span class="nav-number">16.</span> <span class="nav-text">Lecture 11 2018&#x2F;09&#x2F;17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-04"><span class="nav-number">17.</span> <span class="nav-text">Lab 04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12-20180919"><span class="nav-number">18.</span> <span class="nav-text">Lecture 12 2018&#x2F;09&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13-20180921"><span class="nav-number">19.</span> <span class="nav-text">Lecture 13 2018&#x2F;09&#x2F;21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14-20180924"><span class="nav-number">20.</span> <span class="nav-text">Lecture 14 2018&#x2F;09&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-15-20180926"><span class="nav-number">21.</span> <span class="nav-text">Lecture 15 2018&#x2F;09&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-05"><span class="nav-number">22.</span> <span class="nav-text">Lab 05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-06"><span class="nav-number">23.</span> <span class="nav-text">Lab 06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-16-20180928"><span class="nav-number">24.</span> <span class="nav-text">Lecture 16 2018&#x2F;09&#x2F;28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-17-20181001"><span class="nav-number">25.</span> <span class="nav-text">Lecture 17 2018&#x2F;10&#x2F;01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-07"><span class="nav-number">26.</span> <span class="nav-text">Lab 07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-18-20181003"><span class="nav-number">27.</span> <span class="nav-text">Lecture 18 2018&#x2F;10&#x2F;03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-19-20181005"><span class="nav-number">28.</span> <span class="nav-text">Lecture 19 2018&#x2F;10&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-20-20181008"><span class="nav-number">29.</span> <span class="nav-text">Lecture 20 2018&#x2F;10&#x2F;08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-21-20181010"><span class="nav-number">30.</span> <span class="nav-text">Lecture 21 2018&#x2F;10&#x2F;10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-22-20181012"><span class="nav-number">31.</span> <span class="nav-text">Lecture 22 2018&#x2F;10&#x2F;12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-23-20181015-lecture-24-20181019"><span class="nav-number">32.</span> <span class="nav-text">Lecture 23 2018&#x2F;10&#x2F;15
+&amp; Lecture 24 2018&#x2F;10&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-25-20181022"><span class="nav-number">33.</span> <span class="nav-text">Lecture 25 2018&#x2F;10&#x2F;22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-10"><span class="nav-number">34.</span> <span class="nav-text">Lab 10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-26-20181024"><span class="nav-number">35.</span> <span class="nav-text">Lecture 26 2018&#x2F;10&#x2F;24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-27-20181026"><span class="nav-number">36.</span> <span class="nav-text">Lecture 27 2018&#x2F;10&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-28-20181029"><span class="nav-number">37.</span> <span class="nav-text">Lecture 28 2018&#x2F;10&#x2F;29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-29-20181031"><span class="nav-number">38.</span> <span class="nav-text">Lecture 29 2018&#x2F;10&#x2F;31</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-30-20181102"><span class="nav-number">39.</span> <span class="nav-text">Lecture 30 2018&#x2F;11&#x2F;02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-31-20181105"><span class="nav-number">40.</span> <span class="nav-text">Lecture 31 2018&#x2F;11&#x2F;05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab-11"><span class="nav-number">41.</span> <span class="nav-text">Lab 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">42.</span> <span class="nav-text">§ 4.1 - § 4.2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-32-20181107"><span class="nav-number">43.</span> <span class="nav-text">Lecture 32 2018&#x2F;11&#x2F;07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hw-08"><span class="nav-number">44.</span> <span class="nav-text">HW 08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-33-20181109"><span class="nav-number">45.</span> <span class="nav-text">Lecture 33 2018&#x2F;11&#x2F;09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-34-20181014"><span class="nav-number">46.</span> <span class="nav-text">Lecture 34 2018&#x2F;10&#x2F;14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-35-20181119"><span class="nav-number">47.</span> <span class="nav-text">Lecture 35 2018&#x2F;11&#x2F;19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-36-20181126"><span class="nav-number">48.</span> <span class="nav-text">Lecture 36 2018&#x2F;11&#x2F;26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-37-20181128"><span class="nav-number">49.</span> <span class="nav-text">Lecture 37 2018&#x2F;11&#x2F;28</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1260,22 +1696,19 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">20</span>
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1313,7 +1746,7 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1322,12 +1755,12 @@ A formula: term(n, m) = term(n - m, m) + term(n, fun(m))
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">348k</span>
+    <span title="Symbols count total">1.8m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">5:17</span>
+    <span title="Reading time total">26:57</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="The Linux Command Line">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 103A Software Engineering">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="The Linux Command Line">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T02:31:12.000Z">
+<meta property="article:modified_time" content="2022-03-18T06:36:56.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Software Engineering">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 103A Software Engineering | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 103A Software Engineering
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-19 21:31:12" itemprop="dateCreated datePublished" datetime="2022-01-19T21:31:12-05:00">2022-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-18 02:36:56" itemprop="dateModified" datetime="2022-03-18T02:36:56-04:00">2022-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>48k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>44 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="the-linux-command-line">The Linux Command Line</h2>
+<span id="more"></span>
+<ol type="1">
+<li>Chapter 1: What is the shell
+<ul>
+<li>The shell is a program that takes keyboard commands and passes them
+to the operating system to carry out</li>
+<li>bash is a shell program from the GNU project, is an acronym for
+Bourne Again Shell</li>
+<li>We need another program called a terminal emulator to interact with
+the shell</li>
+<li>Some simple commands
+<ul>
+<li><code>date</code>: display the current time and date</li>
+<li><code>cal</code>: display a calendar of the current month</li>
+<li><code>df</code>: display the current amount of free space on the
+disk</li>
+<li><code>free</code>: display the amount of free memory</li>
+<li><code>exit</code>: exit a terminal session, you can also use
+<code>Ctrl + d</code></li>
+</ul></li>
+</ul></li>
+<li>Chapter 2: Navigation
+<ul>
+<li>Some commands:
+<ul>
+<li><code>pwd</code>: print name of current working directory</li>
+<li><code>ls</code>: list directory contents</li>
+<li><code>cd</code>: change directory</li>
+</ul></li>
+<li>A Unix-like OS organizes files a hierarchical directory structure.
+The first directory is the root directory.</li>
+<li>Windows has a separate file system tree for each storage device,
+Unix-like systems always have a single file system tree</li>
+<li>Absolute pathnames start with <code>/</code>, relative pathnames
+start from the working directory, <code>./</code> represents the current
+directory, <code>../</code> represents the parent directory of the
+current directory</li>
+<li>Filename:
+<ul>
+<li>File names with period character is hidden, you need to use
+<code>ls -a</code> to display the hidden files or directories</li>
+<li>File names are case sensitive</li>
+<li>Linux files do not have file extensions</li>
+<li>Do not use space in the file name</li>
+</ul></li>
+</ul></li>
+<li>Chapter 3: Exploring the System
+<ul>
+<li>Some commands:
+<ul>
+<li><code>ls</code>: list directory contents</li>
+<li><code>file</code>: determine file type</li>
+<li><code>less</code>: view file contents</li>
+</ul></li>
+<li><code>ls</code>
+<ul>
+<li><code>ls -a</code>: display all files</li>
+<li><code>ls -A</code>: display almost all files, do not list
+<code>.</code> and <code>..</code></li>
+<li><code>ls -i</code>: display the inode of the files</li>
+<li><code>ls -l</code>: display in long listing format</li>
+<li><code>ls -r</code>: reverse the order of the listing</li>
+<li><code>ls -t</code>: sort contents by modification time, newest
+first</li>
+<li><code>ls -S</code>: sort contents by file size, largest first</li>
+<li><code>ls -R</code>: recursive listing</li>
+<li><code>ls -d</code>: list the directory itself, not its contents</li>
+</ul></li>
+<li>Permissons
+<ul>
+<li><code>-rwxr--r--</code>:the first character is <code>-</code>, it
+indicates this is a file, if this is a directory, the first character
+would be <code>d</code>, if this is a link, the first character would be
+<code>l</code>; the next three character are the permissions for the
+owner, the next three characters are the permission for the group, the
+last three characters are the permission for everyone else;
+<code>r</code>: open and read, <code>w</code>: write or truncate, the
+file itself cannot be renamed or deleted, <code>x</code>: treat as a
+program and execute</li>
+</ul></li>
+<li>Some directories in Linux system
+<ul>
+<li><code>/</code>: root directory</li>
+<li><code>/bin</code>: contain programs that must present for the system
+to boot and run</li>
+<li><code>/boot</code>: contain the Linux kernel and the boot
+loader</li>
+<li><code>/dev</code>: contain a list of devices</li>
+<li><code>/etc</code>: contain all of the system-wide configuration
+files</li>
+<li><code>/home</code>: in general, each user is given a directory in
+<code>/home</code></li>
+<li><code>/lib</code>: contain shared library files used by the core
+system programs</li>
+<li><code>/mnt</code>: contain mount points for removable devices</li>
+<li><code>/opt</code>: used to install optional software</li>
+<li><code>/tmp</code>: intended for the storage of temporary, transient
+files</li>
+<li><code>/usr</code>: contain all programs and support files by
+users</li>
+</ul></li>
+<li>Links
+<ul>
+<li>Soft links/symlink/ symbolic link: a file contains a reference to
+another file or directory in the form of pathname</li>
+<li>Hard link: saves a copy of a file or directory</li>
+</ul></li>
+</ul></li>
+<li>Chapter 4 Manipulating Files and Directories
+<ul>
+<li>Some commands:
+<ul>
+<li><code>cp</code>: copy files and directories</li>
+<li><code>mv</code>: move/rename files and directories</li>
+<li><code>mkdir</code>: create directories</li>
+<li><code>rm</code>: remove fils and directories</li>
+<li><code>ln</code>: create hard and symbolic links</li>
+</ul></li>
+<li>Wildcards
+<ul>
+<li><code>*</code>: match any characters</li>
+<li><code>?</code>: match any single character</li>
+<li><code>[characters]</code>: match any character that is a member of
+the set characters</li>
+<li><code>[!characters]</code>: match any character that is not a member
+of the set characters</li>
+<li><code>[[:class:]]</code>: match any character that is a member of
+the specified class</li>
+<li><code>[:alnum:]</code>: match any alphanumeric character</li>
+<li><code>[:alpha:]</code>: match any alphabetic character</li>
+<li><code>[:digit:]</code>: match any numeral</li>
+<li><code>[:lower:]</code>: match any lowercase letter</li>
+<li><code>[:upper:]</code>: match any uppercase letter</li>
+</ul></li>
+<li><code>mkdir dir1 ... dirn</code>: make n directories</li>
+<li><code>cp item1 ... itemn dir</code>: copy item1 to itemn to dir
+<ul>
+<li><code>cp -a</code>: copy the files and directories and all of their
+attributes</li>
+<li><code>cp -i</code>: before overwriting an existing file, prompt the
+user for confirmation</li>
+<li><code>cp -r</code>: recursively copy directories and their
+contents</li>
+<li><code>cp -u</code>: only copy files that either don't exist or are
+newer than the existing corresponding files in the destination
+directory</li>
+<li><code>cp x y</code>:
+<ul>
+<li>If both x and y are files, overwrite y with x, if y does not exist,
+create y with x</li>
+<li>If x is a file and y is a directory, copy x into y</li>
+<li>If x and y are both directory, you should use
+<code>copy -r x y</code>, otherwise there will be an error</li>
+</ul></li>
+</ul></li>
+<li><code>mv item 1 item2</code>: move/ rename item 1 to item2,
+<code>mv item0 ... itemn directory</code>: move item0 to itemn into
+directory
+<ul>
+<li><code>mv -i</code>: prompt the user for confirmation before
+overwriting an existing file</li>
+<li><code>mv -u</code>: only move files that either don't exist or are
+newer than the existing corresponding files in the destination
+directory</li>
+<li><code>mv -v</code>: display informative message as the move is
+performed</li>
+<li><code>mv x y</code>
+<ul>
+<li>If both x and y are files, overwrite y with x, if y does not exist,
+it is created with x</li>
+<li>If x is a file and y is a directory, move x into y, y must
+exist</li>
+<li>If x and y are both directories, if y does not exist, create y and
+move contents of x into y, then delete the empty x; if y does exist,
+move x and its contents into y</li>
+</ul></li>
+</ul></li>
+<li><code>rm item1 ... itemn</code>
+<ul>
+<li><code>rm -i</code>: prompt the user for confirmation before removing
+an existing file, otherwise the file will be deleted silently</li>
+<li><code>rm -r</code>: recursively delete directories and their
+contents, no matter whether the directory, this parameter should always
+be provided</li>
+<li><code>rm -f</code>: delete the targets and ignore nonexistent files
+and do not prompt</li>
+<li><code>rm -v</code>: display informative message as the deletion is
+performed</li>
+</ul></li>
+<li><code>ln file link</code>: create a hard link to a file,
+<code>ln -s item link</code>: create a symbolic link to a file or
+directory
+<ul>
+<li>Hard links
+<ul>
+<li>A hard cannot reference a file outside its own file system, this
+means a link cannot reference a file that is not on the same disk
+partition as the link itself</li>
+<li>A hard link may not reference a directory</li>
+<li>A hard link and the original file share the same inode, deleting the
+hard link does not affect the original file, the hard link still works
+if you delete the original file</li>
+</ul></li>
+<li>Symbolic link
+<ul>
+<li>Symbolic links are created to overcome the limitations of hard
+links</li>
+<li>It works by creating a special type of file that contains a text
+pointer to the referenced file or directory (similar to the shortcut in
+Windows)</li>
+<li>A symbolic link and the original file have different inode, the soft
+link will not work in the shellTilde expansion: <code>echo ~</code>:
+display the home directoryArithmetic expansion:
+<code>echo $((expression))</code>: display the result of the arithmetic
+expressionNotice the division here is integer divisionExpressions can be
+nested, but you need the $(()) for each arithmetic expression if the
+original file is moved or deleted, but deleting the soft link does not
+affect the original file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 5 Working with Commands
+<ul>
+<li>Some commands:
+<ul>
+<li><code>type</code>: indicate how a command name is interpreted</li>
+<li><code>which</code>: display which executable program will be
+executed</li>
+<li><code>help</code>: get help from shell built-ins</li>
+<li><code>man</code>: display a commands' manual page</li>
+<li><code>apropos</code>: display a list of appropriate commands</li>
+<li><code>info</code>: display a command's info entry</li>
+<li><code>whatis</code>: display one-line manual page descriptions</li>
+<li><code>alias</code>: create an alias for a command</li>
+</ul></li>
+<li>Command types
+<ul>
+<li>An executable program: programs compiled into binaries</li>
+<li>A command built into the shell itself: shell builtins</li>
+<li>A shell function: shell scripts incorporated into the
+environment</li>
+<li>An alias: user-defined commands, built from other commands</li>
+</ul></li>
+<li><code>type command</code>: display the type of commands</li>
+<li><code>which command</code>: only works for executable programs, not
+builtins nor aliases</li>
+<li><code>help command</code>: help is available for each of the shell
+builtins, it shows the documentation of a command</li>
+<li><code>command --help</code>: display usage information</li>
+<li><code>man command</code>: display manual page</li>
+<li><code>apropos command</code>: display appropriate commands</li>
+<li><code>whatis command</code>: display one-line manual page
+descriptions</li>
+<li><code>info command</code>: display a program's info entry</li>
+<li><code>alias command</code>:
+<ul>
+<li>Use ; to separate commands in one line</li>
+<li>Example: <code>alias foo='cd /mnt; ls -lrt;'</code></li>
+<li>Unalias a commdn: <code>unalias foo</code></li>
+<li>Show all aliases defined in the environment: <code>alias</code></li>
+</ul></li>
+</ul></li>
+<li>Chapter 6 Redirection
+<ul>
+<li>Some commands:
+<ul>
+<li><code>cat</code>: concatenate files</li>
+<li><code>sort</code>: sort lines of text</li>
+<li><code>uniq</code>: report or omit repeated lines</li>
+<li><code>grep</code>: print lines matching a pattern</li>
+<li><code>wc</code>: print newline, word and byte counts for each
+file</li>
+<li><code>head</code>: output the first part of a file</li>
+<li><code>tail</code>: output the last part of a file</li>
+<li><code>tee</code>: read from standard input and write to standard
+output and files</li>
+</ul></li>
+<li>Standard input(<code>stdin</code>, file descriptor 0), standard
+output(<code>stdout</code>, file descriptor 1), standard
+error(<code>stderr</code>, file descriptor 2), by default, stdout and
+stderr are linked to the screen and the stdin is attached to the
+keyboard
+<ul>
+<li>Redirection output
+<ul>
+<li>Truncate/ create a new file: <code>ls -l &gt; file.txt</code></li>
+<li>Append to an existing file:
+<code>ls -l &gt;&gt; file.text</code></li>
+<li>Discard both standard error and standard output:
+<ul>
+<li>Older version: <code>command &gt;/dev/null 2 &gt;&amp;1</code></li>
+<li>Newer version <code>command &amp;&gt; /dev/null</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>cat [..file]</code>: read one or more files and copy them to
+the standard output
+<ul>
+<li>In most cases, cat command can be thought of as analogous to the
+type command</li>
+<li>If cat is provided with no arguments, it will read input from the
+standard input, which is usually the keyboard, type
+<code>Ctrl + D</code> to indicate EOF</li>
+<li>Read input from the keyboard and save to input to a file:
+<code>cat &gt; file.txt</code>, use <code>Ctrl + D</code> to indicate
+input EOF</li>
+<li>Read input from a file: <code>cat &lt; file.txt</code></li>
+</ul></li>
+<li><code>|</code> pipelines
+<ul>
+<li>Pipeline feature of shell: with the pipe operator | (vertical bar),
+the standard output of one command can be piped into the standard input
+of another</li>
+<li>Syntax: <code>command 1 | command 2</code></li>
+<li>Filters:
+<ul>
+<li>Pipelines are often used to perform complex operation on data,
+frequently, the commands used this way are referred to as filters</li>
+<li>Filters take input, change it somehow, and then output it</li>
+<li><code>sort</code>: write sorted concatenation of all files to
+standard output
+<ul>
+<li><code>sort -f</code>: ignore case, <code>sort -r</code>: reverse
+order, <code>sort -R</code>: random sort, <code>sort -u</code>: only
+output unique results</li>
+</ul></li>
+<li><code>uniq</code>: accepts a sorted list of data and removes any
+duplicates from the list
+<ul>
+<li>uniq is often used with sort</li>
+<li><code>uniq -d</code>: only print duplicate lines, one for each
+group, <code>uniq -c</code>: prefix lines by the number of
+occurrences</li>
+<li><code>sort -u xxx</code>, <code>sort xxx | uniq</code></li>
+</ul></li>
+<li><code>wc</code>: display the number of lines, words, and bytes
+contained in files
+<ul>
+<li><code>wc -l</code>: display the number of lines, <code>wc -w</code>:
+display the number of words, <code>wc -c</code>: display the number of
+bytes, <code>wc -m</code>: display the number of characters</li>
+</ul></li>
+<li><code>grep pattern [file...]</code>: used to find text patterns
+<ul>
+<li>When grep encounters a pattern in the file, it prints out the lines
+containing it</li>
+<li>Regular expressions are allowed in grep</li>
+<li><code>grep -i</code>: ignore case during search,
+<code>grep -v</code>: print only those lines that do not match the
+pattern</li>
+</ul></li>
+<li><code>head</code>/ <code>tail</code>
+<ul>
+<li>By default, print 10 lines</li>
+<li><code>head -n m</code>: print first m lines, <code>tail -n m</code>:
+print last m lines</li>
+<li>Monitor file changes: <code>tail -f file.txt</code></li>
+</ul></li>
+<li><code>tee</code>: read standard input and copies it to both standard
+output and to one or more files
+<ul>
+<li>This is often used as an intermediate step in a pipeline: it saves
+the output file to a file</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 7 Seeing the World as the Shell Sees it
+<ul>
+<li>Some commands:
+<ul>
+<li><code>echo</code>: display a line of text</li>
+</ul></li>
+<li>Path expansion
+<ul>
+<li>It is the mechanism by which wildcards work in the shell</li>
+<li>Tilde expansion: <code>echo ~</code>: display the home
+directory</li>
+<li>Arithmetic expansion: <code>echo $((expression))</code>: display the
+result of the arithmetic expression
+<ul>
+<li>Notice the division here is integer division</li>
+<li>Expressions can be nested, but you need the $(()) for each
+arithmetic expression</li>
+</ul></li>
+<li>Brace expansion
+<ul>
+<li><code>echo &#123;a, b&#125;-&#123;1,2&#125;</code>: display a-1 a-2 b-1 b-2</li>
+<li><code>echo &#123;a..c&#125;</code>: display a b c</li>
+<li><code>echo &#123;001..6&#125;</code>: display 001 002 003 004 005 006</li>
+<li><code>echo &#123;&#123;a,b&#125;,&#123;1,2&#125;&#125;</code>: display a b 1 2</li>
+</ul></li>
+<li>Parameter expansion:
+<ul>
+<li><code>x=1; echo $x</code>: display 1</li>
+</ul></li>
+<li>Quoting
+<ul>
+<li><code>ls -l "hello world"</code></li>
+<li><code>echo this is \$100.0</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 9 Permissions
+<ul>
+<li>Some commands:
+<ul>
+<li><code>id</code>: display user identity</li>
+<li><code>chmod</code>: change a file's mode</li>
+<li><code>umask</code>: set the default file permissions</li>
+<li><code>su</code>: run a shell as another user</li>
+<li><code>sudo</code>: execute a command as another user</li>
+<li><code>chown</code>: change a file's owner</li>
+<li><code>chgrp</code>: change a file's group ownership</li>
+<li><code>passwd</code>: change a user's password</li>
+</ul></li>
+<li><code>id</code>
+<ul>
+<li>In the Unix security model, a user has a user id <code>uid</code>, a
+group id <code>gid</code>, and may belong to additional groups
+<code>groups</code></li>
+<li>User accounts are defined in the <code>/etc/passwd</code> file and
+groups are defined in the <code>/etc/group</code> file,
+<code>/etc/shadow</code> contains information about the user's
+password</li>
+</ul></li>
+<li>File attributes
+<ul>
+<li><p>File types:</p>
+<ul>
+<li><code>-</code>: a regular file</li>
+<li><code>d</code>: a directory</li>
+<li><code>l</code>: a symbolic link, for a symbolic link, the remaining
+attributes are always <code>rwxrwwxrwx</code>, but they are only dummy
+values, the real file attributes are those of the file the symbolic link
+points to</li>
+<li><code>c</code>: a character special file, this file type refers to a
+device that handles data as a stream of bytes</li>
+<li><code>b</code>: a block special file, this file type refers to a
+device that handles data in blocks</li>
+</ul></li>
+<li><p>Permission attributes</p>
+<table>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 42%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Attribute</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Directories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>r</code></td>
+<td style="text-align: center;">Allows a file to be opened and read</td>
+<td style="text-align: center;">Allows a directory's contents to be
+listed if the execute attribute is also set</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>w</code></td>
+<td style="text-align: center;">Allows a file to be written or
+truncated, but does not allow files to be renamed or deleted</td>
+<td style="text-align: center;">Allows files within a directory to be
+created, deleted, and renamed if the execute attribute is also set</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x</code></td>
+<td style="text-align: center;">Allows a file to be created as a program
+and executed</td>
+<td style="text-align: center;">Allows a directory to be entered</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><code>chmod</code>
+<ul>
+<li><p>Only the file's owner or superuser can change the mode of a file
+or directory</p></li>
+<li><p>The mode can use two representation: the octal representation and
+teh symbolic representation</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Octal Representation</th>
+<th style="text-align: center;">Binary</th>
+<th style="text-align: center;">Symbolic Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">001</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">011</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">101</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">110</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">111</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Syntax</p>
+<ul>
+<li><code>chmod 664 file</code>: set file attribute to
+<code>-rw-rw-r--</code></li>
+<li><code>chmod u=rw,go=rw,o=r file</code>: the same as the above
+command</li>
+</ul></li>
+</ul></li>
+<li><code>umask</code>
+<ul>
+<li><p>View current mask setting: <code>umask</code></p></li>
+<li><p>Set mask value: <code>umask 0022</code></p></li>
+<li><p>Mask value interpretation: <code>0xyz</code>, 0 is a preset
+value, x is for user, y is for group, z is for other</p></li>
+<li><p>Octal mask value and permission</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">rwx</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">rw-</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">r-w</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">r--</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-wx</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-w-</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">--x</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">---</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Common values:</p>
+<ul>
+<li><code>0022</code>: 755 for directories, 644 for files</li>
+<li><code>0002</code>: 775 for directories, 664 for files</li>
+</ul></li>
+</ul></li>
+<li>Change identities
+<ul>
+<li>Methods
+<ul>
+<li>Log out and log back in as the alternate user</li>
+<li>Use the <code>su</code> command</li>
+<li>Use the <code>sudo</code> command</li>
+</ul></li>
+<li><code>su</code>: run a shell with substitute user and group ids
+<ul>
+<li><code>su -l user</code>: abbreviation <code>su - user</code>, if
+user is not provided, the substitute user is the superuser(root)</li>
+<li>Use <code>exit</code> to return to the original shell</li>
+<li>Execute a command as another user: <code>su -c command</code></li>
+</ul></li>
+<li><code>sudo</code>: execute a command as another user
+<ul>
+<li>Allows an ordinary user to execute commands as a different user
+(usually the superuser) in a controlled way</li>
+<li>This does not require the password of the superuser</li>
+<li>List the allowed commands for the invoking user on the current
+host</li>
+</ul></li>
+</ul></li>
+<li><code>chown</code>
+<ul>
+<li><code>chown user:group file</code>: if you want to change the owner
+and the group, use <code>user:group</code>, if you want to change the
+user, use <code>user:</code>, if you wan to change the group, use
+<code>:group</code></li>
+<li>Superuser privilege is required for this command, so use
+<code>sudo chown user:group file</code></li>
+</ul></li>
+<li><code>chgrp</code>
+<ul>
+<li>In order version of Unix, chown cannot change group ownership, and
+chgrp is used instead when you want to do so</li>
+</ul></li>
+<li><code>passwd [user]</code>
+<ul>
+<li>Enter <code>passwd</code> to change the password of the current
+user</li>
+</ul></li>
+</ul></li>
+<li>Chapter 10 Processes
+<ul>
+<li>Some commands
+<ul>
+<li><code>ps</code>: report a snapshot of current processes</li>
+<li><code>top</code>: display tasks</li>
+<li><code>jobs</code>: list active jobs</li>
+<li><code>bg</code>: place a job in the background</li>
+<li><code>fg</code>: place a job in the foreground</li>
+<li><code>kill</code>: send a signal to a process</li>
+<li><code>killall</code>: kill processes by name</li>
+<li><code>shutdown</code>: shutdown or reboot the system</li>
+</ul></li>
+<li>How processes work
+<ul>
+<li>When a system starts, the kernel launches a program called init,
+init then runs a series shell scripts called init scripts, which start
+all the system services. Many services are implemented as daemon
+programs, so they run in background</li>
+<li>The program that can launch other programs is expressed in the
+process scheme as a parent process producing a child process</li>
+<li>The kernel maintains information about each process to help keep
+things organized， which includes the process ID (PID), the memory
+assigned to each process, the processes's readiness to resume
+execution</li>
+</ul></li>
+<li>View Processes: <code>px</code>
+<ul>
+<li>Shows PID, TTY(teletype, refers to the controlling terminal for the
+process), TIME ( the amount of CPU time consumed by the process), CMD
+(the command executed by the process)</li>
+<li>OPtions:
+<ul>
+<li><code>ps x</code>: show all processes regardless of what terminal
+they are controlled by</li>
+<li>STAT (state, reveals the current status of the process)
+<ul>
+<li><code>R</code>: running or ready to run</li>
+<li><code>S</code>: sleeping, it is waiting for an event, such as
+keystroke or network packet</li>
+<li><code>D</code>: uninterruptible sleep, it is waiting for I/O such as
+a disk drive</li>
+<li><code>T</code>: stopped</li>
+<li><code>Z</code>: zombie, a child process that has terminated by not
+cleaned up by its parent</li>
+<li><code>&lt;</code>: a high-priority process</li>
+<li><code>N</code>: a low-priority process</li>
+</ul></li>
+</ul></li>
+<li><code>px aux</code>: gives mor information
+<ul>
+<li>Information: <code>USER</code>, <code>%CPU</code>,
+<code>%MEM</code>, <code>VSZ</code> (virtual memory size),
+<code>RSS</code> (resident set size), <code>START</code></li>
+</ul></li>
+</ul></li>
+<li>View Processes Dynamically with <code>top</code>
+<ul>
+<li>The result is continuously updating (by default, every 3
+seconds)</li>
+</ul></li>
+<li>Control Processes
+<ul>
+<li>Interrupt a process: <code>Ctrl+C</code></li>
+<li>Put a process in the background: <code>command &amp;</code></li>
+<li>Return a process to the foreground:
+<ul>
+<li>Find the PID of the process: <code>jobs</code>, say, the result PID
+is <code>n</code></li>
+<li>Bring the process to the foreground: <code>fg %n</code></li>
+</ul></li>
+<li>Stop a process: <code>Ctrl+Z</code>
+<ul>
+<li>Ctrl+Z is used for suspending/stopping a process, it cannot be
+interrupted by the process. Ctrl+C is used to kill a process and can be
+interrupted by a program so it can clean itself up before exiting, or
+not exit at all</li>
+<li>For a stopped process, you can bring it to foreground or send it to
+background</li>
+</ul></li>
+<li>Signals
+<ul>
+<li>For Ctrl+C, a signal called TNT is sent</li>
+<li>For Ctrl+Z, a signal called TSTP is sent</li>
+<li>Kill a process: <code>kill -number PID</code></li>
+<li>Common signals
+<ul>
+<li><code>kill -1</code>: HUP signal, send the process a hangup
+signal</li>
+<li><code>kill -2</code>: INT signal, send the process an interrupt
+signal</li>
+<li><code>kill -9</code>: KILL signal, send the process a kill
+signal</li>
+<li><code>kill -15</code>: TERM signal, send the process a terminate
+signal</li>
+<li><code>kill -18</code>: CONT signal, send the process a continue
+signal</li>
+<li><code>kill -19</code>: STOP signal, send the process a stop
+signal</li>
+<li><code>kill -20</code>: TSTP signal, send the process a terminal stop
+signal</li>
+<li><code>kill -3</code>: QUIT signal, send the process a quit
+signal</li>
+<li><code>kill -11</code>: SEGV signal, send the process a segmentation
+violation signal</li>
+<li><code>kill -28</code>: WINCH signal, send the process a window
+change signal</li>
+</ul></li>
+</ul></li>
+<li>Shut down the system
+<ul>
+<li>Function: orderly terminate all the processes on the system, then
+power off the system</li>
+<li>Commands <code>halt</code>, <code>poweroff</code>,
+<code>reboot</code>, <code>shutdown</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 11 The Environment
+<ul>
+<li>Some commands:
+<ul>
+<li><code>printenv</code>: print part of all of the environment</li>
+<li><code>set</code>: set shell options</li>
+<li><code>export</code>: export environment to subsequently executed
+programs</li>
+<li><code>alias</code>: create an alias for a command</li>
+</ul></li>
+<li>What is stored in the environment
+<ul>
+<li>Two types of variables:
+<ul>
+<li>Shell variables: bits of data set by bash</li>
+<li>Environment variables: other variables</li>
+</ul></li>
+<li>Programmatic data: aliases and shell functions</li>
+</ul></li>
+<li>Examine the environment
+<ul>
+<li><code>printenv</code>: the result is in key=value format</li>
+<li><code>printenv key</code>: print the value of the key</li>
+<li><code>echo $key</code>: print the value of the key</li>
+</ul></li>
+<li>How is the environment established
+<ul>
+<li>Bash program starts, and reads a series of configuration scripts
+called startup files, which define the default environment shared by all
+users, then followed by startup files related to personal
+environment</li>
+<li>A login shell session reads
+<ul>
+<li><code>/etc/profile</code>: global configuration</li>
+<li><code>~/.bash_profile</code>: user startup file</li>
+<li><code>~/.bash_login</code>: if the above one is not found</li>
+<li><code>~/.profile</code>: if the above two are not found</li>
+</ul></li>
+<li>An non-login shell session reads
+<ul>
+<li><code>/etc/bash/bashrc</code>: global configuration</li>
+<li><code>~/.bashrc</code>: user startup file</li>
+</ul></li>
+</ul></li>
+<li>Modify the environment
+<ul>
+<li>Which file to modify
+<ul>
+<li>To add directories to your PATH variable, put those in the
+<code>.bash_profile</code>/<code>.profile</code> file</li>
+<li>For everything else, put the changes into <code>.bashrc</code>
+file5,</li>
+</ul></li>
+<li>To edit other files, we use a text editor
+<ul>
+<li>Graphical editors:
+<ul>
+<li><code>gedit</code> from GNOME</li>
+<li><code>kedit</code>, <code>kwrite</code>, <code>kate</code> from
+KDE</li>
+</ul></li>
+<li>Text-based editors: <code>nano</code>, <code>vi</code> (in most
+linux system this is replaced by vim, which is short for "vim
+improved"), <code>emacs</code></li>
+<li>Some vim commands
+<ul>
+<li><code>:set number</code>: display line numbers</li>
+<li><code>:wq</code>, <code>:x</code>, <code>ZZ</code>: write save and
+quit</li>
+<li><code>:q!</code>: quit without saving</li>
+<li><code>gg</code>: go to the first line</li>
+<li><code>G</code>: go to the last line</li>
+<li><code>ngg</code>, <code>nG</code>: go tho the nth line</li>
+<li><code>0</code>: jump to the start of the line</li>
+<li><code>$</code>: jump to the end of the lin</li>
+<li><code>^</code>: jump to the first non-blank character in the
+line</li>
+<li><code>g_</code>: jimp to the last non-blank character in the
+line</li>
+<li><code>i</code>: insert before the cursor</li>
+<li><code>a</code>: insert after the cursor</li>
+<li><code>I</code>: insert at the beginning of the line</li>
+<li><code>A</code>: insert at the end of the line</li>
+<li><code>o</code>: append a new line below the current line</li>
+<li><code>O</code>: append a new line above the current line</li>
+<li><code>r</code>: replace the current character</li>
+<li><code>R</code>: replace characters until <code>ESC</code> is
+clicked</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 14 Package Management
+<ul>
+<li>Introduction
+<ul>
+<li>The most important determinant of linux distribution quality is the
+packaging system and the vitality of the distributions's support
+community</li>
+<li>Package management is a method of installing and maintaining
+software on the system
+<ul>
+<li>Nowadays we can install packages from the linux distributor</li>
+<li>Back to early days, people need to download and compile source code
+to install software</li>
+</ul></li>
+</ul></li>
+<li>Packaging Systems
+<ul>
+<li>Different distributions use different packaging systems, and
+generally a packaging system designed for one distribution are not
+compatible with another distribution</li>
+<li>Two main packaging technologies
+<ul>
+<li><code>.deb</code> camp from Debian: Debian, Ubuntu, Linux Mint,
+Raspbian</li>
+<li><code>.rpm</code> camp from Red Hat: Fedora, CentOS, Red Hat
+Enterprise Linux, OpenSUSE</li>
+</ul></li>
+<li>How a Package Systems Works
+<ul>
+<li>Virtually all software for a Linux system will be found on the
+Internet, most will be provided by the distribution vendor in the form
+of package files, and the rest will be available in source code form
+that can be installed manually</li>
+</ul></li>
+<li>Package files
+<ul>
+<li>A package file is a compressed collection of files that comprise the
+software package</li>
+<li>A package may contain programs and data files, metadata files, pre-
+and post-installation scripts that perform configuration tasks</li>
+<li>Package files are created by the package maintainer</li>
+</ul></li>
+<li>Repositories: packages are often hosted in a central repository</li>
+<li>Dependencies: dependencies are shared libraries that are
+indispensible for a software to run properly</li>
+<li>Package management systems tools
+<ul>
+<li><p>Low-level tools: install and remove package files</p></li>
+<li><p>High-level tools: search metadata and resolve dependencies</p>
+<table>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 22%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Distributions</th>
+<th style="text-align: center;">Low-Level Tools</th>
+<th style="text-align: center;">High-Level Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Debian style</td>
+<td style="text-align: center;"><code>dpkg</code></td>
+<td style="text-align: center;"><code>apt</code>, <code>apt-get</code>,
+<code>aptitude</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Fedora, Red Hat Enterprise Linux</td>
+<td style="text-align: center;"><code>rpm</code></td>
+<td style="text-align: center;"><code>yum</code>, <code>dnf</code></td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+<li>Common Package Management Tasks
+<ul>
+<li>Find a package in a repository
+<ul>
+<li>Debian style:
+<code>apt-get update; apt-cache search search_string</code></li>
+<li>Red Hat style: <code>yum search search_string</code></li>
+</ul></li>
+<li>Install a package from a package file
+<ul>
+<li>Debian style: <code>dpkg -i package_file</code></li>
+<li>Red Hat style: <code>rmp -i package_file</code></li>
+</ul></li>
+<li>List installed packages
+<ul>
+<li>Debian style: <code>dpkg -l</code></li>
+<li>Red Hat style: <code>rpm -qa</code></li>
+</ul></li>
+<li>Determine whether a package is installed
+<ul>
+<li>Debian style: <code>dpkg -s package_name</code></li>
+<li>Red Hat style: <code>rpm -q package_name</code></li>
+</ul></li>
+<li>Display information about a package
+<ul>
+<li>Debian style: <code>apt-cache show package_name</code></li>
+<li>Red Hat style: <code>yum info package_name</code></li>
+</ul></li>
+<li>Find which package installed a file
+<ul>
+<li>Debian style: <code>dpkg -S file_name</code></li>
+<li>Red Hat style: <code>rpm -qf file_name</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 16 Networking
+<ul>
+<li>Some commands
+<ul>
+<li><code>ping</code>: send an ICMP ECHO_REQUEST to network hosts</li>
+<li><code>traceroute</code>: print the route packets trace to a network
+host</li>
+<li><code>ip</code>: show/manipulate routing, devices, policy routing
+and tunnels</li>
+<li><code>netstat</code>: print network connections, routing tables,
+interface statistics, masquerade connections, and multicast
+memberships</li>
+<li><code>ftp</code>: internet file transfer program</li>
+<li><code>wget</code>: non-interactive network downloader</li>
+<li><code>ssh</code>: OpenSSH SSH client (remote login program)</li>
+</ul></li>
+<li>Examine and monitor a network
+<ul>
+<li><code>ping</code>
+<ul>
+<li>Sends a special network packet to a specified host, most devices
+receiving this packet will reply to it, allowing the network connection
+to be verified</li>
+<li>Once start, ping continues to send packets at a specified interval
+(default is 1 second) until it is interrupted (say,
+<code>Ctrl+C</code>)</li>
+<li>After interrupted, ping prints performance statistics</li>
+</ul></li>
+<li><code>traceroute</code>
+<ul>
+<li>The traceroute lists all the routers network traffic takes to get
+from the local system to a specified host</li>
+</ul></li>
+<li><code>ip</code>
+<ul>
+<li><code>ip a</code>: list all information</li>
+</ul></li>
+<li><code>netstat</code>
+<ul>
+<li><code>netstat -i</code>: display a table of all network
+interfaces</li>
+<li><code>netstat -e</code>: display additional information</li>
+<li><code>netstat -r</code>: display the kernel routing tables</li>
+<li><code>netstat -n</code>: show numerical addresses instead of trying
+to determine symbolic host, port or user names</li>
+</ul></li>
+</ul></li>
+<li>Transport files over a network
+<ul>
+<li><code>ftp</code>
+<ul>
+<li>File Transfer Protocol (FTP) was once the most widely used method of
+downloading files over the Internet</li>
+<li><code>ftp</code> is used to communicate with FTP servers, machines
+that contain files that can be uploaded and downloaded over a
+network</li>
+<li>FTP is not secure because it sends account names and passwords in
+cleartext, almost all FTP done over the Internet is done by anonymous
+FTP servers</li>
+<li><code>ftp servername</code>: login to a FTP server</li>
+</ul></li>
+<li><code>lftp</code>
+<ul>
+<li>It works much like the traditional ftp program but has many
+additional convenience features including multiple-protocol support,
+automatic retry on failed downloads, background processes, tab
+completion of path names, and many more</li>
+</ul></li>
+<li><code>wget</code>
+<ul>
+<li>It is useful for downloading content from both web and FTP
+sites</li>
+<li>Single files, multiple files, and even entire sites can be
+downloaded</li>
+<li>wget allows recursive download, download files in the background,
+and complete the download of a partially downloaded file</li>
+</ul></li>
+</ul></li>
+<li>Secure communication with remote hosts
+<ul>
+<li>Before <code>ssh</code>, there are commands like <code>rlogin</code>
+and <code>telnet</code>, but they transmit all the communication through
+clear-text, which is inappropriate for the use in the Internet age</li>
+<li>Advantages:
+<ul>
+<li>It authenticates that the remote host is who it says it is, thus
+preventing so-called man-in-the-middle attacks</li>
+<li>It encrypts all of the communications between the local and remote
+hosts</li>
+</ul></li>
+<li>SSH consists of two parts
+<ul>
+<li>A SSH server runs on the remote host, listening for incoming
+connections, by default, on port 22</li>
+<li>An SSH client is used on the local system to communicate with the
+rmote server</li>
+</ul></li>
+<li>Most Linux distributions has an implementation of SSH called OpenSSH
+from the OpenBSD project</li>
+<li>Syntax: <code>ssh user@hostname</code></li>
+<li>Use SSH-encrypted tunnel to copy files across the network
+<ul>
+<li><code>scp</code> (secure copy), <code>scp from to</code></li>
+<li><code>sftp</code> (secure file transfer),
+<code>sftp hostname</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 19 Regular Expressions
+<ul>
+<li>Introduction
+<ul>
+<li>Regular expressions are symbolic notations used to identify patterns
+in text</li>
+<li>We only consider regular expressions described in the POSIX
+standard</li>
+</ul></li>
+<li><code>grep</code>
+<ul>
+<li>Actually grep is short for "global regular expression print", it
+essentially searches test files for the occurrence text matching a
+specified regular expression and outputs any line containing a match to
+standard output</li>
+<li>Syntax: <code>grep [options] regex [file...]</code></li>
+<li>grep options
+<ul>
+<li><code>grep -t</code>: ignore case</li>
+<li><code>grep -v</code>: invert match, prints lines that do not
+match</li>
+<li><code>grep -c</code>: print the number of matches instead of the
+lines themselves</li>
+<li><code>grep -l</code>: print the name of each file that contains a
+match instead of the lines themselves</li>
+<li><code>grep -L</code>: print the name of each file that does not
+contain any matched lines</li>
+<li><code>grep -n</code>: prefix each matching line with the line
+number</li>
+<li><code>grep -h</code>: for multi-file searches, suppress the output
+of filenames</li>
+</ul></li>
+</ul></li>
+<li>Metacharacters and literals
+<ul>
+<li>We can use literals in regular expressions</li>
+<li>We can also use metacharacters in regular expressions
+<ul>
+<li>Metacharacters: <code>^</code>, <code>$</code>, <code>[]</code>,
+<code>&#123;&#125;</code>, <code>-</code>, <code>?</code>, <code>*</code>,
+<code>+</code>, <code>()</code>, <code>|</code>, <code>\</code></li>
+</ul></li>
+</ul></li>
+<li>The any character
+<ul>
+<li><code>.</code> matches any character in a character position</li>
+</ul></li>
+<li>Anchors
+<ul>
+<li>The caret <code>^</code> and the dollar sign <code>$</code> are
+treated as anchors in regular expressions</li>
+<li><code>^</code> matches the beginning of a line</li>
+<li><code>$</code> matches the end of the line</li>
+</ul></li>
+<li>Bracket expressions and character classes
+<ul>
+<li>Bracket expression matches a single character from a specified set
+of characters</li>
+<li>Metacharacters does not work inside bracket expresions, except
+<code>^</code> and <code>-</code>
+<ul>
+<li><code>^</code>: if it appears at the beginning inside a bracket
+expression, then the following set of characters must not be present at
+the given character position</li>
+<li><code>A-Z</code>: matches all uppercase letters</li>
+</ul></li>
+<li>POSIX character classes
+<ul>
+<li><code>[:alnum:]</code>: <code>[A-Za-z0-9]</code></li>
+<li><code>[:word:]</code>: <code>[A-Za-z0-9_]</code></li>
+<li><code>[:alpha:]</code>: <code>[A-Za-z]</code></li>
+<li><code>[:blank:]</code>: Space and tab</li>
+<li><code>[:cntrl:]</code>: ASCII control codes, include ASCII
+characters 0 through 31 and 127</li>
+<li><code>[:digit:]</code>: <code>[0-9]</code></li>
+<li><code>[:graph:]</code>: The visible characters, include ASCII
+characters 33 through 126</li>
+<li><code>[:lower:]</code>: <code>[a-z]</code></li>
+<li><code>[:upper:]</code>: <code>[A-Z]</code></li>
+<li><code>[:punct:]</code>: The punctuation characters, in ASCII,
+equivalent to
+<code>[-!"#$%&amp;'()*+,./:;&lt;=&gt;?@[\\\]_&#123;|&#125;~]</code></li>
+<li><code>[:print:]</code>: The printable characters, all characters in
+<code>[:graph:]</code> plus the space character</li>
+<li><code>[:space:]</code>: The whitespace characters, in ASCII,
+equivalent to <code>[ \t\r\n\v\f]</code></li>
+<li><code>[:xdigit:]</code>: Hexadecimal numbers, in ASCII, equivalent
+to <code>[0-9A-Fa-f]</code></li>
+</ul></li>
+<li>POSIX basic v.s. extended regular expressions
+<ul>
+<li>BRE (basic regular expressions)</li>
+<li>ERE (extended regular expressions)</li>
+</ul></li>
+<li>Alternation
+<ul>
+<li><code>grep -E 'AAA|CCC|BBB' file</code>: matches either AAA, or BBB,
+or CCC in the file</li>
+<li>Combine alternation with other regular expression, use parentheses
+on alternation:
+<ul>
+<li><code>grep -E '^(aa|bb|cc) file'</code>: matches either aa, or bb,
+or cc at the beginning of a line in the file</li>
+</ul></li>
+</ul></li>
+<li>Quantifiers
+<ul>
+<li><code>?</code>: matches an element zero or one time</li>
+<li><code>*</code>: matches an element zero or more times</li>
+<li><code>+</code>: matches an element one or more times</li>
+<li><code>&#123;n&#125;</code>: matches an element exactly n times</li>
+<li><code>&#123;n, m&#125;</code>: matches an element at least n times, and no
+more thant m times</li>
+<li><code>&#123;n,&#125;</code>: matches an element at least n times</li>
+<li><code>&#123;,m&#125;</code>: matches an element no more than m times</li>
+</ul></li>
+</ul></li>
+<li>Some applications
+<ul>
+<li><code>find</code>: search files in a directory
+<ul>
+<li>grep tests whether a line contains a pattern, find tests whether a
+line exactly matches a pattern</li>
+</ul></li>
+<li><code>locate</code>: find files by name
+<ul>
+<li><code>locate --regexp pattern</code>: use BRE</li>
+<li><code>locate --regex patern</code>: use ERE</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="pro-git">Pro Git</h2>
+<ol type="1">
+<li>Chapter 1
+<ul>
+<li>Version control
+<ul>
+<li>Def: a system that records changes to a file or set of files over
+time so that you can recall specific version later</li>
+<li>Local version control system</li>
+<li>Centralized version control system</li>
+<li>Distributed version control system</li>
+</ul></li>
+<li>Git
+<ul>
+<li>Most other CVS stores information as a list of file-based
+changes</li>
+<li>Git thinks of its data like a series of snapshots of a miniature
+filesystem</li>
+</ul></li>
+<li>Three states of files in git
+<ul>
+<li>Modified: the file is changed but not committed to the database
+yet</li>
+<li>Staged: the file is marked as modified and it will go into the next
+commit snapshot</li>
+<li>Committed: the files has already been committed to the database</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="python-for-data-analysis-this-is-not-a-required-book-for-this-course">Python
+for Data Analysis (this is not a required book for this course)</h2>
+<ol type="1">
+<li>Chapter 4 NumPy Basics
+<ul>
+<li>Introduction
+<ul>
+<li>NumPy, short for Numerical Python, is one of the most important
+foundational packages for numerical computing in Python</li>
+<li>Data analysis applications using NumPy
+<ul>
+<li>Fast vectorized array operations</li>
+<li>Common array algorithms like sorting, unique, and set
+operations</li>
+<li>Efficient descriptive statistics and aggregating/summarizing
+data</li>
+<li>Data alignment and relational data manipulations for merging and
+joining together heterogeneous datasets</li>
+<li>Expressing conditional logic as array expressions instead of loops
+with if branches</li>
+<li>Group-wise data manipulation</li>
+</ul></li>
+</ul></li>
+<li>The NumPy ndarray Ch 4.1
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data = np.random.randn(<span class="number">2</span>,<span class="number">3</span>) <span class="comment"># generate a 2*3 array of random numbers</span></span><br><span class="line">data = data * <span class="number">3</span> <span class="comment"># multiply each element by 3</span></span><br><span class="line">data.shape <span class="comment"># (2,3)</span></span><br><span class="line">data.dtype <span class="comment"># dtype(&#x27;float64&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data = [[<span class="number">1</span>,<span class="number">2</span>], [<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line">arr = np.array(data)</span><br><span class="line">arr.ndim <span class="comment"># 2</span></span><br><span class="line">arr.shape <span class="comment"># (2, 2)</span></span><br><span class="line">arr.dtype <span class="comment"># dtype(&#x27;int64&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+<li>Example 3 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr1 = np.zeros((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># create  a 2*3 array of 0</span></span><br><span class="line">arr2 = np.ones((<span class="number">1</span>,<span class="number">2</span>)) <span class="comment"># create a 1*2 array of 1</span></span><br></pre></td></tr></table></figure></li>
+<li>There are different type of data types <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a1 = np.zeros((<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">a1.dtype <span class="comment"># dtype(&#x27;float64&#x27;)</span></span><br><span class="line">a2 = a1.astype(np.int32)</span><br><span class="line">a2.dtype <span class="comment"># dtype(&#x27;int32&#x27;)</span></span><br><span class="line">a3 = np.ones((<span class="number">2</span>,<span class="number">2</span>), dtype=np.int32)</span><br><span class="line">a3.dtype <span class="comment"># dtype(&#x27;int32&#x27;)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Any arithmetic operation between equal size NumPy arrays applies the
+operation element-wise</li>
+<li>Indexing and slicing <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.ones(<span class="number">5</span>)</span><br><span class="line">x[<span class="number">2</span>:] = <span class="number">2</span>  <span class="comment"># x is now [1, 1, 2, 2, 2]</span></span><br><span class="line">y = x[:<span class="number">2</span>]</span><br><span class="line">y[<span class="number">0</span>] = <span class="number">3</span>  <span class="comment"># y is [3, 1], and x is [3, 1, 2, 2, 2]</span></span><br><span class="line"></span><br><span class="line">z = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">z[:, :<span class="number">1</span>]  <span class="comment"># [[1], [3]]</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Boolean indexing <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index = np.arange(<span class="number">3</span>)</span><br><span class="line">data = np.arange(<span class="number">1</span>, <span class="number">10</span>).reshape((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">data[index == <span class="number">2</span>] <span class="comment"># [7, 8, 9]</span></span><br><span class="line">cond = index != <span class="number">2</span></span><br><span class="line">data[~cond] <span class="comment"># [7, 8, 9]</span></span><br><span class="line">data[:, index == <span class="number">2</span>] <span class="comment"># [3, 6, 9]</span></span><br><span class="line">data[data&lt; <span class="number">5</span>] = <span class="number">5</span> <span class="comment"># data is now [[5, 5, 5], [5, 5, 6], [7, 8, 9]]</span></span><br></pre></td></tr></table></figure></li>
+<li>Transposing index and swapping axes
+<ul>
+<li><code>x.T</code>: transpose of an array</li>
+<li><code>np.dot(x, x.T)</code>: matrix multiplication</li>
+<li>transpose function <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">6</span>).reshape((<span class="number">2</span>, <span class="number">3</span>)) <span class="comment"># Error in original HTML, should be (1,7) or similar for (2,3)</span></span><br><span class="line">x.shape <span class="comment"># (2, 3)</span></span><br><span class="line">x = np.transpose(x, (<span class="number">1</span>, <span class="number">0</span>)) <span class="comment"># the second argument should be a tuple of range(n)</span></span><br><span class="line">x.shape <span class="comment"># (3, 2)</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Universal functions Ch 4.2
+<ul>
+<li>A universal function, or ufunc, is a function that performs
+element-wise operations on data in ndarrays</li>
+<li>Functions: <code>np.abs(arr)</code>, <code>np.sqrt(arr)</code>,
+<code>np.square(arr)</code>, <code>np.exp(arr)</code>,
+<code>np.log(arr)</code>, <code>np.log2(arr)</code>,
+<code>np.sign(arr)</code>, <code>np.ceil(arr)</code>,
+<code>np.floor(arr)</code>, <code>np.modf(arr)</code> (returns two
+arrays, one is the integral part, the other is the fractional part),
+<code>np.isnan(arr)</code>, <code>np.isfinite(arr)</code>,
+<code>np.isinf(arr)</code>,
+<code>np.add/subtract/multiply/divide(a1, a2)</code>,
+<code>np.power(a1, a2)</code>, <code>np.maximum/minimum(a1, a2)</code>,
+<code>np.mod(a1, a2)</code>,
+<code>np.greater/less/greater_equal/less_equal/equal/not_equal(a1, a2)</code>,
+<code>np.logical_and/logical_or/logical_xor(a1, a2)</code></li>
+</ul></li>
+<li>Array-oriented programming Ch 4.3
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">points = np.arange(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">0.01</span>) <span class="comment"># 0.01 is the step size</span></span><br><span class="line">xs, ys = np.meshgrid(points, points)</span><br><span class="line">z = np.sqrt(xs ** <span class="number">2</span> + ys ** <span class="number">2</span>)</span><br><span class="line">plt.imshow(zs, cmap=plt.cm.gray) <span class="comment"># Error in HTML: zs should be z</span></span><br><span class="line">plt.colorbar()</span><br></pre></td></tr></table></figure></li>
+<li>Convert conditional logic into array expressions
+<ul>
+<li>Example 1 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">xs = np.arange(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">ys = np.arange(<span class="number">6</span>, <span class="number">11</span>)</span><br><span class="line">rands = np.random.randn(<span class="number">5</span>)</span><br><span class="line">cond = rands &gt; <span class="number">0</span></span><br><span class="line"><span class="comment"># The following are equivalent, but the second one is more efficient</span></span><br><span class="line">res1 = [(x <span class="keyword">if</span> c <span class="keyword">else</span> y) <span class="keyword">for</span> x, y, c <span class="keyword">in</span> <span class="built_in">zip</span>(xs, ys, cond)]</span><br><span class="line">res2 = np.where(cond, xs, ys)</span><br></pre></td></tr></table></figure></li>
+<li>Example 2 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ma = np.arange(<span class="number">1</span>, <span class="number">17</span>).reshape((<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line">rands = np.random.randn(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line">cond = rands &gt; <span class="number">0</span></span><br><span class="line">res = np.where(cond, <span class="number">2</span>, ma) <span class="comment"># replace all elements in ma with 2 if cond is True</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Mathematical and statistical operations <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.random.randn(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line">arr.mean() <span class="comment"># mean of all elements, equivalent to np.mean(arr)</span></span><br><span class="line">arr.mean(axis=<span class="number">0</span>) <span class="comment"># mean of each column, equivalent to np.mean(arr, axis=0)</span></span><br><span class="line">arr.mean(axis=<span class="number">1</span>) <span class="comment"># mean of each row, equivalent to np.mean(arr, axis=1)</span></span><br><span class="line">arr.cumsum(axis=<span class="number">0</span>) <span class="comment"># cumulative sum of each column</span></span><br><span class="line">arr.cumprod(axis=<span class="number">1</span>) <span class="comment"># cumulative product of each row</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Other methods: <code>sum</code>, <code>mean</code>,
+<code>std</code>, <code>var</code>, <code>min</code>, <code>max</code>,
+<code>argmin</code>, <code>argmax</code>, <code>cumsum</code>,
+<code>cumprod</code></li>
+<li>Boolean array methods
+<ul>
+<li>Calcualte amount of positive values:
+<code>(arr &gt; 0).sum()</code></li>
+<li>If there exists true value, return true: <code>arr.any()</code></li>
+<li>If all values are ture, return true: <code>arr.all()</code></li>
+</ul></li>
+<li>Sorting
+<ul>
+<li>Ondimensional array sorting: <code>arr.sort()</code></li>
+<li>Sorting by row for a 2darray: <code>arr.sort(1)</code></li>
+<li>Sorting by column for a 2darray: <code>arr.sort(0)</code></li>
+</ul></li>
+<li>Unique and set logic
+<ul>
+<li><code>np.unique(array)</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Linear algebra Ch 4.5
+<ul>
+<li><code>x.dot(y)</code> is equivalent to <code>np.dot(x, y)</code>,
+also equivalent to <code>x @ y</code></li>
+<li>Inverse, and QR decomposition <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy.linalg <span class="keyword">import</span> inv, qv <span class="comment"># Error in HTML: qv should be qr</span></span><br><span class="line"></span><br><span class="line">x = np.random.randn(<span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">mat = x.dot(x)</span><br><span class="line">inv(mat) <span class="comment"># inverse of mat</span></span><br><span class="line">q, r = qr(mat)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Pseudorandom number generation Ch 4.6
+<ul>
+<li>Set seed <code>np.random.seed(num)</code></li>
+<li><code>np.random.randn()</code>: normal distribution</li>
+<li><code>np.random.rand()</code>: uniform distribution</li>
+<li><code>np.random.randint()</code>: uniform distribution</li>
+<li><code>np.random.binomial()</code>: binomial distribution</li>
+<li><code>np.random.beta()</code> beta distribution</li>
+<li><code>np.random.chisquare()</code>: chi-square distribution</li>
+<li><code>np.random.uniform()</code>: uniform distribution</li>
+<li><code>np.random.gamma()</code>: gamm distribution</li>
+</ul></li>
+</ul></li>
+<li>Chapter 5 Getting started with pandas
+<ul>
+<li>Introduction to pandas data structrues Ch 5.1
+<ul>
+<li>Series is a one-dimensional array-like object containing a sequence
+of values <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ls = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line">obj = pd.Series(ls, index=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>)))</span><br><span class="line">obj.values <span class="comment"># list from 0 to 9</span></span><br><span class="line">obj.index <span class="comment"># list from 1 to 10</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">in</span> obj <span class="comment"># True, check if index is in series</span></span><br><span class="line"><span class="number">9</span> <span class="keyword">in</span> obj <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">dt = &#123;<span class="number">0</span>: <span class="number">1</span>, <span class="number">1</span>: <span class="number">2</span>, <span class="number">2</span>: <span class="number">3</span>&#125;</span><br><span class="line">obj2 = pd.Series(dt)</span><br><span class="line">obj2.index <span class="comment"># list from 0 to 2</span></span><br><span class="line">obj2.name = <span class="string">&quot;my_series&quot;</span> <span class="comment"># give name to a series</span></span><br><span class="line">obj2.index.name = <span class="string">&quot;my_index&quot;</span> <span class="comment"># give name to index series</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>DataFrame
+<ul>
+<li>A dataframe representes a rectangular table of data and contains an
+ordered collection of columns, each of which can be a different value
+type</li>
+<li>A dataframe can have both a row and column index</li>
+<li>The most comman way to construct a dataframe is from a dict of
+equal-length lists or NumPy arrays <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;state&#x27;</span>: [<span class="string">&#x27;Ohio&#x27;</span>, <span class="string">&#x27;Ohio&#x27;</span>, <span class="string">&#x27;Ohio&#x27;</span>, <span class="string">&#x27;Nevada&#x27;</span>, <span class="string">&#x27;Nevada&#x27;</span>, <span class="string">&#x27;Nevada&#x27;</span>],</span><br><span class="line"><span class="string">&#x27;year&#x27;</span>: [<span class="number">2000</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2003</span>],</span><br><span class="line"><span class="string">&#x27;pop&#x27;</span>: [<span class="number">1.5</span>, <span class="number">1.7</span>, <span class="number">3.6</span>, <span class="number">2.4</span>, <span class="number">2.9</span>, <span class="number">3.2</span>]&#125;</span><br><span class="line">df1 = pd.DataFrame(data)</span><br><span class="line">index = [<span class="built_in">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>)] <span class="comment"># Error in HTML: range_</span></span><br><span class="line">df2 = pd.DataFrame(data, columns=[<span class="string">&#x27;pop&#x27;</span>, <span class="string">&#x27;year&#x27;</span>, <span class="string">&#x27;state&#x27;</span>], index=index) <span class="comment"># alter the order of columns</span></span><br><span class="line"><span class="comment"># If a data or row is not inside the original data, the value will be NaN</span></span><br><span class="line"></span><br><span class="line">df.columns <span class="comment"># list of column names</span></span><br><span class="line">df.index <span class="comment"># list of row names</span></span><br><span class="line"></span><br><span class="line">df.head(n) <span class="comment"># get the first n rows</span></span><br><span class="line">df[<span class="string">&#x27;pop&#x27;</span>] <span class="comment"># get the data in column whose name is pop</span></span><br><span class="line">df.loc[<span class="string">&#x27;1&#x27;</span>] <span class="comment"># get the data in row whose name is 1</span></span><br><span class="line">df.loc[[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]] <span class="comment"># get the data in rows whose name is 1 or 3</span></span><br><span class="line">df.loc[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;pop&#x27;</span>] <span class="comment"># get the data entry whose column is pop and row is 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># add a column</span></span><br><span class="line">df[<span class="string">&#x27;eastern&#x27;</span>] = df.state == <span class="string">&#x27;Ohio&#x27;</span></span><br><span class="line"><span class="comment"># delete a column</span></span><br><span class="line"><span class="keyword">del</span> df[<span class="string">&#x27;eastern&#x27;</span>]</span><br><span class="line"><span class="comment"># dataframe transpose</span></span><br><span class="line">df.T</span><br><span class="line"><span class="comment"># Add name to dataframe indicies</span></span><br><span class="line">df.index.name = <span class="string">&#x27;my_index&#x27;</span></span><br><span class="line">df.columns.name = <span class="string">&#x27;my_columns&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Index objects
+<ul>
+<li>You can add index in Series and DataFrame, pandas index are
+immutable</li>
+<li>You can also create index maually <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">index = pd.Index(np.arange(<span class="number">3</span>))</span><br></pre></td></tr></table></figure></li>
+<li>There can be duplicates in pandas index</li>
+<li>Index operations: <code>append</code>, <code>difference</code>,
+<code>intersection</code>, <code>union</code>, <code>isin</code>,
+<code>delete</code>, <code>drop</code>, <code>insert</code>,
+<code>is_monotonic</code>, <code>is_unique</code>,
+<code>unique</code></li>
+</ul></li>
+<li>Essential Functionality Ch 5.2
+<ul>
+<li>Reindexing
+<ul>
+<li>The <code>reindex</code> method creates a new data index, the data
+will also be rearranged according to the new index</li>
+<li>If a index does not exist before, missing values NaN will be filled
+accordingly <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">obj = pd.Series([<span class="number">4.5</span>, <span class="number">7.2</span>, -<span class="number">5.3</span>, <span class="number">3.6</span>], index=[<span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">obj2 = obj.reindex([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]) <span class="comment"># NaN is associated with index &#x27;e&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>Other filling related arguments
+<ul>
+<li><code>method=ffill</code>: fill the missing values with previous
+valid observations</li>
+<li><code>method=backfill</code>: fill the missing values with next
+valid observations</li>
+<li><code>method=nearest</code>: fill the missing values with the
+nearest valid observations</li>
+<li><code>fill_values=n</code>: fill the missing values with n</li>
+</ul></li>
+<li>For a dataframe, if not specified, reindex will apply on row
+indicies. If you want to reindex column indicies, use
+<code>obj.reindex(columns=list)</code></li>
+</ul></li>
+<li>Drop items
+<ul>
+<li>For series, it's easy <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">obj = pd.Series(np.arange(<span class="number">6</span>), index=np.arange(<span class="number">6</span>))</span><br><span class="line">obj.drop([<span class="number">1</span>, <span class="number">2</span>]) </span><br></pre></td></tr></table></figure></li>
+<li>For dataframe, you can drop either rows or columns
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data = pd.DataFrame(np.arange(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>)),</span><br><span class="line">        index=[<span class="string">&#x27;Ohio&#x27;</span>, <span class="string">&#x27;Colorado&#x27;</span>, <span class="string">&#x27;Utah&#x27;</span>, <span class="string">&#x27;New York&#x27;</span>],</span><br><span class="line">        columns=[<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>, <span class="string">&#x27;four&#x27;</span>])</span><br><span class="line">rows = [<span class="string">&#x27;Ohio&#x27;</span>, <span class="string">&#x27;Utah&#x27;</span>]</span><br><span class="line">cols =[<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;four&#x27;</span>]</span><br><span class="line">data.drop(rows) <span class="comment"># Equivalent to data.drop(rows, axis=0), or data.drop(rows, axis=&#x27;index&#x27;), since the default value for axis is 0</span></span><br><span class="line">data.drop(cols, axis=<span class="number">1</span>) <span class="comment"># Equivalent to data.drop(cols, axis=&#x27;columns&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Indexing, selection, and filtering
+<ul>
+<li>For series, things are trivial <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">obj = pd.Series(np.arange(<span class="number">4.</span>), index=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">obj[<span class="string">&#x27;a&#x27;</span>:<span class="string">&#x27;c&#x27;</span>] <span class="comment"># Both endpoints are inclusive, result is [0.0, 1.0, 2.0] </span></span><br><span class="line">obj[<span class="number">0</span>:<span class="number">3</span>] <span class="comment"># [0.0, 1.0, 2.0], 3 is exelusive</span></span><br></pre></td></tr></table></figure></li>
+<li>For series, you can apply on both row and column indicies
+<ul>
+<li><code>df[:2]</code>: the first two rows</li>
+<li><code>df['x']</code> : column x</li>
+<li><code>df[['x', 'y']]</code>: column x and column y</li>
+<li><code>df[df['x'] &gt; 2]</code>: rows that has value in column x
+greater than 2</li>
+</ul></li>
+<li><code>loc</code> and <code>iloc</code>
+<ul>
+<li><code>loc</code> uses axis labels, <code>iloc</code> use integer
+indicies</li>
+<li><code>df.loc['r1', 'c1':'cn']</code>: row is r1, column is from c1
+to cn(both c1 and cn are included)</li>
+<li><code>df.iloc[:, :]</code>: select all rows and all columns</li>
+</ul></li>
+<li>Arithmetic and data alignment
+<ul>
+<li>If a index only appears in one series or one dataframe, the result
+of arithmetic operation will be NaN for that index</li>
+<li>You can use <code>fill_value</code> parameter to provide a fill
+value for the missing ones</li>
+<li>Some operations
+<ul>
+<li><code>df1.add(df2)</code> (df1 + df2), <code>df1.radd(df2)</code>
+(df2 + df1)</li>
+<li><code>df1.sub(df2)</code> (df1 - df2), <code>df1.rsub(df2)</code>
+(df2 - df1)</li>
+<li><code>df1.mul(df2)</code> (df1 * df2), <code>df1.rmul(df2)</code>
+(df2 * df1)</li>
+<li><code>df1.div(df2)</code> (df1 / df2), <code>df1.rdiv(df2)</code>
+(df2 / df1)</li>
+</ul></li>
+<li>Arithmetic operations between dataframe and series
+<ul>
+<li>By default, arithmetic between DataFrame and Series matches the
+index of the Series on the DataFrame’s columns, broadcasting down the
+rows</li>
+<li>If you want to instead broadcast over the columns, matching on the
+rows, you have to use one of the arithmetic methods
+<code>df1.add(ls, axis='index')</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Function application and mapping
+<ul>
+<li>NumPy ufuncs (element-wise array methods) also work with pandas
+objects</li>
+<li>Apply functions on columns and rows <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">f = <span class="keyword">lambda</span> x: x.<span class="built_in">max</span>() - x.<span class="built_in">min</span>()</span><br><span class="line">df.apply(f) <span class="comment"># Calculate max - min for each column</span></span><br><span class="line">df.apply(f, axis=<span class="string">&#x27;columns&#x27;</span>) <span class="comment"># Caculate max - min for each row</span></span><br><span class="line"></span><br><span class="line">g = <span class="keyword">lambda</span> x: pd.Series([x.<span class="built_in">min</span>(), x.<span class="built_in">max</span>()], index=[<span class="string">&#x27;min&#x27;</span>, <span class="string">&#x27;max&#x27;</span>])</span><br><span class="line">df.apply(g) <span class="comment"># Calculate min and max for each column</span></span><br></pre></td></tr></table></figure></li>
+<li>Many of the most common array statistics (like sum and mean) are
+DataFrame methods, so using apply is not necessary</li>
+<li>Apply functions for each item in the dataframe <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.arange(<span class="number">16</span>).reshape(<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line">f = <span class="keyword">lambda</span> x: <span class="string">&#x27;%2.2f&#x27;</span> % x</span><br><span class="line">df.applymap(f)</span><br><span class="line"><span class="comment"># You can use map on a series</span></span><br><span class="line">ls = pd.Series(np.arange(<span class="number">16</span>))</span><br><span class="line">ls.<span class="built_in">map</span>(f)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Sorting and ranking
+<ul>
+<li>Use <code>ascending=False</code> to sort in descending order</li>
+<li><code>ls.sort_index()</code>: sort by seriesindex</li>
+<li><code>df.sort_index()</code>: sort by dataframe row index</li>
+<li><code>df.sort_index(axis=1)</code>: sort by dataframe column
+index</li>
+<li><code>ls.sort_values()</code>: sort series values</li>
+<li><code>df.sort_values(by=['a', 'b'], axis=0, ascending=True)</code>:
+sort dataframe values by column a and column b (sort row values in those
+columns, so axis=0)</li>
+<li><code>ls.rank(method='average/first/max/min/dense')</code>: rank a
+series by different methods</li>
+<li><code>df.rank(method='agerage', axis=0/1)</code>: rank a dataframe
+by rows/columns using different methods</li>
+</ul></li>
+<li>Index with duplicates
+<ul>
+<li><code>ls.index.is_unique()</code>: check if series index has
+duplicates</li>
+<li><code>df.index.is_unique()</code>: check if dataframe row index has
+duplicates</li>
+<li><code>df.columns.is_unique()</code>: check if dataframe column index
+has duplicates</li>
+</ul></li>
+</ul></li>
+<li>Summarizing and computing descriptive statistics Ch 5.3
+<ul>
+<li><code>df.sum()</code>,
+<code>df.mean()</code>,<code>df.cumsum()</code>,
+<code>df.sumprod()</code>, <code>df.count()</code>,
+<code>df.min()</code>,<code>df.argmin()</code>, <code>df.idmin()</code>,
+<code>df.median()</code>, <code>df.mad()</code>, <code>df.prod()</code>,
+<code>df.var()</code>, <code>df.std()</code>, <code>df.skew()</code>,
+<code>df.kurt()</code>, <code>df.diff()</code>,
+<code>df.pct_change()</code>, <code>df.corr()</code>,
+<code>df.cov()</code></li>
+<li><code>axis=0/1</code>, <code>skipna=Ture/False</code></li>
+<li>Unique values, value counts, and membership
+<ul>
+<li><code>ls.unique()</code>: return unique values</li>
+<li><code>ls.value_counts(sort=False/True)</code>: return value
+frequencies</li>
+<li><code>pd.value_counts(ls, sort=False/True)</code>: return value
+frequenceis</li>
+<li><code>mask = ls1.isin(ls2)</code>: return a bollean lists whether a
+item in ls1 is in ls2</li>
+<li><code>df.apply(pd.value_counts).fillna(0)</code>: calculate value
+frequencies for dataframe <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = pd.DataFrame(&#123;<span class="string">&#x27;Qu1&#x27;</span>: [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">                    <span class="string">&#x27;Qu2&#x27;</span>: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                    <span class="string">&#x27;Qu3&#x27;</span>: [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>]&#125;)</span><br><span class="line">result = data.apply(pd.value_counts).fillna(<span class="number">0</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Qu1 Qu2 Qu3</span></span><br><span class="line"><span class="string">  1 1.0 1.0 1.0</span></span><br><span class="line"><span class="string">  2 0.0 2.0 1.0</span></span><br><span class="line"><span class="string">  3 2.0 2.0 0.0</span></span><br><span class="line"><span class="string">  4 2.0 0.0 2.0</span></span><br><span class="line"><span class="string">  5 0.0 0.0 1.0</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Chapter 6 Data loading, storage, and file formats
+<ul>
+<li>Reading and writing data in text format Ch 6.1
+<ul>
+<li>Parsing functions in pandas
+<ul>
+<li><code>read_csv</code>, <code>read_table</code>,
+<code>read_fwf</code>, <code>read_clipboard</code>,
+<code>read_excel</code>, <code>read_hdf</code>, <code>read_html</code>,
+<code>read_json</code>, <code>read_msgpack</code>,
+<code>read_pickle</code>, <code>read_sas</code>, <code>read_sql</code>,
+<code>read_stata</code>, <code>read_feather</code></li>
+</ul></li>
+<li>Parameters: <code>spe=','</code>, <code>header=None/int</code>,
+<code>names=[c1, ..., cn]</code>, <code>index_col=cn</code></li>
+<li>Reading text files in pieces
+<ul>
+<li><code>pd.isnull(df)</code></li>
+<li><code>pd.options.display.max_rows = n</code>,
+<code>pd.options.display.max_columns = m</code></li>
+</ul></li>
+<li>Writing data to text format
+<ul>
+<li><code>df.to_csv(path)</code></li>
+</ul></li>
+<li>Working with delimited formats <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;file_path&quot;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">  reader = csv.reader(csvfile)</span><br><span class="line">  ls = [row <span class="keyword">for</span> row <span class="keyword">in</span> reader]</span><br><span class="line">  csvfile.close()</span><br><span class="line">header, contents = ls[<span class="number">0</span>], ls[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;output&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> output:</span><br><span class="line">  writer = csv.writer(output)</span><br><span class="line">  <span class="keyword">for</span> row <span class="keyword">in</span> contents:</span><br><span class="line">    writer.writerow(row)</span><br><span class="line">  output.close()</span><br></pre></td></tr></table></figure></li>
+<li>JSON data
+<ul>
+<li>Convert json string to json object:
+<code>obj = json.loads(json_string)</code></li>
+<li>Convert json object to json string:
+<code>json = json.dumps(obj)</code></li>
+<li>Read json file into pandas dataframe:
+<code>df = pd.read_json(file)</code></li>
+</ul></li>
+<li>XML and HTML
+<ul>
+<li>Read html into a list of dataframes:
+<code>pd.read_html(file)</code></li>
+</ul></li>
+</ul></li>
+<li>Binary data formats Ch 6.2
+<ul>
+<li>One of the easies ways to store data efficiently in binary format is
+using Python's built-in <code>pickle</code> serilization. Pandas objects
+all have <code>to_pickle</code> method that writes data to disk in
+pickle format</li>
+<li>Pickle is good as a short-trem storage format, it's hard to
+guarantee that the format will be stable over time</li>
+<li>Pandas supports two more binary data formats: <code>HDF5</code> and
+<code>MessagePack</code>
+<ul>
+<li>Store in HDF5 format: <code>df.HDFStore("xxx.h5")</code></li>
+<li>HDFStore supports two storage schemas,
+<code>format='fixed'/'table'</code></li>
+</ul></li>
+<li>Reading excel file
+<ul>
+<li>Create excel file and then read <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">xlsx = pd.ExcelFile(<span class="string">&quot;xxx.xlsx&quot;</span>)</span><br><span class="line">df = pd.read_excel(xlsx, <span class="string">&quot;Sheet1&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>Put it all together
+<code>df = pd.read_excel("xxx.xlsx", "Sheet1")</code></li>
+</ul></li>
+</ul></li>
+<li>Interacting with web APIs Ch 6.3
+<ul>
+<li><code>requests</code> package <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;xxx&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">data = response.json()  <span class="comment"># a dictionary containing json objects</span></span><br><span class="line">df = pd.DataFrame(data, index=, columns=)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Interacting with databases Ch 6.4
+<ul>
+<li>sqlite3 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"></span><br><span class="line">query = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  SELECT * FROM table</span></span><br><span class="line"><span class="string">  WHERE c1 = </span></span><br><span class="line"><span class="string">  ORDER BY c2</span></span><br><span class="line"><span class="string">  LIMIT 5;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">conn = sqlite3.connect(<span class="string">&quot;xxx.sqlite&quot;</span>)</span><br><span class="line">cursor = conn.execute(query)</span><br><span class="line">rows = cursor.fetchall()</span><br><span class="line">df = pd.DataFrame(rows, columns = [x[<span class="number">0</span>] <span class="keyword">for</span> x <span class="keyword">in</span> cursor.description])</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Chapter 7 Data cleaning and preparation
+<ul>
+<li>Handling missing data Ch 7.1
+<ul>
+<li>All of the descriptive statistics on pandas objects exclude missing
+data by default</li>
+<li>For numeric data, missing data is represented using the
+floating-point value NaN, use <code>data.isnull()</code> to check for
+missing data</li>
+<li>Filtering out missing data: use <code>data.dropna()</code>, this is
+equivalent to <code>data[data.notnull()]</code>. arguments:
+<code>axis=0/1</code>, <code>how='all'/'any'</code> (if all values are
+NaN, or if any value is NaN)</li>
+<li>Fill missing values
+<ul>
+<li>Fill all missing values with on value:
+<code>data.fillna(val)</code></li>
+<li>Fill missing values with different values for each column:
+<code>data.fillna(&#123;"c1": v1, "cn": vn&#125;)</code></li>
+<li>Fill missing values in place:
+<code>data.fillna(val, inplace=True)</code></li>
+</ul></li>
+</ul></li>
+<li>Data transformation Ch 7.2
+<ul>
+<li>Removing duplicates
+<ul>
+<li><code>data.duplicated</code>: return a boolean series/dataframe
+indicating whether a value/row is duplicated</li>
+<li><code>data.drop_duplicates()</code>: drop duplicated values/rows,
+use <code>keep='first'/'last'/False</code> to sepcify how to remove
+duplicated values</li>
+</ul></li>
+<li>Transforming data using a function or mapping <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">mapping = &#123;<span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;c&#x27;</span> &#125;</span><br><span class="line">df[<span class="string">&#x27;char_index&#x27;</span>] = df[<span class="string">&#x27;index&#x27;</span>].<span class="built_in">map</span>(mapping) <span class="comment"># add a new column, with integer indicies mapped to character indicies</span></span><br></pre></td></tr></table></figure></li>
+<li>Replacing values:
+<ul>
+<li><code>data.replace(v1, v2)</code>: replace v1 with v2</li>
+<li><code>data.replace(&#123;v1: v2, v3: v4&#125;)</code>: replace v1 with v2, v3
+with v4</li>
+<li><code>data.replace([v1, v3], [v2, v4])</code>: replace v1 with v2,
+v3 with v4</li>
+</ul></li>
+<li>Renaming axis indicies
+<ul>
+<li>Rename row or column indicies <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">trans1 = <span class="keyword">lambda</span> x: x.<span class="built_in">str</span>.upper()</span><br><span class="line">trans2 = <span class="keyword">lambda</span> x: x.<span class="built_in">str</span>.title() <span class="comment"># Capatilize the first letter of each word</span></span><br><span class="line">df.index.<span class="built_in">map</span>(trans1)</span><br><span class="line">df.columns.<span class="built_in">map</span>(trans2)</span><br></pre></td></tr></table></figure></li>
+<li>Rename both index and column names:
+<code>df.rename(index=trans1, columns=trans2)</code></li>
+</ul></li>
+<li>Detecting and filtering outliers
+<ul>
+<li><code>data.describe()</code>: calculate max, min, mean, std, 4
+quantiles of each column</li>
+</ul></li>
+<li>Permutation and random sampling
+<ul>
+<li>You can apply permutation on values in a series or rows of a
+dataframe with the <code>iloc</code> or the <code>take</code> function
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.arange(<span class="number">15</span>).reshape(<span class="number">5</span>,<span class="number">3</span>))</span><br><span class="line">perm = np.random.permutation(<span class="built_in">len</span>(df))</span><br><span class="line">df.iloc[perm] <span class="comment"># permute the rows</span></span><br><span class="line">df.take(term) <span class="comment"># permute the rows, equivalent to the above iloc function</span></span><br></pre></td></tr></table></figure></li>
+<li>Take a random sample of rows:
+<code>df.sample(n=n, replace=True/False)</code>, default replace is
+False</li>
+</ul></li>
+<li>Computing indicator/dummy variables
+<ul>
+<li>Convert a categorical variable into dummy/indicator matrix
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ls = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">ser = pd.Series(ls, index=np.arange(<span class="number">1</span>, <span class="built_in">len</span>(ls) + <span class="number">1</span>))</span><br><span class="line">pd.get_dummies(ser)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">     a  b  c</span></span><br><span class="line"><span class="string">  1  1  0  0</span></span><br><span class="line"><span class="string">  2  1  0  0</span></span><br><span class="line"><span class="string">  3  0  1  0</span></span><br><span class="line"><span class="string">  4  0  1  0</span></span><br><span class="line"><span class="string">  5  0  0  1</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>Merge a dataframe and a series/another dataframe
+<ul>
+<li>The series must be named</li>
+<li>If the dataframes have columns with the same name, use
+<code>lsuffix</code> and <code>rsuffix</code> to specifu the suffix for
+the left and right dataframe <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;key&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>, <span class="string">&#x27;K3&#x27;</span>, <span class="string">&#x27;K4&#x27;</span>, <span class="string">&#x27;K5&#x27;</span>],</span><br><span class="line">       <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;A0&#x27;</span>, <span class="string">&#x27;A1&#x27;</span>, <span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>, <span class="string">&#x27;A4&#x27;</span>, <span class="string">&#x27;A5&#x27;</span>]&#125;)</span><br><span class="line">other = pd.DataFrame(&#123;<span class="string">&#x27;key&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>],</span><br><span class="line">          <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;B0&#x27;</span>, <span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;B2&#x27;</span>]&#125;)</span><br><span class="line">df.join(other, lsuffix=<span class="string">&#x27;_caller&#x27;</span>, rsuffix=<span class="string">&#x27;_other&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Use <code>np.random.seed(n)</code> to set seed for random
+sampling</li>
+</ul></li>
+<li>String manipulation Ch 7.3
+<ul>
+<li>String object methods
+<ul>
+<li><code>str.split(sep="")</code>, <code>str.strip()</code>,
+<code>str.rstrip()</code>, <code>str.lstrip()</code>,
+<code>sep.join(ls)</code></li>
+<li><code>char in str</code>, <code>str.index(char)</code> (ValueError
+if not found), <code>str.find(char)</code> (return -1 if not found),
+<code>str.contains(char)</code></li>
+<li><code>str.count(char)</code>,
+<code>str.replace(old, new)</code></li>
+<li><code>str.endswith(pattern)</code>,
+<code>str.startswith(pattern)</code></li>
+<li><code>str.lower()</code>, <code>str.upper()</code></li>
+</ul></li>
+<li>Regular expression
+<ul>
+<li><code>re</code> package</li>
+<li>Use <code>regex = re.compile(pattern, flags=re.IGNORECASE)</code> to
+get a reusable regex object</li>
+<li><code>regex.findall(str)</code>, <code>regex,search(str)</code>,
+<code>regex.match(str)</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Data wrangling: join, combine and reshape
+<ul>
+<li>Hierarchical indexing <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = pd.Series(np.random.randn(<span class="number">9</span>),</span><br><span class="line">                index=[[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;d&#x27;</span>], <span class="comment"># Error in original HTML: index should have 9 elements for outer level</span></span><br><span class="line">                      [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line">df = data.unstack() <span class="comment"># Convert a series to a dataframe</span></span><br><span class="line">df.index <span class="comment"># [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;] </span></span><br><span class="line">df.columns <span class="comment"># [1, 2, 3]</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="python-testing-with-pytest">Python testing with pytest</h2>
+<ol type="1">
+<li>Chapter 1 Getting started with pytest
+<ul>
+<li><code>pytest *_test.py</code> to run all test in a file</li>
+<li><code>pytest -v</code>: -v flag controls the verbosity of pytest
+output in various aspects: test session progress, assertion details when
+tests fail, fixtures details with --fixtures</li>
+<li><code>pytest -r</code>: show extra test summary info as specified by
+chars</li>
+<li>Naming rules
+<ul>
+<li>Test files should be named <code>test_*.py</code> or
+<code>*_test.py</code></li>
+<li>Test methods and functions should be named <code>test_*</code></li>
+<li>Test classes should be named <code>Test*</code></li>
+</ul></li>
+<li>Possible outcomes of a test function
+<ul>
+<li>Passed(.): the test ran successfully</li>
+<li>Failed(F): the test did no run successfully</li>
+<li>Skipped(s): the test was skipped</li>
+<li>xfail(x): the test was not supposed to pass, ran, and failed</li>
+<li>XPASS(X): the test was not supposed to pass, ran, and passed</li>
+<li>ERROR(E): an exception happened outside of the test function</li>
+</ul></li>
+<li>Running only one test
+<ul>
+<li>Run test called <code>test_inc</code> in <code>test_math.py</code>:
+<code>pytest -v test_math.py::test_inc</code></li>
+</ul></li>
+<li>Using options
+<ul>
+<li>Check for pytest options: <code>pytest --help</code></li>
+<li><code>pytest -m</code>: only run tests matching given mark
+expression
+<ul>
+<li>Example <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inc_one</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec_one</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x - <span class="number">1</span></span><br><span class="line"><span class="comment"># give this test a mark called simple</span></span><br><span class="line"><span class="meta">@pytest.mark.simple</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_inc</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> inc_one(<span class="number">1</span>) == <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_dec</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> dec_one(<span class="number">2</span>) == <span class="number">1</span></span><br></pre></td></tr></table></figure> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pytest -v // This runs both tests</span><br><span class="line">pytest -v -m simple // This runs only the test marked simple</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><code>collect-only</code>: The --collect-only option shows you which
+tests will be run with the given options and configuration</li>
+<li><code>-m markexpr</code>Markers are one of the best ways to mark a
+subset of your test functions so that they can be run together. As an
+example, one way to run test_replace() and test_member_access(), even
+though they are in separate files, is to mark them</li>
+</ul></li>
+</ul></li>
+<li>Chapter 2 Writing test functions
+<ul>
+<li>Using assert statements: <code>assert expr</code>,
+<code>assertTrue(expr)</code>, <code>assertEqual(x, y)</code>, ...</li>
+<li>Expecting exceptions: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_add</span>(<span class="params">x: <span class="built_in">int</span>, y: <span class="built_in">int</span></span>) -&gt; int:</span></span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_add</span>():</span></span><br><span class="line">  <span class="keyword">with</span> pytest.raises(TypeError) <span class="keyword">as</span> excinfo:</span><br><span class="line">    my_add(<span class="number">1</span>, <span class="string">&#x27;2&#x27;</span>) </span><br><span class="line">    exception_msg = excinfo.value.arge[<span class="number">0</span>] <span class="comment"># Error in HTML: arge should be args</span></span><br><span class="line">    <span class="keyword">assert</span> exception_msg == <span class="string">&#x27;unsupported opertand type(s) for +: \&#x27;int\&#x27; and \&#x27;str\&#x27;&#x27;</span> <span class="comment"># Error in HTML: st r</span></span><br></pre></td></tr></table></figure></li>
+<li>Marking test functions <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inc</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.inc</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_inc</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> inc(<span class="number">1</span>) == <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.dec</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_dec</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> dec(<span class="number">2</span>) == <span class="number">1</span></span><br></pre></td></tr></table></figure> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pytest -v // This runs both test_inc and test_dec</span><br><span class="line">pytest -v -m inc // This runs only test_inc</span><br><span class="line">pytest -v -m dec // This runs only test_dec</span><br></pre></td></tr></table></figure></li>
+<li>Skipping tests
+<ul>
+<li>We can skip or skip with condition tests that we do not want to run
+now</li>
+<li>Skip a test <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.skip(<span class="params">reason =<span class="string">&#x27;no implemented yet&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_func</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+<li>Skip a test with a boolean condition <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.skipif(<span class="params">condition, reason =<span class="string">&#x27;no supported until condition is met&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_func</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Marking tests as excepting to fail <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.xfail(<span class="params">condition, reason =<span class="string">&#x27;not supported unless condition is met&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_func</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Running a subset of tests <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pytest -v .   # This runs all tests in the current directory</span><br><span class="line">pytest -v test_raise.py # This runs all tests in a file</span><br><span class="line">pytest -v test_raise.py::test_raise # This runs a single test function in a file</span><br><span class="line">pytest -v test_raise.py::TestRaise # This runs all tests in a class inside a file</span><br><span class="line">pytest -v -k &#x27;_raise and not delete&#x27; # This runs all tests in the current directory whose name contains `_raise` but not `delete`</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Chapter 3 Pytest fixtures
+<ul>
+<li>Fixtures are functions that are run by pytest before the test
+functions</li>
+<li>Fixtures functions can do whatever you want: get data, set up a
+database connection, share data among multiple test functions, etc.</li>
+<li>Example <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">db_connect</span>():</span></span><br><span class="line">  conn = sqlite3.connect(<span class="string">&#x27;test.db&#x27;</span>)</span><br><span class="line">  cursor = conn.cursor()</span><br><span class="line">  cursor.execute(<span class="string">&quot;create table if not exists test_table(name text);&quot;</span>)</span><br><span class="line">  cursor.execute(<span class="string">&quot;insert into test_table(name) values(&#x27;test_name&#x27;);&quot;</span>)</span><br><span class="line">  result = cursor.execute(<span class="string">&quot;select * from test_table;&quot;</span>)</span><br><span class="line">  res = []</span><br><span class="line">  <span class="keyword">for</span> row <span class="keyword">in</span> result:</span><br><span class="line">      res.append(row)</span><br><span class="line">  conn.close()</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_connection</span>(<span class="params">db_connect</span>):</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="built_in">len</span>(db_connecet) &gt; <span class="number">0</span> <span class="comment"># Error in HTML: db_connecet</span></span><br></pre></td></tr></table></figure></li>
+<li>Sharing fixtures among multiple tests
+<ul>
+<li>Use <code>conftest.py</code> file to define fixtures that need to be
+shared among different places</li>
+<li>Or you can add a scope parameter to the fixture function
+<code>@pytest.fixture(scope='module')</code>, scope can be function,
+class, module, package, or session</li>
+<li>Example <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># content of conftest.py</span></span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture(<span class="params">scope=<span class="string">&quot;module&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">smtp_connection</span>():</span></span><br><span class="line">    <span class="keyword">return</span> smtplib.SMTP(<span class="string">&quot;smtp.gmail.com&quot;</span>, <span class="number">587</span>, timeout=<span class="number">5</span>)</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># content of test_module.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_ehlo</span>(<span class="params">smtp_connection</span>):</span></span><br><span class="line">    response, msg = smtp_connection.ehlo()</span><br><span class="line">    <span class="keyword">assert</span> response == <span class="number">250</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="string">b&quot;smtp.gmail.com&quot;</span> <span class="keyword">in</span> msg</span><br><span class="line">    <span class="keyword">assert</span> <span class="number">0</span>  <span class="comment"># for demo purposes</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_noop</span>(<span class="params">smtp_connection</span>):</span></span><br><span class="line">    response, msg = smtp_connection.noop()</span><br><span class="line">    <span class="keyword">assert</span> response == <span class="number">250</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">0</span>  <span class="comment"># for demo purposes</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-01-20220119">Lecture 01 2022/01/19</h2>
+<p>Introduction, based on the TLCL book</p>
+<h2 id="lecture-02-20220120">Lecture 02 2022/01/20</h2>
+<p>Navigation and Redirection, based on the TLCL book</p>
+<h2 id="lecture-03-20220124">Lecture 03 2022/01/24</h2>
+<p>Argument Expansion, based on the TLCL book</p>
+<h2 id="lecture-04-20220126">Lecture 04 2022/01/26</h2>
+<p>Permissions and Processes, based on the TLCL book</p>
+<h2 id="lecture-05-20220127">Lecture 05 2022/01/27</h2>
+<p>Grep and Regular Expressions, based on the TLCL books</p>
+<h2 id="lecture-06-20220131">Lecture 06 2022/01/31</h2>
+<h2 id="lecture-07-20220202">Lecture 07 2022/02/02</h2>
+<h2 id="lecture-08-20220203">Lecture 08 2022/02/03</h2>
+<h2 id="lecture-09-20220207">Lecture 09 2022/02/07</h2>
+<h2 id="lecture-10-20220208">Lecture 10 2022/02/08</h2>
+<ol type="1">
+<li>Change the default browser by which jupyter notebook is opened
+<ul>
+<li>Run <code>jupyter notebook --generate-config</code> in command line
+prompt, this command generates a configure file at
+<code>~/.jupyter/jupyter_notebook_config.py</code></li>
+<li>Set this property in the above configure file
+<code>c.NotebookApp.browser = u'C:/Home/AppData/Local/Google/Chrome/Application/chrome.exe %s'</code>.
+If you use windows, you should use path separator <code>\\</code>, and
+also quote the path of your browser inside "", and then inside '', so
+you configuration should be something like this:
+<code>c.NotebookApp.browser = '"C:\\Home\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe" %s'</code></li>
+</ul></li>
+</ol>
+<h2 id="lecture-15-20220228">Lecture 15 2022/02/28</h2>
+<h2 id="lecture-21-20220314">Lecture 21 2022/03/14</h2>
+<ol type="1">
+<li>pytest
+<ul>
+<li>Install pytest:
+<ul>
+<li>Install: <code>pip install pytest</code></li>
+<li>Check pytest version: <code>pytest --version</code></li>
+<li>Simplest way to run tests: <code>pytest</code>, this command will
+will run all files of the form <code>test_*.py</code> or
+<code>*_test.py</code> in the current directory and its
+subdirectories</li>
+</ul></li>
+<li>Simple test example <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># inside test_simple.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inc_one</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_inc_one</span>():</span></span><br><span class="line">  <span class="keyword">assert</span> inc_one(<span class="number">1</span>) == <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="lecture-22-20220316">Lecture 22 2022/03/16</h2>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/" title="COSI 103A Software Engineering">https://yanxuanshaozhu.github.io/2022/01/19/COSI-103A-Software-Engineering/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Software-Engineering/" rel="tag"># Software Engineering</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/01/CMU-15-213-Notes/" rel="prev" title="CMU 15-213 Notes">
+      <i class="fa fa-chevron-left"></i> CMU 15-213 Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/21/COSI-127B-Database-Management-Systems/" rel="next" title="COSI 127B Database Management Systems">
+      COSI 127B Database Management Systems <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-linux-command-line"><span class="nav-number">1.</span> <span class="nav-text">The Linux Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pro-git"><span class="nav-number">2.</span> <span class="nav-text">Pro Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-for-data-analysis-this-is-not-a-required-book-for-this-course"><span class="nav-number">3.</span> <span class="nav-text">Python
+for Data Analysis (this is not a required book for this course)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-testing-with-pytest"><span class="nav-number">4.</span> <span class="nav-text">Python testing with pytest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220119"><span class="nav-number">5.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220120"><span class="nav-number">6.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220124"><span class="nav-number">7.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-04-20220126"><span class="nav-number">8.</span> <span class="nav-text">Lecture 04 2022&#x2F;01&#x2F;26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-05-20220127"><span class="nav-number">9.</span> <span class="nav-text">Lecture 05 2022&#x2F;01&#x2F;27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-06-20220131"><span class="nav-number">10.</span> <span class="nav-text">Lecture 06 2022&#x2F;01&#x2F;31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220202"><span class="nav-number">11.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220203"><span class="nav-number">12.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-09-20220207"><span class="nav-number">13.</span> <span class="nav-text">Lecture 09 2022&#x2F;02&#x2F;07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-20220208"><span class="nav-number">14.</span> <span class="nav-text">Lecture 10 2022&#x2F;02&#x2F;08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-20220228"><span class="nav-number">15.</span> <span class="nav-text">Lecture 15 2022&#x2F;02&#x2F;28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-21-20220314"><span class="nav-number">16.</span> <span class="nav-text">Lecture 21 2022&#x2F;03&#x2F;14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-22-20220316"><span class="nav-number">17.</span> <span class="nav-text">Lecture 22 2022&#x2F;03&#x2F;16</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="尚硅谷 React Course">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/03/06/React-Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="尚硅谷 React Course">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-06T20:00:39.000Z">
+<meta property="article:modified_time" content="2023-07-08T14:59:54.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/03/06/React-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>React Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/03/06/React-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-03-06 15:00:39" itemprop="dateCreated datePublished" datetime="2023-03-06T15:00:39-05:00">2023-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-08 10:59:54" itemprop="dateModified" datetime="2023-07-08T10:59:54-04:00">2023-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>36k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>33 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="尚硅谷-react-course">尚硅谷 React Course</h1>
+<span id="more"></span>
+<h2 id="react-basics">React Basics</h2>
+<ol type="1">
+<li>React is a javascript library that can render HTML with data. It's
+not responsible for making requests or handling requests，it's only
+responsible for manipulating DOM</li>
+<li>React advantage
+<ul>
+<li>Using vanilla javascript to manipulate DOM is
+inefficient；manipulating DOM using javascript requires lots of DOM
+regeneration;</li>
+<li>React uses component and declarative programming to improve
+efficienty；React Native can be used to make mobile apps；VDOM and the
+diffing algorithm reduces interaction with the real DOM</li>
+</ul></li>
+<li>An example
+<ul>
+<li>Related javascript library： <code>react.development.js</code>core
+React library，<code>react-dom.development.js</code> core React DOM
+library，<code>babel.min.js</code> convert JSX to javascript that is
+recognizedby the browser</li>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import react core, this must be imported before react-dom.development.js --&gt;</span></span><br><span class="line">  &lt;script</span><br><span class="line">    type=&quot;text/javascript&quot;</span><br><span class="line">    src=&quot;./javascript/react.development.js&quot;</span><br><span class="line">  &gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import react dome --&gt;</span></span><br><span class="line">  &lt;script</span><br><span class="line">    type=&quot;text/javascript&quot;</span><br><span class="line">    src=&quot;./javascript/react-dom.development.js&quot;</span><br><span class="line">  &gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import babel --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Write JSX, the type must be text/babel --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* 1. Create virtual DOM(VDOM)*/</span>&#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> VDOM = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span></span><br><span class="line">    &#123;/* 2. Render VDOM to html page </span><br><span class="line"><span class="javascript">    Two <span class="built_in">global</span> variables: React <span class="keyword">from</span> react core, ReactDOM <span class="keyword">from</span> react-dom */&#125;</span></span><br><span class="line"><span class="javascript">    ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>You can use pure javascript to generate VDOM, in such case you do
+not need the babel library <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line">  &#123;/* 1. Create virtual DOM(VDOM)</span><br><span class="line"><span class="javascript">  Equivalent to: <span class="keyword">const</span> VDOM = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>; <span class="keyword">with</span> type=<span class="string">&quot;text/babel&quot;</span>*/&#125;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> VDOM = React.createElement(<span class="string">&quot;h1&quot;</span>, &#123; <span class="attr">id</span>: <span class="string">&quot;title&quot;</span> &#125;, <span class="string">&quot;Hello React&quot;</span>);</span></span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 2. Render VDOM to html page*/</span>&#125;</span></span><br><span class="line"><span class="javascript">   Two <span class="built_in">global</span> variables: React <span class="keyword">from</span> react core, ReactDOM <span class="keyword">from</span> react-dom*/&#125;</span></span><br><span class="line"><span class="javascript">  ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>VDOM is actually a javascript object that has less attributes than
+the real DOM, it will be converted by React to the real DOM</li>
+</ul></li>
+<li>JSX
+<ul>
+<li>JavaScript XML, it's in essence the sugar for
+<code>React.createElement(tag, attribute, children)</code></li>
+<li>Syntax:
+<ul>
+<li>Use <code>className</code> to replace the class attribute in
+css(class is a keyword)</li>
+<li>Use javascript expression(you cannot use javascript statements)
+<code>&#123;variable&#125;</code></li>
+<li>Use <code>style=&#123;&#123;k1:v1, ...,k2:v2&#125;&#125;</code>(the outer curly braces
+specify inside is javascript code, the innder curly specifys the code is
+a javascript object)</li>
+<li>VDOM can have only one root JXS tag</li>
+<li>JSX tags must be have its closing tag or is self-closing</li>
+<li>JSX tags with lowercase names will be converted by React to HTML
+tags with same names. If the first latter of a JSX tag is capatialized,
+it will be converted by React to JSX component</li>
+<li>Working with arr in React: notice you need to provide a unique key
+for each item in the array, because React diffing algorithm utilizes
+keys to speed-up converting VDOM to real DOM. Using index as the unique
+key may cause error <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> arr = [<span class="string">&quot;Angular&quot;</span>, <span class="string">&quot;Vue&quot;</span>, <span class="string">&quot;React&quot;</span>];</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> VDOM = (</span></span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">      &#123;arr.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> (</span></span><br><span class="line"><span class="javascript">        &#123;<span class="comment">/* Here is still JSX, so you need &#123;item&#125; */</span>&#125;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line">      ))&#125;</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line">  );</span><br><span class="line"><span class="javascript">  ReactDOM.render(VDOM, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="react-components">React Components</h2>
+<ol type="1">
+<li>Module and component
+<ul>
+<li>Module: reusable javascript file</li>
+<li>Component: reusable html, css, js, img, video, ...</li>
+</ul></li>
+<li>React Developer Tools Chrome extension</li>
+<li>Functional component
+<ul>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 1. Create a functional component, the first letter should be</span></span></span><br><span class="line"><span class="javascript">  capitalized so the it will be regarded <span class="keyword">as</span> a JSX component */&#125;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> Mycomp = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span></span><br><span class="line">  &#125;;</span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 2. Render the component with component tag */</span>&#125;</span></span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomp</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Notice the <code>this</code> inside user-defined component is
+<code>undefined</code>, because the code will be translated by babel
+into javascript, and <code>use strict</code> will be added to the code
+during translation&gt; In strict mode, <code>this</code> inside
+user-defined function is not allowed to point to the <code>window</code>
+obejct</li>
+<li>Logic of functional component: <code>ReactDom.render()</code> will
+call the function that defines the functional component, get the VDOM
+returned by the function, and then inserts the VDOM into the real DOM on
+the html page</li>
+</ul></li>
+<li>Class component
+<ul>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 1. Create a class that extends React.Component, override render method, </span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">return</span> VDOM inside render method */&#125;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 2. Render the component with component tag */</span>&#125;</span></span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomp</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Logic of class component: <code>ReactDom.render()</code> recognizes
+the name of the class component, creates an instance of such type, calls
+the render method on the instance and gets its returned VDOM, and then
+inserts the VDOM into the real DOM on the html page</li>
+<li>Three main attributs of class component instance:
+<code>props</code>, <code>refs</code>, <code>state</code>. With hooks,
+functional components can also have these there attributes</li>
+<li>Simple component: does not have state, complex component: has
+state</li>
+</ul></li>
+<li>State attribute
+<ul>
+<li>State: state is used to store property values that belongs to the
+component, when the state object changes, the component re-renders</li>
+<li>State example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 1. Create a class that extends React.Component, override render method, </span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">return</span> VDOM inside render method */&#125;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">super</span>(props);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.state = &#123;</span></span><br><span class="line"><span class="javascript">        hot: <span class="literal">true</span>,</span></span><br><span class="line">      &#125;; </span><br><span class="line"><span class="javascript">      &#123;<span class="comment">/* this.changeHot is a field</span></span></span><br><span class="line"><span class="javascript">       <span class="built_in">this</span>.click is a method on prototype </span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.click.bind(<span class="built_in">this</span>) binds the click on prototype <span class="keyword">with</span> <span class="built_in">this</span>(here <span class="built_in">this</span> is the Mycomponent instance) */&#125;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.changeHot = <span class="built_in">this</span>.click.bind(<span class="built_in">this</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* this method is on prototype of Mycomponent */</span>&#125;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">click</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.setState(&#123; ...this.state, <span class="attr">hot</span>: !<span class="built_in">this</span>.state.hot &#125;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="javascript">        &#123;<span class="comment">/* You shoul use this.click instead of click, otherwise the this object inside click method will be undefined </span></span></span><br><span class="line"><span class="javascript">        Logic: <span class="number">1.</span> onClick = <span class="built_in">this</span>.click, pass ref <span class="keyword">of</span> click to onClick </span></span><br><span class="line"><span class="javascript">        <span class="number">2.</span> directly call onClick when button is pressed, since the method call is not inside Mycomponent, the <span class="built_in">this</span> </span></span><br><span class="line"><span class="javascript">        object does not point to Mycomponent instance. But at the same time, <span class="built_in">this</span> does not point to <span class="built_in">window</span>, because </span></span><br><span class="line"><span class="javascript">        local use strict mode is auto enfored <span class="keyword">in</span> <span class="keyword">for</span> <span class="class"><span class="keyword">class</span> <span class="title">methods</span>, <span class="title">and</span> <span class="title">then</span> <span class="title">this</span> <span class="title">object</span> <span class="title">there</span> <span class="title">are</span> <span class="title">not</span> <span class="title">allowed</span> <span class="title">to</span> </span></span></span><br><span class="line"><span class="javascript">        point to <span class="built_in">window</span> */&#125;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;this.changeHot&#125;</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">          Today is &#123;<span class="built_in">this</span>.state.hot ? <span class="string">&quot;Hot&quot;</span> : <span class="string">&quot;Cold&quot;</span>&#125;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  &#123;<span class="comment">/* 2. Render the component with component tag */</span>&#125;</span></span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>State example without constructor and using assignment for instance
+fields and instance methods <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* initialize state */</span>&#125;</span></span><br><span class="line"><span class="javascript">    state = &#123; <span class="attr">hot</span>: <span class="literal">true</span> &#125;;</span></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* defined user method: commonly used for callback */</span>&#125;</span></span><br><span class="line"><span class="javascript">    click = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.setState(&#123; ...this.state, <span class="attr">hot</span>: !<span class="built_in">this</span>.state.hot &#125;);</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;this.click&#125;</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">          Today is &#123;<span class="built_in">this</span>.state.hot ? <span class="string">&quot;Hot&quot;</span> : <span class="string">&quot;Cold&quot;</span>&#125;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Props attributes
+<ul>
+<li>Props: props are arguments passed into React components using HTML
+attributes</li>
+<li>Props are readonly values, you can do computation on props but you
+cannot modify prop values</li>
+<li>Simple props example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> &#123; name, age, sex &#125; = <span class="built_in">this</span>.props;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;age&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;sex&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> <span class="attr">name</span>=<span class="string">&quot;test_name_1&quot;</span> <span class="attr">age</span>=<span class="string">&quot;test_age_1&quot;</span> <span class="attr">sex</span>=<span class="string">&quot;test_sex_1&quot;</span> /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test1&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> <span class="attr">name</span>=<span class="string">&quot;test_name_2&quot;</span> <span class="attr">age</span>=<span class="string">&quot;test_age_2&quot;</span> <span class="attr">sex</span>=<span class="string">&quot;test_sex_2&quot;</span> /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test2&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> <span class="attr">name</span>=<span class="string">&quot;test_name_3&quot;</span> <span class="attr">age</span>=<span class="string">&quot;test_age_3&quot;</span> <span class="attr">sex</span>=<span class="string">&quot;test_sex_3&quot;</span> /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test3&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Props using spread syntax(<code>...</code>) in JSX tag
+<ul>
+<li>In pure javascript, <code>...</code> cannot be used to spread an
+object, it can only bed used to make a deep copy of an object
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(...obj1); &#123;<span class="comment">/* error */</span>&#125;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123; ...obj1 &#125;; &#123;<span class="comment">/* make a deep copy of obj1 */</span>&#125;</span><br><span class="line">obj1.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj2.a); &#123;<span class="comment">/* 1 */</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>With babel and React core, you can use <code>...</code> to spread
+object in JSX</li>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> &#123; name, age, sex &#125; = <span class="built_in">this</span>.props;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;age&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;sex&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj1 = &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">&quot;test_name_1&quot;</span>,</span></span><br><span class="line"><span class="javascript">    age: <span class="string">&quot;test_age_1&quot;</span>,</span></span><br><span class="line"><span class="javascript">    sex: <span class="string">&quot;test_sex_1&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj2 = &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">&quot;test_name_2&quot;</span>,</span></span><br><span class="line"><span class="javascript">    age: <span class="string">&quot;test_age_2&quot;</span>,</span></span><br><span class="line"><span class="javascript">    sex: <span class="string">&quot;test_sex2&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj3 = &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">&quot;test_name_3&quot;</span>,</span></span><br><span class="line"><span class="javascript">    age: <span class="string">&quot;test_age_3&quot;</span>,</span></span><br><span class="line"><span class="javascript">    sex: <span class="string">&quot;test_sex_3&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> &#123;<span class="attr">...obj1</span>&#125; /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test1&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> &#123;<span class="attr">...obj2</span>&#125; /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test2&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> &#123;<span class="attr">...obj3</span>&#125; /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test3&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Props type constraints and default values <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Import PropTypes to make constraints on props types --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;../javascript/prop-types.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* Write outside MyComponent class */</span>&#125;</span></span><br><span class="line">    MyComponent.propTypes = &#123;</span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* For React version &lt;= 15,  use React.PropTypes instead of PropTypes */</span>&#125;</span></span><br><span class="line">    name: PropTypes.string.isRequired,</span><br><span class="line">    age: PropTypes.number,</span><br><span class="line">    sex: PropTypes.string,</span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* PropTypes.func requires that the feild should be a method */</span>&#125;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    MyComponent.defaultProps = &#123;</span><br><span class="line">    age: 17,</span><br><span class="line"><span class="javascript">    sex: <span class="string">&quot;male&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Import PropTypes to make constraints on props types --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;../javascript/prop-types.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* Write inside MyComponent class */</span>&#125;</span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">static</span> propTypes = &#123;</span></span><br><span class="line"><span class="javascript">        &#123;<span class="comment">/* For React version &lt;= 15,  use React.PropTypes instead of PropTypes */</span>&#125;</span></span><br><span class="line">        name: PropTypes.string.isRequired,</span><br><span class="line">        age: PropTypes.number,</span><br><span class="line">        sex: PropTypes.string,</span><br><span class="line"><span class="javascript">        &#123;<span class="comment">/* PropTypes.func requires that the feild should be a method */</span>&#125;</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="keyword">static</span> defaultProps = &#123;</span></span><br><span class="line">        age: 17,</span><br><span class="line"><span class="javascript">        sex: <span class="string">&quot;male&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Constructor and props
+<ul>
+<li>Typically, in React constructors are only used for two purposes:
+<ul>
+<li>Initializing local state by assigning an object to this.state, can
+be done without a constructor</li>
+<li>Binding event handler methods to an instance, can be done without a
+constructor</li>
+</ul></li>
+<li>So removing the constructor is totally fun</li>
+<li>If you write a constructor and pass <code>props</code> to it, then
+you need to call <code>super(props)</code> at the first line of the
+constructor, otherwise <code>this.props</code> will be undefined inside
+the constructor</li>
+</ul></li>
+<li>Working with props in functional components
+<ul>
+<li>Since function accepts arguments, you can use functional components
+to accept props</li>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> &#123; name, age, sex &#125; = props;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">        &lt;li&gt;&#123;<span class="string">&quot;Age: &quot;</span> + (<span class="built_in">parseInt</span>(age) + <span class="number">1</span>)&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&quot;sex: &quot; + sex&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line">    );</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* propTypes and defaultProps have to be outside the function */</span>&#125;</span></span><br><span class="line">    MyComponent.propTypes = &#123;</span><br><span class="line">    name: PropTypes.string.isRequired,</span><br><span class="line">    age: PropTypes.number,</span><br><span class="line">    sex: PropTypes.string,</span><br><span class="line">    &#125;;</span><br><span class="line">    MyComponent.defaultProps = &#123;</span><br><span class="line">    age: 17,</span><br><span class="line"><span class="javascript">    sex: <span class="string">&quot;male&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj1 = &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">&quot;test_name_3&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line">    ReactDOM.render(</span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">MyComponent</span> &#123;<span class="attr">...obj1</span>&#125; /&gt;</span>,</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;test1&quot;</span>)</span></span><br><span class="line">    );</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Without hooks, functional components can only work with props, but
+not state and refs</li>
+</ul></li>
+</ul></li>
+<li>Refs attribute
+<ul>
+<li>Refs provide a way to access DOM nodes or React elements created in
+the render method, it's similar to id attribute in javascript</li>
+<li>Use <code>this.refs.name</code> to get the corresponding node</li>
+<li>String refs(not recommended due to efficiency issues) example:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    showData1 = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> input1 = <span class="built_in">this</span>.refs.input1;</span></span><br><span class="line">      alert(input1.value);</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    showDate2 = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> input1 = <span class="built_in">this</span>.refs.input2;</span></span><br><span class="line">      alert(input1.value);</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">          &lt;input ref=<span class="string">&quot;input1&quot;</span> type=<span class="string">&quot;text&quot;</span> placeholder=<span class="string">&quot;Input some data&quot;</span> /&gt;&#123;<span class="string">&quot; &quot;</span>&#125;</span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.showData1&#125;</span>&gt;</span>Click to alert input<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line">          &lt;input</span><br><span class="line"><span class="javascript">            ref=<span class="string">&quot;input2&quot;</span></span></span><br><span class="line"><span class="javascript">            type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">            placeholder=<span class="string">&quot;Input some data&quot;</span></span></span><br><span class="line"><span class="javascript">            onBlur=&#123;<span class="built_in">this</span>.showDate2&#125;</span></span><br><span class="line">          /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Callback refs example: bind current to a field of the class
+instance. For inline ref callbacks, each rerender will let the callback
+be executed twice(first with null and then again with the DOM element),
+you can use a class function to avoid this <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    showData1 = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="built_in">this</span>.input1.value);</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    saveInput = <span class="function">(<span class="params">currentNode</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">     <span class="built_in">this</span>.input1 = currentNode;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">          &#123;<span class="comment">/* In callback ref = &#123;c =&gt; this.input1 = c&#125;, c is the current node,</span></span></span><br><span class="line"><span class="javascript">           and <span class="built_in">this</span> is an instance <span class="keyword">of</span> the current <span class="keyword">class</span>. This inline callback will be executed twice during rerener*/&#125;</span></span><br><span class="line">          &lt;input</span><br><span class="line"><span class="javascript">            ref=&#123;<span class="built_in">this</span>.saveInput&#125;</span></span><br><span class="line">            &#123;/*</span><br><span class="line"><span class="javascript">            ref=&#123;<span class="function">(<span class="params">currentNode</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">              <span class="built_in">this</span>.input1 = currentNode;</span></span><br><span class="line">            &#125;&#125;</span><br><span class="line">            */&#125;</span><br><span class="line"><span class="javascript">            type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">            placeholder=<span class="string">&quot;Input some data&quot;</span></span></span><br><span class="line">          /&gt; </span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.showData1&#125;</span>&gt;</span>Click to alert input<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Use <code>React.createRef()</code></li>
+<li>This method returns a container, when pointed to by the
+<code>ref</code> attribute of a node, it will return a container with
+the current node inside</li>
+<li>Use <code>React.createRef().current</code> to get the node inside
+the container</li>
+<li>The container can hold only one node, node that is referenced later
+will replace node that is saved earlier. So you need to create a
+container for each node</li>
+<li>An example <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    state = &#123; <span class="attr">hot</span>: <span class="literal">true</span> &#125;;</span></span><br><span class="line"><span class="javascript">    click = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.setState(&#123; <span class="attr">hot</span>: !<span class="built_in">this</span>.state.hot &#125;);</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    showData = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="built_in">this</span>.myRef.current.value);</span></span><br><span class="line">    &#125;;</span><br><span class="line">    myRef = React.createRef();</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">          &lt;h1&gt;Today is &#123;<span class="built_in">this</span>.state.hot ? <span class="string">&quot;Hot&quot;</span> : <span class="string">&quot;Cold&quot;</span>&#125;&lt;/h1&gt;</span></span><br><span class="line">          &lt;input</span><br><span class="line"><span class="javascript">            ref=&#123;<span class="built_in">this</span>.myRef&#125;</span></span><br><span class="line"><span class="javascript">            type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">            placeholder=<span class="string">&quot;input value&quot;</span></span></span><br><span class="line">          /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.click&#125;</span>&gt;</span>Change hot<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.showData&#125;</span>&gt;</span>Show value<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Event Handling
+<ul>
+<li>React events are named using camelCase, rather than lowercase,
+because react repackages built-in javascript events (in lowercase) to
+increase compatibility</li>
+<li>React events are popped up to the outmost node to improve
+efficiency</li>
+<li>Use <code>event.target</code> to get the source node when the node
+that has event is the same as the target node you want to manipulate, do
+not overuse ref in situation like this <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line">    myRef = React.createRef();</span><br><span class="line"><span class="javascript">    showData = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="built_in">this</span>.myRef.current.value);</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">          &lt;input</span><br><span class="line"><span class="javascript">          &#123;<span class="comment">/* Actually we do not need the ref here */</span>&#125;</span></span><br><span class="line"><span class="javascript">            ref=&#123;<span class="built_in">this</span>.myRef&#125;</span></span><br><span class="line"><span class="javascript">            onBlur=&#123;<span class="built_in">this</span>.showData&#125;</span></span><br><span class="line"><span class="javascript">            type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">            placeholder=<span class="string">&quot;input value&quot;</span></span></span><br><span class="line">          /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line">    </span><br><span class="line"><span class="javascript">    &#123;<span class="comment">/* Pass the blur event into the method and use it the get the node*/</span>&#125;</span></span><br><span class="line"><span class="javascript">    showData = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span></span><br><span class="line">      alert(event.target.value);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">          &lt;input</span><br><span class="line"><span class="javascript">            onBlur=&#123;<span class="built_in">this</span>.showData&#125;</span></span><br><span class="line"><span class="javascript">            type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">            placeholder=<span class="string">&quot;input value&quot;</span></span></span><br><span class="line">          /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Uncontrolled component: component that stores its own state
+internally, its value can be found using <code>ref.current.value</code>
+when you need it <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line">    myRef1 = React.createRef();</span><br><span class="line">    myRef2 = React.createRef();</span><br><span class="line">    myRef3 = React.createRef();</span><br><span class="line"><span class="javascript">    showData = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// prevent form default behavior</span></span></span><br><span class="line">      event.preventDefault();</span><br><span class="line">      alert(</span><br><span class="line"><span class="javascript">        <span class="comment">// Use ref to get the value of input when you need it</span></span></span><br><span class="line"><span class="javascript">        <span class="string">`Username: <span class="subst">$&#123;<span class="built_in">this</span>.myRef1.current.value&#125;</span>, email: <span class="subst">$&#123;<span class="built_in">this</span>.myRef2.current.value&#125;</span>, password: <span class="subst">$&#123;<span class="built_in">this</span>.myRef3.current.value&#125;</span>`</span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;col-6 offset-3&quot;</span>&gt;</span></span></span></span><br><span class="line">          &lt;form</span><br><span class="line"><span class="javascript">            action=<span class="string">&quot;https://www.google.com&quot;</span></span></span><br><span class="line"><span class="javascript">            method=<span class="string">&quot;get&quot;</span></span></span><br><span class="line"><span class="javascript">            onSubmit=&#123;<span class="built_in">this</span>.showData&#125;</span></span><br><span class="line">          &gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">              <span class="comment">// Use htmlFor instead for </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;username&quot;</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;username&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Enter email&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;username&quot;</span></span></span><br><span class="line"><span class="javascript">                ref=&#123;<span class="built_in">this</span>.myRef1&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;email&quot;</span>&gt;</span>Email address<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                aria-describedby=<span class="string">&quot;emailHelp&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Enter email&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                ref=&#123;<span class="built_in">this</span>.myRef2&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">small</span> <span class="attr">id</span>=<span class="string">&quot;emailHelp&quot;</span> <span class="attr">className</span>=<span class="string">&quot;form-text text-muted&quot;</span>&gt;</span></span></span></span><br><span class="line">                We&#x27;ll never share your email with anyone else.</span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;password&quot;</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Password&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                ref=&#123;<span class="built_in">this</span>.myRef3&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">className</span>=<span class="string">&quot;btn btn-primary&quot;</span>&gt;</span></span></span></span><br><span class="line">              Submit</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Controlled component: one that takes its current value through props
+and notifies changes through callbacks like <code>onChange</code>. A
+parent component "controls" it by handling the callback and managing its
+own state and passing the new values as props to the controlled
+component, the usage of <code>value</code> and <code>onChange</code> is
+similar to Vue v-model two-way binding <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line">    state = &#123;</span><br><span class="line"><span class="javascript">      username: <span class="string">&quot;&quot;</span>,</span></span><br><span class="line"><span class="javascript">      password: <span class="string">&quot;&quot;</span>,</span></span><br><span class="line"><span class="javascript">      email: <span class="string">&quot;&quot;</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="comment">// Higher order function to reduce code redundancy</span></span></span><br><span class="line"><span class="javascript">    saveFormdata = <span class="function">(<span class="params">type</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.setState(&#123;</span></span><br><span class="line">          ...this.state,</span><br><span class="line"><span class="javascript">          <span class="comment">// type is a string, you cannot simply write type: event.target.value</span></span></span><br><span class="line">          [type]: event.target.value</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    showData = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span></span><br><span class="line">      event.preventDefault();</span><br><span class="line">      alert(</span><br><span class="line"><span class="javascript">        <span class="string">`Username: <span class="subst">$&#123;<span class="built_in">this</span>.state.username&#125;</span>, email: <span class="subst">$&#123;<span class="built_in">this</span>.state.email&#125;</span>, password: <span class="subst">$&#123;<span class="built_in">this</span>.state.password&#125;</span>`</span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;col-6 offset-3&quot;</span>&gt;</span></span></span></span><br><span class="line">          &lt;form</span><br><span class="line"><span class="javascript">            action=<span class="string">&quot;https://www.google.com&quot;</span></span></span><br><span class="line"><span class="javascript">            method=<span class="string">&quot;get&quot;</span></span></span><br><span class="line"><span class="javascript">            onSubmit=&#123;<span class="built_in">this</span>.showData&#125;</span></span><br><span class="line">          &gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;username&quot;</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;username&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Enter email&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;username&quot;</span></span></span><br><span class="line"><span class="javascript">                onChange=&#123;<span class="built_in">this</span>.saveFormdata(<span class="string">&quot;username&quot;</span>)&#125;</span></span><br><span class="line"><span class="javascript">                value=&#123;<span class="built_in">this</span>.state.username&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;email&quot;</span>&gt;</span>Email address<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                aria-describedby=<span class="string">&quot;emailHelp&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Enter email&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;email&quot;</span></span></span><br><span class="line"><span class="javascript">                <span class="comment">// Another approach without HOF</span></span></span><br><span class="line"><span class="javascript">                <span class="comment">// on change=&#123;event =&gt; &#123;this.saveData(&quot;email&quot;, event)&#125;&#125;</span></span></span><br><span class="line"><span class="javascript">                onChange=&#123;<span class="built_in">this</span>.saveFormdata(<span class="string">&quot;email&quot;</span>)&#125;</span></span><br><span class="line"><span class="javascript">                value=&#123;<span class="built_in">this</span>.state.email&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">small</span> <span class="attr">id</span>=<span class="string">&quot;emailHelp&quot;</span> <span class="attr">className</span>=<span class="string">&quot;form-text text-muted&quot;</span>&gt;</span></span></span></span><br><span class="line">                We&#x27;ll never share your email with anyone else.</span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;password&quot;</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span></span><br><span class="line">              &lt;input</span><br><span class="line"><span class="javascript">                type=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                className=<span class="string">&quot;form-control&quot;</span></span></span><br><span class="line"><span class="javascript">                id=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                placeholder=<span class="string">&quot;Password&quot;</span></span></span><br><span class="line"><span class="javascript">                name=<span class="string">&quot;password&quot;</span></span></span><br><span class="line"><span class="javascript">                onChange=&#123;<span class="built_in">this</span>.saveFormdata(<span class="string">&quot;password&quot;</span>)&#125;</span></span><br><span class="line"><span class="javascript">                value=&#123;<span class="built_in">this</span>.state.password&#125;</span></span><br><span class="line">              /&gt;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">className</span>=<span class="string">&quot;btn btn-primary&quot;</span>&gt;</span></span></span></span><br><span class="line">              Submit</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Component Lifecycle
+<ul>
+<li>Delete a component:
+<code>ReactDOM.unmountComponentAtNode(document.getElementById&lt;nodeName&gt;))</code></li>
+<li>Mount: insert VDOM into real DOM, unmount: detach VDOM from real
+DOM</li>
+<li>When <code>ReactDOM.render()</code> is called:
+<ul>
+<li>for the first time VDOM is mounted onto the real DOM</li>
+<li>for each time the state is changed <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Mycomponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span></span><br><span class="line">    state = &#123; opacity: 1 &#125;;</span><br><span class="line"><span class="javascript">    <span class="comment">// Delete a component</span></span></span><br><span class="line"><span class="javascript">    detach = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      ReactDOM.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="comment">// Call this method once when VDOM is mounted to the real DOM</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// Start timer</span></span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> opacity = <span class="built_in">this</span>.state.opacity;</span></span><br><span class="line">        opacity -= 0.1;</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (opacity &lt;= <span class="number">0</span>) &#123;</span></span><br><span class="line">          opacity = 1;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.setState(&#123;</span></span><br><span class="line">          opacity: opacity,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, 200);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="comment">// Call this method before VOM is deleted</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// Clear the timer</span></span></span><br><span class="line"><span class="javascript">      <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=</span></span><span class="template-variable">&#123;&#123; <span class="name">opacity:</span> this.state.opacity &#125;&#125;</span><span class="xml"><span class="tag">&gt;</span></span></span></span><br><span class="line">            This is a changing heading</span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.detach&#125;</span>&gt;</span>Detach component<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Mycomponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Original lifecycle hooks
+<ul>
+<li>Mount: <code>constructor()</code>,
+<code>componentWillMount()</code>, <code>render()</code>,
+<code>componentDidMount()</code>(initialization: setInterval, send
+request, subscribe message)</li>
+<li>UnMount: <code>componentWillUnmount()</code>(finalization: clear
+interval, unsubscribe message), then
+<code>ReactDOM.unmountComponentAtNode()</code> is called</li>
+<li>Update: if <code>this.setState()</code> is called,
+<code>shouldComponentUpdate()</code> (by default this method returns
+true), <code>componentWillUpdate()</code>, <code>render()</code>,
+<code>componentDidUpdate()</code></li>
+<li>Force update: <code>forceUpdate()</code> is called (state is not
+changed), <code>componentWillUpdate()</code>, <code>render()</code>,
+<code>componentDidUpdate()</code></li>
+<li>Parent component passes props to child component and parent change
+state: parent calls <code>this.setState()</code>, child calls
+<code>componentWillReceiveProps()</code>(for the first time, this method
+is not called but actually the child component did receive props from
+its parent), then child calls <code>shouldComponentUpdate()</code>, then
+child calls <code>componentWillUpdate()</code>, then child calls
+<code>render()</code>, then child calls
+<code>componentDidUpdate()</code></li>
+</ul></li>
+<li>Current lifecycle hooks
+<ul>
+<li>Deprecated: <code>componentWillMount</code> changed to
+<code>UNSAFE_componentWillMount</code>, <code>componentWillUpdate</code>
+changed to <code>UNSAFE_componentWillUpdate</code>,
+<code>componentWillReceiveProps</code> changed to
+<code>UNSAFE_componentWillReceiveProps</code>. The above methods are
+often misused and maybe have bugs with newer React async rendering</li>
+<li>Introduce two new callbacks:
+<code>static getDerivedStateFromProps()</code>(if state always depends
+on props, use this), <code>getSnapshotBeforeUpdate()</code>, but these
+two are rarely used</li>
+</ul></li>
+</ul></li>
+<li>React DOM Diffing algorithm * The minimum granularity for diffing
+algorithm is a tag(for nested tags, only consier the changed layer and
+its components) * What does list li tag key do
+<ul>
+<li>When there is new data, React will generate new VDOM for all
+data</li>
+<li>The React uses diffing algorith to compare the old VDOM and new VDOM
+<ul>
+<li>If a key exists in both, then checks data, if data are the same,
+then new change will be made, if data are different, a new real DOM is
+generated and then used to replace the old real DOM</li>
+<li>If a key only exists in new VDOM, a new real DOM is generated and
+then used to replace the old real DOM
+<ul>
+<li>What is the problem of using array index as key: index does not
+uniquely identify elements. In cases where the array is sorted or an
+element is added to the beginning of the array, the index will be
+changed even though the element representing that index may be the same.
+In some cases where you only need to display the contents, using id does
+not cause problems</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="react-scaffold">React Scaffold</h2>
+<ol type="1">
+<li>React scaffold
+<ul>
+<li>React official team provides a library to create a React template
+project based on React Scaffold. This library is based on Webpack</li>
+<li>Installation: <code>npm i -g create-react-app</code></li>
+<li>Create an app: <code>create-react-app &lt;apName&gt;</code></li>
+<li>Start app: <code>npm start</code> or <code>yarn start</code></li>
+</ul></li>
+<li>The template project
+<ul>
+<li>Project structure
+<ul>
+<li><code>/public/index.html</code> is the root html page, and there
+should be only one html page in the public folder</li>
+<li><code>/src/App.js</code> the main JSX file, <code>index.html</code>
+root tag should only the APP module</li>
+<li><code>/src/index.js</code> entrance file, the
+<code>&lt;React.StrictMode&gt;</code> is a tool that highlights
+potential issues in a programme (like deprecated callbacks,
+unrecommended bahaviors, etc.)</li>
+<li><code>/src/reportWebVitals.js</code> used for monitor page
+performance</li>
+<li><code>/src/setupTests.js</code> used for testing components</li>
+</ul></li>
+<li>Execution logic: <code>index.js</code> include <code>App.js</code>,
+then render component into <code>index.html</code></li>
+<li>An update in React 18: <code>ReactDOM.render</code> is no longer
+supported, use the following code instead <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = ReactDOM.createRoot(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.render(</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/React.StrictMode&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Create a project
+<ul>
+<li>Write your own <code>/public/index.html</code>,
+<code>/src/index.js</code>, <code>/src/APP.js</code></li>
+<li><strong>Notice if your VS Code autocomplete is not working in the
+React Project, change the file language from JavaScript to
+JSX</strong></li>
+<li>Structure: for component <code>Hello.js</code> and
+<code>Hello.css</code>, they should be placed inside
+<code>/src/components/Hello/</code></li>
+<li>For component javascript files, you can use <code>Name.jsx</code>
+instead of <code>Name.js</code></li>
+<li>Sometimes for component Hello, the file structure is
+<code>/src/components/Hello/index.jsx</code>, if you use
+<code>index.js</code> or <code>index.jsx</code> like this, when you want
+to import the component, you can use
+<code>import /src/components/Hello</code> instead of
+<code>import /src/components/Hello/Hello</code></li>
+<li>CSS modularity
+<ul>
+<li>There can be conflicts among css files from different modules, one
+way to solve the proble is to use less, another is to modular css</li>
+<li>Modular css works with all css selectors, for example if you have
+<code>#pg1</code> and object <code>hello</code>, you simply write
+<code>hello.pg1</code></li>
+<li>An example, suppose you have a module called Hello, inside it you
+have <code>index.css</code> and <code>index.jsx</code>, first rename the
+css file to <code>index.module.css</code>, then you can import it in the
+jsx file like this: <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// previously you write import &quot;./index.css&quot;</span></span><br><span class="line"><span class="comment">// this hello object can hold the properties defined inside the css file</span></span><br><span class="line"><span class="keyword">import</span> hello <span class="keyword">from</span> <span class="string">&quot;./index.module.css&quot;</span>;</span><br><span class="line"></span><br><span class="line">&lt;h1 className=&#123;hello.heading&#125;&gt;Text &lt;/h1&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>VS Code React extension
+<ul>
+<li>Snippets, full <a target="_blank" rel="noopener" href="https://github.com/ults-io/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md">link</a>
+of snippets
+<ul>
+<li><code>rcc</code>/ <code>rce</code>: create component class</li>
+<li><code>rfc</code>: create functional component</li>
+<li><code>imr</code>: import React, <code>imrd</code>: import
+ReactDOM</li>
+<li><code>ptsr</code>: PropTypes.string.isRequired</li>
+<li><code>imp</code>: import A from B</li>
+<li>......</li>
+</ul></li>
+</ul></li>
+<li>General steps:
+<ul>
+<li>Split page into components</li>
+<li>Create static components</li>
+<li>Create dynamic components: dynamically render data, include user
+interaction</li>
+</ul></li>
+<li>Todo Project
+<ul>
+<li>When you use a customized component <code>&lt;Item&gt;</code> as a
+list item, the component itself should have an id, the
+<code>&lt;li&gt;</code> inside does not need to have a tag</li>
+<li>Child wants to access parent state: parent passes the state in
+props</li>
+<li>Child wants to modify parent state: parent passes a callback in
+props, child change parent state in the callback</li>
+<li>Some event: <code>onKeyUp</code>, <code>onMouseLeave</code>,
+<code>onMouseEnter</code></li>
+<li>Does not display a component:
+<code>style=&#123;&#123;display:"none"&#125;&#125;</code></li>
+<li>In order to use <code>confirm(msg)</code> in React, you should write
+<code>window.confirm(msg)</code></li>
+</ul></li>
+</ol>
+<h2 id="react-ajax">React Ajax</h2>
+<ol type="1">
+<li>React focuses on page layout, it does not contain code for ajax
+request. You can use axios(recommended) or jquery to send ajax
+requests</li>
+<li>By default, ajax does not allow CORS, if you cannot change server
+response header settings, then you need to configure proxy in your react
+project</li>
+<li>You need to use Octokit.js to use the GitHub REST API</li>
+<li>Direct communication between sibling components via the
+<code>pubsub-js</code> library
+<ul>
+<li><code>npm install pubsub-js</code></li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> PubSub <span class="keyword">from</span> <span class="string">&#x27;pubsub-js&#x27;</span>;</span><br><span class="line"><span class="comment">// Publisher</span></span><br><span class="line">PubSub.publish(<span class="string">&#x27;topic&#x27;</span>, data);</span><br><span class="line"><span class="comment">// Subscriber</span></span><br><span class="line">PubSub.sucribe(<span class="string">&#x27;topic&#x27;</span>, <span class="function">(<span class="params">msg, data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="react-router">React Router</h2>
+<ol type="1">
+<li>SPA(single page web application): this application contains only one
+page, it only re-renders part of its page to display contents from
+different components</li>
+<li>Router
+<ul>
+<li>A router is in essence a mapping from path to either a function
+(backend router)or a component(frontend router)</li>
+<li>Frontend router is based on manipulation of browser history</li>
+<li>For web development, use <code>react-router-dom</code>, for
+application development, use <code>react-router-native</code></li>
+</ul></li>
+<li>Main topics
+<ul>
+<li>The page should be managed by one and only one router, either a
+<code>BrowserRouter</code> or a <code>HashRouter</code>, so you can
+simply wrap the <code>App</code> component with the
+<code>BrowserRouter</code></li>
+<li>Use <code>&lt;Link to=""&gt;</code> in react to replace
+<code>&lt;a&gt;</code> in html</li>
+<li>Use <code>&lt;Route path="" component="" /&gt;</code> to create
+mapping between route and component</li>
+<li>Example <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Link, BrowserRouter, Route &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">&quot;./components/About&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">&quot;./components/Home&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> app <span class="keyword">from</span> <span class="string">&quot;./App.module.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div className=&#123;app.container&#125;&gt;</span><br><span class="line">          &lt;h1&gt;This APP&lt;/h1&gt;</span><br><span class="line">          &lt;div className=&#123;app.navRouter&#125;&gt;</span><br><span class="line">            &lt;Link to=<span class="string">&quot;/about&quot;</span> className=&#123;app.link&#125;&gt;</span><br><span class="line">              About</span><br><span class="line">            &lt;/Link&gt;</span><br><span class="line">            &lt;Link to=<span class="string">&quot;/home&quot;</span> className=&#123;app.link&#125;&gt;</span><br><span class="line">              Home</span><br><span class="line">            &lt;/Link&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;div className=&#123;app.display&#125;&gt;</span><br><span class="line">            &lt;Route path=<span class="string">&quot;/about&quot;</span> component=&#123;About&#125; /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">&quot;/home&quot;</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/BrowserRouter&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>For route components, place them inside <code>pages</code> directory
+instead of <code>components</code> directory</li>
+<li>Compared with ordinary components, components inside
+<code>&lt;Route&gt;</code> can receive props passed by Router:
+<code>location</code>, <code>history</code>, <code>match</code>, and
+more</li>
+<li>If you want to add additional styling attributes to link, use
+<code>&lt;NavLink&gt;</code> instead, navlink knows if a link is active
+or pending, you can use <code>activeClassName</code> to modify styling
+of active links</li>
+<li>You can encapsulate NavLink to customize styling, to receive the tag
+body, use <code>this.props.children</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavLink &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> link <span class="keyword">from</span> <span class="string">&quot;./index.module.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MyNavLink</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="comment">// &lt;NavLink</span></span><br><span class="line">      <span class="comment">//   activeClassName=&#123;link.active&#125;</span></span><br><span class="line">      <span class="comment">//   className=&#123;link.link&#125;</span></span><br><span class="line">      <span class="comment">//   &#123;...this.props&#125;</span></span><br><span class="line">      <span class="comment">// &gt;</span></span><br><span class="line">      <span class="comment">// To receive tag body, use this.props.children</span></span><br><span class="line">      <span class="comment">//   &#123;this.props.children&#125; </span></span><br><span class="line">      <span class="comment">// &lt;/NavLink&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// This approach is more concise</span></span><br><span class="line">      &lt;NavLink</span><br><span class="line">        activeClassName=&#123;link.active&#125;</span><br><span class="line">        className=&#123;link.link&#125;</span><br><span class="line">        &#123;...this.props&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Use <code>&lt;Switch&gt;&lt;/Switch&gt;</code> to wrap
+<code>&lt;Route/&gt;</code> to require that only one(this first one)
+component could be matched by one path. Otherwise for a specific path,
+react will search all Route components and render all pages whose path
+attribute equals to that path</li>
+<li>For multi-layer route, BrowRouter may cause errors in static erros,
+there are multiple ways to solve this:
+<ul>
+<li>Use absolute path instead of relative path for static resources(the
+root is the <code>public</code> directory in your project), this works
+w/ react scaffold</li>
+<li>Append <code>%PUBLIC_URL%</code> to static resource paths, this only
+works within react scaffold</li>
+<li>Use <code>HashRouter</code> instead of <code>BrowserRouter</code>,
+because paths after the <code>#</code> are only recognized as hash
+values instead of actual urls</li>
+</ul></li>
+<li>Ambiguous match: the to attribute in Link can contain the path
+attribute in Route, by default path in Route enables ambiguous match, if
+you want to use exact match, use <code>exact</code> or
+<code>exact=&#123;true&#125;</code> in Route. Do not enable exact match unless it
+causes errors in your project</li>
+<li>Use Redirect to redirect "/" to a specific page <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">  &lt;Route path=<span class="string">&quot;/about&quot;</span> component=&#123;About&#125; /&gt;</span><br><span class="line">  &lt;Route path=<span class="string">&quot;/home&quot;</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">  <span class="comment">// By default home page is selected, and the default url will be hostname:port/home instead of hostname:port</span></span><br><span class="line">  &lt;Redirect to=<span class="string">&quot;/home&quot;</span> /&gt;</span><br><span class="line">&lt;/Switch&gt;</span><br></pre></td></tr></table></figure></li>
+<li>For multi-layer route, the logic is the same, just use
+<code>&lt;NavLink&gt;</code> and <code>&lt;Route&gt;</code></li>
+<li>Add <code>replace</code> to link to change from push routing to
+replace routing</li>
+</ul></li>
+<li>Route data passing
+<ul>
+<li>Use params to pass data: use <code>this.props.match.params</code> to
+get received data <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pass params data like this in Link</span></span><br><span class="line">&lt;Link to=&#123;<span class="string">`/home/msg/detail/<span class="subst">$&#123;item.id&#125;</span>`</span>&#125;&gt;&#123;item.id&#125;&lt;/Link&gt;</span><br><span class="line"><span class="comment">// Declare that there is params data passed when registering route</span></span><br><span class="line">&lt;Route path=&#123;<span class="string">`/home/msg/detail/:id`</span>&#125; component=&#123;Detail&#125;/&gt;</span><br><span class="line"><span class="comment">// Use params data like this in Detail</span></span><br><span class="line"><span class="keyword">const</span> &#123;id&#125; = <span class="built_in">this</span>.props.match.params;</span><br></pre></td></tr></table></figure></li>
+<li>Use search to pass data <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pass search data like this in Link</span></span><br><span class="line">&lt;Link to=&#123;<span class="string">`/home/msg/detail/?id=<span class="subst">$&#123;item.id&#125;</span>`</span>&#125;&gt;&#123;item.id&#125;&lt;/Link&gt;</span><br><span class="line"><span class="comment">// No need to declare anything here for search data</span></span><br><span class="line">&lt;Route path=&#123;<span class="string">`/home/msg/detail`</span>&#125; component=&#123;Detail&#125;/&gt;</span><br><span class="line"><span class="comment">// Use data like this in Detail, the location.search is a string that looks like this: &quot;?id=1&amp;k1=v1&amp;k2=v2&quot;</span></span><br><span class="line"><span class="comment">// You can manually get the id like this</span></span><br><span class="line"><span class="keyword">const</span> &#123;id&#125; = <span class="built_in">this</span>.location.search.split(<span class="string">&quot;&amp;&quot;</span>)[<span class="number">0</span>].substr(<span class="number">1</span>).split(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="comment">// You can also rely on the queryString library</span></span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">&#x27;queryString&#x27;</span></span><br><span class="line"><span class="comment">// Remove the question mark</span></span><br><span class="line"><span class="keyword">const</span> query = <span class="built_in">this</span>.location.search.substr(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// qs.parse(str) converts URL encoded string to object, qs.stringfy(obj) converts object to URL encoded string</span></span><br><span class="line"><span class="keyword">const</span> &#123;id&#125; = qs.parse(query);</span><br></pre></td></tr></table></figure></li>
+<li>Use state attribute of Route tag to pass data <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pass state data like this in Link, here you need to pass an object to the to attribute</span></span><br><span class="line">&lt;Link to=&#123;&#123;<span class="attr">pathname</span>: <span class="string">&quot;/home/msg/detail&quot;</span>, <span class="attr">state</span>: &#123;<span class="attr">id</span>: item.id&#125;&#125;&#125;&gt;&#123;item.id&#125;&lt;/Link&gt;</span><br><span class="line"><span class="comment">// No need to declare anything here for state data</span></span><br><span class="line">&lt;Route path=&#123;<span class="string">&quot;/home/msg/detail/&quot;</span>&#125; component=&#123;Detail&#125;/&gt;</span><br><span class="line"><span class="comment">// Use state data like this in Detail</span></span><br><span class="line"><span class="keyword">const</span> &#123;id&#125; = <span class="built_in">this</span>.props.location.state;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Page routing without Link/NavLink
+<ul>
+<li>Add event listener, then call
+<code>this.props.history.push(pathname)</code> or
+<code>this.props.history.replace(pathname)</code></li>
+<li>For pathname with params data or search data, just modify the
+pathname</li>
+<li>For state data, just use <code>push(pathname, state)</code>,
+<code>replace(pathname, state)</code></li>
+<li>Use <code>this.props.history.goBack()</code>,
+<code>this.props.history.goForward()</code> to either go back or go
+forwward, <code>this.props.history.go(n)</code> can either go forward n
+steps with positive n or back n steps with negative n</li>
+<li>Timed page routing: add page routing inside a timer method in
+<code>componentDidMount()</code></li>
+</ul></li>
+<li>Use routing in ordinary components
+<ul>
+<li>In react only route components have attributes like history, match,
+location, other ordinary components do not have these attributes</li>
+<li>You can use <code>withRouter</code> to enable ordinary components
+have route component APIs <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;withRouter&#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withRouter(Demo);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="react-ui-library">React UI library</h2>
+<ol type="1">
+<li>Common UI library: MUI, Ant Design(AntD)
+<ul>
+<li>MUI:
+<code>npm install @mui/material @emotion/react @emotion/styled</code></li>
+<li>Ant Design: <code>npm install antd</code></li>
+</ul></li>
+</ol>
+<h2 id="redux">Redux</h2>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>Redux is a pattern and library for managing and updating application
+state, using events called actions</li>
+<li>Installation Redux Toolkit(RTK):
+<code>npm install @reduxjs/toolkit</code> and the complementary package:
+<code>npm install react-redux</code></li>
+</ul></li>
+<li>Core concepts
+<ul>
+<li>Action: a plain JavaScript object that has a <code>type</code>
+string field, data is stored in the <code>payload</code> field</li>
+<li>Action creator: a function that creates and returns an actiopn
+object</li>
+<li>Reducer: a function that receives the current state and an action
+object, decides how to update the state if necessary, and returns the
+new state(cannot modify the current state in place)</li>
+<li>Store: store contains the application states, it's created by
+passing a reducer, and has a method called <code>getState</code> to
+return the current state</li>
+<li>Dispatch: <code>store.dispatch(action)</code> is the only way to
+update states</li>
+<li>Selector: function that knows how to extract specfic information
+from a store state value</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2023/03/06/React-Notes/" title="React Notes">https://yanxuanshaozhu.github.io/2023/03/06/React-Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/" rel="prev" title="COSI 177A Scientific Data Processing in Matlab">
+      <i class="fa fa-chevron-left"></i> COSI 177A Scientific Data Processing in Matlab
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/16/COSI-152A-Web-Application-Development/" rel="next" title="COSI 152A Web Application Development">
+      COSI 152A Web Application Development <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%9A%E7%A1%85%E8%B0%B7-react-course"><span class="nav-number">1.</span> <span class="nav-text">尚硅谷 React Course</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#react-basics"><span class="nav-number">1.1.</span> <span class="nav-text">React Basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-components"><span class="nav-number">1.2.</span> <span class="nav-text">React Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-scaffold"><span class="nav-number">1.3.</span> <span class="nav-text">React Scaffold</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-ajax"><span class="nav-number">1.4.</span> <span class="nav-text">React Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-router"><span class="nav-number">1.5.</span> <span class="nav-text">React Router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-ui-library"><span class="nav-number">1.6.</span> <span class="nav-text">React UI library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux"><span class="nav-number">1.7.</span> <span class="nav-text">Redux</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

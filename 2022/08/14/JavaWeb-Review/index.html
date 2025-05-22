@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb Review">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/08/14/JavaWeb-Review/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="JavaWeb">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Spring/projectStructure.png">
+<meta property="article:published_time" content="2022-08-14T20:18:06.000Z">
+<meta property="article:modified_time" content="2022-08-21T13:59:50.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yanxuanshaozhu.github.io/images/Spring/projectStructure.png">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/08/14/JavaWeb-Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaWeb Review | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/08/14/JavaWeb-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaWeb Review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-14 16:18:06" itemprop="dateCreated datePublished" datetime="2022-08-14T16:18:06-04:00">2022-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-21 09:59:50" itemprop="dateModified" datetime="2022-08-21T09:59:50-04:00">2022-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>35k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>32 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="javaweb">JavaWeb</h2>
+<span id="more"></span>
+<ol type="1">
+<li>Java Web基礎知識
+<ul>
+<li>資源分類
+<ul>
+<li>靜態資源：所有用戶訪問之後，得到的結果都是一樣的，比如HTML，CSS，JavaScript。
+瀏覽器請求靜態資源，客戶端可以直接把靜態資源返回給瀏覽器，瀏覽器内置了靜態資源解析器可以直接解析</li>
+<li>動態資源：每個用戶訪問相同資源之後，得到的結果可能不一致，比如Servlet，JSP。瀏覽器請求動態資源，服務器要把動態資源轉換成靜態資源，然後把靜態資源返回給瀏覽器</li>
+</ul></li>
+<li>網路通信三要素：IP地址，端口，傳輸協議</li>
+<li>常見的Java web服務器軟件
+<ul>
+<li>webLogic：Oracle，大型JavaEE服務器，支持所有JavaEE規範，收費產品</li>
+<li>WebSphere: IBM，大型JavaEE服務器，支持所有JavaEE規範，收費產品</li>
+<li>JBoss：JBoss, 大型的JavaEE服務器，支持所有JavaEE規範，收費產品</li>
+<li>Tomcat: Apache,
+中小型JavaEE服務器，支持少量的JavaEE規範，比如servlet，jsp，免費的</li>
+</ul></li>
+<li>Web項目結構
+<ul>
+<li><code>src</code>目錄放java代碼</li>
+<li><code>web</code>目錄放各種資源
+<ul>
+<li><code>WEB-INF</code>目錄放<code>web.xml</code>,<code>claasses</code>目錄(設置爲output),
+<code>lib</code>目錄(設置為jar
+directory，注意爲了讓Idea識別Servlet接口，要把Tomcat的lib目錄下的<code>servlet-api.jar</code>放到lib目錄中)。<code>WEB-INF</code>目錄下的資源不能被瀏覽器訪問到
+<img src="/images/Spring/projectStructure.png"></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Tomcat
+<ul>
+<li>啓動：windows上面用<code>startup.bat</code>,
+linux上面用<code>startup.sh</code>。 如果沒有配置<code>JAVA_HOME</code>,
+那麽<code>startup.bat</code>不能用</li>
+<li>關閉：直接關閉<code>startup.bat</code>的窗口，應該用<code>shutdown.bat</code>或者在<code>startup.bat</code>中用<code>Ctrl+C</code>關閉</li>
+<li>部署項目的方式
+<ul>
+<li>方法1：把項目放在Tomcat安裝目錄的<code>webapps</code>目錄下面。
+或者把項目打包成<code>.war</code>文件，放在Tomcat安裝目錄的<code>webapps</code>目錄下面，Tomcat會把<code>.war</code>文件自動解壓縮。
+這種方法虛擬目錄名字就是項目名字</li>
+<li>方法2：修改Tomcat的<code>conf</code>目錄下的<code>server.xml</code>文件，在<code>&lt;Host&gt;</code>内部添加一個<code>&lt;Context docBase=項目實際存放路徑 path=項目訪問路徑(虛擬路徑)/&gt;</code>標簽。
+這種方法虛擬目錄名字就是<code>path</code>設置的虛擬目錄名字</li>
+<li>方法3：在<code>Tomcat根目錄/conf/Catalina/localhost</code>目錄下面新建一個xml文件，在上面添加一個<code>&lt;Context docBase=項目實際存放路徑/&gt;</code>標簽。這個方法虛擬目錄名字就是xml文件名字。
+這個是熱部署方式，推薦使用</li>
+</ul></li>
+<li>訪問項目方式: <code>localhost/虛擬目錄/項目資源</code></li>
+<li>IDEA新建JavaWeb項目并且集成Tomcat
+<ul>
+<li>新建Java項目，項目右鍵選擇<code>Add Framework Support</code>,
+選擇<code>Web Application</code>項目，勾選<code>create web.xml</code></li>
+<li><code>Run</code> -&gt; <code>Edit Configurations</code> -&gt;
+左邊加號選擇 <code>Tomcat Server Local</code> -&gt;
+右邊<code>Server</code>下面選擇Tomcat服務器版本,
+在<code>On Update action</code>和<code>On frame deactivation</code>選擇<code>Update classes and resources</code>；在<code>Deployment</code>下面添加當前項目，根據需求修改<code>Application context</code>(虛擬目錄名字)</li>
+</ul></li>
+</ul></li>
+<li>Servlet
+<ul>
+<li>Servlet是server applet的縮寫，意思是運行在服務器的小程序</li>
+<li>瀏覽器訪問一個動態資源的時候，需要在服務器上有一個類來處理請求，這個類就是Servlet的實現類。Servlet是一個接口，定義了Java類被瀏覽器訪問到(被Tomcat識別到)的規則，我們需要實現Servlet接口，重寫對應的方法</li>
+<li>XML配置Servlet:
+爲了讓資源和Servlet類對應起來，需要在<code>web.xml</code>中配置servlet和servlet-mapping
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置Servlet類 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- name是Servlet的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- class是Servlet類的全限定類名 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.yanxuanshaozhu.web.servlet.ServletDemo<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置Servlet類和資源路徑的對應 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- Servlet類的識別名稱 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>intro<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 資源路徑的URL，以/開頭 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/intro<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Servlet3.0及以上版本支持用注解配置Servlet，不需要<code>web.xml</code>：在類上面使用<code>@WebServlet(urlPatterns = "/資源路徑")</code>，簡寫為<code>@WebServlet("/資源路徑")</code>。一個注解可以定義多個訪問路徑：<code>@WebServlet("/資源路徑1", "/資源路徑2, ..., "/資源路徑n")</code>,
+資源路徑也可使使用通配符，例如<code>@WebServlet("/*")</code></li>
+<li>訪問資源和Sevlet對應：服務器收到請求後解析訪問的URL，遍歷<code>web.xml</code>搜索對應的<code>url-pattern</code>標簽，然找到<code>servlet-class</code>對應的類名，把字節碼加載到服務器内存中，然後通過反射創建實例，調用類中的方法</li>
+<li>Servlet的生命周期
+<ul>
+<li>創建：
+<ul>
+<li>默認第一次資源被訪問的時候，Servlet被創建，然後調用<code>init</code>方法，<code>init</code>方法只執行一次。</li>
+<li>可以通過配置把Servlet改成在啓動服務器后創建，創建後調用<code>init</code>方法，需要在<code>web.xml</code>進行如下配置:
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 啓動時創建，n&gt;= 0；第一次訪問創建，n &lt; 0。默認值n = -1，默認不用配置這個--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>n<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Servlet只會創建一次，是單例對象，多綫程創建可能會有安全問題。所以不要在Servlet類中定義成員變量，防止多綫程共享數據不一致問題</li>
+</ul></li>
+<li>提供服務:
+每次資源被訪問的時候，<code>service</code>方法被調用，這個方法可以被多次調用</li>
+<li>銷毀:
+<ul>
+<li>在服務器正常關閉的時候，Servlet被銷毀，然後調用<code>destroy</code>方法，<code>destroy</code>方法只執行一次</li>
+<li>如果服務器不是正常關閉，<code>destroy</code>方法也不會被調用</li>
+</ul></li>
+<li><code>getServletConfig()</code>：獲取Servlet配置,
+<code>getServletInfo</code>：獲取Servlet信息</li>
+</ul></li>
+<li>Servlet體系結構
+<ul>
+<li><code>Servlet</code>是接口</li>
+<li><code>GenericServlet</code>是實現<code>Servlet</code>接口的抽象類，它對Servlet接口方法做了默認空實現，所以繼承<code>GenericServlet</code>只需要重寫<code>service</code>方法</li>
+<li><code>HttpServlet</code>是繼承<code>GenericServlet</code>抽象類，他是對HTTP協議的封裝，繼承<code>HttpServlet</code>一般只需要重寫<code>doGet</code>、<code>doPost</code>方法
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet(&quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpWebServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;doGot!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;doPosted!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>HTTP概述
+<ul>
+<li>HTTP是基於TCP/IP的高級協議，默認端口號是80，基於請求響應模型(請求和相應一一對應)，
+無狀態(每次請求是獨立的，不能交互數據)</li>
+<li>請求消息格式
+<ul>
+<li>請求行：格式是 "請求方式 URL 請求協議/版本"，</li>
+<li>請求頭：格式是 "key:value"，
+<code>User-Agent</code>表示瀏覽器版本信息，服務器可以用這個來解決兼容性問題，<code>Referer</code>：告訴服務器當前請求從哪裏來(防止盜鏈，便於統計)</li>
+<li>請求空行: 空行，用來分割請求頭和請求體</li>
+<li>請求體:
+格式是"key=value"，GET方式請求參數在URL後面，POST方式請求參數在請求體中</li>
+</ul></li>
+<li>Request對象
+<ul>
+<li><code>ServletRequest</code>對象和<code>ServletResponse</code>對象：收到請求後，服務器創建req和res對象，把請求消息封裝到req中，把req和res傳給service方法，在service方法中用req獲取請求消息，對請求進行處理，把響應消息封裝到res中，最後服務器從res中拿出響應消息返還給瀏覽器</li>
+<li><code>ServletRequest</code>和<code>HttpServletRequest</code>都是接口，<code>RequestFacade</code>實現了<code>HttpServletRequest</code>接口，這個類就是Tomcat用的實現類</li>
+<li>Request對象功能
+<ul>
+<li>獲取請求數據
+<ul>
+<li>獲取請求行:
+<code>req.getMethod()</code>獲取請求方式，<code>req.getContextPath()</code>
+獲取虛擬目錄， <code>req.getServletPath()</code>
+獲取Servlet路徑，<code>req.getQueryString()</code>
+獲取請求參數，<code>req.getRequestURL()</code>
+獲取請求URL，<code>req.getProtocol()</code>獲取請求協議和版本，
+<code>req.getRemoteAddr()</code> 獲取客戶端ip地址</li>
+<li>獲取請求頭: <code>req.getHeader(key)</code>
+通過請求頭名稱獲取請求頭值，
+<code>req.getHeaderNames()</code>獲取所有請求頭名稱 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Enumeration&lt;String&gt; names = req.getHeaderNames();</span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">   String name = names.nextElement();</span><br><span class="line">   String value = req.getHeader(name);</span><br><span class="line">   System.out.println(name + <span class="string">&quot; =&gt; &quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>獲取請求體：請求體數據是流，需要先獲取流，再獲取具體數據。<code>req.getReader()</code>獲取字符流數據，只適用於字符數據，<code>req.getInputStream()</code>獲取字節流流數據，適用於所有數據類型</li>
+<li>獲取請求參數的通用方法：<code>req.geParameter(key)</code>：獲取value，<code>req.getParameterNames()</code>：獲取所有key，<code>req.getParameterValues(key)</code>：獲取所有value，適用於複選框，<code>req.getParameterMap()</code>：獲取參數的k-v組合</li>
+</ul></li>
+<li>請求轉發
+<ul>
+<li>請求轉發是在服務器内部的一種資源跳轉方式，Servlet需要各自功能邏輯相對獨立，因此一個請求可能需要多個Servlet進行協作，因此就需要請求轉發</li>
+<li>流程:
+<ul>
+<li>通過request對象獲取請求轉發器對象:
+<code>req.getRequestDispatcher(redirectTargetPath)</code></li>
+<li>通過請求轉發器進行轉發:
+<code>dispatcher.forward(req, res)</code></li>
+</ul></li>
+<li>轉發的特點
+<ul>
+<li>轉發之後瀏覽器地址欄路徑沒有變化(轉發是服務器内部的，客戶端不知道發生了轉發)</li>
+<li>轉發只能轉發到服務器内部</li>
+<li>轉發的時候客戶端只對服務器發送了一次請求</li>
+</ul></li>
+</ul></li>
+<li>數據共享
+<ul>
+<li>域對象：一個有作用範圍的對象，範圍内部可以共享數據</li>
+<li>request域：一次請求的範圍，因爲轉發只有一次請求，因此多個Servlet可以共享數據</li>
+<li>request實現共享數據：<code>req.setAttribute(key, value)</code>，一個Servlet設置了req屬性之後，請求轉發的另一個servlet可以通過<code>req.getAttribute(key)</code>獲取</li>
+</ul></li>
+<li>獲取<code>ServletContext</code>對象:
+通過<code>req.getServletContext()</code>獲取</li>
+</ul></li>
+</ul></li>
+<li>一個登錄案例
+<ul>
+<li>用戶登錄：成功顯示用戶名成功，失敗顯示失敗</li>
+<li>邏輯：用戶html頁面提交post請求到loginServlet，在裏面用把請求參數封裝成User對象，通過UserDao和數據庫交互，拿到返回的User對象，如果不是null，把返回的User對象封裝到request中，并且通過請求轉發器轉發到successServlet，輸出成功結果，如果是null，通過請求轉發器轉發到failServlet，輸出失敗結果</li>
+<li>頁面顯示中文:
+<code>resp.setContentType("text/html;charset=utf-8");</code>可以，但是<code>resp.setCharacterEncoding("utf-8");</code>不行</li>
+<li>UserDao放在dao目錄下面，使用JdbcTemplate和數據庫進行交互</li>
+<li>User放在domain目錄下面</li>
+<li>JDBCUtils放在util目錄下面 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBConnector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> ComboPooledDataSource ds = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 初始化連接池</span></span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">&quot;D:\\MyWork\\Java\\JavaWeb\\LoginDemo\\src\\db.properties&quot;</span>));</span><br><span class="line">            prop.load(buffer);</span><br><span class="line">            ds.setDriverClass(prop.getProperty(<span class="string">&quot;driver&quot;</span>));</span><br><span class="line">            ds.setJdbcUrl(prop.getProperty(<span class="string">&quot;url&quot;</span>));</span><br><span class="line">            ds.setUser(prop.getProperty(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">            ds.setPassword(prop.getProperty(<span class="string">&quot;password&quot;</span>));</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 獲取連接池對象</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DataSource <span class="title">getDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ds;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 獲取鏈接對香港</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ds.getConnection();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>響應消息格式
+<ul>
+<li>響應行
+<ul>
+<li>響應行格式: "協議/版本 響應狀態碼 響應狀態碼描述"</li>
+<li>響應狀態碼:
+<ul>
+<li>1xx: 服務器接受數據沒接收完成，等待后發送1xx給客戶端</li>
+<li>2xx: 成功</li>
+<li>3xx: 302重定向，304訪問緩存</li>
+<li>4xx:
+客戶端錯誤，404請求路徑沒有資源，405請求方式在服務器沒有對應了方法</li>
+<li>5xx: 服務器錯誤，500服務器内部異常</li>
+</ul></li>
+</ul></li>
+<li>響應頭：格式是 "key:value",
+<code>Content-Type</code>服務器告訴客戶端響應躰數據格式和編碼格式,
+<code>Content-disposition</code>服務器告訴客戶端以什麽格式打開響應躰數據，比如<code>in-line</code>或者<code>attachment</code></li>
+<li>響應空行: 空行，用來分割響應頭和響應躰</li>
+<li>響應體: 服務器返回給客戶端的響應數據</li>
+</ul></li>
+<li>Response對象
+<ul>
+<li><code>ServletResponse</code>和<code>HttpServletResponse</code>是接口</li>
+<li>Response對象功能
+<ul>
+<li>設置響應消息
+<ul>
+<li>設置響應狀態碼: <code>res.setStatus(int sc)</code></li>
+<li>設置響應頭:
+<code>res.setHeader(String name, String value)</code></li>
+<li>設置響應躰
+<ol type="1">
+<li>獲取輸出流
+<ul>
+<li>字符輸出流: <code>res.getWriter()</code></li>
+<li>字節輸出流: <code>res.getOutputStream()</code></li>
+</ul></li>
+<li>使用輸出流，將數據輸出到客戶端</li>
+</ol></li>
+</ul></li>
+<li>重定向
+<ul>
+<li>定義：瀏覽器請求服務器，服務器告訴瀏覽器重定向到另一個地址，就是重定向</li>
+<li>重定向步驟
+<ol type="1">
+<li>瀏覽器設置響應狀態碼302: <code>res.setStatus(302)</code></li>
+<li>瀏覽器在響應頭中設置key是location，
+value是重定向目標的新資源地址：<code>res.setHeader("location", "/虛擬目錄/新資源地址")</code></li>
+<li>另一種方法：因爲重定向和狀態碼和響應頭key是固定的，只需要傳入重定向地址，因此可以直接使用<code>req.sendRedirect(String location)</code>即可完成重定向</li>
+</ol></li>
+<li>重定向特點
+<ul>
+<li>重定向瀏覽器地址欄發生變化</li>
+<li>重定向可以訪問外部資源</li>
+<li>重定向至少兩次請求，不能使用request域對象來共享數據</li>
+</ul></li>
+<li>路徑的寫法
+<ul>
+<li>相對路徑</li>
+<li>絕對路徑：如果請求是從客戶端訪問的，絕對路徑是<code>/虛擬目錄/資源路徑</code>，虛擬目錄使用<code>req.getContextPath()獲取</code>，比如重定向中的路徑；如果請求是從服務器訪問的，<code>絕對路徑是/資源路徑</code>，比如轉發中的路徑</li>
+</ul></li>
+</ul></li>
+<li>設置驗證碼
+<ul>
+<li>驗證碼是一張圖片，目的是防止惡意表達注冊</li>
+<li>驗證碼可以從圖庫中挑選，也可以用程序隨機生成:
+基礎的可以把程序生成的驗證碼圖片通過字節流輸出到瀏覽器中</li>
+<li>生成驗證碼的Java代碼 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">   <span class="comment">// 1. 創建圖片</span></span><br><span class="line">   <span class="comment">// 單位是pixel</span></span><br><span class="line">   <span class="keyword">int</span> width = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> height = <span class="number">50</span>;</span><br><span class="line">   <span class="comment">// 在内存中創建驗證碼圖片</span></span><br><span class="line">   BufferedImage img = <span class="keyword">new</span> BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">   <span class="comment">// 2. 美化圖片</span></span><br><span class="line">   <span class="comment">// 獲取畫筆</span></span><br><span class="line">   Graphics g = img.getGraphics();</span><br><span class="line">   <span class="comment">// 設置畫筆顔色</span></span><br><span class="line">   g.setColor(Color.pink);</span><br><span class="line">   <span class="comment">// 畫筆畫一個舉行填充背景顏色</span></span><br><span class="line">   g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">   g.setColor(Color.blue);</span><br><span class="line">   g.drawRect(<span class="number">0</span>, <span class="number">0</span>, width - <span class="number">1</span>, height - <span class="number">1</span>);</span><br><span class="line">   <span class="comment">// 設置驗證碼文字内容</span></span><br><span class="line">   g.setColor(Color.black);</span><br><span class="line">   String base = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxya0123456789&quot;</span>;</span><br><span class="line">   Random rand = <span class="keyword">new</span> Random();</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">         <span class="keyword">int</span> index = rand.nextInt(base.length());</span><br><span class="line">         String sub = base.charAt(index) + <span class="string">&quot;&quot;</span>;</span><br><span class="line">         g.drawString(sub, width / <span class="number">5</span> * i, height / <span class="number">2</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 加上干擾綫</span></span><br><span class="line">   g.setColor(Color.green);</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">         <span class="keyword">int</span> x1 = rand.nextInt(width);</span><br><span class="line">         <span class="keyword">int</span> x2 = rand.nextInt(width);</span><br><span class="line">         <span class="keyword">int</span> y1 = rand.nextInt(height);</span><br><span class="line">         <span class="keyword">int</span> y2 = rand.nextInt(height);</span><br><span class="line">         g.drawLine(x1, x2, y1, y2);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 3. 將圖片輸出到瀏覽器頁面上</span></span><br><span class="line">   ImageIO.write(img, <span class="string">&quot;jpg&quot;</span>, resp.getOutputStream());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在瀏覽器中點擊更換驗證碼圖片 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 發送異步請求</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> func = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 1.創建核心對象</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> xhttp;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// code for IE6, IE5</span></span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="javascript">            <span class="comment">// 2. 建立連接</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// xhttp.open(methodTypeString, urlString, booleanAjax)</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 發送一個異步請求到ajaxServlet?username=tom</span></span></span><br><span class="line"><span class="javascript">            xhttp.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;ajaxServlet?username=tom&quot;</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 3. 發送請求</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// get請求的參數在open的url中，這裏不用傳參</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// post請求在這裏寫 xhttp.send(&quot;key=value&quot;)</span></span></span><br><span class="line">            xhttp.send();</span><br><span class="line"><span class="javascript">            <span class="comment">// 4. 處理服務器響應結果</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 黨請求狀態變化的時候觸發事件</span></span></span><br><span class="line"><span class="javascript">            xhttp.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 如果響應完畢，并且是響應成功的話</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">this</span>.readyState == <span class="number">4</span> &amp;&amp; <span class="built_in">this</span>.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&quot;resp&quot;</span>).innerHTML = xhttp.responseText;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;發送異步請求&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;func();&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 展示響應的結果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;resp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>ServletContext</code>對象
+<ul>
+<li>概念：代表整個web應用，可以和程序的容器(服務器)進行通信</li>
+<li>獲取<code>ServletContext</code>對象
+<ul>
+<li>通過了request對象獲取: <code>req.getServletContext()</code></li>
+<li>通過HttpServlet對象獲取: <code>this.getServletContext()</code></li>
+</ul></li>
+<li>功能
+<ul>
+<li>獲取MIME類型
+<ul>
+<li>MIME類型是在互聯網通信過程中定義的一種文本數據類信得過</li>
+<li>MIME類型格式: <code>大類型/小類型</code>, 如:
+<code>text/html</code>, <code>image/jpeg</code></li>
+<li>獲取MIME類型的方法:
+<code>context.getMimeType(String fileName)</code>，實際上通過擴展名來獲取的</li>
+</ul></li>
+<li>共享數據
+<ul>
+<li><code>ServletContext</code>對象是一個域對象，可以共享數據</li>
+<li><code>context.getAttribute(String name)</code>,
+<code>context.setAttribute(String name, Object value)</code>,
+<code>context.removeAttribute(String name)</code></li>
+<li>域範圍：可以共享服務器上所有的數據，
+比如一個Servlet可以訪問另一個Servlet的數據</li>
+</ul></li>
+<li>獲取文件的真實(服務器)路徑
+<ul>
+<li>意義：先獲取到配置文件在服務器上的真實路徑，然後再讀取配置文件</li>
+<li>獲取方法：<code>context.getRealPath(String path)</code>
+<ul>
+<li>如果文件在<code>web</code>目錄下面，那麽<code>path</code>就是<code>/文件名</code></li>
+<li>如果文件在<code>web/WEB-INFO</code>目錄下面，那麽<code>path</code>就是<code>/WEB-INFO/文件名</code></li>
+<li>如果文件在<code>src</code>目錄下面，那麽<code>path</code>就是<code>/WEB-INFO/classes/文件名</code>，因爲<code>src</code>所有的文件會被服務器放到<code>web/classes</code>目錄下面</li>
+</ul></li>
+<li>在非Servlet類中讀取文件路徑 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="comment">// 直接寫db.properties，db.properties文件放在src下面即可</span></span><br><span class="line">String path = TestDemo.class.getClassLoader().getResource(<span class="string">&quot;db.properties&quot;</span>).getPath();</span><br><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">prop.load(fis);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>會話
+<ul>
+<li>基本概念
+<ul>
+<li>定義：瀏覽器第一次給服務器資源發送請求，會話建立，知道有一方斷開爲止</li>
+<li>一次會話中包含多次請求和響應</li>
+<li>會話技術的實現
+<ul>
+<li>客戶端會話技術: Cookie</li>
+<li>服務器端會話技術: Session</li>
+</ul></li>
+</ul></li>
+<li>Cookie
+<ul>
+<li>定義：將數據保存在客戶端的會話技術</li>
+<li>Cookie作用
+<ul>
+<li>一般用於存儲少量不敏感的數據</li>
+<li>在不登陸的情況下，完成服務器對客戶端的身份識別</li>
+</ul></li>
+<li>流程：
+<ol type="1">
+<li>服務器創建Cookie，在response中返回給瀏覽器:
+<code>new Cookie(String name, String value)</code>,
+<code>resp.addCookie(Cookie cookie)</code></li>
+<li>瀏覽器收到Cookie中進行存儲，在下一次發送請求的時候會自動把Cookie發送給服務器</li>
+<li>服務器收到請求，拿到Cookie中的數據：<code>req.getCookies()</code>拿到Cookie數組,
+<code>cookie.getName()</code>,
+<code>cookie.getValue()</code>拿到Cookie的key和value</li>
+</ol></li>
+<li>Cookie實現原理
+<ul>
+<li>瀏覽器收到相應，響應頭:
+<code>set-cookie:key=value</code>，瀏覽器會把這個數據保存到本地Cookie中</li>
+<li>瀏覽器第二次發送請求，請求頭: <code>cookie:key=value</code></li>
+</ul></li>
+<li>Cookie的相關細節
+<ul>
+<li>服務器可以創建多個Cookie，多次調用<code>resp.addCookie(Cookie cookie)</code>把所有Cookie放到響應中</li>
+<li>默認Cookie只存在瀏覽器内存中，瀏覽器關閉之後Cookie就消失了；持久化Cookie需要使用<code>cookie.setMaxAge(int secondes)</code>設置Cookie的存活時間，設置為0代表刪除cookie，設置正數代表存活時間，設置負數代表會話cookie，瀏覽器關閉cookie就消失了</li>
+<li>Tomcat的cookie不支持特殊字符，需要手動把格式轉換成沒有特殊字符的格式</li>
+</ul></li>
+<li>Cookie共享
+<ul>
+<li>一個Tomcat服務器上的多個項目之間默認是不可以共享Cookie的</li>
+<li><code>cookie.setPath(String path)</code>可以設置Cookie的路徑，默認這個路徑是當前項目的虛擬目錄，可以設置成服務器根路徑<code>/</code>，這樣服務器上所有項目可以共享這個Cookie</li>
+</ul></li>
+<li>Cookie的特點
+<ul>
+<li>數據存在瀏覽器，容易丟失，安全性也比服務器差</li>
+<li>Cookie對單個Cookie的大小有限制，對同一個域名下的Cookie的總數量也有限制</li>
+</ul></li>
+</ul></li>
+<li>Session
+<ul>
+<li>定義：將數據保存在服務器的會話技術</li>
+<li>Session作用：在一次會話的多次請求之間共享數據</li>
+<li>獲取<code>HttpSession</code>對象: <code>req.getSession()</code></li>
+<li><code>HttpSession</code>對象相關方法：<code>getAttribute(String name)</code>,
+<code>setAttribute(String name, Object value)</code>,
+<code>removeAttribute(String name)</code></li>
+<li>Session原理
+<ul>
+<li>服務器需要確保一次會話的多次請求之間的Session對象是同一個，這樣才能獲得存在Session中的數據</li>
+<li>Session是通過Cookie實現的：第一次請求的響應頭的set-cookie中有Session的唯一id，之後的請求的請求頭的cookie中有帶著這個session的id，服務器會在自己内存中查找對應的session對象</li>
+</ul></li>
+<li>Session的相關細節
+<ul>
+<li>客戶端關閉了，服務器沒關閉，獲取的Session是不是同一個
+<ul>
+<li>默認不是同一個，因爲客戶端關閉，會話已經關閉了</li>
+<li>如果要訪問同一個Session，需要創建Cookie，<code>new Cookie("JSESSIONID", session.getId())</code>
+并且設置Cookie的有效期</li>
+</ul></li>
+<li>服務器關閉了，客戶端沒關閉，獲取的Session是不是同一個
+<ul>
+<li>默認不是同一個，因爲服務器内存中的Session對象被銷毀了</li>
+<li>服務器關閉，Session被銷毀，但是Session中的數據不應該丟失，需要Session的鈍化和活化技術
+<ul>
+<li>Session鈍化：在服務器關閉之前，把服務器内存的Session對象序列化到硬盤之上</li>
+<li>Session活化：在服務器啓動之後，把硬盤上的Session對象反序列化到服務器内存中</li>
+</ul></li>
+<li>IDEA配置的Tomcat服務器不能完成Session鈍化和活化，但是原生的Tomcat會自動完成Session的鈍化和火花</li>
+</ul></li>
+<li>銷毀Session
+<ul>
+<li>服務器被關閉Session被銷毀</li>
+<li><code>session.invalidate()</code>方法可以銷毀自己</li>
+<li>Session對象的默認失效時間是30分鐘
+<ul>
+<li>修改所有項目的Session失效時間：<code>/Tomcat根目錄/conf/web.xml</code>中修改<code>&lt;session-timeout&gt;失效時間的分鐘數&lt;/session-out&gt;</code></li>
+<li>修改本項目的Session失效時間：<code>/WEB-INF/web.xml</code>中修改<code>&lt;session-timeout&gt;失效時間的分鐘數&lt;/session-out&gt;</code></li>
+</ul></li>
+</ul></li>
+<li>Session的特點
+<ul>
+<li>用於存儲一次會話的多次請求之間的數據，存在服務器的内存中</li>
+<li>Session可以存儲任意類型，任意大小的數據</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>JSP
+<ul>
+<li>JSP(Java server
+pages)：java服務器頁面，既可以定義html標簽，也可以直接寫java代碼</li>
+<li>JSP的原理
+<ul>
+<li>瀏覽器請求jsp文件資源，服務器把jsp變成對應的java文件，然後編譯成class文件</li>
+<li>瀏覽器實際訪問的是class字節碼文件</li>
+<li>JSP實際上是一個Servlet</li>
+</ul></li>
+<li>JSP脚本:需要注意的是，脚本是可以被截斷，從而配合HTML標簽一起使用的
+<ul>
+<li><code>&lt;% 代碼%&gt;</code>:
+定義的Java代碼在Servlet的service方法内部</li>
+<li><code>&lt;%! 代碼%&gt;</code>：定義的Java代碼是Servlet的成員變量或者成員方法</li>
+<li><code>&lt;%= 代碼%&gt;</code>: 定義的Java代碼會輸出到頁面上</li>
+</ul></li>
+<li>JSP内置對象
+<ul>
+<li>JSP有9個内置對象:
+<ul>
+<li>域對象：<code>pageContext</code>(當前頁面共享數據，也可以用來獲取其他8個内置對象)，<code>request</code>(一次請求訪問多個資源共享數據，轉發會用到),<code>session</code>(一次會話的多個請求之間共享數據，重定向會用到)，<code>application</code>(所有用戶共享數據，服務器上的單例對象)</li>
+<li>其他對象：<code>response</code>, <code>out</code>(輸出内容到頁面上),
+<code>page</code>(相當於java的this，指當前Servlet),
+<code>configure</code>(Servlet的配置對象), <code>exception</code></li>
+</ul></li>
+<li><code>out.write()</code>寫在頁面什麽位置就在什麽位置輸出，<code>resp.getWriter().write()</code>會在頁面最前面輸出，因爲tomcat會先訪問response對象緩衝區，再訪問out對象緩衝區。所以一般不要在jsp中使用<code>resp.getWriter().write()</code>，而是使用<code>out.write()</code></li>
+</ul></li>
+<li>JSP指令
+<ul>
+<li>作用: 用來配置JSP頁面，導入資源文件</li>
+<li>格式:
+<code>&lt;%@ 指令名稱 屬性名1=屬性值1 屬性名2=屬性值2 %&gt;</code></li>
+<li>指令分類
+<ul>
+<li><code>&lt;%@ page %&gt;</code>: 配置JSP頁面的屬性
+<ul>
+<li>頁面總體設置<code>&lt;%@ page contentType"text/html;charset=utf-8" pageEncoding="utf-8" language="java" buffer="16kb" %&gt;</code></li>
+<li>導入需要的Java包，每一個Java包單獨寫一個標簽:
+<code>&lt;%@ page import="java包名" %&gt;</code></li>
+<li>設置錯誤頁面:
+<code>&lt;%@ page errorPage="錯誤頁面路徑" isErrorPage="true/false" %&gt;</code>，
+默認<code>isErrorPage</code>設置的是false，如果設置成爲true，那麽就可以在頁面使用<code>exception</code>内置對象</li>
+</ul></li>
+<li><code>&lt;%@ taglib %&gt;</code>: 配置JSP頁面包含的内容
+<ul>
+<li>格式：<code>&lt;%@ taglib prefix="前綴" uri="URI" %&gt;</code></li>
+<li>導入JSTL標簽庫
+<ul>
+<li>把<code>jakarta.servlet.jsp.jstl-2.0.0.jar</code>和<code>jakarta.servlet.jsp.jstl-api-2.0.0.jar</code>放到<code>WEB-INF/lib</code>中</li>
+<li>加上<code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</code>標簽</li>
+</ul></li>
+<li>一般用來導入標簽庫</li>
+</ul></li>
+<li><code>&lt;%@ include %&gt;</code>: 導入資源文件
+<ul>
+<li>格式：<code>&lt;%@ include file="文件路徑名" %&gt;</code></li>
+<li>這個可以用來設置頁面格式模板</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>JSP注釋
+<ul>
+<li>HTML注釋：只能注釋HTML代碼片段，寫法是<code>&lt;!-- --&gt;</code></li>
+<li>JSP注釋：可以注釋所有内容，寫法是<code>&lt;%-- --%&gt;</code></li>
+</ul></li>
+<li>一個Servlet的方法改寫成jsp的例子 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">   resp.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">   Cookie[] res = req.getCookies();</span><br><span class="line">   <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">   <span class="keyword">if</span> (res != <span class="keyword">null</span> &amp;&amp; res.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">for</span> (Cookie cookie : res) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;lasttime&quot;</span>.equals(cookie.getName())) &#123;</span><br><span class="line">               cookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>);</span><br><span class="line">               String value = cookie.getValue();</span><br><span class="line">               resp.getWriter().write(<span class="string">&quot;欢迎回来,上次登陆时间 &quot;</span> + value);</span><br><span class="line">               String pattern = <span class="string">&quot;MM-dd-yyyy&quot;</span>;</span><br><span class="line">               SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat(pattern);</span><br><span class="line">               String date = formatter.format(<span class="keyword">new</span> Date());</span><br><span class="line">               cookie.setValue(date);</span><br><span class="line">               resp.addCookie(cookie);</span><br><span class="line">               flag = <span class="keyword">true</span>;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (flag == <span class="keyword">false</span> || res == <span class="keyword">null</span> || res.length == <span class="number">0</span>) &#123;</span><br><span class="line">         String pattern = <span class="string">&quot;MM-dd-yyyy&quot;</span>;</span><br><span class="line">         SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat(pattern);</span><br><span class="line">         String date = formatter.format(<span class="keyword">new</span> Date());</span><br><span class="line">         Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">&quot;lasttime&quot;</span>, date);</span><br><span class="line">         cookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>);</span><br><span class="line">         resp.addCookie(cookie);</span><br><span class="line">         resp.getWriter().write(<span class="string">&quot;你好，欢迎登陆！&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page import=&quot;java.text.SimpleDateFormat&quot; %&gt;</span><br><span class="line">&lt;%@ page import=&quot;java.util.Date&quot; %&gt;</span><br><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">&lt;%</span><br><span class="line"></span><br><span class="line">   Cookie[] res = request.getCookies();</span><br><span class="line">   boolean flag = false;</span><br><span class="line">   if (res != null &amp;&amp; res.length &gt; 0) &#123;</span><br><span class="line">      for (Cookie cookie : res) &#123;</span><br><span class="line">            if (&quot;lasttime&quot;.equals(cookie.getName())) &#123;</span><br><span class="line">               cookie.setMaxAge(60 * 60 * 24 * 30);</span><br><span class="line">               String value = cookie.getValue();</span><br><span class="line">%&gt;</span><br><span class="line"><span class="comment">&lt;!-- 這裏截斷了java代碼，加入了HTML標簽，并且用&lt;%=value%&gt;輸出結果到頁面上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&quot;欢迎回来,上次登陆时间 &quot; &lt;%=value%&gt;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&lt;%</span><br><span class="line">               String pattern = &quot;MM-dd-yyyy&quot;;</span><br><span class="line">               SimpleDateFormat formatter = new SimpleDateFormat(pattern);</span><br><span class="line">               String date = formatter.format(new Date());</span><br><span class="line">               cookie.setValue(date);</span><br><span class="line">               response.addCookie(cookie);</span><br><span class="line">               flag = true;</span><br><span class="line">               break;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   if (flag == false || res == null || res.length == 0) &#123;</span><br><span class="line">      String pattern = &quot;MM-dd-yyyy&quot;;</span><br><span class="line">      SimpleDateFormat formatter = new SimpleDateFormat(pattern);</span><br><span class="line">      String date = formatter.format(new Date());</span><br><span class="line">      Cookie cookie = new Cookie(&quot;lasttime&quot;, date);</span><br><span class="line">      cookie.setMaxAge(60 * 60 * 24 * 30);</span><br><span class="line">      response.addCookie(cookie);</span><br><span class="line">%&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&quot;你好，欢迎登陆！&quot;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&lt;%</span><br><span class="line">   &#125;</span><br><span class="line">%&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>登錄+輸入驗證碼的例子
+<ul>
+<li>實現邏輯
+<ul>
+<li>登錄Servlet和驗證碼Servlet是不同的Servlet，要保存驗證碼内容到Session中</li>
+<li>登錄成功，重定向到成功頁面，要保存成功信息到Session對象中</li>
+<li>登錄失敗，轉發到登陸頁面，要保存失敗的信息數據到request的屬性中</li>
+</ul></li>
+<li>LoginServlet代碼實現 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    req.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">    String username = req.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    String password = req.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">    String verificationCode = req.getParameter(<span class="string">&quot;verificationCode&quot;</span>);</span><br><span class="line">    String codeString = (String)req.getSession().getAttribute(<span class="string">&quot;verificationCodeString&quot;</span>);</span><br><span class="line">    <span class="comment">// 忽略大小寫的比較</span></span><br><span class="line">    <span class="keyword">if</span> (!verificationCode.equalsIgnoreCase(codeString)) &#123;</span><br><span class="line">          <span class="comment">// 驗證碼錯誤，轉發到登陸頁面</span></span><br><span class="line">          req.setAttribute(<span class="string">&quot;code_error&quot;</span>, <span class="string">&quot;驗證碼錯誤&quot;</span>);</span><br><span class="line">          req.getRequestDispatcher(<span class="string">&quot;/login.jsp&quot;</span>).forward(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          User user = <span class="keyword">new</span> User();</span><br><span class="line">          user.setUsername(username);</span><br><span class="line">          user.setPassword(password);</span><br><span class="line">          UserDao dao = <span class="keyword">new</span> UserDao();</span><br><span class="line">          User res = dao.login(user);</span><br><span class="line">          <span class="keyword">if</span> (res == <span class="keyword">null</span>) &#123;</span><br><span class="line">             <span class="comment">// 用戶名或密碼錯誤，轉發到登陸頁面</span></span><br><span class="line">             req.setAttribute(<span class="string">&quot;login_error&quot;</span>,<span class="string">&quot;用戶名或密碼錯誤&quot;</span>);</span><br><span class="line">             req.getRequestDispatcher(<span class="string">&quot;/login.jsp&quot;</span>).forward(req, resp);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="comment">// 登陸成功，重定向到成功頁面</span></span><br><span class="line">             req.getSession().setAttribute(<span class="string">&quot;user&quot;</span>, username);</span><br><span class="line">             resp.sendRedirect(req.getContextPath()+<span class="string">&quot;/success.jsp&quot;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>MVC開發模式
+<ul>
+<li>歷史發展
+<ul>
+<li>最開始全部用response輸出標簽數據，非常麻煩</li>
+<li>有了JSP之後，簡化了Servlet的開發，如果過度使用JSP，在JSP寫了大量Java代碼，難以維護，難以分工協作</li>
+<li>之後JavaWeb藉鑒了MCV開發模式，使得程序設計更加合理</li>
+</ul></li>
+<li>MVC
+<ul>
+<li>Model，模型，完成具體業務操作，實際上是JavaBean</li>
+<li>View，視圖，展示數據，實際上是JSP頁面</li>
+<li>Controller，控制器，接受輸入，調用模型，將數據交給View展示，實際上是Servlet</li>
+<li>瀏覽器請求數據，首先Controller接受請求，然後調用Model進行業務操作，得到結果之後Controller把結果交給View進行展示</li>
+</ul></li>
+<li>優缺點
+<ul>
+<li>優點：耦合度點，方便維護，利於分工協作；重用性高</li>
+<li>缺點：使得項目結構變得複雜，便於分工協作</li>
+</ul></li>
+</ul></li>
+<li>EL(Expression Language)表達式
+<ul>
+<li>背景：JSP值進行數據展示，不應該有大量Java代碼，這些代碼有兩個替代選擇：EL表達式和JSTL標簽</li>
+<li>目的：替代和簡化JSP頁面中Java代碼的編寫</li>
+<li>語法: <code>$&#123;表達式&#125;</code></li>
+<li>JSP默認支持EL表達式，有兩種方式可以忽略EL表達式
+<ul>
+<li>忽略頁面中所有EL表達式:
+<code>&lt;%@ page isELIgnored="true" %&gt;</code></li>
+<li>忽略頁面中單個EL表達式: <code>\$&#123;表達式&#125;</code>，反斜杠轉義</li>
+</ul></li>
+<li>EL表達式的功能
+<ul>
+<li>進行運算: <code>/</code> 或者<code>div</code>,
+<code>%</code>或者<code>mod</code>, <code>&amp;&amp;</code>或者and,
+<code>||</code>或者or, <code>!</code>或者<code>not</code>,
+<code>empty</code>(判斷字符串，集合，數組是否是null或者是空的)</li>
+<li>從域對象中獲取值:
+<ul>
+<li><code>$&#123;域名稱.key名稱&#125;</code>，域名稱是<code>pageScope</code>,
+<code>requestScope</code>, <code>sessionScope</code>,
+<code>applicationScope</code>;
+或者<code>$&#123;key名稱&#125;</code>，從範圍小到範圍大依次尋找屬性值(page -&gt;
+request -&gt; session -&gt; application)</li>
+<li>獲取對象的屬性值:
+<code>$&#123;域名稱.key名稱.value對象的屬性名稱&#125;</code>，本質上會調用對應屬性的getter方法，所以對應的Java類裏面可以只有getter方法但是這個名字的屬性並不存在</li>
+<li>獲取List的值:
+<code>$&#123;arr[index]&#125;</code>，如果index越界，不會報錯，結果是空字符串</li>
+<li>獲取Map的值:
+<code>$&#123;map.key名稱&#125;</code>或者<code>$&#123;map["key名稱"]&#125;</code>，如果key不存在，不會報錯，結果是空字符串</li>
+</ul></li>
+</ul></li>
+<li>EL表達式隱式對象
+<ul>
+<li>EL有11個隱式對象</li>
+<li><code>pageContext</code>對象可以獲取JSP的其他8個内置對象，比如<code>pageContext.request</code>拿到了request對象，
+<code>pageContext.request.contextPath</code>在JSP頁面中動態的獲取虛擬目錄</li>
+</ul></li>
+</ul></li>
+<li>JSTL(Java Server Pages Library)標簽
+<ul>
+<li>目的：替換和簡化JSP頁面中Java代碼的標簽</li>
+<li>使用步驟
+<ul>
+<li>導入jstl相關jar包:
+把<code>jakarta.servlet.jsp.jstl-2.0.0.jar</code>和<code>jakarta.servlet.jsp.jstl-api-2.0.0.jar</code>放到<code>WEB-INF/lib</code>中</li>
+<li>通過<code>&lt;%@ taglib %&gt;</code>導入標簽庫:
+<code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</code></li>
+</ul></li>
+<li>常用的JSTL標簽
+<ul>
+<li><code>if</code>標簽:
+判斷boolean表達式，如果是true則顯示標簽内容到頁面，否則不顯示
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    request.setAttribute(&quot;number&quot;, 3);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:if test=&quot;$&#123;requestScope.number % 2 !=0&#125;&quot;&gt;</span><br><span class="line">    $&#123;requestScope.number&#125;是奇數</span><br><span class="line">&lt;/c:if&gt;</span><br><span class="line"><span class="comment">&lt;!-- 因爲if標簽沒有else，需要手寫if來模擬else的情況 --&gt;</span></span><br><span class="line">&lt;c:if test=&quot;$&#123;requestScope.number % 2 ==0&#125;&quot;&gt;</span><br><span class="line">    $&#123;requestScope.number&#125;是偶數</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>choose</code>標簽:
+判斷表達式的值，如果匹配某一個<code>when</code>標簽，則輸出匹配的值，如果沒有匹配，輸出<code>otherwise</code>標簽的值
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Random random = new Random();</span><br><span class="line">    int day = random.nextInt(1, 10);</span><br><span class="line">    request.setAttribute(&quot;day&quot;, day);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 1&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 2&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 3&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 4&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 5&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 6&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;$&#123;requestScope.day == 7&#125;&quot;&gt;星期$&#123;requestScope.day&#125;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;數字$&#123;requestScope.day&#125;輸入有無&lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>foreach</code>標簽
+<ul>
+<li>完成重複操作 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i+= <span class="number">2</span>) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach begin=&quot;0&quot; end=&quot;9&quot; var=&quot;i&quot;&gt;</span><br><span class="line">    $&#123;i&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></li>
+<li>遍歷容器 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Integer i: list) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=&quot;$&#123;list&#125;&quot; var=&quot;i&quot; varStatus=&quot;s&quot;&gt;</span><br><span class="line">    $&#123;i&#125; <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    $&#123;s.index&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!--容器中元素的索引，從0開始 --&gt;</span></span><br><span class="line">    $&#123;s.count&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 循環次數，從1開始--&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>三層架構
+<ul>
+<li>表示層(界面層/Web層): 用戶可以通過表示層的組件和服務器進行交互</li>
+<li>業務層(Service層)：處理業務邏輯，組合Dao層的簡單方法，組成業務邏輯</li>
+<li>持久層(數據訪問層/Dao層):
+操作數據存儲文件，和數據庫交互，實現各種CRUD方法</li>
+</ul></li>
+<li>Filter
+<ul>
+<li>作用:
+一般用於完成一些通用的操作，例如登陸驗證，統一編碼處理，敏感字符過濾</li>
+<li>JavaWeb三大組件：Servlet, Filter, Listener</li>
+<li>配置過濾器
+<ul>
+<li>定義一個類，實現接口Filter: <code>jakarta.servlet.Filter</code></li>
+<li>重寫繼承方法: <code>init()</code>, <code>doFilter()</code>,
+<code>destroy()</code>，在<code>doFilter()</code>方法内部需要調用<code>filterChain.doFilter(servletRequest, servletResponse);</code>對能夠訪問的目標資源放行，否則是訪問不到目標資源的</li>
+<li>配置過濾器攔截路徑:
+<ul>
+<li>使用注解配置: <code>@WebFilter(urlPatterns=&#123;"攔截路徑"&#125;)</code></li>
+<li>使用<code>web.xml配置</code>: 和Servlet配置非常相似
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>自定義Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>實現Filter的類的全類名<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>filter標簽中的Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>想要Filter生效的URL攔截路徑<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Filter執行流程:
+<ul>
+<li>請求被Filter攔截，一般在這裏對request進行增强</li>
+<li>Filter使用<code>filterChain.doFilter(req, resp)</code>會傳遞給下一個Filter，如果沒有下一個Filter就執行目標資源</li>
+<li>經過<code>doFilter()</code>方法之後，<code>resp</code>對象已經是有内容的了，一般在這裏對response進行增强</li>
+</ul></li>
+<li>Filter生命周期
+<ul>
+<li>服務器啓動之後會創建Filter對象，然後調用<code>init</code>方法，這個方法只執行一次</li>
+<li>每次請求被攔截的時候,<code>doFilter</code>方法被調用，這個方法會執行多次</li>
+<li>服務器關閉之後，Filter被銷毀，如果服務器是正常關閉，在Filter銷毀之前會調用<code>destroy</code>方法，這個方法只執行一次</li>
+</ul></li>
+<li>Filter配置攔截路徑
+<ul>
+<li>具體資源路徑:
+比如<code>/index.jsp</code>，只有訪問這個具體資源的時候，Filter才會執行</li>
+<li>設置攔截目錄:
+比如<code>/user/*</code>，訪問攔截目錄下的所有資源，Filter都會執行</li>
+<li>後綴名攔截:
+比如<code>*.jsp</code>(注意這裏沒有<code>/</code>)，訪問所有帶這個後綴名的資源，Filter都會執行</li>
+<li>攔截所有資源:
+<code>/*</code>，訪問所有資源的時候，Filter都會執行</li>
+</ul></li>
+<li>Filter配置攔截方式
+<ul>
+<li>使用注解配置:
+在<code>@WebFilter</code>中指定<code>dispatcherTypes</code>屬性，有<code>DispatcherType.REQUEST</code>(默認值，攔截請求),
+<code>DispatcherType.FORWARD</code>(攔截轉發),
+<code>DispatcherType.INCLUDE</code>(包含訪問資源,include控制權在第一個Servlet，forward控制權在第二個Servlet),
+<code>DispatcherType.ERROR</code>(錯誤跳轉),
+<code>DispatcherType.ASYNC</code>(異步訪問)。因爲<code>dispatcherTypes</code>屬性是一個數組，所以可以指定多個攔截方式</li>
+<li>使用<code>web.xml</code>配置: <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>filter標簽中的Filter名稱<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>想要Filter生效的URL攔截路徑<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 加入下面這一行 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>攔截方式(比如REQUEST)<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>FilterChain
+<ul>
+<li>執行順序
+<ul>
+<li>注解配置的Filter:
+比較各個Filter的類名的字符串大小，小的先執行，比如<code>Filter17</code>比<code>Filter6</code>先執行</li>
+<li><code>web.xml</code>配置的Filter:
+按照文件中<code>&lt;filter-mapping&gt;</code>標簽的先後順序執行</li>
+</ul></li>
+</ul></li>
+<li>案例：登陸驗證
+<ul>
+<li>登陸驗證是一種權限控制</li>
+<li>需求：登陸了就訪問，沒登陸跳轉登錄頁面</li>
+<li>邏輯:
+<ul>
+<li>登錄相關的資源直接放行</li>
+<li>其他資源判斷是否登錄決定是否放行: 檢查Session中的登陸狀態即可</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Listener
+<ul>
+<li>JavaWeb三大組件之一</li>
+<li>事件監聽機制
+<ul>
+<li>需要有事件，事件源，監聽器，注冊監聽(把事件，事件源和監聽器綁定在一起，黨事件源發生事件之後，執行監聽器代碼)</li>
+</ul></li>
+<li><code>jakarta.servlet.ServletContextListener</code>
+<ul>
+<li>這個是一個接口，需要手動實現相關的類</li>
+<li>監聽ServletContext對象的創建和銷毀，服務器啓動，ServletContext自動創建，服務器關閉，ServletContext自動銷毀</li>
+<li><code>default void contextInitialized(ServletContextEvent sce)</code>:
+在ServletContext對象創建之後調用</li>
+<li><code>default void contextDestroyed(ServletContextEvent sce)</code>:
+在ServletContext對象被銷毀之後調用</li>
+</ul></li>
+<li>實現監聽器
+<ul>
+<li>寫一個類實現<code>ServletContextListener</code>接口</li>
+<li>重寫<code>contextInitialized(ServletContextEvent sce)</code>方法和<code>contextDestroyed(ServletContextEvent sce)</code>方法</li>
+<li>配置監聽器
+<ul>
+<li>使用<code>web.xml</code>配置 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>監聽器實現類的全類名<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用注解配置: 加入<code>@WebListener</code>注解即可</li>
+</ul></li>
+</ul></li>
+<li>使用監聽器加載資源文件
+<ul>
+<li>在<code>web.xml</code>中加入 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置監聽器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>com.example.demo.Listener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置ServletContext的參數，用來在初始化ServletContext的時候解耦 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>Servlet參數名稱<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>資源文件的路徑<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>實現監聽器 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 加載資源文件</span></span><br><span class="line">    <span class="comment">//1. 獲取ServletContext對象</span></span><br><span class="line">    ServletContext context = sce.getServletContext();</span><br><span class="line">    <span class="comment">//2. 加載資源文件</span></span><br><span class="line">    String configurationLocation = context.getInitParameter(<span class="string">&quot;Servlet參數名稱&quot;</span>);</span><br><span class="line">    <span class="comment">//3. 獲取真實路徑</span></span><br><span class="line">    String path = context.getRealPath(configurationLocation);</span><br><span class="line">    <span class="comment">//4. 加載資源文件到内存中</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        FileInputStream fileStream = <span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>JQuery
+<ul>
+<li>定義：Jquery是一個快速，簡潔的JavaScript框架，簡化了JavaScript開發</li>
+<li>JavaScript框架本質上就一個JavaScript文件，裏面封裝了JavaScript的原生代碼而已</li>
+<li>在html中使用JQuery
+<ul>
+<li>下載JQuery文件:
+<code>jquery-xxx.js</code>有可閲讀性，<code>jquery-xxx.min.js</code>是压缩過的文件，文件體積小，加載速度快，生產環境用這個</li>
+<li>通過script導入jQuery文件</li>
+<li>一個簡單例子 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用原生JavaScript</span></span><br><span class="line"><span class="keyword">let</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;div1&quot;</span>);</span><br><span class="line">alert(div1.innerHTML);</span><br><span class="line"><span class="comment">// 使用JQuery</span></span><br><span class="line"><span class="keyword">let</span> div2 = $(<span class="string">&quot;#div2&quot;</span>);</span><br><span class="line">alert(div2.html());</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>JQuery對象和JavaScript對象
+<ul>
+<li>jq對象在操作的時候更方便</li>
+<li>jq對象和js對象的方法不通用，需要進行互相轉換</li>
+<li>把jq對象轉換成js對象：<code>$(jq對象).get(索引)</code>或者<code>$(jq對象)[索引]</code></li>
+<li>把js對象轉換成jq對象：<code>$(js對象)</code></li>
+</ul></li>
+<li>jq的一些基本語法
+<ul>
+<li>事件綁定： <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生js的寫法</span></span><br><span class="line"><span class="keyword">let</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;div1&quot;</span>)</span><br><span class="line">div1.onclick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    alert(div1.innerHTML);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jq的寫法</span></span><br><span class="line"><span class="keyword">let</span> div2 = $(<span class="string">&quot;#div2&quot;</span>);</span><br><span class="line">div2.click(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    alert(div2.html());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>入口函數:
+頁面加載完成之後執行，如果有多個<code>window.onload</code>只執行最後一個，如果有多個<code>$()</code>則按照次序執行
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生js的寫法</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> d1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;div1&quot;</span>)</span><br><span class="line">    alert(d1.innerHTML);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//jq的寫法</span></span><br><span class="line">$(() =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> d2 = $(<span class="string">&quot;#div2&quot;</span>);</span><br><span class="line">    alert(d2.html());</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>樣式控制 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生js的寫法</span></span><br><span class="line">let div1 = document.getElementById(<span class="string">&quot;div1&quot;</span>);</span><br><span class="line">div1.style.backgroundColor = <span class="string">&quot;red&quot;</span>;</span><br><span class="line"><span class="comment">// jq的寫法</span></span><br><span class="line">let div2 = $(<span class="string">&quot;#div2&quot;</span>);</span><br><span class="line">div2.css(<span class="string">&quot;backgroundColor&quot;</span>, <span class="string">&quot;red&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>jq的選擇器
+<ul>
+<li>基本選擇器: <code>$("html標簽")</code>, <code>$("#id屬性值")</code>.
+<code>$(".class屬性值")</code></li>
+<li>層級選擇器: <code>$("A B")</code>(後代選擇器:
+選擇A元素内部的所有B元素),
+<code>$(A &gt; B)</code>(選擇A元素内部的所有B子元素)</li>
+<li>屬性選擇器: <code>$("對象名[屬性名]")</code>(包含指定屬性的選擇器),
+<code>$("對象名[屬性名='屬性值']")</code>(包含指定屬性等於指定屬性值的選擇器),
+<code>$("對象名[屬性名1='屬性值1'][屬性名2='屬性值2']")</code>(包含多個屬性條件的選擇器</li>
+<li>過略選擇器: <code>:fist</code>, <code>:last</code>,
+<code>:not(篩選條件)</code>, <code>:even</code>, <code>:odd</code>,
+<code>:eq(索引)</code>, <code>:gt(索引)</code>, <code>:lt(索引)</code>,
+<code>:header</code>(篩選h1-h6)</li>
+<li>表達過濾選擇器: <code>:enabled</code>, <code>:disabled</code>,
+<code>:checked</code>, <code>:selected</code></li>
+</ul></li>
+<li>DOM操作
+<ul>
+<li>内容操作: <code>html()</code>(獲取/設置元素的標簽躰内容),
+<code>text()</code>(獲取/設置元素的標簽躰的純文本内容),
+<code>val()</code>(獲取/設置元素的value屬性值)</li>
+<li>通用屬性操作:
+<ul>
+<li><code>attr()</code>(獲取/設置元素的屬性),
+<code>removeAttr()</code>(刪除屬性),
+<code>prop()</code>(獲取/設置元素的屬性),
+<code>removeProp()</code>(刪除屬性)</li>
+<li>如果操作元素的固有屬性，用<code>prop</code>，如果操作元素的茲定於屬性，使用<code>attr</code></li>
+<li>注意<code>checked</code>, <code>selected</code>,
+<code>disabled</code>等屬性只能使用<code>prop</code>,用<code>attr</code>結果是<code>undefined</code></li>
+</ul></li>
+<li>對class屬性的操作: <code>addClass()</code>(添加class屬性),
+<code>removeClass()</code>(刪除class屬性),
+<code>toggleClass()</code>(切換class屬性,
+如果存在class屬性就刪除，如果不存在class屬性就刪除)</li>
+<li>CRUD相關操作
+<ul>
+<li><code>A.append(B)</code>:
+元素A將元素B添加到元素A的最後一個子元素</li>
+<li><code>A.prepend(B)</code>:
+元素A將元素B添加到元素A的第一個子元素</li>
+<li><code>A.appendTo(B)</code>:元素B將元素A添加到元素B的最後一個子元素</li>
+<li><code>A.prependTo(B)</code>:
+元素B將元素A添加到元素B的第一個子元素</li>
+<li><code>A.after(B)</code>: 將元素B添加到元素A的後面</li>
+<li><code>A.before(B)</code>: 將元素B添加到元素A的前面</li>
+<li><code>A.insertAfter(B)</code>: 將元素A添加到元素B的後面</li>
+<li><code>A.insertBefore(B)</code>: 將元素A添加到元素B的前面</li>
+<li><code>A.remove()</code>： 刪除元素A</li>
+<li><code>A.empty()</code>: 刪除元素A的所有子元素</li>
+</ul></li>
+</ul></li>
+<li>jq的動畫效果: <code>show()</code>, <code>hide()</code>,
+<code>toggle()</code>, <code>slideDown()</code>, <code>slideUp()</code>,
+<code>slideToggle()</code>, <code>fadeIn()</code>,
+<code>fadeOut()</code>, <code>fadeToggle()</code></li>
+<li>遍歷方式 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;city&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;1&quot;</span>&gt;</span>東京<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;2&quot;</span>&gt;</span>南京<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;3&quot;</span>&gt;</span>西京<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;4&quot;</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> items = <span class="built_in">document</span>.getElementById(<span class="string">&quot;city&quot;</span>).getElementsByTagName(<span class="string">&quot;li&quot;</span>);</span><br><span class="line"><span class="comment">// 原生js的for循環遍歷</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">  alert(items[i].innerHTML);</span><br><span class="line">  <span class="keyword">if</span> (items[i].id == <span class="string">&quot;3&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原生js的for-of循環遍歷</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> items) &#123;</span><br><span class="line">    alert(item.innerHTML);</span><br><span class="line">    <span class="keyword">if</span> (item.id == <span class="string">&quot;3&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jq的each遍歷方式</span></span><br><span class="line"><span class="keyword">let</span> $items = $(<span class="string">&quot;#city li&quot;</span>);</span><br><span class="line">$items.each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">  alert($(item).html());</span><br><span class="line">  <span class="comment">// alert(item.innerHTML);</span></span><br><span class="line">  <span class="keyword">if</span> (item.id == <span class="string">&quot;3&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//jq的$.each遍歷方式</span></span><br><span class="line">$.each(cities, <span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">    alert($(item).html());</span><br><span class="line">    <span class="keyword">if</span> (item.id == <span class="string">&quot;3&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// jq的for-of遍歷方式</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> city <span class="keyword">of</span> cities) &#123;</span><br><span class="line">    alert($(city).html())</span><br><span class="line">    <span class="keyword">if</span> (city.id === <span class="string">&quot;3&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>綁定事件方法
+<ul>
+<li>標準綁定方法: <code>jq對象.事件名稱(回調函數)</code></li>
+<li>on綁定事件/off解綁事件: <code>jq對象.on(事件名稱, 回調函數)</code>,
+<code>jq對象.off(事件名稱, 回調函數)</code></li>
+</ul></li>
+</ul></li>
+<li>AJAX
+<ul>
+<li>異步：客戶端不需要等待服務器響應，在服務器處理請求的過程中，客戶端可以進行其他的操作</li>
+<li>Ajax是一種無需重新加載整個網頁的基礎上，能個更新部分網頁的技術</li>
+<li>實現方式
+<ul>
+<li>使用原生的js代碼, 這個過於複雜，基本沒人用 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 發送異步請求</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> func = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 1.創建核心對象</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> xhttp;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// code for IE6, IE5</span></span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="javascript">            <span class="comment">// 2. 建立連接</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// xhttp.open(methodTypeString, urlString, booleanAjax)</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 發送一個異步請求到ajaxServlet?username=tom</span></span></span><br><span class="line"><span class="javascript">            xhttp.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;ajaxServlet?username=tom&quot;</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 3. 發送請求</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// get請求的參數在open的url中，這裏不用傳參</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// post請求在這裏寫 xhttp.send(&quot;key=value&quot;)</span></span></span><br><span class="line">            xhttp.send();</span><br><span class="line"><span class="javascript">            <span class="comment">// 4. 處理服務器響應結果</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 黨請求狀態變化的時候觸發事件</span></span></span><br><span class="line"><span class="javascript">            xhttp.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 如果響應完畢，并且是響應成功的話</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">this</span>.readyState == <span class="number">4</span> &amp;&amp; <span class="built_in">this</span>.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&quot;resp&quot;</span>).innerHTML = xhttp.responseText;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;發送異步請求&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;func();&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 展示響應的結果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;resp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用jq實現: <code>$.ajax()</code>, <code>$.get()</code>,
+<code>$.post()</code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用$.ajax()發送請求</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">&quot;ajaxServlet&quot;</span>, <span class="comment">// 請求路徑</span></span><br><span class="line">    type: <span class="string">&quot;GET&quot;</span>, <span class="comment">// 請求方式</span></span><br><span class="line">    <span class="comment">// 請求參數有兩種寫法</span></span><br><span class="line">    <span class="comment">// 第一種請求參數用字符串表示 data: &quot;k1=v1&amp;kn=vn&quot;</span></span><br><span class="line">    <span class="comment">// 第二種請求參數用JSON表示</span></span><br><span class="line">    data: &#123;</span><br><span class="line">        <span class="string">&quot;username&quot;</span>: <span class="string">&quot;tom&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function">(<span class="params">resp</span>) =&gt;</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;#resp&quot;</span>).html(resp);</span><br><span class="line">    &#125;, <span class="comment">// 請求成功的回調函數</span></span><br><span class="line">    error: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        alert(<span class="string">&quot;發生錯誤了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>使用jq的$.get()發送請求:
+<code>get()</code>和<code>post()</code>流程完全一致 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.get(<span class="string">&quot;ajaxServlet&quot;</span>, &#123;       <span class="comment">// 本體裏面只寫請求url和可選的請求參數</span></span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&quot;tom&quot;</span></span><br><span class="line">&#125;).done(<span class="function">(<span class="params">resp</span>) =&gt;</span> &#123;          <span class="comment">// done在jq3.0之後取代了success, 裏面寫請求成功的回調函數</span></span><br><span class="line">    $(<span class="string">&quot;#resp&quot;</span>).html(resp);</span><br><span class="line">&#125;).fail(<span class="function">() =&gt;</span> &#123;              <span class="comment">// fail在jq3.0之後取代了error, 裏面寫請求失敗的回調函數</span></span><br><span class="line">    alert(<span class="string">&quot;請求失敗了&quot;</span>)</span><br><span class="line">&#125;).always(<span class="function">() =&gt;</span> &#123;            <span class="comment">// always在jq3.0之後取代了complete, 裏面寫請求完畢的回調函數</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;請求完畢&quot;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>JSON
+<ul>
+<li>JSON現在多用於存儲和交換信息的語法，類似XML，但是更小，更快，更容易解析</li>
+<li>JSON的key可以不寫引號，可以用單引號，可以用雙引號</li>
+<li>JSON基本語法
+<ul>
+<li>獲取JSON的值： <code>json.keyName</code>,
+或者<code>json["keyName"]</code></li>
+<li>使用<code>for-in</code>循環遍歷JSON，注意這個循環中key是字符串，需要用<code>json[key]</code>來取值</li>
+</ul></li>
+<li>JSON數據和Java對象的轉換
+<ul>
+<li>服務器内部是Java對象，在服務器和客戶端之間傳輸是JSON字符串，客戶端是JSON
+Object(切記客戶端需要<code>resp = JSON.parse(resp)</code>把JSON字符串轉換成JSON
+Object)</li>
+<li>JSON解析器: <code>Jsonlib</code>, <code>Gson</code>,
+<code>fastjson</code>, <code>jackson</code></li>
+<li>使用Jackson把JSON轉換成Java對象
+<ul>
+<li>步驟
+<ol type="1">
+<li>導入jar包：<code>jackson-annotations.jar</code>,
+<code>jackson-core.jar</code>, <code>jackson-databind.jar</code></li>
+<li>創建Jackson核心對象<code>ObjectMapper</code></li>
+<li>調用ObjectMapper的方法把JSON字符串轉換成Java對象:
+<code>om.readValue(json, Class&lt;T&gt;)</code>把JSON字符串轉換成Java的T類型對象</li>
+</ol></li>
+</ul></li>
+<li>使用Jackson把Java對象轉換成JSON
+<ul>
+<li>步驟
+<ol type="1">
+<li>導入jar包：<code>jackson-annotations.jar</code>,
+<code>jackson-core.jar</code>, <code>jackson-databind.jar</code></li>
+<li>創建Jackson核心對象<code>ObjectMapper</code></li>
+<li>調用ObjectMapper的方法把Java對象轉換成JSON:
+<code>om.writeValue(File/Writer/OutputStream, Java對象)</code>把Java對象轉換成JSON字符串，然後寫到文件/字符流/字節流中，<code>om.writeValueAsString(Java對象)</code>把Java對象轉換成JSON字符串</li>
+</ol></li>
+<li>使用注解定制化轉換
+<ul>
+<li><code>@JsonIgnore</code>:
+忽略Java對象的某個屬性不進入轉換完的JSON字符串</li>
+<li><code>@JsonFormat(pattern="定制化格式")</code>:自定義Java對象的某個屬性轉換成JSON字符串的key的格式</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Redis
+<ul>
+<li>概念:
+Redis是一款高性能的NoSQL系列的非關係型數據庫，它是一個key-value的數據庫，存儲在内存中，查詢速度快</li>
+<li>Redis在windows下使用
+<ul>
+<li>按照官网的指示，在WSL中安装使用</li>
+<li>纯粹的Windows版本:
+<code>https://github.com/tporadowski/redis/releases</code>下载即可使用</li>
+</ul></li>
+<li>Redis的数据结构
+<ul>
+<li>Redis存储的是k-v格式的数据，其中key是字符串，value有5种不同的数据结构
+<ul>
+<li>Value数据類型：字符串<code>string</code>,
+哈希類型<code>hash</code>(map), 列表類型<code>list</code>(linked list),
+集合類型<code>set</code>, 有序集合類型<code>sortedset</code></li>
+</ul></li>
+<li>字符串類型：<code>set key val</code>, <code>get key</code>,
+<code>del key</code>(刪除完之後<code>nil</code>)</li>
+<li>哈希類型：<code>hset key field val</code>,
+<code>hget key field</code>(獲取指定的值),
+<code>hgetall key</code>(獲取所有的key和value),
+<code>hdel key field</code></li>
+<li>列表類型: <code>lpush key val</code>, <code>rpush key val</code>,
+<code>lrange key start end</code>(獲取指定範圍的所有元素，<code>lrange key 0 -1</code>獲取列表中所有的值),
+<code>lpop key</code>, <code>rpop key</code></li>
+<li>集合類型: <code>sadd key val</code>,
+<code>smembers key</code>(獲取set中所有元素),
+<code>srem key val</code></li>
+<li>有序集合: <code>zadd key score</code>(按照分數從小到大排序),
+<code>zrange key start end</code>(獲取有序集合中範圍内的元素),
+<code>zrange key start end with scores</code>(顯示有序集合中指定範圍的元素和對應的score),
+<code>zrem key val</code></li>
+</ul></li>
+<li>其他常用語法: <code>keys *</code>: 查詢所有key,
+<code>type key</code>: 顯示對應value的類型, <code>del key</code></li>
+<li>持久化機制
+<ul>
+<li>redis是一個内存數據庫，當redis服務器重啓，數據會丟失，可以將redis内存中的數據持久化保存到硬盤的文件中</li>
+<li>持久化機制
+<ul>
+<li>RDB:
+默認持久化機制，不需要進行配置。在一定的時間間隔中，檢查key的變化，然後持久化數據
+<ul>
+<li>在<code>redis.windows.conf</code>中有設置持久化要求，可以修改來自定義配置
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#   after 900 sec (15 min) if at least 1 key changed</span><br><span class="line">save 900 1</span><br><span class="line">#   after 300 sec (5 min) if at least 10 keys changed</span><br><span class="line">save 300 10</span><br><span class="line">#   after 60 sec if at least 10000 keys changed</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure></li>
+<li>默認持久化到<code>dump.rdb</code>文件中，服務器啓動會讀取這個文件裏的數據</li>
+</ul></li>
+<li>AOF:
+使用日志記錄的方式，記錄每一條命令的操作。可以每一次操作後都持久化到硬盤
+<ul>
+<li>在<code>redis.windows.conf</code>中把<code>appendonly no</code>(關閉AOF)改成<code>appendonly yes</code>(開啓AOF)</li>
+<li>在<code>redis.windows.conf</code>中有下面的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># appendfsync always       每個操作都持久化，默認關閉</span><br><span class="line">appendfsync everysec       # 每秒持久化一次，默認開啓</span><br><span class="line"># appendfsync no            不持久化，默認關閉</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Jedis
+<ul>
+<li>定義: Jedis是一款Java操作redis數據庫的工具</li>
+<li>使用Jedis：導入<code>jedis.jar</code>,
+<code>gson.jar</code>(jedis依賴這個),
+<code>commons-pool2.jar</code>(jedis官方推薦使用連接池)
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不使用連接池，直接使用jedis</span></span><br><span class="line">Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">&quot;url&quot;</span>, port);</span><br><span class="line">jedis.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line">jeidis.close();</span><br><span class="line"><span class="comment">//使用連接池</span></span><br><span class="line">JedisPooled jedis = <span class="keyword">new</span> JedisPooled(<span class="string">&quot;url&quot;</span>, port);</span><br><span class="line">jedis.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line">jedis.close();</span><br></pre></td></tr></table></figure></li>
+<li>Jedis操作redis的方法和redis原生方法的名字完全一致，還有一些其他方法:
+<code>jedis.setex(key, sec, val)</code>在經過sec秒之後，key將被刪除</li>
+</ul></li>
+<li>用Redis對數據庫進行緩存優化
+<ul>
+<li>先查找redis，如果有數據則直接讀取内存中數據</li>
+<li>如果沒有數據，則查找數據庫數據，并且存儲到緩存中</li>
+<li>注意如果發生了對數據庫的增刪改操作，需要清空redis緩存</li>
+</ul></li>
+</ul></li>
+<li>Maven
+<ul>
+<li>Maven是一個項目管理工具，包含了一個項目對象模型(POM: Project Object
+Model，把一個項目看作一個POM),
+一組標準集合，一個項目生命周期，一個依賴管理系統，和用來運行定義在生命周期階段中插件目標的邏輯</li>
+<li>Maven解決的問題
+<ul>
+<li>沒有Maven，需要手動導入jar包，Maven可以管理jar包</li>
+<li>Maven可以管理項目的生命周期，例如：编译、打包、部署</li>
+</ul></li>
+<li>Maven環境配置
+<ul>
+<li>下載Maven，把<code>maven路徑/bin</code>配置到環境變量裏面從而可以直接使用<code>mvn</code>命令</li>
+<li>在命令行中輸入<code>mvn -v</code>，如果顯示maven版本信息，則表示Maven環境配置成功</li>
+<li>倉庫分類：本地倉庫，遠程倉庫，中央倉庫</li>
+<li>修改Maven的默認本地倉庫:
+修改<code>maven目錄/conf/settings.xml</code>文件 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>路徑<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>中國大陸訪問中央倉庫較慢，可以設置阿里雲的鏡像:
+把下面内容添加到<code>maven目錄/conf/settings.xml</code>文件的<code>&lt;mirrors&gt;&lt;/mirrors&gt;</code>標簽中
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyunmaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>阿里云公共仓库<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在Idea新建Maven項目的時候選擇正確的倉庫路徑和settings.xml文件路徑</li>
+</ul></li>
+<li>Maven常用命令
+<ul>
+<li>Maven項目結構
+<ol type="1">
+<li>項目根目錄</li>
+<li>src目錄
+<ol type="1">
+<li>main目錄
+<ol type="1">
+<li>java目錄</li>
+<li>resources目錄</li>
+<li>webapp目錄:
+web項目才有，java項目沒有(存放jsp/html/WEN-INFO目錄)</li>
+</ol></li>
+<li>test目錄
+<ol type="1">
+<li>java目錄</li>
+<li>resources目錄</li>
+</ol></li>
+</ol></li>
+<li>target目錄:編譯完的class文件</li>
+<li>pom.xml文件</li>
+</ol></li>
+<li>Maven命令需要在項目根目錄下面執行</li>
+<li><code>mvn compile</code>：編譯<code>項目目錄/src/main/java</code>目錄下的所有java文件，得到的class文件存放在<code>項目目錄/target/classes</code>目錄下</li>
+<li><code>mvn clean</code>：刪除<code>項目目錄/target</code>目錄</li>
+<li><code>mvn package</code>：編譯java文件，并且把web項目打成war包，war包存放在<code>項目目錄/target</code>目錄下</li>
+<li><code>mvn install</code>：把當前項目編譯打包，并且加入到本地maven倉庫中</li>
+</ul></li>
+<li>Maven項目的生命周期
+<ul>
+<li>Maven對項目構建分成三套相互獨立的生命周期
+<ul>
+<li>Clean Lifecycle：在進行真正的構建項目之前進行清理工作</li>
+<li>Default Lifecycle：構建項目的核心部分，編譯，測試，打包，部署等</li>
+<li>Site Lifecycle：生成項目報告，站點，發佈站點</li>
+</ul></li>
+<li>在同一個生命周期之中，執行後面的操作會自動執行前面的操作</li>
+</ul></li>
+<li>Maven坐標
+<ul>
+<li>作用：坐標用來唯一識別被maven管理的資源</li>
+<li>坐標構成： <code>groupId</code>, <code>artifactId</code>,
+<code>version</code>,
+<code>packaging</code>(jar適用於java項目/war適用於web項目/pom),
+<code>scope</code></li>
+<li>導入jar包的依賴:
+在pom.xml的<code>&lt;dependencies&gt;&lt;/dependencies&gt;</code>坐標内加入<code>&lt;dependency&gt;&lt;/dependency&gt;</code>標簽内部加入jar包的坐標</li>
+<li>導入編譯插件:
+在pom.xml的<code>&lt;build&gt;&lt;plugins&gt;&lt;/plugins&gt;&lt;/build&gt;</code>坐標内加入<code>&lt;build&gt;&lt;/build&gt;</code>標簽内部加入jar包的坐標</li>
+</ul></li>
+<li>依賴範圍
+<ul>
+<li>依賴範圍的取值：
+<ul>
+<li><code>compile</code>:
+對於編譯環境(java目錄下面可以用)，測試環境(test目錄下面可以用)，運行環境(打包完的壓縮包裏面有)都有效</li>
+<li><code>test</code>：對於測試環境有效</li>
+<li><code>provided</code>：對於編譯環境，測試環境有效</li>
+<li><code>runtime</code>：對於測試環境和運行環境有效</li>
+<li><code>system</code>：對於編譯環境和測試員警有效</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/08/14/JavaWeb-Review/" title="JavaWeb Review">https://yanxuanshaozhu.github.io/2022/08/14/JavaWeb-Review/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaWeb/" rel="tag"># JavaWeb</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/24/Spring-Review/" rel="prev" title="Spring Review">
+      <i class="fa fa-chevron-left"></i> Spring Review
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/31/COSI-123A-Statistical-Machine-Learning/" rel="next" title="COSI 123A Statistical Machine Learning">
+      COSI 123A Statistical Machine Learning <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javaweb"><span class="nav-number">1.</span> <span class="nav-text">JavaWeb</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

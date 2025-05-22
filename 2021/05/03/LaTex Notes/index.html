@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Here are some notes I find useful for using LaTex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTex Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/05/03/LaTex%20Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Here are some notes I find useful for using LaTex">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-03T18:02:36.000Z">
+<meta property="article:modified_time" content="2024-07-14T16:23:31.872Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="LaTex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/05/03/LaTex%20Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LaTex Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/05/03/LaTex%20Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LaTex Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-03 14:02:36" itemprop="dateCreated datePublished" datetime="2021-05-03T14:02:36-04:00">2021-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-14 12:23:31" itemprop="dateModified" datetime="2024-07-14T12:23:31-04:00">2024-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathematics/" itemprop="url" rel="index"><span itemprop="name">Mathematics</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Here are some notes I find useful for using LaTex</p>
+<span id="more"></span>
+<ol type="1">
+<li>Force limits to the top and bottom side of inline sum : <span class="math inline">\(\sum\limits_{i=1}^{N} i\)</span>, use \sum\limits
+instead of \sum alone.</li>
+<li>Force limits to the top and bottom side of inline integral : <span class="math inline">\(\int  \limits_{x=1}^{3} xdx\)</span>, use
+\int\limits instead of \int alone.</li>
+<li>Hat:
+<ol type="1">
+<li>Fitted value: <span class="math inline">\(\hat{y}\)</span>, use
+\hat{}</li>
+<li>Widehat: <span class="math inline">\(\widehat{\nabla  f }\)</span>,
+use \widehat{}</li>
+</ol></li>
+<li>Italic: <span class="math inline">\(\mathcal{L}\)</span>, it only
+works for upper-case letters, use \mathcal{}</li>
+<li>Underset: <span class="math inline">\(\underset{x}{argmin}\)</span>,
+use \underset{x}{formula}</li>
+<li>Gradient: <span class="math inline">\(\nabla f\)</span>, use
+\nabla</li>
+<li>Field representation: the complex field <span class="math inline">\(\mathbb{C}\)</span>, the real field <span class="math inline">\(\mathbb{R}\)</span>, use \mathbb{}</li>
+<li>Logical operator
+<ul>
+<li>P and Q: <span class="math inline">\(P \land Q\)</span>, \land</li>
+<li>P or Q: <span class="math inline">\(P \lor Q\)</span>, \lor</li>
+<li>not P: <span class="math inline">\(\neg P\)</span>, \neg, or <span class="math inline">\(\bar{P}\)</span>, \bar{P}</li>
+<li>P xor Q: <span class="math inline">\(p \oplus Q\)</span>,
+\oplus</li>
+<li>if P then Q: <span class="math inline">\(P \rightarrow Q\)</span>,
+\rightarrow</li>
+<li>P iff Q: <span class="math inline">\(P \leftrightarrow Q\)</span>,
+\leftrightarrow</li>
+</ul></li>
+<li>Set notation
+<ul>
+<li><span class="math inline">\(\mathbb{R}\)</span>, \mathbb{R}</li>
+<li><span class="math inline">\(a \in A\)</span>: a \in A</li>
+<li><span class="math inline">\(a \notin A\)</span>: a \notin A</li>
+<li><span class="math inline">\(\emptyset\)</span>: \emptyset</li>
+<li><span class="math inline">\(A \cap B\)</span>: \cap</li>
+<li><span class="math inline">\(A \cup B\)</span>: \cup</li>
+<li><span class="math inline">\(\mathcal{P}(A)\)</span> \mathcal{P}
+(power set)</li>
+<li><span class="math inline">\(A \times B\)</span>: \times</li>
+<li><span class="math inline">\(A \setminus B\)</span>: \setminus</li>
+<li><span class="math inline">\(A \subseteq B\)</span>: \subseteq</li>
+<li><span class="math inline">\(A \subset B\)</span>: \subset</li>
+<li><span class="math inline">\(\bigcup\limits_{i=1}^{n}\)</span>:
+\bigcup\limits_{i=1}^{n}</li>
+<li><span class="math inline">\(\bigcap\limits_{i=1}^{n}\)</span>:
+\bigcap\limits_{i=1}^{n}</li>
+</ul></li>
+<li>Make equation smaller: \scriptstyle</li>
+<li>Isomorphism and approximate equality</li>
+</ol>
+<ul>
+<li><span class="math inline">\(G_1 \cong G_2\)</span>: \cong</li>
+<li><span class="math inline">\(a \approx b\)</span>: \approx</li>
+<li><span class="math inline">\(a \approxeq b\)</span>: \approxeq</li>
+</ul>
+<ol start="12" type="1">
+<li>Add label to equation: \tag{N}</li>
+<li>How to write text inside equation: \text{text}</li>
+<li>Multline equations <span class="math display">\[\begin{align*}
+a &amp;= b \\
+  &amp;= c \\
+  &amp;= d
+\end{align*}\]</span></li>
+</ol>
+<p>allign* has no equation label, align has equation label, use &amp;=
+to align equations marks, use \ \ to separate lines</p>
+<ol start="15" type="1">
+<li>function composition <span class="math inline">\(g \circ f\)</span>,
+\circ</li>
+<li>multinomial coefficient: <span class="math inline">\(\binom{n}{k_1,k_1,\dots,k_m} = \frac{n!}{k_1 ! k_2
+!\dots k_m !}\)</span>, \binom {n}{k_1,k_1,\dots,k_m}, use
+<code>binom&#123;&#125;&#123;&#125;</code> for combinations</li>
+<li>Multi conditions in summation: <span class="math inline">\(\sum\limits_{\substack{i=0 \\ i\neq
+j}}^{n}a_i\)</span>, \substack{i=0 \ \ i \neq j}, use
+<code>substack&#123;&#125;</code> for multi conditions, use <code>\\</code>to
+separate the lines</li>
+<li>Arrows
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> \leftarrow, <span class="math inline">\(\Leftarrow\)</span> \Leftarrow</li>
+<li><span class="math inline">\(\longleftarrow\)</span> \longleftarrow,
+<span class="math inline">\(\Longrightarrow\)</span>
+\Longrightarrow</li>
+<li><span class="math inline">\(\rightarrow\)</span> \rightarrow, <span class="math inline">\(\Rightarrow\)</span> \Rightarrow</li>
+<li><span class="math inline">\(\longrightarrow\)</span>
+\longrightarrow, <span class="math inline">\(\Longrightarrow\)</span>
+\Longrightarrow</li>
+<li><span class="math inline">\(\leftrightarrow\)</span>
+\leftrightarrow, <span class="math inline">\(\Leftrightarrow\)</span>
+\Leftrightarrow</li>
+<li><span class="math inline">\(\longleftrightarrow\)</span>
+\longleftrightarrow, <span class="math inline">\(\Longleftrightarrow\)</span>
+\Longleftrightarrow</li>
+</ul></li>
+<li>The does not prove sign (appeared in Gödel's incompleteness
+theorems)
+<ul>
+<li><span class="math inline">\(\nvdash\)</span> \nvdash</li>
+<li><span class="math inline">\(\not\vdash\)</span> \not\vdash</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/05/03/LaTex%20Notes/" title="LaTex Notes">https://yanxuanshaozhu.github.io/2021/05/03/LaTex Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LaTex/" rel="tag"># LaTex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/19/Introduction%20to%20Machine%20Learning%20Notes/" rel="prev" title="Introduction to Machine Learning Notes">
+      <i class="fa fa-chevron-left"></i> Introduction to Machine Learning Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/09/Recommended%20Places%20to%20Visit/" rel="next" title="Recommended Places to Visit">
+      Recommended Places to Visit <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

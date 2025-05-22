@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Basic Data Structures">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Notes">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/11/15/LeetCode-Notes/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Basic Data Structures">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-16T03:53:39.000Z">
+<meta property="article:modified_time" content="2023-03-28T04:49:11.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/11/15/LeetCode-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LeetCode Notes | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/11/15/LeetCode-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-11-15 22:53:39" itemprop="dateCreated datePublished" datetime="2021-11-15T22:53:39-05:00">2021-11-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-03-28 00:49:11" itemprop="dateModified" datetime="2023-03-28T00:49:11-04:00">2023-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>27k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>24 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="basic-data-structures">Basic Data Structures</h2>
+<span id="more"></span>
+<ol type="1">
+<li>Logic categories
+<ol type="1">
+<li>Linear: array, stack, queue, linked list</li>
+<li>Non-linear: tree, graph</li>
+</ol></li>
+<li>Linear
+<ol type="1">
+<li>array: the most basic one</li>
+<li>queue: FIFO, enqueue from back, dequeue from head</li>
+<li>stack: LIFO, push from head, pop from head, peed from head</li>
+<li>linked list</li>
+</ol></li>
+<li>Non-linear
+<ol type="1">
+<li>tree: DOM, XML
+<ol type="1">
+<li>a tree is a acyclic connected graph</li>
+<li>tree is recursive</li>
+</ol></li>
+<li>binary tree
+<ol type="1">
+<li>degree of a node is at most 2</li>
+<li>all trees can be represented by binary trees</li>
+<li>heap
+<ol type="1">
+<li>a heap is a priority queue</li>
+<li>binary heap
+<ol type="1">
+<li>definition:
+<ul>
+<li>heap property: each node is smaller (min heap) or larger (max heap)
+than its children</li>
+<li>the left subtree and right subtree of each node is a binary
+heap</li>
+</ul></li>
+</ol></li>
+</ol></li>
+<li>binary search tree
+<ol type="1">
+<li>definition
+<ul>
+<li>each node on left subtree is smaller than root node</li>
+<li>each node on right subtree is larger than root node</li>
+<li>the left subtree and right subtree of each node is a binary search
+tree</li>
+</ul></li>
+<li>the traversal result of a binary search tree is sorted</li>
+</ol></li>
+<li>balanced binary tree
+<ol type="1">
+<li>AVL</li>
+<li>RBT</li>
+</ol></li>
+<li>Trie tree</li>
+</ol></li>
+<li>graph
+<ol type="1">
+<li>directed/undirected, weighted/unweighted, cyclic/acyclic,
+in-degree/out-degree, path/cycle, connected(undirected)/strong
+connected(directed)</li>
+<li>spanning tree: a tree with n nodes and n - 1 edges
+<ol type="1">
+<li>MST: minimum possible total edge weight</li>
+</ol></li>
+<li>construct a graph
+<ol type="1">
+<li>adjacent matrix</li>
+<li>adjacent list</li>
+</ol></li>
+<li>graph traversal
+<ol type="1">
+<li>if theres is cycle in a tree, you need to store which nodes have
+been visited</li>
+<li>DFS</li>
+<li>BFS</li>
+</ol></li>
+</ol></li>
+<li>graph algorithm
+<ol type="1">
+<li>dijkstra
+<ul>
+<li>shortest path, it' greedy algorithm (find shortest neighbor), it's
+dfs</li>
+<li>time complexity: <span class="math inline">\(O(logN)\)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line">def dijkstra(graph, start, end) &#123;</span><br><span class="line">   heap = [(<span class="number">0</span>, start)]</span><br><span class="line">   visited = <span class="built_in">set</span>()</span><br><span class="line">   <span class="keyword">while</span> heap:</span><br><span class="line">      cost, node = heapq.heappop(heap)</span><br><span class="line">      <span class="keyword">if</span> node <span class="keyword">in</span> visited:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">      visited.add(node)</span><br><span class="line">      <span class="keyword">if</span> node == end:</span><br><span class="line">         <span class="keyword">return</span> cost</span><br><span class="line">      <span class="keyword">for</span> nbr, w <span class="keyword">in</span> graph.adjacent(node):</span><br><span class="line">         <span class="keyword">if</span> nbr <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">         cur_cost = cost + w</span><br><span class="line">         heapq.heappush(heap, (cur_cost, nbr))</span><br><span class="line">   <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>floyd-warshall
+<ul>
+<li>can be used to calculate dist between arbitrage two points because
+it save the intermediate results, while dijkstra only solves shortest
+path from singe start, you need a loop to solve multiple-source shortest
+path problem in dijkstra</li>
+<li>it used dynamic programming rather than greedy, to it can handles
+negative weights</li>
+<li>time complexity: <span class="math inline">\(O(n^3)\)</span>, space
+complexity: <span class="math inline">\(O(n^2)\)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># let graph[i][j] is the adjacent matrix of graph G</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">floyd</span>(<span class="params">graph, n</span>):</span></span><br><span class="line">   dist = [[<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">      <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">         dist[i][j] = graph[i][j]</span><br><span class="line">   <span class="comment"># The outmost layer should be k</span></span><br><span class="line">   <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> dist[i][k] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">and</span> dist[k][j] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">and</span> dist[i][j] &gt; dist[i][k] + dist[k][j]:</span><br><span class="line">               dist[i][j] = dist[i][k] + dist[k][j]</span><br><span class="line">   <span class="keyword">return</span> dist</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>bellman-ford
+<ul>
+<li>can solve single source shortest path problem</li>
+<li>based on dynamic programming, it's slower thant dijkstra algorithm,
+but it can handle negative weights <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># let edges be a list of edges, each edge is a list [u, v, w] where u and v are vertices, and w is the weight of edge uv</span></span><br><span class="line"><span class="comment"># n is the number of vertices</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bellman</span>(<span class="params">edges, start, n</span>):</span></span><br><span class="line">   dist = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]:</span><br><span class="line">   dist[start] = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">      <span class="keyword">for</span> u, v, w <span class="keyword">in</span> edges:</span><br><span class="line">         <span class="keyword">if</span> dist[u] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">and</span> dist[u] + w &lt; dist[v]:</span><br><span class="line">            dist[v] = dist[u] + w</span><br><span class="line">   <span class="comment"># check if there is a negative weight cycle</span></span><br><span class="line">   <span class="keyword">for</span> u, v, w <span class="keyword">in</span> edges:</span><br><span class="line">      <span class="keyword">if</span> dist[u] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">and</span> dist[u] + w &lt; dist[v]:</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">   <span class="keyword">return</span> dist</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>topological sort
+<ul>
+<li>topological sort of a directed graph is a linear ordering of its
+vertices such that for every directed edge uv from vertex u to vertex v,
+u comes before v in the ordering</li>
+<li>a topological sort is possible if and only if the graph has not
+directed cycles, that is, if it is a directed acyclic graph(DAG), and
+any DAG has at least on topological ordering</li>
+<li>Kahn algorithm
+<ul>
+<li>processes:
+<ul>
+<li>compute in-degree of each vertex, and initialize visited vertices
+amount to 0</li>
+<li>put all vertices with in-degree 0 into a queue</li>
+<li>remove a vertex from the queue and then increase visited vertices
+amount by one, decrease in-degree of its adjacent vertices by one, if
+in-degree of a neighboring vertex is reduced to 0, add it to the queue,
+and repeat this process until the queue is empty</li>
+<li>if the visited vertices amount is not equal to the total amount of
+vertices, there is a cycle in the graph, otherwise the done</li>
+</ul></li>
+<li>time complexity: <span class="math inline">\(O(V + E)\)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kahn</span>(<span class="params">graph</span>):</span></span><br><span class="line">   indegree = [<span class="number">0</span>] * <span class="built_in">len</span>(graph.V)</span><br><span class="line">   queue = collections.deque()</span><br><span class="line">   res = []</span><br><span class="line">   cnt = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> u,v <span class="keyword">in</span> graph.E:</span><br><span class="line">      indegree[v] += <span class="number">1</span></span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(graph.V)):</span><br><span class="line">      <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">         queue.append(i)</span><br><span class="line">   <span class="keyword">while</span> queue:</span><br><span class="line">      cur = queue.popleft()</span><br><span class="line">      res.append(cur)</span><br><span class="line">      cnt += <span class="number">1</span></span><br><span class="line">      <span class="keyword">for</span> nbr <span class="keyword">in</span> graph.adjacent(cur):</span><br><span class="line">         indegree[nbr] -= <span class="number">1</span></span><br><span class="line">         <span class="keyword">if</span> indegree[nbr] == <span class="number">0</span>:</span><br><span class="line">            queue.append(nbr)</span><br><span class="line">   <span class="keyword">if</span> cnt != <span class="built_in">len</span>(graph.V):</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">   <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>minimum spanning tree
+<ul>
+<li>a minimum spanning tree (MST) is a subset of the edges of a
+connected, edge-weighted undirected graph that connects all the vertices
+together, without any cycles and with the minimum possible total edge
+weigh</li>
+<li>spanning tree and MST may not be unique</li>
+<li>Kruskal algorithm
+<ul>
+<li>processes:
+<ul>
+<li>create a forest F (a set of trees), where each vertex in the graph
+is a separate tree</li>
+<li>create a set S containing all the edges in the graph</li>
+<li>while S is nonempty and F is not yet spanning, remove an edge with
+minimum weight from S, if the removed edge connects two different trees
+then add it to the forest F, combining two trees into a single tree</li>
+</ul></li>
+<li>time complexity: <span class="math inline">\(O(ElogE)\)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This class is for union find</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DisjointSetUnion</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n</span>):</span></span><br><span class="line">      self.n = n</span><br><span class="line">      self.rank = [<span class="number">1</span>] * n</span><br><span class="line">      self.f = <span class="built_in">list</span>(<span class="built_in">range</span>(n))</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">find</span>(<span class="params">self, x: <span class="built_in">int</span></span>) -&gt; int:</span></span><br><span class="line">      <span class="keyword">if</span> self.f[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">      self.f[x] = self.find(self.f[x])</span><br><span class="line">      <span class="keyword">return</span> self.f[x]</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">unionSet</span>(<span class="params">self, x: <span class="built_in">int</span>, y: <span class="built_in">int</span></span>) -&gt; bool:</span></span><br><span class="line">      fx, fy = self.find(x), self.find(y)</span><br><span class="line">      <span class="keyword">if</span> fx == fy:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">      <span class="keyword">if</span> self.rank[fx] &lt; self.rank[fy]:</span><br><span class="line">            fx, fy = fy, fx</span><br><span class="line">      self.rank[fx] += self.rank[fy]</span><br><span class="line">      self.f[fy] = fx</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Algorithm</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">Kruskal</span>(<span class="params">self, graph</span>):</span></span><br><span class="line">      dsu = DisjointSetUnion(<span class="built_in">len</span>(graph.V))</span><br><span class="line">      graph.E.sort()</span><br><span class="line">      ret, num = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">      <span class="keyword">for</span> u, v, w <span class="keyword">in</span> graph.E:</span><br><span class="line">            <span class="keyword">if</span> dsu.unionSet(u, v):</span><br><span class="line">               ret += w</span><br><span class="line">               num += <span class="number">1</span></span><br><span class="line">               <span class="keyword">if</span> num == n:</span><br><span class="line">                  <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Prim algorithm
+<ul>
+<li>processes:
+<ul>
+<li>initialize a tree with a single vertex, chosen arbitrarily from the
+graph</li>
+<li>grow the tree by one edge: of the edges that connect the tree to
+vertices not yet in the tree, find the minimum-weight edge, and transfer
+it to the tree</li>
+<li>repeat the above step until all vertices are in the tree</li>
+</ul></li>
+<li>time complexity: <span class="math inline">\(O(E + VlogV)\)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">Prim</span>(<span class="params">self, dist</span>) -&gt; int:</span></span><br><span class="line">      n = <span class="built_in">len</span>(dist)</span><br><span class="line">      d = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)] * n</span><br><span class="line">      vis = [<span class="literal">False</span>]  * n</span><br><span class="line">      d[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">      ans = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            M = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) </span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">               <span class="keyword">if</span> <span class="keyword">not</span> vis[i] <span class="keyword">and</span> d[i] &lt; M:</span><br><span class="line">                  node = i</span><br><span class="line">                  M = d[i]</span><br><span class="line">            vis[node] = <span class="literal">True</span></span><br><span class="line">            ans += M</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">               <span class="keyword">if</span> <span class="keyword">not</span> vis[i]:</span><br><span class="line">                  d[i] = <span class="built_in">min</span>(d[i], dist[i][node])</span><br><span class="line">      <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id="template">Template</h2>
+<ol type="1">
+<li>Binary search, time complexity O(logN) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">binarySearchHelper</span><span class="params">(<span class="keyword">int</span>[] nums, target, low, high)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (low &gt; high) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> mid = low + (high - low ) / <span class="number">2</span>;</span><br><span class="line">   <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target ) &#123;</span><br><span class="line">      <span class="keyword">return</span> binarySearchHelper(nums, target, mid + <span class="number">1</span>, high);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> binarySearchHelper(nums, target, low, mid - <span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> binarySearchHelper(nums, target, <span class="number">0</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Binary Tree traversal
+<ul>
+<li>PreOrder, time complexity: O(N) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   System.out.println(root.data);</span><br><span class="line">   preOrder(root.left);</span><br><span class="line">   preOrder(root.right);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative, space complexity: O(N)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">   stack.push(root);</span><br><span class="line">   <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">      TreeNode cur = stack.pop();</span><br><span class="line">      System.out.println(cur.data);</span><br><span class="line">      <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">         stack.push(cur.right);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">         stack.push(cur.left);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Morris traversal, space complexity: O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (cur.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">         System.out.println(cur.data);</span><br><span class="line">         cur = cur.right;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         TreeNode pre = cur.left;</span><br><span class="line">         <span class="keyword">while</span> (pre.right != <span class="keyword">null</span> &amp;&amp; pre.right != cur) &#123;</span><br><span class="line">            pre = pre.right;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (pre.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(cur.data);</span><br><span class="line">            pre.right = cur;</span><br><span class="line">            cur = cur.left;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pre.right = <span class="keyword">null</span>;</span><br><span class="line">            cur = cur.right;     </span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>InOrder, time complexity: O(N) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125; </span><br><span class="line">   inOrder(root.left);</span><br><span class="line">   System.out.println(root.data);</span><br><span class="line">   inOrder(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative, space complexity: O(N)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   <span class="keyword">while</span> (cur != <span class="keyword">null</span> || !stack.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">         stack.push(cur);</span><br><span class="line">         cur = cur.left;</span><br><span class="line">      &#125;</span><br><span class="line">      cur = stack.pop();</span><br><span class="line">      System.out.println(cur.data);</span><br><span class="line">      cur = cur.right;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Morris traversal, space complexity: O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (cur.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">         System.out.println(cur.data);</span><br><span class="line">         cur = cur.right;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="comment">// find the predecessor of cur</span></span><br><span class="line">         TreeNode pre = cur.left;</span><br><span class="line">         <span class="keyword">while</span> (pre.right != <span class="keyword">null</span> &amp;&amp; pre.right != cur) &#123;</span><br><span class="line">            pre = pre.right;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (pre.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// If we haven&#x27;t visited the predecessor before, add a link</span></span><br><span class="line">            <span class="comment">// so we can come back to cur</span></span><br><span class="line">            pre.right = cur;</span><br><span class="line">            cur = cur.left;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// If we have visited the predecessor before, then the</span></span><br><span class="line">            <span class="comment">// left-subtree of cur has been traversed, so we can</span></span><br><span class="line">            <span class="comment">// safely remove the link and print cur&#x27;s data </span></span><br><span class="line">            pre.right = <span class="keyword">null</span>;</span><br><span class="line">            System.out.println(cur.data);</span><br><span class="line">            cur = cur.right;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>PostOrder, time complexity: O(N) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   postOrder(root.left);</span><br><span class="line">   postOrder(root.right);</span><br><span class="line">   System.out.println(root.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   TreeNode pre = <span class="keyword">null</span>;</span><br><span class="line">   Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();      </span><br><span class="line">   <span class="keyword">while</span>(cur != <span class="keyword">null</span> || !stack.empty())&#123;</span><br><span class="line">      <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;				</span><br><span class="line">         stack.push(cur);</span><br><span class="line">         cur = cur.left;</span><br><span class="line">      &#125;</span><br><span class="line">      cur = stack.peek();</span><br><span class="line">      <span class="keyword">if</span>(cur.right == <span class="keyword">null</span> || cur.right == pre)&#123;</span><br><span class="line">         <span class="comment">// If no right subtree or we have visited the right subtree</span></span><br><span class="line">         System.out.println(cur.data);</span><br><span class="line">         stack.pop();</span><br><span class="line">         pre = cur;</span><br><span class="line">         cur = <span class="keyword">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">         <span class="comment">// Visit the right subtree</span></span><br><span class="line">         cur = cur.right;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>LevelOrder, time complexity: O(N) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">levelOrder</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">   queue.add(root);</span><br><span class="line">   <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">      TreeNode cur = queue.poll();</span><br><span class="line">      System.out.println(cur.data);</span><br><span class="line">      <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">         queue.add(cur.left);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">         queue.add(cur.right);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Height, time complexity: O(N)
+<ul>
+<li>Height of a node: the number of edges on the longest path from the
+node to a leaf <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">height</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> Math.max(height(root.left), height(root.right)) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Binary, time complexity: O(N) <em>(Assuming this meant "Depth")</em>
+<ul>
+<li>Depth of a node: the number of edges on the path from the node to
+the root <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == node) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">1</span> + depth(root, node.parent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>BST
+<ul>
+<li>Search, time complexity: on average O(H) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">search</span><span class="params">(TreeNode root, <span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span> || root.data == data) &#123;</span><br><span class="line">      <span class="keyword">return</span> root;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (root.data &gt; data) &#123;</span><br><span class="line">      <span class="keyword">return</span> search(root.left, data);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (root.data &lt; data) &#123;</span><br><span class="line">      <span class="keyword">return</span> search(root.right, data);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Minimum/Maximum time complexity: on average O(H) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">minimum</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   <span class="keyword">while</span> (cur.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">      cur = cur.left;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">maximum</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">   TreeNode cur = root;</span><br><span class="line">   <span class="keyword">while</span> (cur.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">      cur = cur.right;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Successor/Predecessor, time complexity: on average O(H)
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">successor</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> minimum(node.right);</span><br><span class="line">   &#125;</span><br><span class="line">   TreeNode cur = node;</span><br><span class="line">   <span class="keyword">while</span> (cur.parent != <span class="keyword">null</span> &amp;&amp; cur == cur.parent.right) &#123;</span><br><span class="line">      cur = cur.parent;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> cur.parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">predecessor</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> maximum(node.left);</span><br><span class="line">   &#125;</span><br><span class="line">   TreeNode cur = node;</span><br><span class="line">   <span class="keyword">while</span> (cur.parent != <span class="keyword">null</span> &amp;&amp; cur == cur.parent.left) &#123;</span><br><span class="line">      cur = cur.parent;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> cur.parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Insert, time complexity: on average O(H) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insert</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   TreeNode prev = <span class="keyword">null</span>;   <span class="comment">// prev is the parent of the inserted node</span></span><br><span class="line">   TreeNode cur = root;   <span class="comment">// cur is where node should be inserted</span></span><br><span class="line">   <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">      prev = cur;</span><br><span class="line">      <span class="keyword">if</span> (cur.data &gt; node.data) &#123;</span><br><span class="line">         cur = cur.left;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         cur = cur.right;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   node.parent = prev;</span><br><span class="line">   <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;  <span class="comment">// root is null, empty tree</span></span><br><span class="line">      root = node;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (prev.data &gt; node.data) &#123;</span><br><span class="line">         prev.left = node;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         prev.right = node;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insert</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      root = node;</span><br><span class="line">      <span class="keyword">return</span> root;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (root.data &gt; node.data) &#123;</span><br><span class="line">      TreeNode left = insert(root.left, node);</span><br><span class="line">      root.left = left;</span><br><span class="line">      left.parent  = root;</span><br><span class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.data &lt; node.data) &#123;</span><br><span class="line">      TreeNode right = insert(root.right, node);</span><br><span class="line">      root.right = right;</span><br><span class="line">      right.parent = root;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Delete, time complexity: on average O(H) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">delete</span><span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   TreeNode replace = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (node.left == <span class="keyword">null</span> ||node.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">      replace = node;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      replace = successor(node); </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// If replace is node, then child is the child of node or null, the following </span></span><br><span class="line">   <span class="comment">// code delete node, connect parent of node and child</span></span><br><span class="line">   <span class="comment">// If replace is not node, then child is the child of successor of node,</span></span><br><span class="line">   <span class="comment">// the following code delete successor, connect its parent and child </span></span><br><span class="line">   TreeNode child = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (replace.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">      child = replace.right;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      child = replace.left;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (child != <span class="keyword">null</span>) &#123;</span><br><span class="line">      child.parent = replace.parent;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (replace.parent == <span class="keyword">null</span>) &#123;</span><br><span class="line">      root = child;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (replace.equals(replace.parent.left)) &#123;</span><br><span class="line">         replace.parent.left = child;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         replace.parent.right = child;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (!replace.equals(node)) &#123;</span><br><span class="line">      node.data = replace.data;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">delete</span> <span class="params">(TreeNode root, TreeNode node)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (root.data &lt; node.data) &#123;</span><br><span class="line">      TreeNode right = delete(root.right, node);</span><br><span class="line">      root.right = right;</span><br><span class="line">      <span class="keyword">if</span> (right != <span class="keyword">null</span>) &#123;</span><br><span class="line">         right.parent = root;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.data &gt; node.data) &#123;</span><br><span class="line">      TreeNode left = delete(root.left, node);</span><br><span class="line">      root.left = left;</span><br><span class="line">      <span class="keyword">if</span> (left != <span class="keyword">null</span>) &#123;</span><br><span class="line">         left.parent = root;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> root.right;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> root.left;</span><br><span class="line">      &#125;</span><br><span class="line">      TreeNode successor = minimum(root.right);</span><br><span class="line">      root.data = successor.data;</span><br><span class="line">      root.right = delete(root.right, successor);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Sorting
+<ul>
+<li>Bubble sorting, time complexity: O(N^2) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n = arr.length;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">         <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = arr[j];</span><br><span class="line">            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">            arr[j + <span class="number">1</span>] = tmp;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span> disSwap = <span class="keyword">true</span>;</span><br><span class="line">   <span class="keyword">while</span> (disSwap) &#123;</span><br><span class="line">      disSwap = <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span> (a[i] &gt; a[i + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = a[i + <span class="number">1</span>];</span><br><span class="line">            a[i + <span class="number">1</span>] = a[i];</span><br><span class="line">            a[i] = tmp;</span><br><span class="line">            disSwap = <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Insertion sort, time complexity: O(N^2) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n = a.length;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> key = a[i];</span><br><span class="line">      <span class="keyword">int</span> j = i;</span><br><span class="line">      <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; a[j] &gt; key) &#123; <span class="comment">// Error in original HTML, should be a[j-1] &gt; key</span></span><br><span class="line">         a[j] = a[j-<span class="number">1</span>];             <span class="comment">// Error in original HTML, should be a[j] = a[j-1]</span></span><br><span class="line">         j = j - <span class="number">1</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      a[j] = key;                 <span class="comment">// Error in original HTML, should be a[j] = key</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Corrected version from typical insertion sort:</span></span><br><span class="line"><span class="comment">// public void insertionSort(int[] a) &#123;</span></span><br><span class="line"><span class="comment">//    int n = a.length;</span></span><br><span class="line"><span class="comment">//    for (int i = 1; i &lt; n; i++) &#123;</span></span><br><span class="line"><span class="comment">//       int key = a[i];</span></span><br><span class="line"><span class="comment">//       int j = i - 1;</span></span><br><span class="line"><span class="comment">//       while(j &gt;= 0 &amp;&amp; a[j] &gt; key) &#123;</span></span><br><span class="line"><span class="comment">//          a[j + 1] = a[j];</span></span><br><span class="line"><span class="comment">//          j = j - 1;</span></span><br><span class="line"><span class="comment">//       &#125;</span></span><br><span class="line"><span class="comment">//       a[j + 1] = key;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Selection sort, time complexity: O(N^2) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n = a.length;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> min = i;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(a[j] &lt; a[min]) &#123;</span><br><span class="line">            min = j;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> tmp = a[i];</span><br><span class="line">      a[i] = a[min];</span><br><span class="line">      a[min] = tmp; <span class="comment">// Error in original HTML: a[min] = tmp;] - removed trailing ]</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Shell sort, time complexity: O(N^2) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n = arr.length;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> gap = n / <span class="number">2</span>; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = gap; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> key = arr[i]; <span class="comment">// Error in original HTML: arr[gap]</span></span><br><span class="line">      <span class="keyword">int</span> j = i;</span><br><span class="line">      <span class="keyword">while</span> (j &gt;= gap &amp;&amp; arr[j - gap] &gt; key) &#123; <span class="comment">// Error in original HTML: arr[j] &gt; key and j-gap logic</span></span><br><span class="line">         arr[j] = arr[j - gap]; <span class="comment">// Error in original HTML: arr[j+gap] = arr[j]</span></span><br><span class="line">         j = j - gap;</span><br><span class="line">      &#125;</span><br><span class="line">      arr[j] = key; <span class="comment">// Error in original HTML: arr[j+gap] = key</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Corrected version from typical shell sort:</span></span><br><span class="line"><span class="comment">// public void shellSort(int[] arr) &#123;</span></span><br><span class="line"><span class="comment">//    int n = arr.length;</span></span><br><span class="line"><span class="comment">//    for (int gap = n / 2; gap &gt; 0; gap /= 2) &#123;</span></span><br><span class="line"><span class="comment">//       for (int i = gap; i &lt; n; i++) &#123;</span></span><br><span class="line"><span class="comment">//          int key = arr[i];</span></span><br><span class="line"><span class="comment">//          int j = i;</span></span><br><span class="line"><span class="comment">//          while (j &gt;= gap &amp;&amp; arr[j - gap] &gt; key) &#123;</span></span><br><span class="line"><span class="comment">//             arr[j] = arr[j - gap];</span></span><br><span class="line"><span class="comment">//             j -= gap;</span></span><br><span class="line"><span class="comment">//          &#125;</span></span><br><span class="line"><span class="comment">//          arr[j] = key;</span></span><br><span class="line"><span class="comment">//       &#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Merge sort, time complexity: O(NlogN) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n1 = mid - lo + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> n2 = hi - mid;</span><br><span class="line">    <span class="keyword">int</span>[] L = <span class="keyword">new</span> <span class="keyword">int</span>[n1]; <span class="comment">// L is arr[lo, ..., mid]</span></span><br><span class="line">    <span class="keyword">int</span>[] R = <span class="keyword">new</span> <span class="keyword">int</span>[n2]; <span class="comment">// R is arr[mid + 1, ..., hi]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n1; i++) &#123;</span><br><span class="line">       L[i] = arr[lo + i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n2; j++) &#123;</span><br><span class="line">       R[j] = arr[mid + <span class="number">1</span> + j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = lo;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; n1 &amp;&amp; j &lt; n2) &#123;</span><br><span class="line">       <span class="keyword">if</span> (L[i] &lt;= R[j]) &#123;</span><br><span class="line">          arr[k] = L[i];</span><br><span class="line">          i += <span class="number">1</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          arr[k] = R[j];</span><br><span class="line">          j += <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       k += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; n1) &#123;</span><br><span class="line">       arr[k] = L[i];</span><br><span class="line">       i += <span class="number">1</span>;</span><br><span class="line">       k += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; n2) &#123;</span><br><span class="line">       arr[k] = R[j];</span><br><span class="line">       j += <span class="number">1</span>;</span><br><span class="line">       k += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mergeSortInner</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123; <span class="comment">// Error in HTML: mergeSortInner(int arr, ...)</span></span><br><span class="line">  <span class="keyword">if</span> (lo &gt;= hi) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">  mergeSortInner(arr, lo, mid);</span><br><span class="line">  mergeSortInner(arr, mid + <span class="number">1</span> , hi);</span><br><span class="line">  merge(arr, lo, mid, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = arr.length;</span><br><span class="line">  mergeSortInner(arr, <span class="number">0</span>, n - <span class="number">1</span>); <span class="comment">// Error in HTML: mergeSortHelper</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Quick sort, time complexity: O(NlogN) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123; <span class="comment">// Error in HTML: void partition(...)</span></span><br><span class="line">   <span class="keyword">int</span> x = arr[lo];</span><br><span class="line">   <span class="keyword">int</span> i = lo;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> j = lo + <span class="number">1</span>; j &lt;= hi; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &lt;= x) &#123;</span><br><span class="line">         i += <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">int</span> tmp = arr[i];</span><br><span class="line">         arr[i] = arr[j];</span><br><span class="line">         arr[j] = tmp; <span class="comment">// Error in HTML: arr[j] = arr[i]</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> tmp = arr[i];</span><br><span class="line">   arr[i] = arr[lo];</span><br><span class="line">   arr[lo] = tmp;</span><br><span class="line">   <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">quickSortInner</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (lo &gt;= hi) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> x = partition(arr, lo, hi);</span><br><span class="line">   quickSortInner(arr, lo, x - <span class="number">1</span>);</span><br><span class="line">   quickSortInner(arr, x + <span class="number">1</span>, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n = arr.length;</span><br><span class="line">   quickSortInner(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Heap
+<ul>
+<li>Max heap implementation with a 0-indexed array with length n</li>
+<li>Parent, time complexity: <span class="math inline">\(O(1)\)</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">parent</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> (index - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Left child, time complexity: <span class="math inline">\(O(1)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">leftChild</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (<span class="number">2</span> * index + <span class="number">1</span> &gt;= n) &#123; <span class="comment">// n needs to be defined (class member or passed)</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">2</span> * index + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Right child, time complexity: <span class="math inline">\(O(1)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rightChild</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (<span class="number">2</span> * index + <span class="number">2</span> &gt;= n) &#123; <span class="comment">// n needs to be defined</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">2</span> * index + <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Heapify-up, time complexity: <span class="math inline">\(O(logN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapifyUp</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">while</span> (index &gt; <span class="number">0</span> &amp;&amp; arr[parent(index)] &lt; arr[index]) &#123; <span class="comment">// Assumes parent() is accessible</span></span><br><span class="line">      <span class="keyword">int</span> tmp = arr[parent(index)];</span><br><span class="line">      arr[parent(index)] = arr[index];</span><br><span class="line">      arr[index] = tmp;</span><br><span class="line">      index = parent(index);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Heapify-down, time complexity: <span class="math inline">\(O(logN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapifyDown</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> left = leftChild(index); <span class="comment">// Assumes leftChild() is accessible and uses &#x27;n&#x27; correctly</span></span><br><span class="line">   <span class="keyword">int</span> right = rightChild(index); <span class="comment">// Assumes rightChild() is accessible and uses &#x27;n&#x27; correctly</span></span><br><span class="line">   <span class="keyword">int</span> largest = index;</span><br><span class="line">   <span class="keyword">if</span> (left &lt; n &amp;&amp; arr[left] &gt; arr[largest]) &#123;</span><br><span class="line">      largest = left;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (right &lt; n &amp;&amp; arr[right] &gt; arr[largest]) &#123;</span><br><span class="line">      largest = right;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (largest != index) &#123;</span><br><span class="line">      <span class="keyword">int</span> tmp = arr[index];</span><br><span class="line">      arr[index] = arr[largest];</span><br><span class="line">      arr[largest] = tmp;</span><br><span class="line">      heapifyDown(arr, n, largest);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Build-max-heap from array, time complexity: <span class="math inline">\(O(N)\)</span>
+<ul>
+<li>Consider <span class="math inline">\(n = 2^{h + 1} - 1\)</span>,
+which is a heap with <span class="math inline">\(n\)</span> nodes and
+height <span class="math inline">\(h\)</span> (root at level 0). At
+level <span class="math inline">\(h\)</span>, there are <span class="math inline">\(2^h\)</span> nodes but no shift down is needed, at
+level <span class="math inline">\(h - 1\)</span>, there are <span class="math inline">\(2^{h - 1}\)</span> nodes, and at most one shift
+down for each node, so the total is <span class="math inline">\(T(n) =
+\sum\limits_{j = 0} ^{h} j2^{h-j} \leq \sum\limits_{j = 0} ^{\infty}
+j2^{h-j} = n + 1 = O(n)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildMaxHeap</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">   n = arr.length; <span class="comment">// n should be a class member or handled consistently</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = n / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      heapifyDown(arr, n, i); <span class="comment">// Error in HTML: heapifyDown(arr, i) - n is needed</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Insert, time complexity: <span class="math inline">\(O(NlogN)\)</span> <em>(This is actually O(logN)
+for inserting one item into an existing heap, or O(NlogN) for building a
+heap by N insertions)</em> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> item)</span> </span>&#123; <span class="comment">// Error in HTML: (int arr, int item)</span></span><br><span class="line">   heapSize += <span class="number">1</span>; <span class="comment">// heapSize needs to be defined (class member)</span></span><br><span class="line">   <span class="keyword">int</span> index = heapSize - <span class="number">1</span>;</span><br><span class="line">   <span class="comment">// insert item at then end, then heapify up</span></span><br><span class="line">   arr[index] = item;</span><br><span class="line">   heapifyUp(arr, index); <span class="comment">// Assumes heapifyUp is accessible</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Delete max, time complexity: <span class="math inline">\(O(NlogN)\)</span> <em>(This is actually O(logN)
+for deleting max from an existing heap)</em> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteMin</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> item)</span> </span>&#123; <span class="comment">// Error in HTML: (int arr, int item), method name suggests min but it&#x27;s max heap</span></span><br><span class="line">   <span class="keyword">int</span> max = arr[<span class="number">0</span>];</span><br><span class="line">   <span class="comment">// swap the maximum with the last one, then heapify down</span></span><br><span class="line">   arr[<span class="number">0</span>] = arr[heapSize - <span class="number">1</span>]; <span class="comment">// heapSize needs to be defined</span></span><br><span class="line">   heapSize -= <span class="number">1</span>;</span><br><span class="line">   heapifyDown(arr, heapSize, <span class="number">0</span>); <span class="comment">// Assumes heapifyDown is accessible</span></span><br><span class="line">   <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Heap-sort, time complexity: <span class="math inline">\(O(NlogN)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123; <span class="comment">// Error in HTML: public heapSort(...)</span></span><br><span class="line">   <span class="comment">// build a max heap</span></span><br><span class="line">   buildMaxHeap(arr); <span class="comment">// Assumes buildMaxHeap is accessible</span></span><br><span class="line">   <span class="keyword">int</span> n_orig = arr.length; <span class="comment">// Store original length if heapSize is modified</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = n_orig - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// swap the largest to the last one, reduce heap size, then heapify down</span></span><br><span class="line">      <span class="keyword">int</span> tmp = arr[<span class="number">0</span>];</span><br><span class="line">      arr[<span class="number">0</span>] = arr[i];</span><br><span class="line">      arr[i] = tmp;</span><br><span class="line">      heapifyDown(arr, i, <span class="number">0</span>); <span class="comment">// Error in HTML: heapifyDown(arr, i - 1, 0) - &#x27;i&#x27; is the new size</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Graph
+<ul>
+<li>BFS, time complexity: <span class="math inline">\(O(V + E)\)</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">   queue.add(s);</span><br><span class="line">   visited[s] = <span class="keyword">true</span>;</span><br><span class="line">   <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = queue.poll();</span><br><span class="line">      <span class="comment">// do something with v</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">         <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">            queue.add(w);</span><br><span class="line">            visited[w] = <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Dijkstra, time complexity: <span class="math inline">\(O((V +
+E)logV)\)</span> with PriorityQueue, <span class="math inline">\(O(V^2)\)</span> with array <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">int</span>[] dijkstra(Graph G, <span class="keyword">int</span> src) &#123; <span class="comment">// Error in HTML: dijkstra(G, int src)</span></span><br><span class="line">   <span class="keyword">int</span>[] dist = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">   <span class="comment">// prev[i] is the previous vertex of vertex i in the shortest path from src to i</span></span><br><span class="line">   <span class="comment">// path from src to i is prev[i] -&gt; prev[prev[i]] -&gt; ... -&gt; src</span></span><br><span class="line">   <span class="keyword">int</span>[] prev = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">     dist[i] = Integer.MAX_VALUE;</span><br><span class="line">     prev[i] = -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   dist[src] = <span class="number">0</span>;</span><br><span class="line">   <span class="comment">// prev[i] = -1; // Error in HTML: prev[src] should likely be -1 or self, or this line is redundant with loop</span></span><br><span class="line">   PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(G.V(), <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer a, Integer b)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> dist[a] - dist[b];</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">     pq.add(i); <span class="comment">// Error in HTML: pq.enqueue(i, dist[i]); -&gt; PriorityQueue uses add, and sorts based on comparator</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">while</span> (!pq.isEmpty()) &#123; <span class="comment">// Error in HTML: pq.isEmpty()</span></span><br><span class="line">     <span class="keyword">int</span> u = pq.remove();</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> v: G.adj(u)) &#123;</span><br><span class="line">       <span class="keyword">if</span> (dist[v] &gt; dist[u] + G.weight(u, v)) &#123; <span class="comment">// Assumes G.weight(u,v)</span></span><br><span class="line">         dist[v] = dist[u] + G.weight(u, v);</span><br><span class="line">         prev[v] = u;</span><br><span class="line">         <span class="comment">// For PQ to re-prioritize, you&#x27;d typically remove and re-add &#x27;v&#x27; if it&#x27;s already in.</span></span><br><span class="line">         <span class="comment">// A common way is to allow duplicates and pick the one with min distance,</span></span><br><span class="line">         <span class="comment">// or use a structure that supports decrease-key.</span></span><br><span class="line">         <span class="comment">// Simple PQs in Java don&#x27;t directly support decrease-key well.</span></span><br><span class="line">         <span class="comment">// So, this part might need more context on the PQ implementation.</span></span><br><span class="line">         <span class="comment">// If using Java&#x27;s built-in PQ, you might just add a new entry:</span></span><br><span class="line">         <span class="comment">// pq.remove(v); // if present</span></span><br><span class="line">         <span class="comment">// pq.add(v); </span></span><br><span class="line">         <span class="comment">// Or, more simply, just add and let the check `if (dist[v] &gt; ...)` handle outdated entries later.</span></span><br><span class="line">         <span class="comment">// For this simple conversion, I&#x27;ll assume the logic is mostly correct for a conceptual PQ.</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> dist;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DFS, time complexity: <span class="math inline">\(O(V + E)\)</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">   stack.push(s);</span><br><span class="line">   <span class="comment">// visited[s] = true; // Often marked when popped or pushed, depends on style</span></span><br><span class="line">   <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = stack.pop();</span><br><span class="line">      <span class="keyword">if</span> (!visited[v]) &#123; <span class="comment">// Process only if not visited</span></span><br><span class="line">          visited[v] = <span class="keyword">true</span>;</span><br><span class="line">          <span class="comment">// do something with v</span></span><br><span class="line">          <span class="comment">// Add neighbors in reverse order if you want to mimic recursive DFS visit order</span></span><br><span class="line">          List&lt;Integer&gt; neighbors = G.adj(v); <span class="comment">// Assuming adj returns a list</span></span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = neighbors.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">              <span class="keyword">int</span> w = neighbors.get(i);</span><br><span class="line">              <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">                 stack.push(w);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   dfs(G, s, visited);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v, <span class="keyword">boolean</span>[] visited)</span> </span>&#123;</span><br><span class="line">   visited[v] = <span class="keyword">true</span>;</span><br><span class="line">   <span class="comment">// do something with v (usually here in recursive)</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">         dfs(G, w, visited);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Find cycle in undirected graph, time complexity: <span class="math inline">\(O(V + E)\)</span>
+<ul>
+<li>Idea: if we can reach w from v in different ways, then there must be
+a cycle <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt; G.V(); s++) &#123; <span class="comment">// Error in HTML: i &lt; G.V()</span></span><br><span class="line">      <span class="keyword">if</span> (!visited[s]) &#123;</span><br><span class="line">         <span class="keyword">if</span> (hasCycle(G, s, -<span class="number">1</span>, visited)) &#123; <span class="comment">// Parent of start node is -1 (or some invalid node)</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(Graph G, <span class="keyword">int</span> v, <span class="keyword">int</span> u, <span class="keyword">boolean</span>[] visited)</span> </span>&#123; <span class="comment">// u is parent</span></span><br><span class="line">   visited[v] = <span class="keyword">true</span>;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">         <span class="keyword">if</span> (hasCycle(G, w, v, visited)) <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">// Propagate true</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (w != u) &#123; <span class="comment">// Visited and not parent</span></span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Find cycle in directed graph, time complexity: <span class="math inline">\(O(V + E)\)</span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">boolean</span>[] onStack = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()]; <span class="comment">// recursion stack</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">      onStack[i] = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123; <span class="comment">// Error in HTML: G.B()</span></span><br><span class="line">      <span class="keyword">if</span> (!visited[i]) &#123;</span><br><span class="line">         <span class="keyword">if</span> (hasCycle(G, i, visited, onStack)) &#123; <span class="comment">// Removed u (parent), not needed for directed cycle with onStack</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(Graph G, <span class="keyword">int</span> v, <span class="keyword">boolean</span>[] visited, <span class="keyword">boolean</span>[] onStack)</span> </span>&#123; <span class="comment">// Removed u</span></span><br><span class="line">   visited[v] = <span class="keyword">true</span>;</span><br><span class="line">   onStack[v] = <span class="keyword">true</span>;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">         <span class="keyword">if</span> (hasCycle(G, w, visited, onStack)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (onStack[w]) &#123; <span class="comment">// Found a back edge to a node on current recursion stack</span></span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   onStack[v] = <span class="keyword">false</span>; <span class="comment">// Remove from recursion stack before returning</span></span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Find SCC in directed graphs, time complexity: <span class="math inline">\(O(V + E)\)</span> (Kosaraju's or Tarjan's, this
+looks like a simpler connected components for undirected or wrongly
+applied DFS for SCC) <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This is a standard DFS-based connected components algorithm,</span></span><br><span class="line"><span class="comment">// NOT for Strongly Connected Components in a DIRECTED graph.</span></span><br><span class="line"><span class="comment">// For SCC, you&#x27;d typically use Kosaraju&#x27;s or Tarjan&#x27;s algorithm.</span></span><br><span class="line"><span class="comment">// Assuming it was intended as a general component counter for an undirected graph, or a misremembered SCC approach.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">scc</span><span class="params">(Graph G)</span> </span>&#123; <span class="comment">// Method name implies SCC</span></span><br><span class="line">   <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">   <span class="keyword">int</span>[] id = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()]; <span class="comment">// component id for each vertex</span></span><br><span class="line">   <span class="keyword">int</span> count = <span class="number">0</span>; <span class="comment">// number of components</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      visited[i] = <span class="keyword">false</span>;</span><br><span class="line">      id[i] = -<span class="number">1</span>; <span class="comment">// Initialize component id</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.V(); i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited[i]) &#123;</span><br><span class="line">         dfs_scc(G, i, visited, id, count); <span class="comment">// Changed method name to avoid conflict</span></span><br><span class="line">         count += <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs_scc</span><span class="params">(Graph G, <span class="keyword">int</span> v, <span class="keyword">boolean</span>[] visited, <span class="keyword">int</span>[] id, <span class="keyword">int</span> current_component_id)</span> </span>&#123;</span><br><span class="line">   visited[v] = <span class="keyword">true</span>;</span><br><span class="line">   id[v] = current_component_id;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">         dfs_scc(G, w, visited, id, current_component_id);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/11/15/LeetCode-Notes/" title="LeetCode Notes">https://yanxuanshaozhu.github.io/2021/11/15/LeetCode-Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/12/Common-Java-And-Python-API/" rel="prev" title="Common Java And Python API">
+      <i class="fa fa-chevron-left"></i> Common Java And Python API
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/01/CMU-15-213-Notes/" rel="next" title="CMU 15-213 Notes">
+      CMU 15-213 Notes <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-data-structures"><span class="nav-number">1.</span> <span class="nav-text">Basic Data Structures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">2.</span> <span class="nav-text">Template</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

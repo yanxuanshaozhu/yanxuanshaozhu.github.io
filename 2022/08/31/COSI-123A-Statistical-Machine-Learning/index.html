@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 123A Statistical Machine Learning">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/08/31/COSI-123A-Statistical-Machine-Learning/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Introduction">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-31T12:55:58.000Z">
+<meta property="article:modified_time" content="2022-10-11T16:13:28.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-123A-Statistical-Machine-Learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 123A Statistical Machine Learning | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-123A-Statistical-Machine-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 123A Statistical Machine Learning
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-31 08:55:58" itemprop="dateCreated datePublished" datetime="2022-08-31T08:55:58-04:00">2022-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-11 12:13:28" itemprop="dateModified" datetime="2022-10-11T12:13:28-04:00">2022-10-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>5 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<span id="more"></span>
+<ol type="1">
+<li>Introduction</li>
+</ol>
+<h1 id="background-concepts">Background Concepts</h1>
+<ol type="1">
+<li>Random variables</li>
+<li>Probability
+<ul>
+<li>Bayes' theorem</li>
+<li>Chain rule</li>
+<li>Independent</li>
+<li>Conditional independent</li>
+</ul></li>
+<li>Probability distribution
+<ul>
+<li>Gaussian</li>
+<li>Bernoulli</li>
+<li>Binomial</li>
+</ul></li>
+<li>Descriptive statistics
+<ul>
+<li>Expectation</li>
+<li>Variance</li>
+<li>Covariance</li>
+</ul></li>
+<li>Entropy
+<ul>
+<li>Definition <span class="math inline">\(H[x] =
+-\sum\limits_{x}p(x)log_{x}p(x)\)</span></li>
+<li>Important in coding theory, statistical physics, machine
+learning</li>
+<li>Conditional entropy:
+<ul>
+<li>Definition: <span class="math inline">\(H[Y|X] =
+-\sum\limits_{x}\sum\limits_{y}p(x,y)log_{2}(p(y|x))\)</span>, or <span class="math inline">\(H[Y|X] = -\int\limits_{x}\int\limits_{y}
+p(x,y)log_{2}(p(y|x))dxdy\)</span></li>
+<li>Property: <span class="math inline">\(H[X, Y] = H[x] + H[Y|X] = H[Y]
++ H[X|Y]\)</span></li>
+</ul></li>
+<li>Mutual information
+<ul>
+<li>Definition: <span class="math inline">\(I[X,Y] =
+-\sum\limits_{x}\sum\limits_{y}p(x,y)log_{2}(\frac{p(x)p(y)}{p(x,y)}))\)</span>,
+or <span class="math inline">\(U[X,Y] =
+-\int\limits_{x}\int\limits_{y}p(x,y)log_{2}(\frac{p(x)p(y)}{p(x,y)}))dxdy\)</span></li>
+<li>Property: <span class="math inline">\(I[X,Y] = H[X] - H[X|Y] = H[Y]
+- H[Y|X]\)</span></li>
+</ul></li>
+</ul></li>
+<li>Kullback-Leibler Divergence
+<ul>
+<li>Definition: <span class="math inline">\(KL(p(x)||q(x)) =
+\int\limits_{x} p(x)log(\frac{p(x)}{q(x)}) = -\int\limits_{x}
+p(x)log(\frac{q(x)}{p(x)})\)</span></li>
+<li>Property: <span class="math inline">\(KL(p(x)||q(x)) \ne
+KL(q(x)||p(x))\)</span></li>
+<li>Property: <span class="math inline">\(I[X,Y] =
+KL(p(x,y)||p(x)p(y))\)</span></li>
+</ul></li>
+<li>Convex and concave functions</li>
+<li>Vector, vector operations, matrix, matrix multiplication</li>
+<li>Matrix calculus
+<ul>
+<li><span class="math inline">\(\frac{\partial (a \vec{x} + b)}{\partial
+\vec{x}} = a\)</span></li>
+<li><span class="math inline">\(\frac{\partial (\vec{a}^{T}
+\vec{x})}{\partial \vec{x}} = \vec{a}^{T}\)</span></li>
+<li><span class="math inline">\(\frac{\partial (\vec{x}^{T} \vec{a}
+)}{\partial \vec{x}} = \vec{a}^{T}\)</span></li>
+<li><span class="math inline">\(\frac{\partial (\vec{x}^{T}
+\vec{x})}{\partial \vec{x}} = 2\vec{x}^{T}\)</span></li>
+<li><span class="math inline">\(\frac{\partial A\vec{x}}{\vec{x}} =
+A\)</span></li>
+<li><span class="math inline">\(\frac{\partial \vec{x}^{T}A}{\vec{x}} =
+A^{T}\)</span></li>
+</ul></li>
+<li>Function approximation
+<ul>
+<li><span class="math inline">\(y = f(x;\vec{w}) =
+\sum\limits_{i=0}^{M}w_{i}x^{i} = \vec{w}x\)</span></li>
+<li>Sum of square error(SSE) = <span class="math inline">\(E_{ss}(\vec{w}) =
+\frac{1}{2}\sum\limits_{n=1}^{N}[f(x_{n};\vec{w}) -
+y_{n}]^{2}\)</span></li>
+<li>Root-mean-square error(RMSE) = <span class="math inline">\(\sqrt{\frac{\sum\limits_{n=1}^{N}[f(x_{n};\vec{w})
+- y_{n}]^2}{N}}\)</span></li>
+</ul></li>
+<li>Model selection
+<ul>
+<li>Select a model that fits data well and is as simple as possible</li>
+</ul></li>
+</ol>
+<h1 id="linear-regression-and-logistic-regression">Linear Regression and
+Logistic Regression</h1>
+<ol type="1">
+<li>Regression models
+<ul>
+<li>Answer what is the relationship between dependent variable and the
+independent variables</li>
+<li>Given a dataset <span class="math inline">\(\{&lt;\vec{x_{n},
+y_n}&gt;\}\)</span>, where <span class="math inline">\(\vec{x_n} \in
+\mathbb{R}^{n}\)</span>, and <span class="math inline">\(y_n \in
+\mathbb{R}\)</span>, build a function <span class="math inline">\(f(\vec{x};\vec{w})\)</span> to predict the output
+of a new sample <span class="math inline">\(\vec{x}\)</span></li>
+</ul></li>
+<li>Linear model
+<ul>
+<li>Estimate parameters
+<ul>
+<li><span class="math inline">\(f(\vec{x},\vec{w}) =
+\vec{w}^{T}\vec{x}\)</span></li>
+<li>Err = <span class="math inline">\(\sum\limits_{n=1}^{N}(y-f(\vec{x}_n, \vec{w}))^2 =
+(\vec{y}- X\vec{w})^{T}(\vec{y}- X\vec{w})\)</span></li>
+<li>Solution: if X is full rank, then <span class="math inline">\(\vec{w} = (X^{T}X)^{-1}X^{T}\vec{y}\)</span></li>
+<li>If <span class="math inline">\((X^{T}X)\)</span> is singular, then
+there are features that are linear combinations of other features, so we
+need to reduce the amount of features to make <span class="math inline">\((X^{T}X)\)</span> full rank</li>
+</ul></li>
+</ul></li>
+<li>Linear basis function model
+<ul>
+<li>Replace <span class="math inline">\(f(\vec{x};\vec{w}) = w_0 + ...
++w_{d}x_{d}\)</span> with <span class="math inline">\(f(\vec{x};\vec{w})
+= w_0 + ... +w_{m}h_{m}(\vec{x})\)</span></li>
+<li><span class="math inline">\(\{h_{i}(\vec{x})\}\)</span> is a set of
+non-linear basis functions/kernel functions</li>
+</ul></li>
+<li>Logistic regression &amp; classification
+<ul>
+<li><span class="math inline">\(f(\vec{x};\vec{w}) = \frac{1}{1 +
+e^{\vec{w}^{T}\vec{x}}}\)</span></li>
+<li>Let <span class="math inline">\(P(1|\vec{x};\vec{w}) =
+f(\vec{x},\vec{w})\)</span>, <span class="math inline">\(P(0|\vec{x};\vec{w}) = 1 -
+f(\vec{x},\vec{w})\)</span>,</li>
+<li>Classification rule: assign <span class="math inline">\(\vec{x}\)</span> to class 1 if <span class="math inline">\(P(1|\vec{x};\vec{w}) &gt;
+P(0|\vec{x};\vec{w})\)</span>, otherwise assign <span class="math inline">\(\vec{x}\)</span> to class 0</li>
+<li><span class="math inline">\(logit(\vec{x};\vec{w}) =
+log(\frac{P(1|\vec{x};\vec{w})}{P(0|\vec{x};\vec{w})}) =
+\vec{w}^{T}\vec{x}\)</span></li>
+</ul></li>
+</ol>
+<h1 id="principal-component-analysis">Principal Component Analysis</h1>
+<h1 id="linear-discriminant-analysis">Linear Discriminant Analysis</h1>
+<h1 id="bayesian-decision-theory">Bayesian Decision Theory</h1>
+<ol type="1">
+<li>Formula
+<ul>
+<li>Given state <span class="math inline">\(S \in \{s_1, ...,
+s_M\}\)</span>.</li>
+<li>Let decision <span class="math inline">\(A \in \{a_1, ...,
+a_N\}\)</span>.</li>
+<li>Cost function <span class="math inline">\(C(a_i|s_k)\)</span> is the
+loss incurred for taking <span class="math inline">\(A = a_i\)</span>
+when <span class="math inline">\(S = s_k\)</span>.</li>
+<li><span class="math inline">\(P(s_k)\)</span> is the prior probability
+of <span class="math inline">\(S = s_k\)</span>.</li>
+<li>Let observation be represented as a feature vector <span class="math inline">\(\vec{x}\)</span>.</li>
+<li><span class="math inline">\(P(\vec{x}|s_k)\)</span> is the
+probability for <span class="math inline">\(\vec{x}\)</span> conditioned
+on <span class="math inline">\(s_k\)</span> being the true state</li>
+<li>Expected loss before observing <span class="math inline">\(\vec{x}\)</span>: <span class="math inline">\(R(a_i) = \sum\limits_{k =
+1}^{M}C(a_i|s_k)P(s_k)\)</span>.</li>
+<li>Expected loss after observing <span class="math inline">\(\vec{x}\)</span>: <span class="math inline">\(R(a_i|\vec{x}) = \sum\limits_{k =
+1}^{M}C(a_i|s_k)P(s_k|\vec{x})\)</span>.</li>
+</ul></li>
+<li>Bayesian risk
+<ul>
+<li>A decision function <span class="math inline">\(D(x)\)</span> maps
+from an observation <span class="math inline">\(\vec{x}\)</span> to a
+decision/action.</li>
+<li>The total risk of a decision function is given by
+<ul>
+<li>Discrete: <span class="math inline">\(E_{P(\vec{x})} =
+[R(D(\vec{x})|\vec{x})] =
+E_{\vec{x}}[R(D(\vec{x})|\vec{x})]P(\vec{x})\)</span></li>
+<li>Discrete: <span class="math inline">\(E_{P(\vec{x})} =
+[R(D(\vec{x})|\vec{x})] =
+\int_{\vec{x}}[R(D(\vec{x})|\vec{x})]P(\vec{x})\)</span></li>
+</ul></li>
+<li>A decision function is optimal if it minimizes the total risk. This
+optimal total risk is called Bayes risk.</li>
+</ul></li>
+<li>Two-class Bayes Classifier
+<ul>
+<li>Let <span class="math inline">\(M = 2\)</span>, and compare <span class="math inline">\(R(a_1|\vec{x})\)</span> with <span class="math inline">\(R(a_2|\vec{x})\)</span></li>
+<li>We can derive <span class="math inline">\(R(a_1|\vec{x}) &lt;
+R(a_2|\vec{x}) \iff \frac{P(\vec{x}|s_1)}{P(\vec{x}|s_2)} &gt;
+\frac{P(s_2)[C(a_1|s_2) - C(a_2|s_2)]}{P(s_1)[C(a_2|s_1) -
+C(a_1|s_1)]}\)</span>, which is likelihood ration &gt; constant
+threshold</li>
+<li>Also we notice that <span class="math inline">\(\frac{P(\vec{x}|s_1)}{P(\vec{x}|s_2)} \propto
+\frac{P(s_1|\vec{x})}{P(s_2|\vec{x})}\)</span>, which is likelihood
+ratio is proportional to posterior ratio</li>
+</ul></li>
+<li>Minimum-error-rate classification
+<ul>
+<li>Consider the following cost function: <span class="math inline">\(D_{it} =  \begin{cases}  0, &amp; i = j\\  1 &amp;
+i \ne j  \end{cases}\)</span></li>
+<li>To minimize the average probability of error, we should select <span class="math inline">\(s_i\)</span> with the maximal posterior
+probability <span class="math inline">\(P(s_i|\vec{x})\)</span></li>
+<li>Classify <span class="math inline">\(\vec{x}\)</span> as <span class="math inline">\(s_i\)</span> if <span class="math inline">\(P(s_i|\vec{x}) &gt; P(s_j|\vec{x})\)</span> for
+<span class="math inline">\(\forall j \ne i\)</span></li>
+</ul></li>
+<li>Classifiers and discriminant functions
+<ul>
+<li>A pattern classifier can be represented by a set of discriminant
+functions <span class="math inline">\(\{g_{i}(\vec{x})\}\)</span></li>
+<li>The classifier assigns a sample <span class="math inline">\(\vec{x}\)</span> to <span class="math inline">\(s_j\)</span> if <span class="math inline">\(g_{i}(\vec{x}) &lt; g_{j}(\vec{x})\)</span> for
+<span class="math inline">\(\forall j \ne i\)</span></li>
+<li>If we replace every <span class="math inline">\(g_{i}(\vec{x})\)</span> by <span class="math inline">\(f(g_{i}(\vec{x}))\)</span>, where f is a
+monotonically increasing function, the resulting classification is
+unchanged</li>
+<li>A classifier that uses linear discriminant functions is called a
+linear classifier</li>
+</ul></li>
+</ol>
+<h1 id="maximum-likelihood-estimation-mle-and-the-expectation-and-maximization-em-algorithm">Maximum
+Likelihood Estimation (MLE) and the Expectation and Maximization (EM)
+Algorithm</h1>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-123A-Statistical-Machine-Learning/" title="COSI 123A Statistical Machine Learning">https://yanxuanshaozhu.github.io/2022/08/31/COSI-123A-Statistical-Machine-Learning/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/14/JavaWeb-Review/" rel="prev" title="JavaWeb Review">
+      <i class="fa fa-chevron-left"></i> JavaWeb Review
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/31/COSI-130A-Theory-of-Computation/" rel="next" title="COSI 130A Theory of Computation">
+      COSI 130A Theory of Computation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#background-concepts"><span class="nav-number">2.</span> <span class="nav-text">Background Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-regression-and-logistic-regression"><span class="nav-number">3.</span> <span class="nav-text">Linear Regression and
+Logistic Regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#principal-component-analysis"><span class="nav-number">4.</span> <span class="nav-text">Principal Component Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-discriminant-analysis"><span class="nav-number">5.</span> <span class="nav-text">Linear Discriminant Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bayesian-decision-theory"><span class="nav-number">6.</span> <span class="nav-text">Bayesian Decision Theory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maximum-likelihood-estimation-mle-and-the-expectation-and-maximization-em-algorithm"><span class="nav-number">7.</span> <span class="nav-text">Maximum
+Likelihood Estimation (MLE) and the Expectation and Maximization (EM)
+Algorithm</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

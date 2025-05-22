@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="About Next.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NextJS Review">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/10/18/NextJS-Review/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="About Next.js">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-18T04:45:38.000Z">
+<meta property="article:modified_time" content="2023-03-23T16:47:23.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Next.js">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/10/18/NextJS-Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>NextJS Review | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/10/18/NextJS-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NextJS Review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-10-18 00:45:38" itemprop="dateCreated datePublished" datetime="2022-10-18T00:45:38-04:00">2022-10-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-03-23 12:47:23" itemprop="dateModified" datetime="2023-03-23T12:47:23-04:00">2023-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>13 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="about-next.js">About Next.js</h2>
+<span id="more"></span>
+<ol type="1">
+<li>React is a JavaScript library for building interactive user
+interfaces.</li>
+<li>Next.js is a React framework that gives you building blocks to
+create web applications.</li>
+</ol>
+<h2 id="from-javascript-to-react">From JavaScript to React</h2>
+<ol type="1">
+<li>Rendering user interfaces
+<ul>
+<li>Browser reads HTML to create DOM( an object representation of the
+HTML elements, acts an bridge between code and the UI)</li>
+<li>You can use DOM methods and a programming language to listen to user
+events and manipulation the DOM by selecting, adding, updating, and
+deleting elements in the UI.</li>
+</ul></li>
+<li>Updating the UI with JavaScript and DOM methods
+<ul>
+<li>HTML represents the initial page content, DOM represents the updated
+page content, so they can be different</li>
+<li>Imperative programming gives steps, declarative programming gives
+the result</li>
+<li>React is a declarative UI library: you can tell React what you want
+to happen to the user interface, and React will figure ou the steps how
+to update the DOM on your behalf</li>
+</ul></li>
+<li>Getting started with React
+<ul>
+<li>Use the following script to include React in your page
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@17/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><code>react</code> is the core React library</li>
+<li><code>react-dom</code> provides DOM-specific methods that enable you
+to use React with the DOM</li>
+<li>You cannot directly write HTML in JavaScript, you need to do so with
+JSX</li>
+<li>JSX is a syntax extension for JavaScript that allows you to describe
+your UI in a familiar HTML-like syntax. Apart from the three JSX rules,
+you do not need to learn any new symbols or syntax outside of HTML and
+JavaScript</li>
+<li>Three rules of JSX:
+<ul>
+<li>Return a single root element</li>
+<li>Close all the tags: self-closing tags like <code>&lt;img&gt;</code>
+should be <code>&lt;img /&gt;</code></li>
+<li>Use camelCase all most of the things</li>
+</ul></li>
+<li>Browsers do not understand JSX, so you need to provide a JavaScript
+compiler to transform JSX code into regular JavaScript. Also use
+<code>&lt;script type="text\jsx"&gt;</code> instead of
+<code>&lt;script&gt;</code> to tell the compiler that the code is JSX
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Include the Babel compiler --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><code>ReactDOM.render(element, container[, callback])</code></li>
+</ul></li>
+<li>Essential JavaScript for React: omitted</li>
+<li>React Core Components
+<ul>
+<li>Components</li>
+<li>Props</li>
+<li>State</li>
+</ul></li>
+<li>Building UI with components
+<ul>
+<li>UI can be broken into smaller building blocks called components</li>
+<li>Components allow you to build self-contained, reusable snippets of
+code</li>
+<li>Components are JavaScript functions that return UI elements</li>
+<li>React components should be capitalized and wrapped with angle
+brackets</li>
+<li>Nesting components is possible <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/jsx&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;app&#x27;</span>);</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> Header = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> HomePage = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">Header</span> /&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Welcome to my website!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      );</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span>, app);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Displaying data with props
+<ul>
+<li>You can pass data to components using props</li>
+<li><code>props</code> is an object</li>
+<li>Use curly braces to access variable in JSX <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/jsx&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div1&#x27;</span>);</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> HomePage = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span></span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> props = &#123;</span></span><br><span class="line"><span class="javascript">            title: <span class="string">&quot;Hello world!&quot;</span>,</span></span><br><span class="line"><span class="javascript">            info: <span class="string">&quot;This is a test page.&quot;</span></span></span><br><span class="line">         &#125;</span><br><span class="line"><span class="javascript">         <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">Header</span> &#123;<span class="attr">...props</span>&#125;/&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">ol</span>&gt;</span> </span></span></span><br><span class="line"><span class="javascript">                     &#123;list.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">                        <span class="comment">&lt;!-- List item should has an unique key property --&gt;</span></span></span></span><br><span class="line"><span class="javascript">                        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>);</span></span><br><span class="line">                     &#125;)&#125;</span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">         )</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> Header = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">         <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;props.info&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">         );</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span>, app);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Adding interactivity using State
+<ul>
+<li>Use
+<code>const[state, updateState] = React.useState(initialState)</code> to
+create a state variable and update it <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/jsx&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div1&#x27;</span>);</span></span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> HomePage = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> [likes, setLikes] = React.useState(<span class="number">0</span>);</span></span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> handleClick1 = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line">            setLikes(likes + 1);</span><br><span class="line">         &#125;</span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> handleClick2 = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line">            setLikes(0);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">         <span class="keyword">const</span> props = &#123;</span></span><br><span class="line"><span class="javascript">            title: <span class="string">&quot;Hello world!&quot;</span>,</span></span><br><span class="line"><span class="javascript">            info: <span class="string">&quot;This is a test page.&quot;</span></span></span><br><span class="line">         &#125;</span><br><span class="line"><span class="javascript">         <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">Header</span> &#123;<span class="attr">...props</span>&#125;/&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick1&#125;</span>&gt;</span>Likes = &#123;likes&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick2&#125;</span>&gt;</span>Reset Likes<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">         )</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   <span class="keyword">const</span> Header = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">         <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;props.info&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">         );</span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span>, app);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h2 id="from-react-to-next.js">From React to Next.js</h2>
+<ol type="1">
+<li>Get Next.js in your project:
+<code>npm install react react-dom next</code>
+<ul>
+<li>The original html <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@17/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/jsx&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">&quot;app&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">Header</span>(<span class="params">&#123; title &#125;</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;title ? title : &quot;Default title&quot;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">HomePage</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> names = [<span class="string">&quot;Ada Lovelace&quot;</span>, <span class="string">&quot;Grace Hopper&quot;</span>, <span class="string">&quot;Margaret Hamilton&quot;</span>]</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> [likes, setLikes] = React.useState(<span class="number">0</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line">         setLikes(likes + 1)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">Header</span> <span class="attr">title</span>=<span class="string">&quot;Develop. Preview. Ship. 🚀&quot;</span> /&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"><span class="javascript">            &#123;names.map(<span class="function">(<span class="params">name</span>) =&gt;</span> (</span></span><br><span class="line"><span class="handlebars"><span class="xml">               <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;name&#125;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span></span><br><span class="line">            ))&#125;</span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>Like (&#123;likes&#125;)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      )</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span>, app)</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>The Next.js file <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Header = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;&#123;props.title&#125;&lt;/h1&gt;</span><br><span class="line">            &lt;p&gt;&#123;props.paragraph&#125;&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HomePage = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span>[likes, setLikes] = useState(<span class="number">0</span>);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">const</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">const</span> props = &#123;</span><br><span class="line">      title:<span class="string">&quot;Hello World!&quot;</span>,</span><br><span class="line">      paragraph:<span class="string">&quot;Welcome to this test page&quot;</span></span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">const</span> clickHandler1 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      setLikes(likes + <span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">const</span> clickHandler2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      setLikes(<span class="number">0</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Header &#123;...props&#125;/&gt;</span><br><span class="line">            &lt;ol&gt;</span><br><span class="line">               &#123;list.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;item&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">               &#125;)&#125;</span><br><span class="line">            &lt;/ol&gt;</span><br><span class="line">            &lt;button onClick=&#123;clickHandler1&#125;&gt;Increase Likes&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;clickHandler2&#125;&gt;Reset Likes&lt;/button&gt;</span><br><span class="line">            &lt;div&gt;Likes: &#123;likes&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HomePage;</span><br></pre></td></tr></table></figure></li>
+<li>Add the above code into a <code>index.js</code> file in the
+<code>pages</code> folder</li>
+<li>Add the following code to <code>package.json</code>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">   &quot;dev&quot;: &quot;next dev&quot;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>Next.js uses fast refresh, so when you make a change to the code and
+save, the page will be automatically updated</li>
+</ul></li>
+</ol>
+<h2 id="how-next.js-works">How Next.js Works</h2>
+<ol type="1">
+<li>Development and Production Environments
+<ul>
+<li>In development environment, Next.js supports TypeScript, ESLint
+integration, Fast Refresh, etc.</li>
+<li>In the production stage, Next.js optimizes for the end-users</li>
+<li>The Next.js compiler
+<ul>
+<li>Next.js handles code transformation and underlying infrastructure to
+make it easier for an application to go to production</li>
+<li>Next.js has a compiler written in Rust, and SWC, a platform that can
+be used for compilation, minification, bundling, etc.</li>
+</ul></li>
+</ul></li>
+<li>Compiling
+<ul>
+<li>Code in JSX, TypeScript, modern version of JavaScript needs to be
+compiled into JavaScript before browsers can understand them</li>
+<li>Compilation happens during the development states when you edit your
+code, and as part of the build step to prepare your application for
+production</li>
+</ul></li>
+<li>Minifying
+<ul>
+<li>Developers write code that is optimized for human readability</li>
+<li>Minification is the process of removing unnecessary code formatting
+and comments without changing the code's functionality</li>
+</ul></li>
+<li>Bundling
+<ul>
+<li>Developers break up their application into modules, components, and
+functions that can be used to build larger pieces of their
+application</li>
+<li>Bundling is the process of resolving the web of dependencies and
+merging the files into optimized bundles for the browser, with the goal
+of reducing the number of requests for files when a user visits a web
+page</li>
+</ul></li>
+<li>Code splitting
+<ul>
+<li>Developers usually split their application into multiple pages that
+can be accessed from different URLs, each of these pages becomes a
+unique entry point into the application</li>
+<li>The goal of code splitting is to improve the application's initial
+load time by only loading the code required to run that page</li>
+<li>Each file inside the <code>pages/</code> directory will be code
+split into its own JavaScript bundle during the build step</li>
+<li>Any code shared between pages will also split into another bundle to
+avoid re-downloading the same code</li>
+</ul></li>
+<li>Build Time and Runtime
+<ul>
+<li>Build time is the name given to a series of steps that prepare your
+application code for production</li>
+<li>Code is transformed into production-optimized files ready to be
+deployed to servers and consumed by users during build time, including
+HTML files, JavaScript code for rendering pages on the server,
+JavaScript code for making pages interactive on the client, CSS
+files</li>
+<li>Runtime refers to the period of time when your application runs in
+response to a user's request, after your application has been build and
+deployed</li>
+</ul></li>
+<li>Client and server: omitted</li>
+<li>Rendering
+<ul>
+<li>Rendering is the process to convert the code you write in React into
+the HTML representation of your UI</li>
+<li>It can take place on the server or on the client, ahead of time at
+build time, or on every request at runtime</li>
+<li>Three types of rendering methods are available with Next.js:
+Server-side rendering, static site generation, and client-side
+rendering</li>
+<li>Pre-rendering: server-side rendering and static site generation,
+because fetching external data and transformation of React components
+into HTML happens before the result is sent to the client, Next.js
+pre-renders every page by default</li>
+<li>Client-side rendering: browsers receive an empty HTML shell from the
+server with the JavaScript instructions to construct the UI</li>
+<li>Server-side rendering: the HTML page is generated on a server for
+each request. The generated HTML, JSON data, and JavaScript instructions
+to make the page interactive are then sent to the client</li>
+<li>Static site generation: the HTML is generated on the server, content
+is generated once, at build time, when the application is deployed, and
+the HTML is stored in a CDN and re-used for each request</li>
+</ul></li>
+<li>CDNs and the Edge
+<ul>
+<li>Your application code can be distributed to origin servers,
+CDNS(content delivery networks), and the Edge</li>
+<li>Origin servers: the main computer that stores and runs the original
+version of your application code</li>
+<li>CDNS: store static content in multiple locations around the world
+and are placed between the client and the origin server (closer cached
+result to the client)</li>
+<li>The Edge: a generalized concept for the fringe of the network,
+closest to the user, Edge can cache static contents, and also run
+code</li>
+</ul></li>
+</ol>
+<h2 id="create-a-next.js-app">Create a Next.js App</h2>
+<ol type="1">
+<li>Install Node.js</li>
+<li>Run <code>npx create-next-app app-name --use-npm</code> to create a
+Next.js app
+<ul>
+<li>The command is <code>create-next-app</code></li>
+<li><code>app-name</code> is the name of your app</li>
+<li><code>--use-npm</code> tells the CLI to bootstrap the app using
+npm</li>
+<li>Use <code>--ts</code> to create a TypeScript app</li>
+</ul></li>
+</ol>
+<h2 id="navigate-between-pages">Navigate Between Pages</h2>
+<ol type="1">
+<li>In Next.js, a page is a React Component exported from a file in the
+<code>pages</code> directory</li>
+<li>Pages are associated with a route based on their file name:
+<ul>
+<li><code>pages/index.js</code> is associated with the <code>/</code>
+route</li>
+<li><code>pages/posts/first-post.js</code> is associated with the
+<code>/posts/first-post</code> route</li>
+</ul></li>
+<li>Use <code>Link</code> component to navigate between pages in Next.js
+<ul>
+<li>Very similar to the <code>a</code> tag in HTML</li>
+<li>Allows users to do client-side navigation inside an Next.js app and
+accepts props that give better control over the navigation behavior</li>
+<li>If you want to navigate to a page that is outside of the Next.js
+app, use the <code>a</code> tag</li>
+<li>If you want to add properties to a link, wrap an <code>a</code> tag
+inside a <code>Link</code> component, and add the properties to the
+<code>a</code> tag <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">&quot;next/link&quot;</span>;</span><br><span class="line">&lt;Link href=<span class="string">&quot;URL&quot;</span>&gt;Display Text&lt;/Link&gt;</span><br></pre></td></tr></table></figure></li>
+<li>It is also possible to use dynamic routes, the file name should
+include <code>[variable]</code> to represent the dynamic route, and use
+<code>userRouter().query</code> to get that variable <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this is in the pages/posts/[pid].js</span></span><br><span class="line"><span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">&quot;next/link&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useRouter &#125; <span class="keyword">from</span> <span class="string">&#x27;next/router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Header = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Post &#123;props.pid&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Post = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> props = useRouter().query;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Header &#123;...props&#125; /&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">               &lt;Link href=<span class="string">&quot;/&quot;</span>&gt;Back to Home page.&lt;/Link&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Post;</span><br></pre></td></tr></table></figure></li>
+<li>Link is client-side navigation, the browser only re-render the part
+that is changed, if you use <code>a</code> tag, the browser will reload
+the whole page</li>
+</ul></li>
+</ol>
+<h2 id="assets-metadata-and-css">Assets, Metadata, and CSS</h2>
+<ol type="1">
+<li>Assets
+<ul>
+<li>Next.js serve static assets under the <code>public</code>
+directory</li>
+<li>The <code>public</code> directory is also useful for
+<code>robots.txt</code>, Google site verification, and any other static
+assets</li>
+<li>URL pattern: for <code>public/profile.jpg</code>, the URL will be
+<code>/profile.jpg</code> in the app</li>
+</ul></li>
+<li>The Image Component
+<ul>
+<li>You can use the <code>image</code> tag to import images</li>
+<li><code>next/image</code> is an extension of the HTML <code>img</code>
+tag, it supports for image optimization by default (resizing,
+optimizing, and serving images in modern formats) <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Image <span class="keyword">from</span> <span class="string">&quot;next/image&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ProfileFigure = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;Image</span><br><span class="line">            src=<span class="string">&quot;/profile.jpg&quot;</span></span><br><span class="line">            alt=<span class="string">&quot;Picture of the author&quot;</span></span><br><span class="line">            width=&#123;<span class="number">200</span>&#125;</span><br><span class="line">            height=&#123;<span class="number">200</span>&#125;</span><br><span class="line">      /&gt;</span><br><span class="line"></span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">            &lt;ProfileFigure /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Profile;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Metadata
+<ul>
+<li>Add head to a page <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Head <span class="keyword">from</span> <span class="string">&quot;next/head&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Head&gt;</span><br><span class="line">                  &lt;title&gt;Profile&lt;/title&gt;</span><br><span class="line">                  &lt;link rel=<span class="string">&quot;icon&quot;</span> href=<span class="string">&quot;/favicon.ico&quot;</span> /&gt;</span><br><span class="line">            &lt;/Head&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Profile;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Third-party scripts
+<ul>
+<li>Method one: use HTML <code>script</code> tag in the
+<code>Head</code> component</li>
+<li>Method two: use the <code>Script</code> component in
+<code>next/script</code>, the <code>strategy</code> attribute controls
+when the third-party script should load, the <code>onLoad</code>
+attribute is used to run any JavaScript code immediately after the
+script has finished loading <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Script <span class="keyword">from</span> <span class="string">&quot;next/script&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Profile = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">            &lt;Head&gt;</span><br><span class="line">                  &lt;title&gt;Profile&lt;/title&gt;</span><br><span class="line">                  &lt;link rel=<span class="string">&quot;icon&quot;</span> href=<span class="string">&quot;/favicon.ico&quot;</span> /&gt;</span><br><span class="line">            &lt;/Head&gt;</span><br><span class="line">            &lt;h1&gt;Profile page&lt;/h1&gt;</span><br><span class="line">            &lt;Script </span><br><span class="line">               src=<span class="string">&quot;https://www.google-analytics.com/analytics.js&quot;</span> </span><br><span class="line">               strategy=<span class="string">&quot;lazyOnload&quot;</span></span><br><span class="line">               onLoad=&#123;<span class="function">() =&gt;</span></span><br><span class="line">                  <span class="built_in">console</span>.log(<span class="string">`script loaded correctly, window.FB has been populated`</span>)</span><br><span class="line">               &#125;</span><br><span class="line">            /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/10/18/NextJS-Review/" title="NextJS Review">https://yanxuanshaozhu.github.io/2022/10/18/NextJS-Review/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Next-js/" rel="tag"># Next.js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/04/COSI-164A-Intro-to-3D-Animation/" rel="prev" title="COSI 164A Intro to 3D Animation">
+      <i class="fa fa-chevron-left"></i> COSI 164A Intro to 3D Animation
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/20/Flutter-notes/" rel="next" title="Flutter notes">
+      Flutter notes <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#about-next.js"><span class="nav-number">1.</span> <span class="nav-text">About Next.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-javascript-to-react"><span class="nav-number">2.</span> <span class="nav-text">From JavaScript to React</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-react-to-next.js"><span class="nav-number">3.</span> <span class="nav-text">From React to Next.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-next.js-works"><span class="nav-number">4.</span> <span class="nav-text">How Next.js Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-a-next.js-app"><span class="nav-number">5.</span> <span class="nav-text">Create a Next.js App</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigate-between-pages"><span class="nav-number">6.</span> <span class="nav-text">Navigate Between Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assets-metadata-and-css"><span class="nav-number">7.</span> <span class="nav-text">Assets, Metadata, and CSS</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

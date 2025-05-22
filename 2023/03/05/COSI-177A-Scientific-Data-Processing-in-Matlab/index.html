@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Slides">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 177A Scientific Data Processing in Matlab">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Slides">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-05T20:14:54.000Z">
+<meta property="article:modified_time" content="2023-05-02T06:01:11.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 177A Scientific Data Processing in Matlab | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 177A Scientific Data Processing in Matlab
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-03-05 15:14:54" itemprop="dateCreated datePublished" datetime="2023-03-05T15:14:54-05:00">2023-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-05-02 02:01:11" itemprop="dateModified" datetime="2023-05-02T02:01:11-04:00">2023-05-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>23k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>21 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="slides">Slides</h1>
+<span id="more"></span>
+<ol type="1">
+<li>Variable
+<ul>
+<li>Name: begin with letter, case sensitive, cannot use reserved words,
+built-in functions</li>
+<li><code>who</code>: show defined variables, <code>whos</code> show
+variable information, <code>clear</code> clear workspace variables,
+<code>clc</code> clear window <code>clear x</code>: clear variable x,
+<code>clf</code> clear figure window</li>
+<li>By default, doubles are displayed with four decimal places</li>
+<li>Use <code>format xxx</code> to change format
+<code>format = format short</code> 4 decimals, <code>format long</code>
+15 decimals, <code>format loose/compact</code></li>
+<li>Use <code>;</code> at the end of command to suppress output</li>
+<li>Different types: float(single, double), integer(int8, int16, ...),
+unsigned integer(uint8, ...), complex(complex single/double). Type
+conversion may cause overflow, and overflow is handled using
+saturation</li>
+<li>Numbers are stored by default as double</li>
+<li>Characters are represented using single quotes</li>
+</ul></li>
+<li>Random numbers：the seed remain the same for each time Matlab is
+started, unless you change the seed</li>
+<li>Input and output
+<ul>
+<li>Input as an integer: <code>x = input('Message')</code>, input as a
+character/string: <code>x = input('Message', 's')</code></li>
+<li>Output on screen: <code>disp(x)</code>, disp function does not allow
+for formatting output</li>
+<li>Format output: <code>fprintf('format_string', val)</code>, use
+format string to format output, <code>%d</code> integer, <code>%f</code>
+float, <code>%c</code> single character, <code>%s</code> string</li>
+</ul></li>
+<li>File Input/Out
+<ul>
+<li><code>save xxx.mat var1 var2 --ascii -append</code>把变量var1和var2按照ascii追加保存到xxx.mat中</li>
+<li><code>load xxx.mat</code>读取xxx.mat文件</li>
+</ul></li>
+<li>Function
+<ul>
+<li>Function name should be the same as the file name</li>
+</ul></li>
+<li>Some built-in functions
+<ul>
+<li><code>sum(x)</code>, <code>cumsum(x)</code>, <code>prod(x)</code>,
+<code>cumprod(x)</code></li>
+<li><code>tic</code>, <code>toc</code> will display time elapse in
+milliseconds</li>
+</ul></li>
+<li>Cell Arrays, Structures, Strings
+<ul>
+<li>Cell arrays: store values of different types, commonly used to store
+strings of different lengths
+<ul>
+<li>Create a cell array: <code>x = cell(2,2)</code></li>
+<li>Indexing cell arrays: <code>x&#123;r, c&#125;</code></li>
+<li>Compare if two cell arrays are equal:
+<code>cellfun(@isequal, x, y)</code> returns a logical matrix, then we
+can use
+<code>sum(cellfun(@isequal, x, y), 'all') == numel(x)</code></li>
+<li><code>celldisp(x)</code> display all elements in cell array x</li>
+</ul></li>
+<li>Structures: group values that are logically related, but are not the
+same thing and not necessarily the same type
+<ul>
+<li>Consist of fields, each field contains an array of some Matlab
+type</li>
+<li><code>x = struct('key1', val1, 'key2', val2)</code></li>
+<li><code>x.key1</code> get val1</li>
+<li><code>rmfield(x, 'key1')</code> remove filed key1 from structure
+x</li>
+<li><code>isstruct(x)</code> check if x is a structure</li>
+<li><code>isfield(x, 'key1')</code> check if key1 is a field of
+structure x</li>
+<li><code>fieldnames(x)</code> find all field names of structure x,
+return a cell array</li>
+</ul></li>
+<li>Strings
+<ul>
+<li>Strings are treated the same as single-character arrays
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;bc&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]; </span><br><span class="line">[r, c] = <span class="built_in">size</span>(x); <span class="comment">% r = 1, c = 4</span></span><br><span class="line"><span class="built_in">disp</span>(x); <span class="comment">% &#x27;abcd&#x27;</span></span><br><span class="line">x = [<span class="string">&#x27;ab&#x27;</span>; <span class="string">&#x27;c&#x27;</span>]; <span class="comment">% An error occured, the length should be the same for each row</span></span><br><span class="line">x = &#123;<span class="string">&#x27;ab&#x27;</span>, <span class="string">&#x27;c&#x27;</span>; <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;; <span class="comment">% Use cell arrays to hold strings with different length</span></span><br><span class="line"></span><br><span class="line">x =  &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;bc&#x27;</span>&#125;;</span><br><span class="line">q1 = char(x); <span class="comment">% 2 * 2 char array: &#x27;a &#x27;, &#x27;bc&#x27; (there is an space after a so that row is length 2)</span></span><br><span class="line">q2 = cellstr(x); <span class="comment">% 1 * 2 cell array: &#123;&#x27;a&#x27;&#125;, &#123;&#x27;bc&#x27;&#125; </span></span><br></pre></td></tr></table></figure></li>
+<li><code>strcat(s1, s2, ..., sn)</code>concatenate n strings</li>
+<li><code>strcmp(s1, s2)</code> compare two strings</li>
+</ul></li>
+</ul></li>
+<li>Permutation and combination
+<ul>
+<li><code>factorial(n)</code> <span class="math inline">\(n!\)</span></li>
+<li><code>prod(n:-1:n-m+1)</code> (n &gt; m) <span class="math inline">\(P_{n}^{m}=\frac{n!}{(n-m)!}\)</span></li>
+<li><code>nchoosek(n, k)</code>: <span class="math inline">\(C_{n}^{k}\)</span></li>
+</ul></li>
+<li>Vector
+<ul>
+<li>Norm Properties
+<ul>
+<li>Homogeneous: <code>p(au) = |a| * p(u)</code></li>
+<li>Subadditive: <code>p(u + v) &lt;= p(u) + p(v)</code></li>
+<li>Positive: <code>p(u) &gt;= 0</code></li>
+<li>Zero vector: <code>p(u) = 0 &lt;=&gt; u = 0</code></li>
+</ul></li>
+<li><span class="math inline">\(|X|_{p} = (\sum\limits_{i =
+1}^{n}|x_i|^{p})^{1/p}\)</span></li>
+<li><span class="math inline">\(x\cdot y = |x||y|cos\theta\)</span></li>
+<li>Orthogonal matrix: <span class="math inline">\(AA^{T} = A^{T}A =
+I\)</span></li>
+<li>Symmetrix matrix: <span class="math inline">\(A =
+A^{T}\)</span></li>
+<li>Skew-symmetric matrix: <span class="math inline">\(A^{T} =
+-A\)</span></li>
+</ul></li>
+<li>Dimensionality Reduction
+<ul>
+<li>Assumpation: data lies on or near a low dimensional subspace, axes
+of this subspace are effective representation of the data</li>
+<li>Rank is dimensionality</li>
+<li>Why reduce dimensions
+<ul>
+<li>Discover hidden correlations/topics</li>
+<li>Remove redundant and noisy features</li>
+<li>Interpretation and visualization</li>
+<li>Easier storage and processing data</li>
+</ul></li>
+<li>SVD Decomposition(singular value decomposition)
+<ul>
+<li><span class="math inline">\(A_{m*n} =
+U_{m*r}\Sigma_{r*r}(V_{n*r})^{T}\)</span></li>
+<li>U, <span class="math inline">\(\Sigma\)</span>, V are unique. U, V
+are column orthonormal. <span class="math inline">\(\Sigma\)</span> is
+diagonal, singular values are positive are are sorted in descending
+order</li>
+<li>Choose the first several large singular values to reduce
+dimensionality</li>
+<li>Time complexity of SVD: <span class="math inline">\(min\{O(nm^{2}),
+O(n^{2}m)\}\)</span></li>
+</ul></li>
+<li>CUR Decomposition
+<ul>
+<li><span class="math inline">\(A = CUR\)</span></li>
+<li>When A is huge and sparse. In SVD, <span class="math inline">\(\Sigma\)</span> is sparse and small, U and V are
+big and dense. In CUR, U is dense and small, C and R are big and
+sparse</li>
+<li>CUR is lesss accurate, but faster than SVD</li>
+</ul></li>
+<li>SVD is limisted to linear projectsions, for non-linear methods, use
+isomap</li>
+</ul></li>
+<li>PCA
+<ul>
+<li>PCA is a statistical technique for reducing the dimensionality of a
+dataset while preserving the maximum amount of information</li>
+<li>One-dimensional PCA: for <span class="math inline">\(x_1, ...,
+x_n\)</span>, find line <span class="math inline">\(x(t) = tv +
+b\)</span> defined by vector v and b such that 1D projection <span class="math inline">\(a_i = v^{t}(x_i - b)\)</span> has the largest
+possible variance.
+<ul>
+<li>The solution is not unique, since there can be parallel
+lines(different b)</li>
+<li>Let <span class="math inline">\(b =
+\frac{1}{n}\sum\limits_{i=1}^{n}{x_i}\)</span></li>
+<li>Find v, s.t. <span class="math inline">\(|v| = 1, v = argmax\sum
+{a_i}^2, a_i = v^{t}(x_i - \bar{x})\)</span></li>
+<li><span class="math inline">\(v = argmax \;v^{t}Cv\)</span>, where C
+is square, symmetric, and positive semidefinite(nonnegative
+eigenvalues)</li>
+<li>Theorem: Given set of points <span class="math inline">\(x1,...,x_n\)</span>, the optimal direction for
+projecting the data is the largest v is the largest eigenvector of the
+covariance matrix <span class="math inline">\(C = \sum{(x_i-\bar{x})(x_i
+- \bar{x})^{T}} = X^{T}X, X \in \mathbb{R}^{n*d}\)</span></li>
+<li>Do SVD: <span class="math inline">\(X = U\Sigma V^{T}\)</span>, then
+<span class="math inline">\(C = V(\Sigma^{T}\Sigma V^{T}x\)</span></li>
+</ul></li>
+<li>One example <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% rows of x are observations, columns of x are dimensions to be reduced</span></span><br><span class="line"><span class="comment">% X is m * n: m obs, n dims</span></span><br><span class="line">x = [<span class="number">80</span> <span class="number">85</span> <span class="number">60</span> <span class="number">55</span></span><br><span class="line">    <span class="number">90</span> <span class="number">85</span> <span class="number">70</span> <span class="number">45</span></span><br><span class="line">    <span class="number">95</span> <span class="number">80</span> <span class="number">40</span> <span class="number">50</span>];</span><br><span class="line"><span class="comment">% rows of coef are dimensions, columns of coef are principals</span></span><br><span class="line"><span class="comment">% coef is n * k: we want to reduce dimensions from n to k</span></span><br><span class="line"><span class="comment">% data in coef is principal component coefficients: the coefs </span></span><br><span class="line"><span class="comment">% to transform from the dimension space to the principal component space</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% rows of score are observations, columns of score are principal components</span></span><br><span class="line"><span class="comment">% score is: m * k, m obs, k pcs</span></span><br><span class="line"><span class="comment">% data in score is obs values in the principal component space</span></span><br><span class="line">[coef, score] = pca(x); </span><br><span class="line"></span><br><span class="line"><span class="comment">% An equivalent way to get the scores</span></span><br><span class="line">colmean = <span class="built_in">mean</span>(x, <span class="number">1</span>); <span class="comment">% calculate column mean</span></span><br><span class="line">meanmat = <span class="built_in">repmat</span>(colmean, <span class="built_in">size</span>(x, <span class="number">1</span>), <span class="number">1</span>); <span class="comment">% generate mean matrix for x</span></span><br><span class="line">xtilde = x - meanmat; <span class="comment">% center obs values by subtracting column means</span></span><br><span class="line">myscore = xtilde * coef; <span class="comment">% translate obs values in the dim space to the pc space</span></span><br></pre></td></tr></table></figure></li>
+<li>For non-linear scenarios, use manifold learning, isomap</li>
+</ul></li>
+<li>Linear programming
+<ul>
+<li>Optimization
+<ul>
+<li>Criterion: object function and directino(max/min, in Matlab, the
+direction is always min)</li>
+<li>Variables</li>
+<li>Constraint(solution space)</li>
+</ul></li>
+<li>Linear programming, the degree of freedom is 1 and the solution
+space is convex: <span class="math inline">\(x, y \in S\)</span>, <span class="math inline">\(\forall t \in (0,1),\; tx + (1-t)y \in
+S\)</span></li>
+<li>Use <code>x = linprog(f,A,b)</code> so solve <span class="math inline">\(x = argmin \{f\}, s.t. Ax \le b\)</span></li>
+<li>Use <code>x = linprog(f,A,b,Aeq,Beq)</code> to solave <span class="math inline">\(x = argmin \{f\}, s.t. Ax \le b, Aeqx =
+beq\)</span></li>
+<li>Use <code>x = linprog(f,A,b,Aeq,Beq,lb,ub)</code> to solve <span class="math inline">\(x = argmin \{f\}, s.t. Ax \le b, Aeqx = beq, lb
+\le x \le ub\)</span> <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%  max x1 + x2/3</span></span><br><span class="line"><span class="comment">%  x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">%  x1 + x2/4 &lt;= 1</span></span><br><span class="line"><span class="comment">%  x1 - x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% -x1/4 - x2 &lt;= 1</span></span><br><span class="line"><span class="comment">% -x1-x2 &lt;= -1</span></span><br><span class="line"><span class="comment">% -x1 + x2 &lt;= 2</span></span><br><span class="line"><span class="comment">% x1 + x2/4 = 1/2</span></span><br><span class="line"><span class="comment">% -1 &lt;= x1 &lt;= 3/2</span></span><br><span class="line"><span class="comment">% -0.5 &lt;= x2 &lt;= 5/4</span></span><br><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>;</span><br><span class="line">    <span class="number">1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>/<span class="number">4</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">-1</span>;</span><br><span class="line">    <span class="number">-1</span>, <span class="number">1</span>];</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">2</span>];</span><br><span class="line">Aeq = [<span class="number">1</span>, <span class="number">1</span>/<span class="number">4</span>];</span><br><span class="line">beq = <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">lb = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">2</span>];</span><br><span class="line">ub = [<span class="number">3</span>/<span class="number">2</span>, <span class="number">5</span>/<span class="number">4</span>];</span><br><span class="line">f = [<span class="number">-1</span>, <span class="number">-1</span>/<span class="number">3</span>];</span><br><span class="line">x = linprog(f,A,b,Aeq,beq,lb,ub);</span><br></pre></td></tr></table></figure></li>
+<li>The assignment problem
+<ul>
+<li>Description: <a target="_blank" rel="noopener" href="https://www.ams.jhu.edu/~castello/625.414/Handouts/WV7.5.pdf">Assignment
+problem</a></li>
+<li>Solution: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian
+algorithm</a></li>
+<li>Matlab: <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/20652-hungarian-algorithm-for-linear-assignment-problems-v2-3">Hungarian
+Algorithm in Matlab</a> <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;</span><br><span class="line">costmat = [<span class="number">14</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">12</span>,<span class="number">6</span>,<span class="number">5</span>;</span><br><span class="line">    <span class="number">7</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">9</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">10</span>];</span><br><span class="line">[assign,cost] = munkres(costmat);</span><br><span class="line"><span class="built_in">disp</span>(assign);  <span class="comment">% 2 4 3 1, m1 assigned to t2, m2 assigned to t4, m3 assigned to t3, m4 assigned to t1 </span></span><br><span class="line"><span class="built_in">disp</span>(cost);    <span class="comment">% 15</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Basic image processing
+<ul>
+<li>Show image information: <code>info = imfinfo(filename)</code></li>
+<li>Read input image: <code>img = imread(filename)</code></li>
+<li>Write output image:
+<code>imwrite(img, filename, fmt, 'Quality', qualityvalue)</code> refer
+to the documentation for more arguments</li>
+<li>Rgb to grayscale: <code>img_gray = rgb2gray(img)</code></li>
+<li>Grayscale to rgb without colormap:
+<code>img_rgb = cat(3, img_gray, img_gray, img_gray);</code></li>
+<li>Grayscale to binarize: <code>img_bin = imbinarize(img_gray)</code>,
+can add threshold, refer to the documentation for more details</li>
+<li>Save histogram of an image <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imhist(img_gray);</span><br><span class="line">title(<span class="string">&#x27;Histogram of the original image&#x27;</span>);</span><br><span class="line"><span class="comment">% gcf(get current figure)</span></span><br><span class="line">saveas(gcf, <span class="string">&quot;histogram.png&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Histogram equalization of an grayscale image
+<code>img_heq = histeq(img_gray)</code></li>
+<li>Adjust image intensity: <code>J = imadjust(I)</code>, this increase
+the contrast, by default, out is <code>[0.01, 0.99]</code></li>
+<li>Image enhancement:
+<code>J = imadjust(I,[low_in high_in],[low_out high_out],gamma)</code>
+<ul>
+<li>If gamma &lt; 1: nonlinear mapping, weighted toward higher(brighter)
+output values</li>
+<li>If gamma = 1: linear mapping, default value of gamma</li>
+<li>If gamma &gt; 1: nonlinear mapping, weighted toward lower(darker)
+output values</li>
+</ul></li>
+<li>Find limits to contrast stretch image:
+<code>lowhigh = stretchlim(I)</code>, often used with imadjust:
+<code>J = imadjust(I,stretchlim(I), []);</code></li>
+<li>Convert img to double precision: <code>I2 = im2double(I)</code></li>
+</ul></li>
+<li>Point processing
+<ul>
+<li>Negative/inverted image: <code>J = 255 - I</code>, or
+<code>J = imadjust(I, [0, 1], [1, 0])</code></li>
+<li>Darken image: <code>J = I - 128</code></li>
+<li>Linearly lower contrast: <code>J - I / 2</code></li>
+<li>Nonlinearly lower contrast:
+<code>J1 = im2double(I); J = J1.^(1/3)</code></li>
+<li>Lighten image: <code>J = I + 128</code></li>
+<li>Linearly raise contrast: <code>J = I * 2</code></li>
+<li>Nonlinearly raise contrast:
+<code>J1 = im2double(I); J = J1.^3</code></li>
+</ul></li>
+<li>Image Pyramid <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">img = imread(<span class="string">&#x27;cameraman.tif&#x27;</span>);</span><br><span class="line">img = im2double(img);</span><br><span class="line">pyramid = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">residual = cell(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">pyramid&#123;<span class="number">1</span>&#125; = img;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">2</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    tmp = imgaussfilt(pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125;);</span><br><span class="line">    residual&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; = pyramid&#123;<span class="built_in">i</span> - <span class="number">1</span>&#125; - tmp;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = imresize(tmp, <span class="number">0.5</span>,<span class="string">&quot;lanczos2&quot;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">tmp = imgaussfilt(pyramid&#123;<span class="keyword">end</span>&#125;);</span><br><span class="line">residual&#123;<span class="keyword">end</span>&#125; = pyramid&#123;<span class="keyword">end</span>&#125; - tmp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"></span><br><span class="line">[m0, n0] = <span class="built_in">size</span>(pyramid&#123;<span class="number">1</span>&#125;);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = pyramid&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    pyramid&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(pyramid&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> == <span class="number">1</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Original image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        title_str = strjoin([<span class="string">&quot;Filtered image of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">numel</span>(pyramid)</span><br><span class="line">    [m, n] = <span class="built_in">size</span>(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span></span><br><span class="line">    tmp = residual&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    residual&#123;<span class="built_in">i</span>&#125; = padarray(tmp, [m0 - m, n0 - n]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="built_in">i</span>)</span><br><span class="line">    imshow(residual&#123;<span class="built_in">i</span>&#125;);</span><br><span class="line">    title_str = strjoin([<span class="string">&quot;Residual of size [&quot;</span>, m, <span class="string">&#x27;x&#x27;</span>, n, <span class="string">&#x27;]&#x27;</span> ]);</span><br><span class="line">    title(title_str);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
+<li>Spatial 2d image filter
+<ul>
+<li>Box filter(separable)
+<ul>
+<li>Example <span class="math display">\[ \frac{1}{9}\begin{bmatrix} 1
+&amp; 1 &amp; 1\\ 1 &amp; 1 &amp; 1\\ 1 &amp; 1 &amp; 1\end{bmatrix}
+\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 box average filter </span></span><br><span class="line">box = fspecial(<span class="string">&quot;average&quot;</span>);</span><br><span class="line"><span class="comment">%Filtered image</span></span><br><span class="line">img_box = imfilter(img, box);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Gaussian filter(separable)
+<ul>
+<li>Example <span class="math display">\[ \frac{1}{16}\begin{bmatrix} 1
+&amp; 2 &amp; 1\\ 2 &amp; 4 &amp; 2\\ 1 &amp; 2 &amp; 1\end{bmatrix}
+\]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 gaussian filter with sigma = 0.5 </span></span><br><span class="line">gau = fspecial(<span class="string">&quot;gaussian&quot;</span>);</span><br><span class="line">img_gau = imfilter(img, gau);</span><br><span class="line"><span class="comment">% This way is recommended</span></span><br><span class="line">img_gau2 = imgaussfilt(img);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Laplacian of gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 5 * 5 Laplacian of Gaussian filter with sigma = 0.5</span></span><br><span class="line">logau = fspecial(<span class="string">&quot;log&quot;</span>);</span><br><span class="line">img_log = imfilter(img, logau);</span><br></pre></td></tr></table></figure></li>
+<li>Derivative of gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">H1 = fspecial(<span class="string">&#x27;gaussian&#x27;</span>, <span class="number">4</span>, <span class="number">1</span>);</span><br><span class="line">H2 = fspecial(<span class="string">&#x27;gaussian&#x27;</span>, <span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">dog = H2 - H1;</span><br><span class="line">img_dog = imfilter(rgb2gray(img), dog);</span><br></pre></td></tr></table></figure></li>
+<li>Laplacian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 laplacial filter with alpha = 0.2</span></span><br><span class="line">lap = fspecial(<span class="string">&quot;laplacian&quot;</span>);</span><br><span class="line">img_lap = imfilter(img, lap);</span><br></pre></td></tr></table></figure></li>
+<li>Other filters
+<ul>
+<li>Unchanged <span class="math display">\[ \begin{bmatrix} 0 &amp; 0
+&amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0\end{bmatrix}
+\]</span></li>
+<li>Shift to left by one <span class="math display">\[ \begin{bmatrix} 0
+&amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0\end{bmatrix}
+\]</span></li>
+<li>Sharpening: do nothing for flat areas, stress intensity peaks <span class="math display">\[ \begin{bmatrix} 0 &amp; 0 &amp; 0\\ 0 &amp; 2
+&amp; 0\\ 0 &amp; 0 &amp; 0\end{bmatrix} - \frac{1}{9}\begin{bmatrix} 1
+&amp; 1 &amp; 1\\ 1 &amp; 1 &amp; 1\\ 1 &amp; 1 &amp; 1\end{bmatrix}
+\]</span></li>
+</ul></li>
+<li>Sober filter(separable)
+<ul>
+<li>Vertical sober filter
+<ul>
+<li>Example <span class="math display">\[ \begin{bmatrix} 1 &amp; 2
+&amp; 1\\ 0 &amp; 0 &amp; 0\\ -1 &amp; -2 &amp; -1\end{bmatrix}
+\]</span></li>
+<li>Matlab cod <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 vertical sober filter that emphasizes horizontal edges</span></span><br><span class="line">vs = fspecial(<span class="string">&quot;sobel&quot;</span>);</span><br><span class="line">img_vs = imfilter(img, vs);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Horizontal sober filter
+<ul>
+<li>Example <span class="math display">\[ \begin{bmatrix} 1 &amp; 0
+&amp; -1\\ 2 &amp; 0 &amp; -2\\ 1 &amp; -2 &amp; -1\end{bmatrix}
+\]</span></li>
+<li>Matlab cod <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create 3 * 3 horizontal sober filter that emphasizes vertical edges</span></span><br><span class="line">hs = fspecial(<span class="string">&quot;sobel&quot;</span>)&#x27;;</span><br><span class="line">img_hs = imfilter(img, hs);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Frequency basics
+<ul>
+<li>Given <span class="math inline">\(f(x,y)\)</span> on <span class="math inline">\(x = 0,...,M - 1\)</span> and <span class="math inline">\(y = 0,...,N-1\)</span>, DFT <span class="math inline">\(F(u,v) = \sum\limits_{x = 0}^{M -
+1}\sum\limits_{y=0}^{N - 1}f(x,y)e^{2\pi i (ux/M + vy/N)}\)</span> for
+<span class="math inline">\(u=0,...,M-1\)</span> and <span class="math inline">\(v=0,...,N-1\)</span>. IDFT of <span class="math inline">\(F(u,v)\)</span> is <span class="math inline">\(f(x,y) = \frac{1}{MN}\sum\limits_{u = 0}^{M -
+1}\sum\limits_{v=0}^{N - 1}F(u,v)e^{2\pi i (ux/M + vy/N)}\)</span></li>
+<li>Fourier spectrum <span class="math inline">\(|F(u,v)| = [R^{2}(u,v)
++ I^{2}(u,v)]^{\frac{1}{2}}\)</span>, phase angle <span class="math inline">\(\phi(u,v) =
+arctan[\frac{I(u,v)}{R(u,v)}]\)</span></li>
+<li>If <span class="math inline">\(f(x,y)\)</span> is real, then <span class="math inline">\(F(u,v) = F(-u, -v)\)</span>, and <span class="math inline">\(|F(u,v)| = |F(-u,-v)|\)</span></li>
+<li>FFT of f: <code>F = fft2(f)</code>, IFFT of F:
+<code>f = ifft2(F)</code>. If f is real,then the result of ifft2 should
+be real, but for some MATLAB versions this is not the case, so you can
+use <code>f = real(ifft2(F))</code></li>
+<li>Move the origin of the transform to the center of the frequency
+rectangle: <code>Fc = fftshift(F)</code>, reverse centering:
+<code>F = ifftshift(Fc)</code></li>
+<li>Get the phase angle: <code>phi = atan2(imag(F), real(F))</code>, or
+<code>phi = angle(F)</code></li>
+<li>Fourier spectrum: <code>S = abs(F)</code>,
+<code>F = S.*exp(i*phi)</code></li>
+<li>Visualize the Fourier spectrum <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;q1_origin.png&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Convert image to grayscale</span></span><br><span class="line">img_gray = rgb2gray(img);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Compute Fourier transform of the image</span></span><br><span class="line">F = fft2(img_gray);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Move the origin of the transform to the center of the frequency rectangle</span></span><br><span class="line">Fc = fftshift(F);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Compute Fourier spectrum</span></span><br><span class="line">F_mag = <span class="built_in">abs</span>(Fc);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Increase in visualization details</span></span><br><span class="line">F_log = <span class="built_in">log</span>(<span class="number">1</span> + F_mag);</span><br><span class="line">F_log = F_log/<span class="built_in">max</span>(F_log(:));</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshow(F_log, []);</span><br><span class="line">title(<span class="string">&quot;Fourier spectrum&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>General steps in DFT filtering
+<ol type="1">
+<li>Convert to grayscale <code>f = rgb2gray(f);</code></li>
+<li>Convert the image to floating point
+<code>[f, revertclass] = tofloat(f);</code></li>
+<li>Obtain size <code>[N, N] = size(f)</code></li>
+<li>Obtain FFT <code>F = fft2(f)</code></li>
+<li>Generate a filter H, of size M * N, if the filter is centered
+instead, let <code>H = ifftshift(H)</code> before using the filter. But
+when you need to show the image, you need to show the centered one, use
+<code>H = fftshift(H)</code> if H is not centered</li>
+<li>Multiply the transform by the filter <code>G = H .*F</code></li>
+<li>Obtain the inverse FFT of G, ie, the filtered image
+<code>g = ifft2(G)</code></li>
+<li>Convert the filtered image to the class of the input image
+<code>g = revertclass(g)</code></li>
+</ol></li>
+<li>Frequency gaussian filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;filter_input.jpg&quot;</span>);</span><br><span class="line">img = rgb2gray(img);</span><br><span class="line"><span class="comment">%  tofloat.m, lpfilter.m(requires dftuv.m) are from the textbook</span></span><br><span class="line">[f, revertclss] = tofloat(img);</span><br><span class="line">[M, N] = <span class="built_in">size</span>(f);</span><br><span class="line">F = fft2(f);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Generate gaussian filter</span></span><br><span class="line">std = <span class="number">20</span>;</span><br><span class="line">filter_gaussian = lpfilter(<span class="string">&#x27;gaussian&#x27;</span>, M, N, std);</span><br><span class="line"><span class="comment">% Center the filter for display</span></span><br><span class="line">Fc_gaussian = fftshift(filter_gaussian);</span><br><span class="line"></span><br><span class="line">G_gaussian = filter_gaussian.*F;</span><br><span class="line"><span class="comment">% This is the filtered image</span></span><br><span class="line">gaussian_filtered_img = ifft2(G_gaussian);</span><br><span class="line">gaussian_filtered_img = revertclss(gaussian_filtered_img);</span><br></pre></td></tr></table></figure></li>
+<li>Frequency box filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Generate box filter of the same size of image</span></span><br><span class="line">filter_box = <span class="built_in">zeros</span>(M, N);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:M</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:N</span><br><span class="line">        cond1 = <span class="built_in">i</span> &gt;= M / <span class="number">2</span> - <span class="number">30</span> &amp;&amp; <span class="built_in">i</span> &lt;= M / <span class="number">2</span> + <span class="number">30</span>;</span><br><span class="line">        cond2 = <span class="built_in">j</span> &gt;= N / <span class="number">2</span> - <span class="number">30</span> &amp;&amp; <span class="built_in">j</span> &lt;= N / <span class="number">2</span> + <span class="number">30</span>;</span><br><span class="line">        <span class="keyword">if</span> cond1 &amp;&amp; cond2</span><br><span class="line">            filter_box(<span class="built_in">i</span>, <span class="built_in">j</span>) = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% The created box filter is already centered</span></span><br><span class="line">Fc_box = filter_box; </span><br><span class="line"><span class="comment">% The filter is centered so ifftshift is needed</span></span><br><span class="line">filter_box = ifftshift(filter_box);</span><br><span class="line"></span><br><span class="line">G_box = filter_box.*F;</span><br><span class="line">g_box = <span class="built_in">real</span>(ifft2(G_box));</span><br><span class="line">g_box = revertclss(g_box);</span><br></pre></td></tr></table></figure></li>
+<li>Frequency lowpass/highpass filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Generate lowpass/highpass filter</span></span><br><span class="line"><span class="comment">% This uses lpfilter.m</span></span><br><span class="line">std = <span class="number">5</span>;</span><br><span class="line">filter_lp = lpfilter(<span class="string">&#x27;ideal&#x27;</span>, M, N, std);</span><br><span class="line">Fc_lp = fftshift(filter_lp);</span><br><span class="line"></span><br><span class="line">G_lp = filter_lp.*F;</span><br><span class="line">g_lp = ifft2(G_lp);</span><br><span class="line">g_lp = revertclss(g_lp);</span><br><span class="line"></span><br><span class="line">filter_hp = <span class="number">1</span> - filter_lp;</span><br><span class="line">Fc_hp = fftshift(filter_hp);</span><br><span class="line">G_hp = filter_hp.*F;</span><br><span class="line">g_hp = ifft2(G_hp);</span><br><span class="line">g_hp =revertclss(g_hp);</span><br></pre></td></tr></table></figure></li>
+<li>Frequency bandpass/bandreject filter <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Generate bandpass/bandreject filter</span></span><br><span class="line"><span class="comment">% This uses bandfilter.m</span></span><br><span class="line">rad = <span class="number">50</span>;</span><br><span class="line">w = <span class="number">30</span>;</span><br><span class="line">filter_bp = bandfilter(<span class="string">&#x27;ideal&#x27;</span>, <span class="string">&#x27;pass&#x27;</span>, M, N, rad, w);</span><br><span class="line">Fc_bp = fftshift(filter_bp);</span><br><span class="line"></span><br><span class="line">G_bp = filter_bp.*F;</span><br><span class="line">g_bp = ifft2(G_bp);</span><br><span class="line">g_bp = revertclss(g_bp);</span><br><span class="line"></span><br><span class="line">filter_br = <span class="number">1</span> - filter_bp;</span><br><span class="line">Fc_br = fftshift(filter_bp);</span><br><span class="line">G_br = filter_br.*F;</span><br><span class="line">g_br = ifft2(G_br);</span><br><span class="line">g_br = revertclss(g_br);</span><br></pre></td></tr></table></figure></li>
+<li>Frequency notchpass/notchreject filter <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">% Generate notchpass&#x2F;notchreject filter</span><br><span class="line">% This uses cnotch.m, iseven.m, isodd.m</span><br><span class="line">% You should change C1 at your needs</span><br><span class="line">w &#x3D; 4;</span><br><span class="line">C1 &#x3D; zeros(M, 2);</span><br><span class="line">for i &#x3D; 1:M</span><br><span class="line">    C1(i,1) &#x3D; i;</span><br><span class="line">    C1(i, 2) &#x3D; 247;</span><br><span class="line">end</span><br><span class="line">C1(260:290,:) &#x3D; [];</span><br><span class="line">filter_np &#x3D; cnotch(&#39;gaussian&#39;,&#39;pass&#39;, M, N, C1, w);</span><br><span class="line">Fc_np &#x3D; fftshift(filter_np);</span><br><span class="line"></span><br><span class="line">G_np &#x3D; filter_np.*F;</span><br><span class="line">g_np &#x3D; ifft2(G_np);</span><br><span class="line">g_np &#x3D; revertclss(g_np);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filter_nr &#x3D; 1 - filter_np;</span><br><span class="line">Fc_nr &#x3D; fftshift(filter_nr);</span><br><span class="line"></span><br><span class="line">G_nr &#x3D; filter_nr.*F;</span><br><span class="line">g_nr &#x3D; ifft2(G_nr);</span><br><span class="line">g_nr &#x3D; revertclss(g_nr);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Image transformation
+<ul>
+<li>Translation
+<ul>
+<li>Transformation matrix <span class="math display">\[ \begin{bmatrix}
+1 &amp; 0 &amp; t_x\\ 0 &amp; 1 &amp; t_y\\ 0 &amp; 0 &amp;
+1\end{bmatrix} \]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"><span class="comment">% Get spatial referencing information </span></span><br><span class="line">img_ref = imref2d(<span class="built_in">size</span>(img));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set tx and ty, and generate the transformation matrix</span></span><br><span class="line">tx = <span class="number">15</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [<span class="number">1</span>, <span class="number">0</span>, tx;</span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>, ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = transltform2d(A);</span><br><span class="line"><span class="comment">% Adjust the spatial referencing information of the translated image</span></span><br><span class="line">translated_ref = img_ref;</span><br><span class="line">translated_ref.XWorldLimits(<span class="number">2</span>) = translated_ref.XWorldLimits(<span class="number">2</span>) + tx;</span><br><span class="line">translated_ref.YWorldLimits(<span class="number">2</span>) = translated_ref.YWorldLimits(<span class="number">2</span>) + ty;</span><br><span class="line">[translated_img, translated_ref] = imwarp(img, tform,OutputView=translated_ref);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Display the original and translated images</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">imshow(img, img_ref)</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">imshow(translated_img, translated_ref);</span><br><span class="line">sgtitle(<span class="string">&#x27;&#123;\color&#123;red&#125; Original image(left), translated image(right)&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Euclidean(rigit): rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[ \begin{bmatrix}
+cos(\theta) &amp; -sin(\theta) &amp; t_x\\ sin(\theta) &amp; cos(\theta)
+&amp; t_y\\ 0 &amp; 0 &amp; 1\end{bmatrix} \]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set theta, tx and ty to generate the transformation matrix</span></span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [<span class="built_in">cosd</span>(theta), -<span class="built_in">sind</span>(theta), tx;</span><br><span class="line">    <span class="built_in">sind</span>(theta), <span class="built_in">cosd</span>(theta), ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = rigidtform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshowpair(img, translated_img, <span class="string">&quot;montage&quot;</span>);</span><br><span class="line">title(<span class="string">&#x27;&#123;\color&#123;red&#125;Original Image(left), translated image(right)&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Similarity: uniform scaling + rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[ \begin{bmatrix}
+s*cos(\theta) &amp; -s*sin(\theta) &amp; t_x\\ s*sin(\theta) &amp;
+s*cos(\theta) &amp; t_y\\ 0 &amp; 0 &amp; 1\end{bmatrix} \]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set scale, theta, tx and ty to generate the transformation matrix</span></span><br><span class="line">scale = <span class="number">2</span>;</span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">A = [scale * <span class="built_in">cosd</span>(theta), -scale * <span class="built_in">sind</span>(theta), tx;</span><br><span class="line">    scale * <span class="built_in">sind</span>(theta), scale * <span class="built_in">cosd</span>(theta), ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = simtform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Affine: uniform scaling + shearing + rotation + translation
+<ul>
+<li>Transformation matrix <span class="math display">\[ A = s *
+\begin{bmatrix} cos(\theta) &amp; -sin(\theta)  \\ sin(\theta) &amp;
+cos(\theta) \end{bmatrix} * \begin{bmatrix} 1 &amp; h_1\\ h_2&amp;
+1\end{bmatrix} \]</span> <span class="math display">\[ \begin{bmatrix}
+A(1,1) &amp; A(1,2) &amp; t_x\\ A(2,1) &amp; A(2,2) &amp; t_y\\ 0 &amp;
+0 &amp; 1\end{bmatrix} \]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set scale, theta, tx, ty h1, h2 to generate the transformation matrix</span></span><br><span class="line">tx = <span class="number">10</span>;</span><br><span class="line">ty = <span class="number">20</span>;</span><br><span class="line">scale = <span class="number">3</span>;</span><br><span class="line">theta = <span class="number">30</span>;</span><br><span class="line">h1 = <span class="number">3</span>;</span><br><span class="line">h2 = <span class="number">2</span>;</span><br><span class="line">r = [<span class="built_in">cosd</span>(theta), -<span class="built_in">sind</span>(theta);</span><br><span class="line">    <span class="built_in">sind</span>(theta), <span class="built_in">cosd</span>(theta)];</span><br><span class="line">h = [<span class="number">1</span>, h1;</span><br><span class="line">    h2, <span class="number">1</span>];</span><br><span class="line">top = scale * r * h;</span><br><span class="line">A = [<span class="number">0</span>, <span class="number">0</span>, tx;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, ty;</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">A(<span class="number">1</span>:<span class="number">2</span>, <span class="number">1</span>:<span class="number">2</span>) = top;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tform = affinetform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Projection: affine transformation + projective wrap
+<ul>
+<li>Transformation matrix <span class="math display">\[ \begin{bmatrix}
+a_{11} &amp; a_{11} &amp; a_{11}\\ a_{21} &amp; a_{22} &amp;a_{23}\\
+a_{31} &amp; a_{32} &amp; a_{33}\end{bmatrix} \]</span></li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&quot;q1_origin.png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Set the transformation matrix </span></span><br><span class="line">A = [<span class="number">2</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line">    <span class="number">0.33</span> <span class="number">1</span> <span class="number">0</span>; </span><br><span class="line">    <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">tform = affinetform2d(A);</span><br><span class="line">translated_img = imwarp(img, tform);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>Hough
+<ul>
+<li>Line fitting: (x,y) =&gt; (m,b) / (<span class="math inline">\(\theta, \rho\)</span>)</li>
+<li>Hough transformation is a generic framework for detecting a
+parametric model</li>
+<li>A line becomes a point, a point becomes a line</li>
+<li>Matlab code <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Reference for hough: https://www.mathworks.com/help/images/ref/hough.html</span></span><br><span class="line">img = imread(<span class="string">&quot;filter_input.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">img = rgb2gray(img);</span><br><span class="line"></span><br><span class="line"><span class="comment">% If method is not specified, the default one is &quot;Sobel&quot;</span></span><br><span class="line"><span class="comment">% Reference for edge:https://www.mathworks.com/help/images/ref/edge.html#d124e102512</span></span><br><span class="line"><span class="comment">% Default method for edge is sobel,</span></span><br><span class="line">BW = edge(img);</span><br><span class="line">[H,theta,rho] = hough(BW);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">imshow(img);</span><br><span class="line">title(<span class="string">&#x27;Original image&#x27;</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">% rescale(H) rescales H to [0,1]</span></span><br><span class="line">imshow(imadjust(rescale(H)),<span class="string">&#x27;XData&#x27;</span>,theta,<span class="string">&#x27;YData&#x27;</span>,rho,<span class="string">&#x27;InitialMagnification&#x27;</span>,<span class="string">&#x27;fit&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;Hough transform of original image&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;\theta&#x27;</span>), ylabel(<span class="string">&#x27;\rho&#x27;</span>);</span><br><span class="line">axis on, axis normal, <span class="built_in">hold</span> on;</span><br><span class="line"><span class="comment">% Add color map</span></span><br><span class="line">colormap(gca,hot);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>1-D digital filter
+<ul>
+<li>Rational transfer function: <span class="math inline">\(Y(z) =
+\frac{b_1 + b_2 z^{-1}+...+b_{n_b + 1}z^{-n_{b}}}{1 + a_2 z^{-1} +
+...+a_{n_a + 1}z^{-n_a}}X(z)\)</span></li>
+<li><code>y = filter(b, a, x)</code> filters the input data x using a
+rational transfer function defined by the numerator and denominator
+coefficients b and a
+<ul>
+<li>If x is a vector, then filter returns the filtered data as a vector
+of the same size as x</li>
+<li>If x is a matrix, then filter acts along the first dimension and
+returns the filtered data for each column</li>
+<li>If x is a multidimensional array, then filter acts along the first
+array dimension whose size does not equal 1</li>
+</ul></li>
+<li>Example <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Reference: https://www.mathworks.com/help/matlab/ref/filter.html#buagwwg-2</span></span><br><span class="line">t = <span class="built_in">linspace</span>(-<span class="built_in">pi</span>,<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">rng default  <span class="comment">%initialize random number generator</span></span><br><span class="line">x = <span class="built_in">sin</span>(t) + <span class="number">0.25</span>*<span class="built_in">rand</span>(<span class="built_in">size</span>(t));</span><br><span class="line"></span><br><span class="line">windowSize = <span class="number">5</span>; </span><br><span class="line">b = (<span class="number">1</span>/windowSize)*<span class="built_in">ones</span>(<span class="number">1</span>,windowSize);</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">y = filter(b,a,x);</span><br><span class="line"></span><br><span class="line"><span class="built_in">plot</span>(t,x);</span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line"><span class="built_in">plot</span>(t,y);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;Input Data&#x27;</span>,<span class="string">&#x27;Filtered Data&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h1 id="matlab-basics">Matlab Basics</h1>
+<ol start="0" type="1">
+<li><code>Ctrl + R</code>注释, <code>Ctrl + T</code>取消注释</li>
+<li>Matlab使用三个<code>...</code>表示连接下一行</li>
+<li>特殊值：i, j 虚数单位; eps浮点数相对精度; Inf/inf无穷大;
+intmax/intmin整数范围; realmax/realmin实数范围; pi;
+NaN/nan(NaN参与的结果都是NaN);</li>
+<li>复数: <code>x = a + bi</code>,
+<code>real(x) = a, imag(x) = b</code></li>
+<li>求n次根号不要用幂，幂只能得到第一象限的根，用<code>nthroot(a, n)</code></li>
+<li>Matlab中标量是1*1数组，空数组是有一个维度为0，空数组用<code>[]</code>表示，可以把<code>[]</code>赋给值表示删除</li>
+<li>数组结构:
+<code>ndims(x)</code>x的维度，<code>size(x)</code>x的大小，<code>size(x, nd)</code>x在第nd维度上的大小，<code>length(A)</code>所有维度的最大值，<code>numel(x)</code>x中总元素个数</li>
+<li>自变量数组创建
+<code>a:inc:b</code>初始，step，结束，并且<code>abs(end) &lt; abs(b)</code>,
+inc可以是负数; <code>linspace(a,b,n)</code>初始，end，个数</li>
+<li>二维数组创建:
+行内空格或者逗号，行间分号或者回车；中等二维数组使用Matlab的<code>New Variable</code>功能创建，；大的二维数组使用<code>.m</code>文件创建</li>
+<li>一些内置数组函数
+<ul>
+<li><code>diag(x)</code>生成对角矩阵，或者取矩阵的对角线</li>
+<li><code>ones(a, b)</code>全1矩阵</li>
+<li><code>eye(n)</code>n阶单位阵</li>
+<li><code>zeros(a, b)</code>全0矩阵</li>
+<li><code>magic(n)</code>n阶数组，行列对角线的和都一样，<span class="math inline">\(n &gt; 2\)</span></li>
+<li><code>rand(a, b)</code>a*b阶元素在(0,1)均匀分布矩阵</li>
+<li><code>randn(a, b)</code>a*b阶标准正态分布矩阵</li>
+<li><code>randi(max, n)</code>1:max均匀分布的n * n随机整数矩阵,
+<code>randi([min, max], m, n)</code>生成在[min,
+max]内均匀分布的m*n阶随机矩阵</li>
+</ul></li>
+<li>一些操作函数:
+<code>permute(A, [dims])</code>按照A维度index的顺序重排A,
+<code>repmat(A, x, y)</code>把A当单位，生成x<em>y阶单位的矩阵;
+<code>reshape(A, x, y)</code>改变行列数;
+<code>flipud(A)</code>水平中心为轴，上下翻转;
+<code>fliplr(A)</code>垂直中心为轴，左右翻转;
+<code>rot90(A, n)</code>逆时针旋转A角度90 </em> n</li>
+<li>数组下标:
+二维数组默认按列填充，序号坐标按列填充。转换函数<code>[row, col] = ind2sub(size(A), idx)</code>,
+<code>idx = sub2ind(size(A), row, col)</code>。<code>end</code>可以代表最后一行，最后一列，或者最后一个</li>
+<li>数组访问: <code>A(r, c)</code>, <code>A(r, :)</code>,
+<code>A(:, c)</code>, <code>A(idx)</code>,
+<code>A(:)</code>访问所有，返回列向量。 注意序号访问返回结果和序号相同:
+<code>A([idx])</code>返回行向量, <code>A([idx]')</code>返回列向量</li>
+<li>数组运算:
+数组之间是对应元素的运算，数组和标量之间是标量和数组每一个元素的运算</li>
+<li>逻辑运算符: <code>A&amp;B</code>(<code>A&amp;&amp;B</code> is
+short-circuiting), <code>A|B</code>(<code>A||B</code> is
+short-circuiting), <code>~A</code>, <code>xor(A,B)</code>,
+<code>all(A)</code>是否全部非零, <code>any(A)</code>是否存在非零</li>
+<li>初等函数都是对数组每一个元素进行运算的</li>
+<li>矩阵乘除法
+<ul>
+<li><code>a*B</code>标量和每一个矩阵元素相乘</li>
+<li><code>A*B</code>矩阵乘法</li>
+<li><code>X = A\B</code>给出方程<code>AX = B</code>的解</li>
+<li><code>X = B/A</code>给出方程<code>XA = B</code>的解</li>
+<li><code>x = A\b</code>给出方程<code>Ax = b</code>,
+<code>row(A) &gt; col(A)</code>的最小二乘解, b是列向量</li>
+<li><code>x = A\b</code>给出方程<code>Ax = b</code>,
+<code>row(A) &lt; col(A)</code>的最小二乘基础解, b是列向量</li>
+</ul></li>
+<li>矩阵的标量特征参数: <code>rank(A)</code>, <code>trace(A)</code>,
+<code>det(A)</code>, <code>inv(A)</code>逆矩阵</li>
+<li>特征值和特征向量
+<ul>
+<li><code>vals = eig(A)</code>返回列向量特征值,
+<code>vals = eig(A, 'matrix')</code>返回矩阵形式的特征值矩阵</li>
+<li><code>[V, D] = eig(A)</code>，其中V是特征向量矩阵，每一列是一个特征向量，D是特征值矩阵，D除了对角线是特征值外都是0。<code>A * V = V *D</code></li>
+</ul></li>
+<li>除法解方程: <code>Ax = b =&gt; x = A\b</code>,
+<code>xC = d =&gt; x = d/C</code></li>
+<li>二项分布: <code>pk = binopdf(k, N, p)</code>一共N次发生k次的概率,
+<code>Fk = binocdf(k, N, p)</code>一共N次发生不大于k次的总概率,
+<code>E(k)=Np, D(k)=Npq</code>。<code>r = binornd(N, P, m, n)</code>产生m*n服从B(N,p)的随机数组</li>
+<li>正态分布: <code>px = normpdf(x, mu, sigma)</code>取值x的概率密度,
+<code>Fx = normcdf(x, mu, sigma)</code>不大于x的总概率,
+<code>r = normrnd(mu, sigma, m, n)</code>产生m*n服从N(mu,
+sigma^2)的随机数组。<code>E(x)=mu, D(x)=sigma^2</code></li>
+<li>统计分析命令:
+<ul>
+<li><code>max(X)/min(X)</code>每一列的最大/最小值,
+<code>max(x, [], 'all')</code>求矩阵最大值</li>
+<li><code>mean(X)</code>每一列的平均值,
+<code>mean(X, 1)</code>每一列平均值,
+<code>mean(X, 2)</code>每一行平均值,
+<code>mean(X, 'all')</code>矩阵平均值</li>
+<li><code>std(x)</code>每一列标准差,
+<code>std(x, 0, 1)</code>每一列标准差,
+<code>std(x, 0, 2)</code>每一行标准差,
+<code>std(x, 0, 'all')</code>全部的标准差</li>
+<li><code>var(x)</code>每一列方差, <code>var(x, 0, 1)</code>每一列方差,
+<code>var(x, 0, 2)</code>每一行方差,
+<code>var(x, 0, 'all')</code>全部的方差</li>
+<li><code>cov(x)</code>不同列的协方差,
+<code>diag(cov(x))' = var(x)</code></li>
+<li><code>corrcoef(x)</code>不同列的协相关系数</li>
+</ul></li>
+<li>Matlab绘制连续曲线的时候,
+会根据用户指定的离散点，自动进行插值计算，从而绘制出连续的曲线</li>
+<li>基本plot
+<ul>
+<li><code>plot(x, y, key, val)</code>y后面是参数，比如<code>Color</code>,
+<code>LineStyle</code>, <code>LineWidth</code>, <code>Marker</code>,
+<code>MarkerSize</code>, <code>MarkerEdgeColor</code>,
+<code>MarkerFaceColor</code></li>
+<li><code>plot(x)</code>当x是一维数组的时候，下标是x轴，x是y轴。当x是二维数组的时候，行是x轴坐标1:n，列是y轴，画出列数条曲线</li>
+<li>先画图，再设置其他参数</li>
+<li><code>axis([x1, x2, y1, y2])</code>二维绘图坐标轴范围</li>
+<li><code>grid on</code> 画出分格线,
+<code>box on</code>坐标呈现封闭形式, <code>title(xxx)</code>,
+<code>xlabel(xxx)</code>, <code>ylabel(xxx)</code>,
+<code>text(x, y, xxx)</code>在(x, y)处写文字,
+<code>legend(s1, s2)</code>图例</li>
+<li><code>hold on</code>同一张图不刷新，从而在一张图上面画多个曲线</li>
+<li><code>subplot(m, n, k)</code>在m<em>n的图的第k个子图,
+<code>subplot('position', [left, bottom, width, height])</code>,图总体是[0,1]
+</em>
+[0,1]并且原点是左下角,这个可以指定位置画图，比如一个图占一行/一列</li>
+<li><code>plot3(x, y, z)</code>三维画图，画曲线</li>
+<li>三维曲面图流程 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = linespace(x1,x2,n);</span><br><span class="line">y = linespace(y1,y2,m);</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = fun(X., Y.) <span class="comment">% 这里注意数组运算需要加.</span></span><br><span class="line">surf(X, Y, Z); <span class="comment">% 三维曲面图</span></span><br><span class="line"><span class="built_in">hold</span> one;</span><br><span class="line">stem3(X, Y, Z); <span class="comment">% 杆状图，指向曲面上的点</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>其他画图
+<ul>
+<li><code>bar(x)</code>x是一维数组的画, x轴是idx,
+y轴是x值。x是二维数组的话是分组直方图，每一列是一组。<code>bar(x, 'stacked')</code>对二维数组画分组直方图。</li>
+<li><code>hist(x)</code>x是一维数组, x轴是idx,
+y轴是x值。x是二维数组的话是分组频率图，每一列是一组。<code>hist(x, nbins)</code></li>
+<li><code>pie(x, explode, labels)</code>x是一维数组, explode是扇形间距,
+labels是cell标签(大括号)</li>
+</ul></li>
+<li>控制流
+<ul>
+<li><code>if expr stat elseif expr stat else stat end</code>中的表达式可以是逻辑数组，这时候只有全部是逻辑1才是true从而执行对应的statement</li>
+<li><code>switch expr case val stat otherwise stat end</code>这里不用在case最后写break，但是执行中会break。这里的expr是标量数值或者标量字符串，数值用==进行比较，字符串用<code>strcmp(s1, s2)</code>进行比较</li>
+<li><code>for idx = arr stat end</code>,
+<code>while expr stat end</code></li>
+</ul></li>
+</ol>
+<h1 id="assignments">Assignments</h1>
+<ol type="1">
+<li>Solve Ax = b
+<ul>
+<li>Use <code>x = A\b</code>, where b is a column vector
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">b = [<span class="number">30</span>; <span class="number">80</span>];</span><br><span class="line">res = A\b;</span><br></pre></td></tr></table></figure></li>
+<li>Use symbolic function <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">syms x y</span><br><span class="line">eq1 = x + y == <span class="number">30</span>;</span><br><span class="line">eq2 = <span class="number">2</span> * x + <span class="number">4</span> * y == <span class="number">80</span>;</span><br><span class="line">[resx, resy] = solve([eq1, eq2], [x, y]);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Symbolic function value <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">syms x</span><br><span class="line">f = x^<span class="number">2</span> + <span class="number">2</span> * x + <span class="number">1</span>;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">subs(f); <span class="comment">% 9</span></span><br></pre></td></tr></table></figure></li>
+<li>In triangle ABC, <span class="math inline">\(\frac{a}{sinA} =
+\frac{b}{sinB} = \frac{c}{sinC}\)</span>, <span class="math inline">\(c^2 = a^2 + b^2 - 2abcosC\)</span>
+<ul>
+<li><code>sin(x)</code> for values, <code>sind(x)</code>for degrees,
+<code>asin(x)</code> for values, <code>asind(x)</code> for degrees</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/" title="COSI 177A Scientific Data Processing in Matlab">https://yanxuanshaozhu.github.io/2023/03/05/COSI-177A-Scientific-Data-Processing-in-Matlab/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Matlab/" rel="tag"># Matlab</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/23/A-Funny-Lunar-Year-Grettings-Letter/" rel="prev" title="A Funny Lunar Year Grettings Letter">
+      <i class="fa fa-chevron-left"></i> A Funny Lunar Year Grettings Letter
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/06/React-Notes/" rel="next" title="React Notes">
+      React Notes <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#slides"><span class="nav-number">1.</span> <span class="nav-text">Slides</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab-basics"><span class="nav-number">2.</span> <span class="nav-text">Matlab Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assignments"><span class="nav-number">3.</span> <span class="nav-text">Assignments</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

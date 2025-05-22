@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Notes of COSI 29A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 29A Discrete Structure">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2021/08/26/COSI-29A-Discrete-Structure/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Notes of COSI 29A">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-26T14:18:25.000Z">
+<meta property="article:modified_time" content="2024-07-14T16:21:47.424Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Discrete Structure">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2021/08/26/COSI-29A-Discrete-Structure/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 29A Discrete Structure | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2021/08/26/COSI-29A-Discrete-Structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 29A Discrete Structure
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-26 10:18:25" itemprop="dateCreated datePublished" datetime="2021-08-26T10:18:25-04:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-14 12:21:47" itemprop="dateModified" datetime="2024-07-14T12:21:47-04:00">2024-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>31k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>28 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>
+Notes of COSI 29A
+</h1>
+<span id="more"></span>
+<h1 id="discrete-mathematics-an-open-introduction-notes">Discrete
+Mathematics: An Open Introduction Notes</h1>
+<ol type="1">
+<li>Mathematical Statements Ch 0.2
+<ul>
+<li>A statement is any declarative sentence which is either true or
+false</li>
+<li>A statement is atomic if it cannot be divided into smaller
+statements, otherwise it is called molecular</li>
+<li>Logical connective: connect simpler statements to build more
+complicated one
+<ul>
+<li>Binary connective: used to connect two statements, <code>and</code>,
+<code>or</code>, <code>if then</code>, <code>if and only if</code></li>
+<li>Uniary connective: used for only one statement,
+<code>not</code></li>
+<li>Priority: not &gt; and &gt; or &gt; xor &gt; implies &gt; iff</li>
+</ul></li>
+<li>Truth value
+<ul>
+<li><code>true</code>, <code>false</code></li>
+<li>The truth value of a molecular statement is determined on the truth
+of its atomic statements and the connectives</li>
+</ul></li>
+<li>Propositional variable(aka sentential variable), used to stand
+for(usually atomic) statements
+<ul>
+<li>The content of the statement does not matter, only the truth value
+matters</li>
+<li>Notation: <code>P</code>, <code>Q</code>, <code>R</code></li>
+<li>More notations
+<ul>
+<li>Conjunction: P and Q, <span class="math inline">\(P \land
+Q\)</span></li>
+<li>Disjunction: P or Q, <span class="math inline">\(P \lor
+Q\)</span></li>
+<li>Implication/Condition: if P then Q/P only if Q, <span class="math inline">\(P \rightarrow Q\)</span>, P is
+hypothesis/antecedent, Q is conclusion/consequent</li>
+<li>Biocondition: P if and only if Q, <span class="math inline">\(P
+\leftrightarrow Q\)</span></li>
+<li>Negation: not P, <span class="math inline">\(\neg P\)</span></li>
+</ul></li>
+<li>Truth conditions
+<ul>
+<li><span class="math inline">\(P \rightarrow Q\)</span>: if P is true,
+then true if Q is true, otherwise false; if P is false, then true for
+always. Another way, if Q is true, then always true</li>
+<li>If a and b are legs of a right triangle with hypotenuse c, then
+<span class="math inline">\(a^2+b^2=c^2\)</span></li>
+</ul></li>
+<li>Converse and Contrapositive
+<ul>
+<li>Conver of <span class="math inline">\(P \rightarrow Q\)</span> is
+<span class="math inline">\(Q \rightarrow P\)</span>, the converse and
+the original statement can have different truth values</li>
+<li>Contrapositive statement of <span class="math inline">\(P
+\rightarrow Q\)</span> is <span class="math inline">\(\neg Q \rightarrow
+\neg P\)</span>, the contrapositive and the original statement have the
+same truth value</li>
+</ul></li>
+<li>Implication Equivalence
+<ul>
+<li>A implies B</li>
+<li>A only if B</li>
+<li>if A then B</li>
+<li>B if A</li>
+<li>B when A</li>
+<li>A is sufficient for B</li>
+<li>B is necessary for A</li>
+</ul></li>
+<li>Predicates and Quantifiers
+<ul>
+<li>A boolean function with one or more variables is not a statement, it
+is ap predicate</li>
+<li>Two quantifiers: existential and universal
+<ul>
+<li>Existential: <span class="math inline">\(\exists\)</span>, there
+exists/there is, <span class="math inline">\(\exists x(x&lt;0)\)</span>
+means there is a number that is less than 0</li>
+<li>Universal: <span class="math inline">\(\forall\)</span>, for
+all/every, <span class="math inline">\(\forall x(x \geq 0)\)</span>
+means every number that is greater than or equal to 0</li>
+<li>Negation:
+<ul>
+<li><span class="math inline">\(\neg \exists x(P(x))\)</span> is
+equivalent to <span class="math inline">\(\forall x(\neg
+P(x))\)</span></li>
+<li><span class="math inline">\(\neg \forall x(P(x))\)</span> is
+equivalent to <span class="math inline">\(\exists x(\neg
+P(x))\)</span></li>
+</ul></li>
+<li>Implications quantifiers: in order for a predicate to become a
+statement, we implicitly assume the variable is universally
+quantified</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Propositional Logic Ch 3.1
+<ul>
+<li>A proposition is a statement, propositional logic studies the ways
+statements can interact with each other</li>
+<li>We can use truth table to determine the truth value of a
+proposition</li>
+<li>Logically equivalence: if both statements are both true or both
+false(they have the same truth value), then they are logically
+equivalent</li>
+<li>De Morgan's Laws
+<ul>
+<li><span class="math inline">\(\neg (P \land Q)\)</span> is equivalent
+to <span class="math inline">\(\neg P \lor \neg Q\)</span></li>
+<li><span class="math inline">\(\neg (P \lor Q)\)</span> is equivalent
+to <span class="math inline">\(\neg P \land \neg Q\)</span></li>
+</ul></li>
+<li>Implications are disjunctions: <span class="math inline">\(P
+\rightarrow Q\)</span> is equivalent to <span class="math inline">\(\neg
+P \lor Q\)</span></li>
+<li>Double negation: <span class="math inline">\(\neg \neg P\)</span> is
+equivalent to P</li>
+<li>Negation of an implication: <span class="math inline">\(\neg(P
+\rightarrow Q)\)</span> is equivalent to <span class="math inline">\(P
+\land \neg Q\)</span></li>
+<li>Decutsion: given a set of true premises, the conclusion should be
+true</li>
+<li>Predicate logic extends propositional logic</li>
+</ul></li>
+<li>Proofs Ch 3.2
+<ul>
+<li>Proof by contradiction
+<ul>
+<li>Proof is an argument. The argument is valid so conclusion must be
+true if premises are true</li>
+<li>To prove P is true, we prove <span class="math inline">\(\neg P
+\rightarrow Q\)</span> is true, where Q is false, this implies P is
+true</li>
+</ul></li>
+<li>Direct Proof</li>
+<li>Proof by contrapositive: prove <span class="math inline">\(P
+\rightarrow Q\)</span> using <span class="math inline">\(\neg Q
+\rightarrow \neg P\)</span></li>
+<li>Pigeonhole Principle: If more than n pigeons fly into n pigeon
+holes, then at least one pigeon hole will contain at least two
+pigeons</li>
+<li>Proof by (counter) example
+<ul>
+<li>For existential statement, we can prove by finding one example</li>
+<li>In order for a statement to be not valid, find an example where its
+negation is true</li>
+</ul></li>
+<li>Proof by cases: the statement is true for all cases</li>
+</ul></li>
+<li>Sets Ch 0.3
+<ul>
+<li>Introduction
+<ul>
+<li>A set is an unordered collection of objects</li>
+<li>Two sets are equal if they contain the same elements</li>
+</ul></li>
+<li>Notation
+<ul>
+<li>A is the set containing the elements 1, 2 and 3: <span class="math inline">\(A =\{1,2,3\}\)</span></li>
+<li>a is an element of set A: <span class="math inline">\(a \in
+A\)</span></li>
+<li>a is not an element of set A: <span class="math inline">\(a \notin
+A\)</span></li>
+<li>even numbers: <span class="math display">\[ \begin{align*}A
+&amp;=  \{0,2,4,6,\dots\} \\ &amp;= \{x \in \mathbb{N}: \exists n \in
+N(x=2n)\} \\ &amp;=\{x \in \mathbb{N}:  \text{x is even}\}
+\end{align*}\]</span></li>
+<li>The notation is often called the set builder notation</li>
+</ul></li>
+<li>Special Sets
+<ul>
+<li>empty set:<span class="math inline">\(\emptyset\)</span></li>
+<li>universal set: <span class="math inline">\(\mathbb{U}\)</span></li>
+<li>natural numbers: <span class="math inline">\(\mathbb{N} =
+\{0,1,2,3,\dots\}\)</span></li>
+<li>integers: <span class="math inline">\(\mathbb{Z} =
+\{\dots,-2,-1,0,1,2,\dots\}\)</span></li>
+<li>rational numbers: <span class="math inline">\(\mathbb{Q}\)</span></li>
+<li>real numbers: <span class="math inline">\(\mathbb{R}\)</span></li>
+<li>complex numbers: <span class="math inline">\(\mathbb{C}\)</span></li>
+<li>power set of A: <span class="math inline">\(\mathcal{P}(A)\)</span></li>
+</ul></li>
+<li>Set notation
+<ul>
+<li><span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a \notin A\)</span></li>
+<li><span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cup B\)</span></li>
+<li><span class="math inline">\(A \subseteq B\)</span>, <span class="math inline">\(A \subset B\)</span></li>
+<li><span class="math inline">\(A \times B\)</span>, <span class="math inline">\(A \setminus B\)</span>, <span class="math inline">\(A \oplus B\)</span></li>
+<li><span class="math inline">\(\bar{A}\)</span></li>
+<li><span class="math inline">\(|A|\)</span></li>
+</ul></li>
+<li>Venn Diagrams</li>
+</ul></li>
+<li>Functions Ch 0.4
+<ul>
+<li>Introduction
+<ul>
+<li>A function is a rule that assigns each input exactly one output, the
+output is the image of the input, the set of inputs is called the
+domain, the set of all allowable outputs is called the codomain, the set
+of actual outputs is called the range</li>
+<li>Notation: <span class="math inline">\(f: X \rightarrow Y\)</span>,
+the function with name <span class="math inline">\(f\)</span>, domain
+<span class="math inline">\(x\)</span>, and codomain <span class="math inline">\(Y\)</span></li>
+</ul></li>
+<li>Describing functions
+<ul>
+<li>Rule of four: each function can be described in four ways,
+algebracially(a formula), numerically(a table), graphically, or in
+words</li>
+<li>Using an explicit formula to calculate the image of any element in
+the domain is a great way to describe a function, and these explicit
+rules are closed formulas for the function</li>
+</ul></li>
+<li>Surjections, Injecetions, and Bijections
+<ul>
+<li>Surjection: the function is onto or the function maps the domain
+onto the codomain, the codomain is just the range
+<ul>
+<li><span class="math inline">\(\forall y \in Y, \exists x \in X,
+\text{s.t.} y = f(x)\)</span></li>
+</ul></li>
+<li>Injection: for one element in the codomain, it can be the image of
+at most one element in the domain, then the function is one-to-one or
+injective
+<ul>
+<li><span class="math inline">\(\forall x_1 \in X, \forall x_2 \in X,
+\text{if } f(x_1) = f(x_2), \text{then } x_1 = x_2\)</span></li>
+<li><span class="math inline">\(\forall x_1 \in X, \forall x_2 \in X,
+\text{if } f(x_1) \neq f(x_2), \text{then } x_1 \neq x_2\)</span></li>
+</ul></li>
+<li>Bijection: if a function is both onto and injective, then it is
+called bijective function or bijection</li>
+</ul></li>
+<li>Image and Inverse Image
+<ul>
+<li><span class="math inline">\(f: X \rightarrow Y, \text{let} A
+\subseteq X \text{ and } B \subseteq Y\)</span>
+<ul>
+<li>Image of A: <span class="math inline">\(f(A) = \f(a) \in Y: a \in
+A{\}\)</span></li>
+<li>Inverse image of B: <span class="math inline">\(f^{-1}(B) = \{a \in
+X: f(a) \in B\}\)</span></li>
+</ul></li>
+<li>Notice: <span class="math inline">\(f^{-1}(y)\)</span> is the
+complete inverse image of <span class="math inline">\(y\)</span> under
+<span class="math inline">\(f\)</span>, it is not the image of <span class="math inline">\(y\)</span> under <span class="math inline">\(f^{-1}\)</span>, because <span class="math inline">\(f^{-1}\)</span> may not exist</li>
+</ul></li>
+<li>Some results
+<ul>
+<li>if <span class="math inline">\(g \circ f\)</span> is injective: then
+f is injective. if <span class="math inline">\(g \circ f\)</span> is
+surjective, then g is surjective
+<ul>
+<li>if <span class="math inline">\(x_1 = x_2, \text{and} f(x_1) =
+f(x_2)\)</span>, we can prove <span class="math inline">\(x_1 =
+x_2\)</span></li>
+<li>for every <span class="math inline">\(z \in C\)</span>, there is
+<span class="math inline">\(x \in A\)</span>, then <span class="math inline">\(y = f(x) \in B\)</span></li>
+<li>Consider <span class="math inline">\(A = \{1\}, B = \{1,2\},C=\{1\},
+f(1)=1,g(1)=g(2)=1\)</span>, then f is not surjective, g is not
+injective</li>
+</ul></li>
+<li>if f and g are injective/surjective/bijective, so is <span class="math inline">\(g \circ f\)</span></li>
+<li>Generally, <span class="math inline">\(|A| \geq |f(A)|\)</span>,
+when f is injective, we have <span class="math inline">\(|A| =
+|f(A)|\)</span></li>
+<li>Generally, we don't know <span class="math inline">\(|B| \text{and}
+|f^{_1}(B)|\)</span>. If f is injective, <span class="math inline">\(|B|
+\geq |f^{-1}(B)|\)</span>, if f is surjective, <span class="math inline">\(|B| \leq |f^{-1}(B)|\)</span>, if f is bijective,
+<span class="math inline">\(|B| = |f^{-1}(B)|\)</span></li>
+<li><span class="math inline">\(A \subseteq f^{-1}(f(A))\)</span>
+<ul>
+<li>The two sets are equal when f is injective</li>
+<li>Proper subset example: <span class="math inline">\(f: \set{1,2}
+\rightarrow \set{1}, f(1)=f(2)=1\)</span></li>
+</ul></li>
+<li><span class="math inline">\(f(f^{-1}(B)) \subseteq B\)</span>
+<ul>
+<li>The two sets are equal when f is surjective</li>
+<li>Proper subset example: <span class="math inline">\(f: \set{1,2}
+\rightarrow \set{1,2,3}, f(1) = 1, f(2) = 2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(f(A \cup B) = f(A) \cup
+f(B)\)</span></li>
+<li><span class="math inline">\(f^{-1}(A \cup B) = f^{-1}(A) \cup
+f^{-1}(B)\)</span></li>
+<li><span class="math inline">\(f(A \cap B) \subseteq f(A) \cap
+f(B)\)</span>
+<ul>
+<li><span class="math inline">\(f:\set{0,1} \rightarrow \set{0,1},
+f(0)=f(1)=1\)</span></li>
+</ul></li>
+<li><span class="math inline">\(f^{-1}(A \cap B) = f^{-1}(A) \cap
+f^{-1}(B)\)</span></li>
+</ul></li>
+</ul></li>
+<li>Additive and Multiplicative Principles Ch 1.1
+<ul>
+<li>Additive principle: if event A can occur in m ways, and event B can
+occur in n disjoint ways, then the event A or B can occur in m + n
+ways</li>
+<li>Multiplicative principle: if event A can occur in m ways, and each
+possibility for A allows for exactly n ways for event B, then the event
+A and B can occur in m * n ways</li>
+<li>Additive principle with sets: Given two sets A and B, if <span class="math inline">\(A \cap B = \emptyset\)</span>, then <span class="math inline">\(|A \cup B| = |A| +|B|\)</span></li>
+<li>Cartesian Product: Givens sets A and B, we can form the set <span class="math inline">\(A \times B = \set{(x,y): x \ A \text{ and } y \in
+B}\)</span></li>
+<li>Multiplicative principle with sets: Given two sets A and B, we have
+<span class="math inline">\(|A*B| = |A|*|B|\)</span></li>
+<li>Cardinality of two-set union: <span class="math inline">\(|A \cup B|
+= |A| + |B| - |A \cap B|\)</span></li>
+<li>Cardinality of three-set union <span class="math display">\[|A \cup
+B \cup C| = |A| + |B| + |C| - |A \cup B| - |A \cup C| - |B \cup C| + |A
+\cap B \cap C|\]</span></li>
+</ul></li>
+<li>Binomial Coefficients Ch 1.2
+<ul>
+<li>Power set: <span class="math inline">\(|\mathcal{P}(A)| =
+2^{|A|}\)</span></li>
+<li>Big Strings
+<ul>
+<li>Bit is short for binary digit</li>
+<li>A n-bit string is a bit string of length n. That is, it's a string
+containing n symbols, each of which is a bit, either 0 or 1</li>
+<li>The weight of a bit string is the number of 1's in it</li>
+<li><span class="math inline">\(B^{n}\)</span> is the set of all n-bit
+strings</li>
+<li><span class="math inline">\(B^{n}_{k}\)</span> is the set of all
+n-bit strings of weight k</li>
+<li>Obviously: <span class="math inline">\(|B^{n}_{k}| =
+|B^{n-1}_{k-1}|+|B^{n-1}_{k}|\)</span></li>
+</ul></li>
+<li>Lattice Paths
+<ul>
+<li>The integer lattice is the set of all points in the Cartesian plane
+for which both the x and y coordinates are integers</li>
+<li>A lattice path is one of the shortest possible paths connecting two
+points on the lattice, moving only horizontally and vertically</li>
+</ul></li>
+<li>Binomial Coefficients
+<ul>
+<li>Binomial coefficients are the coefficients in the expanded version
+of a binomial</li>
+<li>For each integer <span class="math inline">\(n \geq 0\)</span> and
+integer k with <span class="math inline">\(0 \leq k \leq n\)</span>
+there is a number <span class="math inline">\(\binom{n}{k}\)</span>,
+reads n choose k
+<ul>
+<li><span class="math inline">\(\binom{n}{k} = |B^{n}_{k}|\)</span></li>
+<li><span class="math inline">\(\binom{n}{k}\)</span> is the number of
+subsets of a set of size n each with cardinality k</li>
+<li><span class="math inline">\(\binom{n}{k}\)</span> is the number of
+lattice paths of length n containing k steps to the right</li>
+<li><span class="math inline">\(\binom{n}{k}\)</span> is the coefficient
+of <span class="math inline">\(x^k y^{n-k}\)</span> in the expansion of
+<span class="math inline">\((x+y)^k\)</span></li>
+<li><span class="math inline">\(\binom{n}{k}\)</span> is the numebr of
+ways to select k objects from a total of n objects</li>
+</ul></li>
+<li>Pascal's Triangle</li>
+</ul></li>
+</ul></li>
+<li>Combinations and Permutations Ch 1.3
+<ul>
+<li>Permutation is a possible rearrangement of objects</li>
+<li>There are <span class="math inline">\(n! =
+n*(n-1)*(n-2)*\dots*2*1\)</span> permutations of n(distinct)
+elements</li>
+<li>k-permutation of n elements: <span class="math inline">\(P(n,
+k)\)</span>, the number of ways to arrange k objects chosen from n
+distinct objects: <span class="math display">\[P(n,k) =
+\frac{n!}{(n-k)!} = n*(n-1)*\dots*(n-(k-1))\]</span></li>
+<li>Closed formula for <span class="math inline">\(\binom{n}{k}\)</span>: <span class="math display">\[\binom{n}{k} = \frac{n!}{(n-k)!k!} =
+\frac{n*\dots*(n-(k-1))}{k*\dots*1}\]</span></li>
+</ul></li>
+<li>Combinatorial Proofs Ch 1.4
+<ul>
+<li>Binomial identity
+<ul>
+<li><span class="math inline">\(\binom{n}{0} = \binom{n}{n} =
+1\)</span></li>
+<li><span class="math inline">\(\binom{n}{k} = \binom{n-1}{k-1} +
+\binom{n-1}{k}\)</span></li>
+<li><span class="math inline">\(\binom{n}{k} =
+\binom{n}{n-k}\)</span></li>
+<li><span class="math inline">\(\binom{n}{0}+\dots+\binom{n}{n} =
+2^n\)</span></li>
+</ul></li>
+<li>Combinatorial proof
+<ul>
+<li>Find a counting problem you will be able to answer in two ways.</li>
+<li>Explain why one answer to the counting problem is A</li>
+<li>Explain why the other answer to the counting problem is B</li>
+<li>Since both A and B are the answers to the same question, we must
+have A = B</li>
+</ul></li>
+</ul></li>
+<li>Sequences
+<ul>
+<li>Describing Sequences Ch 2.1
+<ul>
+<li>A sequence is simply an ordered list of numbers</li>
+<li>Notation: <span class="math inline">\(a_0, a_1,\dots, \text{ or }
+(a_n)_{n\in \mathbb{N}} \text{ or } (a_n)_{n \geq 0} \text{ or simply }
+(a_n)\)</span>. If we omit <span class="math inline">\(a_0\)</span>,
+then the sequence is <span class="math inline">\((a_n)_{n \geq
+1}\)</span>. n is called index</li>
+<li>Closed formula: a closed formula for <span class="math inline">\((a_n)_{n\in \mathbb{N}}\)</span> is a formula for
+<span class="math inline">\(a_n\)</span> using a fixed finite number of
+operations on n</li>
+<li>Recursive definition: a recursive definition(sometimes called an
+inductive definition) for a sequence <span class="math inline">\((a_n)_{n\in \mathbb{N}}\)</span> consists of a
+recurrence relation: an equation relating a term of the sequence to
+previous terms and an initial condition: a list of a few terms of the
+sequence</li>
+<li>Common sequences
+<ul>
+<li>Square numbers: <span class="math inline">\(a_n = n^2\)</span></li>
+<li>Triangle numbers: <span class="math inline">\(a_n =
+\frac{n(n+1)}{2}\)</span></li>
+<li>The fibonacci numbers: <span class="math inline">\(F_n=F_{n-1}+F_{n-2}\)</span> with <span class="math inline">\(F_1 = F_2=1\)</span></li>
+</ul></li>
+</ul></li>
+<li>Arithmetic and Geometric Sequences Ch 2.2
+<ul>
+<li>If the terms of a sequence differ by a constant, we say the sequence
+is arithmetic. If the initial term <span class="math inline">\(a_0\)</span> of the sequence is a and the common
+difference is d, then we have recursive definition: <span class="math inline">\(a_n=a_{n-1}+d\)</span> with <span class="math inline">\(a_0=a\)</span>, closed formula: <span class="math inline">\(a_n = a +dn\)</span></li>
+<li>A sequence is called geometric if the ratio between successive terms
+is constant. Suppose the initial term <span class="math inline">\(a_0\)</span> is an the common ratio is r, then we
+have recursive definition: <span class="math inline">\(a_n=ra_{n-1}\)</span> with <span class="math inline">\(a_0=a\)</span>, closed formula: <span class="math inline">\(a_n=a*r^n\)</span></li>
+<li>Summing arithmetic sequences: reverse and add
+<ul>
+<li>Formula: <span class="math inline">\(\sum\limits_{k=0}^{n-1}(a+kd) =
+\frac{n}{2}(2a+(n-1)d)\)</span></li>
+</ul></li>
+<li>Summing geometric sequences: multiply, shift and subtract
+<ul>
+<li>Formula: <span class="math inline">\(\sum\limits_{k=0}^{n-1}(ar^k)=a\frac{1-r^n}{1-r}\)</span></li>
+</ul></li>
+</ul></li>
+<li>Polynomial Fitting Ch 2.3
+<ul>
+<li>Difference
+<ul>
+<li>For sequence <span class="math inline">\((a_n)_{n\geq 0}\)</span>,
+its first difference is <span class="math inline">\((a_n - a_{n-1})_{n
+\geq 1}\)</span>, its second difference is <span class="math inline">\(((a_n - a_{n-1})-(a_{n-1}-a_{n-2}))_{n \geq
+2}\)</span></li>
+<li>If the <span class="math inline">\(kth\)</span> order difference of
+a sequence is constant, then we say a sequence is a <span class="math inline">\(\Delta^{k}\)</span>-constant sequence
+<ul>
+<li>If a sequence is arithmetic, then it is <span class="math inline">\(\Delta^{1}\)</span>-constant</li>
+</ul></li>
+</ul></li>
+<li>Finite difference
+<ul>
+<li>The closed formula for a sequence will be a degree <span class="math inline">\(k\)</span> polynomial if and only if the sequence
+is <span class="math inline">\(\Delta^k\)</span>-constant</li>
+<li>You can try differencing the sequence for some degrees, if the
+difference consequence is constant, then you can use polynomial fitting
+to find the closed form for the sequence</li>
+</ul></li>
+</ul></li>
+<li>Solving Recurrence Relations Ch 2.4
+<ul>
+<li>Characteristic equations: Suppose <span class="math inline">\(a_n +
+\alpha a_{n-1} + \beta a_{n-2} = 0\)</span>, its characteristic equation
+is <span class="math inline">\(x^2+\alpha x+\beta = 0\)</span>
+<ul>
+<li>If <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(\gamma_2\)</span> are two distinct roots of the
+characteristic eqution, then the solution to the recurrence relation is
+<span class="math inline">\(a_n = a\gamma_1^{n} + b
+\gamma_2^{n}\)</span>, where a and b are constants determined by the
+initial conditions</li>
+<li>If there is only one solution <span class="math inline">\(\gamma\)</span> to the characteristic equation,
+then the solution to the recurrence relation is <span class="math inline">\(a_n = a\gamma^{n} + bn \gamma^{n}\)</span>, where
+a and b are constants determined by the initial conditions</li>
+</ul></li>
+</ul></li>
+<li>Induction Ch 2.5
+<ul>
+<li>Induction Proof Structure: Let <span class="math inline">\(P(n)\)</span> be the statement, to prove <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n \geq 0\)</span>, you must prove two facts:
+<ul>
+<li>Base case: Prove that <span class="math inline">\(P(0)\)</span> is
+true, you do this directly, this is often easy</li>
+<li>Inductive case: Prove that <span class="math inline">\(P(k)
+\rightarrow P(k+1)\)</span> for all <span class="math inline">\(k \geq
+0\)</span>. This is the proof of an if-then statement, so you can assume
+<span class="math inline">\(P(k)\)</span>(it's called the inductive
+hypothesis) is true, you must then explain why <span class="math inline">\(P(k+1)\)</span> is also true, given that
+assumption</li>
+<li>Then by the principle of mathematical induction, the statement <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n \geq 0\)</span></li>
+</ul></li>
+<li>Strong induction proof structure: Let <span class="math inline">\(P(n)\)</span> be the statement, to prove <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n \geq 0\)</span>, you must prove two facts:
+<ul>
+<li>Base case: Prove that <span class="math inline">\(P(0)\)</span> is
+true</li>
+<li>Inductive case: Assume <span class="math inline">\(P(k)\)</span> is
+true, for all <span class="math inline">\(K &lt; n\)</span>, prove that
+<span class="math inline">\(P(k)\)</span> is true</li>
+</ul></li>
+<li>Some results
+<ul>
+<li><span class="math inline">\(1+\dots+n=\frac{n(n+1)}{2}\)</span></li>
+<li><span class="math inline">\(1^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}\)</span></li>
+<li><span class="math inline">\(1^3+\dots+n^3=(\frac{n(n+2)}{2})^2\)</span></li>
+<li>Consider the Riemann zeta function: <span class="math inline">\(\zeta(s) =
+\sum\limits_{n=1}^{\infty}\frac{1}{n^s}\)</span>
+<ul>
+<li>We have <span class="math inline">\(\zeta(s) * \Gamma(s) =
+\int_{0}^{\infty}\frac{x^{s-1}}{e^x-1}dx\)</span></li>
+<li><span class="math inline">\(\zeta(-1) = -\frac{1}{12}, \zeta(0) =
+-\frac{1}{2}, \zeta(1)=\infty, \zeta(2)=\frac{\pi^2}{6},
+\zeta(4)=\frac{\pi^4}{90}\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Graph Definition Ch 4.1
+<ul>
+<li>Definition: a graph is an ordered pair <span class="math inline">\(G
+= (V,E)\)</span> consisting of a nonempty set V (called the vertices)
+adn a set E (called the edges) of two-element subsets of V</li>
+<li>Isomorphic Graphs: a isomorphism between two graphs <span class="math inline">\(G_1\)</span> and <span class="math inline">\(G_2\)</span> is a bijection <span class="math inline">\(f: V_1 \rightarrow V_2\)</span> between the
+vertices of the graphs such that <span class="math inline">\(\set{a,
+b}\)</span> is an edge in <span class="math inline">\(G_1\)</span> iff
+<span class="math inline">\(\set{f(a), f(b)}\)</span> is an edge in
+<span class="math inline">\(G_2\)</span>. Two graphs are isomorphic if
+there is an isomorphism between them. In this case we write <span class="math inline">\(G_1 \cong G_2\)</span><br>
+</li>
+<li>Subgraphs: <span class="math inline">\(G&#39;=(V&#39;,E&#39;)\)</span> is a subgraph of
+<span class="math inline">\(G=(V, E)\)</span>, and write <span class="math inline">\(G&#39; \subseteq G\)</span>, provided <span class="math inline">\(V&#39; \subseteq V\)</span> and <span class="math inline">\(E&#39; \subseteq E\)</span>. <span class="math inline">\(G&#39;=(V&#39;,E&#39;)\)</span> is a induced
+subgraph of <span class="math inline">\(G=(V, E)\)</span>, provided
+<span class="math inline">\(V&#39; \subseteq V\)</span> and every edge
+in E whose vertices are in <span class="math inline">\(V&#39;\)</span>
+is also an edge in <span class="math inline">\(E&#39;\)</span></li>
+<li>Simple graph: no pairs of vertices is connected more thant once, and
+no vertex is connected to itself. Other graphs are multigraphs</li>
+<li>Connected graph: there is a path between any two vertices</li>
+<li>Complete graph: if every pair of vertices are connected by a edge,
+then the graph is complete</li>
+<li>Degree of a vertex: number of edges emanating from a given vertex
+<ul>
+<li>Handshake Lemma: in any graph, the sum of the degrees of vertices in
+the graph is always twice the number of edges, i.e. <span class="math inline">\(\sum\limits_{v \in V}d(v) = 2e\)</span><br>
+</li>
+<li>Proposition: in any graph, the number of vertices with odd degree
+must be even</li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="mathematics-for-computer-science-notes">Mathematics for Computer
+Science Notes</h1>
+<ol type="1">
+<li>Logical Formulas Ch 3.1
+<ul>
+<li>Java uses <code>&amp;&amp;</code> for and , <code>||</code> for
+or</li>
+<li>P xor Q notation: <span class="math inline">\(P \oplus
+Q\)</span></li>
+<li>Negation of P: <span class="math inline">\(\bar{P}\)</span>, or
+<span class="math inline">\(\neg P\)</span></li>
+<li>Validity: a valid formula is one which is always true</li>
+<li>Satisfiability: a satisfiable formula is one which can sometimes be
+true
+<ul>
+<li>A statement P is satisfiable iff its negation NOT(P) is not
+valid</li>
+</ul></li>
+<li>Distributive Law of And over OR: <span class="math inline">\(A \land
+(B \lor C) = (A \land B) \lor (A \land C)\)</span></li>
+<li>Distributive Law of OR over AND: <span class="math inline">\(A \lor
+(B \land C) = (A \lor B) \land (A \lor C)\)</span></li>
+<li>Proving Equivalences:
+<ul>
+<li>Approach 1: use truth table, there are <span class="math inline">\(2^N\)</span> situations for <span class="math inline">\(N\)</span> variables</li>
+<li>Approach 2: use algebra to prove equivalence</li>
+</ul></li>
+<li>SAT problem: the genereal problem of deciding whether a proposition
+is satisfiable is called SAT</li>
+</ul></li>
+<li>Inference Rules Ch 3.4
+<ul>
+<li><span class="math inline">\((A \land B)\lor C \leftrightarrow (A
+\lor C)\land (B \lor C)\)</span></li>
+<li><span class="math inline">\((A \lor B)\land C \leftrightarrow (A
+\land C)\lor (B \land C)\)</span></li>
+<li><span class="math inline">\((A \land B) \leftrightarrow (B \land
+A)\)</span></li>
+<li><span class="math inline">\((A \land B) \land C \leftrightarrow A
+\land(B \land C)\)</span></li>
+<li><span class="math inline">\(\text{True} \land A \leftrightarrow
+A\)</span></li>
+<li><span class="math inline">\(\text{False} \land A \leftrightarrow
+\text{False}\)</span></li>
+<li><span class="math inline">\(A \land A \leftrightarrow
+A\)</span></li>
+<li><span class="math inline">\(A \land \neg A \leftrightarrow
+\text{False}\)</span></li>
+<li><span class="math inline">\(A \lor (\neg A) \leftrightarrow
+\text{True}\)</span></li>
+<li><span class="math inline">\(\neg(A \land B) \leftrightarrow \neg A
+\lor \neg B\)</span></li>
+<li><span class="math inline">\(\neg(A \lor B) \leftrightarrow \neg A
+\land \neg B\)</span></li>
+</ul></li>
+<li>Predicate Formulas Ch 3.6
+<ul>
+<li>General syntax: <span class="math inline">\(\text{condition } x_1,
+\text{ condition } x_2, \dots, \text{condition }x_N \rightarrow P(x_1,
+x_2,\dots,x_N)\)</span></li>
+<li>Quantifiers
+<ul>
+<li>ALways true
+<ul>
+<li>For all <span class="math inline">\(x \in D, P(x)\)</span> is
+true</li>
+<li><span class="math inline">\(P(x)\)</span> is true for every <span class="math inline">\(x \in D\)</span></li>
+</ul></li>
+<li>Sometimes true
+<ul>
+<li>There is an <span class="math inline">\(x \in D\)</span> s.t. <span class="math inline">\(P(x)\)</span> is true</li>
+<li><span class="math inline">\(P(x)\)</span> is true for some <span class="math inline">\(x \in D\)</span></li>
+<li><span class="math inline">\(P(x)\)</span> is true for at least one
+<span class="math inline">\(x \in D\)</span></li>
+</ul></li>
+<li>Universal quantification: an assertion that a predicate is always
+true</li>
+<li>Existential quantification: an assertion that a predicate is
+sometimes true<br>
+</li>
+</ul></li>
+<li>Mixing Quantifiers
+<ul>
+<li>For every even integer n greater that 2, there exists primes p and q
+such that n = p +q</li>
+</ul></li>
+<li>Order of quantifiers: swapping the order of different quantifiers
+usually changes the meaning of a proposition</li>
+<li>Variables over the domain
+<ul>
+<li>Simplification: <span class="math inline">\(\forall x, \exists y,
+Q(x,y)\)</span></li>
+<li>The unnamed nonempty set that x and y range over is called the
+domain of discourse, or just domain</li>
+</ul></li>
+<li>Negating quantifiers
+<ul>
+<li>Equivalence: <span class="math inline">\(\neg (\forall x. P(x))
+\leftrightarrow \exists x(\neg P(x))\)</span></li>
+<li>Equivalence: <span class="math inline">\(\neg (\exists x. P(x))
+\leftrightarrow \forall x(\neg P(x))\)</span></li>
+</ul></li>
+<li>Validity for Predicate Formulas
+<ul>
+<li>In order for a predicate formula to be valid, it should be true all
+across its domain</li>
+<li>Valid assertion: <span class="math inline">\(\exists x, \forall y.
+P(x,y) \rightarrow \forall y, \exists x. P(x,y)\)</span></li>
+<li>Not valid assertion: <span class="math inline">\(\forall y, \exists
+x. P(x,y) \rightarrow \exists x, \forall y. P(x, y)\)</span> (This is
+invalid because x and y may be related, so there is no such universal
+x)</li>
+</ul></li>
+</ul></li>
+<li>What is a Proof Ch 1
+<ul>
+<li>Logical Deductions
+<ul>
+<li>Example: a proof of P and a proof P implies Q is a proof of Q.
+Antecedents: P, P implies Q, Conclusion/consequent: Q</li>
+<li>Rule
+<ul>
+<li>P implies Q, and Q implies R =&gt; P implies R</li>
+<li>NOT(P) implies NOT(Q) =&gt; Q implies P</li>
+</ul></li>
+</ul></li>
+<li>Proving an implication: P implies Q
+<ul>
+<li>Method 1: assume P is true, then Q logically follows</li>
+<li>Method 2: we prove the contrapositive, then use method 1 with the
+contrapositive</li>
+</ul></li>
+<li>Proving an if and only if
+<ul>
+<li>Method 1: prove each statement implies the other</li>
+<li>Method 2: construct a chain of iffs</li>
+</ul></li>
+<li>Proof by Cases</li>
+<li>Proof by contradiction/ indirect proof: show that if a proposition
+were false, then some flse fact would be true
+<ul>
+<li>In order to prove P: we use proof by contradiction, supopose P is
+false, deduce something false, then there is a contradiction, then P
+must be true</li>
+</ul></li>
+</ul></li>
+<li>Sets Ch 4.1
+<ul>
+<li>Introduction: informally, a set is a bunch of elements</li>
+<li>Some popular sets: <span class="math inline">\(\emptyset,
+\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}\)</span></li>
+<li>Comparing and combining sets
+<ul>
+<li><span class="math inline">\(\subseteq\)</span>: subset, <span class="math inline">\(\subset\)</span>: strict subset</li>
+<li><span class="math inline">\(x \in A \cup B \leftarrow x \in A \text{
+or } x\in B\)</span></li>
+<li><span class="math inline">\(x \in A \cap B \leftarrow x \in A \text{
+and } x\in B\)</span></li>
+<li><span class="math inline">\(x \in A \setminus B \leftarrow x \in A
+\text{ and } x\notin B\)</span></li>
+<li><span class="math inline">\(B \subseteq \mathcal{P}(A)
+\leftrightarrow B \subseteq A\)</span></li>
+</ul></li>
+<li>Proving set equalities: to prove <span class="math inline">\(A =
+B\)</span>, we need to prove <span class="math inline">\(A \subseteq B
+\text{ and } B \subseteq A\)</span></li>
+</ul></li>
+<li>Sequences Ch 4.2
+<ul>
+<li>A list of ordered eleemnts are called sequence</li>
+<li>Use <span class="math inline">\(\lambda\)</span> for empty
+sequence</li>
+</ul></li>
+<li>Functions Ch 4.3
+<ul>
+<li>A function assigns an element of one set, called the domain, to an
+element of another set, called the codomain</li>
+<li>Functions are often defined by formulas</li>
+<li>Functions can be defined using tables</li>
+<li>Image of set S under f: <span class="math inline">\(f(S) =
+\set{f(x): \forall x \in S }\)</span></li>
+<li>range of f: <span class="math inline">\(\text{range}(f) =
+f(\text{domain of f})\)</span></li>
+<li>Function Composition: for <span class="math inline">\(f: A
+\rightarrow B\)</span> and <span class="math inline">\(g: B \rightarrow
+C\)</span>, the composition of g and f is <span class="math inline">\((g
+\circ f): A \rightarrow C |(g \circ f)(x) = g(f(x))\)</span></li>
+</ul></li>
+<li>Binary Relations Ch 4.4
+<ul>
+<li>Binary relations define relations between two objects</li>
+<li>Definition: a binary relation R, consists of a set A called the
+domain of R, and a set B called the codomain of R, and a subset of A*B
+called the graph of R. R is said between A and B, or from A to B</li>
+<li>Relation can be function, surjective, total, injective, or
+bijective</li>
+<li>Image: <span class="math inline">\(R(A)\)</span></li>
+<li>Inverse relation: <span class="math inline">\(R^{-1}\)</span>, <span class="math inline">\(bR^{-1}a \leftrightarrow aRb\)</span></li>
+<li>Inverse image: <span class="math inline">\(R^{-1}(B)\)</span></li>
+</ul></li>
+<li>Finite Cardinality Ch 4.5
+<ul>
+<li>If A is a finite set, the cardinality of A, written <span class="math inline">\(|A|\)</span>, is the number of elements in A</li>
+<li>Definition
+<ul>
+<li><span class="math inline">\(A \text{ surj }B
+\leftrightarrow\)</span> there is a surjective function from A to B</li>
+<li><span class="math inline">\(A \text{ inj }B \leftrightarrow\)</span>
+there is a injective function from A to B</li>
+<li><span class="math inline">\(A \text{ bij }B \leftrightarrow\)</span>
+there is a bijective function from A to B</li>
+</ul></li>
+<li>Theorem: For finite sets A, B
+<ul>
+<li><span class="math inline">\(A \text{ surj }B \leftrightarrow |A|\geq
+|B|\)</span></li>
+<li><span class="math inline">\(A \text{ inj }B \leftrightarrow |A|\leq
+|B|\)</span></li>
+<li><span class="math inline">\(A \text{ bij }B \leftrightarrow |A|=
+|B|\)</span></li>
+</ul></li>
+<li>For a finite with n elements, there are <span class="math inline">\(2^n\)</span> subsets</li>
+</ul></li>
+<li>Cardinality Rule Ch 14
+<ul>
+<li>Counting One Thing by Counting Another Ch 14.1
+<ul>
+<li>Bijection Rule: if there is a bijection between two things, then
+they have the same size</li>
+</ul></li>
+<li>Counting Sequences Ch 14.2
+<ul>
+<li>Product rule: if <span class="math inline">\(P_1,
+P_2,\dots,P_n\)</span> are finite sets, then <span class="math inline">\(|P_1 * P_2 * \dots * P_n| =
+|P_1|*|P_2|*\dots*|P_n|\)</span></li>
+<li>Sum rule: if <span class="math inline">\(P_1, P_2,\dots,P_n\)</span>
+are disjoint finite sets, then <span class="math inline">\(|P_1 \cup P_2
+\cup \dots \cup P_n| = |P_1|+|P_2|+\dots+|P_n|\)</span></li>
+</ul></li>
+<li>Generalized Product Rule Ch 14.3
+<ul>
+<li>Generalized Product Rule: Let S be a set of length-k sequences. If
+there are <span class="math inline">\(n_1\)</span> possible for first
+entries, <span class="math inline">\(n_2\)</span> possible second
+entries for each first entry, ..., <span class="math inline">\(n_k\)</span> possible kth entries for each
+sequence of first k - 1 entries, then: <span class="math inline">\(|S| =
+n_1 * n_2 * \dots * n_k\)</span></li>
+<li>Permutations
+<ul>
+<li>A permutation of a set S is a sequence that contains every element
+of S excatly once</li>
+<li>There are a total of <span class="math inline">\(n!\)</span>
+permutations of an n-element set</li>
+<li>Stirling's formula: <span class="math inline">\(n! \approx
+\sqrt{2\pi n}(\frac{n}{e})^n\)</span></li>
+<li>From the above formula, we have <span class="math inline">\(log(n!)
+\approx nlog(n)\)</span></li>
+</ul></li>
+</ul></li>
+<li>Division rule Ch 14.4
+<ul>
+<li>k-to-1 function: maps exactly k elements of the domain to every
+element of the codomain</li>
+<li>Division Rule: if <span class="math inline">\(f: A \rightarrow
+B\)</span> is k-to-1, then <span class="math inline">\(|A| =
+k*|B|\)</span></li>
+<li>Round Table Problem: arrange n knights at a round table, there is a
+n-to-1 function, so there are <span class="math inline">\((n-1)!\)</span> arrangements</li>
+</ul></li>
+<li>Counting subsets Ch 14.5
+<ul>
+<li>n choose k: <span class="math inline">\(\binom{n}{k}\)</span>, it
+can denote the number of k-element subsets of an n-element set</li>
+<li>Subset Rule: the number of k-element subsets of an n-element set is
+<span class="math inline">\(\binom{n}{k} =
+\frac{n!}{k!(n-k)!}\)</span></li>
+<li>Bit Sequences: the number of n-bit sequences with exactly k ones is
+<span class="math inline">\(\binom{n}{k}\)</span></li>
+</ul></li>
+<li>Sequences with repetitions Ch 14.6
+<ul>
+<li>Split subsets: let A be an n-element set and <span class="math inline">\(k_1,k_2,\dots,k_m\)</span> be nonnegative integers
+whose sum is n. A <span class="math inline">\((k_1,k_2,\dots,k_m)\)</span>-split of A is an
+sequence <span class="math inline">\((A_1,A_2,\dots,A_m)\)</span> where
+<span class="math inline">\(A_i\)</span> are disjoint subsets of A and
+<span class="math inline">\(|A_i| = k_i\)</span> for <span class="math inline">\(i=1,\dots,m\)</span></li>
+<li>Multinomial coefficient: for <span class="math inline">\(n,k_1,k_2,\dots,k_m \in \mathbb{N}\)</span>, s.t.
+<span class="math inline">\(k_1+k_2+\dots+k_m=n\)</span>, define the
+multinomial coefficient <span class="math inline">\(\binom{n}{k_1,k_1,\dots,k_m} = \frac{n!}{k_1 ! k_2
+!\dots k_m !}\)</span></li>
+<li>Subset split rule: the number of <span class="math inline">\((k_1,k_2,\dots,k_m)\)</span>-split of an n-element
+set is <span class="math inline">\(\binom{n}{k_1,k_1,\dots,k_m}\)</span></li>
+<li>Bookkeeper rule: let <span class="math inline">\(l_1,\dots,l_m\)</span> be distince elements. The
+amount of sequences s with <span class="math inline">\(k_1\)</span>
+occurrences of <span class="math inline">\(l_1\)</span>, <span class="math inline">\(\dots\)</span>, and <span class="math inline">\(k_m\)</span> occurrences of <span class="math inline">\(l_m\)</span> is <span class="math inline">\(\binom{k_1 +\dots
++k_m}{k1,\dots,k_m}\)</span></li>
+<li>The binomial theorem: <span class="math inline">\((a+b)^n =
+\sum\limits_{k=0}^{n}\binom{n}{k}a^k b^{n-k}\)</span></li>
+<li>Multinomial theorem: for all <span class="math inline">\(n \in
+\mathbb{N}, (z_1+\dots+z_m)^n = \sum\limits_{\substack{k_1,\dots,k_m \in
+\mathbb{N} \\ k_1+\dots+k_m =n}} \binom{n}{k_1,\dots,k_m}
+z_{1}^{k_1}\dots z_{m}^{k_m}\)</span></li>
+</ul></li>
+<li>Counting practice: poker hands Ch 14.7
+<ul>
+<li>Poker cards have 4 suits (club, diamond, heart, spade) and 13
+ranks(ace, 2, ...,10, jack, queen, king). The 2 jokers are not taken
+into consideration</li>
+<li>Hands with a four-of-a-kind: draw 5 cards, with 4 of the one rank
+<ul>
+<li>Answer: <span class="math inline">\(\text{Prob} =
+\frac{\binom{13}{1}\binom{4}{4}\binom{12}{1}\binom{4}{1}}{\binom{52}{5}}\)</span></li>
+</ul></li>
+<li>Hands with a full house: draw 5 cards, with 3 of one rank and 2 of
+another rank
+<ul>
+<li>Answer: <span class="math inline">\(\text{Prob} =
+\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{5}}\)</span></li>
+</ul></li>
+<li>Hands wit two pairs: draw 5 cards, with 2 cards of one rank, 2 cards
+of another rank, and 1 card of a third rank
+<ul>
+<li>Answer: <span class="math inline">\(\text{Prob} =
+\frac{\binom{13}{2}\binom{4}{2}\binom{4}{2}\binom{11}{1}\binom{4}{1}}{\binom{52}{5}}\)</span></li>
+</ul></li>
+<li>Hands with every suit: at least one card from every suit
+<ul>
+<li>Answer: <span class="math inline">\(\text{Prob} =
+\frac{\binom{13}{1}\binom{13}{1}\binom{13}{1}\binom{13}{1}\binom{4}{1}\binom{12}{1}}{\binom{52}{5}}\)</span></li>
+</ul></li>
+</ul></li>
+<li>The pigeonhole Principle Ch 14.8
+<ul>
+<li>Pigeonhole principle: if there are more pigeons than holes they
+occupy, then at least two pigeons must be in the same hole</li>
+<li>Pigeonhole Principle
+<ul>
+<li>Total function: a function that is defined on all elements of its
+domain is called a total function</li>
+<li>If <span class="math inline">\(|A| &gt; |B|\)</span>, then for every
+total function <span class="math inline">\(f: A \rightarrow B\)</span>,
+there are two different elements in A mapped to the same element in
+B</li>
+<li>Generalized pigeohole Principle: if <span class="math inline">\(|A|
+&gt; k*|B|\)</span>, then every total function <span class="math inline">\(f: A \rightarrow B\)</span> maps at least k + 1
+different elements of A to the same element of B</li>
+</ul></li>
+</ul></li>
+<li>Inclusion-Exclusion Ch 14.9
+<ul>
+<li>Union of two sets <span class="math inline">\(|A \cup B| = |A| + |B|
+- |A \cap B|\)</span></li>
+<li>Union of three sets <span class="math display">\[|A \cup B \cup C| =
+|A| + |B| +|C| - |A \cup B| - |A \cup C| - |B \cup C| + |A \cap B \cap
+C|\]</span></li>
+<li>Inclusion-Exclusion: <span class="math inline">\(|\bigcup\limits_{i=1}^{n}
+S_i|=\sum\limits_{i=1}^{n}|S_i| - \sum\limits_{1\leq i \leq j \leq
+n}|S_i \cap S_j| + \sum\limits_{1\leq i \leq j \leq k \leq n} |S_i \cap
+S_j \cap S_k| + \dots +
+(-1)^{n}|\bigcap\limits_{i=1}^{n}S_i|\)</span></li>
+<li>Inclusion-Exclusion-II: <span class="math inline">\(|\bigcup\limits_{i=1}^{n}S_I|=\sum\limits_{\emptyset
+\subseteq I \subseteq \set{1,\dots,n}} (-1)^{|I| + 1}
+|\bigcap\limits_{i} S_i|\)</span></li>
+</ul></li>
+<li>Combinatorial Proof Ch 14.10
+<ul>
+<li>Pascal's triangle identity: <span class="math inline">\(\binom{n}{k}
+= \binom{n-1}{k-1} + \binom{n-1}{k}\)</span></li>
+<li>Giving a combinatorial proof
+<ul>
+<li>Define a set S</li>
+<li>Show that <span class="math inline">\(|S| = n\)</span> by counting
+one way</li>
+<li>Show that <span class="math inline">\(|S| = m\)</span> by counting
+another way</li>
+<li>Conclude that <span class="math inline">\(n = m\)</span></li>
+</ul></li>
+<li>Equality <span class="math inline">\(\sum\limits_{r=0}^{n}\binom{n}{r}\binom{2n}{n-r} =
+\binom{3n}{n}\)</span></li>
+</ul></li>
+</ul></li>
+<li>Induction Ch 5
+<ul>
+<li>Ordinary induction Ch 5.1
+<ul>
+<li>The Induction Principle: Let P be a predicate on nonnegative
+integers. If P(0) is true, and P(n) implies P(n + 1) for all nonnegative
+integers n, then P(m) is true for all nonnegative integers, m</li>
+<li>A template for induction proofs
+<ul>
+<li>State that the proof uses induction</li>
+<li>Define an appropriate predicate P(n)</li>
+<li>Prove that P(0) is true</li>
+<li>Prove that P(n) implies P(n + 1) for every nonnegative integer
+n</li>
+<li>Invoke induction</li>
+</ul></li>
+</ul></li>
+<li>Strong induction Ch 5.2
+<ul>
+<li>Principle of Strong Induction: Let P be a predicate on nonnegative
+integers. If P(0) is true, and for all <span class="math inline">\(n \in
+\mathbb{N}\)</span>, P(0), P(1),..., P(n) together imply P(n + 1), then
+P(m) is true for all</li>
+</ul></li>
+</ul></li>
+<li>Events and probability space
+<ul>
+<li>The four step method Ch 16.2
+<ul>
+<li>Step 1: Find the sample space</li>
+<li>Step 2: Define the events of interest</li>
+<li>Step 3: Determine outcome probabilities</li>
+<li>Step 4: Compute event probabilities</li>
+</ul></li>
+<li>The birthday principle Ch 16.4
+<ul>
+<li>There are d days in a year, and there are n students, then the
+probability that all students have different birthdays are <span class="math inline">\(\text{prob} = \frac{d(d-1)\dots(d-(n-1))}{d^n}
+&lt; e^{-\frac{n(n-1)}{2d}}\)</span></li>
+<li>The birthday principle: if there are d days in a year, and <span class="math inline">\(\sqrt{2d}\)</span> people in a room, then the
+probability that two share a birthday is about <span class="math inline">\(1-\frac{1}{e}\approx 0.632\)</span></li>
+</ul></li>
+<li>Set theory and probability
+<ul>
+<li>Probability space
+<ul>
+<li>A countable sample space S is a nonempty countable set. an element
+<span class="math inline">\(\omega \in S\)</span> is called an outcome,
+a ubset of S is called an event</li>
+<li>A probability function on a sample space S is a total function <span class="math inline">\(\text{Pr}: S \rightarrow \mathbb{R}\)</span> s.t.
+<ul>
+<li><span class="math inline">\(\text{Pr}(\omega) \geq 0\)</span>, for
+all <span class="math inline">\(\omega \in S\)</span></li>
+<li><span class="math inline">\(\sum\limits_{\omega \in S}
+\text{Pr}(\omega) = 1\)</span></li>
+</ul></li>
+<li>A sample space together with a probability function is called a
+probability space. For any event <span class="math inline">\(E \subseteq
+S\)</span>, the probability of E is defined to be the sum of the
+probabilities of the outcome in E: <span class="math inline">\(\text{Pr}(E) ::=\sum\limits_{\omega \in E}
+\text{Pr}(\omega)\)</span><br>
+</li>
+<li>Uniform probability spaces
+<ul>
+<li>A finite probability space, S, is said to be uniform if <span class="math inline">\(\text{Pr}(\omega)\)</span> is the same for every
+outcome <span class="math inline">\(\omega \in S\)</span></li>
+<li>For any event <span class="math inline">\(E \subseteq S\)</span>,
+<span class="math inline">\(\text{Pr}(E) = \frac{|E|}{|S|}\)</span></li>
+<li>Probability space can be infinite</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Conditional Probability
+<ul>
+<li>Definition and notation Ch 17.2
+<ul>
+<li>The expression <span class="math inline">\(\text{Pr}(X|Y)\)</span>
+denotes the probability of event X, given that event Y happens</li>
+<li>Let X and Y be events where Y has nonzero probability. Then <span class="math inline">\(\text{Pr}(X|Y) = \frac{\text{Pr}(X\cap
+Y)}{\text{Pr}(Y)}\)</span></li>
+</ul></li>
+<li>Why tree diagrams work Ch 17.4
+<ul>
+<li>Conditional probability product rule: <span class="math inline">\(\text{Pr}(E_1 \cap E_2) = \text{Pr}(E_1) *
+\text{Pr}(E_2|E_1)\)</span></li>
+<li>Conditional probability product rule: <span class="math inline">\(\text{Pr}(E_1 \cap E_2 \cap E_3) = \text{Pr}(E_1)
+* \text{Pr}(E_2|E_1) * \text{Pr}(E_3|E_1 \cap E_2)\)</span></li>
+<li>Bayes's rule: <span class="math inline">\(\text{Pr}(B|A) =
+\frac{\text{Pr}(A|B)*\text{Pr}(B)}{\text{Pr}(A)}\)</span></li>
+</ul></li>
+<li>The law of total probability Ch 17.5
+<ul>
+<li>Law to total probability on single event: <span class="math inline">\(\text{Pr}(A) = \text{Pr}(A|E)*\text{Pr}(E) +
+\text{Pr}(A|\bar{E})*\text{Pr}(\bar{E})\)</span></li>
+<li>Law of total probability on 3 events, if <span class="math inline">\(E_1, E_2,\)</span> and <span class="math inline">\(E_3\)</span> are disjoint and <span class="math inline">\(\text{Pr}(E_1 \cup E_2 \cup E_3) = 1\)</span>,
+then <span class="math inline">\(\text{Pr}(A) =
+\text{Pr}(A|E_1)*\text{Pr}(E_1)+\text{Pr}(A|E_2)*\text{Pr}(E_2)+\text{Pr}(A|E_3)*\text{Pr}(E_3)\)</span></li>
+<li>Bayes's rule on 3 events: <span class="math inline">\(\text{Pr}(E_1|A)=\frac{\text{Pr}(A|E_1)*\text{Pr}(E_1)}{\text{Pr}(A|E_1)*\text{Pr}(E_1)+\text{Pr}(A|E_2)*\text{Pr}(E_2)+\text{Pr}(A|E_3)*\text{Pr}(E_3)}\)</span></li>
+</ul></li>
+<li>Independence Ch 17.7
+<ul>
+<li>Definition: an event with probability 0 is defined to be independent
+of every event(including itself). If <span class="math inline">\(\text{Pr}(B) \neq 0\)</span>, then event A is
+independent of event B <span class="math inline">\(\leftrightarrow
+\text{Pr}(A|B) = \text{Pr}(A)\)</span></li>
+<li>A is independent of B <span class="math inline">\(\leftrightarrow
+\text{Pr}(A \cap B) = \text{Pr}(A) * \text{Pr}(B)\)</span></li>
+<li>A set <span class="math inline">\(A_1, A_2,\dots\)</span> of events
+is k-way independent <span class="math inline">\(\leftrightarrow\)</span> every set of k of these
+events is mutually independent. The set is pairwise independent <span class="math inline">\(\leftrightarrow\)</span> it is 2-way
+independent</li>
+</ul></li>
+</ul></li>
+<li>Binary Relations Ch 4.4
+<ul>
+<li>Binary relations define relations between two objects</li>
+<li>Definition: a binary relation, R, consists of a set, A, called the
+domain of R, a set, B, called the codomain of R, and a subset of A * B
+called the graph of R. R is called between A and B or from A to B. For
+functions, we write <span class="math inline">\(R: A \rightarrow
+B\)</span></li>
+<li>The standard properties of a relation can be visualized in terms of
+a diagram: write <span class="math inline">\(a \rightarrow b\)</span> if
+<span class="math inline">\(a \in A\)</span> and <span class="math inline">\(b \in B\)</span> and a is associated with b in
+R</li>
+<li><span class="math inline">\(\leq 1\)</span> arrow property: every
+point in the domain column has at most one arrow coming out of it</li>
+<li>A binary relation, R, is
+<ul>
+<li>a function when it has the <span class="math inline">\(\leq
+1\)</span> arrow out property</li>
+<li>surjective when it has the <span class="math inline">\(\geq
+1\)</span> arrow in property</li>
+<li>total when it has the <span class="math inline">\(\geq 1\)</span>
+arrow out property</li>
+<li>injective when it has the <span class="math inline">\(\leq
+1\)</span> arrow in property</li>
+<li>bijective when it has both the <span class="math inline">\(=
+1\)</span> arrow out and the <span class="math inline">\(= 1\)</span>
+arrow in property</li>
+</ul></li>
+<li>Relational images
+<ul>
+<li>Definition: the image of a set Y, under a relation R, written <span class="math inline">\(R(Y)\)</span>, is the set of elements of the
+codomain, B, of R that are related to some element in Y. In terms of the
+relation diagram, <span class="math inline">\(R(Y)\)</span> is the set
+of points with an arrow coming in that starts from some point in Y</li>
+</ul></li>
+<li>Inverse relations
+<ul>
+<li>Definition: the inverse <span class="math inline">\(R^{-1}\)</span>,
+or a relation <span class="math inline">\(R: A \rightarrow B\)</span>,
+is the relation from B to A defined by the rule <span class="math inline">\(bR^{-1}a \leftrightarrow aRb\)</span></li>
+</ul></li>
+<li>Inverse images
+<ul>
+<li>Definition: the image of a set under the relation, <span class="math inline">\(R^{-1}\)</span>, is called the inverse image of
+the set. That is, the inverse image of a set, X, under the relation, R,
+is defined to be <span class="math inline">\(R^{-1}(X)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="inference">Inference</h1>
+<ol type="1">
+<li>A formula of the predicate calculus is in prenex normal form (PNF)
+if it is written as a string of quantifiers and bound variables, called
+the prefix, followed by a quantifier-free part, called the matrix
+<ul>
+<li>Conversion to PNF
+<ul>
+<li>Conjunction and disjunction: when x is not a free variable of <span class="math inline">\(\psi\)</span>
+<ul>
+<li><span class="math inline">\((\forall x \phi)\land \psi
+\Longleftrightarrow \forall x(\phi \land \psi)\)</span></li>
+<li><span class="math inline">\((\forall x \phi)\lor \psi
+\Longleftrightarrow \forall x(\phi \lor \psi)\)</span></li>
+<li><span class="math inline">\((\exists x \phi)\land \psi
+\Longleftrightarrow \exists x(\phi \land \psi)\)</span></li>
+<li><span class="math inline">\((\exists x \phi)\lor \psi
+\Longleftrightarrow \exists x(\phi \lor \psi)\)</span></li>
+</ul></li>
+<li>Two examples
+<ul>
+<li><span class="math inline">\((\exists(x^2=1)\land(0=y))
+\Longleftrightarrow \exists x (x^2=1 \land 0=y)\)</span></li>
+<li><span class="math inline">\((\exists(x^2=1)\land(0=x))\)</span> does
+not mean <span class="math inline">\(\exists x (x^2=1 \land
+0=y)\)</span></li>
+</ul></li>
+<li>Negation
+<ul>
+<li><span class="math inline">\(\neg \exists x \phi \Longleftrightarrow
+\forall x \neg \phi\)</span></li>
+<li><span class="math inline">\(\neg \forall x \phi \Longleftrightarrow
+\exists x \neg \phi\)</span></li>
+</ul></li>
+<li>Implication: when the variable quantified in one sub-formula does
+not appear free in the other sub-formula
+<ul>
+<li><span class="math inline">\((\forall x \phi) \rightarrow \psi
+\Longleftrightarrow \exists x (\phi \rightarrow \psi)\)</span></li>
+<li><span class="math inline">\((\exists x \phi) \rightarrow \psi
+\Longleftrightarrow \forall x (\phi \rightarrow \psi)\)</span></li>
+<li><span class="math inline">\(\phi \rightarrow (\exists x \psi)
+\Longleftrightarrow \exists x (\phi \rightarrow \psi)\)</span></li>
+<li><span class="math inline">\(\phi \rightarrow (\forall x \psi)
+\Longleftrightarrow \forall x (\phi \rightarrow \psi)\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>A formula of first-order logic is in Skolem normal form if it is in
+prenex normal form with only universal first-order quantifiers</li>
+<li>Truth trees for predicate logic
+<ul>
+<li>Negate the conclusion</li>
+<li>Replace each existential variable with a point to set up the domain,
+if there the domain is empty(meaning there is no existential variable in
+the statements), just make one, this step is called skolemization
+<ul>
+<li><span class="math inline">\(\exists x, \forall y, f(x,y)
+\longrightarrow \forall y, f(a,y)\)</span></li>
+<li><span class="math inline">\(\forall x, \exists y, f(x,y)
+\longrightarrow \forall x, f(x,g(x))\)</span></li>
+</ul></li>
+<li>Use points in the domain to determine if there are contradictions
+<ul>
+<li>If there are contradiction on each branch, then the negation of the
+conclusion is wrong and then the conclusion itself is correct</li>
+<li>If the tree has infinite branches and we cannot find a contradiction
+for each branch(sometimes even the tree has infinite branches, we can
+logically find a contradiction on each branch), then we cannot prove or
+disprove the conclusion</li>
+</ul></li>
+</ul></li>
+<li>Gödel's incompleteness theorems
+<ul>
+<li>The first theorem: Any consistent formal system F within which a
+certain amount of elementary arithmetic can be carried out is
+incomplete; i.e., there are statements of the language of F which can
+neither be proved nor disproved in F.</li>
+<li>The second theorem: Assume F is a consistent formalized system which
+contains elementary arithmetic. Then <span class="math inline">\(F
+\not\vdash \text{Cons}(F)\)</span></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2021/08/26/COSI-29A-Discrete-Structure/" title="COSI 29A Discrete Structure">https://yanxuanshaozhu.github.io/2021/08/26/COSI-29A-Discrete-Structure/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Discrete-Structure/" rel="tag"># Discrete Structure</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/08/DDIA-Notes/" rel="prev" title="DDIA Notes">
+      <i class="fa fa-chevron-left"></i> DDIA Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/30/COSI-12B-Java-Programming/" rel="next" title="COSI 12B Java Programming">
+      COSI 12B Java Programming <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">
+Notes of COSI 29A
+</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#discrete-mathematics-an-open-introduction-notes"><span class="nav-number">2.</span> <span class="nav-text">Discrete
+Mathematics: An Open Introduction Notes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathematics-for-computer-science-notes"><span class="nav-number">3.</span> <span class="nav-text">Mathematics for Computer
+Science Notes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inference"><span class="nav-number">4.</span> <span class="nav-text">Inference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

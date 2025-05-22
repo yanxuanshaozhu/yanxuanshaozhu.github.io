@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Finite Automata and Regular Sets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 130A Theory of Computation">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/08/31/COSI-130A-Theory-of-Computation/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Finite Automata and Regular Sets">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-31T18:29:48.000Z">
+<meta property="article:modified_time" content="2022-11-17T12:24:52.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Computation Theory">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-130A-Theory-of-Computation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 130A Theory of Computation | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-130A-Theory-of-Computation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 130A Theory of Computation
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-31 14:29:48" itemprop="dateCreated datePublished" datetime="2022-08-31T14:29:48-04:00">2022-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-11-17 07:24:52" itemprop="dateModified" datetime="2022-11-17T07:24:52-05:00">2022-11-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>7 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="finite-automata-and-regular-sets">Finite Automata and Regular
+Sets</h1>
+<span id="more"></span>
+<ol type="1">
+<li>Deterministic Finite Automata (DFA)
+<ul>
+<li>Definition: a DFA is a directed graph, where vertices are called
+states, that has the following properties:
+<ul>
+<li>One state is designated as the start state</li>
+<li>There is a set of final states(which may include the start
+state)</li>
+<li>Edges are labelled by characters drawn from a finite alphabet</li>
+</ul></li>
+<li>A DFA accepts a string: if by starting at the start state, and by
+processing the entire string from left to right one character ata time
+following edges of the DFA, finally a final state is reached</li>
+<li>5 things needed to specify a DFA <span class="math inline">\(M\)</span>
+<ul>
+<li>The set of states: <span class="math inline">\(Q = \{q_0, ...,
+q_n\}\)</span></li>
+<li>The set of alphabet: <span class="math inline">\(\Sigma\)</span></li>
+<li>The start state: <span class="math inline">\(q_0\)</span></li>
+<li>The set of final states: <span class="math inline">\(F = \{q_i, ...,
+q_j\}\)</span>, denoted using double circle in the graph</li>
+<li>The transition function: <span class="math inline">\(\delta: Q *
+\Sigma \rightarrow Q\)</span></li>
+</ul></li>
+<li><span class="math inline">\(L(M)\)</span> = the languages accepted
+by DFA <span class="math inline">\(M\)</span> = the set of all strings
+accepted by DFA <span class="math inline">\(M\)</span></li>
+<li>Some applications of finite automata
+<ul>
+<li>Pattern matching</li>
+<li>Lexical analysis</li>
+<li>Control structures</li>
+<li>Circuit design</li>
+<li>An abstract formulation of what can be done with any computer that
+uses <span class="math inline">\(O(1)\)</span> space</li>
+</ul></li>
+<li>Language recognition and accepting a set: to study basic computation
+we use model of language recognition where an input of finite-length
+string is received and the program returns a yes or no</li>
+</ul></li>
+<li>Non-deterministic Finite Automata(NFA)
+<ul>
+<li>Definition: a NFA is like a DFA except that for any given character
+c and any given state q, there may be more than one transition from q on
+character c</li>
+<li>A string s is defined to be accepted by a NFA m if there exists
+choices that cause M to accept s</li>
+<li>Theorem: every NFA can be converted to a DFA that accepts the same
+set</li>
+<li>5 things to specify a NFA <span class="math inline">\(M\)</span>
+<ul>
+<li>The set of states: <span class="math inline">\(Q = \{q_0, ...,
+q_n\}\)</span></li>
+<li>The set of alphabet: <span class="math inline">\(\Sigma\)</span></li>
+<li>The start state: <span class="math inline">\(q_0\)</span></li>
+<li>The set of final states: <span class="math inline">\(F = \{q_i, ...,
+q_j\}\)</span>, denoted using double circle in the graph</li>
+<li>The transition function: <span class="math inline">\(\delta: Q *
+\Sigma \rightarrow 2^Q\)</span></li>
+</ul></li>
+<li>NFA with Epsilon moves
+<ul>
+<li>Idea: generalize a NFA to have <span class="math inline">\(\epsilon\)</span>-moves that allow the machine to
+change states without reading any input</li>
+<li><span class="math inline">\(\epsilon\)</span>-closure
+<ul>
+<li>Definition: the <span class="math inline">\(\epsilon\)</span>-closure <span class="math inline">\(EC(q)\)</span> is all states reachable from state
+q by a sequence of <span class="math inline">\(\epsilon\)</span>-moves(
+q itself is in EC(q))</li>
+<li>Theorem: for every NFA <span class="math inline">\(M = (Q, \Sigma,
+\delta, q_0, F)\)</span> withe <span class="math inline">\(\epsilon\)</span>-moves, there is a NFA <span class="math inline">\(M&#39;\)</span> without <span class="math inline">\(\epsilon\)</span>-moves that accepts the same
+language
+<ul>
+<li><span class="math inline">\(\delta^{&#39;} (q, a) =
+\bigcup\limits_{r\in EC(q)}\delta(q,a)\)</span></li>
+<li><span class="math inline">\(F = F \bigcup \{q: EC(q) \;contains \;a
+\;final\; state\; of\; F\}\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Regular expression and pattern matching
+<ul>
+<li>Idea: regular expressions are a formal syntax for specifying a
+regular set, and can be useful for describing patterns in string
+matching applications</li>
+<li>The empty set: <span class="math inline">\(\epsilon\)</span> denotes
+the empty string, a string of length 0. It is different than the empty
+set, <span class="math inline">\(\{\epsilon\}\)</span> is a non-empty
+set containing the string of length 0</li>
+<li>Regular expressions: a regular expression describes a set of strings
+over an alphabet <span class="math inline">\(\Sigma\)</span>:
+<ul>
+<li><span class="math inline">\(\Phi\)</span> denotes the empty set</li>
+<li><span class="math inline">\(\epsilon\)</span> denotes <span class="math inline">\(\{\epsilon\}\)</span></li>
+<li>For a character c in <span class="math inline">\(\Sigma\)</span>,
+<span class="math inline">\(c\)</span> denotes <span class="math inline">\(\{c\}\)</span></li>
+<li>For two regular expressions r and s that denote sets X and Y,
+respectively:
+<ul>
+<li><span class="math inline">\(r + s = X \bigcup Y\)</span></li>
+<li><span class="math inline">\(r*s = \{xy: \text{s is a string in X
+},\text{y is a string in Y }\}\)</span></li>
+<li><span class="math inline">\(r^{*} =
+\bigcup\limits_{i=0}^{\infty}r^{i}\)</span>, where <span class="math display">\[ \begin{equation} r^{*} =\begin{cases} \epsilon
+&amp; \text{if i = 0} \\ rr^{i-1} &amp; \text{if i &gt; 0} \end{cases}
+\end{equation} \]</span></li>
+</ul></li>
+</ul></li>
+<li>Some regular expression examples
+<ul>
+<li><span class="math inline">\(ac + bc = (a+b)c = \{ac,
+bc\}\)</span></li>
+<li><span class="math inline">\((a+b)(\epsilon+c)d = \{ad, bd, acd,
+bcd\}\)</span></li>
+<li><span class="math inline">\((a+b)^{*} = \text{all possible strings
+of a&#39;s and b&#39;s(including } \epsilon)\)</span></li>
+<li><span class="math inline">\((aa+bbb)^{*} = \text{strings of a&#39;s
+and b&#39;s with a&#39;s in pairs and b&#39;s in triples}\)</span></li>
+</ul></li>
+<li>McNaughton-Yamada Algorithm: to convert a regular expression to a
+NFA with epsilon moves</li>
+</ul></li>
+<li>Pumping lemma
+<ul>
+<li>Definition: let M be a DFA with n states, if M accepts a string s of
+n or more characters, then it must be that s can be written as s = uvw
+where:
+<ul>
+<li>uv is at most n characters long</li>
+<li>v is a least one character long(the string is turning around from a
+state and back to it in v)</li>
+<li>For any <span class="math inline">\(i \ge 0, uv^{i}w\)</span> is
+accepted by M</li>
+</ul></li>
+<li>Corollary: the pumping lemma applies to any substring s of n
+characters of a string that is accepted by M</li>
+</ul></li>
+</ol>
+<h1 id="context-free-languages">Context free languages</h1>
+<ol type="1">
+<li>A context free language is a language generated by some context free
+grammar</li>
+<li>The set of CFL is identical to the set of languages accepted by
+Pushdown Automata</li>
+<li>CFG is defined by <span class="math inline">\(G = \{V, \Sigma, S,
+P\}\)</span> where
+<ul>
+<li><span class="math inline">\(V\)</span> is the set of variables or
+non-terminal symbols</li>
+<li><span class="math inline">\(\Sigma\)</span> is the set of terminal
+symbols</li>
+<li><span class="math inline">\(S\)</span> is the start symbol</li>
+<li><span class="math inline">\(P\)</span> is the production rule: <span class="math inline">\(A \rightarrow \alpha\)</span>, wher <span class="math inline">\(a \in \{V \cup \Sigma\}\)</span> and <span class="math inline">\(A \in V\)</span></li>
+</ul></li>
+<li>Derivation tree
+<ul>
+<li>A derivation tree or parse tree is an ordered rooted tree that
+graphically represents the semantic information of strings derived from
+a context free grammar</li>
+<li>The root is the start symbol</li>
+<li>Vertex: non-terminal symbol</li>
+<li>Leaves: terminal symbol or <span class="math inline">\(\epsilon\)</span></li>
+<li>Left derivation tree: apply production to the leftmost variable in
+each step</li>
+<li>Right derivation tree: apply production to the rightmost variable in
+each step</li>
+</ul></li>
+<li>Ambiguous grammar
+<ul>
+<li>A grammar is said to be ambiguous if there exists two or more
+derivation tree for a string w (that means two or more left derivation
+trees)</li>
+</ul></li>
+<li>Simplification of CFG
+<ul>
+<li>Some production rules are not needed for the derivation of
+strings</li>
+<li>There may also be <span class="math inline">\(\epsilon\)</span>
+productions and unit productions</li>
+<li>Simplification consists of the following steps
+<ul>
+<li>Reduction of CFG</li>
+<li>Removal of unit productions</li>
+<li>Removal of <span class="math inline">\(\epsilon\)</span>
+productions</li>
+</ul></li>
+<li>Reduction of CFG
+<ul>
+<li>Phase 1: derivation of an equivalent grammar <span class="math inline">\(G&#39;\)</span> from CFG, G, suh that each
+variable derives some terminal string
+<ul>
+<li>Decide what are the terminal symbols</li>
+<li><span class="math inline">\(W_1\)</span> is the set of variables
+that derive a terminal symbol</li>
+<li><span class="math inline">\(W_{i + 1}\)</span> is the set variables
+that derive a symbol in <span class="math inline">\(W_i\)</span>, all
+variables in <span class="math inline">\(W_i\)</span> are in <span class="math inline">\(W_{i+1}\)</span></li>
+<li>Repeat until <span class="math inline">\(W_{i+1} = W_i\)</span></li>
+<li>Include all production rules that result in a terminal symbol or a
+variable in <span class="math inline">\(W_i\)</span> in <span class="math inline">\(G&#39;\)</span></li>
+</ul></li>
+<li>Phase 2: derivation of an equivalent grammar <span class="math inline">\(G&#39;&#39;\)</span> from CFG <span class="math inline">\(G&#39;\)</span>, such that each symbol appears in
+a sentential form
+<ul>
+<li><span class="math inline">\(Y_1 = \{S\}\)</span></li>
+<li>Include all symbols <span class="math inline">\(Y_{i + 1}\)</span>
+that can be derived from <span class="math inline">\(Y_{i}\)</span></li>
+<li>Include all production rules that include symbols in <span class="math inline">\(Y_{i}\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Removal of unit productions
+<ul>
+<li>Unit production: any production rule of the form <span class="math inline">\(A \rightarrow B\)</span> where A, B are
+non-terminals is called unit production</li>
+<li>Removal procedure
+<ul>
+<li>To remove <span class="math inline">\(A \rightarrow B\)</span>, add
+<span class="math inline">\(A \rightarrow x\)</span> where <span class="math inline">\(B \rightarrow x\)</span> occurs in the
+grammar</li>
+<li>Delete <span class="math inline">\(A \rightarrow B\)</span> from the
+grammar</li>
+<li>Repeat until all unit productions are removed</li>
+<li>If there are unreachable symbol, remove them</li>
+</ul></li>
+</ul></li>
+<li>Removal of <span class="math inline">\(\epsilon\)</span> productions
+<ul>
+<li><span class="math inline">\(\epsilon\)</span> production: a
+non-terminal symbol A is a nullable variable is there is a production
+rule <span class="math inline">\(A \rightarrow \epsilon\)</span> or
+there is a derivation that starts at A and leads to <span class="math inline">\(\epsilon\)</span></li>
+<li>Removal procedure
+<ul>
+<li>To remove <span class="math inline">\(A \rightarrow
+\epsilon\)</span>, look for all dependencies whose right side contains
+A</li>
+<li>Replace each occurrence of A in each of these productions with <span class="math inline">\(\epsilon\)</span></li>
+<li>Add the resultant productions to the grammar</li>
+</ul></li>
+</ul></li>
+<li>Convert CFG to Chomsky Normal Form(CNF)
+<ul>
+<li>In CNF, we have a restriction on the length of RHS: elements should
+be two variables or a terminal</li>
+<li>A CFG is in CNF if the productions are in the following forms: <span class="math inline">\(A \rightarrow a\)</span>, <span class="math inline">\(A \rightarrow BC\)</span></li>
+<li>Convert CFG to CNF
+<ul>
+<li>If start symbol occurs on some right side, create S' and add <span class="math inline">\(S&#39; \rightarrow S\)</span> to the grammar</li>
+<li>Remove <span class="math inline">\(\epsilon\)</span>
+productions</li>
+<li>Remove unit productions</li>
+<li>Replace <span class="math inline">\(A \rightarrow
+B_{1}...B_{n}\)</span> where <span class="math inline">\(n &gt;
+2\)</span> with <span class="math inline">\(A \rightarrow
+B_{1}C\)</span> where <span class="math inline">\(C \rightarrow
+B_{2}...B_{n}\)</span>. Repeat for all productions having two or more
+symbols on the right side</li>
+<li>For the production in the form <span class="math inline">\(A
+\rightarrow aB\)</span>, replace it by <span class="math inline">\(A
+\rightarrow XB\)</span> and <span class="math inline">\(X \rightarrow
+a\)</span>. Repeat for all productions in the form of <span class="math inline">\(A \rightarrow aB\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="turing-machines-and-undecidability">Turing machines And
+Undecidability</h1>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>A tape, with tape alphabets, and the special symbol empty to build
+the infinite tape</li>
+<li>Tape head: read, write, move left, move right</li>
+<li>Control portion of a turing machine: a deterministic program,
+similar to FSM or PDA</li>
+</ul></li>
+<li>Decidability and Undecidability
+<ul>
+<li>Recursive language: A language L is said to be recursive if there
+exists a TM which accepts all the strings in L and reject all the
+strings not in L. The TM will halt every time and give an answer for
+each string input in L</li>
+<li>Recursive enumerable language: A language L is said to be recursive
+enumerable if there exists a TM which accepts all the strings in L but
+may or may not halt for all input strings which are not in L</li>
+<li>Decidable language: a language L is decidable if it is a recursive
+language</li>
+<li>Partially decidable language: a language L is partially decidable if
+L is a recursively enumerable language</li>
+<li>Undecidable language: a language L is undecidable if not decidable.
+An undecidable language may sometimes be partially decidable, if a
+language is not even partially decidable, then there exists no TM for
+that language</li>
+</ul></li>
+<li>The universal TM</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/08/31/COSI-130A-Theory-of-Computation/" title="COSI 130A Theory of Computation">https://yanxuanshaozhu.github.io/2022/08/31/COSI-130A-Theory-of-Computation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computation-Theory/" rel="tag"># Computation Theory</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/31/COSI-123A-Statistical-Machine-Learning/" rel="prev" title="COSI 123A Statistical Machine Learning">
+      <i class="fa fa-chevron-left"></i> COSI 123A Statistical Machine Learning
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/04/COSI-164A-Intro-to-3D-Animation/" rel="next" title="COSI 164A Intro to 3D Animation">
+      COSI 164A Intro to 3D Animation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#finite-automata-and-regular-sets"><span class="nav-number">1.</span> <span class="nav-text">Finite Automata and Regular
+Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#context-free-languages"><span class="nav-number">2.</span> <span class="nav-text">Context free languages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#turing-machines-and-undecidability"><span class="nav-number">3.</span> <span class="nav-text">Turing machines And
+Undecidability</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

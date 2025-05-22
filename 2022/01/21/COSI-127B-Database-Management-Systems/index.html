@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Lecture 01 2022&#x2F;01&#x2F;18 Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COSI 127B Database Management Systems">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2022/01/21/COSI-127B-Database-Management-Systems/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="Lecture 01 2022&#x2F;01&#x2F;18 Introduction">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yanxuanshaozhu.github.io/images/Courses/COSI127B/ArchitectureTier.png">
+<meta property="article:published_time" content="2022-01-21T17:21:54.000Z">
+<meta property="article:modified_time" content="2022-05-10T14:34:05.000Z">
+<meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Database Management Systems">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yanxuanshaozhu.github.io/images/Courses/COSI127B/ArchitectureTier.png">
+
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2022/01/21/COSI-127B-Database-Management-Systems/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>COSI 127B Database Management Systems | My Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">My Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-portfolio">
+
+    <a href="/portfolio/" rel="section"><i class="fas fa-wallet fa-fw"></i>Portfolio</a>
+
+  </li>
+        <li class="menu-item menu-item-memories">
+
+    <a href="/memories/" rel="section"><i class="fas fa-camera fa-fw"></i>Memories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2022/01/21/COSI-127B-Database-Management-Systems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          COSI 127B Database Management Systems
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-21 12:21:54" itemprop="dateCreated datePublished" datetime="2022-01-21T12:21:54-05:00">2022-01-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-10 10:34:05" itemprop="dateModified" datetime="2022-05-10T10:34:05-04:00">2022-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>15 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="lecture-01-20220118-introduction">Lecture 01 2022/01/18
+Introduction</h2>
+<span id="more"></span>
+<ol type="1">
+<li>Introduction
+<ul>
+<li>A database management system (DBMS) is a collection of interrelated
+data and a set of programs to access those data</li>
+<li>Database: a collection of data, contains information relevant to an
+enterprise</li>
+<li>The primary goal of a DBMS is to provide a way to store and retrieve
+database information that is both convenient and efficient</li>
+<li>DBMS
+<ul>
+<li>Manage data: define structures for storage, provide mechanism for
+information manipulation</li>
+<li>Ensure data safety</li>
+</ul></li>
+</ul></li>
+<li>Database System Applications
+<ul>
+<li>Representative applications
+<ul>
+<li>Enterprise information: sales, accounting, human resources</li>
+<li>Manufacturing</li>
+<li>Banking and finance: banking, credit card transactions, finance</li>
+<li>Universities</li>
+<li>Airlines</li>
+<li>Telecommunication</li>
+<li>Web-based services: social media, online retailers, online
+advertisements</li>
+<li>Document databases</li>
+<li>Navigation systems</li>
+</ul></li>
+<li>Two models where database are used
+<ul>
+<li>Support online transaction processing</li>
+<li>Support data analytics</li>
+</ul></li>
+</ul></li>
+<li>Purpose of Database Systems
+<ul>
+<li>Reduce data redundancy and inconsistency</li>
+<li>Reduce difficulty in accessing data</li>
+<li>Data isolation</li>
+<li>Reduce integrity problems</li>
+<li>Atomicity problems (failure consistency)</li>
+<li>Concurrent-access anomalies</li>
+<li>Reduce security problems</li>
+</ul></li>
+<li>View of Data
+<ul>
+<li>Data Model: a collection of conceptual tools for describing data,
+data relationships, data semantics, and consistency constraints</li>
+<li>Data model categories
+<ul>
+<li>Relational Model: use a collection of tables/relations to represent
+both data and the relationships among those data, the relational model
+is an example of a record-based model (attribute and record)</li>
+<li>Entity-Relational (ER) Model: use a collection of basic objects
+(called entities) and relationships among these objects</li>
+<li>Semi-structured Data Model: permit the specification of data where
+individual data items of the same type may have different sets of
+attributes. Examples include JSON and XML</li>
+<li>Object-based Data Model: databases allow procedures to be stored in
+the database and executed by the database system, this can be an
+extension to the relational model with notions of encapsulation,
+methods, and object identity</li>
+</ul></li>
+<li>Data abstraction
+<ul>
+<li>Hide concrete and complex details of databases from users</li>
+<li>Level of abstraction
+<ul>
+<li>Physical level: lowest abstraction level describes how data are
+actually stored in the database</li>
+<li>Logical level: describes what data are stored in the database and
+what relationships exist among those data. There are simple structures
+at this level, but they do not to involve the complexity of teh physical
+level, this feature is called the physical data independency</li>
+<li>View level: highest level of abstraction, describes only part of the
+database, a database can have many view</li>
+</ul></li>
+</ul></li>
+<li>Instances and schemas
+<ul>
+<li>Instance: the collection of information stored in teh database at a
+particular moment is called an instance of the database</li>
+<li>Schema: the overall design of the database is called the database
+schema. There can bse physical schema, logical schema, and sub-schemas
+(view level schema)</li>
+</ul></li>
+</ul></li>
+<li>Database Language
+<ul>
+<li>A database provides a data-definition language (DDL) to specify the
+database schema and a data-manipulation language (DML) to express
+database queries and updates</li>
+<li>Consistency constraints in DDL
+<ul>
+<li>Domain constraints</li>
+<li>Referential integrity</li>
+<li>Authorization: CRUD authorization</li>
+</ul></li>
+<li>DML
+<ul>
+<li>Types:
+<ul>
+<li>Procedural DML: what data are needed and how to get them</li>
+<li>Declarative DML: what data are needed, do not need to specify how to
+get those data</li>
+</ul></li>
+<li>Sometimes query language and DML are used synonymously</li>
+</ul></li>
+</ul></li>
+<li>Database Design
+<ul>
+<li>Mainly involves the design of database schema</li>
+<li>Conceptual design -&gt; logical design -&gt; physical design</li>
+</ul></li>
+<li>Database Engine
+<ul>
+<li>Functional components: storage manager, query processor, transaction
+management component</li>
+<li>Storage manager
+<ul>
+<li>Database typically requires a large amount of storage space, the
+data are usually stored on SSDs</li>
+<li>Components
+<ul>
+<li>Authorization and integrity manager</li>
+<li>Transaction manager</li>
+<li>File manager</li>
+<li>Buffer manager</li>
+</ul></li>
+<li>Implement the following physical components
+<ul>
+<li>Data files: database itself</li>
+<li>Data dictionary: metadata</li>
+<li>Indices: enable fast data access</li>
+</ul></li>
+</ul></li>
+<li>Query processor
+<ul>
+<li>It helps database to simplify and facilitate access to data</li>
+<li>Components
+<ul>
+<li>DDL interpreter</li>
+<li>DML compiler: compiles DML to lower level instructions, also
+conducts query optimization</li>
+<li>Query evaluation engine</li>
+</ul></li>
+</ul></li>
+<li>Transaction manager: allows application developer to treat database
+in a higher level of abstraction
+<ul>
+<li>Transaction ACID: atomicity, consistency, isolation, durability</li>
+<li>The transaction manager consists of the concurrency-control manager
+and the recovery manager</li>
+</ul></li>
+</ul></li>
+<li>Database and Application Architecture
+<ul>
+<li>Architecture</li>
+</ul></li>
+</ol>
+<p><img src="/images/Courses/COSI127B/ArchitectureTier.png"></p>
+<h2 id="lecture-02-20220121-relational-model">Lecture 02 2022/01/21
+Relational Model</h2>
+<ol type="1">
+<li>Structure of Relational Databases
+<ul>
+<li>Notation
+<ul>
+<li>Table/relation: a tiny difference is that there can be identical
+rows in table, but there cannot be duplicates in a relation</li>
+<li>Attribute/column, each attribute has a domain, the domain should be
+atomic (indivisible)</li>
+<li>Row/tuple/record</li>
+<li>Relation instance: a specific instance of a relation, containing a
+specific set of rows</li>
+<li>Null value: the value is unknown or does not exist, null is a member
+of every domain
+<ul>
+<li><code>null AND true = null</code></li>
+<li><code>null OR true = true</code></li>
+<li><code>null AND false = false</code></li>
+<li><code>null OR false = null</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Database schema
+<ul>
+<li>Relational schema (logical thing): <span class="math inline">\(R =
+(A_1, A_2, ..., A_n)\)</span>, <span class="math inline">\(A_i\)</span>
+is a column/attribute</li>
+<li>Relational instance (snapshot of data at a time): <span class="math inline">\(r(R) = (a_1, a_2, ..., a_n)\)</span>, <span class="math inline">\(a_i\)</span> is a value of the attribute <span class="math inline">\(A_i\)</span></li>
+</ul></li>
+<li>Keys
+<ul>
+<li>A tuple should be uniquely identified by its attribute values, no
+two tuples in a relation are allowed to have exactly the same value for
+all attributes</li>
+<li>Superkey: a set of one ore more attributes that allow user to
+uniquely identify a tuple in the relation</li>
+<li>Candidate keys: the minimal subset of superkey that the attributes
+inside can still uniquely identify a tuple</li>
+<li>Primary key
+<ul>
+<li>A candidate key that is chose by the database designer as the
+primary key</li>
+<li>Primary keys are also referred to as primary key constraints</li>
+<li>The attribute values of a primary should never, or rarely,
+change</li>
+</ul></li>
+<li>Foreign key
+<ul>
+<li>A foreign key constraint states a one-to-one relationship between
+two relations, the attribute in foreign key constraint is called the
+foreign key, the two relations are called referencing relation and
+referenced relation</li>
+<li>The referenced attribute should be the primary key of the referenced
+relation</li>
+</ul></li>
+</ul></li>
+<li>Relational Query Languages
+<ul>
+<li>Query language: a language in which a user requests information from
+the database</li>
+<li>Categories
+<ul>
+<li>Imperative query language: user instructs the system to perform a
+specific sequence of operations on the database to compute the desired
+result</li>
+<li>Functional query language: the computation is expressed as the
+evaluation of functions that may operate on data in teh database or on
+the results of other functions</li>
+<li>Declarative query language: the user describes the desired
+information without giving a specific sequence of steps or function
+calls for obtaining that information</li>
+</ul></li>
+<li>Pure query language categories
+<ul>
+<li>Relational algebra</li>
+<li>Tuple relational calculus</li>
+<li>Domain relational calculus</li>
+</ul></li>
+</ul></li>
+<li>The Relational Algebra
+<ul>
+<li>The relational algebra consists of a set of operations that take one
+or two relations as input and produce a new relation as their
+result</li>
+<li>Categories
+<ul>
+<li>Unary operations: select, project, rename, ...</li>
+<li>Binary operations: union, product, difference, join, ...</li>
+</ul></li>
+<li>Select operation
+<ul>
+<li>Select tuples that satisfy a given predicate</li>
+<li>Syntax: <span class="math inline">\(\sigma_{predicate}
+(relation)\)</span></li>
+<li>Example: <span class="math inline">\(\sigma_{salary &gt; 1000 \land
+dept\_name = {&#39;physics&#39;}}(staff)\)</span> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> staff</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> <span class="number">1000</span> <span class="keyword">AND</span> dept_name <span class="operator">=</span> &quot;physics&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Project operation
+<ul>
+<li>Return its argument relation, with certain attributes left out,
+duplicate rows are removed</li>
+<li>Syntax: <span class="math inline">\(\Pi_{attributes}
+(relation)\)</span></li>
+<li>Example: <span class="math inline">\(\Pi_{name, salary/12}
+(staff)\)</span> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- distinct name, salary/12 means two tuples are identical and </span></span><br><span class="line"><span class="comment">-- will be removed only when both name and monthly salary are the same</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">distinct</span> name, salary<span class="operator">/</span><span class="number">12</span></span><br><span class="line"><span class="keyword">FROM</span> staff;</span><br></pre></td></tr></table></figure></li>
+<li>A nested example: <span class="math inline">\(\Pi_{name, salary/12}
+(\sigma_{salary &gt; 1000 \land dept\_name =
+{&#39;physics&#39;}}(staff))\)</span> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">distinct</span> name, salary<span class="operator">/</span><span class="number">12</span></span><br><span class="line"><span class="keyword">FROM</span> staff</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> <span class="number">1000</span> <span class="keyword">AND</span> dept_name <span class="operator">=</span> &quot;physics&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>The cartesian product
+<ul>
+<li>Combine information from two relations, the result is not the same
+as the cartesian product in mathematical definition</li>
+<li>Syntax: <span class="math inline">\(A \times B\)</span></li>
+<li>Example: <span class="math inline">\(staff \times course\)</span>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> staff, course;</span><br><span class="line"><span class="comment">-- use cross join</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> staff <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> course;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Join operation
+<ul>
+<li>Combine a select operation and a Cartesian product operation into a
+single operation</li>
+<li>Syntax: <span class="math inline">\(r \Join_{\theta} s =
+\sigma_{\theta} (r \times s)\)</span></li>
+</ul></li>
+<li>Set Operation
+<ul>
+<li>Union: <span class="math inline">\(r \cup s\)</span></li>
+<li>Intersection: <span class="math inline">\(r \cap s\)</span></li>
+<li>Difference: <span class="math inline">\(r - s\)</span></li>
+</ul></li>
+<li>Assignment Operation
+<ul>
+<li>Assign a relational-algebra expression to a temporary variable</li>
+<li><span class="math inline">\(r \leftarrow E\)</span></li>
+</ul></li>
+<li>Rename Operation
+<ul>
+<li>Give names to result of relational-algebra expressions</li>
+<li><span class="math inline">\(\rho_{new}(old)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-03-20220125-basic-sql">Lecture 03 2022/01/25 Basic
+SQL</h2>
+<ol type="1">
+<li>DDL
+<ul>
+<li>Domain types
+<ul>
+<li><code>char(n)</code>: fixed length character string</li>
+<li><code>varchar(n)</code>: variable length character string n, maximum
+length is n</li>
+<li><code>int</code>: integer</li>
+<li><code>smallint</code>: small integer</li>
+<li><code>numeric(p, d)</code>: fixed point number, with precision of p
+digits and d digits to the right of decimal point</li>
+<li><code>real, double precision</code>: floating point and
+double-precision floating point numbers with machine-dependent
+precision</li>
+<li><code>float(n)</code>: floating point number , with precision at
+least n digits</li>
+</ul></li>
+<li>Create a table
+<ul>
+<li>Syntax <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> table_name (</span><br><span class="line">  attribute_name data_type,</span><br><span class="line">  constraint_name (attribute_name),</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student (</span><br><span class="line">  id <span class="type">int</span>,</span><br><span class="line">  name <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  department <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">  <span class="keyword">primary</span> <span class="keyword">key</span> (id),</span><br><span class="line">  <span class="keyword">foreign</span> <span class="keyword">key</span>(department) <span class="keyword">references</span> department</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Delete a table
+<ul>
+<li>Syntax <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> table_name;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> student;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Add/remove attributes in a table
+<ul>
+<li>Syntax <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Add one attribute into a table*/</span></span><br><span class="line">  <span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">add</span> attribute_name type;</span><br><span class="line">  <span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> gpa <span class="type">float</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Delete one attribute from a table*/</span></span><br><span class="line">  <span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">drop</span> attribute_name;</span><br><span class="line">  <span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">drop</span> gpa;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>DML
+<ul>
+<li>Queries on a single relation
+<ul>
+<li>Basic query <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Select all tuples with only two attributes*/</span></span><br><span class="line"><span class="keyword">select</span> attribute1, attribute2 <span class="keyword">from</span> table_name;</span><br><span class="line"><span class="keyword">select</span> id, name <span class="keyword">from</span> student;</span><br><span class="line"><span class="comment">/* Select all tuples with all attributes*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></li>
+<li>Duplicates <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Select unique tuples with respect to the attribute*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> attribute_name <span class="keyword">from</span> table_name;</span><br><span class="line"><span class="comment">/* Select all tuples with respect to the attributes*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">all</span> attribute_name <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></li>
+<li>Query with predicates <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Select tuples that satisfy a given predicate*/</span></span><br><span class="line"><span class="keyword">select</span> attribute_name <span class="keyword">from</span> table_name <span class="keyword">where</span> <span class="keyword">condition</span>;</span><br><span class="line"><span class="keyword">select</span> id, name <span class="keyword">from</span> student <span class="keyword">where</span> department <span class="operator">=</span> <span class="string">&#x27;computer science&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Use like to match pattern*/</span></span><br><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;a%&#x27;</span> <span class="comment">/* Where name starts with a*/</span></span><br><span class="line"><span class="comment">/* Numerical range, both bound are inclusive*/</span></span><br><span class="line"><span class="keyword">where</span> gpa <span class="keyword">between</span> <span class="number">3.5</span> <span class="keyword">and</span> <span class="number">4.0</span>; <span class="comment">/*3.5 &lt;= gpa &lt;= 4.0*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Alias <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.id, a.name </span><br><span class="line"><span class="keyword">from</span> student a, student b</span><br><span class="line"><span class="keyword">where</span> a.department <span class="operator">=</span> <span class="string">&#x27;computer science&#x27;</span> </span><br><span class="line"><span class="keyword">and</span> b.department <span class="operator">=</span> <span class="string">&#x27;computer science&#x27;</span> </span><br><span class="line"><span class="keyword">and</span> a.gpa <span class="operator">&gt;</span> b.gpa;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Queries on multiple relations <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.id, a.name </span><br><span class="line"><span class="keyword">from</span> student a, student b</span><br><span class="line"><span class="keyword">where</span> a.department <span class="operator">=</span> <span class="string">&#x27;computer science&#x27;</span> </span><br><span class="line"><span class="keyword">and</span> b.department <span class="operator">=</span> <span class="string">&#x27;computer science&#x27;</span> </span><br><span class="line"><span class="keyword">and</span> a.gpa <span class="operator">&gt;</span> b.gpa;</span><br></pre></td></tr></table></figure></li>
+<li>Additional basic operations
+<ul>
+<li>String operations
+<ul>
+<li><code>%</code>: matches any substring</li>
+<li><code>_</code>: matches any character</li>
+<li><code>like</code>: matches a pattern</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="lecture-07-20220208">Lecture 07 2022/02/08</h2>
+<ol type="1">
+<li>Common mistakes in E-R model
+<ul>
+<li>Use of the primary key of an entity set as an attribute of another
+entity set, instead of using a relationship (if there is a relationship,
+then remove the foreign key)</li>
+<li>Designate the primary key attributes of the related entity sets as
+attributes of the relationship set (they are already implicit in the
+relationship set)</li>
+<li>Use a relationship with a single-value attribute in a situation that
+requires a multi-valued attribute</li>
+</ul></li>
+</ol>
+<h2 id="lecture-08-20220211">Lecture 08 2022/02/11</h2>
+<ol type="1">
+<li>Good relational designs Ch 7.1
+<ul>
+<li>Good schemas should contain no redundancy and no missing
+information</li>
+<li>To remove the data repetition problem, we can decompose one schema
+into multiple smaller ones</li>
+<li>If information is missing after decomposition, we call it a lossy
+decomposition, otherwise it's a lossless decomposition</li>
+<li>Let R, <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span> the set of attributes, if <span class="math inline">\(R = R_1 \cup R_2\)</span>, then the decomposition
+is lossless. Equivalently, if $ r = {R_1} (r) {R_2}(r)$, then the
+decomposition is lossless, if <span class="math inline">\(r \subset
+\Phi_{R_1} (r) \Join \Phi_{R_2}(r)\)</span>, the decomposition is
+lossy</li>
+<li>Normalization
+<ul>
+<li>The method for designing a relational database is to use a process
+commonly known as normalization</li>
+<li>The goal is to generate a set of relation schemas that store
+information without unnecessary redundancy, yet allows to retrieve
+information easily</li>
+<li>Procedure
+<ul>
+<li>Decide whether a schema is a good one</li>
+<li>If a schema is not in good form, decompose it into smaller ones,
+each of which is in an appropriate normal form. The decomposition should
+be lossless</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Decomposition using functional dependencies Ch 7.2
+<ul>
+<li>Legal instance
+<ul>
+<li>There are some real-world constraints that real-world data should
+follow, since database models real-world data, schemas should also
+follow these constraints</li>
+<li>An instance of a relation that satisfies all such real-world
+constraints is called a legal instance of the relation; a legal instance
+of a database is one where all the relation instances are legal
+instances</li>
+</ul></li>
+<li>Notations: <span class="math inline">\(\alpha\)</span> for
+attribute, r for relation, R for schema, K for superkey</li>
+<li>Functional dependency: denote relational schema r(R), <span class="math inline">\(\alpha \subseteq R\)</span>, and <span class="math inline">\(\beta \subseteq R\)</span>,
+<ul>
+<li>Given an instance of r(R), we say that the instance satisfies the
+functional dependency <span class="math inline">\(\alpha \rightarrow
+\beta\)</span> if for all pairs of tuples <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span> in the instance such that <span class="math inline">\(t_1 [\alpha] = t_2 [\alpha]\)</span>, we also have
+<span class="math inline">\(t_1 [\beta] = t_2 [\beta]\)</span></li>
+<li>We say that the functional dependency <span class="math inline">\(\alpha \rightarrow \beta\)</span> holds on schema
+r(R) if every legal instance of r(R) satisfies the functional
+dependency</li>
+<li>K is a superkey for r(R) is <span class="math inline">\(K
+\rightarrow R\)</span> holds on r(R)</li>
+<li>A functional dependency is trivial if it is satisfied by all
+relations</li>
+<li>Closure: Given a set F set of functional dependencies, there are
+certain other functional dependencies that are logically implied by F.
+The set of all functional dependencies logically implied by F is the
+closure of F, denoted <span class="math inline">\(F^{+}\)</span></li>
+</ul></li>
+<li>If <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> is a lossless decomposition of R,
+then at least on of the following functional dependencies hold: <span class="math inline">\(R_1 \cap R_2 \rightarrow R_1\)</span>, <span class="math inline">\(R_1 \cap R_2 \rightarrow R_2\)</span>, which means
+<span class="math inline">\(R_1 \cap R_2\)</span> is the superkey for
+either <span class="math inline">\(R_1\)</span> or <span class="math inline">\(R_2\)</span></li>
+</ul></li>
+<li>Normal Form Ch 7.3
+<ul>
+<li>Boyce-Codd normal form (BCNF)
+<ul>
+<li>The most desirable normal form, it eliminates all redundancy that
+can be discovered based on functional dependencies</li>
+<li>Definition: a relational schema R is in BCNF with respect to a set F
+of functional dependencies if, for all functional dependencies in <span class="math inline">\(F^{+}\)</span> of the form <span class="math inline">\(\alpha \rightarrow \beta\)</span>, at least one of
+the following holds:
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span> is
+trivial (<span class="math inline">\(\beta \subseteq
+\alpha\)</span>)</li>
+<li><span class="math inline">\(\alpha\)</span> is a superkey for schema
+R</li>
+</ul></li>
+<li>A database design is in BCNF is each member of the set of relation
+schemas that constitutes the design is in BCNF</li>
+<li>Decomposition of non BCNF schema into BCNF schema: suppose for
+schema R, <span class="math inline">\(\alpha -\rightarrow \beta\)</span>
+is not BCNF, then we can decompose R into <span class="math inline">\(\alpha \cup \beta\)</span> and <span class="math inline">\(R - (\beta - \alpha)\)</span></li>
+<li>It's not always possible to achieve both BCNF and dependency
+preserving</li>
+</ul></li>
+<li>Third normal form (3NF)
+<ul>
+<li>Definition: A relation schema R is in third normal form with respect
+to a set F of functional dependencies if, for all functional
+dependencies in <span class="math inline">\(F^{+}\)</span> of the form
+<span class="math inline">\(\alpha \rightarrow \beta\)</span>, at least
+one of the following hold:
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span> is
+trivial (<span class="math inline">\(\beta \subseteq
+\alpha\)</span>)</li>
+<li><span class="math inline">\(\alpha\)</span> is a superkey for schema
+R</li>
+<li>Each attribute A in <span class="math inline">\(\beta -
+\alpha\)</span> is contained in a candidate key for R</li>
+</ul></li>
+<li>Every schema that has 3NF is dependency preserving</li>
+<li>Advantages: it's always possible to obtain a 3NF design without
+sacrificing loss or dependency preservation</li>
+<li>Disadvantages: there is still problem of repetition of information,
+and we have to use null values to represent some of the possible
+meaningful relationships among data items</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="mysql-crash-course">MySQL Crash Course</h2>
+<ol type="1">
+<li>Understanding SQL
+<ul>
+<li>A database is a container to store organized data</li>
+<li>Do not misuse database with DBMS</li>
+<li>A table is a structured list of data of a specific type
+<ul>
+<li>Tables in the same database cannot have the same name, tables in
+different databases can have the same name</li>
+</ul></li>
+<li>Schema: information about database and table layout and
+properties</li>
+<li>Column: a single field in a table, all tables are made up of one ore
+more columns
+<ul>
+<li>Each column has its datatype</li>
+</ul></li>
+<li>Row: a record in a table</li>
+<li>Primary key: a column (or set of columns) whose values uniquely
+identify every row in a table
+<ul>
+<li>Always define primary keys, even though primary keys are not
+required</li>
+<li>Primary key best practices
+<ul>
+<li>Do not update values in primary key columns</li>
+<li>Do not reuse values in primary key columns</li>
+<li>Do not use values that might change in primary key columns</li>
+</ul></li>
+</ul></li>
+<li>SQL is a language designed specifically for communicating with
+databases</li>
+</ul></li>
+<li>Introducing MySQL
+<ul>
+<li>Some reasons
+<ul>
+<li>MySQL is open-source and free to use</li>
+<li>MySQL is fast</li>
+<li>MySQL is trusted</li>
+<li>MySQL is easy to use</li>
+</ul></li>
+<li>DBMS categories
+<ul>
+<li>Shared file-based: Microsoft Access, FileMaker</li>
+<li>Client-server based: MySQL, Oracle, Microsoft SQL Server</li>
+</ul></li>
+<li>MySQL tools
+<ul>
+<li>Command-line utility: mysql</li>
+<li>MySQL administrator</li>
+<li>MySQL query browser</li>
+</ul></li>
+</ul></li>
+<li>Working with MySQL
+<ul>
+<li>Select a database: <code>use database_name;</code></li>
+<li>Display all databases: <code>show databases;</code></li>
+<li>Display all tables in the current database:
+<code>show tables;</code></li>
+<li>Display all columns in a table:
+<code>show columns from table_name;</code>, you can also use the short
+form: <code>describe table_name;</code></li>
+<li>Display server status: <code>show status;</code></li>
+<li>Display server error and warning: <code>show errors;</code>,
+<code>show warnings;</code></li>
+<li>Display database information:
+<code>show create database database_name;</code></li>
+<li>Display table information:
+<code>show create table table_name;</code></li>
+<li>Display security rights granted to users:
+<code>show grants;</code></li>
+</ul></li>
+<li>Retrieving data
+<ul>
+<li>Retrieve one column:
+<code>select col_name from tbl_name;</code></li>
+<li>Retrieve multiple columns:
+<code>select col1_name, col2_name from tbl_name;</code></li>
+<li>Retrieve all columns: <code>select * from tbl_name;</code></li>
+<li>Retrieve distinct rows:
+<code>select distinct col_name from tbl_name;</code></li>
+<li>Limiting results:
+<code>select col_name from tbl_name limit n;</code></li>
+<li>Limiting results with a starting row:
+<code>select col_name from tbl_name limit n, m;</code>, this select m
+rows starting from row n + 1, there is an alternative approach in which
+you can explicitly specify the offset:
+<code>select col_name from tbl_name limit m offset n;</code></li>
+<li>Use fully qualified table names:
+<code>select tbl_name.col_name from db_name.tbl_name;</code></li>
+</ul></li>
+<li>Storing retrieved data
+<ul>
+<li>Sorting data:
+<code>select col_name from tbl_name order by col_name;</code>, it's not
+required that the sorting column is included in the result set</li>
+<li>Sorting by multiple columns:
+<code>select col_name from tbl_name order by col1_name, col2_name;</code>,
+this means we first sort by col1, if the values are equal, we then sort
+by col2</li>
+<li>Specify sorting direction:
+<code>select col_name from tbl_name order by col_name desc</code>, the
+default direction is ascending, otherwise you need to explicitly specify
+the direction is descending</li>
+<li>Specify sorting direction for each column:
+<code>select col_name from tbl_name order by col1_name, col2_name desc;</code></li>
+<li>Top k question:
+<code>select col_name from tbl_name order by col_name desc limit k;</code></li>
+</ul></li>
+<li>Filtering data
+<ul>
+<li>Use where condition to filter data:
+<code>select col_name from tbl_name where condition;</code></li>
+<li>Some operators: <code>=</code>, <code>&lt;&gt;</code>,
+<code>!=</code>, <code>&lt;</code>, <code>&gt;</code>,
+<code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>,
+<code>between  and</code></li>
+<li>Check for no value: <code>where vol_name is null;</code></li>
+</ul></li>
+<li>Advanced data filtering
+<ul>
+<li>Combine conditions: <code>and</code>, <code>or</code></li>
+<li>Match one of the condition:
+<code>where col_name in (val1, ..., valn);</code></li>
+<li>Negate a condition:
+<code>where col_name not in (val1, ..., valn);</code>, you can use not
+together with in, between, and exists</li>
+</ul></li>
+<li>Using wildcard</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2022/01/21/COSI-127B-Database-Management-Systems/" title="COSI 127B Database Management Systems">https://yanxuanshaozhu.github.io/2022/01/21/COSI-127B-Database-Management-Systems/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Database-Management-Systems/" rel="tag"># Database Management Systems</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/19/COSI-103A-Software-Engineering/" rel="prev" title="COSI 103A Software Engineering">
+      <i class="fa fa-chevron-left"></i> COSI 103A Software Engineering
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/22/COSI-131A-Operating-System/" rel="next" title="COSI 131A Operating System">
+      COSI 131A Operating System <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-01-20220118-introduction"><span class="nav-number">1.</span> <span class="nav-text">Lecture 01 2022&#x2F;01&#x2F;18
+Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-02-20220121-relational-model"><span class="nav-number">2.</span> <span class="nav-text">Lecture 02 2022&#x2F;01&#x2F;21
+Relational Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-03-20220125-basic-sql"><span class="nav-number">3.</span> <span class="nav-text">Lecture 03 2022&#x2F;01&#x2F;25 Basic
+SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-07-20220208"><span class="nav-number">4.</span> <span class="nav-text">Lecture 07 2022&#x2F;02&#x2F;08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-08-20220211"><span class="nav-number">5.</span> <span class="nav-text">Lecture 08 2022&#x2F;02&#x2F;11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-crash-course"><span class="nav-number">6.</span> <span class="nav-text">MySQL Crash Course</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yanxuanshaozhu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yanxuanshaozhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanxuanshaozhu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanxuanshaozhu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mrlixm.cn@gmail.com" title="E-Mail → mailto:mrlixm.cn@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanxuanshaozhu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.8m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">26:57</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
