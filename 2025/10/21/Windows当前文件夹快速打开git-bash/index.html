@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="US Forest Prototype System    Feb 2022 - Apr 2022 Tools: Dash, Spring Boot, PostgreSQL, Heroku For my project for COSI 127B, I developed a prototype system for the US Forest Registry users. Thi">
-<meta property="og:type" content="website">
-<meta property="og:title" content="portfolio">
-<meta property="og:url" content="https://yanxuanshaozhu.github.io/portfolio/index.html">
+  <meta name="description" content="无聊小技巧  众所周知，你可以从Windows的file exploer的地址栏直接输入cmd&#x2F;powershell从当前文件夹打开命令行终端。如果你安装了git bash，直接输入bash是不能打开git的命令行终端bash的，因为windows不知道bash.exe在哪里。需要在环境变量中配置%Git%&#x2F;bin和%Git%&#x2F;cmd。 同时如果你在windows上安装了wsl，那么在地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows当前文件夹快速打开git bash">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="US Forest Prototype System    Feb 2022 - Apr 2022 Tools: Dash, Spring Boot, PostgreSQL, Heroku For my project for COSI 127B, I developed a prototype system for the US Forest Registry users. Thi">
+<meta property="og:description" content="无聊小技巧  众所周知，你可以从Windows的file exploer的地址栏直接输入cmd&#x2F;powershell从当前文件夹打开命令行终端。如果你安装了git bash，直接输入bash是不能打开git的命令行终端bash的，因为windows不知道bash.exe在哪里。需要在环境变量中配置%Git%&#x2F;bin和%Git%&#x2F;cmd。 同时如果你在windows上安装了wsl，那么在地">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-04T02:03:54.000Z">
-<meta property="article:modified_time" content="2025-05-22T15:38:09.443Z">
+<meta property="article:published_time" content="2025-10-22T03:53:58.000Z">
+<meta property="article:modified_time" content="2025-10-22T04:09:11.165Z">
 <meta property="article:author" content="Yanxuanshaozhu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yanxuanshaozhu.github.io/portfolio/">
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/">
 
 
 <script id="page-configurations">
@@ -40,13 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>portfolio | My Blog
-</title>
+  <title>Windows当前文件夹快速打开git bash | My Blog</title>
   
 
 
@@ -168,115 +167,132 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows当前文件夹快速打开git bash
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">portfolio
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-<div class="post-meta">
+              <time title="Created: 2025-10-21 23:53:58" itemprop="dateCreated datePublished" datetime="2025-10-21T23:53:58-04:00">2025-10-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-10-22 00:09:11" itemprop="dateModified" datetime="2025-10-22T00:09:11-04:00">2025-10-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>573</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="无聊小技巧">无聊小技巧</h1>
+<!-- -->
+<p>众所周知，你可以从Windows的file
+exploer的地址栏直接输入<code>cmd</code>/<code>powershell</code>从当前文件夹打开命令行终端。如果你安装了git
+bash，直接输入bash是不能打开git的命令行终端bash的，因为windows不知道<code>bash.exe</code>在哪里。需要在环境变量中配置<code>%Git%/bin</code>和<code>%Git%/cmd</code>。</p>
+<p>同时如果你在windows上安装了<code>wsl</code>，那么在地址栏输入<code>bash</code>闪退还有另外一个原因。因为<code>wsl</code>里面会自带一个bash。并且他会在环境变量的<code>%SystemRoot%\system32</code>下面注册这个bash，这个条目在环境变量的优先级很高，通常比手动添加的<code>git</code>目录下的<code>bash</code>要在前面，这会导致即使配置了环境变量，也不能正确的启动bash，因为在输入<code>bash</code>时会自动寻找<code>wsl</code>里面的<code>bash</code>(可以通过在<code>cmd</code>里面输入<code>where bash</code>来观察结果里是不是<code>system32</code>的路径在<code>%Git%</code>前面确认)。所以需要把<code>%Git%/bin</code>和<code>%Git%/cmd</code>在环境变量里向上挪动到<code>%SystemRoot%\system32</code>上面。</p>
+<p>当然了修改环境变量记得保存，老版本windows需要重启才可以使环境变量生效，新版本windows由于外壳程序<code>explorer.exe</code>的广播消息<code>WM_SETTINGCHANGE</code>十分可靠，改完保存即可。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/" title="Windows当前文件夹快速打开git bash">https://yanxuanshaozhu.github.io/2025/10/21/Windows当前文件夹快速打开git-bash/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/10/02/%E3%80%8A%E5%8D%97%E4%BA%AC%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%86%B2%E7%AA%81%E3%80%8B-K%E5%AD%97%E7%AD%BE%E8%AF%81%E5%AE%9E%E6%96%BD%E4%BA%8C%E5%8D%81%E5%91%A8%E5%B9%B4%E7%B3%BB%E5%88%97/" rel="prev" title="《南京路上的冲突》- K字签证实施二十周年系列">
+      <i class="fa fa-chevron-left"></i> 《南京路上的冲突》- K字签证实施二十周年系列
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <h2 id="us-forest-prototype-system">US Forest Prototype System</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Feb 2022 - Apr 2022<br>
-Tools: Dash, Spring Boot, PostgreSQL, Heroku</p>
-<p>For my project for COSI 127B, I developed a prototype system for the
-US Forest Registry users. This project is a web-based application that
-allows users to conduct CRUD operations to monitor the US forests. I
-used both frontend and backend validations to ensure valid user input. I
-also included proper query optimization, concurrency control and stored
-procedures to ensure system robustness and improve system
-efficiency.</p>
-<h2 id="unit-converter">Unit Converter</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Oct 2021 - Dec 2021<br>
-Tools: React Native, Express, MongoDB, Heroku</p>
-<p>For my project for COSI 153A, I developed a mobile app unit converter
-that allows users to do conversions in six different categories (real
-time exchange rate included). This app also allows users to register
-accounts, login to save and display their conversion histories. This app
-uses asynchronous storage to store user information, uses axios to make
-HTTP requests to an Express server, and uses mongoose to let the sever
-exchange data with a MongoDB Atlas database.</p>
-<h2 id="pricing-bonds-with-embedded-options">Pricing Bonds with Embedded
-Options</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Dec 2017 - Apr 2018<br>
-Tools: Matlab, LaTeX</p>
-<p>For the 'It Said Data' Science competition held by Xiamen University,
-I worked with three of my fellow classmates on the topic Pricing bonds
-with Embedded Options. We calculated theoretical prices of 466 bonds
-embedded with redemption clauses between 2015 and 2018 using Hull-White
-interest rate model and Monte Carlo Simulation. During the competition,
-we learnt a great deal about how to apply financial knowledge to
-tackling real world market data.</p>
-<p>Our team name is Chaos in Bond Markets, we ranked 3rd among the 32
-teams in the competition.</p>
-<h2 id="quantitative-stock-selection">Quantitative Stock Selection</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Nov 2017 - Dec 2017<br>
-Tools: Jupyter Notebook, Numpy, Pandas, Matplotlib</p>
-<p>For my Quantitative Investment fall 2017 course project, I developed
-a quantitative stock selection procedure and tested my strategy on a
-virtual platform. I used both fundamental analysis and technical
-analysis to evaluate China's stock market and formed a stock pool by
-picking the 100 best-performing stocks. I then used Multi-Factor Model
-and Momentum Model to select stocks from the pool to construct my
-portfolio. Finally, I invested my portfolio for two months on a virtual
-platform with an initial balance of 1 million yuan. My cumulative return
-was 4.62%, which ranked the second among the 24 students in the
-class.</p>
-<h2 id="analysis-of-the-economic-zone-on-the-west-coast-of-taiwan-strait">Analysis
-of the Economic Zone on the West Coast of Taiwan Strait</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Sep 2016 - Dec 2016<br>
-Tools: Stata, MS Word</p>
-<p>For my 2016 fall semester, I worked with two other students as
-research assistants to analyze the economic zone on the west coast of
-Taiwan strait. My focus was on the influence of economic agglomeration
-on labor productivity. I build dynamic panel regression methods to model
-the difference in labor productivity and used various methods to find
-the cause of such difference. I also reviewed the draft of analysis on
-the infrastructures of the economic zone.</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -327,9 +343,7 @@ the infrastructures of the economic zone.</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#us-forest-prototype-system"><span class="nav-number">1.</span> <span class="nav-text">US Forest Prototype System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unit-converter"><span class="nav-number">2.</span> <span class="nav-text">Unit Converter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pricing-bonds-with-embedded-options"><span class="nav-number">3.</span> <span class="nav-text">Pricing Bonds with Embedded
-Options</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quantitative-stock-selection"><span class="nav-number">4.</span> <span class="nav-text">Quantitative Stock Selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-the-economic-zone-on-the-west-coast-of-taiwan-strait"><span class="nav-number">5.</span> <span class="nav-text">Analysis
-of the Economic Zone on the West Coast of Taiwan Strait</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E8%81%8A%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">无聊小技巧</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

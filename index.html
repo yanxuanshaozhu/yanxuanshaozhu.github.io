@@ -170,6 +170,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/" class="post-title-link" itemprop="url">Windows当前文件夹快速打开git bash</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-10-21 23:53:58" itemprop="dateCreated datePublished" datetime="2025-10-21T23:53:58-04:00">2025-10-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-10-22 00:09:11" itemprop="dateModified" datetime="2025-10-22T00:09:11-04:00">2025-10-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>573</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="无聊小技巧">无聊小技巧</h1>
+<!-- -->
+<p>众所周知，你可以从Windows的file
+exploer的地址栏直接输入<code>cmd</code>/<code>powershell</code>从当前文件夹打开命令行终端。如果你安装了git
+bash，直接输入bash是不能打开git的命令行终端bash的，因为windows不知道<code>bash.exe</code>在哪里。需要在环境变量中配置<code>%Git%/bin</code>和<code>%Git%/cmd</code>。</p>
+<p>同时如果你在windows上安装了<code>wsl</code>，那么在地址栏输入<code>bash</code>闪退还有另外一个原因。因为<code>wsl</code>里面会自带一个bash。并且他会在环境变量的<code>%SystemRoot%\system32</code>下面注册这个bash，这个条目在环境变量的优先级很高，通常比手动添加的<code>git</code>目录下的<code>bash</code>要在前面，这会导致即使配置了环境变量，也不能正确的启动bash，因为在输入<code>bash</code>时会自动寻找<code>wsl</code>里面的<code>bash</code>(可以通过在<code>cmd</code>里面输入<code>where bash</code>来观察结果里是不是<code>system32</code>的路径在<code>%Git%</code>前面确认)。所以需要把<code>%Git%/bin</code>和<code>%Git%/cmd</code>在环境变量里向上挪动到<code>%SystemRoot%\system32</code>上面。</p>
+<p>当然了修改环境变量记得保存，老版本windows需要重启才可以使环境变量生效，新版本windows由于外壳程序<code>explorer.exe</code>的广播消息<code>WM_SETTINGCHANGE</code>十分可靠，改完保存即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2025/10/02/%E3%80%8A%E5%8D%97%E4%BA%AC%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%86%B2%E7%AA%81%E3%80%8B-K%E5%AD%97%E7%AD%BE%E8%AF%81%E5%AE%9E%E6%96%BD%E4%BA%8C%E5%8D%81%E5%91%A8%E5%B9%B4%E7%B3%BB%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -291,7 +385,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-09-06 22:03:52" itemprop="dateModified" datetime="2025-09-06T22:03:52-04:00">2025-09-06</time>
+                <time title="Modified: 2025-10-24 23:16:03" itemprop="dateModified" datetime="2025-10-24T23:16:03-04:00">2025-10-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +403,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.4k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -1015,103 +1109,6 @@ blog</a> and found that the post entitled
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2024/02/25/French-Grammar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Yanxuanshaozhu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/25/French-Grammar/" class="post-title-link" itemprop="url">French Grammar</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-02-25 22:14:35" itemprop="dateCreated datePublished" datetime="2024-02-25T22:14:35-05:00">2024-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-12-22 10:12:24" itemprop="dateModified" datetime="2024-12-22T10:12:24-05:00">2024-12-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Language-Learning/" itemprop="url" rel="index"><span itemprop="name">Language Learning</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>49k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>45 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="词性">词性</h1>
-<h2 id="主语人称代词le-pronom-sujet---subject-pronoun">主语人称代词(le
-pronom sujet -&gt; subject pronoun)</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/25/French-Grammar/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1182,7 +1179,7 @@ pronom sujet -&gt; subject pronoun)</h2>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1245,7 +1242,7 @@ pronom sujet -&gt; subject pronoun)</h2>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">26:34</span>
+    <span title="Reading time total">26:35</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
