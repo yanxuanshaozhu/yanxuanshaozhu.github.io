@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"yanxuanshaozhu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="US Forest Prototype System    Feb 2022 - Apr 2022 Tools: Dash, Spring Boot, PostgreSQL, Heroku For my project for COSI 127B, I developed a prototype system for the US Forest Registry users. Thi">
-<meta property="og:type" content="website">
-<meta property="og:title" content="portfolio">
-<meta property="og:url" content="https://yanxuanshaozhu.github.io/portfolio/index.html">
+  <meta name="description" content="Chrome 瀏覽器內建一項便捷功能，允許使用者選取網頁上的文字後，透過右鍵選單直接使用預設的搜尋引擎進行查詢。然而，在某些使用情境下，使用者可能希望保留一個預設搜尋引擎（例如 Bing）用於網址列的快速搜尋，同時希望在右鍵選單中能使用另一個搜尋引擎（例如 Google）。本文將詳細說明如何透過安裝擴充功能，在不變更預設搜尋引擎的前提下，為右鍵選單新增一個指定的搜尋選項。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自訂 Chrome 右鍵選單，實現多重搜尋引擎並用">
+<meta property="og:url" content="https://yanxuanshaozhu.github.io/2025/10/27/%E8%87%AA%E5%AE%9A%E4%B9%89Chrome%E5%8F%B3%E9%94%AE%E6%90%9C%E7%B4%A2%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="US Forest Prototype System    Feb 2022 - Apr 2022 Tools: Dash, Spring Boot, PostgreSQL, Heroku For my project for COSI 127B, I developed a prototype system for the US Forest Registry users. Thi">
+<meta property="og:description" content="Chrome 瀏覽器內建一項便捷功能，允許使用者選取網頁上的文字後，透過右鍵選單直接使用預設的搜尋引擎進行查詢。然而，在某些使用情境下，使用者可能希望保留一個預設搜尋引擎（例如 Bing）用於網址列的快速搜尋，同時希望在右鍵選單中能使用另一個搜尋引擎（例如 Google）。本文將詳細說明如何透過安裝擴充功能，在不變更預設搜尋引擎的前提下，為右鍵選單新增一個指定的搜尋選項。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-04T02:03:54.000Z">
-<meta property="article:modified_time" content="2025-05-22T15:38:09.443Z">
+<meta property="article:published_time" content="2025-10-27T12:12:51.000Z">
+<meta property="article:modified_time" content="2025-10-27T12:25:08.150Z">
 <meta property="article:author" content="Yanxuanshaozhu">
+<meta property="article:tag" content="Interesting Things">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yanxuanshaozhu.github.io/portfolio/">
+<link rel="canonical" href="https://yanxuanshaozhu.github.io/2025/10/27/%E8%87%AA%E5%AE%9A%E4%B9%89Chrome%E5%8F%B3%E9%94%AE%E6%90%9C%E7%B4%A2%E6%96%B9%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>portfolio | My Blog
-</title>
+  <title>自訂 Chrome 右鍵選單，實現多重搜尋引擎並用 | My Blog</title>
   
 
 
@@ -168,115 +168,169 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yanxuanshaozhu.github.io/2025/10/27/%E8%87%AA%E5%AE%9A%E4%B9%89Chrome%E5%8F%B3%E9%94%AE%E6%90%9C%E7%B4%A2%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yanxuanshaozhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自訂 Chrome 右鍵選單，實現多重搜尋引擎並用
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">portfolio
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-<div class="post-meta">
+              <time title="Created: 2025-10-27 08:12:51 / Modified: 08:25:08" itemprop="dateCreated datePublished" datetime="2025-10-27T08:12:51-04:00">2025-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Chrome
+瀏覽器內建一項便捷功能，允許使用者選取網頁上的文字後，透過右鍵選單直接使用預設的搜尋引擎進行查詢。然而，在某些使用情境下，使用者可能希望保留一個預設搜尋引擎（例如
+Bing）用於網址列的快速搜尋，同時希望在右鍵選單中能使用另一個搜尋引擎（例如
+Google）。本文將詳細說明如何透過安裝擴充功能，在不變更預設搜尋引擎的前提下，為右鍵選單新增一個指定的搜尋選項。</p>
+<span id="more"></span>
+<p>解決方案：使用 "Context Menu Search" 擴充功能</p>
+<p>要實現此功能，我們需要借助 Chrome
+線上應用程式商店中的擴充功能。"Context Menu Search"
+是一個功能強大且設定直觀的工具，它能讓使用者自由地向右鍵選單中添加多個自訂的搜尋連結。</p>
+<p>設定步驟詳解</p>
+<p>請依照以下步驟進行設定：</p>
+<ol type="1">
+<li>安裝擴充功能
+<ul>
+<li>前往 Chrome 線上應用程式商店。</li>
+<li>在搜尋框中輸入 Context Menu Search 並執行搜尋。</li>
+<li>從搜尋結果中找到該擴充功能，點擊「加到 Chrome」按鈕以完成安裝。</li>
+</ul></li>
+<li>進入設定頁面
+<ul>
+<li>安裝成功後，點擊瀏覽器右上角的「擴充功能」圖示（通常為拼圖形狀）。</li>
+<li>在下拉列表中找到 "Context Menu
+Search"，點擊其右側的「更多選項」（三個點的圖示），然後選擇「選項」。</li>
+</ul></li>
+<li>新增 Google 搜尋選項
+<ul>
+<li>進入設定頁面後，您會看到此擴充功能提供了兩種新增方式。對於新增
+Google 搜尋，我們建議使用更快捷的預設選項。</li>
+<li>向下捲動頁面，找到標題為「Or Pick from the following:」的區域。</li>
+<li>在「Web Search」分類下，找到並勾選「Google」旁邊的核取方塊。</li>
+<li>您也可以根據需求，在此處勾選其他您想加入右鍵選單的搜尋服務（例如：Image
+Search 分類下的 Google Images，或 News 分類下的 Google News）。</li>
+<li>勾選完畢後，點擊頁面最下方的「Add Selected Options」按鈕。</li>
+<li>（備註：若您需要新增列表中沒有的自訂搜尋引擎，才需要使用上方的「Add
+more Search Engines manually」區塊，手動填寫 Display name 和
+Link。）</li>
+</ul></li>
+<li>驗證設定</li>
+</ol>
+<p>設定儲存後，您可以立即驗證其效果。在任何網頁上，使用滑鼠選取一段文字，然後點擊右鍵。您會發現在彈出的選單中，除了原有的「透過
+Bing 搜尋...」（或其他預設引擎）之外，已經成功新增了「Context Menu
+Search」的選項。</p>
+<ol start="5" type="1">
+<li>結論</li>
+</ol>
+<p>透過上述方法，使用者可以有效地客製化 Chrome
+的右鍵搜尋功能，實現了主要操作（網址列）與次要操作（右鍵選單）使用不同搜尋引擎的目的。這不僅提升了瀏覽與搜尋的彈性，也優化了個人的工作流程，無需在不同搜尋需求間頻繁切換預設設定，從而提高了操作效率。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yanxuanshaozhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yanxuanshaozhu.github.io/2025/10/27/%E8%87%AA%E5%AE%9A%E4%B9%89Chrome%E5%8F%B3%E9%94%AE%E6%90%9C%E7%B4%A2%E6%96%B9%E5%BC%8F/" title="自訂 Chrome 右鍵選單，實現多重搜尋引擎並用">https://yanxuanshaozhu.github.io/2025/10/27/自定义Chrome右键搜索方式/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interesting-Things/" rel="tag"># Interesting Things</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/10/21/Windows%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80git-bash/" rel="prev" title="Windows当前文件夹快速打开git bash">
+      <i class="fa fa-chevron-left"></i> Windows当前文件夹快速打开git bash
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <h2 id="us-forest-prototype-system">US Forest Prototype System</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Feb 2022 - Apr 2022<br>
-Tools: Dash, Spring Boot, PostgreSQL, Heroku</p>
-<p>For my project for COSI 127B, I developed a prototype system for the
-US Forest Registry users. This project is a web-based application that
-allows users to conduct CRUD operations to monitor the US forests. I
-used both frontend and backend validations to ensure valid user input. I
-also included proper query optimization, concurrency control and stored
-procedures to ensure system robustness and improve system
-efficiency.</p>
-<h2 id="unit-converter">Unit Converter</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Oct 2021 - Dec 2021<br>
-Tools: React Native, Express, MongoDB, Heroku</p>
-<p>For my project for COSI 153A, I developed a mobile app unit converter
-that allows users to do conversions in six different categories (real
-time exchange rate included). This app also allows users to register
-accounts, login to save and display their conversion histories. This app
-uses asynchronous storage to store user information, uses axios to make
-HTTP requests to an Express server, and uses mongoose to let the sever
-exchange data with a MongoDB Atlas database.</p>
-<h2 id="pricing-bonds-with-embedded-options">Pricing Bonds with Embedded
-Options</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Dec 2017 - Apr 2018<br>
-Tools: Matlab, LaTeX</p>
-<p>For the 'It Said Data' Science competition held by Xiamen University,
-I worked with three of my fellow classmates on the topic Pricing bonds
-with Embedded Options. We calculated theoretical prices of 466 bonds
-embedded with redemption clauses between 2015 and 2018 using Hull-White
-interest rate model and Monte Carlo Simulation. During the competition,
-we learnt a great deal about how to apply financial knowledge to
-tackling real world market data.</p>
-<p>Our team name is Chaos in Bond Markets, we ranked 3rd among the 32
-teams in the competition.</p>
-<h2 id="quantitative-stock-selection">Quantitative Stock Selection</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Nov 2017 - Dec 2017<br>
-Tools: Jupyter Notebook, Numpy, Pandas, Matplotlib</p>
-<p>For my Quantitative Investment fall 2017 course project, I developed
-a quantitative stock selection procedure and tested my strategy on a
-virtual platform. I used both fundamental analysis and technical
-analysis to evaluate China's stock market and formed a stock pool by
-picking the 100 best-performing stocks. I then used Multi-Factor Model
-and Momentum Model to select stocks from the pool to construct my
-portfolio. Finally, I invested my portfolio for two months on a virtual
-platform with an initial balance of 1 million yuan. My cumulative return
-was 4.62%, which ranked the second among the 24 students in the
-class.</p>
-<h2 id="analysis-of-the-economic-zone-on-the-west-coast-of-taiwan-strait">Analysis
-of the Economic Zone on the West Coast of Taiwan Strait</h2>
-<div style="width:100%; height:1px; border-top:1px solid #999; clear:both; margin-top: -15px;">
-
-</div>
-<p>Sep 2016 - Dec 2016<br>
-Tools: Stata, MS Word</p>
-<p>For my 2016 fall semester, I worked with two other students as
-research assistants to analyze the economic zone on the west coast of
-Taiwan strait. My focus was on the influence of economic agglomeration
-on labor productivity. I build dynamic panel regression methods to model
-the difference in labor productivity and used various methods to find
-the cause of such difference. I also reviewed the draft of analysis on
-the infrastructures of the economic zone.</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -327,9 +381,6 @@ the infrastructures of the economic zone.</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#us-forest-prototype-system"><span class="nav-number">1.</span> <span class="nav-text">US Forest Prototype System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unit-converter"><span class="nav-number">2.</span> <span class="nav-text">Unit Converter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pricing-bonds-with-embedded-options"><span class="nav-number">3.</span> <span class="nav-text">Pricing Bonds with Embedded
-Options</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quantitative-stock-selection"><span class="nav-number">4.</span> <span class="nav-text">Quantitative Stock Selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-the-economic-zone-on-the-west-coast-of-taiwan-strait"><span class="nav-number">5.</span> <span class="nav-text">Analysis
-of the Economic Zone on the West Coast of Taiwan Strait</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
